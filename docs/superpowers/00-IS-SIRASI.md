@@ -12,7 +12,7 @@
 
 | # | iş | durum |
 | :-- | :--- | :--- |
-| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **46/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.6c** (isabetsiz atıf, $0) · harcanan **$4,8345** / tavan $8,00 · bakiye **$7,2063** |
+| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **50/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.7** (kapının üç maddesi, DUR ②) · harcanan **$5,7338** / tavan $8,00 · OpenRouter bakiyesi **$6,2294** |
 | **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
@@ -124,8 +124,8 @@ doğruymuş**; hedefi kaydıran tek bir satırdı. Ayrıntı ve üçüncü tutar
      6.6 kusur 23'ün ikinci sınaması        BİTTİ  — kusur 23 KAPANMADI, v2'ye devir sürüyor
      6.6b öz-tercih (Anthropic ailesi)      BİTTİ  — ⭐ kayırma YOK, TERS yön
      6.6c Sonnet-5'in isabetsiz atıfı       BİTTİ  — 7/80 (biz 8/80); ön-kayıt ÇÜRÜDÜ
-     6.6d Sonnet-5'in ezber kütlesi M5      ← ŞU AN (para kapısı geçti, ~$1,25)
-     6.7 kapının üç maddesi                 ← DUR ②
+     6.6d Sonnet-5'in ezber kütlesi M5      BİTTİ  — 0,7772 (havuz içi, biz 0,3899 en düşük kaldı)
+     6.7 kapının üç maddesi                 ← ŞU AN · DUR ②
      6.8 ADR-0084 + #68 + manşet ARALIK
 7 · bekleyen commit'leri push
 8 · PUBLIC kontrolü   repo + HF

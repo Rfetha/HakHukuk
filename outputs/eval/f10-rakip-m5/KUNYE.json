@@ -47,9 +47,22 @@
       "kesik": 2,
       "ort_completion_tokens": 926.3,
       "judge_cost_usd": 0.0477
+    },
+    "sonnet_5": {
+      "coverage": 1.0,
+      "A1": 0.7772,
+      "ezber_kutlesi": 0.7772,
+      "n_answered": 80,
+      "n_abstain": 0,
+      "kesik": 3,
+      "ort_completion_tokens": 945.5,
+      "judge_cost_usd": 0.0577,
+      "_eklendi": "2026-09-12, ADIM 6.6d — aynı rejim (bkz. üstteki 'rejim' bloğu) birebir korunarak koşuldu; özne=anthropic/claude-sonnet-5 (OpenRouter, HTTP taşıyıcı, sağlayıcı pinlenmedi — gen_eval_grounded.py'de bu mekanizma yok, tuzak 2.7 gereği yalnız KAYDEDİLİR: bu koşuda üretim tarafı OpenRouter varsayılan yönlendirmesiyle gitti); hakem openai/gpt-4o-mini · LLM_PROVIDER_ORDER=OpenAI (emsalle birebir aynı, ADR-0032 aile dışlaması: Sonnet-5 özne ↔ OpenAI hakem). Detay: m5_anthropic_claude-sonnet-5_m5_detail.jsonl · gnd_m5_anthropic_claude-sonnet-5_m5(.jsonl/_summary.json) · a1_m5_anthropic_claude-sonnet-5_m5.txt (rescore_answered.py iki kez koşuldu, sha256 birebir aynı: 0ac445bcd0f34f50846d877a0827875c7bd580c18246b86b259a2b15cc492fe3 — harness_tablo.py bu dosyada KOŞMUYOR, script kendi guard'ıyla reddediyor: '[tablo] bu dosyada harness izi yok', çünkü M5 harness-KAPALI bir moddur; diğer üç Gemini kolu için de bu klasörde harness_tablo_*.json hiç üretilmemiş — aynı sınıf, ilk kez burada açıkça test edildi). Gerçek fatura (bakiye farkı): üretim $0,772832 + hakem $0,068969 = $0,841801 (iç muhasebe hakem $0,0577 ↔ gerçek $0,068969, ~%19,5 sapma — önceki %2,9-4,1 aralığından daha büyük, damgalanır). Geçerlilik: kesiklik 3/80=%3,75 (<%5 eşiği, diğer üç kolun %0/%0/%2,5 aralığının biraz üstünde ama eşiğin altında) ⇒ koşu GEÇERLİ."
     }
   },
   "kurulmayacak_cumle": "⛔ 'M5'te rakipleri yendik' KURULMAZ. M5 bir ANTİ-HEDEFtir ve kapı çıpası BASE'dir, rakip DEĞİL — ADR-0039 §2 rakip çıpasını değerlendirip REDDETTİ ('modeli aldığımız noktadan kötüye götürmemeliyiz'). Düşük M5 bizim için 'kaynağa dayanıyoruz' demek; aynı sayı aynı zamanda 'Gemini Türk hukukunu kaynaksızken bizden çok daha iyi biliyor' demektir (3.5 Flash A1 0,8241 ↔ biz 0,4105 — iki katı). İki yüzü de raporlanır.",
   "hakem_bedeli_usd": 0.1418,
-  "git_sha": "223dbab"
+  "hakem_bedeli_usd_sonnet5_eklendi_2026-09-12": 0.0577,
+  "git_sha": "223dbab",
+  "git_sha_sonnet5_eklendi": "e859696"
 }

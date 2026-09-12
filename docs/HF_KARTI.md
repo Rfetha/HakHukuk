@@ -141,7 +141,7 @@ seti (n=80, geliştirme kümesi), önsözsüz istem, erişim katmanı etkin (k=1
 | Aşırı çekinme ↓ ᶜ | **4/80** | 7/80 | 9/80 | 7/80 | **4/80** | ölçülemedi ᵇ |
 | İsabetsiz atıf ↓ ᵈ | 8/80 | 8/80 | **7/80** | 8/80 | **7/80** ᵈ | ölçülemedi ᵇ |
 | **Uydurulmuş madde numarası** ↓ | **0/114** | 1/152 | 4/130 | 4/133 | 2/163 | ölçülemedi ᵇ |
-| Ezber kütlesi (M5) ↓ ᵉ | **0,3899** | 0,6710 | 0,7013 | 0,8241 | ölçülmedi ᵉ | 0,4697 |
+| Ezber kütlesi (M5) ↓ ᵉ | **0,3899** | 0,6710 | 0,7013 | 0,8241 | 0,7772 ᵉ | 0,4697 |
 | Cevap başına maliyet ↓ | **$0** | $0,001895 | $0,001152 | $0,009914 | $0,014915 | **$0** |
 | Ortalama belirteç / cevap | 782,5 | 861,5 | **171,1** | 699,4 | 706,6 | ölçülemedi ᵇ |
 
@@ -219,8 +219,14 @@ Düzeltme uygulandığında sıralama değişmektedir.
   Sonnet-5'i 0,0083 ile bizim 0,0769'umuzun çok altında gösteriyordu, göz sayımı ise Sonnet-5'i
   bizim **8/80**'imizin altında (7/80) buldu — vekil ölçüt ile göz sayımı burada **ayrı
   eksenlerdir**, biri diğerini geçersiz kılmaz. Bu eksen HakHukuk'un açık borcudur.
-- **ᵉ** Ezber kütlesi, kaynak verilmeden ölçülen anti-hedeftir; düşük olması istenir. Sonnet-5
-  bu modda koşulmamıştır.
+- **ᵉ** Ezber kütlesi, kaynak verilmeden ölçülen anti-hedeftir; düşük olması istenir.
+  ~~Sonnet-5 bu modda koşulmamıştır.~~ **2026-09-12'de tamamlandı (ADIM 6.6d):** Sonnet-5
+  **0,7772** — havuzun içinde, `3.5 Flash-Lite` (0,7013) ile `3.5 Flash` (0,8241) arasında;
+  bizim **0,3899**'umuzun **çok üstünde** (fark 38,73 p, çözünürlük 1,25 p'nin çok üstünde
+  ⇒ **BELİRSİZ değil**). ⇒ **Havuzun en düşüğü (en iyisi) hâlâ BİZ** — Sonnet-5 bizden düşük
+  çıkmadı, ön-kayıtlı kaybetme senaryosu **gerçekleşmedi**. Aynı rejim (`f10-rakip-m5/KUNYE.json`),
+  hakem `openai/gpt-4o-mini` · `LLM_PROVIDER_ORDER=OpenAI` (ADR-0032 aile dışlaması), n=80,
+  kesiklik 3/80=%3,75 (geçerlilik eşiği %5'in altında). Kaynak: [`f10-rakip-m5/KUNYE.json`](../outputs/eval/f10-rakip-m5/KUNYE.json).
 
 Bu değerlerin hiçbiri standart bir ölçüt kümesinden gelmemektedir. Tümü, Türkçe ve güncel
 Türkiye Cumhuriyeti mevzuatı üzerine kurulmuş kendi CANON kümemizden üretilmiştir. MMLU,
