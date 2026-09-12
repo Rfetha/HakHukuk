@@ -1,0 +1,21 @@
+{
+  "label": "h1_3_5_flash_anthropic_duman_orta",
+  "n": 2,
+  "mode": "data",
+  "judge_model": "anthropic/claude-sonnet-5",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "Anthropic"
+  ],
+  "runs": 1,
+  "total_claims": 21,
+  "faithfulness_micro": 0.619,
+  "hallucination_micro": 0.381,
+  "unsupported_micro": 0.381,
+  "cit_precision_micro": 0.2857,
+  "wrong_ref_rate_micro": 0.0,
+  "cit_recall_macro": 1,
+  "faithfulness_macro": 0.75,
+  "judge_cost_usd": 0.0613,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}
