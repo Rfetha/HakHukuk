@@ -79,6 +79,10 @@ sayım.)*
 > işlenmiş, **buraya işlenmemişti**. Tutarlılık denetiminde yakalandı ve damgalandı.
 > Ders: *kapanış **iki** yere birden yazılmazsa sicil sessizce bayatlar* — ve sicil bir sonraki
 > turun **girdisidir**.
+> **İkinci kez sınanan ama AÇIK kalan: 23** (adım 6.6, $0) — deterministik taraf (`harness_tablo.py`
+> + `uc_okuma_kutle.py`, ikişer koşu) `sha256` **birebir**, üçüncü kez temiz; ama id65'te canlı
+> bir "aynı girdi farklı sayı" örneği bulundu ve kökeni **kusur 23'ten AYRI** çıktı (hakem-katmanı
+> `temp=0` gürültüsü, kod değil) — bkz. §Kusur 23. Sayaç **değişmedi**.
 
 | # | kusur | durum | nerede kapandı / nereye devredildi |
 | :-- | :--- | :--- | :--- |
@@ -106,7 +110,7 @@ sayım.)*
 | **20** | ürün yolunun 2. geçişi `reasoning_content` alanına bağımlı; sunucunun `--reasoning-format` varsayılanı değişirse **sessizce tek geçişe düşer** (boş cevap kusuru geri gelir) | **KAPANDI** 2026-09-11, **iki yarısı da** | **insan kararı: İKİSİ DE** — kod: `servis._reasoning_kapisi()`, sessiz düşüş yerine **erken ve gürültülü** `RuntimeError` (commit `3a8109e`); `compose.yaml`'da `--reasoning-format deepseek` açıkça pinlendi ve **mutasyon denetimiyle** çivilendi (commit `1d0c616`). ⛔ Kapı **gözlem** kapısıdır, açılış yoklaması değil: düşünce üretmeyen **meşru** sunucuyu öldürmez |
 | **21** | `hakhukuk/araclar.py` **kendi ikinci ad indeksini** taşıyor — kusur 18'in onarımı ürün yüzeyine GEÇMEDİ | **KAPANDI** 2026-09-11 | Tuzak **2.18** kalıbı (*aynı ölçümün ikinci bir aleti*): vatandaşa giden atıf doğrulaması ile yayımlanan sayıyı üreten doğrulama **AYRI**ydı. Ayrışma gerçekti: 892 kanun adında **19**, parantezli 16'da **7**, çıpanın gerçek atıflarında **24/114** fark. **insan kararı: ONARIMI ÜRÜN YÜZEYİNE DE TAŞI** — `araclar.py` artık `atif_dogrula`'dan import ediyor, kopya indeks silindi. Eşdeğerlik kanıtlandı: 94 dosya · 11.634 hüküm, iki kolun çıktısı `sha256` **birebir**. Sonrası **0/892 · 0/16 · 0/114**. Commit `f6908e3` |
 | **22** | rakip kollarının uydurma-madde sayıları **onarılmamış aletle** üretildi | **KAPANDI** 2026-09-11 | **insan kararı: YENİDEN PUANLA** — yayımlanan boru hattıyla, payda **birebir** olsun diye. Sonuç **aleyhimize** çıktı ve **yazıldı**: `3.1 Flash-Lite` **`1/152` → `0/153`**. Ayrıntı aşağıda |
-| **23** | ilk yeniden-puanlama koşusu **eski sayıyı verdi ve tekrarlanamadı** | **AÇIK** | Modül gölgeleme arandı, **bulunamadı**. Yayımlanan sayılar 4 ardışık koşuda bayt-bayt aynı + bağımsız probla teyitli, ama **bu sınıftan bir sayı tek koşuya dayandırılmamalı**. **Devir → `v2`** |
+| **23** | ilk yeniden-puanlama koşusu **eski sayıyı verdi ve tekrarlanamadı** | **AÇIK — ikinci kez sınandı, KAPATILMADI** | Modül gölgeleme arandı, **bulunamadı**. Yayımlanan sayılar 4 ardışık koşuda bayt-bayt aynı + bağımsız probla teyitli. **İkinci sınama** (adım 6.6, 2026-09-12, $0): `harness_tablo.py` + `uc_okuma_kutle.py` 6.5'in Anthropic çıktısında **ikişer kez** koştu, ikisi de `sha256` **birebir** — deterministik taraf üçüncü kez de temiz çıktı. Aynı adım ayrıca **canlı bir "aynı girdi farklı sayı" örneği** buldu (id65, 6.4'ün duman koşusu) ama kökeni **AYRI**: hakem-çağrısı (LLM) düzeyinde bilinen, belgelenmiş `temp=0` gürültüsü — kod tarafında determinizm ihlali değil. **Bu yüzden kapatılmadı**: taraflardan biri temiz ama orijinal olayın kök nedeni hâlâ bulunamadı. Ayrıntı aşağıda (§Kusur 23). **Devir → `v2`** sürüyor |
 | **24** | iki README'nin *"Bugün kurup çalıştırabilir miyim? — HAYIR"* tablosu **BAYAT** | ✅ **KAPANDI** 2026-09-12 (`b077f13`) | *"`hakhukuk/` dizini yok"* ve *"ağırlıklar hiçbir yerde yayımlanmadı"* diyordu — **ikisi de YANLIŞtı**. `HAYIR` → `KISMEN`, dört satır yeniden yazıldı. ⚠️ **Bu sicil 2026-09-12'ye kadar "AÇIK" demeye devam etti** (kapanış `00-IS-SIRASI`'ya işlendi, buraya işlenmedi) — damga `v1-son-iş` turunda, 6.3 sonrası yapılan tutarlılık denetiminde vuruldu |
 | **25** | `MODEL_CARD` *uydurulmuş madde* satırında **iki farklı kesir birimi** | **AÇIK** | Gemini sütunlarının paydası **`DOGRULANDI`**, Sonnet-5 hücresininki **toplam atıf** (163). Sayı oynamadığı için hüküm etkilenmedi. ⚠️ Birimin hiçbir yerde yazılı olmaması **bir ön sondayı zaten yanılttı**. **Devir → `v2`** |
 | **26** | ⭐ sunumda **çift tırnak**: model işaretlerin içine kendi düz tırnağını yazınca `“ "…" ”` çıkıyor | **KAPANDI** 2026-09-11 | **İNSAN GÖZÜ KAPISINDA yakalandı**; kusuru **aynı gün biz eklemiştik** (kusur 12a/19 süzgeci) ve testler **tırnaksız** alıntıyla yazıldığı için görmemişti. Commit `6a58d72` (+6 test): sarmalayan tırnak soyulur, tırnaksız girdi **aynen** korunur, metnin **ortasındaki** iç alıntı **bozulmaz** |
@@ -157,6 +161,43 @@ aletle** üretilmişti. Tabloda **iki farklı aletin** sayısı yan yana duruyor
 beş kol da aynı aletle puanlanıyor. Sayı `MODEL_CARD` ve `CLAUDE.md`'de **değiştirildi** ve
 şerhle **iki yerde** damgalandı. Diğer üç kol oynamadı.
 
+### Kusur 23 — ikinci sınama: alet tarafı TEMİZ, hakem tarafı AYRI bir gürültü kaynağı
+
+Adım 6.6 (2026-09-12, **$0**, hakem çağrılmadı) kusur 23'ü ikinci kez sınadı.
+`scripts/puanlama/harness_tablo.py` ve `scripts/puanlama/uc_okuma_kutle.py`, 6.5'in Anthropic
+hakem çıktısı (`outputs/eval/hp-rakip-anthropic-tam/gnd_h1_3_5_flash_anthropic.jsonl`, girdi
+detay `outputs/eval/f04-rakip-onsozsuz/h1_3_5_flash_nb_detail.jsonl`) üzerinde **ikişer kez**
+koşuldu; her ikisinin `--out` çıktısı `sha256` **birebir** (`harness_tablo` `77467479…`,
+`uc_okuma` `12506544…` — tek fark stdout'taki dosya-adı satırıydı). Bu, kusur 22'nin kendi
+ikinci sınamasıyla (#67: *"her kol iki kez koştu, bayt bayt aynı"*) birlikte **üçüncü**
+bağımsız doğrulama: yayımlanan deterministik puanlama boru hattı tekrar tekrar bayt-bayt aynı
+çıkıyor.
+
+Görev ayrıca 6.4'ün duman koşusundaki **id65**'i gündeme getirdi: birleşik 6-kalemlik çağrıda
+(`duman6`) 17 iddia/`faithfulness=0,5294`, dilimli 2-kalemlik çağrıda (`duman_orta`) 16
+iddia/`faithfulness=0,5000` — aynı kalem, aynı hakem modeli, aynı gün, **iki farklı sayı**.
+`groundedness.py::score_record` her kalemi **tek başına**, kendi `cevap` metniyle çağırır
+(`extract_claims`/`verify_claims` yalnız o kalemin cevabını görür) — iki koşu arasında
+paylaşılan bir prompt/bağlam **yoktur**, dolayısıyla *"farklı grup bağlamı"* ifadesi
+yanıltıcıdır: fark, **aynı prompt'un iki ayrı API çağrısında** farklı çıktı vermesinden gelir.
+Bu, betiğin kendi docstring'inin (satır 26) baştan yazdığı şey: *"claim sınırı hakem-öznel +
+temp=0 tam deterministik değil"* — tam bunun için `--runs N` parametresi ve *"paper için
+runs≥3"* önerisi zaten vardır.
+
+**Bu, kusur 23'ün canlı bir örneği DEĞİLDİR.** Kusur 23 kendi kodumuzun (puanlama/doğrulama
+boru hattı) aynı, sabit girdide farklı sayı vermesiydi — bugünkü ikinci sınama bu tarafın
+**temiz** olduğunu bir kez daha gösterdi. id65'in farkı **hakem modelinin kendisinde**, LLM
+çağrısı düzeyinde, zaten bilinen ve belgelenmiş bir kaynaktan geliyor; kod tarafında hiçbir
+determinizm ihlali yok. İkisini karıştırmak, çözülmüş bir aletin üstüne çözülmemiş bir
+hakem-gürültüsü sorununu bindirir.
+
+⇒ **Hüküm: kusur 23 KAPATILMADI.** Deterministik taraf art arda üç kez (yayımlanan sayılar ·
+#67'nin rescoring'i · bugünkü 6.6) bayt-bayt aynı çıktı — bu taraf **temiz** sayılır. Ama
+orijinal olayın (*"ilk koşu eski sayı verdi"*) **kök nedeni hâlâ bulunamadı**; kapatmak için
+kendimizi zorlamadık. **Devir → `v2`** aynen sürüyor, yalnız artık şu netlikle: `v2`'nin işi
+kod-tarafı bir hata aramak değil, hakem-katmanı gürültüsünü `--runs N` havuzlamasıyla
+azaltmaktır — bu ayrım bugüne kadar yazılı değildi.
+
 ### Kusur 32 — onarımın **ters yüzü**: `git clone`'u düzeltti, konteyneri kırdı
 
 Konteynerde üç kutu da ayağa kalkıyordu (`indir` çıkış **0**, `llama` **healthy**, `app` **Up**),
@@ -199,7 +240,7 @@ yukarıdaki sicildedir.
 | **10** | HF **görünürlüğü** (ağırlıklar ÖZEL) | **insan kararı**, iş değil. ⚠️ `push` yarısı **2026-09-12'de KAPANDI** (62 commit `origin/master`'a gitti); **görünürlük** yarısı açık |
 | **11** | paket `scripts/`'e bağımlı, tek başına kurulamıyor | **kendi turu** — kusur **21** onarımı importu birden **ikiye** çıkardı; kalıcı çare `madde_anahtar` + `atif_dogrula` + `score_abstention` üçlüsünün **pakete taşınması** |
 | **12b** | iskele işaretlerinin **kaynağı** eğitim verisi | **`v2` · borç `B11`** |
-| **23** | bir yeniden-puanlama koşusu **eski sayıyı verdi, tekrarlanamadı** | **`v2`** · modül gölgeleme arandı **bulunamadı**; bu sınıftan sayı **tek koşuya dayandırılmamalı** |
+| **23** | bir yeniden-puanlama koşusu **eski sayıyı verdi, tekrarlanamadı** | **`v2`** · modül gölgeleme arandı **bulunamadı**; **ikinci sınama** (6.6) deterministik tarafı bir kez daha temiz buldu ama kök neden hâlâ yok — kapanmadı, `v2`'nin işi artık hakem-katmanı gürültüsünü `--runs N` ile azaltmak (§Kusur 23) |
 | **24** | iki README'nin *"Bugün kurup çalıştırabilir miyim? — HAYIR"* tablosu **BAYAT** | **kendi turu** · *"`hakhukuk/` dizini yok"* ve *"ağırlıklar yayımlanmadı"* **ikisi de YANLIŞ** *(KAPANDI 2026-09-12 `b077f13` — bu tablo kapanış anının SNAPSHOT'ıdır, geriye dönük düzeltilmez)* |
 | **25** | `MODEL_CARD` *uydurulmuş madde* satırında **iki farklı kesir birimi** | **`v2`** · Sonnet-5 hücresi **toplam atıf**, Gemini sütunları **`DOGRULANDI`** paydası kullanıyor |
 | **27** | Kaynaklar listesinde **madde biçimi tutmuyor** (`MADDE 349` ↔ `Madde 8`) | **`v2`** · korpusun **ham** tutarsızlığının vatandaş ekranına yansıması; **gösterim** katmanı işi |

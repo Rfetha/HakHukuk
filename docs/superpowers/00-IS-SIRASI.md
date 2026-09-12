@@ -12,7 +12,7 @@
 
 | # | iş | durum |
 | :-- | :--- | :--- |
-| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **32/63** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.5** (κ borcu) · harcanan **$0,4608** |
+| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **39/63** *(32/63 stale idi — 6.5 + 6.6 buraya işlenmemişti, kusur 24'ün dersi burada da vuruldu)* · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.6b** (öz-tercih) · harcanan bkz. plan'daki adım künyeleri (bu satır para toplamı tutmuyor, güncellenmedi) |
 | **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
