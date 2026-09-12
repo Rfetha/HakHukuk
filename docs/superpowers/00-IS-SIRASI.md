@@ -12,7 +12,7 @@
 
 | # | iş | durum |
 | :-- | :--- | :--- |
-| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **39/63** *(32/63 stale idi — 6.5 + 6.6 buraya işlenmemişti, kusur 24'ün dersi burada da vuruldu)* · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.6b** (öz-tercih) · harcanan bkz. plan'daki adım künyeleri (bu satır para toplamı tutmuyor, güncellenmedi) |
+| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **39/70** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.6b** (öz-tercih) · harcanan **$2,2133** / tavan $8,00 · bakiye **$11,876** |
 | **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
@@ -66,7 +66,9 @@ Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-huk
 | ürün yolunun **kütlesi** | **0,7792** (ölçüm hattı 0,8011; −2,19 p, karıştırıcı var) |
 | **S17** kuantizasyon eğrisi | `Q4` 0,7921 ↔ `Q5` **0,8673** ↔ `Q8` 0,7909 — **monoton değil** |
 | araç zinciri sapması | **−0,90 p ⇒ BELİRSİZ** (32 bayt fark davranışsal değil) |
-| κ borcu tahmini | **$1,97** (tabakalanmış; düz ön-tahmin $2,81'di) |
+| κ borcu tahmini ↔ gerçek | **$1,97** tahmin ↔ **$1,6831** gerçek (düz ön-tahmin $2,81'di) |
+| ⭐ **κ BORCU — kapı ikinci hakem altında** | `3.5 Flash` GÖZ-katı **0,6183** → eşik **0,5983**; bizim **0,6940** ⇒ marj **+7,57 p** (çıpaya göre; `gpt-4o-mini`'de +5,86 p). **İki hakem de aynı yönde.** Hüküm 6.7'nin işi |
+| kusur 23 | **KAPANMADI** — deterministik taraf 3 sınamada temiz, kök neden hâlâ yok ⇒ `v2` |
 
 **Bu turda kapanan kusurlar:** **24** (bayat README) · **29** (imajdaki yedek) · **33** (yeniden
 üretim kapısı hiç geçmiyordu). **Açık: 6** — 5a · 10 · 23 · 25 · 27 · 31.
@@ -116,9 +118,11 @@ doğruymuş**; hedefi kaydıran tek bir satırdı. Ayrıntı ve üçüncü tutar
      6.3b ürün yolunun kütlesi  0,7792      BİTTİ  (plana sonradan eklendi)
      6.3c S17 kuantizasyon eğrisi           BİTTİ  (plana sonradan eklendi)
      6.4 tabakalanmış duman + para kapısı   BİTTİ  — kapı GEÇTİ
-     6.5 3.5 Flash ikinci hakem             ← ŞU AN (κ borcu burada kapanır)
-     6.6 kusur 23'ün ikinci sınaması
-     6.6b öz-tercih (Anthropic ailesi)      (plana sonradan eklendi)
+     6.5 3.5 Flash ikinci hakem             BİTTİ  — ⭐ κ BORCU KAPANDI
+     6.6 kusur 23'ün ikinci sınaması        BİTTİ  — kusur 23 KAPANMADI, v2'ye devir sürüyor
+     6.6b öz-tercih (Anthropic ailesi)      ← ŞU AN (plana sonradan eklendi)
+     6.6c Sonnet-5'in isabetsiz atıfı       (insan kararı, $0 göz sayımı)
+     6.6d Sonnet-5'in ezber kütlesi M5      (insan kararı, ~$1,5-3) ← DUR ①
      6.7 kapının üç maddesi                 ← DUR ②
      6.8 ADR-0084 + #68 + manşet ARALIK
 7 · bekleyen commit'leri push

@@ -6,16 +6,19 @@
 
 ---
 
-İCRA: `docs/superpowers/plans/2026-09-12-v1-son-is.md` — **63 kutucuk, 36'sı kapalı**.
+İCRA: `docs/superpowers/plans/2026-09-12-v1-son-is.md` — **70 kutucuk, 39'u kapalı**.
 `superpowers:subagent-driven-development` ile sür. Planı ve `.superpowers/sdd/progress.md`
-defterini **oku**. **5 · 6.1 · 6.2 · 6.3 · 6.3b · 6.3c · 6.4 · 6.5 BİTTİ — yeniden koşma.**
-Sıradaki **6.6**. ⭐ **κ BORCU KAPANDI:** `3.5 Flash` GÖZ-katı `claude-sonnet-5` altında
+defterini **oku**. **5 · 6.1 · 6.2 · 6.3 · 6.3b · 6.3c · 6.4 · 6.5 · 6.6 BİTTİ — yeniden koşma.**
+Sıradaki **6.6b**. ⭐ **κ BORCU KAPANDI:** `3.5 Flash` GÖZ-katı `claude-sonnet-5` altında
 **0,6183** → eşik **0,5983**; bizim **0,6940** ⇒ marj **+7,57 p çıpaya göre** (gpt-4o-mini'de
 +5,86 p). **İki hakem de aynı yönde.** Hüküm yine de 6.7'nin işi (çözünürlük kuralı).
 
 ## Sıra — insan kilitli, DEĞİŞTİRME
-6.6 kusur23 · 6.6b öz-tercih · 6.7 kapı · 6.8 ADR-0084+#68 · 7 push · 8 public ·
-9 HF görünürlüğü.
+6.6b öz-tercih · **6.6c Sonnet-5 isabetsiz atıf ($0)** · **6.6d Sonnet-5 M5 (DUR ①)** ·
+6.7 kapı · 6.8 ADR-0084+#68 · 7 push · 8 public · 9 HF görünürlüğü.
+*(6.6c/6.6d insan kararı 2026-09-12: HF kartındaki iki `ölçülmedi` hücresi kapatılacak;
+ikisinin de ön-kaydı **aleyhe sonuca açık** ve planda yazılı. Temel model sütunu (ᵇ)
+**kapanmaz** — o "ölçülemedi", geçerlilik kapısından kaldı.)*
 
 ## DUR — yalnız burada dur, insana sor
 ① para tavanı aşıldı: `min(tahmin×1,5 ; $8,00)` ya da kalemin alt-tavanı
@@ -39,8 +42,8 @@ Başka yerde durma.
 κ 0,534 / 0,409 · eşik 0,6 — **κ DEĞİŞMEDİ**, kapanan şey eşit sınavın yokluğu.
 BİZ: gpt-4o-mini **0,8011** ↔ sonnet-5 **0,6940** · `3.5 Flash`: **0,7425** ↔ **0,6183**
 ⇒ marj **+5,86 p** ↔ **+7,57 p** (ikisi de ÇIPAYA göre — eşiğe göre olanla karıştırma!)
-Harcanan **$2,2133** (6.3b $0,0438 · 6.3c $0,1210 · 6.4 $0,2960 · 6.5 $1,6831).
-Kalan: 6.6b **$1,86** (≤$3,00). Üst sınır **$8,00**. Bakiye **$11,876** (ölçüldü).
+Harcanan **$2,2133**. Kalan: 6.6b **$1,86**(≤$3) · 6.6d **~$1,5-3**(≤$3) · 6.6c **$0**.
+Üst sınır **$8,00**. Bakiye **$11,876** (ölçüldü).
 ⚠️ Para kapıları **bakiye farkıyla** doğrulanır — `llm_client` liste fiyatı sayıyor (%4,1 sapma).
 Donmuş TEST **0,5804** (n=40) — **DOKUNMA**, tek hakemli kalır
 Ağırlık `sha256 755e15e9…` değişmiyor; depo adı `HakHukuk-4B-v0.3-Q4_K_M` **aynı kalır**
