@@ -64,15 +64,17 @@ Sebebi değişmedi: plan kapandığı gün kayda dönüşür; devir kuralı olma
 
 ---
 
-## (A) 32 kusurun tam sicili
+## (A) 33 kusurun tam sicili
 
 **Sayım (2026-09-12, bu ADR yazıldığı an):** 34 satır (`5a/5b` ve `12a/12b` ayrık sayılır) ⇒
 **23 KAPANDI · 3 DEVREDİLDİ · 8 AÇIK**. Kusur **10**'un iki yarısı vardır ve yalnız biri
-kapandı; satır **açık** sayılır.
+kapandı; satır **açık** sayılır. *(Bu ilk sayım kusur 33 doğmadan ÖNCEki hâldir — bkz. canlı
+sayım.)*
 
-> 🔄 **CANLI SAYIM — `v1-son-iş` turu ilerledikçe güncellenir:** **25 KAPANDI · 3 DEVREDİLDİ ·
+> 🔄 **CANLI SAYIM — `v1-son-iş` turu ilerledikçe güncellenir:** **26 KAPANDI · 3 DEVREDİLDİ ·
 > 6 AÇIK** (5a · 10 · 23 · 25 · 27 · 31).
-> Turda kapananlar: **24** (`b077f13`) · **29** (adım 6.3.1).
+> Turda kapananlar: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`, recall@10
+> kapısı var olmayan alanı okuyup her zaman düşüyordu).
 > ⚠️ Kusur **24** bu sicilde 2026-09-12'ye kadar *"AÇIK"* göründü — kapanışı `00-IS-SIRASI`'ya
 > işlenmiş, **buraya işlenmemişti**. Tutarlılık denetiminde yakalandı ve damgalandı.
 > Ders: *kapanış **iki** yere birden yazılmazsa sicil sessizce bayatlar* — ve sicil bir sonraki
@@ -114,6 +116,7 @@ kapandı; satır **açık** sayılır.
 | **30** | ⭐ `cli.py` künye yolunu **repo köküne göreli** çözüyor — kurulu pakette BULUNAMIYOR | **KAPANDI** 2026-09-11 | **İmajın İÇİNDE** ölçüldü. **Sessiz bozulma:** patlamıyor, `except` dalına düşüyor, vatandaş *"892 kanun · 37.949 madde"* yerine *"künye okunamadı — sayı belirsiz"* okuyor. ⚠️ Kusuru **aynı tur biz ekledik** (G21 Adım 7); host'ta görünmüyordu çünkü paket **editable** kurulu. TDD ile onarıldı: künye **paketin kendi ağacına** göre çözülüyor (`hakhukuk/veri/KUNYE.json`, **sembolik bağ** ⇒ ikinci kopya yok) + `package-data`. Commit `91cd0af` |
 | **31** | `compose` volume adını **proje adından** türetiyor (`hakhukuk_artefakt`), dizin adından değil | **AÇIK (kayıt)** | **Kusur değil, kayda değer davranış:** hazırlıkta `hukuk-slm_artefakt` doldurulmuştu ve **kullanılmadı**. ⇒ **İyi ki öyle oldu** — artefakt elle konsaydı `sha256` kapısı **hiç ateşlenmeyecek**, Adım 6'nın asıl şartı sınanmamış olacaktı. **Devir → kayıt** |
 | **32** | 🚨 **KONTEYNER UÇTAN UCA ÇALIŞMIYOR** — her soruda HTTP 500 | **KAPANDI** 2026-09-11 | `docker compose up` ile **ölçüldü**. Kök sebep bir **onarımın ters yüzü**; ayrıntı aşağıda. Commit `0e2a470`: yerleşim repo ağacını aynalıyor + `sha256` eşitlik kapısı |
+| **33** | 🚨 `yeniden_uret.sh`'ın recall@10 geçerlilik kapısı **var olmayan alanı** okuyordu, HER ZAMAN düşüyordu | **KAPANDI** 2026-09-12 | Kapı `gold_retrieved`/`altin_getirildi` okuyordu — detay kayıtlarında yok, gerçek şekil `harness.altin_sirasi` (0-tabanlı) + `harness.altin_dusuruldu`. `recall@10` her koşuda **0,0000** okunuyor, kapı **hiçbir koşuda geçemezdi** — çıpanın kendi verisinde bile (f02: gerçek 76/80=0,9500 ↔ kapının hesabı 0/80). TDD ile onarıldı: `scripts/olcum_uretim/recall_kapisi.py` (yeni, `erisim_korpus/recall_olc.recall_at_k`'yi çağırır — hesap tekrar edilmez), `harness` alanı eksikse **gürültülü** `KeyError`. Kalibrasyon: f02 çıpasında ve s17 `Q5_K_M` koşusunda recall@10 = 0,9500, kapı **GEÇTİ**. Commit `cc12b6e` |
 
 ---
 
