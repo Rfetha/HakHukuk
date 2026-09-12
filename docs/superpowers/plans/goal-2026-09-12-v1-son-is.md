@@ -1,20 +1,22 @@
 # GOAL — `v1-son-iş` (adım 4b)
 
 > `/goal` olarak verilecek prompt. **Plan değil, planı işaret eder.** Sınır: <4000 krk.
-> **v3 — 2026-09-12:** 5·6.1·6.2·6.3·6.3b·6.3c·6.4·6.5 kapandı; sıradaki **6.6**.
-> κ borcu ÖDENDİ. Bakiye ölçüldü: **$11,876** (eski $2,04 bayattı). Harcanan: **$2,2133**.
+> **v4 — 2026-09-12:** 5·6.1·6.2·6.3·6.3b·6.3c·6.4·6.5·6.6·6.6b kapandı; sıradaki **6.6c**.
+> κ borcu ÖDENDİ. Bakiye ölçüldü: **$11,876** (eski $2,04 bayattı). Harcanan: **$4,8345**.
 
 ---
 
-İCRA: `docs/superpowers/plans/2026-09-12-v1-son-is.md` — **70 kutucuk, 39'u kapalı**.
+İCRA: `docs/superpowers/plans/2026-09-12-v1-son-is.md` — **70 kutucuk, 43'ü kapalı**.
 `superpowers:subagent-driven-development` ile sür. Planı ve `.superpowers/sdd/progress.md`
-defterini **oku**. **5 · 6.1 · 6.2 · 6.3 · 6.3b · 6.3c · 6.4 · 6.5 · 6.6 BİTTİ — yeniden koşma.**
-Sıradaki **6.6b**. ⭐ **κ BORCU KAPANDI:** `3.5 Flash` GÖZ-katı `claude-sonnet-5` altında
+defterini **oku**. **5 · 6.1 · 6.2 · 6.3 · 6.3b · 6.3c · 6.4 · 6.5 · 6.6 · 6.6b BİTTİ — yeniden koşma.**
+Sıradaki **6.6c**. ⭐ **κ BORCU KAPANDI:** `3.5 Flash` GÖZ-katı `claude-sonnet-5` altında
 **0,6183** → eşik **0,5983**; bizim **0,6940** ⇒ marj **+7,57 p çıpaya göre** (gpt-4o-mini'de
 +5,86 p). **İki hakem de aynı yönde.** Hüküm yine de 6.7'nin işi (çözünürlük kuralı).
+⭐ **6.6b KAPANDI:** öz-tercih (yalnız Anthropic) **ters yönde** — `Δ_sonnet` +20,03 p ↔
+`Δ_biz` +10,71 p, fark>çözünürlük. Notlamaya girmez, `OZ_TERCIH.md`'de durur.
 
 ## Sıra — insan kilitli, DEĞİŞTİRME
-6.6b öz-tercih · **6.6c Sonnet-5 isabetsiz atıf ($0)** · **6.6d Sonnet-5 M5 (DUR ①)** ·
+**6.6c Sonnet-5 isabetsiz atıf ($0)** · **6.6d Sonnet-5 M5 (DUR ①)** ·
 6.7 kapı · 6.8 ADR-0084+#68 · 7 push · 8 public · 9 HF görünürlüğü.
 *(6.6c/6.6d: HF kartındaki iki `ölçülmedi` hücresi kapanır; ön-kayıtları **aleyhe açık**,
 planda yazılı. Temel model sütunu (ᵇ) **kapanmaz** — "ölçülemedi", kapıdan kaldı.)*
@@ -32,13 +34,15 @@ Başka yerde durma.
   kalibrasyon testli.
 - Çözünürlük: `n=80` ⇒ adım **1,25 p**. `|marj|<1,25 p` ⇒ **BELİRSİZ**, her iki yönde bağlar.
   Sonuç `v0.4`, gerekçe *"ölçemedik"*.
-- **6.6b yalnız Anthropic ailesi**; Google hücresi ölçülemez. Sonucu hiçbir hükme girmez.
+- **6.6b yalnız Anthropic ailesi** (ÖLÇÜLDÜ, ters yönde); Google hücresi ölçülemez, hiçbir
+  hükme girmez.
 
 ## Kaynaklı sayılar
 κ 0,534 / 0,409 · eşik 0,6 — **κ DEĞİŞMEDİ**, kapanan şey eşit sınavın yokluğu.
 BİZ: gpt-4o-mini **0,8011** ↔ sonnet-5 **0,6940** · `3.5 Flash`: **0,7425** ↔ **0,6183**
 ⇒ marj **+5,86 p** ↔ **+7,57 p** (ikisi de ÇIPAYA göre — eşiğe göre olanla karıştırma!)
-Harcanan **$2,2133**. Kalan: 6.6b **$1,86**(≤$3) · 6.6d **~$1,5-3**(≤$3) · 6.6c **$0**.
+Harcanan **$4,8345** (6.6b gerçek fatura $2,6212, tahmin $1,86'yı %41 aştı — tuzak 1.11).
+Kalan: 6.6d **~$1,5-3**(≤$3) · 6.6c **$0**.
 Üst sınır **$8,00**. Bakiye **$11,876** (ölçüldü).
 ⚠️ Para kapıları **bakiye farkıyla** doğrulanır — `llm_client` liste fiyatı sayıyor (%4,1 sapma).
 Donmuş TEST **0,5804** (n=40) — **DOKUNMA**, tek hakemli kalır
