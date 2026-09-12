@@ -10,6 +10,7 @@ HTTP API'sidir (`127.0.0.1:8000/sor`), bu yüzden istekler ona gider.
 sabit dize YAZILMAZ — tuzak 1.12 tam bunun tersini yaparak ısırmıştı.
 """
 import json
+import pathlib
 import subprocess
 import time
 import urllib.error
@@ -19,6 +20,20 @@ API_URL = "http://127.0.0.1:8000/sor"
 DEV_YOLU = "data/eval/dev/core_hard.jsonl"
 CIKTI_DIZIN = "outputs/eval/g23-konteyner-urun-yolu-80"
 ISTEK_ZAMAN_ASIMI = 700  # saniye — iki geçişli üretim + araç döngüsü göz önünde bol pay
+
+# Why: bir DNS/soket/bağlantı-reddi hatası TEK denemede kalıcı mı geçici mi ayrıştırılamaz;
+# 2 deneme geçici kesintiyi tolere eder ama sonsuz retry "hata görünmez olur" riskini taşır
+# (CLAUDE.md §5) — 2. denemede de tutmazsa kalem `durum="hata"` ile GÖRÜNÜR kalır, atlanmaz.
+MAX_DENEME = 2
+YENIDEN_DENEME_BEKLEME_SN = 3
+
+
+class RejimUyusmazligi(Exception):
+    """Devam edilecek çıktı dosyasının künyesi mevcut koşunun künyesiyle AYRIŞMIŞ.
+
+    Yarısı bir rejimde, yarısı başkasında üretilmiş bir dosya "hata vermeden yanlış"tır —
+    resume burada durur, sessizce karışık bir dosya üretmez.
+    """
 
 
 def _calistir(komut: list[str]) -> str:
@@ -68,15 +83,58 @@ def _sor(soru: str) -> dict:
     govde = json.dumps({"soru": soru}).encode("utf-8")
     istek = urllib.request.Request(
         API_URL, data=govde, headers={"Content-Type": "application/json"}, method="POST")
-    baslangic = time.monotonic()
-    try:
-        with urllib.request.urlopen(istek, timeout=ISTEK_ZAMAN_ASIMI) as y:
+
+    for deneme in range(1, MAX_DENEME + 1):
+        baslangic = time.monotonic()
+        try:
+            with urllib.request.urlopen(istek, timeout=ISTEK_ZAMAN_ASIMI) as y:
+                gecen = time.monotonic() - baslangic
+                return {"http": y.status, "gecen_sn": round(gecen, 1), **json.load(y)}
+        except urllib.error.HTTPError as e:
             gecen = time.monotonic() - baslangic
-            return {"http": y.status, "gecen_sn": round(gecen, 1), **json.load(y)}
-    except urllib.error.HTTPError as e:
-        gecen = time.monotonic() - baslangic
-        govde_metin = e.read().decode("utf-8", errors="replace")
-        return {"http": e.code, "gecen_sn": round(gecen, 1), "detay": govde_metin}
+            govde_metin = e.read().decode("utf-8", errors="replace")
+            return {"http": e.code, "gecen_sn": round(gecen, 1), "detay": govde_metin}
+        except (urllib.error.URLError, TimeoutError) as e:
+            gecen = time.monotonic() - baslangic
+            if deneme < MAX_DENEME:
+                time.sleep(YENIDEN_DENEME_BEKLEME_SN)
+                continue
+            # ⚠️ Sessiz yutma YASAK (CLAUDE.md §5): bir ağ hatası bir çekinme gibi sayılırsa
+            # ölçüm hata vermeden yanlış olur. Kalem "hata" durumuyla GÖRÜNÜR kalır.
+            return {
+                "http": None,
+                "gecen_sn": round(gecen, 1),
+                "durum": "hata",
+                "hata": f"{type(e).__name__}: {e}",
+            }
+
+
+def _kunye_yaz(yol: pathlib.Path, kunye: dict) -> None:
+    yol.write_text(json.dumps(kunye, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
+def _onceki_kayitlari_yukle(cikti_yolu: pathlib.Path, kunye_yolu: pathlib.Path,
+                             mevcut_kunye: dict) -> list:
+    """Önceki koşudan kalan kayıtları döndürür — resume buradan devam eder.
+
+    ⚠️ Rejim (künye) ayrışmışsa PATLAR (`RejimUyusmazligi`): yarısı bir rejimde, yarısı
+    başkasında üretilmiş bir dosya sessizce birleştirilmez. `tarih` alanı karşılaştırma DIŞI
+    tutulur — gün değişse de aynı koşu sayılır.
+    """
+    if not cikti_yolu.exists():
+        return []
+    onceki_kayit = json.loads(cikti_yolu.read_text(encoding="utf-8"))
+    if not onceki_kayit:
+        return []
+    if kunye_yolu.exists():
+        onceki_kunye = json.loads(kunye_yolu.read_text(encoding="utf-8"))
+        onceki_rejim = {k: v for k, v in onceki_kunye.items() if k != "tarih"}
+        mevcut_rejim = {k: v for k, v in mevcut_kunye.items() if k != "tarih"}
+        if onceki_rejim != mevcut_rejim:
+            raise RejimUyusmazligi(
+                f"{kunye_yolu} rejimi mevcut koşudan AYRIŞMIŞ — devam ETME, "
+                "yeniden başlatmadan önce çıktı dizinini temizle veya sapmayı çözümle.")
+    return onceki_kayit
 
 
 def main() -> int:
@@ -86,20 +144,32 @@ def main() -> int:
     kunye = kunye_topla()
     print(json.dumps(kunye, ensure_ascii=False, indent=1))
 
-    kayit = []
-    for i, d in enumerate(dev):
+    cikti_yolu = pathlib.Path(f"{CIKTI_DIZIN}/urun_yolu_80.json")
+    kunye_yolu = pathlib.Path(f"{CIKTI_DIZIN}/KUNYE.json")
+    kayit = _onceki_kayitlari_yukle(cikti_yolu, kunye_yolu, kunye)
+    if kayit:
+        print(f"Devam ediliyor: {len(kayit)}/80 kalem zaten var, aynı rejimde.")
+
+    # Künye toplandığı ANDA diske yazılır (sonuç alanları koşu bitince eklenir) — betik
+    # ortada çökerse bile künye kanıtı stdout dışında da kalıcı olsun.
+    _kunye_yaz(kunye_yolu, kunye)
+
+    for i in range(len(kayit), len(dev)):
+        d = dev[i]
         soru = d["messages"][0]["content"]
         r = _sor(soru)
         satir = {"id": i, "soru": soru, **r}
         kayit.append(satir)
         durum = r.get("durum") or f"HTTP {r.get('http')}"
-        print(f"  [{i + 1}/80] {durum} ({r.get('gecen_sn')} sn)", flush=True)
-        with open(f"{CIKTI_DIZIN}/urun_yolu_80.json", "w", encoding="utf-8") as f:
+        detay = f" — {r['hata']}" if r.get("hata") else ""
+        print(f"  [{i + 1}/80] {durum}{detay} ({r.get('gecen_sn')} sn)", flush=True)
+        with open(cikti_yolu, "w", encoding="utf-8") as f:
             json.dump(kayit, f, ensure_ascii=False, indent=1)
 
     tamamen_bos = [r["id"] for r in kayit if r.get("http") == 200 and not r.get("metin", "").strip()]
     bos_503 = [r["id"] for r in kayit if r.get("http") == 503]
     kesik = [r["id"] for r in kayit if r.get("durum") == "kesik"]
+    hata = [r["id"] for r in kayit if r.get("durum") == "hata"]
     dagilim = {}
     for r in kayit:
         anahtar = r.get("durum") or f"http_{r.get('http')}"
@@ -112,12 +182,13 @@ def main() -> int:
         "http_diger": [r["id"] for r in kayit if r.get("http") not in (200, 503)],
         "tamamen_bos_metin_200_icinde": tamamen_bos,
         "kesik": kesik,
+        "hata": hata,
         "durum_dagilimi": dagilim,
     }
     with open(f"{CIKTI_DIZIN}/OZET.json", "w", encoding="utf-8") as f:
         json.dump(ozet, f, ensure_ascii=False, indent=1)
-    with open(f"{CIKTI_DIZIN}/KUNYE.json", "w", encoding="utf-8") as f:
-        json.dump(kunye, f, ensure_ascii=False, indent=1)
+    kunye["ozet"] = ozet
+    _kunye_yaz(kunye_yolu, kunye)
 
     print("\n=== ÖZET ===")
     print(json.dumps(ozet, ensure_ascii=False, indent=1))
