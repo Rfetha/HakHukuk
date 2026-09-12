@@ -1,0 +1,22 @@
+{
+  "label": "urun_yolu_kutle_6.3b",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "Azure",
+    "OpenAI"
+  ],
+  "runs": 1,
+  "total_claims": 298,
+  "faithfulness_micro": 0.8154,
+  "hallucination_micro": 0.1846,
+  "unsupported_micro": 0.1846,
+  "cit_precision_micro": 0.8298,
+  "wrong_ref_rate_micro": 0.0851,
+  "cit_recall_macro": 0.9,
+  "faithfulness_macro": 0.8281,
+  "judge_cost_usd": 0.0438,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}
