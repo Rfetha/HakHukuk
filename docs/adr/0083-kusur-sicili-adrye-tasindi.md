@@ -66,8 +66,17 @@ Sebebi değişmedi: plan kapandığı gün kayda dönüşür; devir kuralı olma
 
 ## (A) 32 kusurun tam sicili
 
-**Sayım:** 34 satır (`5a/5b` ve `12a/12b` ayrık sayılır) ⇒ **23 KAPANDI · 3 DEVREDİLDİ ·
-8 AÇIK**. Kusur **10**'un iki yarısı vardır ve yalnız biri kapandı; satır **açık** sayılır.
+**Sayım (2026-09-12, bu ADR yazıldığı an):** 34 satır (`5a/5b` ve `12a/12b` ayrık sayılır) ⇒
+**23 KAPANDI · 3 DEVREDİLDİ · 8 AÇIK**. Kusur **10**'un iki yarısı vardır ve yalnız biri
+kapandı; satır **açık** sayılır.
+
+> 🔄 **CANLI SAYIM — `v1-son-iş` turu ilerledikçe güncellenir:** **25 KAPANDI · 3 DEVREDİLDİ ·
+> 6 AÇIK** (5a · 10 · 23 · 25 · 27 · 31).
+> Turda kapananlar: **24** (`b077f13`) · **29** (adım 6.3.1).
+> ⚠️ Kusur **24** bu sicilde 2026-09-12'ye kadar *"AÇIK"* göründü — kapanışı `00-IS-SIRASI`'ya
+> işlenmiş, **buraya işlenmemişti**. Tutarlılık denetiminde yakalandı ve damgalandı.
+> Ders: *kapanış **iki** yere birden yazılmazsa sicil sessizce bayatlar* — ve sicil bir sonraki
+> turun **girdisidir**.
 
 | # | kusur | durum | nerede kapandı / nereye devredildi |
 | :-- | :--- | :--- | :--- |
@@ -96,7 +105,7 @@ Sebebi değişmedi: plan kapandığı gün kayda dönüşür; devir kuralı olma
 | **21** | `hakhukuk/araclar.py` **kendi ikinci ad indeksini** taşıyor — kusur 18'in onarımı ürün yüzeyine GEÇMEDİ | **KAPANDI** 2026-09-11 | Tuzak **2.18** kalıbı (*aynı ölçümün ikinci bir aleti*): vatandaşa giden atıf doğrulaması ile yayımlanan sayıyı üreten doğrulama **AYRI**ydı. Ayrışma gerçekti: 892 kanun adında **19**, parantezli 16'da **7**, çıpanın gerçek atıflarında **24/114** fark. **insan kararı: ONARIMI ÜRÜN YÜZEYİNE DE TAŞI** — `araclar.py` artık `atif_dogrula`'dan import ediyor, kopya indeks silindi. Eşdeğerlik kanıtlandı: 94 dosya · 11.634 hüküm, iki kolun çıktısı `sha256` **birebir**. Sonrası **0/892 · 0/16 · 0/114**. Commit `f6908e3` |
 | **22** | rakip kollarının uydurma-madde sayıları **onarılmamış aletle** üretildi | **KAPANDI** 2026-09-11 | **insan kararı: YENİDEN PUANLA** — yayımlanan boru hattıyla, payda **birebir** olsun diye. Sonuç **aleyhimize** çıktı ve **yazıldı**: `3.1 Flash-Lite` **`1/152` → `0/153`**. Ayrıntı aşağıda |
 | **23** | ilk yeniden-puanlama koşusu **eski sayıyı verdi ve tekrarlanamadı** | **AÇIK** | Modül gölgeleme arandı, **bulunamadı**. Yayımlanan sayılar 4 ardışık koşuda bayt-bayt aynı + bağımsız probla teyitli, ama **bu sınıftan bir sayı tek koşuya dayandırılmamalı**. **Devir → `v2`** |
-| **24** | iki README'nin *"Bugün kurup çalıştırabilir miyim? — HAYIR"* tablosu **BAYAT** | **AÇIK** | *"`hakhukuk/` dizini yok"* ve *"ağırlıklar hiçbir yerde yayımlanmadı"* diyor — **ikisi de YANLIŞ**. Vatandaşa **yanlış** bilgi veren bir tablo. **Devir → kendi turu** |
+| **24** | iki README'nin *"Bugün kurup çalıştırabilir miyim? — HAYIR"* tablosu **BAYAT** | ✅ **KAPANDI** 2026-09-12 (`b077f13`) | *"`hakhukuk/` dizini yok"* ve *"ağırlıklar hiçbir yerde yayımlanmadı"* diyordu — **ikisi de YANLIŞtı**. `HAYIR` → `KISMEN`, dört satır yeniden yazıldı. ⚠️ **Bu sicil 2026-09-12'ye kadar "AÇIK" demeye devam etti** (kapanış `00-IS-SIRASI`'ya işlendi, buraya işlenmedi) — damga `v1-son-iş` turunda, 6.3 sonrası yapılan tutarlılık denetiminde vuruldu |
 | **25** | `MODEL_CARD` *uydurulmuş madde* satırında **iki farklı kesir birimi** | **AÇIK** | Gemini sütunlarının paydası **`DOGRULANDI`**, Sonnet-5 hücresininki **toplam atıf** (163). Sayı oynamadığı için hüküm etkilenmedi. ⚠️ Birimin hiçbir yerde yazılı olmaması **bir ön sondayı zaten yanılttı**. **Devir → `v2`** |
 | **26** | ⭐ sunumda **çift tırnak**: model işaretlerin içine kendi düz tırnağını yazınca `“ "…" ”` çıkıyor | **KAPANDI** 2026-09-11 | **İNSAN GÖZÜ KAPISINDA yakalandı**; kusuru **aynı gün biz eklemiştik** (kusur 12a/19 süzgeci) ve testler **tırnaksız** alıntıyla yazıldığı için görmemişti. Commit `6a58d72` (+6 test): sarmalayan tırnak soyulur, tırnaksız girdi **aynen** korunur, metnin **ortasındaki** iç alıntı **bozulmaz** |
 | **27** | Kaynaklar listesinde **madde biçimi tutmuyor** — `MADDE 349` · `Madde 8` · `MADDE 16` yan yana | **AÇIK** | Aynı göz kapısında görüldü. Korpusun **ham** tutarsızlığının (kusur 13) vatandaş ekranına yansıması; veri bozulmasın diye ham alan **korunuyor**. **Gösterim** katmanı işi. **Devir → `v2`** |
@@ -188,7 +197,7 @@ yukarıdaki sicildedir.
 | **11** | paket `scripts/`'e bağımlı, tek başına kurulamıyor | **kendi turu** — kusur **21** onarımı importu birden **ikiye** çıkardı; kalıcı çare `madde_anahtar` + `atif_dogrula` + `score_abstention` üçlüsünün **pakete taşınması** |
 | **12b** | iskele işaretlerinin **kaynağı** eğitim verisi | **`v2` · borç `B11`** |
 | **23** | bir yeniden-puanlama koşusu **eski sayıyı verdi, tekrarlanamadı** | **`v2`** · modül gölgeleme arandı **bulunamadı**; bu sınıftan sayı **tek koşuya dayandırılmamalı** |
-| **24** | iki README'nin *"Bugün kurup çalıştırabilir miyim? — HAYIR"* tablosu **BAYAT** | **kendi turu** · *"`hakhukuk/` dizini yok"* ve *"ağırlıklar yayımlanmadı"* **ikisi de YANLIŞ**; depo açık, vatandaşa yanlış bilgi veriyor |
+| **24** | iki README'nin *"Bugün kurup çalıştırabilir miyim? — HAYIR"* tablosu **BAYAT** | **kendi turu** · *"`hakhukuk/` dizini yok"* ve *"ağırlıklar yayımlanmadı"* **ikisi de YANLIŞ** *(KAPANDI 2026-09-12 `b077f13` — bu tablo kapanış anının SNAPSHOT'ıdır, geriye dönük düzeltilmez)* |
 | **25** | `MODEL_CARD` *uydurulmuş madde* satırında **iki farklı kesir birimi** | **`v2`** · Sonnet-5 hücresi **toplam atıf**, Gemini sütunları **`DOGRULANDI`** paydası kullanıyor |
 | **27** | Kaynaklar listesinde **madde biçimi tutmuyor** (`MADDE 349` ↔ `Madde 8`) | **`v2`** · korpusun **ham** tutarsızlığının vatandaş ekranına yansıması; **gösterim** katmanı işi |
 | **29** | imaja ürünün **okumadığı** 36,1 MiB korpus yedeği giriyor | **G20'nin devamı** · tek satırlık `.dockerignore` düzeltmesi *(KAPANDI 2026-09-12, adım 6.3.1 — bu tablo kapanış anının SNAPSHOT'ıdır, geriye dönük düzeltilmez)* |
