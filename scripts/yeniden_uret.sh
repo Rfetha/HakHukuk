@@ -49,18 +49,21 @@ echo "=== 2/5 · geçerlilik kapıları (koşu GEÇERSİZ olabilir — sayı ür
 source ~/code/global_venv/bin/activate
 python - "$DETAY" <<'PY'
 import json, sys
+sys.path[:0] = ["scripts", "scripts/olcum_uretim", "scripts/erisim_korpus"]
+from recall_kapisi import recall_at_10  # kusur 33 (ADR-0083 §A) düzeltmesi
+
 satirlar = [json.loads(l) for l in open(sys.argv[1], encoding="utf-8") if l.strip()]
 n = len(satirlar)
 kesik = sum(1 for r in satirlar if (r.get("finish_reason") or "") == "length")
-altin = sum(1 for r in satirlar if r.get("gold_retrieved") or r.get("altin_getirildi"))
+altin_orani = recall_at_10(satirlar)
 print(f"  n                = {n}")
 print(f"  kesiklik         = {kesik}/{n} = {kesik/n:.1%}   eşik %5 (ADR-0040)")
-print(f"  recall@10        = {altin/n:.4f}                 beklenen 0,9500")
+print(f"  recall@10        = {altin_orani:.4f}                 beklenen 0,9500")
 kotu = []
 if kesik / n > 0.05:
     kotu.append(f"kesiklik %{kesik/n*100:.1f} > %5 ⇒ koşu GEÇERSİZ")
-if abs(altin / n - 0.95) > 1e-9:
-    kotu.append(f"recall@10 {altin/n:.4f} ≠ 0,9500 ⇒ harness OYNAMIŞ, kıyas geçersiz")
+if abs(altin_orani - 0.95) > 1e-9:
+    kotu.append(f"recall@10 {altin_orani:.4f} ≠ 0,9500 ⇒ harness OYNAMIŞ, kıyas geçersiz")
 if kotu:
     print("\n🚫 GEÇERLİLİK KAPISI DÜŞTÜ — sayı üretilmez:")
     for k in kotu:
