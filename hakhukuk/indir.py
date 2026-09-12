@@ -28,22 +28,31 @@ GGUF_BAYT = 2_783_446_720                                     # = 2,592 GiB
 INDEKS_ADI = "mevzuat_bge_m3_s2"
 KORPUS_DOSYA = "mevzuat_maddeler.jsonl"
 
-# ⛔ VOLUME YERLEŞİMİ REPO AĞACINI AYNALAR — kolaylık değil, ZORUNLULUK (kusur 32).
-# İndeksin `KUNYE.json`'u korpusu **indeks dizinine GÖRELİ** tutar (`../../corpus/…`).
-# Bu, `G8 Adım 1b`'nin taşınabilirlik onarımıydı: mutlak yol + mtime her `git clone`'dan
-# sonra yanlış alarm veriyordu. Onarım repo içini düzeltti, indeksin repo ağacının DIŞINA
-# taşındığı tek düzeni KIRDI: indeks `/artefakt/<ad>/` iken `../../corpus/` = `/corpus`'a
+# ⚠️ VOLUME YERLEŞİMİ tarihsel olarak repo ağacını AYNALAMAK ZORUNDAYDI (kusur 32): eski
+# `retriever.py` indeksi yalnız `data/index/<ad>/` YERLEŞİMİNDEN bulurdu, `KUNYE.json`'daki
+# `../../corpus/…` göreli yolu da bu yerleşime göre çözülürdü. İndeks `/artefakt/<ad>/`e
+# konup korpus iki seviye derine (`/artefakt/corpus/`) konmazsa `../../corpus/` = `/corpus`'a
 # çıkar ve retriever *"korpus bulunamadı"* ile ölür (ölçüldü, canlı konteynerde HTTP 500).
-# ⚠️ Korpusu `/artefakt/corpus/`'a koymak TEK BAŞINA YETMEZ: indeks de **iki seviye derine**
-# inmelidir. `data/index/<ad>/` ↔ `data/corpus/` ikilisi burada `<volume>/index/<ad>/` ↔
-# `<volume>/corpus/` olarak birebir aynalanır.
+# ✅ 6.1'DE ONARILDI: `retriever.py` artık korpusu **yerleşimle değil `sha256` kimliğiyle**
+# buluyor (merdiven: `HAKHUKUK_KORPUS` → künyedeki göreli yol → bilinen köklerde hash araması).
+# Bu iki sabit hâlâ `indir`'in volume'de nereye yazdığını belirler ve bu düzen KORUNUR
+# (`data/index/<ad>/` ↔ `data/corpus/` aynalaması hâlâ geçerli varsayılan), ama artık
+# ZORUNLULUK değil TERCİH: `retriever.py` yerleşim bozulsa da korpusu kimlikle bulur.
 INDEKS_ALT = "index"
 KORPUS_ALT = "corpus"
-# ⛔ İndeks deposu bir PARAMETREdir, varsayılanı YOKTUR — ADR-0026'nın *"tanımsız base ERKEN
-# patlar"* kuralının aynı sınıfı. Görev 8 (indeks dağıtımı) BEKLETİLİYOR: korpus 8,4×
-# büyüyecek ve *"83 MB mı 697 MB mı"* kararı henüz verilmedi ⇒ uydurulmuş bir depo adı
-# yazmak, olmayan bir artefakta bağlanmak olurdu.
-INDEKS_DEPO_ORTAM = "HAKHUKUK_INDEKS_DEPO"
+# ✅ G8 KAPANDI 2026-09-12 — indeks HF'te public dataset olarak yayımlandı, aylardır süren
+# bekletme (*"korpus 8,4× büyüyecek"*) grill kararı 1 ile düştü. Ad, yerel dizin adının
+# (`data/index/mevzuat_bge_m3_s2/`) ve `INDEKS_ADI`'nin birebir karşılığı — sabit · volume
+# yolu · HF deposu · dataset kartı aynı dizeyi taşır, *"hangi indeks?"* dosya adından cevaplanır
+# (insan kararı 2026-09-12, `docs/record/kollar.md`'nin aynı kuralı).
+INDEKS_DEPO = "Rfetha/HakHukuk-mevzuat-bge-m3-s2"
+INDEKS_DEPO_ORTAM = "HAKHUKUK_INDEKS_DEPO"     # tanımlıysa INDEKS_DEPO'yu geçersiz kılar
+# ⛔ İndeksin GGUF'unkine denk bir kimlik kapısı YOKTU — yalnız `gomme.npy var mı` bakılıyordu
+# (G8 şartnamesi madde 4, planın METNİNDE olmayan, bilerek eklenen madde). Cevabı belirleyen
+# şey indeks olduğu için bu, GGUF'tan daha az değil daha ÇOK kapı hak eder. Değerler
+# `data/index/mevzuat_bge_m3_s2/gomme.npy`'den ölçüldü (2026-09-12).
+INDEKS_GOMME_SHA256 = "16f54cab972eaccb4b30143a70d728faca07253385ce75d5455b4b407a62bedc"
+INDEKS_GOMME_BAYT = 82_935_936
 
 _OKUMA_PARCASI = 1 << 20
 
@@ -136,29 +145,25 @@ def indir_indeks(hedef_dizin) -> pathlib.Path:
     """İndeksi hazırlar. İKİ YOLLU (ADR-0078 madde 4): volume öncelikli, HF yedek.
 
     Volume'de indeks varsa ona dokunulmaz — G8'in *"boyut kararı HF'te yaşar, imaj
-    değişmez"* hükmü bu sırayla korunur. Depo tanımsızsa **erken patlar**: indekssiz ayağa
-    kalkmak, ürünün kaynaksız cevap vermesi demektir ve `servis.py` bunu ölçülmüş bir kusur
-    olarak yasaklar.
+    değişmez"* hükmü bu sırayla korunur. HF'ten inen `gomme.npy` kapıdan geçirilir: cevabı
+    belirleyen şey indeks olduğu için sessiz bir eşleşmezlik GGUF'unkinden daha az değil
+    daha çok tehlikelidir.
     """
     hedef_dizin = pathlib.Path(hedef_dizin)
     hedef = indeks_hedefi(hedef_dizin)
     if (hedef / "gomme.npy").exists():
         return hedef
 
-    depo = os.environ.get(INDEKS_DEPO_ORTAM, "").strip()
-    if not depo:
-        raise KimlikHatasi(
-            f"indeks volume'de yok ve {INDEKS_DEPO_ORTAM} tanımsız. Görev 8 (indeks dağıtımı) "
-            f"bekletiliyor ⇒ yayımlanmış bir HF deposu yok; indeksi {hedef} yoluna elle koyun "
-            f"(⚠️ dizin derinliği ZORUNLU — künye korpusu `../../corpus/` ile arar) ya da "
-            f"{INDEKS_DEPO_ORTAM} ile depo adını verin")
+    depo = os.environ.get(INDEKS_DEPO_ORTAM, "").strip() or INDEKS_DEPO
 
     hedef.parent.mkdir(parents=True, exist_ok=True)
     gecici = pathlib.Path(tempfile.mkdtemp(dir=hedef.parent, prefix=".indeks-"))
     try:
         inen = _hf_indeks_indir(depo, gecici)
-        if not (inen / "gomme.npy").exists():
+        gomme = inen / "gomme.npy"
+        if not gomme.exists():
             raise KimlikHatasi(f"{depo} deposunda gomme.npy yok — bu bir indeks deposu değil")
+        _kapidan_gecir(gomme, INDEKS_GOMME_BAYT, INDEKS_GOMME_SHA256, "gomme.npy")
         os.replace(inen, hedef)
     finally:
         shutil.rmtree(gecici, ignore_errors=True)

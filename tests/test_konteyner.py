@@ -285,3 +285,90 @@ def test_indir_kapisi_korpus_dusunce_cikis_kodu_sifirdan_farkli(tmp_path, monkey
     monkeypatch.setattr(indir, "korpus_kaynagi", lambda: tmp_path / "yok.jsonl")
 
     assert indir.main([str(hedef_dizin)]) != 0
+
+
+# ── (h) G8 — indeksin HF varsayılan deposu ve kimlik kapısı ──────────────────────────────
+#
+# ⚠️ İndeksin GGUF'un aksine hiçbir kimlik kapısı YOKTU (satır 157 yalnız `gomme.npy var mı`
+# diye bakıyordu) — oysa cevabı belirleyen şey indeks. Aşağıdaki kapı GGUF kapısının kalıbını
+# izler: bayt sayısı önce (ucuz), `sha256` sonra, ağsız sınanır.
+
+@pytest.fixture
+def sahte_indeks_inis(monkeypatch, indir):
+    """`_hf_indeks_indir`'i ağsız bir sahteyle değiştirir; istenen depo adı yakalanır."""
+    istenen_depo: list[str] = []
+
+    def kur(icerik: bytes):
+        def sahte(depo, dizin):
+            istenen_depo.append(depo)
+            dizin = pathlib.Path(dizin)
+            (dizin / "gomme.npy").write_bytes(icerik)
+            return dizin
+        monkeypatch.setattr(indir, "_hf_indeks_indir", sahte)
+    return kur, istenen_depo
+
+
+def test_indeks_depo_varsayilani_tanimli(indir):
+    """G8 kapandı: sabit bir varsayılan depo var — dosya adı, `INDEKS_ADI` ve depo adı
+    aynı dizeyi taşır (insan kararı 2026-09-12: *"hangi indeks?"* dosya adından cevaplanır)."""
+    assert indir.INDEKS_DEPO == "Rfetha/HakHukuk-mevzuat-bge-m3-s2"
+
+
+def test_indeks_ortam_degiskeni_tanimliyken_varsayilan_yerine_o_kullaniliyor(
+        tmp_path, monkeypatch, indir, sahte_indeks_inis):
+    """Bugünkü davranış korunur: `HAKHUKUK_INDEKS_DEPO` tanımlıysa varsayılanı GEÇERSİZ kılar."""
+    kur, istenen = sahte_indeks_inis
+    icerik = b"sahte gomme baytlari"
+    kur(icerik)
+    monkeypatch.setattr(indir, "INDEKS_GOMME_BAYT", len(icerik))
+    monkeypatch.setattr(indir, "INDEKS_GOMME_SHA256", hashlib.sha256(icerik).hexdigest())
+    monkeypatch.setenv(indir.INDEKS_DEPO_ORTAM, "baska-kullanici/baska-indeks")
+
+    indir.indir_indeks(tmp_path / "artefakt")
+
+    assert istenen == ["baska-kullanici/baska-indeks"]
+
+
+def test_indeks_ortam_degiskeni_yoksa_varsayilan_depo_kullaniliyor(
+        tmp_path, monkeypatch, indir, sahte_indeks_inis):
+    """`HAKHUKUK_INDEKS_DEPO` tanımsızken artık PATLAMAZ — `INDEKS_DEPO` varsayılanına düşer."""
+    kur, istenen = sahte_indeks_inis
+    icerik = b"sahte gomme baytlari"
+    kur(icerik)
+    monkeypatch.setattr(indir, "INDEKS_GOMME_BAYT", len(icerik))
+    monkeypatch.setattr(indir, "INDEKS_GOMME_SHA256", hashlib.sha256(icerik).hexdigest())
+    monkeypatch.delenv(indir.INDEKS_DEPO_ORTAM, raising=False)
+
+    indir.indir_indeks(tmp_path / "artefakt")
+
+    assert istenen == [indir.INDEKS_DEPO]
+
+
+def test_indeks_kimlik_kapisi_yanlis_sha256da_erken_cikiyor(
+        tmp_path, monkeypatch, indir, sahte_indeks_inis):
+    """Bayt sayısı tutan ama içeriği BAŞKA olan indeks — kapı yalnız boyuta bakamaz."""
+    kur, _ = sahte_indeks_inis
+    icerik = b"bu dogru indeks DEGIL"
+    kur(icerik)
+    monkeypatch.setattr(indir, "INDEKS_GOMME_BAYT", len(icerik))     # bayt kapısı GEÇSİN
+    monkeypatch.delenv(indir.INDEKS_DEPO_ORTAM, raising=False)
+
+    hedef_dizin = tmp_path / "artefakt"
+    with pytest.raises(indir.KimlikHatasi):
+        indir.indir_indeks(hedef_dizin)
+    assert not indir.indeks_hedefi(hedef_dizin).exists(), "kapı tutmadı ama hedefte artık var"
+
+
+def test_indeks_kimlik_kapisi_yanlis_bayt_sayisinda_erken_cikiyor(
+        tmp_path, monkeypatch, indir, sahte_indeks_inis):
+    """Bayt kapısı `sha256`'dan BAĞIMSIZ tutmalı: özet doğru olsa bile boyut yanlışsa durur."""
+    kur, _ = sahte_indeks_inis
+    icerik = b"kisa"
+    kur(icerik)
+    monkeypatch.setattr(indir, "INDEKS_GOMME_SHA256", hashlib.sha256(icerik).hexdigest())
+    monkeypatch.delenv(indir.INDEKS_DEPO_ORTAM, raising=False)
+
+    hedef_dizin = tmp_path / "artefakt"
+    with pytest.raises(indir.KimlikHatasi):
+        indir.indir_indeks(hedef_dizin)
+    assert not indir.indeks_hedefi(hedef_dizin).exists()
