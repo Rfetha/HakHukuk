@@ -877,9 +877,37 @@ bayrakları **zorlar**; `llama-server`'ı elle açan kişi onları **kendi** yaz
 düşünce kapatması, `q8_0` KV önbelleği. Konteyner **ürün yolunu** taşır — §7.9'un anlattığı
 hat. Ürün yolu 2026-09-11'de ölçüm hattının rejimine geldi
 ([ADR-0080](docs/adr/0080-urun-yolu-zorunlu-dusunce-kapatmasi.md)) ve tamamen boş cevap
-**4/80 → 0/80** oldu, ama **kütlesi ölçülmedi** (hakem ister, o turun bütçesi $0) ⇒ `0,8011`
-**ürün yolunun sayısı değildir** ve konteynerden o sayı **beklenmemelidir**.
+**4/80 → 0/80** oldu. ~~ama **kütlesi ölçülmedi** (hakem ister, o turun bütçesi $0)~~
+→ **ÖLÇÜLDÜ 2026-09-12.** `0,8011` yine de **ürün yolunun sayısı değildir**;
+ürün yolunun kendi sayısı artık **var** ve aşağıdadır.
 Kaynak: [`KARSILASTIRMA.md`](outputs/eval/g22-rejim/KARSILASTIRMA.md).
+
+##### 📐 Ürün yolunun KENDİ sayısı — ilk kez ölçüldü (2026-09-12)
+
+80 DEV sorusu **konteynerin HTTP API'sinden** koşuldu (vatandaşın fiilen kuracağı yol),
+cevaplar ölçüm hattının hakemiyle (`gpt-4o-mini`, n=80) puanlandı.
+
+| eksen | ölçüm hattı (`f02`) | **ürün yolu** (`g24`) | fark |
+| :--- | ---: | ---: | ---: |
+| **sadık cevap kütlesi** | 0,8011 | **0,7792** | **−2,19 p** |
+| coverage | 0,9375 | **0,9375** | 0,00 p |
+| A1 (cevaplanan) | 0,8545 | **0,8312** | −2,33 p |
+| uydurulmuş madde | 0/114 | **0/142** | — |
+| tamamen boş cevap | 0/80 | **0/80** | — |
+| kesiklik | 4/80 (%5,0) | **4/80 (%5,0)** | — |
+
+Fark **1,75 çözünürlük adımı** (`n=80` ⇒ adım = 1,25 p): ölçülebilir, ama **dar**.
+
+> ⚠️ **Bu farkın sebebi AYRIŞTIRILAMIYOR ve bunu saklamıyoruz.** Bu koşuda hakem
+> `judge_providers = ["Azure","OpenAI"]` ile servis edildi; çıpa (`f02`) ise
+> `LLM_PROVIDER_ORDER=OpenAI` ile **pinlenmişti** — ve bu pin hiçbir yerde yazılı değildi.
+> Kalem düzeyinde sağlayıcı dağılımı **ölçülemiyor** (`llm_client.note_provider()` sağlayıcıyı
+> global bir kümede tutuyor, kalem kimliği taşımıyor). ⇒ *"−2,19 p'nin ne kadarı ürün
+> yolundan, ne kadarı hakem taşıyıcısından"* sorusunun cevabı **yoktur**. Koşu para harcandığı
+> için tekrarlanmadı; bundan sonraki koşularda sağlayıcı **pinlenir**.
+
+Kaynak: `outputs/eval/g24-urun-yolu-kutle-6.3b/` (künye · ham hükümler · tablo) ·
+üretim `outputs/eval/g23-konteyner-urun-yolu-80/`.
 
 ### Model, harness'ıyla birlikte gelir
 
