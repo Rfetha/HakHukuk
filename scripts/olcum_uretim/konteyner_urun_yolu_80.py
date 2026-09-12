@@ -9,6 +9,7 @@ HTTP API'sidir (`127.0.0.1:8000/sor`), bu yüzden istekler ona gider.
 ⚠️ Künye bayrakları KOŞAN SÜREÇTEN okunur (`docker top` / konteyner içi `/proc/1/cmdline`),
 sabit dize YAZILMAZ — tuzak 1.12 tam bunun tersini yaparak ısırmıştı.
 """
+import hashlib
 import json
 import pathlib
 import subprocess
@@ -45,13 +46,29 @@ def _konteyner_sureci(ad: str) -> str:
     return _calistir(["docker", "exec", ad, "sh", "-c", "tr '\\0' ' ' < /proc/1/cmdline"]).strip()
 
 
-def _konteyner_imaji(ad: str) -> str:
+def _konteyner_imaj_etiketi(ad: str) -> str:
+    """İnsan okusun diye TAG (örn. `hakhukuk:0.3.0`) — KİMLİK değil, bkz. `_konteyner_imaj_digest`."""
     return _calistir(["docker", "inspect", ad, "--format", "{{.Config.Image}}"])
+
+
+def _konteyner_imaj_digest(ad: str) -> str:
+    """Konteynerin GERÇEKTEN çalıştığı imajın kimliği.
+
+    Why: `{{.Config.Image}}` (TAG) aynı ad altında yeniden derlemede DEĞİŞMEZ — ölçüldü,
+    `sha256:35053579…` → `sha256:b5d8e07a…` iken ikisi de `hakhukuk:0.3.0` idi. Rejim
+    karşılaştırması bu yüzden TAG değil, bu alan üzerinden yapılır.
+    """
+    return _calistir(["docker", "inspect", ad, "--format", "{{.Image}}"])
 
 
 def _dosya_sha256(konteyner: str, yol: str) -> str:
     cikti = _calistir(["docker", "exec", konteyner, "sha256sum", yol])
     return cikti.split()[0]
+
+
+def _yerel_dosya_sha256(yol: str) -> str:
+    """Host'taki dosyanın (örn. DEV_YOLU) SHA256'sı — konteyner içi değil, doğrudan okunur."""
+    return hashlib.sha256(pathlib.Path(yol).read_bytes()).hexdigest()
 
 
 def kunye_topla() -> dict:
@@ -62,10 +79,12 @@ def kunye_topla() -> dict:
         "ne": "ADIM 6.3.4/6.3.5 — konteynerin HTTP API'sinden 80 DEV sorusu, puanlama YOK",
         "tarih": time.strftime("%Y-%m-%d"),
         "api_url": API_URL,
-        "dev_seti": DEV_YOLU,
+        "dev_seti": {"yol": DEV_YOLU, "sha256": _yerel_dosya_sha256(DEV_YOLU)},
         "imajlar": {
-            "app/indir": _konteyner_imaji("hakhukuk-app-1"),
-            "llama": _konteyner_imaji("hakhukuk-llama-1"),
+            "app/indir": {"etiket": _konteyner_imaj_etiketi("hakhukuk-app-1"),
+                          "digest": _konteyner_imaj_digest("hakhukuk-app-1")},
+            "llama": {"etiket": _konteyner_imaj_etiketi("hakhukuk-llama-1"),
+                      "digest": _konteyner_imaj_digest("hakhukuk-llama-1")},
         },
         "llama_sureci_gercek_cmdline": llama_komut,
         "app_sureci_gercek_cmdline": app_komut,
@@ -107,6 +126,23 @@ def _sor(soru: str) -> dict:
                 "durum": "hata",
                 "hata": f"{type(e).__name__}: {e}",
             }
+
+
+def _kalem_olustur(indeks: int, dev_ogesi: dict, yanit: dict) -> dict:
+    """Bir DEV sorusunun kaydını ALTIN KİMLİKLE (kanun_no/madde_no/kanun_adi) birlikte kurar.
+
+    Why: `id` koşuya özgü bir sayaçtır ve altın maddeye GÜVENİLİR bağlanamaz — ölçüldü, g23↔f02
+    arası `id` eşleşmesi 0/80. Altın kimlik burada DEV setinden okunup taşınır.
+    """
+    soru = dev_ogesi["messages"][0]["content"]
+    return {
+        "id": indeks,
+        "soru": soru,
+        "kanun_no": dev_ogesi.get("kanun_no"),
+        "madde_no": dev_ogesi.get("madde_no"),
+        "kanun_adi": dev_ogesi.get("kanun_adi"),
+        **yanit,
+    }
 
 
 def _kunye_yaz(yol: pathlib.Path, kunye: dict) -> None:
@@ -156,9 +192,8 @@ def main() -> int:
 
     for i in range(len(kayit), len(dev)):
         d = dev[i]
-        soru = d["messages"][0]["content"]
-        r = _sor(soru)
-        satir = {"id": i, "soru": soru, **r}
+        r = _sor(d["messages"][0]["content"])
+        satir = _kalem_olustur(i, d, r)
         kayit.append(satir)
         durum = r.get("durum") or f"HTTP {r.get('http')}"
         detay = f" — {r['hata']}" if r.get("hata") else ""
