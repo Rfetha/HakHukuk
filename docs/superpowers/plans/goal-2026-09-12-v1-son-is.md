@@ -16,9 +16,8 @@ Sıradaki **6.6b**. ⭐ **κ BORCU KAPANDI:** `3.5 Flash` GÖZ-katı `claude-son
 ## Sıra — insan kilitli, DEĞİŞTİRME
 6.6b öz-tercih · **6.6c Sonnet-5 isabetsiz atıf ($0)** · **6.6d Sonnet-5 M5 (DUR ①)** ·
 6.7 kapı · 6.8 ADR-0084+#68 · 7 push · 8 public · 9 HF görünürlüğü.
-*(6.6c/6.6d insan kararı 2026-09-12: HF kartındaki iki `ölçülmedi` hücresi kapatılacak;
-ikisinin de ön-kaydı **aleyhe sonuca açık** ve planda yazılı. Temel model sütunu (ᵇ)
-**kapanmaz** — o "ölçülemedi", geçerlilik kapısından kaldı.)*
+*(6.6c/6.6d: HF kartındaki iki `ölçülmedi` hücresi kapanır; ön-kayıtları **aleyhe açık**,
+planda yazılı. Temel model sütunu (ᵇ) **kapanmaz** — "ölçülemedi", kapıdan kaldı.)*
 
 ## DUR — yalnız burada dur, insana sor
 ① para tavanı aşıldı: `min(tahmin×1,5 ; $8,00)` ya da kalemin alt-tavanı
@@ -29,14 +28,11 @@ Başka yerde durma.
 
 ## Ön-kayıt — DEĞİŞTİRİLEMEZ (plan §2)
 - Kapı m.1 **her hakemin kendi içinde**: `kütle ≥ 3.5 Flash − 0,020`.
-- ~~GÖZ-katı miras alınır~~ — **uygulandı 6.5'te.** Dört miras kalemin **üçü** Anthropic
-  altında 1,0'dan düştü (15→0,0 · 24→0,5 · 27→0,0); puanlar miras alınsaydı marj +6,44 p'ye
-  inerdi. Türetme artık `scripts/puanlama/uc_okuma_kutle.py`'de ve kalibrasyon testi var.
+- ~~GÖZ-katı miras~~ — **uygulandı 6.5'te**; türetme `scripts/puanlama/uc_okuma_kutle.py`'de,
+  kalibrasyon testli.
 - Çözünürlük: `n=80` ⇒ adım **1,25 p**. `|marj|<1,25 p` ⇒ **BELİRSİZ**, her iki yönde bağlar.
   Sonuç `v0.4`, gerekçe *"ölçemedik"*.
-- ~~6.3b · 6.3c ön-kayıtları~~ — **uygulandı, ihlal edilmedi** (inceleme doğruladı).
-- **6.6b yalnız Anthropic ailesi**; Google hücresi aile dışlamasıyla ölçülemez, açık kalır.
-  Sonucu hiçbir hükme girmez, rakip tablosuna yazılmaz.
+- **6.6b yalnız Anthropic ailesi**; Google hücresi ölçülemez. Sonucu hiçbir hükme girmez.
 
 ## Kaynaklı sayılar
 κ 0,534 / 0,409 · eşik 0,6 — **κ DEĞİŞMEDİ**, kapanan şey eşit sınavın yokluğu.
@@ -58,7 +54,7 @@ Ağırlık `sha256 755e15e9…` değişmiyor; depo adı `HakHukuk-4B-v0.3-Q4_K_M
 - Kapı geçerse `v1.0`, `DÜŞTÜ`/`BELİRSİZ` ise `v0.4` — HF **her hâlükârda açılır**.
 - Kusur 25: tüm paydalar `DOGRULANDI`; yalnız Sonnet-5 hücresi yeniden ifade edilir.
 - Künye alanları **koşan süreçten** okunur (`/proc/<pid>/cmdline`) — sabit dize kanıt değil.
-- Gözle okuma bir kapıdır. Geçen tur süit yeşilken **dört kusur** yakalandı.
+- Gözle okuma bir kapıdır — bu turda **dokuz** ölçülmüş bulgu çıkardı.
 - Her bulgu anında `research_log` (#68) + ADR (**0084**). Türkçe yaz.
 - `scripts/` değişirse `tests/conftest.py` **birlikte** değişir.
 
