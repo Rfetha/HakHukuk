@@ -30,3 +30,9 @@ scratchpad/
 # Ürün yolunun okumadığı ham/ara veri.
 data/_ham_ve_ara/
 data/external/
+
+# Kusur 29 — korpus yedeği ürünün HİÇ okumadığı dosyadır (yalnız `mevzuat_maddeler.jsonl`
+# okunur), `.gitignore` zaten dışlıyor (satır 169) ama bu dosya dışlamıyordu: `COPY
+# data/corpus/ data/corpus/` yedeği de imaja alıyordu. ÖLÇÜLDÜ 2026-09-12 (`du -sb`):
+# 37.903.062 bayt = 36,1 MiB — korpus katmanının %49'u.
+data/corpus/*.yedek-*
