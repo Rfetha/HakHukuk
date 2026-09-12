@@ -87,7 +87,11 @@ def oku(yol: str) -> list[dict]:
 def ozetle(kayitlar: list[dict], n: int) -> dict:
     """Panonun bastığı bütün sayılar — saf fonksiyon, testten çağrılır."""
     sureler = [s for s in (alan(k, "sure") for k in kayitlar) if isinstance(s, (int, float))]
-    bos = [alan(k, "id") for k in kayitlar if not str(alan(k, "cevap") or "").strip()]
+    # Why: bir "hata" kalemi (ağ hatası, bkz. konteyner_urun_yolu_80.py::_sor) sunum/metin/cevap
+    # alanlarının HİÇBİRİNİ taşımaz; dışlanmazsa aynı kalem hem 💥 hata hem ␀ BOŞ cevap sayılır
+    # ve tam ADR-0080/§7.9'un canlı okunduğu yerde bir ağ kesintisi "ürün yolu bozuldu" gibi okunur.
+    bos = [alan(k, "id") for k in kayitlar
+           if alan(k, "durum") != "hata" and not str(alan(k, "cevap") or "").strip()]
     httpler = [alan(k, "http") for k in kayitlar]
     hatali = [alan(k, "id") for k, h in zip(kayitlar, httpler) if h is not None and h != 200]
     ort = sum(sureler) / len(sureler) if sureler else 0.0

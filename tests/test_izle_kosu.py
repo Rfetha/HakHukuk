@@ -49,6 +49,19 @@ def test_ozetle_durumlari_sayar():
     assert ozetle(kayitlar, n=3)["durumlar"] == {"cevap": 1, "suskunluk": 1, "kesik": 1}
 
 
+def test_ozetle_hata_durumundaki_kalem_BOS_cevap_SAYILMAZ():
+    """Bulgu: bir `hata` kalemi (ağ hatası, bkz. konteyner_urun_yolu_80.py::_sor) sunum/metin/
+    cevap alanlarının HİÇBİRİNİ taşımaz — dışlanmazsa aynı kalem hem `💥 hata` hem `␀ BOŞ cevap`
+    sayılır ve tam ADR-0080/§7.9'un canlı okunduğu yerde bir ağ kesintisi "ürün yolu bozuldu"
+    gibi okunur."""
+    kayitlar = [{"id": 5, "soru": "x", "durum": "hata", "http": None, "hata": "URLError: x"}]
+
+    o = ozetle(kayitlar, n=1)
+
+    assert o["bos"] == []
+    assert o["durumlar"] == {"hata": 1}
+
+
 def test_ozetle_bos_kosuda_patlamaz():
     o = ozetle([], n=80)
     assert o["uretilen"] == 0 and o["ortalama_sn"] == 0.0 and o["bitti"] is False
