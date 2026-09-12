@@ -75,15 +75,18 @@ def _ozet(yol: pathlib.Path) -> str:
     return ozet.hexdigest()
 
 
-def _kapidan_gecir(yol: pathlib.Path, bekleyen_bayt: int, bekleyen_sha: str) -> None:
-    """Bayt sayısı ve `sha256` tutmuyorsa `KimlikHatasi`. Önce boyut: 2,6 GB'ı boşuna özetleme."""
+def _kapidan_gecir(yol: pathlib.Path, bekleyen_bayt: int, bekleyen_sha: str, ad: str) -> None:
+    """Bayt sayısı ve `sha256` tutmuyorsa `KimlikHatasi`. Önce boyut: büyük dosyayı boşuna özetleme.
+
+    `ad` yalnız hata mesajınadır — birden çok artefakt (GGUF, indeks) aynı kapıyı paylaşır.
+    """
     boyut = yol.stat().st_size
     if boyut != bekleyen_bayt:
         raise KimlikHatasi(
-            f"bayt sayısı tutmadı: {boyut} ≠ {bekleyen_bayt} (beklenen artefakt {GGUF_DOSYA})")
+            f"bayt sayısı tutmadı: {boyut} ≠ {bekleyen_bayt} (beklenen artefakt {ad})")
     bulunan = _ozet(yol)
     if bulunan != bekleyen_sha:
-        raise KimlikHatasi(f"sha256 tutmadı: {bulunan} ≠ {bekleyen_sha}")
+        raise KimlikHatasi(f"sha256 tutmadı: {bulunan} ≠ {bekleyen_sha} (beklenen artefakt {ad})")
 
 
 def korpus_kaynagi() -> pathlib.Path:
@@ -116,13 +119,13 @@ def indir_model(hedef_dizin) -> pathlib.Path:
     hedef_dizin.mkdir(parents=True, exist_ok=True)
     hedef = hedef_dizin / GGUF_DOSYA
     if hedef.exists():
-        _kapidan_gecir(hedef, GGUF_BAYT, GGUF_SHA256)
+        _kapidan_gecir(hedef, GGUF_BAYT, GGUF_SHA256, GGUF_DOSYA)
         return hedef
 
     gecici = pathlib.Path(tempfile.mkdtemp(dir=hedef_dizin, prefix=".indiriliyor-"))
     try:
         inen = _hf_indir(GGUF_DEPO, GGUF_DOSYA, GGUF_REVIZYON, gecici)
-        _kapidan_gecir(inen, GGUF_BAYT, GGUF_SHA256)
+        _kapidan_gecir(inen, GGUF_BAYT, GGUF_SHA256, GGUF_DOSYA)
         os.replace(inen, hedef)      # aynı dosya sisteminde atomik
     finally:
         shutil.rmtree(gecici, ignore_errors=True)
