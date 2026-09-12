@@ -1,0 +1,31 @@
+{
+ "kosu": "ADIM 6.3.4/6.3.5 — konteynerin HTTP API'sinden 80 DEV sorusu (puanlama YOK, 6.3b'nin girdisi)",
+ "tarih": "2026-09-12",
+ "api_url": "http://127.0.0.1:8000/sor",
+ "dev_seti": "data/eval/dev/core_hard.jsonl",
+ "n": 80,
+ "imajlar": {
+  "app/indir": {"etiket": "hakhukuk:0.3.0", "id": "sha256:b5d8e07ac501993cafe2ce28aee3697562e0650bc7648f48ec1a042d50f7c64a", "not": "kusur 29 onarımından SONRA yeniden kurulmuş imaj"},
+  "llama": {"etiket": "ghcr.io/ggml-org/llama.cpp:server-cuda-b10902", "id": "sha256:82de60bb2ba6e66d750f4b7db8752bc3071a2ed3999700d0b21c8b5c709b5513"}
+ },
+ "llama_sureci_gercek_cmdline": "/app/llama-server -m /artefakt/HakHukuk-4B-v0.3-Q4_K_M.gguf -ngl 99 -fa on --no-context-shift --cache-type-k q8_0 --cache-type-v q8_0 -c 8192 --reasoning-format deepseek --host 0.0.0.0 --port 8080",
+ "app_sureci_gercek_cmdline": "python -m uvicorn hakhukuk.api:uygulama --host 0.0.0.0 --port 8000",
+ "kunye_kaynagi": "docker exec <konteyner> sha256sum <yol> · docker exec <konteyner> 'tr \"\\0\" \" \" < /proc/1/cmdline' — bayrak ve özet KOŞAN SÜREÇTEN okundu, koşu SIRASINDA (bitince değil) yakalandı; hiçbir alan elle yazılmadı (tuzak 1.12)",
+ "artefakt_sha256": {
+  "gguf": "755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc",
+  "korpus_volume": "a35e6efc16123f70c4d0eaf48951f0e4d5bd3134a6faa942964222117c0af468",
+  "korpus_imaj": "a35e6efc16123f70c4d0eaf48951f0e4d5bd3134a6faa942964222117c0af468",
+  "indeks_gomme": "16f54cab972eaccb4b30143a70d728faca07253385ce75d5455b4b407a62bedc",
+  "not": "üçü de indir.py'nin kimlik kapısından geçerek volume'e yazıldı; korpus imaj↔volume eşitliği ayrıca burada bağımsız doğrulandı"
+ },
+ "gecerlilik_kapilari": {
+  "bos_cevap": {"deger": "0/80", "kural": "MODEL_CARD §7.9 ürün yolunda ~%5 boş cevap kusuru diyordu (ADR-0080 öncesi 4/80); bu koşu konteynerin HTTP API'sinden İLK KEZ ölçtü", "sonuc": "0/80 — ADR-0080'in onarımı konteynerde de TUTUYOR"},
+  "kesiklik": {"deger": 0.05, "esik": 0.05, "kural": "> %5 → koşu GEÇERSİZ (ADR-0040)", "sonuc": "TAM EŞİKTE — payı yok", "kalemler": [11, 30, 50, 61], "sureleri_sn": [21.8, 22.6, 23.3, 31.3], "not": "⭐ Çıpa koşusu f02-biz-onsozsuz'un (outputs/eval/f02-biz-onsozsuz/KUNYE.json) kesikliği de 4/80 — İKİ FARKLI HAT (ölçüm hattı ↔ ürün yolu), AYNI SAYI. Bağımsız iki ölçümün aynı orana düşmesi not edilir, üst üste binmeleri gerektiği anlamına GELMEZ (farklı kalemler kesilmiş olabilir)."},
+  "http_disinda_kod": {"deger": "0/80", "not": "80/80 HTTP 200 — 503 (ticket 1 boş içerik) hiç ateşlenmedi"}
+ },
+ "durum_dagilimi": {"cevap": 71, "cekinceli": 1, "suskunluk": 4, "kesik": 4},
+ "sure_sn": {"ortalama": 13.46, "min": 5.7, "maks": 31.3, "toplam": 1077.0},
+ "cikti": "outputs/eval/g23-konteyner-urun-yolu-80/urun_yolu_80.json",
+ "uretim_betigi": "scripts/olcum_uretim/konteyner_urun_yolu_80.py",
+ "not": "Bu ÜRÜN YOLUNUN sayısıdır, 0,8011 DEĞİLDİR ve v1.0 kapısına GİRMEZ (ADR-0057 eşit sınav). Puanlama burada YAPILMADI; kütle 6.3b'nin işidir ve bu dosyayı girdi olarak okur — 80 cevap YENİDEN ÜRETİLMEZ."
+}
