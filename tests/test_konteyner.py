@@ -372,3 +372,55 @@ def test_indeks_kimlik_kapisi_yanlis_bayt_sayisinda_erken_cikiyor(
     with pytest.raises(indir.KimlikHatasi):
         indir.indir_indeks(hedef_dizin)
     assert not indir.indeks_hedefi(hedef_dizin).exists()
+
+
+# ── (i) volume'de ZATEN duran indeks de kapıdan geçmeli — 6.2'nin bırakılan açığı ────────
+#
+# ⚠️ Bugüne kadar `(hedef / "gomme.npy").exists()` yeterliydi: HF'e hiç gidilmiyor ama
+# `sha256`/bayt da hiç sınanmıyordu. GGUF tarafında böyle değil (`indir_model` idempotent
+# yolda da `_kapidan_gecir`'i ÇAĞIRIR) — bu asimetri G8 raporunun kendi öz-inceleme
+# bölümünde şüphe olarak not edilmişti. Aşağıdaki iki test ağsız (`_hf_indeks_indir`
+# çağrılırsa patlar) sınanır.
+
+def test_indeks_volumede_dogru_gomme_varsa_hf_e_gitmeden_kapidan_geciyor(
+        tmp_path, monkeypatch, indir):
+    """Volume'de kimliği TUTAN bir kopya varsa: indirme yok, kapı geçer, yol döner."""
+    def hic_cagrilmamali(depo, dizin):
+        raise AssertionError("volume'de doğru kopya varken HF'e gidilmemeli")
+    monkeypatch.setattr(indir, "_hf_indeks_indir", hic_cagrilmamali)
+
+    icerik = b"dogru indeks oldugunu varsaydigimiz baytlar"
+    monkeypatch.setattr(indir, "INDEKS_GOMME_BAYT", len(icerik))
+    monkeypatch.setattr(indir, "INDEKS_GOMME_SHA256", hashlib.sha256(icerik).hexdigest())
+
+    hedef_dizin = tmp_path / "artefakt"
+    hedef = indir.indeks_hedefi(hedef_dizin)
+    hedef.mkdir(parents=True)
+    (hedef / "gomme.npy").write_bytes(icerik)
+
+    yol = indir.indir_indeks(hedef_dizin)
+    assert yol == hedef
+
+
+def test_indeks_volumede_yanlis_icerikli_gomme_varsa_erken_patliyor(
+        tmp_path, monkeypatch, indir):
+    """Volume'deki kopya elle bozulmuş/yarım inmişse SESSİZCE kullanılmamalı.
+
+    Bugün (onarım öncesi) bu kırmızı düşer: `indir_indeks` `gomme.npy var mı` dışında hiçbir
+    şey sınamadan hedefi döndürür — cevabı belirleyen indeks böylece hatasız yanlış olur.
+    """
+    def hic_cagrilmamali(depo, dizin):
+        raise AssertionError("kimlik kapısı volume'deki kopyaya bakmalı, HF'e gitmemeli")
+    monkeypatch.setattr(indir, "_hf_indeks_indir", hic_cagrilmamali)
+
+    dogru_icerik = b"dogru indeks oldugunu varsaydigimiz baytlar"
+    monkeypatch.setattr(indir, "INDEKS_GOMME_BAYT", len(dogru_icerik))
+    monkeypatch.setattr(indir, "INDEKS_GOMME_SHA256", hashlib.sha256(dogru_icerik).hexdigest())
+
+    hedef_dizin = tmp_path / "artefakt"
+    hedef = indir.indeks_hedefi(hedef_dizin)
+    hedef.mkdir(parents=True)
+    (hedef / "gomme.npy").write_bytes(b"volumede elle bozulmus BASKA baytlar")
+
+    with pytest.raises(indir.KimlikHatasi):
+        indir.indir_indeks(hedef_dizin)

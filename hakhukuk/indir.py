@@ -144,14 +144,20 @@ def indir_model(hedef_dizin) -> pathlib.Path:
 def indir_indeks(hedef_dizin) -> pathlib.Path:
     """İndeksi hazırlar. İKİ YOLLU (ADR-0078 madde 4): volume öncelikli, HF yedek.
 
-    Volume'de indeks varsa ona dokunulmaz — G8'in *"boyut kararı HF'te yaşar, imaj
-    değişmez"* hükmü bu sırayla korunur. HF'ten inen `gomme.npy` kapıdan geçirilir: cevabı
-    belirleyen şey indeks olduğu için sessiz bir eşleşmezlik GGUF'unkinden daha az değil
-    daha çok tehlikelidir.
+    Volume'de indeks varsa yeniden İNDİRİLMEZ — G8'in *"boyut kararı HF'te yaşar, imaj
+    değişmez"* hükmü bu sırayla korunur — ama YİNE DE kimlik kapısından geçirilir: bu
+    açık, G8'in kendisinde bırakılmıştı (yalnız `gomme.npy var mı` bakılıyordu, `sha256`
+    hiç sınanmıyordu). GGUF tarafında (`indir_model`) idempotent yol zaten böyle davranır;
+    burada da aynı emsal izlenir — `yerlestir_korpus` ile aynı sınıftan bir sorun (volume'deki
+    kopya elle bozulmuş/yarım inmiş olabilir) için aynı davranış: `KimlikHatasi` ile erken çık,
+    sessizce yeniden indirme YOK — sessiz yeniden indirme, elle bırakılmış bir teşhis izini
+    fark ettirmeden siler.
     """
     hedef_dizin = pathlib.Path(hedef_dizin)
     hedef = indeks_hedefi(hedef_dizin)
-    if (hedef / "gomme.npy").exists():
+    gomme = hedef / "gomme.npy"
+    if gomme.exists():
+        _kapidan_gecir(gomme, INDEKS_GOMME_BAYT, INDEKS_GOMME_SHA256, "gomme.npy")
         return hedef
 
     depo = os.environ.get(INDEKS_DEPO_ORTAM, "").strip() or INDEKS_DEPO
