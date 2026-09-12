@@ -50,14 +50,14 @@ Ağırlık `sha256 755e15e9…` değişmiyor; depo adı `HakHukuk-4B-v0.3-Q4_K_M
 İndeks deposu: `Rfetha/HakHukuk-mevzuat-bge-m3-s2` (dataset, **baştan public**)
 
 ## Kurallar
-- **Üretim yeniden koşulmaz** — aynı cevaplar, yalnız hakem (ADR-0017).
 - Hakem çağrısı **bir kez**; `harness_tablo.py` aynı jsonl'den **iki kez**, çıktı bayt-bayt
   aynı olmalı (kusur 23, $0). Ayrışırsa sayı yayımlanmaz.
 - Manşet **koşulsuz ARALIK**: *"%69,4-80,1 (sonnet-5 ↔ gpt-4o-mini)"* — geçse de düşse de.
   Dört yer: `CLAUDE.md` · `MODEL_CARD.md` · iki `README`. Üç rakip kolu tek hakemli kalır.
 - Kapı geçerse `v1.0`, `DÜŞTÜ`/`BELİRSİZ` ise `v0.4` — HF **her hâlükârda açılır**.
 - Kusur 25: tüm paydalar `DOGRULANDI`; yalnız Sonnet-5 hücresi yeniden ifade edilir.
-- Künye alanları **koşan süreçten** okunur (`/proc/<pid>/cmdline`) — sabit dize kanıt değil.
+  6.8.3b: `MODEL_CARD` kıyas tablosu **6 sütuna** çıkar (Sonnet-5 eksik, $0).
+- Künye **koşan süreçten** okunur — sabit dize kanıt değil. Para **bakiye farkıyla** doğrulanır.
 - Gözle okuma bir kapıdır — bu turda **dokuz** ölçülmüş bulgu çıkardı.
 - Her bulgu anında `research_log` (#68) + ADR (**0084**). Türkçe yaz.
 - `scripts/` değişirse `tests/conftest.py` **birlikte** değişir.
