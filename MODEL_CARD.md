@@ -352,7 +352,8 @@ sütunu bunu düzeltir.
 1. **"TEST'te de geçeriz."** Ölçüm **DEV**'de; TEST'in erişim tavanı **≈%75**
    ([ADR-0069](docs/adr/0069-kabul-testi-tavan-kullanimi-raporlamasi.md)) ve kabul testi **koşulmadı** (§5).
 2. **"Hakem panelinden geçmiş bir hüküm."** Hâlâ **tek aile** (`gpt-4o-mini`), κ yok,
-   öz-tercih ölçülmedi (§7.2).
+   öz-tercih **genel olarak** ölçülmedi — yalnız Anthropic ailesi için tek hücrelik bir gösterge
+   var, ters yönde (§7.2).
 3. **"3.1 FL için kesikliğe duyarlı hüküm."** %6,2 ile bizim kolumuzu düşüren eşiğin üstünde;
    [ADR-0040](docs/adr/0040-dusunce-modu-olculecek-on-kayitli-kural.md) simetrik uygulanmalı.
 4. **"Model bu kadar iyileşti."** Bkz. §7.1 — kazancın büyük kısmı **ölçümden** geldi.
@@ -565,8 +566,16 @@ gelir: `openai/gpt-4o-mini`, **runs=1**
   üç öngörüyordu) — sapmanın sebebi sayıyla: bakiye **$3,45**, rakip kolunun ikinci hakemle
   puanlanmasının tahmini gerçek faturası **$2,81**, ve donmuş TEST kabul koşusu da aynı
   bakiyeden ödenecekti. **İnsan kararı: harcanmadı.**
-- **Öz-tercih ÖLÇÜLMEDİ** — ve Google özne ↔ Google hakem hücresi **aile dışlaması gereği
-  hiçbir bütçeyle ölçülemez**.
+- **Öz-tercih artık genel olarak değil, yalnız Anthropic ailesi için ÖLÇÜLDÜ** (ADIM 6.6b,
+  2026-09-12): `claude-sonnet-5` rakip havuzuna özne olarak girdiği için aynı-aile hücresi
+  (özne=Sonnet-5, hakem=Sonnet-5) kuruldu. Sonuç **kayırma LEHİNE değil**: Anthropic hakem
+  kendi ailesinin cevaplarını, `gpt-4o-mini`'ye göre, bizim (çapraz-aile) kolumuzdan **DAHA
+  BÜYÜK** bir düşüşle cezalandırdı (**20,03 p ↔ 10,71 p**, çözünürlüğün — 1,25 p — çok üstünde
+  bir fark) ⇒ bu tek hücrede **ek katılık** ölçüldü, kayırma değil
+  ([`OZ_TERCIH.md`](outputs/eval/hp-oz-tercih-anthropic/OZ_TERCIH.md)). Tek özne/tek hakem/tek
+  koşu ⇒ **gösterge**, kanıt değil; bu kartın hiçbir sayısına girmez. Google özne ↔ Google
+  hakem hücresi **aile dışlaması gereği hiçbir bütçeyle ölçülemez** ⇒ *"öz-tercih ölçüldü"*
+  cümlesi **genel olarak hâlâ kurulmaz**.
 - **İnsan-κ kapsam dışı** (DESCOPED).
 - Hakemin yeniden-koşum **gürültü tabanı ~0,3 `A1` puanı**; bundan küçük hiçbir fark
   yorumlanmaz. Bu taban **yalnız `A1` için** ölçüldü — **kütle** `= coverage × A1` ve
@@ -1061,7 +1070,8 @@ katmanlanmalı mı — ve bu, donmuş TEST'i açmadan nasıl yapılır?
 *"donmuş TEST'i açar, usulü kırar"* diye **reddedilmişti** — soru bu redde rağmen açıktır.)
 
 **3 · Her sayı tek hakem ailesinin hükmü.**
-`openai/gpt-4o-mini`, `runs=1`, **κ yok**, öz-tercih ölçülmedi (§7.2). Üç aileli panel
+`openai/gpt-4o-mini`, `runs=1`, **κ yok**, öz-tercih **genel olarak** ölçülmedi — yalnız
+Anthropic ailesi için ölçüldü, ters yönde (§7.2). Üç aileli panel
 ([ADR-0032](docs/adr/0032-hakem-paneli-uc-aile-ve-aile-dislama.md)) **hiç kurulmadı**.
 `HP` turu bunu kapatmak için planlandı ve **rakip havuzunun genişlemesinin ön koşuludur**
 ([ADR-0072](docs/adr/0072-v1-rakip-havuzu-genisler.md)). **Soru:** κ hangi eşiğin altında

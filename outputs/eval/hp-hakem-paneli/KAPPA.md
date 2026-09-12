@@ -20,11 +20,21 @@ yayında eksiklik olarak yazılır; bütçe bahanesi olarak değil — sebebi §
 | :--- | :--- | :---: | :---: | :---: |
 | **`tgta_v1` (biz)** | Qwen/Alibaba | ✅ | ✅ | ✅ *(kurulmadı)* |
 | `gemini-3.1-FL` · `3.5-FL` · `3.5-Flash` | **Google** | ✅ | ✅ | ❌ **YASAK** |
+| `claude-sonnet-5` *(2026-09-09'da özne olarak girdi)* | **Anthropic** | ✅ | ✅ **öz-tercih hücresi** | — |
 
 ⇒ Üçlü κ **yalnız bizim kolumuzda** kurulabilirdi; rakip kolları her hâlükârda **iki aileyle**
 notlanır. Bu bir eksiklik değil, **kuralın doğrudan sonucudur**.
-🆕 **Ölçülemeyen, AÇIK BORÇ:** Google özne ↔ Google hakem hücresi. Öz-tercihin tam ölçümü
-(bir hakem kendi ailesinin cevabını kayırıyor mu) bu yüzden **kurulamıyor**.
+✅ **ADIM 6.6b'de (2026-09-12) ÖLÇÜLDÜ, yalnız Anthropic ailesi için:** `claude-sonnet-5` özne
+× `claude-sonnet-5` hakem hücresi kuruldu (aynı-aile). Sonuç kayırma LEHİNE değil — Anthropic
+hakem kendi ailesinin cevaplarını `gpt-4o-mini`'ye göre bizim (çapraz-aile) kolumuzdan **daha
+büyük** bir düşüşle cezalandırdı (20,03 p ↔ 10,71 p, çözünürlüğün — 1,25 p — çok üstünde bir
+fark) ⇒ bu tek hücrede **ek katılık** ölçüldü, kayırma değil. Tek özne/tek hakem/tek koşu ⇒
+gösterge, kanıt değil; notlamaya girmez (ADR-0032 aile dışlaması yürürlükte). Detay:
+`outputs/eval/hp-oz-tercih-anthropic/OZ_TERCIH.md`.
+🆕 **Hâlâ ölçülemeyen, AÇIK BORÇ:** Google özne ↔ Google hakem hücresi — aile dışlaması gereği
+**hiçbir bütçeyle** kurulamaz. `gpt-4o-mini`'nin kendi ailesi de aynı sebeple ölçülemez (panelde
+`gpt-4o-mini`-tabanlı bir özne yok). ⇒ *"öz-tercih ölçüldü"* cümlesi **genel olarak** hâlâ
+kurulmaz — yalnız Anthropic hücresi için kurulur.
 
 ## 3. Uyum — κ ve r *(araç: `scripts/puanlama/judge_agreement.py`, eşiği: κ ≥ 0,6 makul · ≥ 0,8 güçlü)*
 
@@ -85,8 +95,14 @@ YAYIMLANMAZ** — eşiti olmayan bir sınavın sonucudur. Yayımlanabilmesi içi
 2. **Ama artık "tek hakem" bir borç değil, ÖLÇÜLMÜŞ bir kırılganlıktır:** κ eşiğin altında
    (0,534 · 0,409) ve kayma tek yönlü. Manşet %80,1'in yanında bu şerh **durmak zorundadır**.
 3. Panel iki aileli kaldı ⇒ *"üç aile"* iddiası **kurulmaz**.
-4. Öz-tercih **ölçülmedi** (aile dışlaması + bütçe) ⇒ *"hakem kendi ailesini kayırmıyor"*
-   cümlesi de **kurulmaz**.
+4. Öz-tercih **genel olarak hâlâ ölçülmedi** (Google/`gpt-4o-mini` hücreleri aile dışlaması
+   gereği hiçbir bütçeyle kurulamaz) ⇒ *"hakem kendi ailesini kayırmıyor"* cümlesi **genel
+   olarak kurulmaz**. **Yalnız Anthropic ailesi için** (ADIM 6.6b, 2026-09-12) ölçüldü ve
+   sonuç **ters yönde** çıktı: Anthropic hakem kendi ailesinin cevaplarını (Sonnet-5) bizim
+   kolumuza göre **daha büyük** bir düşüşle cezalandırdı (20,03 p ↔ 10,71 p) — kayırma
+   LEHİNE kanıt yok, tek hücrelik bir gösterge var
+   (`outputs/eval/hp-oz-tercih-anthropic/OZ_TERCIH.md`). Bu bulgu §2'deki notlama yasağı
+   gereği kapı hükmüne girmez.
 
 Kural olarak ADR-0074'te ön-kayıtlandı — **kapı koşusundan ÖNCE**.
 
