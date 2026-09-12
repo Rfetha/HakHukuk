@@ -12,7 +12,7 @@
 
 | # | iş | durum |
 | :-- | :--- | :--- |
-| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **43/70** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.6c** (isabetsiz atıf, $0) · harcanan **$4,8345** / tavan $8,00 · bakiye **$7,2063** |
+| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **46/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.6c** (isabetsiz atıf, $0) · harcanan **$4,8345** / tavan $8,00 · bakiye **$7,2063** |
 | **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
@@ -69,6 +69,8 @@ Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-huk
 | κ borcu tahmini ↔ gerçek | **$1,97** tahmin ↔ **$1,6831** gerçek (düz ön-tahmin $2,81'di) |
 | ⭐ **κ BORCU — kapı ikinci hakem altında** | `3.5 Flash` GÖZ-katı **0,6183** → eşik **0,5983**; bizim **0,6940** ⇒ marj **+7,57 p** (çıpaya göre; `gpt-4o-mini`'de +5,86 p). **İki hakem de aynı yönde.** Hüküm 6.7'nin işi |
 | kusur 23 | **KAPANMADI** — deterministik taraf 3 sınamada temiz, kök neden hâlâ yok ⇒ `v2` |
+| ⭐ **öz-tercih** (Anthropic ailesi) | hakem **kendi ailesini** bizden ~2 kat sert cezalandırdı (−20,03 p ↔ −10,71 p) ⇒ **kayırma YOK, ters yön**. Tek özne/tek koşu ⇒ gösterge |
+| Sonnet-5 **isabetsiz atıf** (göz) | **7/80** ↔ biz **8/80** — tek kalem. ⚠️ Vekil ölçüt ~9 kat fark iddia ediyordu ⇒ **vekil ölçüt bu ekseni yanlış temsil ediyor** |
 
 **Bu turda kapanan kusurlar:** **24** (bayat README) · **29** (imajdaki yedek) · **33** (yeniden
 üretim kapısı hiç geçmiyordu). **Açık: 6** — 5a · 10 · 23 · 25 · 27 · 31.
@@ -120,9 +122,9 @@ doğruymuş**; hedefi kaydıran tek bir satırdı. Ayrıntı ve üçüncü tutar
      6.4 tabakalanmış duman + para kapısı   BİTTİ  — kapı GEÇTİ
      6.5 3.5 Flash ikinci hakem             BİTTİ  — ⭐ κ BORCU KAPANDI
      6.6 kusur 23'ün ikinci sınaması        BİTTİ  — kusur 23 KAPANMADI, v2'ye devir sürüyor
-     6.6b öz-tercih (Anthropic ailesi)      ← ŞU AN (plana sonradan eklendi)
-     6.6c Sonnet-5'in isabetsiz atıfı       (insan kararı, $0 göz sayımı)
-     6.6d Sonnet-5'in ezber kütlesi M5      (insan kararı, ~$1,5-3) ← DUR ①
+     6.6b öz-tercih (Anthropic ailesi)      BİTTİ  — ⭐ kayırma YOK, TERS yön
+     6.6c Sonnet-5'in isabetsiz atıfı       BİTTİ  — 7/80 (biz 8/80); ön-kayıt ÇÜRÜDÜ
+     6.6d Sonnet-5'in ezber kütlesi M5      ← ŞU AN (para kapısı geçti, ~$1,25)
      6.7 kapının üç maddesi                 ← DUR ②
      6.8 ADR-0084 + #68 + manşet ARALIK
 7 · bekleyen commit'leri push
