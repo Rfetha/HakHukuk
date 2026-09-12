@@ -810,9 +810,14 @@ Sorumluluk ibaresi **koşulsuz** basılır (durum ne olursa olsun) ve metni tek 
 > | `indir` çıkış kodu | **0** — `sha256` + bayt kapısı **ateşlendi ve tuttu** | `docker logs hakhukuk-indir-1` |
 > | `llama` / `app` | **healthy** / **Up** | `docker inspect` |
 > | uçtan uca | **HTTP 200**, iki farklı soru; boş sorgu **422** | [`g20-imaj-olcumu/BULGU.md`](outputs/eval/g20-imaj-olcumu/BULGU.md) |
-> | `hakhukuk:0.3.0` | **2,13 GB** | `docker images` |
+> | `hakhukuk:0.3.0` | ~~2,13 GB~~ → **2,08 GB** (2026-09-12) | `docker images` |
 > | `llama.cpp:server-cuda-b10902` | **6,99 GB** | ″ |
 > | imajdaki `torch` | **`2.14.0+cpu`** · `version.cuda = None` | imajın içinde koşularak |
+>
+> **`hakhukuk:0.3.0` boyutu 2026-09-12'de düştü (kusur 29 KAPANDI):** `.dockerignore`'a
+> `data/corpus/*.yedek-*` eklendi (commit `b78d142`) — ürünün hiç okumadığı 36,1 MiB korpus
+> yedeği artık imaja girmiyor. Eski sayı silinmedi, üstü çizili bırakıldı (bkz.
+> [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) kusur 29).
 >
 > Ağırlık ve indeks **imajda YOK** (`find / -xdev` ile `.gguf`/`gomme.npy` **0 eşleşme**).
 >
