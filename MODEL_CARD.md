@@ -823,8 +823,17 @@ Sorumluluk ibaresi **koşulsuz** basılır (durum ne olursa olsun) ve metni tek 
 > **(b)** Korpus artık **üç yerde**: repo · imaj · volume. `indir` imaj↔volume `sha256`
 > eşitliğini **her koşuda** sınar ve tutmazsa erken patlar; ama **repo↔imaj** ayrışması
 > **sınanmaz** — kalıcı çare paketin `scripts/`'ten kurtulmasıdır (açık kusur 11).
-> **(c)** Uçtan uca doğrulama **iki soru** ile yapıldı. §7.9'un **boş cevap** kusuru
-> (ürün yolunda ~%5) bu koşuyla **ölçülmedi** ve konteynerde de **giderilmiş değildir**.
+> **(c)** ~~Uçtan uca doğrulama **iki soru** ile yapıldı. §7.9'un **boş cevap** kusuru
+> (ürün yolunda ~%5) bu koşuyla **ölçülmedi** ve konteynerde de **giderilmiş değildir**.~~
+> **ÖLÇÜLDÜ 2026-09-12 (Adım 6.3.4) — cümle artık YANLIŞ, üstü çizili bırakılıyor, silinmiyor.**
+> 80 DEV sorusu konteynerin HTTP API'sinden (`127.0.0.1:8000/sor`, `hakhukuk.servis` host'tan
+> ÇAĞRILMADI) koşuldu: boş cevap **0/80**, HTTP 200 **80/80**, kesiklik **4/80 = %5,00**
+> (ADR-0040 eşiğinde tam — **GEÇTİ, payı yok**; çıpa koşusu `f02-biz-onsozsuz`'un kesikliği de
+> aynı orandaydı, iki farklı hat aynı sayıya düştü). ADR-0080'in ürün-yolu onarımı **konteynerde
+> de tutuyor**. Künye [`g23-konteyner-urun-yolu-80/KUNYE.json`](outputs/eval/g23-konteyner-urun-yolu-80/KUNYE.json)
+> (bayraklar koşan süreçten okundu, tuzak 1.12); 80 cevabın kendisi
+> `outputs/eval/g23-konteyner-urun-yolu-80/urun_yolu_80.json`'da saklı — **kütlesi henüz
+> puanlanmadı**, bu ölçüm yalnız boş/kesik sayar (6.3b'nin girdisi).
 
 Paketleme bir **rejim kilididir**, kolaylık değil: §7.10'un ölçtüğü bayraklar düz metin olarak
 üç belgede duruyordu ve hiçbiri kapı değildi. Üç kutu, iki daemon, iki imaj

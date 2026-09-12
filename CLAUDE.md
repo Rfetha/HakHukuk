@@ -22,7 +22,7 @@
 > | you want | read |
 > | :--- | :--- |
 > | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. Next is **`v1-son-iş`**; its plan is **not written yet** — it comes out of a grill session. `v2-RL-GRPO` is parked. |
-> | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) — **8 defects still open** (5a · 10 · 23 · 24 · 25 · 27 · 29 · 31) · **3 handed on** (6 · 11 · 12b) |
+> | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) — **7 defects still open** (5a · 10 · 23 · 24 · 25 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · **29 closed 2026-09-12** (adım 6.3.1, `.dockerignore`) |
 > | what closed on 2026-09-12 | the `hp-hat-a-hat-b` round, **115/115** — narrative in [#66](docs/record/research_log/2026-09-11-urun-yuzeyi-ve-aygit-kusurlari.md) and [#67](docs/record/research_log/2026-09-12-konteyner-ve-alet-onarimlari.md) |
 > | what closed on 2026-09-06/07 | the `faz0-olcum-zinciri` plan, **48/48** *(plan deleted 2026-09-12)* — [#62](docs/record/research_log/2026-09-06-faz0-olcum-zinciri.md) |
 > | the rescued debt queue | `DEVIR-PROMPT.md` *(deleted 2026-09-07 — its job was done)*; the queue it carried was folded into the `hp-hat-a-hat-b` plan, and from there into [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(C) |
@@ -147,8 +147,9 @@ is paid on **its own axis** (B1), not with a prompt patch.
 figure is still one judge family's verdict and κ is **0,534**, below the tool's 0,6 threshold
 ([ADR-0077](docs/adr/0077-v1-0-verilmedi-v0-3.md) · [#65](docs/record/research_log/2026-09-09-kabul-testi-ve-frontier-kiyasi.md)).
 Weights are published at `Rfetha/HakHukuk-4B-v0.3-Q4_K_M` and are **currently private** while
-open defects are resolved — **8 are still open**, registered in
-[ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A)/§(C) (5a · 10 · 23 · 24 · 25 · 27 · 29 · 31).
+open defects are resolved — **7 are still open**, registered in
+[ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A)/§(C) (5a · 10 · 23 · 24 · 25 · 27 · 31)
+(**29 closed 2026-09-12**, adım 6.3.1).
 Defect **10** is exactly this one: the HF **visibility** half is still a human decision.
 **A frontier subject entered the pool and is AHEAD:** `claude-sonnet-5` mass **0,8348** ↔ ours
 **0,8011** (eye-corrected reading). The claim *"we are not behind on B1"* held only in the Gemini
