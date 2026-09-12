@@ -163,9 +163,11 @@ araç kullanımının **öğrenilmesi** (GRPO ödülüne *"doğru aracı doğru 
 
 ```
 sürüm      v0.3 (ürün) · artefakt HakHukuk-4B-v0.1 · ağırlıklar HF'te ÖZEL
-test       281 yeşil, 2 xfail
-dal        master push'lu · docs-tazeleme açık (5 commit ileri)
-kayıt      ADR 0001-0083 · research_log #1-#67 · tuzak defteri 1.1-7.x
+test       323 yeşil, 2 xfail
+dal        master (docs-tazeleme birleştirildi) · commit'ler HENÜZ PUSH EDİLMEDİ → adım 7
+kayıt      ADR 0001-0083 · research_log #1-#68 · tuzak defteri 1.1-7.8
+indeks     Rfetha/HakHukuk-mevzuat-bge-m3-s2 — dataset, PUBLIC (G8 açıldı 2026-09-12)
+bakiye     OpenRouter $11,876 (ölçüldü 2026-09-12; goal'deki $2,04 BAYATTI)
 ```
 
 **Kapanan son tur** (`hp` → Hat A → Hat B, **115/115**, 2026-09-12): hakem paneli kuruldu ve κ
