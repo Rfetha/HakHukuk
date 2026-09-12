@@ -12,7 +12,7 @@
 
 | # | iş | durum |
 | :-- | :--- | :--- |
-| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **AÇIK** · [planı yazıldı](plans/2026-09-12-v1-son-is.md) (**46 kutucuk**) · [goal'ü hazır](plans/goal-2026-09-12-v1-son-is.md) · sıradaki adım **5** |
+| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **32/63** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.5** (κ borcu) · harcanan **$0,4608** |
 | **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
@@ -58,6 +58,22 @@ Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-huk
 | **3 devredilen** — **6** → `B1` · **11** → paket · **12b** → `B11` | ″ |
 | κ borcu | ADR-0074 · ADR-0077 |
 
+### 📊 Turun ölçülen sayıları — *(icra sürerken güncellenir)*
+
+| ne | sonuç |
+| :--- | :--- |
+| ürün yolunda **boş cevap** | **0/80** — kartın *"ölçülmedi"* şerhi kapandı |
+| ürün yolunun **kütlesi** | **0,7792** (ölçüm hattı 0,8011; −2,19 p, karıştırıcı var) |
+| **S17** kuantizasyon eğrisi | `Q4` 0,7921 ↔ `Q5` **0,8673** ↔ `Q8` 0,7909 — **monoton değil** |
+| araç zinciri sapması | **−0,90 p ⇒ BELİRSİZ** (32 bayt fark davranışsal değil) |
+| κ borcu tahmini | **$1,97** (tabakalanmış; düz ön-tahmin $2,81'di) |
+
+**Bu turda kapanan kusurlar:** **24** (bayat README) · **29** (imajdaki yedek) · **33** (yeniden
+üretim kapısı hiç geçmiyordu). **Açık: 6** — 5a · 10 · 23 · 25 · 27 · 31.
+
+**Yeni tuzaklar:** **7.7** (kapı var olmayan alanı okuyup her zaman düşüyor) · **7.8** (sağlık
+kontrolü başkasının sunucusunu kendi sanıyor — 8 kalem yanlış modele üretildi).
+
 ### Açık kusurlar — **boşta duran YOK** *(insan kararı 2026-09-12)*
 
 Kural: her açık kusur ya **bu turda biter** ya **`v2`'ye gider**. Üçüncü seçenek yok —
@@ -92,11 +108,22 @@ doğruymuş**; hedefi kaydıran tek bir satırdı. Ayrıntı ve üçüncü tutar
 3 · 00-IS-SIRASI      BİTTİ — bu dosya
 4a· GRILL             BİTTİ 2026-09-12 — 18 karar kilitlendi → plans/2026-09-12-v1-son-is.md
 4b· GOAL YAZILIR      BİTTİ — plans/goal-2026-09-12-v1-son-is.md (3.323 krk)
-5 · master'a al, push  ← SIRADAKİ
-6 · planı EXECUTE
+5 · master'a al, push  BİTTİ
+6 · planı EXECUTE      ← İCRADA
+     6.1 korpus kimlikle bulunuyor          BİTTİ
+     6.2 G8 · indeks HF'te PUBLIC           BİTTİ
+     6.3 kusur 29 + konteyner uçtan uca     BİTTİ
+     6.3b ürün yolunun kütlesi  0,7792      BİTTİ  (plana sonradan eklendi)
+     6.3c S17 kuantizasyon eğrisi           BİTTİ  (plana sonradan eklendi)
+     6.4 tabakalanmış duman + para kapısı   BİTTİ  — kapı GEÇTİ
+     6.5 3.5 Flash ikinci hakem             ← ŞU AN (κ borcu burada kapanır)
+     6.6 kusur 23'ün ikinci sınaması
+     6.6b öz-tercih (Anthropic ailesi)      (plana sonradan eklendi)
+     6.7 kapının üç maddesi                 ← DUR ②
+     6.8 ADR-0084 + #68 + manşet ARALIK
 7 · bekleyen commit'leri push
 8 · PUBLIC kontrolü   repo + HF
-9 · her şey PUBLIC    HF görünürlüğü açılır
+9 · her şey PUBLIC    HF görünürlüğü açılır ← DUR ③
 ```
 
 **`4b` bir kutucuk değil, kapıdır:** grill planı doğurur, **goal o planı yürütür**. Prompt
