@@ -22,7 +22,7 @@
 > | you want | read |
 > | :--- | :--- |
 > | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. Next is **`v1-son-iş`**; its plan is **not written yet** — it comes out of a grill session. `v2-RL-GRPO` is parked. |
-> | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) — **6 defects still open** (5a · 10 · 23 · 25 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · closed in the `v1-son-iş` round: **24** (`b077f13`) · **29** (adım 6.3.1) |
+> | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) — **6 defects still open** (5a · 10 · 23 · 25 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · closed in the `v1-son-iş` round: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`) |
 > | what closed on 2026-09-12 | the `hp-hat-a-hat-b` round, **115/115** — narrative in [#66](docs/record/research_log/2026-09-11-urun-yuzeyi-ve-aygit-kusurlari.md) and [#67](docs/record/research_log/2026-09-12-konteyner-ve-alet-onarimlari.md) |
 > | what closed on 2026-09-06/07 | the `faz0-olcum-zinciri` plan, **48/48** *(plan deleted 2026-09-12)* — [#62](docs/record/research_log/2026-09-06-faz0-olcum-zinciri.md) |
 > | the rescued debt queue | `DEVIR-PROMPT.md` *(deleted 2026-09-07 — its job was done)*; the queue it carried was folded into the `hp-hat-a-hat-b` plan, and from there into [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(C) |
@@ -149,8 +149,10 @@ figure is still one judge family's verdict and κ is **0,534**, below the tool's
 Weights are published at `Rfetha/HakHukuk-4B-v0.3-Q4_K_M` and are **currently private** while
 open defects are resolved — **6 are still open**, registered in
 [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A)/§(C) (5a · 10 · 23 · 25 · 27 · 31).
-Closed in the running `v1-son-iş` round: **24** (`b077f13`, the stale README table) and
-**29** (adım 6.3.1, the backup file in the image).
+Closed in the running `v1-son-iş` round: **24** (`b077f13`, the stale README table),
+**29** (adım 6.3.1, the backup file in the image) and **33** (`cc12b6e` — the one-command
+reproduction path's `recall@10` gate read a field that does not exist, so it **always** failed
+with a false *"harness OYNAMIŞ"* accusation; it fails on the anchor's own data too).
 Defect **10** is exactly this one: the HF **visibility** half is still a human decision.
 **A frontier subject entered the pool and is AHEAD:** `claude-sonnet-5` mass **0,8348** ↔ ours
 **0,8011** (eye-corrected reading). The claim *"we are not behind on B1"* held only in the Gemini
