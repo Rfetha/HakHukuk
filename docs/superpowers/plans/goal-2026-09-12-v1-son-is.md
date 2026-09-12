@@ -54,11 +54,10 @@ Ağırlık `sha256 755e15e9…` değişmiyor; depo adı `HakHukuk-4B-v0.3-Q4_K_M
   aynı olmalı (kusur 23, $0). Ayrışırsa sayı yayımlanmaz.
 - Manşet **koşulsuz ARALIK**: *"%69,4-80,1 (sonnet-5 ↔ gpt-4o-mini)"* — geçse de düşse de.
   Dört yer: `CLAUDE.md` · `MODEL_CARD.md` · iki `README`. Üç rakip kolu tek hakemli kalır.
-- Kapı geçerse `v1.0`, `DÜŞTÜ`/`BELİRSİZ` ise `v0.4` — HF **her hâlükârda açılır**.
+- Kapı geçerse `v1.0`, yoksa `v0.4` — HF **her hâlükârda açılır**. Gözle okuma bir kapıdır.
 - Kusur 25: tüm paydalar `DOGRULANDI`; yalnız Sonnet-5 hücresi yeniden ifade edilir.
   6.8.3b: `MODEL_CARD` kıyas tablosu **6 sütuna** çıkar (Sonnet-5 eksik, $0).
 - Künye **koşan süreçten** okunur — sabit dize kanıt değil. Para **bakiye farkıyla** doğrulanır.
-- Gözle okuma bir kapıdır — bu turda **dokuz** ölçülmüş bulgu çıkardı.
 - Her bulgu anında `research_log` (#68) + ADR (**0084**). Türkçe yaz.
 - `scripts/` değişirse `tests/conftest.py` **birlikte** değişir.
 
