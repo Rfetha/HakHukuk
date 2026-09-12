@@ -139,7 +139,7 @@ seti (n=80, geliştirme kümesi), önsözsüz istem, erişim katmanı etkin (k=1
 | `A1`, altın getirilen ↑ | 0,8902 | 0,7900 | 0,8449 | 0,8523 | **0,9031** | ölçülemedi ᵇ |
 | `recall@10` (erişim) | 0,9500 | 0,9500 | 0,9500 | 0,9500 | 0,9500 | ölçülemedi ᵇ |
 | Aşırı çekinme ↓ ᶜ | **4/80** | 7/80 | 9/80 | 7/80 | **4/80** | ölçülemedi ᵇ |
-| İsabetsiz atıf ↓ ᵈ | 8/80 | 8/80 | **7/80** | 8/80 | ölçülmedi ᵈ | ölçülemedi ᵇ |
+| İsabetsiz atıf ↓ ᵈ | 8/80 | 8/80 | **7/80** | 8/80 | **7/80** ᵈ | ölçülemedi ᵇ |
 | **Uydurulmuş madde numarası** ↓ | **0/114** | 1/152 | 4/130 | 4/133 | 2/163 | ölçülemedi ᵇ |
 | Ezber kütlesi (M5) ↓ ᵉ | **0,3899** | 0,6710 | 0,7013 | 0,8241 | ölçülmedi ᵉ | 0,4697 |
 | Cevap başına maliyet ↓ | **$0** | $0,001895 | $0,001152 | $0,009914 | $0,014915 | **$0** |
@@ -159,7 +159,7 @@ bir sınavda ölçülmüştür; kaynaksız bir karşılaştırma değildir.
 | **`A1`, altın getirilen** | Aynı ölçüt, yalnız doğru maddenin bağlama **girdiği** kalemlerde. Erişim başarısızlığını modelin kusurundan ayırır. |
 | **`recall@10`** | Doğru maddenin, erişim katmanının getirdiği ilk on kaynak arasında bulunma oranı. Modelden bağımsızdır ve **kütlenin üst sınırıdır**: bağlama girmeyen maddeden doğru cevap üretilemez. |
 | **Aşırı çekinme** | Doğru madde bağlamda olduğu hâlde modelin cevap vermediği kalem sayısı. Erişim kusuru değildir; modelin kendi kararıdır. Değerler gözle sayılmıştır. |
-| **İsabetsiz atıf** | Cevabın, bağlamdaki **yanlış** maddeye dayandırıldığı kalem sayısı. Madde uydurma ile karıştırılmamalıdır: atfedilen madde gerçektir, ancak soruyu karşılamaz. Dört öznede 80/80 kalem tek tek gözle okunarak sayılmıştır. |
+| **İsabetsiz atıf** | Cevabın, bağlamdaki **yanlış** maddeye dayandırıldığı kalem sayısı. Madde uydurma ile karıştırılmamalıdır: atfedilen madde gerçektir, ancak soruyu karşılamaz. Beş öznede 80/80 kalem tek tek gözle okunarak sayılmıştır. |
 | **Uydurulmuş madde numarası** | Cevapta anılan ve korpusta **karşılığı bulunmayan** madde numarası sayısı. Hakem değil, deterministik doğrulama sayar. Payda, o koldaki toplam atıf sayısıdır; bu yüzden kollar arasında paydalar farklıdır. |
 | **Ezber kütlesi (M5)** | Modele **kaynak verilmeden** ölçülen kütle. Anti-hedeftir: yüksek değer, modelin ezberden hüküm kurduğunu gösterir ve mevzuat değiştiğinde sessizce yanlışa döner. |
 | **Cevap başına maliyet** | Bir cevabın çıkarım bedeli. Yerel model tüketici sınıfı bir GPU'da koştuğu için sıfırdır; rakiplerde OpenRouter liste fiyatından ölçülmüştür. Hakem bedeli bu satıra dâhil değildir. |
@@ -211,10 +211,14 @@ Düzeltme uygulandığında sıralama değişmektedir.
 - **ᶜ** Tanım tüm öznelerde aynıdır: altın madde bağlama girmiş, model yine de çekinmiştir.
   Değerler gözle düzeltilmiştir; ham araç sayıları HakHukuk için 5/80, Sonnet-5 için 7/80,
   Gemini kolları için 8-11/80'dir.
-- **ᵈ** İsabetsiz atıf, dört öznede 80/80 kalemin gözle taranmasıyla sayılmıştır. Sonnet-5
-  kolunda bu tarama yapılmamıştır ve tahmin yazılmamıştır. Hakem tabanlı vekil ölçüt olan
-  `wrong_ref_rate_micro` şu değerleri vermektedir: HakHukuk 0,0769, Sonnet-5 0,0083. Bu eksen
-  HakHukuk'un açık borcudur.
+- **ᵈ** İsabetsiz atıf, **beş** öznede 80/80 kalemin gözle taranmasıyla sayılmıştır.
+  ~~Sonnet-5 kolunda bu tarama yapılmamıştır ve tahmin yazılmamıştır.~~ **2026-09-12'de tamamlandı
+  (ADIM 6.6c):** Sonnet-5 kolunda **7/80** (5 sınır durum sayılmadı — gerekçesi
+  [`GOZLE_ISABETSIZLIK_sonnet_5.md`](../outputs/eval/hp-rakip-havuzu/GOZLE_ISABETSIZLIK_sonnet_5.md)
+  §2'de). Ön-kayıtlı beklenti tutmadı: hakem tabanlı vekil ölçüt (`wrong_ref_rate_micro`)
+  Sonnet-5'i 0,0083 ile bizim 0,0769'umuzun çok altında gösteriyordu, göz sayımı ise Sonnet-5'i
+  bizim **8/80**'imizin altında (7/80) buldu — vekil ölçüt ile göz sayımı burada **ayrı
+  eksenlerdir**, biri diğerini geçersiz kılmaz. Bu eksen HakHukuk'un açık borcudur.
 - **ᵉ** Ezber kütlesi, kaynak verilmeden ölçülen anti-hedeftir; düşük olması istenir. Sonnet-5
   bu modda koşulmamıştır.
 
