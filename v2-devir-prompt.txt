@@ -1,0 +1,236 @@
+═══════════════════════════════════════════════════════════════════
+DURUM  (güncellendi 2026-09-13, kayıt katmanı kompaktlamasından SONRA)
+═══════════════════════════════════════════════════════════════════
+
+`v1-son-iş` turu 2026-09-13'te **71/71 kapandı**:
+- Sürüm `v1.0` (git etiketi `v1.0`, açıklamalı). ⚠️ Bu bir MODEL İYİLEŞMESİ DEĞİL —
+  ağırlıklar hiç değişmedi (`sha256 755e15e9…`), κ hâlâ 0,534/0,409. Değişen şey ölçüm
+  aygıtı: ikinci hakem ailesi eklendi, eşit sınav kuruldu, kapının üç maddesi yeni birimde
+  geçti (ADR-0084 · kronoloji #70).
+- Ağırlıklar PUBLIC: depo **`Rfetha/HakHukuk-4B-GGUF`**, dosya
+  `HakHukuk-4B-v0.3-Q4_K_M.gguf` (dosya adı bilerek `v0.3` kaldı — ADR-0065 bölünmüş
+  sürümleme; içerik değişmediği için ad da değişmez).
+- İndeks PUBLIC: `Rfetha/HakHukuk-mevzuat-bge-m3-s2` (**G8 2026-09-12'de kapandı**).
+- Açık kusur 4: `5a · 23 · 27` → `v2` · `31` → kayıt. Hepsi adıyla devredildi.
+- Süit **335 geçti, 2 xfail**. Her şey `origin/master`'da.
+
+🔴 **AYNI GÜN İKİNCİ TUR KAPANDI — KAYIT KATMANI KOMPAKTLANDI (ADR-0086).**
+Bir yola gitmeden önce bunu oku:
+- `docs/record/` + `docs/adr/` = **103 dosya · 1,40 MB → 12 dosya · 608 KB** (~466 bin →
+  ~208 bin token).
+- `docs/record/research_log/` **YOK**. 33 girdi üç dosyada: `kronoloji-39-52.md` ·
+  `kronoloji-53-62.md` · `kronoloji-63-71.md`.
+- Tekil `docs/adr/NNNN-*.md` dosyaları **YOK**. 58 ADR üç dosyada: `kararlar-0027-0044.md` ·
+  `kararlar-0045-0063.md` · `kararlar-0064-0085.md` (ADR-0086 da sonuncusunun içinde).
+- **Her sayı birebir korundu, her atıf hâlâ çözülüyor**: her girdi bir HTML çapası taşır.
+  `ADR-0057` → `kararlar-0045-0063.md#adr-0057` · kronoloji `#70` → `kronoloji-63-71.md#70`.
+  Eski metinde geçen *"research_log #42"* = *"kronoloji #42"*.
+- `outputs/eval/**` **bilerek yeniden yazılmadı** — *"o gün bu yoldan koşuldu"*yu kaydeder
+  (emsal: ADR-0083 §D). Oradaki eski yolları onarma.
+- Geri alma noktası: `git show 301a82f:<yol>`.
+
+═══════════════════════════════════════════════════════════════════
+İŞ 1 — Bayat G8 satırını onar  (1 satır, 1 dosya — prompt yazıldığında 9 satır/3 dosya sanılıyordu)
+═══════════════════════════════════════════════════════════════════
+
+⚠️ **Bu iş büyük ölçüde ZATEN YAPILMIŞ. Önce doğrula, sonra dokun.**
+`README.tr.md` ve `README.md` artık *"Üç bileşen de yayımlanmıştır: ağırlıklar, arama
+indeksi ve kod"* diyor — onlarda **onarılacak bir şey yok**. *"git clone sonrası indeks
+dizinini insan doldurmak zorunda"* cümlesi `MODEL_CARD.md`'de **hiç geçmiyor**.
+
+Kalan tek bayat satır:
+
+  MODEL_CARD.md : `export HAKHUKUK_INDEKS_DEPO=...    # varsayılanı bilerek boş (aşağıya bakınız)`
+
+Bu satır **aynı dosyanın kendi tablosuyla çelişiyor**: birkaç satır aşağıda
+`| HAKHUKUK_INDEKS_DEPO | opsiyonel — varsayılanı yayımlanmış indeks deposudur
+(Rfetha/HakHukuk-mevzuat-bge-m3-s2) … |` yazıyor. Çelişkiyi yorum satırının lehine değil,
+**tablonun lehine** kapat.
+
+⚠️ **İçerikle eşle, satır numarasıyla DEĞİL** — bu depoda satır numarasıyla damgalamak bir
+kez yanlış satıra damga vurdurdu (ADR-0083'te kayıtlı).
+
+Doğru bilgi:
+- İndeks HF'te public: `Rfetha/HakHukuk-mevzuat-bge-m3-s2`
+- `hakhukuk/indir.py` onu **varsayılan** olarak indirir (`INDEKS_DEPO` sabiti);
+  `HAKHUKUK_INDEKS_DEPO` yalnız **geçersiz kılmak** için
+- `git clone` sonrası insan müdahalesi **gerekmiyor**
+- Token **gerekmiyor** — token'sız indirme 2026-09-12'de sınandı ve geçti
+
+Bitirince: `README.tr.md`/`README.md`'de de gerçekten kalmadığını **greple doğrula** ve
+raporunda *"iki dosya zaten temizdi"* diye yaz — iş listesinin kendisi bayattı, bu da bir
+bulgudur.
+
+═══════════════════════════════════════════════════════════════════
+İŞ 2 — Kapanan plan/spec dosyaları ARŞİVLENİR ya da SİLİNİR  (2 değil, 4 dosya)
+═══════════════════════════════════════════════════════════════════
+
+  docs/superpowers/plans/2026-09-12-v1-son-is.md
+  docs/superpowers/plans/goal-2026-09-12-v1-son-is.md
+  docs/superpowers/plans/2026-09-13-kayit-katmani-kompaktlama.md   ← kapandı, kapanış bloğu var
+  docs/superpowers/specs/2026-09-13-kayit-katmani-kompaktlama-design.md
+
+⚠️ **ÖNCE BİR ÇELİŞKİYİ İNSANA SOR.** `docs/_arsiv/` **2026-09-06'da SİLİNDİ** ve deponun
+kendi emsali (ADR-0083, 2026-09-12) kapanan planlar için **arşivleme değil SİLME** oldu.
+ADR-0083'ün kendi cümleleri (birebir, paraşfraz etme):
+  · *"kapanan plan yeniden işletilmez; kapandığı gün **kayda dönüşür**"*
+  · **Ne KURULMAZ:** *"Bu ADR 'plan içeriği yedeklendi' **demez** — gövde **silindi**; görev
+    metinleri, `verify:` şartları ve ara turların anlatısı **gitti**."*
+Yani emsal, içeriği kurtarmayı değil **kaybı göze almayı** kaydediyor. Ayrıca aynı ADR bir
+alternatifi eliyor: planı `record/`'a taşımak — ***insan reddetti***, gerekçe
+*"plan formatı ajanları yanıltır"* (kutucuklu dosya `record/` altında bile yürütülebilir
+sanılır). Arşiv seçeneği bu redle **aynı şey değil**, ama insana sorarken bunu da söyle.
+
+🔴 **SİLME SEÇENEĞİNDE SOMUT BİR KAYIP VAR — DOĞRULANDI, VARSAYIM DEĞİL.** `v1-son-iş`
+turunun taşıyıcı içeriği ADR-0084 + kronoloji #70'te duruyor ✓. Ama kompaktlama turunun
+**ADR-0086'sı 21 satır** ve yalnız `gemma4-12b-dersler.md` Bölüm B kararını taşıyor;
+şu dördü **YALNIZ planın kapanış bloğunda** yazılı:
+  · `yurutme-tuzaklari.md` **≤25 KB hedefi tutturulamadı (44 KB)** ve niçin
+  · toplam **~208 bin token**, 200 bin hedefi **%4 aşıldı**
+  · `gemma4-12b-kronoloji.md`'nin **silinmeme** gerekçesi (38 girdi numarası ölürdü)
+  · toptan yol değiştirmenin **ADR-0024'ün kendi alıntısını bozması** ve geri alınması
+Silmeden **önce** bu dördünü ADR-0086'ya taşı, yoksa kapanış geçersizdir
+(*"bir bulgu yalnız sohbette/silinen dosyada yaşıyorsa kayıptır"*).
+
+İki seçenek, **insana sor ve cevabını bekle**:
+  (a) `docs/_arsiv/` yeniden açılır, dört dosya oraya taşınır + niçin orada olduğunu
+      söyleyen bir `README.md` yazılır. `CLAUDE.md`'nin belge-türü tablosu da güncellenir
+      (bugün *"archive deleted 2026-09-06"* diyor).
+  (b) ADR-0083 emsali izlenir: dosyalar **silinir**, çünkü taşıyıcı içerikleri ADR'lerde.
+
+🔴 **HANGİSİ SEÇİLİRSE SEÇİLSİN, AYNI COMMIT'TE ŞU İKİSİNİ YAP:**
+  1. `CLAUDE.md`'de `docs/superpowers/` **6 yerde** geçer ama hepsi test kırmaz — **sayıldı**:
+        2 × `](docs/superpowers/plans/2026-09-12-v1-son-is.md)`  ← MARKDOWN BAĞLANTISI,
+             taşınır/silinirse **test KIRMIZI olur**. Onarılacak olan **bunlar**.
+        2 × `](docs/superpowers/00-IS-SIRASI.md)`                 ← bağlantı, ama dosya
+             **kalıyor** (İŞ 3 onu yeniden yazıyor, silmiyor) ⇒ risk yok
+        4 × düz metin (`` `docs/superpowers/` ``, `` `…00-IS-SIRASI.md` ``) ⇒ `_LINK` regex'i
+             düz metni taramaz, test kırmaz
+     ⇒ Gerçek onarım yükü **iki bağlantı**. Silindiyse deponun kalıbıyla etiketle:
+     "silindi, içeriği ADR-0084/ADR-0086'da". `tests/test_belgeler.py` CLAUDE.md'yi `CANLI`
+     listesinde yürütür — değişiklikten sonra `pytest tests/test_belgeler.py -q` koş.
+  2. `CLAUDE.md` hâlâ *"`docs/superpowers/` … holds **exactly one** file"* diyor. Bugün
+     **dört** dosya var (00-IS-SIRASI + iki plan + bir goal + bir spec). Bu cümle bu işten
+     bağımsız olarak **bayat** — düzelt.
+
+═══════════════════════════════════════════════════════════════════
+İŞ 3 — `00-IS-SIRASI.md` yeniden yazılır: YALNIZ v2-GRPO kalır
+═══════════════════════════════════════════════════════════════════
+
+Bugünkü hâli **224 satır** ve neredeyse tamamı **kapanmış** `v1-son-iş` turunun anlatısı —
+ölçüm tabloları, kusur tablosu, sıra bloğu, "bugün ne engelliyor" bölümü. Hepsi geçmiş.
+
+Bu dosya **giriş dosyası ve tek durum kaynağıdır**; kendi başlığı şöyle der:
+*"Neyin şimdi, neyin sonra olduğunu söyleyen tek yer. Bu dosya bir HARİTA, bir plan
+değildir."* Bugün o işi yapmıyor.
+
+Yeniden yaz, **yalnız şunlar kalsın**:
+1. **Bir bakışta** tablosu — `v2-RL-GRPO` (sıradaki) ve **korpus turu** (ADR-0083 §EK,
+   9 madde grill'e girecek). ⚠️ İkincisini **silme**: insan kararıyla `v1.0`'dan sonraya
+   alınmıştı ve hâlâ sıradaki adaylardan biri.
+2. **v2-RL-GRPO bölümü** — bugünkü §2'de zaten var, **koru**: zincir şeması, ADR-0075
+   (`v1` SFT ile kapanır, `B1`/`B4` koşulmaz), task-vector hattının `v1`'de DONDURULDUĞU
+   ve niçin (`τ = θ_ft − θ_base` tüm kolların aynı base'i paylaşmasını şart koşar),
+   `v2`'ye devredilenler (`B1` · `B11` · araç kullanımının öğrenilmesi · `S9` · web arayüzü
+   · kusur `5a` · `23` · `27`).
+3. **Durum künyesi — GÜNCEL DEĞERLERLE** (bugünkü satır 176-178 bayat):
+       sürüm     v1.0 · ağırlıklar ve indeks PUBLIC
+       test      335 geçti, 2 xfail          (eski satır: "331 yeşil, 2 xfail")
+       kayıt     ADR 0001-0086 · kronoloji #1-#71 · tuzak defteri 85 satır
+                 (1.1-7.8 · 2.19 · 2.20 · 2.21)
+                 (eski satır: "ADR 0001-0084 · research_log #1-#70 · … 2.19 · 2.20")
+       katman    docs/record + docs/adr = 12 dosya · 608 KB (ADR-0086)
+4. **Kapanan turlara TEK SATIRLIK işaretçiler** — anlatı değil, işaretçi:
+       v1-son-iş        71/71   → ADR-0084 · kronoloji-63-71.md#70 · (plan yolu: İŞ 2 kararı)
+       hp-hat-a-hat-b  115/115  → kronoloji-63-71.md#66 · #67 · ADR-0083
+       kayıt-kompaktlama        → ADR-0086 · (plan yolu: İŞ 2 kararı)
+5. **Bakım kuralı** — bugünkü hâliyle koru, ama **çapa atıf biçimini ekle**:
+   `ADR-00NN` → `kararlar-*.md#adr-00NN` · kronoloji `#NN` → `kronoloji-*.md#NN`.
+   Yeni girdi **#72**'den, yeni ADR **0087**'den devam eder.
+6. ⭐ **v2 STARTER PROMPT** (aşağıdaki İŞ 4).
+
+**Silinecekler:** "v1.0'ı bugün ne engelliyor" bölümü · turun ölçülen sayıları tablosu ·
+açık kusurlar tablosunun `v1` kısmı · 9 adımlık sıra bloğu · "o turun üç dersi" ·
+"grill'e girmeden bilinmesi gereken düzeltme" (bu ADR-0083 §EK'te zaten duruyor).
+⚠️ Silmeden önce **her birinin kalıcı kayıtta karşılığı olduğunu doğrula** — yoksa silme,
+önce taşı. Deponun kuralı: *"bir bulgu yalnız sohbette yaşıyorsa kayıptır."*
+
+═══════════════════════════════════════════════════════════════════
+İŞ 4 — v2 STARTER PROMPT'u yaz (00-IS-SIRASI içine)
+═══════════════════════════════════════════════════════════════════
+
+`00-IS-SIRASI.md`'nin sonuna, kopyala-yapıştır edilebilir bir **başlatıcı prompt** koy.
+Bu prompt `v2-RL-GRPO` turunu **grill'den** başlatacak. Emsal işledi: `v1-son-iş` turu da
+bir grill ile başladı (18 karar kilitlendi), sonra plan, sonra goal, sonra icra.
+
+Prompt şunları taşımalı:
+- **Nereden başlanacak:** `superpowers:brainstorming` ya da `mattpocock-grill-me` ile bir
+  grill oturumu; çıktısı **tek yeni plan** (`docs/superpowers/plans/<tarih>-v2-rl-grpo.md`)
+  ve ardından **<4000 karakterlik goal** (aynı klasörde `goal-<plan-adı>.md`).
+  ⚠️ Grill kuralı, insanın `v1`'de koyduğu: **her soru tıklanabilir seçeneklerle sorulur**
+  (AskUserQuestion), önerilen seçenek başta.
+- **v2'nin iddiası:** merge değil **RL kazancı**. Task-vector hattı `v1`'de dondu.
+- **Girdiler:** ADR-0075 (`v1` SFT ile kapanır) · devredilen dört kusur (`5a`·`23`·`27`
+  ve `31` kayıt) · üç eski borç (`6`→B1 · `11`→paket · `12b`→B11) · `B1`'in **fp16
+  rejiminde 2,0× kötüleştiği** ölçümü (`wrong_ref_rate_micro` 0,0769 → 0,1553,
+  kronoloji-63-71.md#66).
+- **Değişmez rejim** (kıyas bunlara bağlı; ADR-0017/0057): seed 3407 · 900 karakter chunk
+  klip · thinking ON, 1024 düşünce + 512 cevap · `n=80`, `data/eval/dev/core_hard.jsonl` ·
+  indeks `mevzuat_bge_m3_s2` · `k=10` · `RRF_K=10` · önsözsüz.
+- **Grill'de mutlaka karara bağlanacaklar** (v1'in acı dersleri):
+  · **ön-kayıt**: kapı maddeleri ve çözünürlük kuralı **sayı görülmeden** yazılır
+    (`n=80` ⇒ adım 1,25 p; `|marj| < adım` ⇒ **BELİRSİZ**, her iki yönde bağlar)
+  · **çıpa zorunluluğu** (tuzak 2.17b): kapı maddesi yazılırken çıpanın **dosya adı ve
+    değeri** maddenin yanına yazılır; yoksa madde eksik sayılır
+  · **para kapısı**: tahmin **tabakalanmış** duman koşusundan ve **puanlanacak öznenin
+    kendi profilinden, aynı moddan** türetilir. Tuzak 1.11 `v1`'de **dört** biçimde ısırdı,
+    dördü de kayıtlı (kronoloji-63-71.md#70 §4):
+        doğrusal ekstrapolasyon (n=5 ×16)            → %45 EKSİK  ($0,82 ↔ $1,1932)
+        düz ön-tahmin                                 → %60 FAZLA  ($2,81 ↔ $1,6831)
+        başka bir öznenin faturasından tahmin         → %41 FAZLA  (hakem maliyeti tamamlama
+                                                        uzunluğuyla değil İDDİA SAYISIYLA
+                                                        ölçekleniyor: 665 ↔ ~273 iddia)
+        farklı bir moddan tabakalama                  → proxy ayrışma göstermedi, tabakalama
+                                                        anlamsızlaştı
+    Ayrıca **gerçek fatura liste fiyatının ~1,6 katı** (gateway marjı, ADR-0074) — her
+    tahmin ×1,6.
+  · **hakem sağlayıcısı PİNLENİR** (`LLM_PROVIDER_ORDER`, `judge_providers` tek eleman) ve
+    künyeye yazılır — tuzak 2.7 `v1`'in son turunda yine ısırdı ve bir kütle farkının
+    kaynağını **ayrıştırılamaz** yaptı
+  · **DUR listesi**: alt-ajan yalnız orada durur
+  · **`git add -A` yasağı**: alt ajan koşarken dosyalar adıyla eklenir, `outputs/eval/**`'e
+    koordinatör hiç dokunmaz (tuzak 5.10 — `v1`'de **dört kez** ısırdı)
+- **Bütçe gerçeği:** `v1-son-iş` $5,73 tuttu. GRPO **eğitim** turu; maliyet sınıfı farklı
+  (Modal GPU). Grill'de **önce bunu** ölçtür.
+- ⛔ **Starter prompt v2'yi BAŞLATMAZ** — yalnız grill'i başlatır. Plan insan onayıyla doğar.
+
+═══════════════════════════════════════════════════════════════════
+BU DEPONUN BAĞLAYICI KURALLARI
+═══════════════════════════════════════════════════════════════════
+
+- Belgeler ve commit mesajları **Türkçe**; kod tanımlayıcıları İngilizce.
+- **Eski metin SİLİNMEZ, üstü çizilir.** Çelişki iki yerde damgalanır — denetim izi asıl
+  varlıktır (CLAUDE.md, "Documentation discipline").
+- **Alıntı yeniden yazılmaz.** Toplu yol/ad değiştirme yaparken alıntılanmış tarihsel
+  cümleleri de değiştirebilirsin; 2026-09-13'te bir kez oldu (ADR-0024'ün kendi kural
+  cümlesi), fark edilip geri alındı. Değiştirdiğin her satırın **alıntı olmadığını** gör.
+- **Sayılar kaynaklıdır, hatırlanmaz.** Yazdığın her sayının kaynak dosyasını göster.
+- `docs/record/**` ve `docs/adr/**` **TEMİZLENMEZ** — "o gün bu belge bunu diyordu"yu
+  kaydeder. `outputs/eval/**` de öyle. Yalnız yayımlanan kartlar, README'ler ve
+  `docs/superpowers/` güncellenir.
+- `pytest -q` ile **335 geçti / 2 xfail** korunmalı. `tests/test_belgeler.py` ölü bağlantıyı
+  KIRMIZI yapar.
+- Commit'ler mantıksal parçalara bölünür (dört iş = en az dört commit).
+- `git add -A` **kullanma** — dosyaları adıyla ekle.
+
+⛔ YAPMA: yeni ölçüm · hakem çağrısı · para harcama · HF'e yükleme/görünürlük değişikliği ·
+sürüme/ağırlıklara/indekse/korpusa dokunma · korpus turuna ya da v2'ye **başlama**
+(ikisi de ayrı iş; sen yalnız v2'nin **starter prompt**'unu yazıyorsun).
+
+═══════════════════════════════════════════════════════════════════
+BİTİRİNCE
+═══════════════════════════════════════════════════════════════════
+
+`git push origin master`, ve bana şunu söyle: dört işin durumu · arşiv kararı ne oldu ·
+`CLAUDE.md`'nin altı bağlantısı ne oldu · `00-IS-SIRASI.md` kaç satıra indi · test sayısı ·
+gözüne çarpan başka bayatlık var mı.
