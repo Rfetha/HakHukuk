@@ -12,7 +12,7 @@
 
 | # | iş | durum |
 | :-- | :--- | :--- |
-| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **50/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.8** (turun kaydı — ADR-0084 yazıldı, research_log **#70**, manşet aralık) · harcanan **$5,7338** / tavan $8,00 · OpenRouter bakiyesi **$6,2294** |
+| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **62/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.8** (turun kaydı — ADR-0084 yazıldı, research_log **#70**, manşet aralık) · harcanan **$5,7338** / tavan $8,00 · OpenRouter bakiyesi **$6,2294** |
 | **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
