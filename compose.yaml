@@ -26,12 +26,13 @@ services:
   # ── TEK SEFERLİK: kimlik kapısı. Tutmazsa çıkış ≠ 0 ⇒ iki daemon da HİÇ başlamaz. ──────
   indir:
     build: .
-    image: hakhukuk:0.3.0
+    image: hakhukuk:1.0.0
     command: ["python", "-m", "hakhukuk.indir", "/artefakt"]
     environment:
-      # ⛔ DEĞER BURAYA YAZILMAZ. Depo bugün ÖZEL; token host ortamından geçer ve
-      # tanımsızsa compose BAŞLAMADAN hata verir (`:?`).
-      HF_TOKEN: ${HF_TOKEN:?HF_TOKEN tanımsız — HakHukuk-4B-v0.3-Q4_K_M deposu ÖZEL}
+      # Depo 2026-09-13'ten beri PUBLIC (kusur 10 kapandı, ADIM 9). `HF_TOKEN` artık
+      # ZORUNLU değil — tokensız erişim doğrulandı (bkz. MODEL_CARD.md §"HF deposu PUBLIC").
+      # Tanımlıysa yalnız hız sınırını gevşetir.
+      HF_TOKEN: ${HF_TOKEN:-}
       # İndeks deposu: Görev 8 bekletiliyor ⇒ varsayılanı YOK. Boşsa indeks volume'de
       # aranır, orada da yoksa kapı erken patlar (ADR-0078 madde 4).
       HAKHUKUK_INDEKS_DEPO: ${HAKHUKUK_INDEKS_DEPO:-}
@@ -91,7 +92,7 @@ services:
   # ── DAEMON · CPU. `hakhukuk` + bge-m3 gömücü. ⛔ GPU'ya GİRMEZ. ────────────────────────
   app:
     build: .
-    image: hakhukuk:0.3.0
+    image: hakhukuk:1.0.0
     # ⚠️ `hakhukuk-api` girdi noktası yerine uvicorn DOĞRUDAN çağrılır ve sebebi `llama`
     # sapmasıyla AYNI sınıftandır: `api.py` `HOST = "127.0.0.1"` der, konteyner içinde o
     # arayüz host'tan erişilemez. Erişim yüzeyi yine `ports` ile `127.0.0.1`'e kısıtlıdır;

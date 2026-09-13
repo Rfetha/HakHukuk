@@ -4,11 +4,25 @@
 > asistanı. İki LoRA kolu ham base'den **bağımsız** eğitildi ve **görev vektörü** olarak
 > **ham TIES** ile birleştirildi.
 >
-> **Ağırlıklar yayımlandı (2026-09-09):** [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) ·
+> **Ağırlıklar yayımlandı (2026-09-09), depo PUBLIC (2026-09-13):** [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) ·
 > `HakHukuk-4B-v0.3-Q4_K_M.gguf` · 2.783.446.720 bayt ·
 > `sha256 755e15e9…86e7bffc`. Örnek çıktılar aynı depoda `ORNEK_CEVAPLAR.md`.
 >
-> **Not (2026-09-09):** depo, açık kusurlar giderilene kadar geçici olarak **ÖZEL**dir.
+> ~~**Not (2026-09-09):** depo, açık kusurlar giderilene kadar geçici olarak **ÖZEL**dir.~~ →
+> **PUBLIC yapıldı 2026-09-13** (`v1-son-iş` turunun 9. adımı — kusur **10** kapandı,
+> [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md)). Token'sız bir alt süreçte
+> doğrulandı: dosya indi, `sha256` **755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc`
+> bayt bayt tuttu (kusur 32'nin dersi gereği token'lı erişimle **karıştırılmadı**).
+>
+> **Ürün sürümü artık `v1.0`'dır (2026-09-13) — ama bu AĞIRLIKLARIN İYİLEŞTİĞİ ANLAMINA
+> GELMEZ.** `sha256` yukarıdakiyle **birebir aynı**; ağırlıklar bu turda hiç değişmedi. `v1.0`
+> etiketi, §5 kapısının üç maddesinin **ikinci, bağımsız bir hakem ailesi altında da** yeniden
+> okunup GEÇTİĞİ anlamına gelir ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+> **κ değişmedi** (`0,534`/`0,409`, hâlâ `0,6` eşiğinin altında) ve hakem paneli hâlâ **iki**
+> aileli, üç değil (ADR-0032'den sapma — eksiklik olarak kayıtlı). Bu, artefakt kimliğiyle
+> (`HakHukuk-4B-v0.1` / `tgta_v1`, §1) **karıştırılmamalıdır**: o hiç değişmedi ve
+> değişmeyecek; değişen yalnız **iddia sürümüdür** ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)
+> bölünmüş sürümleme). Tam döküm §5'te.
 
 > ## BU HUKUKİ TAVSİYE DEĞİLDİR
 >
@@ -58,10 +72,22 @@ adaptörleri merge edilmiş **TEK** GGUF, adı **model + boyut + sürüm + kuant
 HakHukuk-4B-v1.0-Q4_K_M.gguf
 ```
 
-> **Bu ad HENÜZ KULLANILMIYOR.** Bugünkü artefakt `v0.1`'dir; `v1.0` **verilmedi**.
+> ~~**Bu ad HENÜZ KULLANILMIYOR.** Bugünkü artefakt `v0.1`'dir; `v1.0` **verilmedi**.
 > ADR-0071 adı *kararlaştırır*, sürümü *vermez* — `v1.0` adı ADR-0064'ün kapısı **donmuş TEST
 > kabul testinde** koşulmadan kullanılmaz ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md) ·
-> [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) *"Açık kalan"*). Bkz. §5.
+> [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) *"Açık kalan"*).~~
+>
+> **2026-09-13 güncellemesi — bu ad KASTEN kullanılmayacak, ADR-0071'in kendi kuralı
+> `v1-son-iş` grill kararıyla bu artefakt için ELENDİ.** Ürün/iddia sürümü `v1.0`'a çıktı
+> (§5), ama dosya adı `HakHukuk-4B-v0.3-Q4_K_M.gguf` ve HF depo adı
+> `Rfetha/HakHukuk-4B-v0.3-Q4_K_M` **DEĞİŞMEDİ** ve değişmeyecek: ağırlıklar bu turda hiç
+> değişmedi (`sha256` birebir aynı), ve **değişmemiş bir dosyaya yeni sürüm adı vermek** bu
+> hattın kendi kuralına aykırıdır — bir dosya adı, içeriği aynı kalırken başka bir şey
+> iddia edemez. Sürümü artık **kart anlatır**, dosya adı değil. ADR-0071'in *"model + boyut +
+> sürüm + kuantizasyon"* kalıbı geçerliliğini korur; yalnız burada *sürüm* ile kastedilenin
+> **artefakt kimliği** mi yoksa **iddia sürümü** mü olduğu bu turda netleşti — ikincisi asla
+> dosya adına sızmaz (bkz. §"İki ad, iki ayrı iş" ve [ADR-0065](docs/adr/0065-bolunmus-surumleme.md)).
+> Bkz. §5.
 
 ---
 
@@ -472,7 +498,24 @@ cümlelik koşulu (`3.5 Flash` aynı ikinci hakemle — `claude-sonnet-5` — pu
 ve §5'in üç maddesi **iki bağımsız hakem ailesi altında da** GEÇTİ (marj çıpaya göre
 **+7,57 p**, `claude-sonnet-5`). **κ değişmedi** (hâlâ 0,534/0,409, 0,6 eşiğinin altında) —
 kapanan şey κ değil, **eşit sınavın yokluğuydu**; üçüncü aile (Google) hâlâ eklenmedi. Bu
-**`v1.0` etiketi VERMEZ** — sürüm kararı ayrı bir adımın işidir.
+~~**`v1.0` etiketi VERMEZ** — sürüm kararı ayrı bir adımın işidir.~~
+
+**2026-09-13 güncellemesi — `v1.0` VERİLDİ (ADIM 9, insan onayı).** Kapının üç maddesi iki
+hakem ailesi altında da GEÇTİĞİ için ve ağırlıklar HF'te **public** yapıldığı için, sürüm
+kararı bu turun son adımında **insan tarafından** verildi: ürün/iddia sürümü artık **`v1.0`**
+([`pyproject.toml`](pyproject.toml), git etiketi `v1.0`).
+⛔ **Bunun ne anlama GELMEDİĞİ, yukarıdaki paragraf kadar bağlayıcıdır:**
+- **Model iyileşmedi.** Ağırlıklar bu turda **hiç değişmedi** — `sha256` `755e15e9…86e7bffc`
+  ve bayt sayısı `2.783.446.720` yayımlanan `v0.3` artefaktıyla **birebir aynı**.
+- **κ düzelmedi.** `tam_sadık` κ **0,534**, `atıf_temiz` κ **0,409** — ikisi de **hiç yeniden
+  ölçülmedi** ve aracın `0,6` eşiğinin **altında kalmaya devam ediyor**. Kapanan, κ'nın kendisi
+  değil, ADR-0074'ün dar koşuluydu (eşit sınav yokluğu).
+- **Panel hâlâ İKİ aileli, üç değil** ([ADR-0032](docs/adr/0032-hakem-paneli-uc-aile-ve-aile-dislama.md)'den
+  sapma sürüyor, bütçe nedeniyle) — bu **eksiklik olarak** yazılı kalır, `v1.0` bunu gidermez.
+- **Kütle manşeti hâlâ koşulsuz bir ARALIKTIR** (`%69,4-80,1`, `claude-sonnet-5` ↔
+  `gpt-4o-mini`) — `v1.0` bu aralığı tek sayıya indirmez.
+⇒ `v1.0`, *"ölçüm aygıtı artık iki bağımsız hakem ailesiyle aynı yönde hükmediyor ve
+ağırlıklar herkese açık"* demektir; *"model daha iyi"* ya da *"ölçüm kesinleşti"* **demez**.
 
 ---
 
@@ -886,7 +929,7 @@ revizyondan** `sha256` + bayt sayısı kapısının arkasından çeker; kapı tu
 olur ve **iki daemon da hiç başlamaz**.
 
 ```bash
-export HF_TOKEN=...                # ağırlık deposu ÖZEL — tokensız 401
+export HF_TOKEN=...                # 2026-09-13'ten beri OPSİYONEL — depo artık PUBLIC
 export HAKHUKUK_INDEKS_DEPO=...    # varsayılanı bilerek BOŞ (aşağıya bakın)
 docker compose up
 ```
@@ -895,10 +938,10 @@ docker compose up
 | :--- | :--- |
 | API | `127.0.0.1:8000` |
 | `llama-server` | `127.0.0.1:8080` |
-| `HF_TOKEN` | **zorunlu** — depo bugün **özeldir**; tanımsızsa compose hiçbir şey başlatmadan **önce** hata verir |
+| `HF_TOKEN` | **opsiyonel** — depo **2026-09-13'ten beri public**; tanımsız kalması yalnız hız sınırını düşürür, compose'u durdurmaz |
 | `HAKHUKUK_INDEKS_DEPO` | **bilerek boş** — `G8` (indeks dağıtımı) bekletiliyor ⇒ yayımlanmış indeks deposu **yok**. İndeks ya volume'e elle konur ya depo adı verilir; aksi hâlde `indir` kutusu **kasten** patlar |
 | gereksinim | NVIDIA GPU + Docker. Ölçülen ortam: Docker **28.4.0** · compose **v2.39.4-desktop.1** · RTX 5070 Ti Laptop **12227 MiB** · sürücü **591.97**. `gpus: all` anahtarı compose **v2.30+** ister |
-| imaj etiketi | `hakhukuk:0.3.0` — **ürünün** sürümü ([`pyproject.toml`](pyproject.toml)). Bu kartın öznesi olan model artefaktı hâlâ **`HakHukuk-4B-v0.1`**'dir; sürümleme **bölünmüştür** ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)) |
+| imaj etiketi | `hakhukuk:1.0.0` — **ürünün** sürümü ([`pyproject.toml`](pyproject.toml)). Bu kartın öznesi olan model artefaktı hâlâ **`HakHukuk-4B-v0.1`**'dir; sürümleme **bölünmüştür** ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)) |
 
 İki daemon da yalnız host'un `127.0.0.1`'ine yayımlar; kimlik doğrulama ve hız sınırı **yoktur**
 (`S9` açılmadı).

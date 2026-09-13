@@ -7,7 +7,7 @@
 
 ## Weights
 
-> **Note (2026-09-09):** the weights repository is temporarily **private** while open defects are being resolved. The link below will 404 until it is made public again.
+> ~~**Note (2026-09-09):** the weights repository is temporarily **private** while open defects are being resolved. The link below will 404 until it is made public again.~~ → **Made PUBLIC on 2026-09-13** (step 9 of the `v1-son-iş` round, defect 10 closed — [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md)). Verified with a token-less subprocess: `sha256` matched byte for byte.
 
 Published 2026-09-09: [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) — a single GGUF,
 `HakHukuk-4B-v0.3-Q4_K_M.gguf`, 2.783.446.720 bytes (2,592 GiB),
@@ -45,7 +45,7 @@ below cannot yet be handed to a stranger.
 
 | piece | status | evidence (measured, 2026-09-12) |
 | :--- | :--- | :--- |
-| Model weights (Q4_K_M GGUF, **2.59 GiB**) | **published** 2026-09-09 — but the repository is **private today**, so an `HF_TOKEN` with access to it is required | `Rfetha/HakHukuk-4B-v0.3-Q4_K_M`, a single file, **2,783,446,720 bytes**, `sha256 755e15e9…86e7bffc`. The identity gate is [`hakhukuk/indir.py`](hakhukuk/indir.py) (`GGUF_SHA256` · `GGUF_BAYT`); it **fired and held** on the container run · [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
+| Model weights (Q4_K_M GGUF, **2.59 GiB**) | **published** 2026-09-09, **repository PUBLIC since 2026-09-13** — no `HF_TOKEN` needed | `Rfetha/HakHukuk-4B-v0.3-Q4_K_M`, a single file, **2,783,446,720 bytes**, `sha256 755e15e9…86e7bffc`. The identity gate is [`hakhukuk/indir.py`](hakhukuk/indir.py) (`GGUF_SHA256` · `GGUF_BAYT`); it **fired and held** on the container run · [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
 | Retrieval index (**40,496** articles) | **the one blocker.** Exists locally, is **not in git**, and is **published nowhere**: the distribution decision was taken (an HF dataset) and then **not executed**, because the corpus is about to grow 8.4× | `git ls-files data/index` → **2 `KUNYE.json` files and nothing else**; `du -sh data/index/mevzuat_bge_m3_s2` → **80 MB**. The two-way index path (volume first, HF second) is [ADR-0078, clause 4](docs/adr/0078-konteyner-dagitimi-rejim-kilidi.md); with neither present, `indir` **deliberately** exits non-zero and prints the exact path |
 | Serving layer (API / CLI / TUI) | **exists as code and runs.** `pip install -e .` produces three commands; the container path answered real questions end to end | `git ls-files hakhukuk/` → **11 files** (`cli.py` · `tui.py` · `api.py` · `servis.py` · `araclar.py` · `terazi.py` · `istem.py` · `tipler.py` · `indir.py`) · [`pyproject.toml`](pyproject.toml) `[project.scripts]` → `hakhukuk` · `hakhukuk-tui` · `hakhukuk-api` · `pytest tests/` → **281 passed, 2 xfailed** |
 | Prompt | **a shippable artifact**, no longer a copy inside the measurement scripts: [`hakhukuk/istem.py`](hakhukuk/istem.py) is the single source | the measurement pipeline imports it too (`scripts/olcum_uretim/gen_eval_grounded.py:55` → `from hakhukuk.istem import …`); [`tests/test_istem.py`](tests/test_istem.py) is a gate — change the text without raising `ISTEM_SURUMU` / `DAMGA_v1` and it fails |
@@ -56,10 +56,15 @@ With an `HF_TOKEN` and an index directory of your own, the container path below 
 
 **And it does not reproduce `0.8011`.** That figure belongs to the **measurement pipeline**; the
 container carries the **product path** (see below). Packaging itself is done: the **product
-version is `v0.3`** (tagged 2026-09-09, [`pyproject.toml`](pyproject.toml)) while the model
+version is `v1.0`** (tagged 2026-09-13, [`pyproject.toml`](pyproject.toml)) while the model
 artifact is still `HakHukuk-4B-v0.1` — versioning is deliberately split
-([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)). `v1.0` was **not** granted, and the blocker is
-the measuring instrument, not the model ([ADR-0077](docs/adr/0077-v1-0-verilmedi-v0-3.md)).
+([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)). ⚠️ **`v1.0` does NOT mean the model got
+better** — the weights never changed (`sha256` identical to `v0.3`'s). It means the release
+gate's three clauses were re-read under a **second, independent judge family** and passed again
+([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)); κ itself is
+**unchanged** (`0.534`/`0.409`, still below the tool's 0.6 threshold) and the judge panel is
+still **two** families, not three (ADR-0032). See [`MODEL_CARD.md`](MODEL_CARD.md) §5 for the
+full account of what closed and what did not.
 
 → **The container path:** [`docker compose up`](#running-it-with-docker-compose--the-container-path).
 **Verified end to end on 2026-09-11:** `indir` exited **0**, `llama` went **healthy**, `app` came
@@ -94,7 +99,7 @@ CPU `app` daemon. If the gate does not hold, `indir` exits non-zero and **neithe
 starts**.
 
 ```bash
-export HF_TOKEN=...                # the weights repo is PRIVATE — without a token: 401
+export HF_TOKEN=...                # OPTIONAL since 2026-09-13 — the weights repo is PUBLIC now
 export HAKHUKUK_INDEKS_DEPO=...    # see below — deliberately EMPTY by default
 docker compose up
 ```
@@ -103,10 +108,10 @@ docker compose up
 | :--- | :--- |
 | API | `127.0.0.1:8000` |
 | `llama-server` | `127.0.0.1:8080` |
-| `HF_TOKEN` | **required.** [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) is **private** today; if it is undefined, compose fails **before** starting anything |
+| `HF_TOKEN` | **optional.** [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) has been **public since 2026-09-13**; an unset token only means slower, unauthenticated rate limits, not a failure |
 | `HAKHUKUK_INDEKS_DEPO` | **deliberately empty.** `G8` (index distribution) is on hold, so **no published index repository exists**. Either place the index in the volume by hand or name a repository — otherwise the `indir` box fails **on purpose** |
 | requirements | an NVIDIA GPU + Docker. Measured environment: Docker **28.4.0** · compose **v2.39.4-desktop.1** · RTX 5070 Ti Laptop **12227 MiB** · driver **591.97**. The `gpus: all` key needs compose **v2.30+** |
-| image tag | `hakhukuk:0.3.0` — the **product** version ([`pyproject.toml`](pyproject.toml)). The model artifact is still `HakHukuk-4B-v0.1`: versioning is split ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)) |
+| image tag | `hakhukuk:1.0.0` — the **product** version ([`pyproject.toml`](pyproject.toml)). The model artifact is still `HakHukuk-4B-v0.1`: versioning is split ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)) |
 
 **Both daemons publish to the host's `127.0.0.1` only.** There is no authentication and no rate
 limit: this is a local, single-user deployment, and hosting remains open decision `S9`.

@@ -7,7 +7,7 @@
 
 ## Ağırlıklar
 
-> **Not (2026-09-09):** ağırlık deposu, açık kusurlar giderilene kadar geçici olarak **özeldir**. Aşağıdaki bağlantı yeniden herkese açılana dek 404 verecektir.
+> ~~**Not (2026-09-09):** ağırlık deposu, açık kusurlar giderilene kadar geçici olarak **özeldir**. Aşağıdaki bağlantı yeniden herkese açılana dek 404 verecektir.~~ → **2026-09-13'te PUBLIC yapıldı** (`v1-son-iş` turunun 9. adımı, kusur 10 kapandı — [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md)). Token'sız bir alt süreçle doğrulandı: `sha256` bayt bayt tuttu.
 
 2026-09-09'da yayımlandı: [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) — tek GGUF,
 `HakHukuk-4B-v0.3-Q4_K_M.gguf`, 2.783.446.720 bayt (2,592 GiB),
@@ -46,7 +46,7 @@ teslim edilebilir durumda değildir.
 
 | parça | durum | kanıt (ölçüldü, 2026-09-12) |
 | :--- | :--- | :--- |
-| Model ağırlıkları (Q4_K_M GGUF, **2,59 GiB**) | 2026-09-09'da **yayımlandı** — ama depo **bugün özeldir**, dolayısıyla erişimi olan bir `HF_TOKEN` gerekir | `Rfetha/HakHukuk-4B-v0.3-Q4_K_M`, tek dosya, **2.783.446.720 bayt**, `sha256 755e15e9…86e7bffc`. Kimlik kapısı [`hakhukuk/indir.py`](hakhukuk/indir.py)'dir (`GGUF_SHA256` · `GGUF_BAYT`) ve konteyner koşusunda **ateşlendi ve tuttu** · [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
+| Model ağırlıkları (Q4_K_M GGUF, **2,59 GiB**) | 2026-09-09'da **yayımlandı**, depo **2026-09-13'ten beri PUBLIC** — `HF_TOKEN` gerekmez | `Rfetha/HakHukuk-4B-v0.3-Q4_K_M`, tek dosya, **2.783.446.720 bayt**, `sha256 755e15e9…86e7bffc`. Kimlik kapısı [`hakhukuk/indir.py`](hakhukuk/indir.py)'dir (`GGUF_SHA256` · `GGUF_BAYT`) ve konteyner koşusunda **ateşlendi ve tuttu** · [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
 | Erişim indeksi (**40.496** madde) | **tek gerçek tıkaç.** Yerelde var, **git'te yok** ve **hiçbir yerde yayımlanmadı**: dağıtım kararı verildi (HF dataset) ama **koşulmadı**, çünkü korpus 8,4× büyümek üzere | `git ls-files data/index` → **2 `KUNYE.json`, başka hiçbir şey**; `du -sh data/index/mevzuat_bge_m3_s2` → **80 MB**. İki yollu indeks (önce volume, sonra HF) [ADR-0078 madde 4](docs/adr/0078-konteyner-dagitimi-rejim-kilidi.md)'tür; ikisi de yoksa `indir` **kasten** sıfırdan farklı kodla çıkar ve tam yolu yazar |
 | Servis katmanı (API / CLI / TUI) | **kod olarak var ve çalışıyor.** `pip install -e .` üç komut üretir; konteyner yolu uçtan uca gerçek soru cevapladı | `git ls-files hakhukuk/` → **11 dosya** (`cli.py` · `tui.py` · `api.py` · `servis.py` · `araclar.py` · `terazi.py` · `istem.py` · `tipler.py` · `indir.py`) · [`pyproject.toml`](pyproject.toml) `[project.scripts]` → `hakhukuk` · `hakhukuk-tui` · `hakhukuk-api` · `pytest tests/` → **281 passed, 2 xfailed** |
 | İstem (prompt) | **dağıtılabilir artefakt**; artık ölçüm script'lerinin içindeki bir kopya değil: [`hakhukuk/istem.py`](hakhukuk/istem.py) **tek kaynaktır** | ölçüm hattı da onu içe aktarır (`scripts/olcum_uretim/gen_eval_grounded.py:55` → `from hakhukuk.istem import …`); [`tests/test_istem.py`](tests/test_istem.py) bir kapıdır — metni `ISTEM_SURUMU` / `DAMGA_v1` yükseltmeden değiştirirsen düşer |
@@ -56,11 +56,16 @@ teslim edilebilir durumda değildir.
 ve kendi indeks dizininizle aşağıdaki konteyner yolu koşar.
 
 **Ve `0,8011`'i yeniden üretmez.** O sayı **ölçüm hattınındır**; konteyner **ürün yolunu**
-taşır (aşağıya bakın). Paketlemenin kendisi bitmiştir: **ürün sürümü `v0.3`**'tür
-(2026-09-09'da etiketlendi, [`pyproject.toml`](pyproject.toml)), model artefaktı ise hâlâ
+taşır (aşağıya bakın). Paketlemenin kendisi bitmiştir: **ürün sürümü `v1.0`**'dur
+(2026-09-13'te etiketlendi, [`pyproject.toml`](pyproject.toml)), model artefaktı ise hâlâ
 `HakHukuk-4B-v0.1`'dir — sürümleme bilerek bölünmüştür
-([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)). `v1.0` **verilmedi** ve tıkaç modelde değil,
-ölçüm aletindedir ([ADR-0077](docs/adr/0077-v1-0-verilmedi-v0-3.md)).
+([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)). ⚠️ **`v1.0` "model iyileşti" DEMEZ** —
+ağırlıklar hiç değişmedi (`sha256` `v0.3` ile birebir aynı). Kapanan şey, kapının üç
+maddesinin **ikinci, bağımsız bir hakem ailesi altında da** yeniden okunup GEÇMESİdir
+([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)); κ'nın kendisi
+**değişmedi** (`0,534`/`0,409`, aracın `0,6` eşiğinin hâlâ altında) ve hakem paneli hâlâ
+**iki** aileli, üç değil (ADR-0032). Kapanan ve kapanmayan her şeyin tam dökümü
+[`MODEL_CARD.md`](MODEL_CARD.md) §5'te.
 
 → **Konteyner yolu:** [`docker compose up`](#konteynerle-çalıştırma--docker-compose-up).
 **Uçtan uca DOĞRULANDI 2026-09-11:** `indir` **çıkış 0** ile bitti, `llama` **healthy** oldu,
@@ -94,7 +99,7 @@ daemon'u ve CPU'daki `app` daemon'u. Kapı tutmazsa `indir` sıfırdan farklı k
 **iki daemon da hiç başlamaz**.
 
 ```bash
-export HF_TOKEN=...                # ağırlık deposu ÖZEL — tokensız 401
+export HF_TOKEN=...                # 2026-09-13'ten beri OPSİYONEL — ağırlık deposu artık PUBLIC
 export HAKHUKUK_INDEKS_DEPO=...    # aşağıya bakın — varsayılanı bilerek BOŞ
 docker compose up
 ```
@@ -103,10 +108,10 @@ docker compose up
 | :--- | :--- |
 | API | `127.0.0.1:8000` |
 | `llama-server` | `127.0.0.1:8080` |
-| `HF_TOKEN` | **zorunlu.** [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) bugün **özeldir**; tanımsızsa compose hiçbir şey başlatmadan **önce** hata verir |
+| `HF_TOKEN` | **opsiyonel.** [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) **2026-09-13'ten beri public**; tanımsız kalması yalnız hız sınırını düşürür, hata vermez |
 | `HAKHUKUK_INDEKS_DEPO` | **bilerek boş.** `G8` (indeks dağıtımı) bekletiliyor ⇒ **yayımlanmış indeks deposu yok**. İndeks ya volume'e elle konur ya depo adı verilir; aksi hâlde `indir` kutusu **kasten** patlar |
 | gereksinim | NVIDIA GPU + Docker. Ölçülen ortam: Docker **28.4.0** · compose **v2.39.4-desktop.1** · RTX 5070 Ti Laptop **12227 MiB** · sürücü **591.97**. `gpus: all` anahtarı compose **v2.30+** ister |
-| imaj etiketi | `hakhukuk:0.3.0` — bu **ürünün** sürümüdür ([`pyproject.toml`](pyproject.toml)). Model artefaktı hâlâ `HakHukuk-4B-v0.1`'dir: sürümleme **bölünmüştür** ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)) |
+| imaj etiketi | `hakhukuk:1.0.0` — bu **ürünün** sürümüdür ([`pyproject.toml`](pyproject.toml)). Model artefaktı hâlâ `HakHukuk-4B-v0.1`'dir: sürümleme **bölünmüştür** ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)) |
 
 **İki daemon da yalnız host'un `127.0.0.1`'ine yayımlar.** Kimlik doğrulama ve hız sınırı
 **yoktur**: bu yerel ve tek kullanıcılık bir kurulumdur; barındırma `S9` olarak açık durur.

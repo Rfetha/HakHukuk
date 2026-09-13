@@ -3,7 +3,7 @@
 # ⚠️ Sürümler `requirements.lock.txt` ve kurulu ortamdan OKUNARAK yazıldı, tahmin edilmedi.
 [project]
 name = "hakhukuk"
-version = "0.3.0"
+version = "1.0.0"
 description = "Açık kaynak Türk hukuku asistanı — vatandaşın sorabileceği hukuk danışmanı"
 readme = "README.md"
 requires-python = ">=3.11"

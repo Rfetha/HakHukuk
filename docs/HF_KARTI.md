@@ -19,6 +19,13 @@ Türkçe mevzuat için, tüketici sınıfı bir dizüstü GPU'sunda çalışan 4
 asistanı. İki LoRA kolu ham temel modelden bağımsız eğitilmiş, görev vektörü olarak ham TIES
 ile birleştirilmiş ve Q4_K_M'e kuantize edilmiştir.
 
+> **Dosya adı `v0.3` — sürüm etiketi `v1.0`. İkisi AYNI ŞEY DEĞİLDİR.** Bu depodaki dosya
+> (`HakHukuk-4B-v0.3-Q4_K_M.gguf`, `sha256 755e15e9…86e7bffc`) **hiç değişmedi** ve adı
+> **kasten değişmeyecek** — değişmemiş bir dosyaya yeni sürüm adı vermek yanıltıcıdır. Buna
+> karşın **ürün/iddia sürümü artık `v1.0`'dır** (2026-09-13): sürüm kapısının üç maddesi
+> **ikinci, bağımsız bir hakem ailesi altında da** yeniden okundu ve geçti. Bu, **modelin
+> iyileştiği anlamına gelmez** — bkz. §6.
+
 Bu kart, ölçülen değerleri ve ölçülmeyen sınırları birlikte bildirmek üzere yazılmıştır.
 Aşağıdaki üç bölüm, modeli indirmeden önce okunması gereken kısıtları içerir.
 
@@ -124,26 +131,34 @@ da daha düşük oranda kullanmaktadır.
   Bu belgedeki tüm tekil `0,8011` değerleri **GÖZ-katı, bağlayıcı** okumadır (`gpt-4o-mini`);
   ikinci ailenin okuması aralığın alt ucudur, ayrı yazılır.
 
-## 6. Sürüm neden v1.0 değil
+## 6. Sürüm artık v1.0 — ne değişti, ne değişmedi
 
-Sürüm kapısının üç maddesi geliştirme kümesinde geçilmiş ve kabul testi koşulmuştur. **v1.0
-adı yine de verilmemiştir** — hüküm *"kapı geçti"*dir, *"v1.0 verildi"* değildir. Dört sınır
-birlikte okunmalı:
+Sürüm kapısının üç maddesi geliştirme kümesinde geçilmiş ve kabul testi koşulmuştur.
+**2026-09-13'te `v1.0` etiketi insan onayıyla verildi** — ama hüküm *"ölçüm aygıtı iki
+bağımsız hakem ailesiyle de aynı yönde hükmediyor ve ağırlıklar herkese açık"*tır,
+*"model iyileşti"* **değildir**. Aşağıdaki dört sınır birlikte okunmalı — hiçbiri `v1.0` ile
+ortadan kalkmadı:
 
-- **Manşet artık koşulsuz ARALIKTIR: `%69,4-80,1`** (`claude-sonnet-5` ↔ `gpt-4o-mini`,
+- **Manşet hâlâ koşulsuz bir ARALIKTIR: `%69,4-80,1`** (`claude-sonnet-5` ↔ `gpt-4o-mini`,
   [ADR-0084](adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)). İki bağımsız hakem
   ailesi aynı 80 cevabı puanladığında kütle **0,8011 → 0,6940** düşüyor; sayının **hakem
-  seçimine duyarlı olduğu ölçülmüştür**.
-- **İki hakem ailesi artık aynı yönde hükmediyor, ama uyum zayıf kaldı:** κ **0,534/0,409**
-  (`tam_sadık`/`atıf_temiz`), aracın **0,6** eşiğinin altında.
-- **Panel İKİ aileli kaldı, üç değil** ([ADR-0032](adr/0032-hakem-paneli-uc-aile-ve-aile-dislama.md)
-  üçüncü aileyi — Google — öngörüyordu); sapmanın sebebi bütçe. Öz-tercih **genel olarak
-  ölçülmedi** — yalnız Anthropic ailesi için tek hücrelik bir gösterge var (kayırma **lehine
-  değil**, ters yönde).
+  seçimine duyarlı olduğu ölçülmüştür** ve `v1.0` bu aralığı tek sayıya indirmez.
+- **İki hakem ailesi aynı yönde hükmediyor, ama uyum hâlâ zayıf:** κ **0,534/0,409**
+  (`tam_sadık`/`atıf_temiz`) — **hiç yeniden ölçülmedi** ve aracın **0,6** eşiğinin altında
+  kalmaya devam ediyor. Kapanan şey κ'nın kendisi değil, ADR-0074'ün dar koşuluydu (`3.5
+  Flash`'ın aynı ikinci hakemle puanlanması — bu koşuldu ve karşılandı).
+- **Panel hâlâ İKİ aileli, üç değil** ([ADR-0032](adr/0032-hakem-paneli-uc-aile-ve-aile-dislama.md)
+  üçüncü aileyi — Google — öngörüyordu); sapmanın sebebi bütçe ve `v1.0` bunu gidermedi. Öz-tercih
+  **genel olarak ölçülmedi** — yalnız Anthropic ailesi için tek hücrelik bir gösterge var (kayırma
+  **lehine değil**, ters yönde).
 - **Donmuş TEST tek hakemli kaldı** (`gpt-4o-mini`, κ ölçülmedi): kabul testi koşuldu (ham
-  kütle 0,5804, tavan `recall@10` 0,7500) ama ikinci bir hakem ailesiyle **doğrulanmadı**.
+  kütle 0,5804, tavan `recall@10` 0,7500) ama ikinci bir hakem ailesiyle **doğrulanmadı** ve
+  bu turda da doğrulanmadı (insan kararı — donmuş TEST tek hakemli kalır).
 
-Sürümü sınırlayan etken modelin başarımı değil, ölçüm aygıtının güvenilirliğidir.
+Ağırlıklar bu turda **hiç değişmedi** — bu depodaki dosyanın `sha256`'sı `v0.3` etiketiyle
+yayımlanan dosyayla **birebir aynıdır** (bkz. bölüm 9). `v1.0`, model performansındaki bir
+ilerlemeyi değil, ölçüm aygıtının güvenilirliğindeki bir ilerlemeyi bildirir — ve o
+güvenilirlik hâlâ κ eşiğinin altındadır.
 
 ## 7. Karşılaştırma — skor kartı
 
@@ -289,7 +304,9 @@ ablasyondur; ölçüm, önceki kararın çıkarımını tersine çevirmiştir.
   açıktır.
 - Yanlış kaynağa atıf oranı 0,0769'dur (Sonnet-5: 0,0083). Model madde numarası
   uydurmamakta, ancak mevcut ve yanlış maddeye atıf yapabilmektedir. Açık borç.
-- Bildirilen her değer tek hakem ailesinin hükmüdür; κ eşiğin altındadır.
+- Manşet ekseni (kütle) iki bağımsız hakem ailesiyle okunmuştur (§6); tablodaki diğer değerler
+  hâlâ tek hakem ailesinin hükmüdür. Panel iki aileli kalmıştır, üç değil; κ **0,534/0,409**,
+  aracın **0,6** eşiğinin altındadır ve bu turda yeniden ölçülmemiştir.
 
 Örnek soru-cevap çıktıları için bu depodaki `ORNEK_CEVAPLAR.md` dosyasına bakınız. Tam
 araştırma kaydı, reddedilen alternatifler ve her değerin kaynağı
