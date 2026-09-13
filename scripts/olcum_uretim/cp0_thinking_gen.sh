@@ -90,6 +90,29 @@ KV_V="q8_0"
 if [ -n "$SERVER_URL" ]; then KV_KUNYE="BİLİNMİYOR (dış sunucu)"; else KV_KUNYE="$KV_K/$KV_V"; fi
 # --- /KV kimliği ------------------------------------------------------------
 
+# --- model kimliği doğrulama (tuzak 7.8) ------------------------------------
+# 7.8 fiilen ısırdı (2026-09-12): $PORT'ta BAŞKASININ sunucusu vardı (konteynerin
+# llama-server'ı); health-check onu "sunucu ayakta" saydı ve 8 kalem YANLIŞ MODELE karşı
+# üretildi — hiçbir yerde hata vermeden. Port dinliyor olması KANIT DEĞİLDİR: hangi GGUF'un
+# servis edildiği `/v1/models`'tan okunup betiğin açmak istediği GGUF ile karşılaştırılır.
+dogrula_model_kimligi() {
+  local yanit beklenen gorulen
+  yanit="$(curl -sf "$SERVER_URL/models")" || die "$SERVER_URL/models okunamadı — sunucu yok ya da bozuk"
+  beklenen="$(basename "$GGUF")"
+  gorulen="$(printf '%s' "$yanit" | python3 -c '
+import json, sys
+try:
+    print(json.load(sys.stdin)["data"][0]["id"])
+except Exception:
+    pass' 2>/dev/null)"
+  [ -n "$gorulen" ] || die "$SERVER_URL/models beklenmeyen biçimde yanıt verdi: $yanit"
+  case "$gorulen" in
+    *"$beklenen"*) : ;;
+    *) die "PORT BAŞKA BİR MODELİ servis ediyor (tuzak 7.8) — beklenen '$beklenen', görülen '$gorulen'; port dinliyor olması kanıt değildir" ;;
+  esac
+}
+# --- /model kimliği doğrulama ------------------------------------------------
+
 echo "### künye"
 echo "  gguf      : $GGUF"
 # Why künyeye: bayrağı elle koşuya gömmek bu hattın en pahalı tuzak sınıfıdır
@@ -108,6 +131,8 @@ echo
 stop_server() { :; }
 if [ -n "$SERVER_URL" ]; then
   echo "ℹ️  var olan sunucu kullanılıyor: $SERVER_URL (yeni süreç açılmadı)"
+  dogrula_model_kimligi
+  echo "✅ $SERVER_URL doğru modeli servis ediyor: $(basename "$GGUF")"
 else
   SERVER_URL="http://127.0.0.1:$PORT/v1"
   "$BIN" -m "$GGUF" -ngl "$NGL" -fa on --no-context-shift \
@@ -123,6 +148,7 @@ else
     sleep 2
   done
   curl -sf "http://127.0.0.1:$PORT/health" >/dev/null 2>&1 || { tail -25 "$LOG"; die "sunucu 240s'te açılmadı"; }
+  dogrula_model_kimligi
   echo "✅ llama-server hazır (pid $SRV, log $LOG)"
 fi
 echo
