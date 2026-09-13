@@ -12,6 +12,19 @@
 > [`TODO.md`](TODO.md) — only what is runnable today · [`docs/MIMARI.md`](docs/MIMARI.md) — the `v1`
 > chain. `tests/test_belgeler.py` walks every link in them, so a dead pointer now FAILS a test.
 >
+> **COMPACTED 2026-09-13 (human decision — read this before chasing any `docs/record/` or `docs/adr/` path).**
+> The record layer went from **103 files · 1.40 MB** to **12 files · 608 KB**
+> ([ADR-0086](docs/adr/kararlar-0064-0085.md#adr-0086)). `docs/record/research_log/` is **gone** —
+> its 33 entries live in `kronoloji-39-52.md` · `kronoloji-53-62.md` · `kronoloji-63-71.md`; the 58
+> individual `docs/adr/NNNN-*.md` files are **gone** — they live in `kararlar-0027-0044.md` ·
+> `kararlar-0045-0063.md` · `kararlar-0064-0085.md`. **Every number was preserved verbatim** and
+> **every citation still resolves**: each entry carries an HTML anchor, so `ADR-0057` →
+> `kararlar-0045-0063.md#adr-0057` and log entry `#70` → `kronoloji-63-71.md#70`. Older prose that
+> says *"`research_log` #42"* means *"chronology #42"*. Four redundant documents were deleted
+> (`2026-09-10-hp-hat-a-hat-b-kapanan-gorevler.md` · `sprint2/defter.md` · `sprint1/`); recover any
+> of it with `git show 301a82f:<path>`. **`outputs/eval/**` was deliberately NOT rewritten** — it
+> records *"on that day it was run from this path"*, the same precedent as ADR-0083 §(D).
+>
 > **Emptied 2026-09-12:** `docs/superpowers/` carried two specs and three plans; **all five were
 > deleted** when the `hp` → Hat A → Hat B plan closed at **115/115**. Their load-bearing content —
 > the register of **32 defects**, the handover table, and the architectural core of the deleted
@@ -209,10 +222,10 @@ thing (OFF hands the model the gold article by construction).
 
 | you want | read |
 | :--- | :--- |
-| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries **#39-#71** |
+| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries **#39-#71**, in three chronology files with per-entry anchors |
 | what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — `v1-son-iş` **CLOSED 2026-09-13** ([plan](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71), `v1.0` tagged. Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round · direction in [`ROADMAP.md`](ROADMAP.md) |
 | the open debt queue | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) §(A) register + §(C) handover — **4 open** (5a · 23 · 27 · 31; five of the original nine — 24 · 29 · 33 · 25 · 10 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
-| why a decision went the way it did | [`docs/adr/`](docs/adr/) — ledger runs to **0085**, next is **0086** |
+| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with its anchor; ledger runs to **0086**, next is **0087** |
 | questions raised and not yet answered | the nine items that go **into the grill**, [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) §EK E.5 *(they passed through `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted)* |
 
 **Two things a new session must not get wrong** (both were *measured*, not assumed):
@@ -317,7 +330,7 @@ decision ledger.
 
 ### Read before doing anything
 
-- **[`docs/record/yurutme-tuzaklari.md`](docs/record/yurutme-tuzaklari.md) — before ANY run.**
+- **[`docs/record/yurutme-tuzaklari.md`](docs/record/yurutme-tuzaklari.md) — before ANY run. 85 traps, every one of which has actually bitten.**
   The list of *"produces a wrong number without erroring"* patterns, every one of which has
   actually bitten: dropped `--data`/`--thinking off`, uncalibrated refusal regex, missing
   `--target-modules`, `set -e` swallowing the error, half-finished quantization that still leaves
@@ -340,7 +353,7 @@ decision ledger.
   base/ours/Gemini table under an explicit **"NOT a parity claim"** banner.
 - [`docs/record/README.md`](docs/record/README.md) — the chronological
   record, **authoritative for "what happened."** New findings continue at **#72**.
-- [`docs/adr/`](docs/adr/) — new decisions get a new ADR; numbering continues at **0086**.
+- [`docs/adr/README.md`](docs/adr/README.md) — the ADR index (one line each, with anchors). A new decision is **appended to `kararlar-0064-0085.md`** with its own `<a id="adr-NNNN"></a>`; numbering continues at **0087**.
   **0059 is RESERVED** — the round's `τ_a` v2 data-symmetry ADR, written in Görev 10. Six
   places already cite `ADR-0059 §sapma-1`; do not take that number for anything else.
 
@@ -385,7 +398,7 @@ stronger:** this is an **intermittent solo OSS project**. Weeks can pass between
 repo is the only thing that remembers. It is also what a public project owes its readers — the
 research record is the most valuable thing here, more than the weights.
 
-- **Every significant experiment, result, or decision → write it down immediately**, while context is fresh. Two homes: `docs/record/README.md` (chronological narrative + numbers + lesson) and `docs/adr/` (a discrete ADR per big decision). A finding that lives only in chat is a finding lost.
+- **Every significant experiment, result, or decision → write it down immediately**, while context is fresh. Two homes: the chronology under `docs/record/` (narrative + numbers + lesson, appended to the newest `kronoloji-*.md` with an `<a id="NN"></a>` anchor) and `docs/adr/` (a discrete ADR section per big decision, appended to the newest `kararlar-*.md` with an `<a id="adr-NNNN"></a>` anchor). A finding that lives only in chat is a finding lost.
 - **Numbers are sourced, not remembered.** Record the exact metric, n, judge, seed, and the file the result lives in (`outputs/eval/...`). Reproducibility is the point — it makes an OSS release verifiable and keeps the arxiv door open as a side effect.
 - **Negative/surprising results are first-class** — log them with the same rigor as wins. Several of this line's most useful findings are refutations of its own plans.
 - When a decision contradicts an older doc, **flag the contradiction in both places** rather than silently overwriting — the audit trail is the asset.
