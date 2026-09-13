@@ -642,19 +642,11 @@ Artık zorunlu argüman **ve render'a karşı assert ediliyor.**
 
 # BÖLÜM C — Ham kayda giriş noktaları
 
-Yalnız altı `research_log` girdisi okuyacaksan bunlar:
-
-| # | başlık | neden |
-| :-- | :--- | :--- |
-| `#02` | v0 forum verisi → başarısız | kaynaksız veri ne yapar |
-| `#07` | benchmark run | SFT abstention'ı yok etti |
-| `#08` | CANON metodolojisi | ölçüm çerçevesinin doğuşu |
-| `#24` | v2c red kararı | Grounding-Abstention paradoksu |
-| `#36` | tez çerçeve değişimi | içeri-dönük → dışarı-dönük |
-| `#38` | şablon tuzağı | sessiz başarısızlığın anatomisi |
-
-**12B hattının tam sayıları:** repo içinde [`docs/record/gemma4-12b-kronoloji.md`](../record/gemma4-12b-kronoloji.md) ·
+**12B hattının tam sayıları:** [`docs/record/gemma4-12b-kronoloji.md`](../record/gemma4-12b-kronoloji.md)
+(en kritik altı girdi `#02` kaynaksız veri · `#07` SFT abstention'ı yok etti · `#08` CANON'un doğuşu ·
+`#24` Grounding-Abstention paradoksu · `#36` çerçeve değişimi · `#38` sessiz şablon tuzağı) ·
 ham SCORECARD: `git show a19fc25^:old-version-gemma4-12b/record/SCORECARD.md`
-⚠️ **Repo dışı devir paketi 2026-07-29'da silindi** ([ADR-0034](0034-emekli-hat-artefaktlarinin-repodan-cikarilmasi.md)
-üst notu): **LoRA adaptörleri (v0/v1/v2b/v2c/v3) ve `RECETELER_12B.md` kalıcı kayıp** — kasıtlı,
-o hat emekli. Tek kurtarma yolu **git geçmişi**; metin artefaktları orada tam.
+
+⚠️ **Repo dışı devir paketi 2026-07-29'da silindi** ([ADR-0034](#adr-0034) üst notu): **LoRA
+adaptörleri (v0/v1/v2b/v2c/v3) ve `RECETELER_12B.md` kalıcı kayıp** — kasıtlı, o hat emekli.
+Tek kurtarma yolu **git geçmişi**; metin artefaktları orada tam.
