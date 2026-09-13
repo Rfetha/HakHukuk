@@ -194,7 +194,7 @@ thing (OFF hands the model the gold article by construction).
 | you want | read |
 | :--- | :--- |
 | every measurement, dated, with its source file | [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — entries **#39-#70** |
-| what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — next is **`v1-son-iş`**, **plan not yet written** · direction in [`ROADMAP.md`](ROADMAP.md) |
+| what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — `v1-son-iş` is **IN EXECUTION** ([plan](docs/superpowers/plans/2026-09-12-v1-son-is.md), steps 7-9 remain) · direction in [`ROADMAP.md`](ROADMAP.md) |
 | the open debt queue | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A) register + §(C) handover — **6 open** (5a · 10 · 23 · 25 · 27 · 31; three of the original nine — 24 · 29 · 33 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
 | why a decision went the way it did | [`docs/adr/`](docs/adr/) — ledger runs to **0084**, next is **0085** |
 | questions raised and not yet answered | the nine items that go **into the grill**, [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK E.5 *(they passed through `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted)* |
