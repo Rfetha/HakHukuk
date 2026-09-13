@@ -1,61 +1,11 @@
 ═══════════════════════════════════════════════════════════════════
-DURUM  (güncellendi 2026-09-13, İŞ 1·2·3 KAPANDIKTAN sonra — geriye yalnız İŞ 4 kaldı)
+DURUM (2026-09-13) — bu dosyada yapılacak TEK iş: İŞ 4
 ═══════════════════════════════════════════════════════════════════
 
-`v1-son-iş` turu 2026-09-13'te **71/71 kapandı**:
-- Sürüm `v1.0` (git etiketi `v1.0`, açıklamalı). ⚠️ Bu bir MODEL İYİLEŞMESİ DEĞİL —
-  ağırlıklar hiç değişmedi (`sha256 755e15e9…`), κ hâlâ 0,534/0,409. Değişen şey ölçüm
-  aygıtı: ikinci hakem ailesi eklendi, eşit sınav kuruldu, kapının üç maddesi yeni birimde
-  geçti (ADR-0084 · kronoloji #70).
-- Ağırlıklar PUBLIC: depo **`Rfetha/HakHukuk-4B-GGUF`**, dosya
-  `HakHukuk-4B-v0.3-Q4_K_M.gguf` (dosya adı bilerek `v0.3` kaldı — ADR-0065 bölünmüş
-  sürümleme; içerik değişmediği için ad da değişmez).
-- İndeks PUBLIC: `Rfetha/HakHukuk-mevzuat-bge-m3-s2` (**G8 2026-09-12'de kapandı**).
-- Açık kusur 4: `5a · 23 · 27` → `v2` · `31` → kayıt. Hepsi adıyla devredildi.
-- Süit **335 geçti, 2 xfail**. Her şey `origin/master`'da.
-
-🔴 **AYNI GÜN İKİNCİ TUR KAPANDI — KAYIT KATMANI KOMPAKTLANDI (ADR-0086).**
-Bir yola gitmeden önce bunu oku:
-- `docs/record/` + `docs/adr/` = **103 dosya · 1,40 MB → 12 dosya · 608 KB** (~466 bin →
-  ~208 bin token).
-- `docs/record/research_log/` **YOK**. 33 girdi üç dosyada: `kronoloji-39-52.md` ·
-  `kronoloji-53-62.md` · `kronoloji-63-71.md`.
-- Tekil `docs/adr/NNNN-*.md` dosyaları **YOK**. 58 ADR üç dosyada: `kararlar-0027-0044.md` ·
-  `kararlar-0045-0063.md` · `kararlar-0064-0085.md` (ADR-0086 da sonuncusunun içinde).
-- **Her sayı birebir korundu, her atıf hâlâ çözülüyor**: her girdi bir HTML çapası taşır.
-  `ADR-0057` → `kararlar-0045-0063.md#adr-0057` · kronoloji `#70` → `kronoloji-63-71.md#70`.
-  Eski metinde geçen *"research_log #42"* = *"kronoloji #42"*.
-- `outputs/eval/**` **bilerek yeniden yazılmadı** — *"o gün bu yoldan koşuldu"*yu kaydeder
-  (emsal: ADR-0083 §D). Oradaki eski yolları onarma.
-- Geri alma noktası: `git show 301a82f:<yol>`.
-
-🟢 **ÜÇÜNCÜ TUR DA KAPANDI 2026-09-13 — bu promptun İŞ 1·2·3'ü BİTTİ. Tekrar yapma.**
-- **İŞ 1 ✅** `MODEL_CARD.md`'deki bayat `HAKHUKUK_INDEKS_DEPO` yorumu **tablonun lehine**
-  kapatıldı (`7ae2169`). `README.md` · `README.tr.md` greple denetlendi: **ikisi de zaten
-  temizdi** — iş listesinin kendisi bayattı, bu da bir bulgudur.
-- **İŞ 2 ✅** İnsan kararı **SİL** oldu (`docs/_arsiv/` açılmadı, ADR-0083 emsali). Dört
-  dosya silindi: `plans/2026-09-12-v1-son-is.md` · `plans/goal-2026-09-12-v1-son-is.md` ·
-  `plans/2026-09-13-kayit-katmani-kompaktlama.md` ·
-  `specs/2026-09-13-kayit-katmani-kompaktlama-design.md` (`bfb52ae`).
-  Silmeden **önce** yalnız o dosyalarda yaşayan **dört bulgu ADR-0086'ya taşındı**
-  (21 → 50 satır): tuzak defteri ≤25 KB kapısı tutturulamadı (52.472 → 43.779 bayt) ·
-  token hedefi aşıldı (~208 bin; spec ~190 bin, kapanış bloğu ~200 bin yazıyordu) ·
-  `gemma4-12b-kronoloji.md`'nin silinmeme gerekçesi · toptan yol değiştirmenin ADR-0024'ün
-  **kendi alıntısını** bozması ve geri alınması. `CLAUDE.md`'de iki markdown bağlantısı
-  *"silindi → ADR-0084/ADR-0086"* kalıbıyla etiketlendi; *"holds exactly one file"* cümlesi
-  **silinmedi**, üstüne 2026-09-13 damgası düşüldü (bugün yine tek dosya — ama arada dört
-  dosya taşıdı).
-- **İŞ 3 ✅** `00-IS-SIRASI.md` **224 → 104 satır** (`7d9bfd6`). Kapanan `v1-son-iş`
-  anlatısı çıktı; künyedeki her sayı **türetildi** (test → `pytest -q` · ADR → `adr/README.md`
-  · kronoloji → `record/README.md` · tuzak → `yurutme-tuzaklari.md` başlığı). Silinen her
-  bölümün kalıcı kayıttaki karşılığı **önce doğrulandı**; karşılığı olmayan bölüm çıkmadı.
-  Dosyada bugün **v2 starter prompt'un yerinde tek satırlık çengel** duruyor ve aşağıdaki
-  İŞ 4'ü işaret ediyor.
-
-⇒ **Bu dosyada yapılacak TEK iş kaldı: İŞ 4.** Klasörde canlı plan **yok**,
-`docs/superpowers/` yine **tek dosya** (`00-IS-SIRASI.md`).
-Kayıt: ADR **0001-0086** (yeni karar **0087**'den) · kronoloji **#01-#71** (yeni girdi
-**#72**'den) · tuzak defteri **85 satır**.
+İŞ 1 · İŞ 2 · İŞ 3 BİTTİ — tekrar yapma.
+⚠️ Başlamadan önce `docs/superpowers/00-IS-SIRASI.md`'yi oku: deponun durum
+kaynağı odur (sürüm · künye · iki aday · çapa atıf biçimi · bakım kuralı) ve
+İŞ 4 onun içine yazılacak. Klasörde canlı plan YOK.
 
 ═══════════════════════════════════════════════════════════════════
 İŞ 4 — v2 STARTER PROMPT'u yaz (00-IS-SIRASI içine)
@@ -122,7 +72,8 @@ BU DEPONUN BAĞLAYICI KURALLARI
   `docs/superpowers/` güncellenir.
 - `pytest -q` ile **335 geçti / 2 xfail** korunmalı. `tests/test_belgeler.py` ölü bağlantıyı
   KIRMIZI yapar.
-- Commit'ler mantıksal parçalara bölünür (dört iş = en az dört commit).
+- Commit'ler mantıksal parçalara bölünür (~~dört iş = en az dört commit~~ — geriye
+  tek iş kaldı: starter prompt tek commit).
 - `git add -A` **kullanma** — dosyaları adıyla ekle.
 
 ⛔ YAPMA: yeni ölçüm · hakem çağrısı · para harcama · HF'e yükleme/görünürlük değişikliği ·
@@ -133,6 +84,7 @@ sürüme/ağırlıklara/indekse/korpusa dokunma · korpus turuna ya da v2'ye **b
 BİTİRİNCE
 ═══════════════════════════════════════════════════════════════════
 
-`git push origin master`, ve bana şunu söyle: dört işin durumu · arşiv kararı ne oldu ·
-`CLAUDE.md`'nin altı bağlantısı ne oldu · `00-IS-SIRASI.md` kaç satıra indi · test sayısı ·
-gözüne çarpan başka bayatlık var mı.
+`git push origin master`, ve bana şunu söyle: starter prompt `00-IS-SIRASI.md`'nin
+neresine yazıldı · grill'e hangi girdileri taşıyor · hangi kararı grill'e BIRAKTI (kendisi
+çözmedi) · `00-IS-SIRASI.md` kaç satıra çıktı · test sayısı · gözüne çarpan başka bayatlık
+var mı.
