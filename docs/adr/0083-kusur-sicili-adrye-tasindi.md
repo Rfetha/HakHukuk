@@ -71,11 +71,12 @@ Sebebi değişmedi: plan kapandığı gün kayda dönüşür; devir kuralı olma
 kapandı; satır **açık** sayılır. *(Bu ilk sayım kusur 33 doğmadan ÖNCEki hâldir — bkz. canlı
 sayım.)*
 
-> 🔄 **CANLI SAYIM — `v1-son-iş` turu ilerledikçe güncellenir:** **27 KAPANDI · 3 DEVREDİLDİ ·
-> 5 AÇIK** (5a · 10 · 23 · 27 · 31).
+> 🔄 **CANLI SAYIM — `v1-son-iş` turu KAPANDI 2026-09-13, 71/71:** **28 KAPANDI · 3 DEVREDİLDİ ·
+> 4 AÇIK** (5a · 23 · 27 · 31).
 > Turda kapananlar: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`, recall@10
 > kapısı var olmayan alanı okuyup her zaman düşüyordu) · **25** (Adım 8, tüm paydalar
-> `DOGRULANDI`'ya çevrildi, sayı oynamadı).
+> `DOGRULANDI`'ya çevrildi, sayı oynamadı) · **10** (Adım 9, HF görünürlüğü **PUBLIC** —
+> insan onayıyla açıldı, `sha256` token'sız bir alt süreçte doğrulandı).
 > ⚠️ Kusur **24** bu sicilde 2026-09-12'ye kadar *"AÇIK"* göründü — kapanışı `00-IS-SIRASI`'ya
 > işlenmiş, **buraya işlenmemişti**. Tutarlılık denetiminde yakalandı ve damgalandı.
 > Ders: *kapanış **iki** yere birden yazılmazsa sicil sessizce bayatlar* — ve sicil bir sonraki
@@ -97,7 +98,7 @@ sayım.)*
 | 7 | duman koşusundan doğrusal maliyet tahmini kapı kurmuyor (0,82 $ tahmin ↔ 1,1932 $ gerçek) | **KAPANDI** 2026-09-11 | G21 Adım 9 — **kural yazıldı, kod değil**: tuzak **1.11** + Global kısıtlara bir cümle |
 | 8 | arayüz açılışında yönlendirme yok (boş ekran) | **KAPANDI** 2026-09-11 | G21 Adım 7 |
 | 9 | SIRA 2 (TUI göz) kapısı açık | **KAPANDI** | G12 Adım 6-7 — üç soruda rozet + atıf + kaynak + sorumluluk ibaresi **ekranda görüldü**, **insan teyit etti**. Kapı çalışırken bir ürün kusuru yakaladı (`python -m hakhukuk.tui` hiçbir şey yapmıyordu: `__main__` bloğu yoktu) |
-| **10** | dağıtım kararları: commit'ler push edilmedi · HF deposu **özel** | **YARISI KAPANDI, YARISI AÇIK** | **`push` KAPANDI 2026-09-12** — 62 commit `origin/master`'a gitti. **HF görünürlüğü AÇIK**: depo 2026-09-09'da insan kararıyla özele alındı, açık kusurlar giderilene kadar öyle kalır. Yükleme ve `sha256` doğrulaması **tamamlandı**; geri alınan yalnız **görünürlük**. ⇒ **insan kararı, iş değil** |
+| **10** | dağıtım kararları: commit'ler push edilmedi · HF deposu **özel** | ✅ **KAPANDI 2026-09-13** | **`push` KAPANDI 2026-09-12** — 62 commit `origin/master`'a gitti. **HF görünürlüğü KAPANDI 2026-09-13** (ADIM 9, insan onayı): depo `Rfetha/HakHukuk-4B-v0.3-Q4_K_M` **public** yapıldı (`repo_info(...).private` okunarak doğrulandı: `False`); token'sız bir alt süreçte dosya indirilip `sha256`'sı `755e15e9…86e7bffc` ile bayt bayt eşleşti (kusur 32'nin dersi: token'lı erişimle karıştırılmadı). Depo **adı** değişmedi (grill kararı 6) — sürümü kart (`MODEL_CARD.md` / `docs/HF_KARTI.md`) anlatır |
 | **11** | `hakhukuk` paketi tek başına kurulamıyor — `servis.py` çalışma anında `sys.path`'e `scripts/` ekliyor | **DEVREDİLDİ** | **kendi turu** ([ADR-0078](0078-konteyner-dagitimi-rejim-kilidi.md) m.5). Kusur **21**'in onarımı importu birden **ikiye** çıkardı; kalıcı çare `madde_anahtar` + `atif_dogrula` + `score_abstention` üçlüsünün **pakete taşınması**. Yapısal değişiklik: aynı dosyayı 26 dosyanın yol köprüsü ve tüm ölçüm hattı kullanıyor |
 | 12a | eğitim verisinin `##begin_quote##` işaretleri **vatandaşa gidiyor** | **KAPANDI** 2026-09-11 | G21 Adım 4 — **yalnız sunum katmanında** süzülür. ⛔ Ölçüm hattına **girmedi**: `scripts/puanlama/score_register.py:41` aynı işareti bir **register göstergesi** sayıyor, orada süzmek o metriği sessizce değiştirirdi |
 | **12b** | işaretlerin **kaynağı** eğitim verisidir (`gen_v2b_answers.py:36-37` öğretmene böyle söylüyor, `build_sft_v2b.py:57` bloğu koruyor) | **DEVREDİLDİ** | **`v2` · borç `B11`** — düzeltmesi **yeniden eğitimdir** |
@@ -238,7 +239,7 @@ yukarıdaki sicildedir.
 | :-- | :--- | :--- |
 | **5a** | zayıf eşleşme sinyali — **ölçüldü, ayrışma YOK**, rozet eklenmedi | **`v2`** · yeni bir gösterge ya da daha büyük `n` gerektirir ([ADR-0079](0079-zayif-eslesme-rozeti-eklenmedi.md)) |
 | **6** | `wrong_ref` frontier'ın **9,3×** gerisinde | **`v2` · borç `B1`** ([ADR-0075](0075-v1-sft-kapanir-v2-sequential-rl.md)) — **bu turda ağırlaştı**: fp16'da 2,0× kötüleşiyor |
-| **10** | HF **görünürlüğü** (ağırlıklar ÖZEL) | **insan kararı**, iş değil. ⚠️ `push` yarısı **2026-09-12'de KAPANDI** (62 commit `origin/master`'a gitti); **görünürlük** yarısı açık |
+| **10** | HF **görünürlüğü** (ağırlıklar ÖZEL) | **insan kararı**, iş değil. `push` yarısı **2026-09-12'de KAPANDI** (62 commit `origin/master`'a gitti) *(KAPANDI 2026-09-13, ADIM 9 — görünürlük yarısı da PUBLIC yapıldı, insan onayıyla; bu tablo kapanış anının SNAPSHOT'ıdır, geriye dönük düzeltilmez)* |
 | **11** | paket `scripts/`'e bağımlı, tek başına kurulamıyor | **kendi turu** — kusur **21** onarımı importu birden **ikiye** çıkardı; kalıcı çare `madde_anahtar` + `atif_dogrula` + `score_abstention` üçlüsünün **pakete taşınması** |
 | **12b** | iskele işaretlerinin **kaynağı** eğitim verisi | **`v2` · borç `B11`** |
 | **23** | bir yeniden-puanlama koşusu **eski sayıyı verdi, tekrarlanamadı** | **`v2`** · modül gölgeleme arandı **bulunamadı**; **ikinci sınama** (6.6) deterministik tarafı bir kez daha temiz buldu ama kök neden hâlâ yok — kapanmadı, `v2`'nin işi artık hakem-katmanı gürültüsünü `--runs N` ile azaltmak (§Kusur 23) |
