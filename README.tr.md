@@ -83,7 +83,7 @@ Rakip karşılaştırması, ölçüm rejimi, eksen tanımları, sınırlar ve **
 
 ⚠️ **`v1.0` "model iyileşti" demez** — ağırlıklar hiç değişmedi. Kapanan şey, sürüm kapısının
 üç maddesinin **ikinci, bağımsız bir hakem ailesi altında da** geçmesidir
-([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+([ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)).
 
 ## Repo haritası
 
@@ -91,7 +91,7 @@ Rakip karşılaştırması, ölçüm rejimi, eksen tanımları, sınırlar ve **
 | :--- | :--- |
 | [`hakhukuk/`](hakhukuk/) | **ürün paketi** — istem · servis · CLI · TUI · HTTP API · indirici |
 | [`scripts/`](scripts/) | **ölçüm aleti**, üründen bilinçli olarak ayrı |
-| [`docs/record/research_log/`](docs/record/research_log/) | araştırma kaydı, kronolojik — **#71**'e kadar |
+| [`docs/record/`](docs/record/) | araştırma kaydı, kronolojik — **#71**'e kadar |
 | [`docs/adr/`](docs/adr/) | karar defteri — **0085**'e kadar |
 | [`docs/record/kollar.md`](docs/record/kollar.md) | artefakt sicili. *Satırı olmayan artefakt isimsizdir.* |
 | [`docs/record/yurutme-tuzaklari.md`](docs/record/yurutme-tuzaklari.md) | *"hata vermeden yanlış sayı üretir"* kalıpları — her biri fiilen ısırdı |
@@ -102,8 +102,8 @@ Rakip karşılaştırması, ölçüm rejimi, eksen tanımları, sınırlar ve **
 
 **Negatif bulgular birinci sınıftır.** Bu depoda kendi ön-kayıtlı kapısına takılan koşular,
 ölçüm çeliştiği için **tersine çevrilen** bir karar
-([ADR-0052](docs/adr/0052-merge-norm-dengeleme-hukmu-tersine.md)) ve **düşmüş** bir ara kapı
-([ADR-0045](docs/adr/0045-ara-kapi-merge-onarim-kontrolu.md)) damgalı olarak durur.
+([ADR-0052](docs/adr/kararlar-0045-0063.md#adr-0052)) ve **düşmüş** bir ara kapı
+([ADR-0045](docs/adr/kararlar-0045-0063.md#adr-0045)) damgalı olarak durur.
 
 Sayılar **hatırlanmaz, kaynaklanır**: her sonucun metriği, `n`'i, hakemi, seed'i ve çıktı
 dosyası koşu künyesinde (`KUNYE.json`) sabitlenmiştir.

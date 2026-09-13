@@ -1,7 +1,7 @@
 > ## ✅ SÖZLEŞME CANLI API'YE KARŞI DOĞRULANDI — 2026-08-04
 >
 > Üç çağrının **dördü de** (arama · `getDocumentContent` · `mevzuatMaddeTree`) **GEÇERLİ**
-> döndü ([#49](record/research_log/2026-08-04-s3a-on-prob.md) · `outputs/eval/s3a-on-prob/`).
+> döndü ([#49](record/kronoloji-39-52.md#49) · `outputs/eval/s3a-on-prob/`).
 >
 > 🚨 **Ve bu belgeye güvenmek doğru çıktı.** Prob betiği önce *"sözleşme bozuk"* raporladı;
 > hata **API'de değil betikteydi** — belge kimliğini `documentId`/`id` ile arıyordu, oysa

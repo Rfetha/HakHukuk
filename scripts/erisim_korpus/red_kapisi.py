@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Red kapısı — [ADR-0038](../docs/adr/0038-red-kapisi-esigi-kati.md) (sprint3 Adım 3).
+"""Red kapısı — [ADR-0038](../docs/adr/kararlar-0027-0044.md#adr-0038) (sprint3 Adım 3).
 
 **Yürürlükteki politika `KATI`:** doğrulanamayan **tek** atıf cevabın tamamını
 reddettirir. İkili — geçti / reddedildi, ara durum yok. Gerekçesi üç katmanlı:

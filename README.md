@@ -84,7 +84,7 @@ Competitor comparison, measurement regime, axis definitions, limits, and the sen
 
 ⚠️ **`v1.0` does not mean "the model improved"** — the weights never changed. What closed is
 that the release gate's three clauses passed **under a second, independent judge family**
-([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+([ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)).
 
 ## Repository map
 
@@ -92,7 +92,7 @@ that the release gate's three clauses passed **under a second, independent judge
 | :--- | :--- |
 | [`hakhukuk/`](hakhukuk/) | **product package** — prompt · service · CLI · TUI · HTTP API · downloader |
 | [`scripts/`](scripts/) | **the measuring instrument**, deliberately separate from the product |
-| [`docs/record/research_log/`](docs/record/research_log/) | chronological research record — through **#71** |
+| [`docs/record/`](docs/record/) | chronological research record — through **#71** |
 | [`docs/adr/`](docs/adr/) | decision ledger — through **0085** |
 | [`docs/record/kollar.md`](docs/record/kollar.md) | artifact registry. *An artifact with no row is nameless.* |
 | [`docs/record/yurutme-tuzaklari.md`](docs/record/yurutme-tuzaklari.md) | the *"produces a wrong number without erroring"* patterns — every one has actually bitten |
@@ -103,8 +103,8 @@ that the release gate's three clauses passed **under a second, independent judge
 
 **Negative results are first-class.** This repository keeps, stamped and visible: runs voided
 by their own pre-registered gate, a decision **reversed** because measurement contradicted it
-([ADR-0052](docs/adr/0052-merge-norm-dengeleme-hukmu-tersine.md)), and a mid-gate that
-**failed** ([ADR-0045](docs/adr/0045-ara-kapi-merge-onarim-kontrolu.md)).
+([ADR-0052](docs/adr/kararlar-0045-0063.md#adr-0052)), and a mid-gate that
+**failed** ([ADR-0045](docs/adr/kararlar-0045-0063.md#adr-0045)).
 
 Numbers are **sourced, not remembered**: every result's metric, `n`, judge, seed and output
 file are fixed in a run manifest (`KUNYE.json`).

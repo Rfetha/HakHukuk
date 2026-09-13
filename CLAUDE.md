@@ -15,17 +15,17 @@
 > **Emptied 2026-09-12:** `docs/superpowers/` carried two specs and three plans; **all five were
 > deleted** when the `hp` → Hat A → Hat B plan closed at **115/115**. Their load-bearing content —
 > the register of **32 defects**, the handover table, and the architectural core of the deleted
-> design — was moved into [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md). The folder now
+> design — was moved into [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083). The folder now
 > holds **exactly one** file. The 9 links that died with the deletion are listed in ADR-0083 §(D)
 > and are **deliberately left unrepaired** inside `docs/adr/**` and `docs/record/**`.
 >
 > | you want | read |
 > | :--- | :--- |
-> | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. `v1-son-iş` **CLOSED 2026-09-13** (plan: [`plans/2026-09-12-v1-son-is.md`](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71) — HF weights are **PUBLIC**, the release is tagged **`v1.0`** (weights unchanged, `sha256` identical to `v0.3` — the tag records the measuring instrument passing under a second judge family, not a model improvement; [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)). Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round (ADR-0083 §EK, 9 items still to grill). |
-> | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) — **4 defects still open** (5a · 23 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · closed in the `v1-son-iş` round: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`) · **25** (Adım 8, kesir birimi düzeltildi) · **10** (Adım 9, HF görünürlüğü PUBLIC) |
-> | what closed on 2026-09-12 | the `hp-hat-a-hat-b` round, **115/115** — narrative in [#66](docs/record/research_log/2026-09-11-urun-yuzeyi-ve-aygit-kusurlari.md) and [#67](docs/record/research_log/2026-09-12-konteyner-ve-alet-onarimlari.md) |
-> | what closed on 2026-09-06/07 | the `faz0-olcum-zinciri` plan, **48/48** *(plan deleted 2026-09-12)* — [#62](docs/record/research_log/2026-09-06-faz0-olcum-zinciri.md) |
-> | the rescued debt queue | `DEVIR-PROMPT.md` *(deleted 2026-09-07 — its job was done)*; the queue it carried was folded into the `hp-hat-a-hat-b` plan, and from there into [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(C) |
+> | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. `v1-son-iş` **CLOSED 2026-09-13** (plan: [`plans/2026-09-12-v1-son-is.md`](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71) — HF weights are **PUBLIC**, the release is tagged **`v1.0`** (weights unchanged, `sha256` identical to `v0.3` — the tag records the measuring instrument passing under a second judge family, not a model improvement; [ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)). Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round (ADR-0083 §EK, 9 items still to grill). |
+> | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — **4 defects still open** (5a · 23 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · closed in the `v1-son-iş` round: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`) · **25** (Adım 8, kesir birimi düzeltildi) · **10** (Adım 9, HF görünürlüğü PUBLIC) |
+> | what closed on 2026-09-12 | the `hp-hat-a-hat-b` round, **115/115** — narrative in [#66](docs/record/kronoloji-63-71.md#66) and [#67](docs/record/kronoloji-63-71.md#67) |
+> | what closed on 2026-09-06/07 | the `faz0-olcum-zinciri` plan, **48/48** *(plan deleted 2026-09-12)* — [#62](docs/record/kronoloji-53-62.md#62) |
+> | the rescued debt queue | `DEVIR-PROMPT.md` *(deleted 2026-09-07 — its job was done)*; the queue it carried was folded into the `hp-hat-a-hat-b` plan, and from there into [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) §(C) |
 >
 > **Framing: open-source PRODUCT** — a legal adviser a Turkish citizen can actually ask.
 > `v1` = model layer · `v2` = app layer · arxiv is a **by-product**.
@@ -39,7 +39,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 > **This file is a MAP, not a report.** It says *where things are* and *what rules bind you*.
 > It does **not** carry measurement tables or sprint narratives — those live in
-> `docs/record/research_log/` and `docs/adr/`. Duplicating them here is how this file grew to
+> `docs/record/` and `docs/adr/`. Duplicating them here is how this file grew to
 > 33 KB and went stale in several places at once *(cleaned 2026-08-06)*.
 > **Rule: when a round closes, update the POINTERS here — not the numbers.**
 
@@ -75,7 +75,7 @@ pre-registered gates · same-day research log · an ADR per decision · the trap
 **This is not ceremony:** the discipline has repeatedly caught numbers that were about to be
 published wrong — a metric that rewarded refusing, a validity gate that voided a degenerate
 model, a normalization prescription that measurement reversed
-([ADR-0052](docs/adr/0052-merge-norm-dengeleme-hukmu-tersine.md)), and both of the harness's own
+([ADR-0052](docs/adr/kararlar-0045-0063.md#adr-0052)), and both of the harness's own
 stated justifications.
 
 ## Current state — one glance, then follow the pointer
@@ -114,7 +114,7 @@ product number — v2 unit, 2026-09-07 (harness ON, k=10, S2 corpus, NO preamble
    found, each of the "produces a wrong number without erroring" class: question set (ADR-0067)
    · RRF fusion (0068) · DEV↔TEST composition (0069) · a production budget that was NOT equal
    to the competitor's (0070) · a gate clause with NO ANCHOR (0073, trap 2.17).
-   → docs/record/research_log/2026-09-06-faz0-olcum-zinciri.md (#62)
+   → docs/record/kronoloji-53-62.md#62 (#62)
 
 ~~previous headline: mass 68.4% with the sufficiency preamble (ADR-0058)~~ — SUPERSEDED.
    The preamble was removed (ADR-0063): it was adopted for RAISING mass and was measured to
@@ -128,12 +128,12 @@ read as a refusal — a bug **specific to our own answer template**, which is wh
 our numbers (62.8% → 68.4%) and left the competitor's untouched (measured, not assumed).
 The ablation turned out to be the **higher** column, which **inverted ADR-0058's own
 rationale** (the preamble was adopted for raising mass; it lowered it by 4.6 points).
-**S14 is CLOSED 2026-09-06 → the preamble was REMOVED** ([ADR-0063](docs/adr/0063-yeterlilik-onsozu-kaldirildi.md)):
+**S14 is CLOSED 2026-09-06 → the preamble was REMOVED** ([ADR-0063](docs/adr/kararlar-0045-0063.md#adr-0063)):
 the product's default regime is now **preamble-free** and the preamble run became the ablation.
 Binding metric is **mass** — an unanswered question is worthless to a citizen; misattribution
 is paid on **its own axis** (B1), not with a prompt patch.
-[ADR-0061](docs/adr/0061-cekinme-dedektoru-istem-rejimi-bagimliligi.md) ·
-[#61](docs/record/research_log/2026-09-06-dedektor-onarimi-b10-yeniden.md)
+[ADR-0061](docs/adr/kararlar-0045-0063.md#adr-0061) ·
+[#61](docs/record/kronoloji-53-62.md#61)
 
 > ⚠️ **This row was RE-SCORED on 2026-09-11 and one competitor number moved AGAINST us.** The
 > citation verifier was repaired (trap **1.13**): it used to resolve a law name loosely and land on
@@ -157,18 +157,18 @@ is paid on **its own axis** (B1), not with a prompt patch.
 `v1.0` was NOT granted — the acceptance test on the frozen TEST ran (raw mass **0,5804**, ceiling
 `recall@10` **0,7500**) and the blocker is **the measuring instrument, not the model**: every
 figure is still one judge family's verdict and κ is **0,534**, below the tool's 0,6 threshold
-([ADR-0077](docs/adr/0077-v1-0-verilmedi-v0-3.md) · [#65](docs/record/research_log/2026-09-09-kabul-testi-ve-frontier-kiyasi.md)).~~ → **`v1.0` GRANTED 2026-09-13** (Adım 9, human sign-off): the
+([ADR-0077](docs/adr/kararlar-0064-0085.md#adr-0077) · [#65](docs/record/kronoloji-63-71.md#65)).~~ → **`v1.0` GRANTED 2026-09-13** (Adım 9, human sign-off): the
 gate's three clauses were re-read under a **second, independent judge family**
-(`claude-sonnet-5`) and passed again ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+(`claude-sonnet-5`) and passed again ([ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)).
 ⛔ **This is NOT a model improvement** — the weights never changed (`sha256` identical to
 `v0.3`'s) and κ itself did not move (still **0,534/0,409**, below the tool's 0,6 threshold; the
 judge panel is still **two** families, not three, ADR-0032). What closed was the absence of an
 equal exam, not κ. The model artifact stays `HakHukuk-4B-v0.1` (`tgta_v1`) — versioning is
-deliberately split ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)).
+deliberately split ([ADR-0065](docs/adr/kararlar-0064-0085.md#adr-0065)).
 Weights are published at `Rfetha/HakHukuk-4B-GGUF` and have been **PUBLIC since
 2026-09-13** (verified with a token-less subprocess: `sha256` matched byte for byte) —
 **4 defects are still open**, registered in
-[ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A)/§(C) (5a · 23 · 27 · 31).
+[ADR-0083](docs/adr/kararlar-0064-0085.md#adr-0083) §(A)/§(C) (5a · 23 · 27 · 31).
 Closed in the `v1-son-iş` round: **24** (`b077f13`, the stale README table),
 **29** (adım 6.3.1, the backup file in the image), **33** (`cc12b6e` — the one-command
 reproduction path's `recall@10` gate read a field that does not exist, so it **always** failed
@@ -181,7 +181,7 @@ half; the `push` half had already closed 2026-09-12).
 pool: `wrong_ref_rate` **0,0769 ↔ 0,0083**.
 ~~**The product path is NOT the measured path:** `hakhukuk.servis.answer()` returns a blank
 answer on ~5% of questions (4/80, non-termination) and would fail ADR-0040's own 5% validity
-gate. Recorded, not fixed.~~ → **FIXED 2026-09-11** ([ADR-0080](docs/adr/0080-urun-yolu-zorunlu-dusunce-kapatmasi.md),
+gate. Recorded, not fixed.~~ → **FIXED 2026-09-11** ([ADR-0080](docs/adr/kararlar-0064-0085.md#adr-0080),
 a REGIME change taken by the human): the product path now forces the thinking channel closed in
 a second pass, exactly as the measurement line does. Blank answers went **4/80 → 0/80** and
 truncation **8,75% → 3,75%**, so ADR-0040's gate now **passes**. Only **4 of 80** answers changed
@@ -192,28 +192,28 @@ Still `v0.1` as an artifact, not `v1.0` — **and the reason changed on 2026-09-
 clauses now **pass on DEV** (above), but two things are still missing: the **acceptance test on
 the frozen TEST** had not run at the time this sentence was written — **it ran on 2026-09-09**
 (raw mass **0,5804**, above) and clause (a) is **closed**; what follows is kept because the
-*ceiling* argument still binds (its retrieval ceiling is ≈75%, not DEV's 95% — [ADR-0069](docs/adr/0069-kabul-testi-tavan-kullanimi-raporlamasi.md)),
+*ceiling* argument still binds (its retrieval ceiling is ≈75%, not DEV's 95% — [ADR-0069](docs/adr/kararlar-0064-0085.md#adr-0069)),
 and **every number is still one judge family's verdict** (`gpt-4o-mini`, no κ, self-preference
 unmeasured — ADR-0064 *"Ne KURULMAZ"* clause 2). Product vs. claim versioning is split:
-[ADR-0065](docs/adr/0065-bolunmus-surumleme.md).
+[ADR-0065](docs/adr/kararlar-0064-0085.md#adr-0065).
 The OFF number is a **ceiling, not a rival** — the two settings do not measure the same
 thing (OFF hands the model the gold article by construction).
 
 > **2026-09-13 — superseded by the paragraph above.** The **artifact** identity is unchanged
 > and permanent (`HakHukuk-4B-v0.1` / `tgta_v1`); the **product/claim** version moved to
 > `v1.0` once the gate's remaining clause (b) — one-judge-family verdicts — closed under a
-> second, independent judge ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+> second, independent judge ([ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)).
 > κ itself did not move.
 
 **Where the numbers actually live — do not re-derive them here:**
 
 | you want | read |
 | :--- | :--- |
-| every measurement, dated, with its source file | [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — entries **#39-#71** |
+| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries **#39-#71** |
 | what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — `v1-son-iş` **CLOSED 2026-09-13** ([plan](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71), `v1.0` tagged. Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round · direction in [`ROADMAP.md`](ROADMAP.md) |
-| the open debt queue | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A) register + §(C) handover — **4 open** (5a · 23 · 27 · 31; five of the original nine — 24 · 29 · 33 · 25 · 10 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
+| the open debt queue | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) §(A) register + §(C) handover — **4 open** (5a · 23 · 27 · 31; five of the original nine — 24 · 29 · 33 · 25 · 10 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
 | why a decision went the way it did | [`docs/adr/`](docs/adr/) — ledger runs to **0085**, next is **0086** |
-| questions raised and not yet answered | the nine items that go **into the grill**, [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK E.5 *(they passed through `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted)* |
+| questions raised and not yet answered | the nine items that go **into the grill**, [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) §EK E.5 *(they passed through `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted)* |
 
 **Two things a new session must not get wrong** (both were *measured*, not assumed):
 
@@ -221,7 +221,7 @@ thing (OFF hands the model the gold article by construction).
   A1"* — dead: fabricated article numbers are **0/118**, the class was empty. *"The rejection gate
   closes M2b"* — tested 2026-08-05 and **the gate failed**: on a matched exam the harness-ON arm
   scored *below* the OFF anchor, and the gate cannot even fire in this regime
-  ([#56](docs/record/research_log/2026-08-05-olcum-bosluklari.md)). What survived is *"without a
+  ([#56](docs/record/kronoloji-53-62.md#56)). What survived is *"without a
   retriever there is no product"* plus a set of measured mechanisms. M2b is now a **training** debt.
 - **The ARA KAPI (mid-gate) verdict flipped on 2026-08-06 — it now FAILS.** The
   pre-registered thing was the *formula* (`merge M2b ≥ 0,90 × base's answer-blind M2b`),
@@ -229,8 +229,8 @@ thing (OFF hands the model the gold article by construction).
   **0,766** → **fails by 9,9 points** (and fails the old 0,887 threshold too; denominators
   are equal, 77 ↔ 77). ADR-0050: the *tool* was fixed, the threshold was **not touched**.
   This is the gate that authorized CP4-CP5 spending — **that authorization is gone.**
-  [ADR-0045](docs/adr/0045-ara-kapi-merge-onarim-kontrolu.md) ·
-  [#58](docs/record/research_log/2026-08-06-payda-tekillesmesi.md).
+  [ADR-0045](docs/adr/kararlar-0045-0063.md#adr-0045) ·
+  [#58](docs/record/kronoloji-53-62.md#58).
 - **The biggest single loss is over-refusal, and the model owns it** — the gold article is *in
   context* and the model abstains anyway. Retrieval cannot fix this. Debt **B10**.
 - **The abstention DETECTOR itself is under repair — do not quote B10's counts as settled.**
@@ -239,11 +239,11 @@ thing (OFF hands the model the gold article by construction).
   the refusal regex. The official anchor holds at least one verified false positive and the
   contamination size is **unmeasured**. A programmatic probe was wrong in *both* directions, so
   the only closing move is reading all 80 items by eye — decided, scheduled, and pre-registered
-  ([#60](docs/record/research_log/2026-09-06-hasat-kabul-olcutu-coktu.md); the decision was taken
+  ([#60](docs/record/kronoloji-53-62.md#60); the decision was taken
   as open question **S13** — a pointer with no target left, the question carrier having been
   `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted. Its outcome is
-  [ADR-0061](docs/adr/0061-cekinme-dedektoru-istem-rejimi-bagimliligi.md) and
-  [#61](docs/record/research_log/2026-09-06-dedektor-onarimi-b10-yeniden.md)).
+  [ADR-0061](docs/adr/kararlar-0045-0063.md#adr-0061) and
+  [#61](docs/record/kronoloji-53-62.md#61)).
 - 🧭 **Framing, 2026-09-06: the release language is v1/v2.** `v1` = a fine-tuned model release
   that actually works end to end (weights + code + data + research record, shipped with the
   retriever and the preamble, because the headline number is not reproducible without them);
@@ -251,14 +251,14 @@ thing (OFF hands the model the gold article by construction).
   acceptance criteria and rejected options:
   the drafts `specs/2026-09-06-v1-v2-roadmap-taslak.md` and
   `specs/2026-09-06-yeni-belge-katmani-design.md` — **both deleted** (2026-09-06 and 2026-09-12);
-  what survived of the second is [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK ·
+  what survived of the second is [ADR-0083](docs/adr/kararlar-0064-0085.md#adr-0083) §EK ·
   direction stays in [`ROADMAP.md`](ROADMAP.md).
 
 **Status of work: B10 over-refusal round CLOSED 2026-09-06 — the target was met with NO
-training** ([ADR-0062](docs/adr/0062-b10-turu-kapatildi-hedef-egitimsiz-karsilandi.md)).
+training** ([ADR-0062](docs/adr/kararlar-0045-0063.md#adr-0062)).
 Tasks 0-3 ran, Tasks 4-10 **never did**, `τ_a` v2 **was never trained**. The plan carries its
 closing block:
-`plans/2026-08-06-asiri-red-tau-a-v2.md` *(deleted with the doc layer; its closing block is quoted in [ADR-0062](docs/adr/0062-b10-turu-kapatildi-hedef-egitimsiz-karsilandi.md))*.
+`plans/2026-08-06-asiri-red-tau-a-v2.md` *(deleted with the doc layer; its closing block is quoted in [ADR-0062](docs/adr/kararlar-0045-0063.md#adr-0062))*.
 
 The round set out to train over-refusal down from 14/80 into a pre-registered 8-11/80 band.
 Its own **read-it-by-eye** step (Task 3.8) instead refuted the harvest acceptance criterion —
@@ -279,9 +279,9 @@ items, so the round was closed. Over-refusal is **smaller, not gone** — 8/80 s
 
 **What caught it was not a numeric gate** — the gate (`kabul_orani 0.1733 > 0.10`) **passed** the
 broken measurement. The eyeball step caught it, and it has now caught something three times —
-[#60](docs/record/research_log/2026-09-06-hasat-kabul-olcutu-coktu.md) ·
-[#61](docs/record/research_log/2026-09-06-dedektor-onarimi-b10-yeniden.md) ·
-[#65](docs/record/research_log/2026-09-09-kabul-testi-ve-frontier-kiyasi.md). *(The record layer
+[#60](docs/record/kronoloji-53-62.md#60) ·
+[#61](docs/record/kronoloji-53-62.md#61) ·
+[#65](docs/record/kronoloji-63-71.md#65). *(The record layer
 credits this to "ADR-0051"; that ADR's subject is `τ_a`'s M2b pairs and it carries the
 read-it-by-eye rule only as its closing lesson. The rule is quoted here **without an ADR number**
 so nobody chases a decision that was never written as one.)*
@@ -306,7 +306,7 @@ So: train for correctness and abstention, simplify at the **prompt layer**.
 | **record** | `docs/record/` | *what happened, what the number was* — retrospective, no checkboxes |
 | **decision** | `docs/adr/` | *why this way, which alternative was eliminated* |
 | **spec** | a `specs/` folder under `docs/superpowers/` | *what we will build* — `brainstorming`/`grill` output. **Gone since 2026-09-12**; recreated when the next spec is written |
-| **plan** | a `plans/` folder under `docs/superpowers/` | *what will be done* — `- [ ]` boxes; gets a closing block when executed. **Gone since 2026-09-12** — the convention (ADR-0056) survives the emptying: **at most one live plan**, and today there is none ([ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md)) |
+| **plan** | a `plans/` folder under `docs/superpowers/` | *what will be done* — `- [ ]` boxes; gets a closing block when executed. **Gone since 2026-09-12** — the convention (ADR-0056) survives the emptying: **at most one live plan**, and today there is none ([ADR-0083](docs/adr/kararlar-0064-0085.md#adr-0083)) |
 | **execution** | repo root `sprint*.md` | **only the OPEN sprint's** live doc |
 | **archive** | `docs/_arsiv/` | anything of any type no longer in force |
 
@@ -334,11 +334,11 @@ decision ledger.
   timeline** — branches are independent and merge variants are alternatives, not a chain.
 - **[`docs/record/kollar.md`](docs/record/kollar.md) — the artifact registry.** Every trained
   branch AND merge has its identity here; *an artifact with no row is nameless and must not be
-  used*. `tg_v1` (‖τ‖ 10,4722 — **and 10,4589 in `kollar.md` is also right**: the first is measured at merge time from the bf16-materialized ΔW, the second from the standalone artifact; the 0,13% gap is bf16 and [#47](docs/record/research_log/2026-07-30-cp2s-boru-hatti.md) logged it as an *independent cross-check*, not a discrepancy — do not "fix" either) · `ta_v1` (‖τ‖ 1,1806) · **`tgta_v1` = `HakHukuk-4B-v0.1`**. Both
+  used*. `tg_v1` (‖τ‖ 10,4722 — **and 10,4589 in `kollar.md` is also right**: the first is measured at merge time from the bf16-materialized ΔW, the second from the standalone artifact; the 0,13% gap is bf16 and [#47](docs/record/kronoloji-39-52.md#47) logged it as an *independent cross-check*, not a discrepancy — do not "fix" either) · `ta_v1` (‖τ‖ 1,1806) · **`tgta_v1` = `HakHukuk-4B-v0.1`**. Both
   names stay and do different jobs: `tgta_v1` is internal traceability (*which branch, which
   version* answerable from the filename), `HakHukuk-4B-v0.1` is outward-facing. Carries the
   base/ours/Gemini table under an explicit **"NOT a parity claim"** banner.
-- [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — the chronological
+- [`docs/record/README.md`](docs/record/README.md) — the chronological
   record, **authoritative for "what happened."** New findings continue at **#72**.
 - [`docs/adr/`](docs/adr/) — new decisions get a new ADR; numbering continues at **0086**.
   **0059 is RESERVED** — the round's `τ_a` v2 data-symmetry ADR, written in Görev 10. Six
@@ -354,7 +354,7 @@ decision ledger.
   data pipeline, recipe, ablation matrix. Authoritative for *how*.
 - [`docs/VERI_PLANI.md`](docs/VERI_PLANI.md) — **the authoritative data plan.**
 - [`docs/BEDESTEN_API.md`](docs/BEDESTEN_API.md) — live legislation API contract.
-- [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK E.5 — the nine questions raised
+- [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) §EK E.5 — the nine questions raised
   and not yet answered; they go into the grill that writes the `v1-son-iş` plan.
 
 ### Historical — still load-bearing, no longer authority
@@ -366,11 +366,13 @@ decision ledger.
 - **`referans-design-doc.md` *(silindi 2026-09-07)* — the user's original draft. Its function was taken over by [`docs/MIMARI.md`](docs/MIMARI.md) on 2026-09-07 (Görev 13 Adım 4).** Its numbers were illustrative placeholders and were deliberately NOT carried over.
 - `docs/_arsiv/` *(deleted 2026-09-06)* — closed sprints (**1 · 2 · 3-part-1**), the deferred claim layer
   (`sprint2b.md`), and superseded 12B-era plans. Its `README.md` says why each one is there.
-- [`docs/record/sprint1/sprint1-sonuc-tablosu.md`](docs/record/sprint1/sprint1-sonuc-tablosu.md) ·
-  [`docs/record/sprint2/defter.md`](docs/record/sprint2/defter.md) — the distilled records of those
-  sprints. Sprint 1's table is **not a parity claim** (harness off, cost not normalized).
+- `docs/record/sprint1/` · `docs/record/sprint2/defter.md` — **deleted 2026-09-13**
+  ([ADR-0086](docs/adr/kararlar-0064-0085.md#adr-0086)): their findings were already carried by
+  `docs/record/` and `docs/adr/`, and sprint 2's execution doc had itself been deleted in 2026-09-06.
+  Recover with `git show 301a82f:docs/record/sprint2/defter.md`. Sprint 1's table was **not a parity
+  claim** (harness off, cost not normalized).
 - **Kapı 5 lost clause (d) on 2026-07-29** —
-  [ADR-0039](docs/adr/0039-kapi-6-parametrik-sizinti.md): M5 (parametric leakage) became its own
+  [ADR-0039](docs/adr/kararlar-0027-0044.md#adr-0039): M5 (parametric leakage) became its own
   **Kapı 6**, anchored at **base** (not the competitor): coverage ≤ 37.5%, memorized-mass ≤ 10.7%.
   Not a loosening — `τ_g` fails it today and that is reported, and every cell is *also* reported
   against the original (d). A hard M5 veto had made Kapı 5 unpassable by any `τ_g`-containing cell,
@@ -383,7 +385,7 @@ stronger:** this is an **intermittent solo OSS project**. Weeks can pass between
 repo is the only thing that remembers. It is also what a public project owes its readers — the
 research record is the most valuable thing here, more than the weights.
 
-- **Every significant experiment, result, or decision → write it down immediately**, while context is fresh. Two homes: `docs/record/research_log/README.md` (chronological narrative + numbers + lesson) and `docs/adr/` (a discrete ADR per big decision). A finding that lives only in chat is a finding lost.
+- **Every significant experiment, result, or decision → write it down immediately**, while context is fresh. Two homes: `docs/record/README.md` (chronological narrative + numbers + lesson) and `docs/adr/` (a discrete ADR per big decision). A finding that lives only in chat is a finding lost.
 - **Numbers are sourced, not remembered.** Record the exact metric, n, judge, seed, and the file the result lives in (`outputs/eval/...`). Reproducibility is the point — it makes an OSS release verifiable and keeps the arxiv door open as a side effect.
 - **Negative/surprising results are first-class** — log them with the same rigor as wins. Several of this line's most useful findings are refutations of its own plans.
 - When a decision contradicts an older doc, **flag the contradiction in both places** rather than silently overwriting — the audit trail is the asset.
@@ -408,7 +410,7 @@ These are non-negotiable framing from the docs — honor them in any code or rec
 - **Training:** PyTorch 2.4+, Unsloth (primary; fall back to TRL+PEFT+transformers), bitsandbytes 0.43+ (NF4 4-bit), FlashAttention-2.
 - **Method: QLoRA per branch, then task-vector merge (ADR-0027).** Per-branch QLoRA — `r=16`, `lora_alpha=32`, `target_modules="all-linear"`, `lora_dropout=0.05`, `batch=1`, `gradient_checkpointing=True`. **Every branch trains from the RAW BASE, independently.** This is a validity requirement, not a style choice: a task vector is defined as `τ = θ_ft − θ_base`, so all branches must share one `θ_base`. Training one branch on top of another produces sequential SFT, not a task vector — it destroys the very thing we set out to measure.
   Merging is **simultaneous k-way** TIES/DARE, not iterative — `TIES(TIES(τg,τa),τr) ≠ TIES(τg,τa,τr)`, because TIES trims, elects signs and averages across *all* vectors at once. Each LoRA is materialized as `ΔW = (α/r)·BA` in **bf16**, merged in **full weight space**, and quantized **last**. Merging runs on **host RAM, streaming tensor-by-tensor** — never on the GPU.
-  **The main result is RAW TIES; norm-balanced is the ablation — [ADR-0052](docs/adr/0052-merge-norm-dengeleme-hukmu-tersine.md) reversed ADR-0036's prescription.** ADR-0036's *premise* was confirmed and still holds: branches train at very different scales (`τ_g` 1.083 steps @1e-4 · `τ_a` 70 steps @1e-5, ‖τ‖ ratio **8,87×**) and TIES' sign-election is mass-weighted. Its *inference* — "without normalization the small branch is erased" — was **measured false**: raw TIES did not erase `τ_a` (0,506 → 0,766 — **re-scored 2026-08-06**, [#57](docs/record/research_log/2026-08-06-cekinme-aleti-onarimi.md); the old tool read 0,607 → 0,877 and the **jump is unchanged at +0,26**); balancing crushed `τ_g` instead. `‖τ‖` is measured and reported **unconditionally** for every branch.
+  **The main result is RAW TIES; norm-balanced is the ablation — [ADR-0052](docs/adr/kararlar-0045-0063.md#adr-0052) reversed ADR-0036's prescription.** ADR-0036's *premise* was confirmed and still holds: branches train at very different scales (`τ_g` 1.083 steps @1e-4 · `τ_a` 70 steps @1e-5, ‖τ‖ ratio **8,87×**) and TIES' sign-election is mass-weighted. Its *inference* — "without normalization the small branch is erased" — was **measured false**: raw TIES did not erase `τ_a` (0,506 → 0,766 — **re-scored 2026-08-06**, [#57](docs/record/kronoloji-53-62.md#57); the old tool read 0,607 → 0,877 and the **jump is unchanged at +0,26**); balancing crushed `τ_g` instead. `‖τ‖` is measured and reported **unconditionally** for every branch.
   **Merging itself costs no training compute** — that is what makes sweeping merge techniques realistic. But sweep on **DEV**, never on the frozen CANON test set.
 - **Deploy pipeline:** per-branch QLoRA (NF4) → materialize ΔW (bf16) → k-way merge (full weight space, host RAM) → quantize via llama.cpp (**Q4_K_M**) → GGUF → consumer GPU.
 - **Multimodal / OCR is NOT a base-selection argument and never was measured.** For Turkish the right architecture is a **separate OCR preprocessor, not native VLM OCR**: dedicated engines beat general VLMs on Turkish, and `ğ→˘g` / `ş→¸s` / `İ→Ì` breakages corrupt RAG matching in legal text (OCRTurk, arXiv:2602.03693).
@@ -419,7 +421,7 @@ These are non-negotiable framing from the docs — honor them in any code or rec
   **TEST = `data/eval/canon/` (40+35), frozen. DEV = CANON-protocol items**, and all merge/hyperparameter selection happens there — sweeping against the frozen set would burn it for selection and make every number optimistic.
   **Judge = four-layer defense:** judge-free backbone (regex abstention + deterministic citation verification) · a 3-family panel only on judgment axes (M1/M4), κ via `judge_agreement.py` · **family exclusion** (no subject graded by its own family's judge) · self-preference measured. **Human-κ DESCOPED.** The judge's **re-run noise floor is ~0,3 A1 points** — nothing smaller is interpreted.
   **Mandatory pre-step:** calibrate the refusal-detection regex on *every* competitor family. Left uncalibrated it undercounts their refusals and shifts scores **in our favor**.
-- **Comparison fairness — [ADR-0057](docs/adr/0057-harness-rekabet-kapisi-esit-sinav.md), "eşit sınav".** An ON ↔ OFF comparison delivers a verdict **only on matched axes**: same questions · **same source count** · same gold condition · same regime. Unmatched axes are reported with a **CEILING/undefined** stamp, and the sentence *"ON is behind here"* is **not constructed** for them.
+- **Comparison fairness — [ADR-0057](docs/adr/kararlar-0045-0063.md#adr-0057), "eşit sınav".** An ON ↔ OFF comparison delivers a verdict **only on matched axes**: same questions · **same source count** · same gold condition · same regime. Unmatched axes are reported with a **CEILING/undefined** stamp, and the sentence *"ON is behind here"* is **not constructed** for them.
 
 ## Working notes
 

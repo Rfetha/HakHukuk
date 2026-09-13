@@ -38,13 +38,13 @@
 | [`servis.py`](../hakhukuk/servis.py) | **Derin modül:** `answer(soru) → Cevap`. Retriever + llama-server + istem + terazi **içeride gizli** |
 | [`cli.py`](../hakhukuk/cli.py) | `hakhukuk "soru"` — ince kabuk. `SORUMLULUK_IBARESI`'nin **tek kaynağı** |
 | [`tui.py`](../hakhukuk/tui.py) | `hakhukuk-tui` — `textual` tek ekran, ince kabuk (mantık sızıntısı **testle yasak**) |
-| `araclar.py` | **YOK** — 5 deterministik KALDIRAÇ; [ADR-0076](adr/0076-kapi-kaldirac-ayrimi-arac-katmani.md) |
+| `araclar.py` | **YOK** — 5 deterministik KALDIRAÇ; [ADR-0076](adr/kararlar-0064-0085.md#adr-0076) |
 | `kurulum.py` | **YOK** — indeks indirme; [ROADMAP · Görev 8](../ROADMAP.md) |
 
 **KAPI ↔ KALDIRAÇ:** `terazi.py`'nin kontrolleri (atıf doğrulama · durum sınıflandırma) ve
 `retriever`'ın mülga süzgeci **KAPI**'dır — tool döngüsünün **dışında**, koşulsuz çalışır.
 `araclar.py`'dekiler **KALDIRAÇ**'tır — model çağırır ya da çağırmaz. Karıştırılmaları
-uydurulmuş madde **0/114** garantisini kaybettirir ([ADR-0076](adr/0076-kapi-kaldirac-ayrimi-arac-katmani.md)).
+uydurulmuş madde **0/114** garantisini kaybettirir ([ADR-0076](adr/kararlar-0064-0085.md#adr-0076)).
 
 \* **Bugünkü tek istisna, bilinçli:** `terazi.py` iki normalizasyonu `scripts/`'ten
 **import ediyor** (`score_abstention.REJECT_RE` · `madde_anahtar.madde_anahtari`).
@@ -81,7 +81,7 @@ Kardeş import'lar **uzantısız** ve **27 dosyada aynı yol köprüsü** var
 
 `seed 3407` · `max_chunk_chars 900` · `thinking on` · düşünce **1024** + cevap **512** = **1536**
 · `harness_k 10` · `RRF_K 10` · **önsözsüz** · indeks `mevzuat_bge_m3_s2` ·
-hakem `openai/gpt-4o-mini` ([ADR-0074](adr/0074-hakem-paneli-kuruldu-baglayici-hukum.md)).
+hakem `openai/gpt-4o-mini` ([ADR-0074](adr/kararlar-0064-0085.md#adr-0074)).
 
 ## `v1` ↔ `v2` sınırı
 

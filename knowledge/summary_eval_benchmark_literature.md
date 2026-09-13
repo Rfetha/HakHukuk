@@ -4,7 +4,7 @@
 
 > **Kaynak:** deep-research taraması (2026-06-13), 23 çapraz-doğrulanmış (3-0 oylu) bulgu.
 > Sentez adımı socket hatasıyla çöktü → sentez elle yapıldı (ana ajan). **Amaç:** HakHukuk
-> eval setini (CORE-HARD + TRAP) literatüre dayandırmak. İlgili: `docs/record/research_log/README.md`.
+> eval setini (CORE-HARD + TRAP) literatüre dayandırmak. İlgili: `docs/record/README.md`.
 
 ## Bağlam (neden tarandı)
 RAG modunda faithfulness TAVANA çarpıyor (base≈v1≈0.97) → mevcut kolay held-out set modelleri

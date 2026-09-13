@@ -1,4 +1,4 @@
-"""Görev 20 — konteyner dağıtımının kapı testleri ([ADR-0078](../docs/adr/0078-konteyner-dagitimi-rejim-kilidi.md)).
+"""Görev 20 — konteyner dağıtımının kapı testleri ([ADR-0078](../docs/adr/kararlar-0064-0085.md#adr-0078)).
 
 ⛔ **Docker GEREKMEZ ve ÇAĞRILMAZ.** `compose.yaml` bir metin dosyası olarak değil, YAML
 olarak **ayrıştırılır**; `indir.py` kapısı ağa çıkmadan, indirme monkeypatch'lenerek sınanır.

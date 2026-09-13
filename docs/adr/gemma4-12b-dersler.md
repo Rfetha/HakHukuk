@@ -16,9 +16,9 @@
 > `knowledge/`, script yorumları). Bu belge her ADR için bir **çapa** taşır — `#adr-0011` gibi —
 > böylece o göndermeler çözülmeye devam eder.
 
-**Nereden devam edilir:** [`TASARIM.md`](../../TASARIM.md) (ne yapacağız) ·
-[`0027`](0027-tasarim-kilitleri-paralel-kol-merge.md) (yeni hattın ilk kararı) ·
-[`../record/research_log/README.md`](../record/research_log/README.md) (kronoloji, kesintisiz)
+**Nereden devam edilir:** `TASARIM.md` *(silindi 2026-09-06 — yön [`ROADMAP.md`](../../ROADMAP.md)'de)* ·
+[`0027`](kararlar-0027-0044.md#adr-0027) (yeni hattın ilk kararı) ·
+[`../record/README.md`](../record/README.md) (kronoloji, kesintisiz)
 
 ---
 
@@ -32,7 +32,7 @@
 **A1.1 Kaynaksız QA verisi ezberletir, öğretmez.** İlk tur forum verisiyle eğitildi ve battı:
 tek bir cevap **154 farklı soruya birebir** yapıştırılmıştı; model "7 Kasım 1982"yi ezberledi.
 `legal_acc 0.362 → 0.124`. ⚠️ Setin kendisi (`sft_v0_KIRLI_forum`) **artık yok** — git'e hiç
-girmemişti, emekli hat ağacıyla birlikte silindi ([ADR-0034](0034-emekli-hat-artefaktlarinin-repodan-cikarilmasi.md)).
+girmemişti, emekli hat ağacıyla birlikte silindi ([ADR-0034](kararlar-0027-0044.md#adr-0034)).
 Ders yalnız bu kayıtta yaşıyor. → `#02`, [ADR-0002](#adr-0002)
 
 **A1.2 Kâğıt üstündeki mükemmellik yalan söyler — her seti EDA ile örnekle.**
@@ -590,7 +590,7 @@ maliyet artar → doğrudan parite metriğinden düşer. Rakip API'ler bu cezay�
 *ölçtüğümüz ≠ dağıttığımız*; en az bir hizalama koşusu gerekiyor.
 
 <a id="adr-0024"></a>
-### ADR-0024 — Hat emekliliği · 🟡 uygulandı, **kısmen süperseded → [ADR-0034](0034-emekli-hat-artefaktlarinin-repodan-cikarilmasi.md)**
+### ADR-0024 — Hat emekliliği · 🟡 uygulandı, **kısmen süperseded → [ADR-0034](kararlar-0027-0044.md#adr-0034)**
 
 **Karar — bölme çizgisi: base'e bağlı mı, değil mi.** Base'e bağlı artefaktlar (LoRA adaptörleri,
 eval çıktıları, tur belgeleri, SCORECARD) arşive **taşınır, silinmez**; base'den bağımsız olanlar

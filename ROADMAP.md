@@ -3,7 +3,7 @@
 > **Yön belgesi.** Her adım bir **ölçülmüş boşluğa** bağlıdır; hiçbir satır *"iyi olurdu"*
 > gerekçesiyle burada değil. Kutucuklu iş listesi için: [`TODO.md`](TODO.md).
 > Bu yönü yürüten tur (`hp` → Hat A → Hat B) 2026-09-12'de **115/115** kapandı ve planı silindi;
-> kusur sicili ile devir tablosu [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md)'te.
+> kusur sicili ile devir tablosu [ADR-0083](docs/adr/kararlar-0064-0085.md#adr-0083)'te.
 > Sıradaki iş ve sırası: [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md)
 > — **`v1-son-iş`**, planı **henüz yazılmadı**.
 
@@ -38,7 +38,7 @@ v2   tgta_v1 (bf16, 8,8 GB) ──► GRPO + düşünce ayarı ──► v2.0
 
 **Ölçülmüş boşluk:** yayımlanan sayılar *"hata vermeden yanlış"* sınıfından **beş kusur**
 taşıyordu. **Sonuç:** kütle %68,4 → **%80,1**, ağırlıklar hiç değişmeden.
-`verify:` [ADR-0064](docs/adr/) · [#62](docs/record/research_log/2026-09-06-faz0-olcum-zinciri.md)
+`verify:` [ADR-0064](docs/adr/) · [#62](docs/record/kronoloji-53-62.md#62)
 
 ## Faz 1 — hakem paneli *(kapandı 2026-09-07)*
 
@@ -49,7 +49,7 @@ duyarlı (0,8011 ↔ 0,6940). Bağlayıcı hakem `gpt-4o-mini` **kaldı** — e�
 **Bedel:** $3,155 gerçek fatura ($1,977 raporlanan · kapı marjı **1,6×**).
 **Kapanmayan:** üçüncü aile (Google) ve rakip kolunun ikinci hakemle puanlanması —
 insan kararı, bakiye $3,45.
-`verify:` [ADR-0074](docs/adr/0074-hakem-paneli-kuruldu-baglayici-hukum.md) · [#64](docs/record/research_log/2026-09-07-hakem-paneli-iki-aile.md) · [`KAPPA.md`](outputs/eval/hp-hakem-paneli/KAPPA.md)
+`verify:` [ADR-0074](docs/adr/kararlar-0064-0085.md#adr-0074) · [#64](docs/record/kronoloji-63-71.md#64) · [`KAPPA.md`](outputs/eval/hp-hakem-paneli/KAPPA.md)
 
 ## Faz 2 — Hat A, ürün paketleme *(kapandı 2026-09-07, $0)*
 
@@ -82,7 +82,7 @@ korpusta **tek bir tarih alanı bile yoktu** (2026-09-07'de eklendi: `data/corpu
 **Bağımlılık:** ana planın **Görev 8'i (indeks dağıtımı) bunu bekliyor** — bugünkü 79 MB'ı
 paketlemek, birkaç hafta sonra atılacak bir iştir.
 `verify:` planı `2026-09-08-mevzuat-kapsam-ve-tazelik` yazılmıştı, 2026-09-12'de **silindi**;
-mimari özü ve **DÜZELTİLMİŞ kat merdiveni** [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK'te.
+mimari özü ve **DÜZELTİLMİŞ kat merdiveni** [ADR-0083](docs/adr/kararlar-0064-0085.md#adr-0083) §EK'te.
 ⚠️ Yukarıdaki **340.303** hedefi **yanlıştır** — `KANUN` satırı `917 × 102,7` sayıyordu; korpustan
 ölçülen gerçek oran **45,4 madde/belge** ve düzeltilmiş hedef **~287,6-287,8 bin**.
 
@@ -97,7 +97,7 @@ mimari özü ve **DÜZELTİLMİŞ kat merdiveni** [ADR-0083](docs/adr/0083-kusur
 | 5 | **Araç katmanı** | model arayıp aramayacağına **karar vermiyor**; isabetsizlik 8/80'in bir kısmı iki maddeyi yan yana okuyamamaktan | $0 |
 | 6 | **Modeli YAYINLA** | ağırlıklar **hiçbir yerde yayında değil** — *"açık kaynak model"* iddiası bugün **yarım** | $0 |
 
-### Araç katmanı — KAPI ↔ KALDIRAÇ *([ADR-0076](docs/adr/0076-kapi-kaldirac-ayrimi-arac-katmani.md))*
+### Araç katmanı — KAPI ↔ KALDIRAÇ *([ADR-0076](docs/adr/kararlar-0064-0085.md#adr-0076))*
 
 | sınıf | ne | kim karar verir |
 | :--- | :--- | :--- |
@@ -113,7 +113,7 @@ hattın en pahalı hata sınıfını (*"hata vermeden yanlış"*, 17 tuzağın h
 **Kapı koşusuna girmez** — %80,1 ve eşik araçsız ölçüldü, rakipler araç kullanamaz
 (ADR-0057 eşit sınav). Sıra: **kabul testi → araç katmanı → yayın.**
 
-### `B1` ve `B4` eğitim turları ATLANDI — [ADR-0075](docs/adr/0075-v1-sft-kapanir-v2-sequential-rl.md)
+### `B1` ve `B4` eğitim turları ATLANDI — [ADR-0075](docs/adr/kararlar-0064-0085.md#adr-0075)
 
 | tur | neden koşulmadı |
 | :--- | :--- |

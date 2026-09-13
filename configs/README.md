@@ -39,5 +39,5 @@ Bir base bunları geçmeden **hiçbir eğitim/eval sayısına güvenme.**
 Ayrıntılı gerekçeler: [kronoloji #38](../docs/record/gemma4-12b-kronoloji.md) ·
 [`ADR-0023`](../docs/adr/gemma4-12b-dersler.md#adr-0023) (dağıtım config) ·
 [`ADR-0025`](../docs/adr/gemma4-12b-dersler.md#adr-0025) (eval yolu) ·
-[`ADR-0027`](../docs/adr/0027-tasarim-kilitleri-paralel-kol-merge.md) (yeni hat) ·
+[`ADR-0027`](../docs/adr/kararlar-0027-0044.md#adr-0027) (yeni hat) ·
 `TASARIM.md` ⚰️ *(2026-09-06'da silindi; ölçüm protokolü `docs/adr/` + `docs/record/` içinde yaşıyor)* §8 (base doğrulama kapısı — bu kontrol listesinin otoritesi)

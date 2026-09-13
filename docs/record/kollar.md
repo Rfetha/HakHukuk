@@ -34,10 +34,10 @@ Diskte tutulan: `tgta_v1` (yayımlanacak) · `tg_v1` (aktif kol).
 
 ### 2026-09-13 — depo temizliği, 85 GB → 28 GB (~57 GB silindi)
 
-Gerekçe [ADR-0075](../adr/0075-v1-sft-kapanir-v2-sequential-rl.md) m.3'tür: ADR-0027'nin
+Gerekçe [ADR-0075](../adr/kararlar-0064-0085.md#adr-0075) m.3'tür: ADR-0027'nin
 task-vector/merge hattı `v1`'de **donduruldu** ve `v2`'ye taşınmıyor, dolayısıyla
 norm-dengeleme ablasyonları **konusuz** kaldı. Sayıları bu belgede (:221-222) ve
-[ADR-0052](../adr/0052-merge-norm-dengeleme-hukmu-tersine.md) · [ADR-0053](../adr/0053-modul-basina-norm-kapsami-reddedildi.md)'te metin olarak duruyor.
+[ADR-0052](../adr/kararlar-0045-0063.md#adr-0052) · [ADR-0053](../adr/kararlar-0045-0063.md#adr-0053)'te metin olarak duruyor.
 
 **Diskte tutulanlar (v2/GRPO'nun ihtiyacı, ~19 GiB):** `models/merged/tgta_v1/` — ADR-0075'in
 adıyla gösterdiği **GRPO başlangıç noktası** · `models/merged/tg_v1/` · GGUF olarak
@@ -54,7 +54,7 @@ adıyla gösterdiği **GRPO başlangıç noktası** · `models/merged/tg_v1/` ·
 | `tg_ta_modulmin-q4_k_m.gguf` | 2.783.446.720 | `9c73bae0…02332a0c` | ADR-0053 ile reddedildi |
 | `q35-4b-f16.gguf` | 8.665.620.192 | `20e59ec0…0fc4afee` | kuantizasyon zincirinin ara ürünü |
 | `cp2s-ties-smoke-q4_k_m.gguf` | 2.783.446.720 | `7d6389d4…eeb11a66` | duman artefaktı, hiçbir belgede geçmiyor |
-| `q35-4b-q5_k_m.gguf` | 3.161.425.632 | `733ff786…1462007a` | base kuantizasyon merdiveni, tablosu [#39](research_log/2026-07-24-cp0-base-dogrulama-kapisi.md)'da |
+| `q35-4b-q5_k_m.gguf` | 3.161.425.632 | `733ff786…1462007a` | base kuantizasyon merdiveni, tablosu [#39](kronoloji-39-52.md#39)'da |
 | `q35-4b-q6_k.gguf` | 3.563.028.192 | `e7a4a038…d308828c` | aynı |
 | `q35-4b-q8_0.gguf` | 4.610.580.192 | `a831d9f3…ef97c6d6` | aynı |
 | `tgta_v1-q4_k_m-20260912.gguf` | 2.783.446.688 | `9becf362…adb482d6` | S17 eğrisi; künyesi `outputs/eval/s17-kuantizasyon-egrisi/OZET.md`'de |
@@ -102,17 +102,17 @@ açılmaz — aynı artefakttır.
 
 | kol | ver | tarih | durum | rejim | `‖τ‖_F` | eval etiketi | kayıt |
 | :--- | :-- | :--- | :--- | :--- | ---: | :--- | :--- |
-| `τ_grounding` | **v1** | 2026-07-28 | 🟢 aktif | 1.083 adım · lr 1e-4 · r=16/α=32 · dropout 0.05 · 224 LoRA çifti · seed 3407 · veri `train/raft_scrubbed/` ⁽¹⁾ | **10.4589** | `*_tg` *(Sprint 1; v1 demektir)* | [#41](research_log/2026-07-29-cp6-tau-grounding-olcumu.md) |
-| `τ_abstention` | **v1** | 2026-08-03 | 🟢 aktif | **70 adım (5 epoch)** · lr 1e-5 · beta 0.1 · etkin batch 64 · r=16/α=32 · dropout 0.05 · 224 LoRA çifti · `--fresh-adapter` · seed 3407 · veri `data/train/orpo_abstain_cp2c/` (726 çift + 145 replay) | **1.1806** | `*_ta_v1_th` | [#48 §16](research_log/2026-08-02-cp2c-modal-koprusu.md) |
-| **`τ_g+τ_a` merge**<br>`HakHukuk-4B-v0.1` | **v1** | 2026-08-03 | 🟢 **ANA SONUÇ** | `tg_v1` + `ta_v1` · **ham TIES** (norm dengeleme **KAPALI**, [ADR-0052](../adr/0052-merge-norm-dengeleme-hukmu-tersine.md)) · trim_k 0,2 · λ 1,0 · eşzamanlı 2-yollu · 224/224 tensör | — *(merge, kol değil)* | `*_tg_ta_ham_th` ⚠️ | [#48 §24](research_log/2026-08-02-cp2c-modal-koprusu.md) |
+| `τ_grounding` | **v1** | 2026-07-28 | 🟢 aktif | 1.083 adım · lr 1e-4 · r=16/α=32 · dropout 0.05 · 224 LoRA çifti · seed 3407 · veri `train/raft_scrubbed/` ⁽¹⁾ | **10.4589** | `*_tg` *(Sprint 1; v1 demektir)* | [#41](kronoloji-39-52.md#41) |
+| `τ_abstention` | **v1** | 2026-08-03 | 🟢 aktif | **70 adım (5 epoch)** · lr 1e-5 · beta 0.1 · etkin batch 64 · r=16/α=32 · dropout 0.05 · 224 LoRA çifti · `--fresh-adapter` · seed 3407 · veri `data/train/orpo_abstain_cp2c/` (726 çift + 145 replay) | **1.1806** | `*_ta_v1_th` | [#48 §16](kronoloji-39-52.md#48) |
+| **`τ_g+τ_a` merge**<br>`HakHukuk-4B-v0.1` | **v1** | 2026-08-03 | 🟢 **ANA SONUÇ** | `tg_v1` + `ta_v1` · **ham TIES** (norm dengeleme **KAPALI**, [ADR-0052](../adr/kararlar-0045-0063.md#adr-0052)) · trim_k 0,2 · λ 1,0 · eşzamanlı 2-yollu · 224/224 tensör | — *(merge, kol değil)* | `*_tg_ta_ham_th` ⚠️ | [#48 §24](kronoloji-39-52.md#48) |
 
 > ⁽¹⁾ **Düzeltme 2026-08-06 — bu hücre `train/raft/` yazıyordu.** Kayıt kendi içinde çelişiyordu:
-> [#47](research_log/2026-07-30-cp2s-boru-hatti.md) ve
-> [#48](research_log/2026-08-02-cp2c-modal-koprusu.md) `raft_scrubbed`, bu hücre ile
-> [`TASARIM.md`](../../TASARIM.md) §planlama tablosu ham `raft/` diyordu. **Adım aritmetiği ayırt
+> [#47](kronoloji-39-52.md#47) ve
+> [#48](kronoloji-39-52.md#48) `raft_scrubbed`, bu hücre ile
+> `TASARIM.md` *(silindi 2026-09-06)* §planlama tablosu ham `raft/` diyordu. **Adım aritmetiği ayırt
 > etmiyor** — iki dizin de 17.323 satır (17.323 ÷ 16 = 1.083 adım, ikisi için de doğru).
 > Ayırt eden **davranışsal kanıt:** ham `raft/`'ın eğitim hedeflerinin **%7,51'i** teacher etiketi
-> (`GOLD`/`DISTRACTOR`) taşıyor ([#39](research_log/2026-07-24-cp0-base-dogrulama-kapisi.md),
+> (`GOLD`/`DISTRACTOR`) taşıyor ([#39](kronoloji-39-52.md#39),
 > `scripts/scrub_teacher_jargon.py`); `τ_g`'nin **30 koşu dosyasındaki ≈2.000 üretiminde bu
 > etiketler 0 kez** geçiyor. Ham veriyle eğitilmiş olsaydı sıfır beklenmezdi → `raft_scrubbed`.
 > ⚠️ **Kesin değil, en iyi desteklenen okuma:** `tg_v1`'in eğitim koşusu KUNYE disiplininden
@@ -123,7 +123,7 @@ açılmaz — aynı artefakttır.
 
 ⚠️ Aşağıdaki tablo **CP0.9'dan sonra baştan yazıldı**. Eski hâli thinking-off ölçümünden geliyordu
 ve o protokol artık canlı değil (ADR-0043 m.4). Kaynak:
-[`research_log` #43](research_log/2026-07-29-cp09-butceli-dusunce-cipalari.md).
+[`research_log` #43](kronoloji-39-52.md#43).
 
 | # | sebep | thinking-off | **bütçeli** | durum |
 | :-- | :--- | :--- | :--- | :--- |
@@ -145,7 +145,7 @@ ve o protokol artık canlı değil (ADR-0043 m.4). Kaynak:
 **Ne değişti:** eski tablonun *"en güçlü sebep"*i (M5 ihlali) bütçeli kipte **ortadan kalktı**;
 yerine M2b geldi. Yani `τ_g` v2'nin gerekçesi artık *"ezberi azalt"* değil **"kaynak yokken sus"**.
 Bu aynı zamanda `τ_a`'nın hedefiyle çakışıyor — v2 mi `τ_a` mı sorusu Sprint 2'nin açık kararı
-([`sprint2.md`](../_arsiv/sprint2.md) ARA KAPI bölümü).
+(`_arsiv/sprint2.md` ARA KAPI bölümü — *silindi 2026-09-06; `git show 301a82f^:…`*).
 
 > **Kural (değişmedi):** v2 açılırsa **bütün açık kalemler aynı anda** kapatılır. Ayrı ayrı
 > eğitmek iki kat para (~$5.5) ve iki kat kafes yeniden ölçümü demektir. ADR-0040 m.4 gereği
@@ -186,13 +186,13 @@ sebebi); `HakHukuk-4B-v0.1` **dışa dönük** addır (model kartı · makale ·
 **tabanlara karşı henüz sınanmadı**. `v1.0` Kapı 5 geçildikten sonra açılır — geçilmezse zaten
 açılmaz.
 
-🆕 **2026-09-07 — `v1.0` yayın artefaktının adı karara bağlandı ([ADR-0071](../adr/0071-v1-release-artefakti-tek-gguf.md)):**
+🆕 **2026-09-07 — `v1.0` yayın artefaktının adı karara bağlandı ([ADR-0071](../adr/kararlar-0064-0085.md#adr-0071)):**
 adaptörleri merge edilmiş **TEK** GGUF, dosya adı **model + boyut + sürüm + kuantizasyon** taşır →
 `HakHukuk-4B-v1.0-Q4_K_M.gguf`. İç ad `tgta_v1-q4_k_m.gguf` **korunur** — yukarıdaki
 *"iki ad ayrı iş görür"* kuralının doğrudan uygulanmasıdır, ona bir istisna değil.
 
 🆕 **2026-09-09 — yayın adı BELİRLENDİ ve artefakt kimliği ÖLÇÜLDÜ (Görev 17 Adım 1).**
-`v1.0` kapısı geçilmedi ([ADR-0077](../adr/0077-v1-0-verilmedi-v0-3.md)) ⇒ ürün sürümü
+`v1.0` kapısı geçilmedi ([ADR-0077](../adr/kararlar-0064-0085.md#adr-0077)) ⇒ ürün sürümü
 **`v0.3`** ve yayın adı **`HakHukuk-4B-v0.3-Q4_K_M.gguf`**.
 ⚠️ Plan bu dalda *"`v0.2`"* yazıyordu; o ad **yazıldığı gün** güncel olan ürün sürümüydü ve
 `v0.2` git'te **zaten etiketli** ⇒ bugün yapılan yayına verilemez. Sapma burada damgalıdır.
@@ -230,9 +230,9 @@ tgta_v1  ==  outputs/eval/s3-harness-acik/*_tgta_v1_h1_*            harness AÇI
 (bağlam elle kuruluyor), `s3-harness-acik` harness AÇIK (bağlamı retriever seçiyor,
 k=5). Rejim değişmezleri ikisinde de aynı; **tek fark bağlamın nereden geldiği** —
 kıyas bu yüzden kurulabiliyor. Sayılar:
-[#51](research_log/2026-08-04-harness-acik-ilk-olcum.md) ·
-[#54](research_log/2026-08-05-k-supurmesi-ve-a1-duzeltmesi.md) ·
-[#55](research_log/2026-08-05-s2-yururluk-alani.md) · kütle
+[#51](kronoloji-39-52.md#51) ·
+[#54](kronoloji-53-62.md#54) ·
+[#55](kronoloji-53-62.md#55) · kütle
 **%71,6 (kapalı) ↔ ~~%58,7~~ %56,9 (açık, k=5) ↔ %59,5 (açık, k=10) ↔ %61,3 (açık, k=10 +
 onarılmış korpus) ↔ %62,8 (açık, k=10 + onarılmış korpus + önsöz, ADR-0058 — ⭐ ürünün ayarı;
 önsözsüz ablasyon: %61,3)**, altın getirilen alt kümede A1 **~~0,934~~ 0,923 >
@@ -241,8 +241,8 @@ onarılmış korpus) ↔ %62,8 (açık, k=10 + onarılmış korpus + önsöz, AD
 Koşular: `outputs/eval/s3-harness-k10/` (k=10) · `outputs/eval/s2-harness-k10-etiketli/`
 (k=10 + S2 — **önsözsüz ablasyon** koşusu; ADR-0058'e kadar "nihai" diye etiketliydi) ·
 **`outputs/eval/olcum-bi/` (ANA PROTOKOL — önsözlü, resmî çıpa;
-[#56](research_log/2026-08-05-olcum-bosluklari.md) §5 (D1) ·
-[ADR-0058](../adr/0058-b-i-kaynak-yeterliligi-onsozu-benimsendi.md))**.
+[#56](kronoloji-53-62.md#56) §5 (D1) ·
+[ADR-0058](../adr/kararlar-0045-0063.md#adr-0058))**.
 
 **Harness artefaktı** (modelin parçası değil, ama ölçümün parçası):
 
@@ -254,7 +254,7 @@ data/index/mevzuat_bge_m3/KUNYE.json     yöntem · model · pencere · korpus i
                                          yeniden üretilebilmesi için KASTEN silinmedi
 ```
 
-**Neden `v1` = ham TIES:** üç varyant DEV'de denendi, kazanan bu ([ADR-0052](../adr/0052-merge-norm-dengeleme-hukmu-tersine.md)).
+**Neden `v1` = ham TIES:** üç varyant DEV'de denendi, kazanan bu ([ADR-0052](../adr/kararlar-0045-0063.md#adr-0052)).
 Diğer ikisi **ablasyon**, versiyon numarası almazlar:
 
 | varyant | geri ölçek | artefakt | M1 kütle | M2 Rej | M2b Rej | durum |
@@ -266,7 +266,7 @@ Diğer ikisi **ablasyon**, versiyon numarası almazlar:
 ᴷ³ **M2b 2026-08-06'da yeniden puanlandı.** Eski sayılar, hakemin **modelin cevabına bakarak**
 verdiği bir paydayla üretilmişti — yani aynı sınav her modelde farklı payda veriyordu. Payda artık
 cevaba kör ve kollarda birebir aynı (`valid_traps` bu sınavda 61…80 → **77**). Eski değerler
-[`#57`](research_log/2026-08-06-cekinme-aleti-onarimi.md)'de duruyor; çeviri tablosu orada:
+[`#57`](kronoloji-53-62.md#57)'de duruyor; çeviri tablosu orada:
 base `0,986 → 0,961` · biz `0,877 → 0,766` · Gemini FL `1,000 → 0,883`.
 ᴷ⁴ **M2 sütunu 2026-08-06'da yeniden puanlandı** (KARAR-3, hakem ≈$0,11): aynı 70 kalemlik
 sınavda on kol **55-63** arası payda gösteriyordu, artık hepsi **66/70**. ⚠️ **Düzeltme BİZİM
@@ -329,7 +329,7 @@ Emekli alette merge `τ_g`'yi M2'de **+0,020** geçiyor görünüyordu; o fark t
 Payda 66'ya eşitlenince fark **sıfırlandı**. ⭐ Bu, ARA KAPI'nın *"merge `τ_a`'yı taşımıyor"*
 teşhisini **ikinci, bağımsız bir eksenden** doğruluyor — o teşhis M2b'den (`0,987 → 0,766`)
 türetilmişti. ⚠️ M2'nin kuantumu `1/66 = 1,52 p`, yani `+0,000` ile `±1 kalem` arasında ayrım
-kurulamaz (çözünürlük borcu: `docs/open_questions.md`). Kaynak: [#59](research_log/2026-08-06-m2-paydasi-ve-karar-4.md) §2.
+kurulamaz (çözünürlük borcu: `docs/open_questions.md`). Kaynak: [#59](kronoloji-53-62.md#59) §2.
 
 Ayrıca öz-sonlandırma geri geldi (M1'de 25/80
 zorunlu kapatma, base 80/80) ve cevap başına maliyet base'e göre **%40 düştü**.
@@ -338,7 +338,7 @@ zorunlu kapatma, base 80/80) ve cevap başına maliyet base'e göre **%40 düşt
 > atıf doğrulayıcı · red kapısı yok — ADR-0019 bunları teze dahil ediyor), maliyet normalize
 > edilmedi, ölçüm **DEV** havuzunda ve **merge yapılandırması DEV'de 3 varyant arasından
 > seçildi**. Frozen TEST (`data/eval/canon/`) görülmedi. Aynı disiplin:
-> [`sprint1-sonuc-tablosu.md`](sprint1/sprint1-sonuc-tablosu.md).
+> `sprint1/sprint1-sonuc-tablosu.md` *(silindi 2026-09-13, ADR-0086; `git show 301a82f:docs/record/sprint1/sprint1-sonuc-tablosu.md`)*.
 >
 > ⚠️ Açıkça geride olduğumuz eksen **M2b: 0,766 ↔ 0,883** ᴷ³. Raporda böyle geçer.
 

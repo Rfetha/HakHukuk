@@ -145,7 +145,7 @@ def main():
         "hic_bulunmayan": len(kayitlar) - isabet,
         "gecen_sure_s": round(gecen, 1),
         "kaynak_cipa": "outputs/eval/f02-biz-onsozsuz/KUNYE.json (recall_at_10) · "
-                       "docs/record/research_log/2026-09-09-kabul-testi-ve-frontier-kiyasi.md",
+                       "docs/record/kronoloji-63-71.md#65",
     }
     json.dump(kunye, open(os.path.join(a.out, "KUNYE.json"), "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)

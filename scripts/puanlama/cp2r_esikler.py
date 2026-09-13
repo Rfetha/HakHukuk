@@ -19,7 +19,7 @@ merge onarım kontrolü **tanımlayıcıya** iner ve ARA KAPI'nın 2. gözlemi o
 
 ⚠️ 2026-08-06 (K-3): girdi artık `score_abstention.py`'nin **gerçek** `abst_*_summary.json`
 çıktısı. Önceki girdi `_KOR.json` yan dosyalarıydı; onları üreten betik **SİLİNDİ** (repoda
-yok, adı yalnız `docs/record/research_log/2026-08-06-payda-tekillesmesi.md` §K-3'te ve
+yok, adı yalnız `docs/record/kronoloji-53-62.md#58` §K-3'te ve
 tuzak 2.18'de geçer) — çekinme oranlarını ikinci bir yerde bölüyordu ve `reject_exact`i
 satırda SAKLANMIŞ (bayat dedektör sürümüne ait) alandan okuyordu (tuzak 2.9).
 "ESKİ" sütunu, varsa `.ONCEKI-*` yedeğinden okunur; yoksa `—` basılır.

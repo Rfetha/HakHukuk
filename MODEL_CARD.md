@@ -7,7 +7,7 @@ ile birleştirilmiş ve Q4_K_M'e kuantize edilmiştir.
 Bu kart ölçülen değerleri ve ölçülmeyen sınırları birlikte bildirir. Her sayının yanında
 üretildiği dosya anılır; hiçbir değer hatırlanarak yazılmamıştır. Kararların gerekçesi ve
 elenen alternatifler [`docs/adr/`](docs/adr/), kronolojik ölçüm kaydı
-[`docs/record/research_log/`](docs/record/research_log/README.md) altındadır.
+[`docs/record/`](docs/record/README.md) altındadır.
 
 ## Künye
 
@@ -17,14 +17,14 @@ elenen alternatifler [`docs/adr/`](docs/adr/), kronolojik ölçüm kaydı
 | **İç ad** (izlenebilirlik) | `tgta_v1` = `tg_v1` + `ta_v1` | [`kollar.md`](docs/record/kollar.md) |
 | **Temel model** | `Qwen/Qwen3.5-4B` · commit `851bf6e8…` · Apache-2.0 | [`KUNYE_tgta_v1.json`](outputs/eval/cp3d-merge/KUNYE_tgta_v1.json) |
 | **Yöntem** | 2 × LoRA (r=16, α=32) → eşzamanlı 2-yollu ham TIES | [`KUNYE_tgta_v1.json`](outputs/eval/cp3d-merge/KUNYE_tgta_v1.json) |
-| **Taşıyıcı** | GGUF **Q4_K_M** · 2,59 GiB (2.783.446.720 bayt) | [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
+| **Taşıyıcı** | GGUF **Q4_K_M** · 2,59 GiB (2.783.446.720 bayt) | [ADR-0071](docs/adr/kararlar-0064-0085.md#adr-0071) |
 | **Ağırlıklar** | [`Rfetha/HakHukuk-4B-GGUF`](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) — herkese açık | ADIM 9, 2026-09-13 |
-| **Ürün / iddia sürümü** | **`v1.0`** (2026-09-13) | [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md) |
+| **Ürün / iddia sürümü** | **`v1.0`** (2026-09-13) | [ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084) |
 | **Dil** | Türkçe | — |
 | **Lisans** | Apache-2.0 — ağırlık, kod, veri ve araştırma kaydı | [`LICENSE`](LICENSE) · [`NOTICE`](NOTICE) |
 
 **Üç ayrı sürüm numarası vardır ve birbirinin yerine geçmez**
-([ADR-0065](docs/adr/0065-bolunmus-surumleme.md), bölünmüş sürümleme):
+([ADR-0065](docs/adr/kararlar-0064-0085.md#adr-0065), bölünmüş sürümleme):
 
 | numara | bugünkü değer | neyi adlandırır |
 | :--- | :--- | :--- |
@@ -48,7 +48,7 @@ değişmez: güncellik erişim katmanının sorumluluğundadır, modelin belleğ
 
 > Bu ibarenin nihai metni henüz kararlaştırılmamıştır. Avukatlık Kanunu ve hukuki sorumluluk
 > sınırı bu depoda değerlendirilmemiş olup **hukukçu görüşü gerektirmektedir** (açık karar
-> **S10**, [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK). Yukarıdaki metin bir
+> **S10**, [ADR-0083](docs/adr/kararlar-0064-0085.md#adr-0083) §EK). Yukarıdaki metin bir
 > taslaktır, hukuken denetlenmiş bir feragatname değildir.
 
 ### 1.2 Model tek başına bildirilen başarımı üretmez
@@ -73,9 +73,9 @@ Erişim katmanının künyesi:
 | bileşen | değer | kaynak |
 | :--- | :--- | :--- |
 | indeks | `data/index/mevzuat_bge_m3_s2` · 40.496 madde · 80 MB | [`KUNYE.json`](data/index/mevzuat_bge_m3_s2/KUNYE.json) |
-| erişim | hibrit BM25 + `BAAI/bge-m3`, RRF füzyonu · `RRF_K=10` · **k=10** | [ADR-0068](docs/adr/0068-rrf-k-60-to-10.md) |
-| istem | önsözsüz | [ADR-0063](docs/adr/0063-yeterlilik-onsozu-kaldirildi.md) |
-| üretim bütçesi | 1536 = düşünce 1024 + cevap 512 | [ADR-0070](docs/adr/0070-uretim-butcesi-esitlendi.md) |
+| erişim | hibrit BM25 + `BAAI/bge-m3`, RRF füzyonu · `RRF_K=10` · **k=10** | [ADR-0068](docs/adr/kararlar-0064-0085.md#adr-0068) |
+| istem | önsözsüz | [ADR-0063](docs/adr/kararlar-0045-0063.md#adr-0063) |
+| üretim bütçesi | 1536 = düşünce 1024 + cevap 512 | [ADR-0070](docs/adr/kararlar-0064-0085.md#adr-0070) |
 
 Erişim katmanı **GPU'ya hiç girmez** — gömücü CPU'da, indeks CPU belleğinde ve diskte çalışır.
 Modelin dizüstüne sığmasıyla sığmaması arasındaki fark budur. Vektör veritabanı ölçülmüş ve
@@ -135,8 +135,8 @@ docker compose up
 
 `indir` kutusu GGUF'u **pinlenmiş bir revizyondan**, `sha256` ve bayt sayısı kapısının
 arkasından çeker; kapı tutmazsa çıkış kodu sıfırdan farklı olur ve **iki daemon da hiç
-başlamaz** ([ADR-0078](docs/adr/0078-konteyner-dagitimi-rejim-kilidi.md) ·
-[ADR-0082](docs/adr/0082-app-kutusu-host-sapmasi.md)).
+başlamaz** ([ADR-0078](docs/adr/kararlar-0064-0085.md#adr-0078) ·
+[ADR-0082](docs/adr/kararlar-0064-0085.md#adr-0082)).
 
 | | |
 | :--- | :--- |
@@ -245,14 +245,14 @@ yayımlanan dosyayla birebir aynıdır. Dosya adı da bu yüzden `HakHukuk-4B-v0
 olarak **kalmıştır**: içeriği değişmemiş bir dosyaya yeni sürüm adı vermek yanıltıcı olurdu.
 Sürümü **kart anlatır**, dosya adı değil.
 
-Ayrıntı: [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md) ·
-[#70](docs/record/research_log/2026-09-13-on-dort-bulgu-kappa-kapisi-gecti.md).
+Ayrıntı: [ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084) ·
+[#70](docs/record/kronoloji-63-71.md#70).
 
 #### Sürüm kapısının üç maddesi
 
 Ön-kayıt 2026-09-06 öğleden önce, **hiçbir rakip sayısı görülmeden** yazılmıştır; çıpa
 (`gemini-3.5-flash`) o an hiç ölçülmemişti. Sayılar 2026-09-07'de mekanik olarak türemiştir
-([ADR-0064](docs/adr/0064-v1-kapisi-uc-maddeli-on-kayit.md)).
+([ADR-0064](docs/adr/kararlar-0064-0085.md#adr-0064)).
 
 ```
 (1) kütle ≥ (3.5 Flash'ın kütlesi) − 2,0 puan     ← asıl kapı
@@ -291,15 +291,15 @@ için geçmiştir — bu, kapının tasarımının ölçülmüş bir sonucudur.
 ### 3.2 Ölçüm rejimi
 
 Beş özne aynı sınava girmiştir. Sınavın eşit olduğu **varsayılmamış, ölçülmüştür**
-([ADR-0057](docs/adr/0057-harness-rekabet-kapisi-esit-sinav.md): bir kıyas yalnız eşleşmiş
+([ADR-0057](docs/adr/kararlar-0045-0063.md#adr-0057): bir kıyas yalnız eşleşmiş
 eksenlerde hüküm verir; eşleşmeyen eksen tavan/tanımsız damgası alır).
 
 | değişmez | değer | kaynak |
 | :--- | :--- | :--- |
-| soru seti | `data/eval/dev/core_hard.jsonl` **v2**, n=80 (geliştirme kümesi) | [ADR-0067](docs/adr/0067-soru-onarimi-dev-test-v2.md) |
-| istem | önsözsüz | [ADR-0063](docs/adr/0063-yeterlilik-onsozu-kaldirildi.md) |
-| erişim | harness açık · k=10 · `RRF_K=10` | [ADR-0068](docs/adr/0068-rrf-k-60-to-10.md) |
-| üretim bütçesi | 1536 (düşünce 1024 + cevap 512), tek formül | [ADR-0070](docs/adr/0070-uretim-butcesi-esitlendi.md) |
+| soru seti | `data/eval/dev/core_hard.jsonl` **v2**, n=80 (geliştirme kümesi) | [ADR-0067](docs/adr/kararlar-0064-0085.md#adr-0067) |
+| istem | önsözsüz | [ADR-0063](docs/adr/kararlar-0045-0063.md#adr-0063) |
+| erişim | harness açık · k=10 · `RRF_K=10` | [ADR-0068](docs/adr/kararlar-0064-0085.md#adr-0068) |
+| üretim bütçesi | 1536 (düşünce 1024 + cevap 512), tek formül | [ADR-0070](docs/adr/kararlar-0064-0085.md#adr-0070) |
 | seed · klip · düşünce | 3407 · 900 karakter · açık | [`KUNYE.json`](outputs/eval/f02-biz-onsozsuz/KUNYE.json) |
 | hakem | `openai/gpt-4o-mini` · OpenRouter, `OpenAI` pinli · runs=1 | [`summary.json`](outputs/eval/f02-biz-onsozsuz/gnd_h1_tgta_v1_f02_nb_summary.json) |
 | taşıyıcı (bizim kol) | `llama-server` · Q4_K_M · ctx 8192 · KV `q8_0` · yerel | [`KUNYE.json`](outputs/eval/f02-biz-onsozsuz/KUNYE.json) |
@@ -322,7 +322,7 @@ farkı tümüyle çıktı belirtecinden ve birim fiyattan gelmektedir.
 
 | kapı | değer | eşik | hüküm |
 | :--- | ---: | ---: | :--- |
-| kesiklik ([ADR-0040](docs/adr/0040-dusunce-modu-olculecek-on-kayitli-kural.md)) | %5,0 | ≤ %5 | **tam eşikte, payı yok** |
+| kesiklik ([ADR-0040](docs/adr/kararlar-0027-0044.md#adr-0040)) | %5,0 | ≤ %5 | **tam eşikte, payı yok** |
 | `recall@10` sapması | 0,9500 | 0,9500 | birebir — erişim katmanı oynamamış |
 | doğrulanan atıf / atıfsız geçen | 114 / **7 kalem** | — | atıfsızlık ayrı bir borçtur (§4.2) |
 
@@ -383,7 +383,7 @@ hiç çağrılmamış ve hiçbir hüküm-ekseni sayısı üretilmemiştir
 alıntılayan** cevaplar yazmakta ve 1536 belirtece sığmamaktadır. Karşılaştırma bulgunun
 kendisidir: aynı model **kör modda** yalnız **2/80** kesik vermektedir ⇒ şişiren etken
 **kaynakların kendisidir**. Bu, ince ayarın muhakemeyi stabilize ettiği bulgusunun
-([#42](docs/record/research_log/2026-07-29-cp0-dusunce-modu-sonlanmama.md)) erişim katmanı
+([#42](docs/record/kronoloji-39-52.md#42)) erişim katmanı
 açıkken ölçülmüş hâlidir. Temel modelin M5 (ezber) değeri ayrıca ölçülebilmiştir: **0,4697**
 (§4.5).
 
@@ -415,7 +415,7 @@ açıkken ölçülmüş hâlidir. Temel modelin M5 (ezber) değeri ayrıca ölç
 - **ⁱ** **Manşet koşulsuz bir aralıktır, sonuca göre biçimlendirilmemiştir.** İki bağımsız hakem
   ailesi aynı 80 cevabı puanlamıştır: `gpt-4o-mini` **0,8011** ↔ `claude-sonnet-5` **0,6940**.
   Bu belgedeki tekil `0,8011` değerleri GÖZ-katı okumadır. Rakip kolları **tek hakemlidir**;
-  asimetri bilinçlidir ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+  asimetri bilinçlidir ([ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)).
 
 ### 3.4 Eksenler ne ölçüyor
 
@@ -464,7 +464,7 @@ Skor kartında **yalnız bağlayıcı olan** (GÖZ-katı) yer alır; üçü birl
 | `claude-sonnet-5` | 0,7911 | 0,8223 | **0,8348** |
 
 **Bağlayıcı okuma olarak en muhafazakâr olan seçilmiştir** (insan kararı,
-[ADR-0064](docs/adr/0064-v1-kapisi-uc-maddeli-on-kayit.md)): GÖZ-katı'da rakiplerin çekinceli
+[ADR-0064](docs/adr/kararlar-0064-0085.md#adr-0064)): GÖZ-katı'da rakiplerin çekinceli
 cevapları da **cevap** sayılır ⇒ onların kütlesi en yüksek, bizim farkımız **en dar** çıkar.
 Seçimin gerekçesi tam olarak budur — *"kendi lehine okudun"* denmesin diye.
 
@@ -503,8 +503,8 @@ daha kötü kullanmaktadır**. *"Hepsi bileşim"* denmemektedir.
 
 Gözle okuma kapısı: 9/40 çekinmenin dokuzu da okunmuş, açık yanlış pozitif **0** bulunmuştur.
 
-Kaynak: [ADR-0069](docs/adr/0069-kabul-testi-tavan-kullanimi-raporlamasi.md) ·
-[ADR-0077](docs/adr/0077-v1-0-verilmedi-v0-3.md) · [koşu](outputs/eval/g16-kabul-testi/OZET.md).
+Kaynak: [ADR-0069](docs/adr/kararlar-0064-0085.md#adr-0069) ·
+[ADR-0077](docs/adr/kararlar-0064-0085.md#adr-0077) · [koşu](outputs/eval/g16-kabul-testi/OZET.md).
 
 ### 3.7 Ürün yolunun kendi sayısı
 
@@ -540,7 +540,7 @@ Kaynak: `outputs/eval/g24-urun-yolu-kutle-6.3b/` · üretim `outputs/eval/g23-ko
    iddiasıdır ve tek bir maliyet satırından kurulmaz.
 6. **"Kaynaksız da iyiyiz."** Tam tersi ölçülmüştür (§4.5).
 7. **Rakip havuzu iki sağlayıcıdandır** (Google · Anthropic); genişlemesinin ön koşulu hakem
-   panelidir ([ADR-0072](docs/adr/0072-v1-rakip-havuzu-genisler.md), açık karar **S16**).
+   panelidir ([ADR-0072](docs/adr/kararlar-0064-0085.md#adr-0072), açık karar **S16**).
 
 ---
 
@@ -572,7 +572,7 @@ Kaynak: `outputs/eval/g24-urun-yolu-kutle-6.3b/` · üretim `outputs/eval/g23-ko
 **Kuantizasyon eğrisi ölçülmüştür** (2026-09-12): `Q4_K_M` (yayımlanan) **0,8011** ·
 `Q5_K_M` **0,8673** · `Q8_0` **0,7909**. Eğri **monoton değildir** ve mekanizması
 ölçülmemiştir; bu yüzden bir hüküm kurulmamış, yayımlanan artefakt `Q4_K_M` olarak
-bırakılmıştır ([ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) ·
+bırakılmıştır ([ADR-0071](docs/adr/kararlar-0064-0085.md#adr-0071) ·
 [`OZET.md`](outputs/eval/s17-kuantizasyon-egrisi/OZET.md)).
 
 ### 4.2 Modelin davranış özellikleri
@@ -601,7 +601,7 @@ bağımsız hakem ailesiyle okunmuştur; **diğer satırlar tek hakemlidir**.
 - **İki hakem aynı yönde hükmediyor, ama uyumları zayıf:** κ **0,534** (`tam_sadık`) /
   **0,409** (`atıf_temiz`), aracın **0,6** eşiğinin altında. Pearson r = 0,705.
 - **Panel iki ailelidir**, hedeflenen üç değil
-  ([ADR-0032](docs/adr/0032-hakem-paneli-uc-aile-ve-aile-dislama.md)'den sapma, eksiklik olarak
+  ([ADR-0032](docs/adr/kararlar-0027-0044.md#adr-0032)'den sapma, eksiklik olarak
   kayıtlı).
 - **Öz-tercih genel olarak ölçülmemiştir.** Tek hücrelik bir gösterge vardır ve **kayırma
   lehine değildir**: ilgili hakem kendi ailesinin cevaplarını daha sert puanlamıştır. Tek
@@ -612,7 +612,7 @@ bağımsız hakem ailesiyle okunmuştur; **diğer satırlar tek hakemlidir**.
 
 ⇒ Bu sayılar **mutlak doğruluk değil, model-vs-model sıralaması** olarak okunmalıdır.
 Kaynak: [`KAPPA.md`](outputs/eval/hp-hakem-paneli/KAPPA.md) ·
-[#64](docs/record/research_log/2026-09-07-hakem-paneli-iki-aile.md).
+[#64](docs/record/kronoloji-63-71.md#64).
 
 ### 4.4 Kapsam
 
@@ -663,7 +663,7 @@ aynıdır.
 > Kör mod koşusu `DRY` örnekleyicisiyle yapılmıştır ve bu bir `llama.cpp` özelliğidir; rakip
 > kollara uygulanamaz. Bu yüzden hüküm yalnız **bizim kolumuz ile temel model** arasında
 > kurulur — ikisi de aynı kuantizasyon, taşıyıcı, seed, bütçe ve soru setiyle koşmuş, değişen
-> tek şey **ağırlıklar** olmuştur ([ADR-0073](docs/adr/0073-m5-rejimine-dry-eklendi.md)).
+> tek şey **ağırlıklar** olmuştur ([ADR-0073](docs/adr/kararlar-0064-0085.md#adr-0073)).
 > Rakip sütunları ayrı okunur.
 
 ---
@@ -700,13 +700,13 @@ tanımı `τ = θ_ft − θ_base`'dir ve bu tanım bütün kolların **tek ve ay
 üretir — yani ölçmek için kurulan şeyi yok eder. Aynı sebeple merge **eşzamanlı k-yollu**dur,
 iteratif değil: `TIES(TIES(τg,τa),τr) ≠ TIES(τg,τa,τr)`, çünkü TIES kırpma, işaret seçimi ve
 ortalamayı **bütün vektörler üzerinde aynı anda** yapar
-([ADR-0027](docs/adr/0027-tasarim-kilitleri-paralel-kol-merge.md)).
+([ADR-0027](docs/adr/kararlar-0027-0044.md#adr-0027)).
 
 **Neden ham TIES — hüküm ölçülerek tersine dönmüştür.**
-[ADR-0036](docs/adr/0036-tau-norm-asimetrisi-ve-norm-dengeli-merge.md) norm dengelemeyi **ana
+[ADR-0036](docs/adr/kararlar-0027-0044.md#adr-0036) norm dengelemeyi **ana
 ayar** olarak ön-kayıtlamıştı; gerekçesi *"kollar 8,87× farklı ölçekte, TIES'in işaret seçimi
 kütle-ağırlıklı, dengelenmezse küçük kol silinir"* idi. **Öncül doğrulanmış ve hâlâ geçerlidir;
-çıkarım ölçülerek yanlış çıkmıştır** ([ADR-0052](docs/adr/0052-merge-norm-dengeleme-hukmu-tersine.md)):
+çıkarım ölçülerek yanlış çıkmıştır** ([ADR-0052](docs/adr/kararlar-0045-0063.md#adr-0052)):
 
 | varyant | M1 kütle | M2b Rej | hüküm |
 | :--- | ---: | ---: | :--- |
@@ -772,7 +772,7 @@ harness-k 10 · RRF_K 10 · önsözsüz
 Kaydın tamamı bu depodadır:
 
 ```
-docs/record/research_log/          ne oldu, hangi sayıyla (kronolojik, bağlayıcı)
+docs/record/          ne oldu, hangi sayıyla (kronolojik, bağlayıcı)
 docs/adr/                          niye böyle, hangi alternatif elendi
 docs/record/kollar.md              artefakt sicili — her kol ve her merge
 docs/record/yurutme-tuzaklari.md   "hata vermeden yanlış sayı üretir" listesi

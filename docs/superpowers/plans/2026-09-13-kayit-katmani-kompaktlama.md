@@ -25,7 +25,7 @@
 - [ ] 3.1 `kronoloji-39-52.md` (#39-#52) → *verify:* 14 çapa
 - [ ] 3.2 `kronoloji-53-62.md` (#53-#62) → *verify:* 10 çapa
 - [ ] 3.3 `kronoloji-63-71.md` (#63-#71) → *verify:* 9 çapa
-- [ ] 3.4 33 tekil log dosyası + `research_log/` dizini silinir → *verify:* dizin yok
+- [ ] 3.4 33 tekil log dosyası + `docs/record/` dizini silinir → *verify:* dizin yok
 - [ ] 3.5 `yurutme-tuzaklari.md` damıtılır → *verify:* her tuzak numarası duruyor, ≤ 25 KB
 - [ ] 3.6 `record/README.md` yeniden yazılır → *verify:* ölü işaretçi yok
 

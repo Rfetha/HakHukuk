@@ -14,10 +14,10 @@
 | :-- | :--- | :--- |
 | **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ✅ **KAPANDI 2026-09-13** · [plan](plans/2026-09-12-v1-son-is.md) **71/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · [kapanış bloğu](plans/2026-09-12-v1-son-is.md#7--kapanış-bloğu--2026-09-13) · sürüm etiketi **`v1.0`**, HF deposu **PUBLIC** (kusur 10 kapandı) · harcanan **$5,7338** / tavan $8,00 |
 | **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak — **sıradaki aday** |
-| **3** | **korpus turu** — mevzuat kapsam + tazelik (40.496 → ~287,6-287,8 bin madde) | ⏸️ **DURUYOR** · plan yazılmadı; girdisi [ADR-0083](../adr/0083-kusur-sicili-adrye-tasindi.md) §EK'te — grill'e giren **9 madde açık** — **sıradaki aday** |
+| **3** | **korpus turu** — mevzuat kapsam + tazelik (40.496 → ~287,6-287,8 bin madde) | ⏸️ **DURUYOR** · plan yazılmadı; girdisi [ADR-0083](../adr/kararlar-0064-0085.md#adr-0083) §EK'te — grill'e giren **9 madde açık** — **sıradaki aday** |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
-[ADR-0083](../adr/0083-kusur-sicili-adrye-tasindi.md)'e alındı — **32 kusurun sicili**, **devir
+[ADR-0083](../adr/kararlar-0064-0085.md#adr-0083)'e alındı — **32 kusurun sicili**, **devir
 tablosu** ve silinen tasarımın **mimari özü**. Gerekçe ve kabul edilen bedel (29 bağlantının 9'u
 öldü) o ADR'de yazılı.
 
@@ -27,12 +27,12 @@ tablosu** ve silinen tasarımın **mimari özü**. Gerekçe ve kabul edilen bede
 
 ### `v1.0`'ı bugün ne engelliyor — **tek şey**
 
-**Engel model değil, ÖLÇÜM AYGITI.** [ADR-0077](../adr/0077-v1-0-verilmedi-v0-3.md):
-[ADR-0064](../adr/0064-v1-kapisi-uc-maddeli-on-kayit.md)'ün saydığı iki eksikten **(a) kabul
+**Engel model değil, ÖLÇÜM AYGITI.** [ADR-0077](../adr/kararlar-0064-0085.md#adr-0077):
+[ADR-0064](../adr/kararlar-0064-0085.md#adr-0064)'ün saydığı iki eksikten **(a) kabul
 testi** 2026-09-09'da **kapandı**; geriye **(b)** kaldı — *her sayı hâlâ **tek hakem ailesinin**
 hükmü*. κ `tam_sadık` **0,534** · `atıf_temiz` **0,409**, aracın eşiği **0,6**.
 
-Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-hukum.md)'te
+Borcun kapanma koşulu [ADR-0074](../adr/kararlar-0064-0085.md#adr-0074)'te
 **tek cümledir**:
 
 > *"`3.5 Flash` kolunun **aynı ikinci hakemle** puanlanması."*
@@ -54,8 +54,8 @@ Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-huk
 
 | girdi | nerede |
 | :--- | :--- |
-| silinen tasarımın **mimari özü** + grill'e girecek **9 madde** | [ADR-0083](../adr/0083-kusur-sicili-adrye-tasindi.md) §EK |
-| **8 açık kusur** — hepsi **yere bağlandı**, aşağıdaki tablo | [ADR-0083](../adr/0083-kusur-sicili-adrye-tasindi.md) |
+| silinen tasarımın **mimari özü** + grill'e girecek **9 madde** | [ADR-0083](../adr/kararlar-0064-0085.md#adr-0083) §EK |
+| **8 açık kusur** — hepsi **yere bağlandı**, aşağıdaki tablo | [ADR-0083](../adr/kararlar-0064-0085.md#adr-0083) |
 | **3 devredilen** — **6** → `B1` · **11** → paket · **12b** → `B11` | ″ |
 | κ borcu | ADR-0074 · ADR-0077 |
 
@@ -68,7 +68,7 @@ Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-huk
 | **S17** kuantizasyon eğrisi | `Q4` 0,7921 ↔ `Q5` **0,8673** ↔ `Q8` 0,7909 — **monoton değil** |
 | araç zinciri sapması | **−0,90 p ⇒ BELİRSİZ** (32 bayt fark davranışsal değil) |
 | κ borcu tahmini ↔ gerçek | **$1,97** tahmin ↔ **$1,6831** gerçek (düz ön-tahmin $2,81'di) |
-| ⭐ **κ BORCU KAPANDI — kapı ikinci hakem altında da GEÇTİ** | `3.5 Flash` GÖZ-katı **0,6183** → eşik **0,5983**; bizim **0,6940** ⇒ marj **+7,57 p** (çıpaya göre; `gpt-4o-mini`'de +5,86 p). **İki hakem de aynı yönde.** Hüküm 6.7'de GEÇTİ, kayıt [ADR-0084](../adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)'te — κ'nın kendisi **değişmedi** (0,534/0,409) |
+| ⭐ **κ BORCU KAPANDI — kapı ikinci hakem altında da GEÇTİ** | `3.5 Flash` GÖZ-katı **0,6183** → eşik **0,5983**; bizim **0,6940** ⇒ marj **+7,57 p** (çıpaya göre; `gpt-4o-mini`'de +5,86 p). **İki hakem de aynı yönde.** Hüküm 6.7'de GEÇTİ, kayıt [ADR-0084](../adr/kararlar-0064-0085.md#adr-0084)'te — κ'nın kendisi **değişmedi** (0,534/0,409) |
 | kusur 23 | **KAPANMADI** — deterministik taraf 3 sınamada temiz, kök neden hâlâ yok ⇒ `v2` |
 | ⭐ **öz-tercih** (Anthropic ailesi) | hakem **kendi ailesini** bizden ~2 kat sert cezalandırdı (−20,03 p ↔ −10,71 p) ⇒ **kayırma YOK, ters yön**. Tek özne/tek koşu ⇒ gösterge |
 | Sonnet-5 **isabetsiz atıf** (göz) | **7/80** ↔ biz **8/80** — tek kalem. ⚠️ Vekil ölçüt ~9 kat fark iddia ediyordu ⇒ **vekil ölçüt bu ekseni yanlış temsil ediyor** |
@@ -153,7 +153,7 @@ v1   ham base ──► SFT (τ_g) + ORPO (τ_a) ──► ham TIES ──► tg
 v2   tgta_v1 (bf16) ──► GRPO + düşünce (thinking) ayarı ──► v2.0
 ```
 
-**`v1` SFT ile KAPANIR** ([ADR-0075](../adr/0075-v1-sft-kapanir-v2-sequential-rl.md)) —
+**`v1` SFT ile KAPANIR** ([ADR-0075](../adr/kararlar-0064-0085.md#adr-0075)) —
 `B1`/`B4` eğitim turları **koşulmaz**. İkisinin gerekçesi ayrıdır ve ölçülmüştür: `B1`'de
 rakiplerden **geride değildik** (8/80 ↔ 8·8·7·8); `B4` bir **merge** kaybıdır ve `v2`'de merge
 olmadığı için **konusuz** kalır.
@@ -187,14 +187,14 @@ kapandı · sürüm etiketi **`v1.0`** verildi — ⛔ **ağırlıklar hiç değ
 κ **değişmedi** (0,534/0,409), panel hâlâ **iki** aileli. Manşet artık koşulsuz bir **ARALIK**:
 `%69,4-80,1` (`claude-sonnet-5` ↔ `gpt-4o-mini`). Açık kusur **5 → 4** (5a · 23 · 27 · 31,
 hepsi adıyla devredildi — plan [§7 kapanış bloğu](plans/2026-09-12-v1-son-is.md#7--kapanış-bloğu--2026-09-13)).
-Anlatısı [#70](../record/research_log/2026-09-13-on-dort-bulgu-kappa-kapisi-gecti.md)'te.
+Anlatısı [#70](../record/kronoloji-63-71.md#70)'te.
 
 **Önceki tur** (`hp` → Hat A → Hat B, **115/115**, 2026-09-12): hakem paneli kuruldu ve κ
 **ilk kez** ölçüldü · Sonnet-5 rakip havuzuna girdi ve **önde** (0,8348 ↔ 0,8011) · donmuş TEST
 **tek kez** açıldı (0,5804) · `hakhukuk/` paketi doğdu (CLI · TUI · HTTP API · araç katmanı) ·
 konteyner **uçtan uca çalışıyor** · ürün yolunda boş cevap **4/80 → 0/80**.
-Anlatısı [#66](../record/research_log/2026-09-11-urun-yuzeyi-ve-aygit-kusurlari.md) ve
-[#67](../record/research_log/2026-09-12-konteyner-ve-alet-onarimlari.md)'de.
+Anlatısı [#66](../record/kronoloji-63-71.md#66) ve
+[#67](../record/kronoloji-63-71.md#67)'de.
 
 ### O turun üç dersi — sıradaki tur bunları taşır
 
@@ -205,7 +205,7 @@ değil ÖRNEKLEMDEN** geldiği ortaya çıktı.
 
 **② Aleyhe çıkan sonuç da yazılır.** Rakipler de yeniden puanlandı: `3.1 Flash-Lite`
 **1/152 → 0/153**. Tek deterministik üstünlüğümüzde artık **eşitiz**; karşılığında **eşit sınav**
-alındı ([ADR-0057](../adr/0057-harness-rekabet-kapisi-esit-sinav.md)).
+alındı ([ADR-0057](../adr/kararlar-0045-0063.md#adr-0057)).
 
 **③ Sayısal kapı TESTİN KÖRLÜĞÜNÜ görmez.** Üç insan gözü kapısı, **süit yeşilken duran dört
 kusuru** yakaladı (**26 · 27 · 28 · 30**) ve **ikisi aynı gün yazılan koddandı** — testler onları
@@ -221,4 +221,4 @@ başka hiçbir yerde durmuyor.
 
 **Kapanan plan yeniden işletilmez.** Kapanış anında açık kalan **her** kusur **adıyla** devredilir;
 devredilmemiş açık kusur varsa **kapanış geçersizdir**. Sicil ve devir
-[ADR-0083](../adr/0083-kusur-sicili-adrye-tasindi.md)'te.
+[ADR-0083](../adr/kararlar-0064-0085.md#adr-0083)'te.

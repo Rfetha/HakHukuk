@@ -17,11 +17,11 @@
 
 | dosya | satır | bayt | B/satır |
 | :--- | ---: | ---: | ---: |
-| `record/research_log/README.md` | 106 | 71 KB | **672** |
+| `record/README.md` | 106 | 71 KB | **672** |
 | `record/yurutme-tuzaklari.md` | 169 | 48 KB | **286** |
 | `adr/README.md` | 135 | 37 KB | **273** |
 
-`research_log/README.md`'nin `Kanca` sütunu her girdinin içeriğini tekrar taşıyor — index değil,
+`README.md`'nin `Kanca` sütunu her girdinin içeriğini tekrar taşıyor — index değil,
 **ikinci kopya**.
 
 **(2) Anlatı gövdeleri — çok satır, normal genişlik (60 B/satır).** `cp2c-modal-koprusu.md`

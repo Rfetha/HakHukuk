@@ -8,7 +8,7 @@
 > sözleşmesi 2026-08-04'te doğrulandı — yani teknik yol açık, **iş yapılmadı**.
 >
 > İçtihadın grafa girip girmeyeceği hâlâ açık soru
-> (açık kararlar *(soruları taşıyan `docs/open_questions.md` 2026-09-07'de, onları devralan plan da 2026-09-12'de silindi; grill'e girecek dokuz madde [ADR-0083](adr/0083-kusur-sicili-adrye-tasindi.md) §EK E.5'te)*); graf'ın ölçülmüş gerekçesi ve
+> (açık kararlar *(soruları taşıyan `docs/open_questions.md` 2026-09-07'de, onları devralan plan da 2026-09-12'de silindi; grill'e girecek dokuz madde [ADR-0083](adr/kararlar-0064-0085.md#adr-0083) §EK E.5'te)*); graf'ın ölçülmüş gerekçesi ve
 > **ölçülmüş riski** [`ROADMAP.md`](../ROADMAP.md) *(2026-09-06'da silinmişti, 2026-09-07'de yeniden yazıldı)*'de.
 
 # Yargı/İçtihat Veri Kaynakları — Reverse-Engineered Harita (Faz 2)
