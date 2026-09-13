@@ -41,7 +41,9 @@ Kaynaklar:
 | **Yürürlükten kalkmışı göstermez** | mülga madde süzgeci varsayılan | sızıntı **2 → 0**, `recall@10` değişmedi ([#64](docs/record/research_log/)) |
 | **Tüketici donanımında çalışır** | GGUF Q4_K_M, 2,59 GiB; harness GPU'ya **girmez** | [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
 
-**Bugünkü manşet:** faithful-answer **kütle %80,1** — `outputs/eval/f02-biz-onsozsuz/KUNYE.json`.
+**Bugünkü manşet:** faithful-answer **kütle %69,4-80,1 aralığı** (`claude-sonnet-5` ↔
+`gpt-4o-mini`, ADR-0084) — GÖZ-katı, bağlayıcı okuma **%80,1**'dir
+(`outputs/eval/f02-biz-onsozsuz/KUNYE.json`).
 
 ## Ne VAAT ETMEZ
 

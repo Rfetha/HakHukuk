@@ -142,7 +142,7 @@ Sınavın eşit olduğu **varsayılmadı, ölçüldü** — kanıt §4'te.
 | `recall@10` (erişim) | 0,9500 | 0,9500 | 0,9500 | 0,9500 | 0,9500 | ölçülemedi ᵇ | ↑ |
 | **aşırı-red** ↓ ᶜ | **4/80** | 8/80 | 9/80 | 11/80 | **4/80** | ölçülemedi ᵇ | ↑ (`altin_geldi_cekindi`) |
 | **isabetsizlik** ↓ ᵈ | 8/80 | 8/80 | **7/80** | 8/80 | **7/80** | ölçülemedi ᵇ | [`GOZLE_OKUMA_80.md`](outputs/eval/f02-biz-onsozsuz/GOZLE_OKUMA_80.md) · [`GOZLE_ISABETSIZLIK_*.md`](outputs/eval/f04-rakip-onsozsuz/GOZLE_ISABETSIZLIK_3_5_FLASH.md) · [`GOZLE_ISABETSIZLIK_sonnet_5.md`](outputs/eval/hp-rakip-havuzu/GOZLE_ISABETSIZLIK_sonnet_5.md) |
-| **uydurulmuş madde** ↓ ʰ | **0/114** | **0/153** ʰ | 4/130 | 4/133 | 2/163 ʲ | ölçülemedi ᵇ | [`harness_tablo*.json`](outputs/eval/f02-biz-onsozsuz/harness_tablo.json) · [yeniden puanlama](outputs/eval/g22-rakip-yeniden-puanlama/BULGU.md) |
+| **uydurulmuş madde** ↓ ʰ | **0/114** | **0/153** ʰ | 4/130 | 4/133 | 2/161 ʲ | ölçülemedi ᵇ | [`harness_tablo*.json`](outputs/eval/f02-biz-onsozsuz/harness_tablo.json) · [yeniden puanlama](outputs/eval/g22-rakip-yeniden-puanlama/BULGU.md) |
 | **M5 ezber kütlesi** ↓ ᵉ | **0,3899** | 0,6710 | 0,7013 | 0,8241 | 0,7772 | **0,4697** | [`f07/KUNYE.json`](outputs/eval/f07-m5-anti-hedef/KUNYE.json) · [`f10/KUNYE.json`](outputs/eval/f10-rakip-m5/KUNYE.json) |
 | **$ / cevap** ↓ ᵍ | **$0** | $0,001895 | **$0,001152** | $0,009914 | $0,014915 | **$0** | [`MALIYET.json`](outputs/eval/f09-maliyet/MALIYET.json) |
 | ort. **token / cevap** ↓ | 782,5 | 861,5 | **171,1** | 699,4 | 706,6 | ölçülemedi ᵇ | [`KALIBRASYON_ve_OZET.md`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) |
@@ -164,9 +164,9 @@ sağlandı (ADR-0057): beş kolun beşi de **aynı aletle** puanlanmış durumda
 ⚠️ **Bu satırın birimi:** pay = `MADDE_YOK + KANUN_YOK`, payda = **`DOGRULANDI`** (toplam atıf
 DEĞİL). Bu ayrım daha önce hiçbir yerde yazılı değildi ve bir ön sondayı yanıltmıştı —
 *"3.5 FL 4 → 3"* diye okunan şey **birim kaymasıydı**, o kolda hiçbir atıf değişmedi.
-⚠️ **Sonnet-5 hücresi (`2/163`) FARKLI BİR BİRİM kullanıyor:** paydası **toplam atıf**.
-Aynı satırda iki kesir birimi duruyor — sayısı oynamadığı için hüküm etkilenmedi, açık kusur
-**25** olarak kaydedildi.
+✅ **Kusur 25 KAPANDI 2026-09-13:** Sonnet-5 hücresi eskiden **farklı bir birim** kullanıyordu
+(`2/163`, paydası toplam atıf); insan kararıyla payda da `DOGRULANDI`'ya çevrildi (`2/161`).
+Pay oynamadı, hüküm etkilenmedi — ayrıntı dipnot ʲ'de.
 
 **Dipnotlar — hepsi bir ölçüm hükmüdür, süsleme değildir:**
 
@@ -233,9 +233,12 @@ Aynı satırda iki kesir birimi duruyor — sayısı oynamadığı için hüküm
   bağlayıcı** okuma olarak §5'te ayrıca durur. Üç Gemini kolu **tek hakemli** kalır (ADR-0057)
   ve bu satırdaki `0,7058`/`0,7622`/`0,7425` hâlâ yalnız `gpt-4o-mini`'nindir; asimetri
   **bilinçlidir**, gizlenmedi.
-- **ʲ** **Sonnet-5 hücresi (`2/163`) FARKLI BİR BİRİM kullanıyor** — paydası **toplam atıf**,
-  Gemini sütunlarınınki **`DOGRULANDI`**. Sayı oynamadığı için hüküm etkilenmiyor; açık kusur
-  **25** olarak kayıtlı (ayrıntı §3'ün altında, sonraki paragraf).
+- **ʲ** **Kusur 25 KAPANDI 2026-09-13 — insan kararı: tüm paydalar `DOGRULANDI` olur.**
+  Hücre eskiden `2/163` yazıyordu (paydası **toplam atıf**, Gemini sütunlarınınki
+  **`DOGRULANDI`** — satırda iki farklı kesir birimi duruyordu). Yeniden puanlama **yok**;
+  aynı sayımın (`atif_dagilimi`: `DOGRULANDI` 161 · `MADDE_YOK` 2 · `KANUN_YOK` 0, toplam 163)
+  başka ifadesi — pay **2** oynamadı, payda `163` → `161` oldu.
+  Kaynak: [`harness_tablo_sonnet_5_nb.json`](outputs/eval/hp-rakip-havuzu/harness_tablo_sonnet_5_nb.json).
 
 ### Rakip sütunlarının üç okuması
 

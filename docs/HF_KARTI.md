@@ -24,9 +24,11 @@ Aşağıdaki üç bölüm, modeli indirmeden önce okunması gereken kısıtlar�
 
 ## 1. Model tek başına bildirilen başarımı üretemez
 
-Bildirilen %80,1'lik sadık cevap kütlesi, erişim katmanı etkin (harness açık) koşulda
-ölçülmüştür: model cevaplamadan önce bir retriever ilgili mevzuat maddelerini bulup bağlama
-yerleştirmektedir.
+Sadık cevap kütlesi erişim katmanı etkin (harness açık) koşulda ölçülmüştür: model
+cevaplamadan önce bir retriever ilgili mevzuat maddelerini bulup bağlama yerleştirmektedir.
+⚠️ **Manşet artık tek sayı değil, ARALIKTIR: %69,4-80,1** (`claude-sonnet-5` ↔ `gpt-4o-mini`
+hakem ailesi, [ADR-0084](adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)) — bkz.
+§6. GÖZ-katı, bağlayıcı okuma **%80,1**'dir ve bu belgedeki tekil değerler o okumadır.
 
 | Bileşen | Durum |
 | :--- | :--- |
@@ -98,7 +100,7 @@ Geliştirme kümesi (n=80, erişim katmanı etkin, k=10, önsözsüz istem, hake
 
 | Ölçüt | Değer |
 | :--- | ---: |
-| Sadık cevap kütlesi | 0,8011 |
+| Sadık cevap kütlesi (`gpt-4o-mini`, bağlayıcı) ⁱ | 0,8011 |
 | `recall@10` (kütlenin üst sınırı) | 0,9500 |
 | Uydurulmuş madde numarası | 0/114 |
 | Aşırı çekinme (gözle sayım) | 4/80 |
@@ -117,11 +119,30 @@ Donmuş test kümesi (n=40, tek kez açıldı, 2026-09-09):
 bileşiminden kaynaklanmakta, %24'ü kaynaklanmamaktadır. Model, görülmemiş veride üst sınırını
 da daha düşük oranda kullanmaktadır.
 
+- **ⁱ** **Manşet artık koşulsuz ARALIKTIR, tek sayı değil:** `%69,4-80,1` (§6). İki bağımsız
+  hakem ailesi aynı 80 cevabı puanladı: `gpt-4o-mini` **0,8011** ↔ `claude-sonnet-5` **0,6940**.
+  Bu belgedeki tüm tekil `0,8011` değerleri **GÖZ-katı, bağlayıcı** okumadır (`gpt-4o-mini`);
+  ikinci ailenin okuması aralığın alt ucudur, ayrı yazılır.
+
 ## 6. Sürüm neden v1.0 değil
 
-Sürüm kapısının üç maddesi geliştirme kümesinde geçilmiş ve kabul testi koşulmuştur. v1.0 adı
-yine de verilmemiştir: bildirilen her değer tek bir hakem ailesinin (`gpt-4o-mini`) hükmüdür
-ve iki hakem ailesi arasında ölçülen uyum κ = 0,534 olup aracın 0,6 eşiğinin altındadır.
+Sürüm kapısının üç maddesi geliştirme kümesinde geçilmiş ve kabul testi koşulmuştur. **v1.0
+adı yine de verilmemiştir** — hüküm *"kapı geçti"*dir, *"v1.0 verildi"* değildir. Dört sınır
+birlikte okunmalı:
+
+- **Manşet artık koşulsuz ARALIKTIR: `%69,4-80,1`** (`claude-sonnet-5` ↔ `gpt-4o-mini`,
+  [ADR-0084](adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)). İki bağımsız hakem
+  ailesi aynı 80 cevabı puanladığında kütle **0,8011 → 0,6940** düşüyor; sayının **hakem
+  seçimine duyarlı olduğu ölçülmüştür**.
+- **İki hakem ailesi artık aynı yönde hükmediyor, ama uyum zayıf kaldı:** κ **0,534/0,409**
+  (`tam_sadık`/`atıf_temiz`), aracın **0,6** eşiğinin altında.
+- **Panel İKİ aileli kaldı, üç değil** ([ADR-0032](adr/0032-hakem-paneli-uc-aile-ve-aile-dislama.md)
+  üçüncü aileyi — Google — öngörüyordu); sapmanın sebebi bütçe. Öz-tercih **genel olarak
+  ölçülmedi** — yalnız Anthropic ailesi için tek hücrelik bir gösterge var (kayırma **lehine
+  değil**, ters yönde).
+- **Donmuş TEST tek hakemli kaldı** (`gpt-4o-mini`, κ ölçülmedi): kabul testi koşuldu (ham
+  kütle 0,5804, tavan `recall@10` 0,7500) ama ikinci bir hakem ailesiyle **doğrulanmadı**.
+
 Sürümü sınırlayan etken modelin başarımı değil, ölçüm aygıtının güvenilirliğidir.
 
 ## 7. Karşılaştırma — skor kartı
@@ -133,14 +154,14 @@ seti (n=80, geliştirme kümesi), önsözsüz istem, erişim katmanı etkin (k=1
 
 | Eksen | **HakHukuk-4B** | `gemini-3.1-flash-lite` | `gemini-3.5-flash-lite` | `gemini-3.5-flash` | `claude-sonnet-5` | `Qwen3.5-4B` (temel) |
 | :--- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Sadık cevap kütlesi ↑ ᵃ | 0,8011 | 0,7058 | 0,7622 | 0,7425 | **0,8348** | ölçülemedi ᵇ |
+| Sadık cevap kütlesi ↑ ᵃ ⁱ | 0,6940-0,8011 aralığı | 0,7058 | 0,7622 | 0,7425 | **0,8348** | ölçülemedi ᵇ |
 | Cevaplama oranı (`coverage`) | **0,9375** | 0,8750 | 0,8750 | 0,8375 | 0,9000 | ölçülemedi ᵇ |
 | `A1`, cevaplanan ↑ | 0,8545 | 0,7710 | 0,8199 | 0,8269 | **0,8790** | ölçülemedi ᵇ |
 | `A1`, altın getirilen ↑ | 0,8902 | 0,7900 | 0,8449 | 0,8523 | **0,9031** | ölçülemedi ᵇ |
 | `recall@10` (erişim) | 0,9500 | 0,9500 | 0,9500 | 0,9500 | 0,9500 | ölçülemedi ᵇ |
 | Aşırı çekinme ↓ ᶜ | **4/80** | 7/80 | 9/80 | 7/80 | **4/80** | ölçülemedi ᵇ |
 | İsabetsiz atıf ↓ ᵈ | 8/80 | 8/80 | **7/80** | 8/80 | **7/80** ᵈ | ölçülemedi ᵇ |
-| **Uydurulmuş madde numarası** ↓ | **0/114** | 1/152 | 4/130 | 4/133 | 2/163 | ölçülemedi ᵇ |
+| **Uydurulmuş madde numarası** ↓ ᶠ | **0/114** | **0/153** ᶠ | 4/130 | 4/133 | 2/161 ᶠ | ölçülemedi ᵇ |
 | Ezber kütlesi (M5) ↓ ᵉ | **0,3899** | 0,6710 | 0,7013 | 0,8241 | 0,7772 ᵉ | 0,4697 |
 | Cevap başına maliyet ↓ | **$0** | $0,001895 | $0,001152 | $0,009914 | $0,014915 | **$0** |
 | Ortalama belirteç / cevap | 782,5 | 861,5 | **171,1** | 699,4 | 706,6 | ölçülemedi ᵇ |
@@ -160,7 +181,7 @@ bir sınavda ölçülmüştür; kaynaksız bir karşılaştırma değildir.
 | **`recall@10`** | Doğru maddenin, erişim katmanının getirdiği ilk on kaynak arasında bulunma oranı. Modelden bağımsızdır ve **kütlenin üst sınırıdır**: bağlama girmeyen maddeden doğru cevap üretilemez. |
 | **Aşırı çekinme** | Doğru madde bağlamda olduğu hâlde modelin cevap vermediği kalem sayısı. Erişim kusuru değildir; modelin kendi kararıdır. Değerler gözle sayılmıştır. |
 | **İsabetsiz atıf** | Cevabın, bağlamdaki **yanlış** maddeye dayandırıldığı kalem sayısı. Madde uydurma ile karıştırılmamalıdır: atfedilen madde gerçektir, ancak soruyu karşılamaz. Beş öznede 80/80 kalem tek tek gözle okunarak sayılmıştır. |
-| **Uydurulmuş madde numarası** | Cevapta anılan ve korpusta **karşılığı bulunmayan** madde numarası sayısı. Hakem değil, deterministik doğrulama sayar. Payda, o koldaki toplam atıf sayısıdır; bu yüzden kollar arasında paydalar farklıdır. |
+| **Uydurulmuş madde numarası** | Cevapta anılan ve korpusta **karşılığı bulunmayan** madde numarası sayısı. Hakem değil, deterministik doğrulama sayar. Payda **`DOGRULANDI`** sayısıdır (bölüm 7.4, dipnot ᶠ) — kolun toplam atıf sayısı değil. |
 | **Ezber kütlesi (M5)** | Modele **kaynak verilmeden** ölçülen kütle. Anti-hedeftir: yüksek değer, modelin ezberden hüküm kurduğunu gösterir ve mevzuat değiştiğinde sessizce yanlışa döner. |
 | **Cevap başına maliyet** | Bir cevabın çıkarım bedeli. Yerel model tüketici sınıfı bir GPU'da koştuğu için sıfırdır; rakiplerde OpenRouter liste fiyatından ölçülmüştür. Hakem bedeli bu satıra dâhil değildir. |
 | **Ortalama belirteç / cevap** | Cevap başına üretilen belirteç sayısı, düşünce kanalı dâhil. Maliyet ve gecikme ekseni; doğruluk ölçütü değildir. |
@@ -227,6 +248,15 @@ Düzeltme uygulandığında sıralama değişmektedir.
   çıkmadı, ön-kayıtlı kaybetme senaryosu **gerçekleşmedi**. Aynı rejim (`f10-rakip-m5/KUNYE.json`),
   hakem `openai/gpt-4o-mini` · `LLM_PROVIDER_ORDER=OpenAI` (ADR-0032 aile dışlaması), n=80,
   kesiklik 3/80=%3,75 (geçerlilik eşiği %5'in altında). Kaynak: [`f10-rakip-m5/KUNYE.json`](../outputs/eval/f10-rakip-m5/KUNYE.json).
+- **ᶠ** **Bu satırın birimi tüm kolonlarda ortaktır:** pay = `MADDE_YOK + KANUN_YOK`,
+  payda = **`DOGRULANDI`** (o koldaki toplam atıf sayısı DEĞİL). `gemini-3.1-flash-lite`
+  hücresi 2026-09-11'de **yeniden puanlandı** (atıf doğrulayıcı parantezli kanun adlarını
+  yanlış kanuna çözüyordu): `1/152` → `0/153`. `claude-sonnet-5` hücresi **kusur 25 kapandı,
+  2026-09-13**: eskiden paydası **toplam atıf** (163) idi, `2/163` yazıyordu; yeniden puanlama
+  **yapılmadan**, aynı sayımın (`DOGRULANDI` 161 · `MADDE_YOK` 2 · `KANUN_YOK` 0) `DOGRULANDI`
+  paydasıyla ifadesine çevrildi ⇒ `2/161`. Kaynaklar:
+  [`g22-rakip-yeniden-puanlama/BULGU.md`](../outputs/eval/g22-rakip-yeniden-puanlama/BULGU.md) ·
+  [`harness_tablo_sonnet_5_nb.json`](../outputs/eval/hp-rakip-havuzu/harness_tablo_sonnet_5_nb.json).
 
 Bu değerlerin hiçbiri standart bir ölçüt kümesinden gelmemektedir. Tümü, Türkçe ve güncel
 Türkiye Cumhuriyeti mevzuatı üzerine kurulmuş kendi CANON kümemizden üretilmiştir. MMLU,
@@ -252,7 +282,9 @@ ablasyondur; ölçüm, önceki kararın çıkarımını tersine çevirmiştir.
 ## 10. Sınırlar
 
 - Kapsam yalnızca yürürlükteki Türkiye Cumhuriyeti kanunlarıdır (892 kanun, 40.496 madde).
-  Yönetmelik, tüzük, KHK ve tebliğ kapsam dışıdır.
+  Yönetmelik, tüzük, KHK ve tebliğ kapsam dışıdır. **Bu mevzuat bir ANLIK GÖRÜNTÜdür**
+  (`data/corpus/KUNYE.json` → **2026-08-06**); mevzuat değişir, korpus ve ağırlıklar
+  değişmez.
 - Tek boyut noktası (~4B) ölçülmüştür; bulguların bu temel modele özgü olup olmadığı sorusu
   açıktır.
 - Yanlış kaynağa atıf oranı 0,0769'dur (Sonnet-5: 0,0083). Model madde numarası

@@ -73,7 +73,8 @@ Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-huk
 | Sonnet-5 **isabetsiz atıf** (göz) | **7/80** ↔ biz **8/80** — tek kalem. ⚠️ Vekil ölçüt ~9 kat fark iddia ediyordu ⇒ **vekil ölçüt bu ekseni yanlış temsil ediyor** |
 
 **Bu turda kapanan kusurlar:** **24** (bayat README) · **29** (imajdaki yedek) · **33** (yeniden
-üretim kapısı hiç geçmiyordu). **Açık: 6** — 5a · 10 · 23 · 25 · 27 · 31.
+üretim kapısı hiç geçmiyordu) · **25** (Adım 8, kesir birimi — tüm paydalar `DOGRULANDI`).
+**Açık: 5** — 5a · 10 · 23 · 27 · 31.
 
 **Yeni tuzaklar:** **7.7** (kapı var olmayan alanı okuyup her zaman düşüyor) · **7.8** (sağlık
 kontrolü başkasının sunucusunu kendi sanıyor — 8 kalem yanlış modele üretildi).

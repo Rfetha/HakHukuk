@@ -1,7 +1,10 @@
 # Yayımlanan sayıyı yeniden üretme
 
 > **Tek komut:** `bash scripts/yeniden_uret.sh`
-> Manşet: **kütle %80,1** — `outputs/eval/f02-biz-onsozsuz/KUNYE.json` (2026-09-06).
+> Bu script **tek hakem okumasını** (`gpt-4o-mini`, GÖZ-katı, bağlayıcı) üretir: **kütle
+> %80,1** — `outputs/eval/f02-biz-onsozsuz/KUNYE.json` (2026-09-06). ⚠️ **Bugünkü manşet
+> ARALIKTIR** (`%69,4-80,1`, `claude-sonnet-5` ↔ `gpt-4o-mini` — ADR-0084); bu sayı aralığın
+> yalnız üst ucudur, tek başına manşet değildir.
 
 ## Neden bu belge var
 
