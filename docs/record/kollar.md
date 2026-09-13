@@ -32,6 +32,48 @@ Diskte tutulan: `tgta_v1` (yayımlanacak) · `tg_v1` (aktif kol).
 
 **Asıl artefakt adaptördür** (`outputs/<kol>/`, ~114 MB) — o silinmez.
 
+### 2026-09-13 — depo temizliği, 85 GB → 28 GB (~57 GB silindi)
+
+Gerekçe [ADR-0075](../adr/0075-v1-sft-kapanir-v2-sequential-rl.md) m.3'tür: ADR-0027'nin
+task-vector/merge hattı `v1`'de **donduruldu** ve `v2`'ye taşınmıyor, dolayısıyla
+norm-dengeleme ablasyonları **konusuz** kaldı. Sayıları bu belgede (:221-222) ve
+[ADR-0052](../adr/0052-merge-norm-dengeleme-hukmu-tersine.md) · [ADR-0053](../adr/0053-modul-basina-norm-kapsami-reddedildi.md)'te metin olarak duruyor.
+
+**Diskte tutulanlar (v2/GRPO'nun ihtiyacı, ~19 GiB):** `models/merged/tgta_v1/` — ADR-0075'in
+adıyla gösterdiği **GRPO başlangıç noktası** · `models/merged/tg_v1/` · GGUF olarak
+`tgta_v1-q4_k_m` (yayımlanan artefakt, `sha256` silme sonrası yeniden doğrulandı:
+`755e15e9…86e7bffc`, HF'teki dosyayla birebir) · `q35-4b-q4_k_m` (base kolu, M5/Kapı 6 çıpası) ·
+`tg_v1-q4_k_m` · `ta_v1-q4_k_m` (B4 kol çıpaları).
+
+**Silinen GGUF'ların künyesi** — dosya gitti, kimliği burada kalır:
+
+| dosya | bayt | `sha256` | neden silindi |
+| :--- | ---: | :--- | :--- |
+| `tg_ta_min-q4_k_m.gguf` | 2.783.446.720 | `8fc3e5b0…dda02055` | merge ablasyonu, hat donduruldu |
+| `tg_ta_nb-q4_k_m.gguf` | 2.783.446.720 | `f0a963cb…0b7b576e` | dejenere, koşu zaten geçersiz |
+| `tg_ta_modulmin-q4_k_m.gguf` | 2.783.446.720 | `9c73bae0…02332a0c` | ADR-0053 ile reddedildi |
+| `q35-4b-f16.gguf` | 8.665.620.192 | `20e59ec0…0fc4afee` | kuantizasyon zincirinin ara ürünü |
+| `cp2s-ties-smoke-q4_k_m.gguf` | 2.783.446.720 | `7d6389d4…eeb11a66` | duman artefaktı, hiçbir belgede geçmiyor |
+| `q35-4b-q5_k_m.gguf` | 3.161.425.632 | `733ff786…1462007a` | base kuantizasyon merdiveni, tablosu [#39](research_log/2026-07-24-cp0-base-dogrulama-kapisi.md)'da |
+| `q35-4b-q6_k.gguf` | 3.563.028.192 | `e7a4a038…d308828c` | aynı |
+| `q35-4b-q8_0.gguf` | 4.610.580.192 | `a831d9f3…ef97c6d6` | aynı |
+| `tgta_v1-q4_k_m-20260912.gguf` | 2.783.446.688 | `9becf362…adb482d6` | S17 eğrisi; künyesi `outputs/eval/s17-kuantizasyon-egrisi/OZET.md`'de |
+| `tgta_v1-q5_k_m.gguf` | 3.161.425.568 | `2afa0ea3…a0f6b8b0` | aynı |
+| `tgta_v1-q8_0.gguf` | 4.610.580.128 | `a7991f36…58a1354b` | aynı |
+
+Kısaltma baştan 8 + sondan 8 hane; bu dosyalar silindiği için tam değer başka bir yerde
+tutulmuyor, kısaltılmış hâli kimliği ayırt etmeye yeter (tek istisna
+`tgta_v1-q4_k_m-20260912`, tam `sha256`'sı `outputs/eval/s17-kuantizasyon-egrisi/OZET.md`'de).
+
+Silinen iki bf16 dizini: `tg_ta_globalmin` (bu belgede **satırı hiç olmadı** — kendi kuralına
+göre kimliksizdi; künyesi `outputs/eval/cp3f-modul-norm/KUNYE_globalmin.json`) ·
+`tg_ta_modulmin` (ADR-0053). Her ikisinin eval çıktısı `outputs/eval/` altında duruyor.
+
+⚠️ **Yeniden üretilebilirliğin ölçülmüş sınırı:** yayımlanan `Q4_K_M`, bugünkü araç zinciriyle
+`models/merged/tgta_v1/`'den **bayt-bayt üretilemiyor** (−32 bayt, farklı `sha256` — S17
+BULGU-G). O yüzden `tgta_v1-q4_k_m.gguf` yeniden üretilebilir sayılmaz ve silinmez;
+yedeği HF'teki pinli revizyondur (`hakhukuk/indir.py`).
+
 ---
 
 ## Adlandırma
