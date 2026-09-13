@@ -133,19 +133,19 @@ yeniden puanlama: [#57](docs/record/research_log/2026-08-06-cekinme-aleti-onarim
 istem · harness **AÇIK** (`k=10`) · üretim bütçesi **1536** · seed 3407 · hakem `gpt-4o-mini`.
 Sınavın eşit olduğu **varsayılmadı, ölçüldü** — kanıt §4'te.
 
-| eksen | **HakHukuk-4B-v0.1** | `gemini-3.1-flash-lite` | `gemini-3.5-flash-lite` | `gemini-3.5-flash` | `Qwen3.5-4B` (base) | kaynak |
-| :--- | ---: | ---: | ---: | ---: | ---: | :--- |
-| **sadık-cevap kütlesi** ↑ ᵃ | **0,8011** | 0,7058 | 0,7622 | 0,7425 | ölçülemedi ᵇ | [`KALIBRASYON_ve_OZET.md`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) |
-| `coverage` (cevaplama oranı) | **0,9375** | 0,8750 | 0,8750 | 0,8375 | ölçülemedi ᵇ | [`harness_tablo*.json`](outputs/eval/f02-biz-onsozsuz/harness_tablo.json) |
-| `A1` · cevaplanan ↑ | **0,8545** | 0,7710 | 0,8199 | 0,8269 | ölçülemedi ᵇ | ↑ |
-| `A1` · altın getirilen ↑ | **0,8902** | 0,7900 | 0,8449 | 0,8523 | ölçülemedi ᵇ | ↑ |
-| `recall@10` (erişim) | 0,9500 | 0,9500 | 0,9500 | 0,9500 | ölçülemedi ᵇ | ↑ |
-| **aşırı-red** ↓ ᶜ | **4/80** | 8/80 | 9/80 | 11/80 | ölçülemedi ᵇ | ↑ (`altin_geldi_cekindi`) |
-| **isabetsizlik** ↓ ᵈ | 8/80 | 8/80 | **7/80** | 8/80 | ölçülemedi ᵇ | [`GOZLE_OKUMA_80.md`](outputs/eval/f02-biz-onsozsuz/GOZLE_OKUMA_80.md) · [`GOZLE_ISABETSIZLIK_*.md`](outputs/eval/f04-rakip-onsozsuz/GOZLE_ISABETSIZLIK_3_5_FLASH.md) |
-| **uydurulmuş madde** ↓ ʰ | **0/114** | **0/153** ʰ | 4/130 | 4/133 | ölçülemedi ᵇ | [`harness_tablo*.json`](outputs/eval/f02-biz-onsozsuz/harness_tablo.json) · [yeniden puanlama](outputs/eval/g22-rakip-yeniden-puanlama/BULGU.md) |
-| **M5 ezber kütlesi** ↓ ᵉ | **0,3899** | 0,6710 | 0,7013 | 0,8241 | **0,4697** | [`f07/KUNYE.json`](outputs/eval/f07-m5-anti-hedef/KUNYE.json) · [`f10/KUNYE.json`](outputs/eval/f10-rakip-m5/KUNYE.json) |
-| **$ / cevap** ↓ ᵍ | **$0** | $0,001895 | **$0,001152** | $0,009914 | **$0** | [`MALIYET.json`](outputs/eval/f09-maliyet/MALIYET.json) |
-| ort. **token / cevap** ↓ | 782,5 | 861,5 | **171,1** | 699,4 | ölçülemedi ᵇ | [`KALIBRASYON_ve_OZET.md`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) |
+| eksen | **HakHukuk-4B-v0.1** | `gemini-3.1-flash-lite` | `gemini-3.5-flash-lite` | `gemini-3.5-flash` | `claude-sonnet-5` | `Qwen3.5-4B` (base) | kaynak |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | :--- |
+| **sadık-cevap kütlesi** ↑ ᵃ | 69,4-80,1 aralığı ⁱ | 0,7058 | 0,7622 | 0,7425 | **0,8348** | ölçülemedi ᵇ | [`KALIBRASYON_ve_OZET.md`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) · [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md) |
+| `coverage` (cevaplama oranı) | **0,9375** | 0,8750 | 0,8750 | 0,8375 | 0,9000 | ölçülemedi ᵇ | [`harness_tablo*.json`](outputs/eval/f02-biz-onsozsuz/harness_tablo.json) |
+| `A1` · cevaplanan ↑ | **0,8545** | 0,7710 | 0,8199 | 0,8269 | **0,8790** | ölçülemedi ᵇ | ↑ |
+| `A1` · altın getirilen ↑ | **0,8902** | 0,7900 | 0,8449 | 0,8523 | **0,9031** | ölçülemedi ᵇ | ↑ |
+| `recall@10` (erişim) | 0,9500 | 0,9500 | 0,9500 | 0,9500 | 0,9500 | ölçülemedi ᵇ | ↑ |
+| **aşırı-red** ↓ ᶜ | **4/80** | 8/80 | 9/80 | 11/80 | **4/80** | ölçülemedi ᵇ | ↑ (`altin_geldi_cekindi`) |
+| **isabetsizlik** ↓ ᵈ | 8/80 | 8/80 | **7/80** | 8/80 | **7/80** | ölçülemedi ᵇ | [`GOZLE_OKUMA_80.md`](outputs/eval/f02-biz-onsozsuz/GOZLE_OKUMA_80.md) · [`GOZLE_ISABETSIZLIK_*.md`](outputs/eval/f04-rakip-onsozsuz/GOZLE_ISABETSIZLIK_3_5_FLASH.md) · [`GOZLE_ISABETSIZLIK_sonnet_5.md`](outputs/eval/hp-rakip-havuzu/GOZLE_ISABETSIZLIK_sonnet_5.md) |
+| **uydurulmuş madde** ↓ ʰ | **0/114** | **0/153** ʰ | 4/130 | 4/133 | 2/163 ʲ | ölçülemedi ᵇ | [`harness_tablo*.json`](outputs/eval/f02-biz-onsozsuz/harness_tablo.json) · [yeniden puanlama](outputs/eval/g22-rakip-yeniden-puanlama/BULGU.md) |
+| **M5 ezber kütlesi** ↓ ᵉ | **0,3899** | 0,6710 | 0,7013 | 0,8241 | 0,7772 | **0,4697** | [`f07/KUNYE.json`](outputs/eval/f07-m5-anti-hedef/KUNYE.json) · [`f10/KUNYE.json`](outputs/eval/f10-rakip-m5/KUNYE.json) |
+| **$ / cevap** ↓ ᵍ | **$0** | $0,001895 | **$0,001152** | $0,009914 | $0,014915 | **$0** | [`MALIYET.json`](outputs/eval/f09-maliyet/MALIYET.json) |
+| ort. **token / cevap** ↓ | 782,5 | 861,5 | **171,1** | 699,4 | 706,6 | ölçülemedi ᵇ | [`KALIBRASYON_ve_OZET.md`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) |
 
 ʰ **ESKİ ALETİN sayısıydı; 2026-09-11'de doğrulayıcı ONARILDI ve bu satır YENİDEN PUANLANDI.**
 Kusur: `atif_dogrula.Dogrulayici` kanun adını gevşek eşleştirip **yanlış kanuna** çözebiliyordu;
@@ -226,6 +226,16 @@ Aynı satırda iki kesir birimi duruyor — sayısı oynamadığı için hüküm
   3.5 FL $0,0410 · 3.5 Flash $0,0434 *(`gnd_*_summary.json`)*.
   **Maliyet-normalize parite iddiası yine de KURULMAZ** — ADR-0017'nin istediği ölçüm bir
   Pareto eğrisidir, tek satır değil.
+- **ⁱ** **Manşet KOŞULSUZ ARALIKTIR — sonuca göre biçimlendirilmedi** (insan kararı, grill
+  karar 12/13; [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+  İki bağımsız hakem ailesi aynı 80 cevabı puanladı: `gpt-4o-mini` **0,8011** ↔
+  `claude-sonnet-5` **0,6940**. Eski `%80,1` manşeti **silinmedi** — burada **GÖZ-katı,
+  bağlayıcı** okuma olarak §5'te ayrıca durur. Üç Gemini kolu **tek hakemli** kalır (ADR-0057)
+  ve bu satırdaki `0,7058`/`0,7622`/`0,7425` hâlâ yalnız `gpt-4o-mini`'nindir; asimetri
+  **bilinçlidir**, gizlenmedi.
+- **ʲ** **Sonnet-5 hücresi (`2/163`) FARKLI BİR BİRİM kullanıyor** — paydası **toplam atıf**,
+  Gemini sütunlarınınki **`DOGRULANDI`**. Sayı oynamadığı için hüküm etkilenmiyor; açık kusur
+  **25** olarak kayıtlı (ayrıntı §3'ün altında, sonraki paragraf).
 
 ### Rakip sütunlarının üç okuması
 
@@ -238,6 +248,11 @@ Ana tabloda **yalnız bağlayıcı olan** (GÖZ-katı) var; üçü birden burada
 | `gemini-3.1-flash-lite` | 0,6746 | 0,7058 | 0,7058 |
 | `gemini-3.5-flash-lite` | 0,7174 | 0,7403 | **0,7622** |
 | `gemini-3.5-flash` | 0,6925 | 0,7050 | 0,7425 |
+| `claude-sonnet-5` *(özne — ayrı hakem koşusu değil)* | 0,7911 | 0,8223 | **0,8348** |
+
+> **`claude-sonnet-5` satırı hakem değil, bir özne olarak burada** — `gpt-4o-mini` tarafından
+> puanlanan rakip kolu. Bu tablonun ölçtüğü şey (ALET↔GÖZ farkı) ile §5'in ölçtüğü şey
+> (`gpt-4o-mini`↔`claude-sonnet-5` **hakem** farkı, ADR-0084) **ayrı eksenlerdir**, karıştırılmaz.
 
 > **Neden bağlayıcı olan EN MUHAFAZAKÂR okuma** (insan kararı,
 > [ADR-0064](docs/adr/0064-v1-kapisi-uc-maddeli-on-kayit.md)): GÖZ-katı'da rakiplerin
@@ -351,9 +366,11 @@ sütunu bunu düzeltir.
 
 1. **"TEST'te de geçeriz."** Ölçüm **DEV**'de; TEST'in erişim tavanı **≈%75**
    ([ADR-0069](docs/adr/0069-kabul-testi-tavan-kullanimi-raporlamasi.md)) ve kabul testi **koşulmadı** (§5).
-2. **"Hakem panelinden geçmiş bir hüküm."** Hâlâ **tek aile** (`gpt-4o-mini`), κ yok,
-   öz-tercih **genel olarak** ölçülmedi — yalnız Anthropic ailesi için tek hücrelik bir gösterge
-   var, ters yönde (§7.2).
+2. **"Üç aileli tam bir hakem panelinden geçmiş bir hüküm."** İki aile artık **aynı yönde**
+   hükmediyor (`gpt-4o-mini` · `claude-sonnet-5`, [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)),
+   ama κ **zayıf ve değişmedi** (0,534/0,409 < 0,6) ve üçüncü aile (Google, ADR-0032) bütçe
+   nedeniyle hâlâ eklenmedi; öz-tercih **genel olarak** ölçülmedi — yalnız Anthropic ailesi için
+   tek hücrelik bir gösterge var, **ters yönde** (§7.2).
 3. **"3.1 FL için kesikliğe duyarlı hüküm."** %6,2 ile bizim kolumuzu düşüren eşiğin üstünde;
    [ADR-0040](docs/adr/0040-dusunce-modu-olculecek-on-kayitli-kural.md) simetrik uygulanmalı.
 4. **"Model bu kadar iyileşti."** Bkz. §7.1 — kazancın büyük kısmı **ölçümden** geldi.
@@ -445,6 +462,14 @@ orada `v1.0` için eksik iki şey sayılı — **(a) kabul testi koşmadı → B
 **(b) her sayı tek hakem ailesinin hükmü → HÂLÂ AÇIK** (κ **0,534** < 0,6, üçüncü hakem
 bütçe kararıyla atlandı — §7.2).
 ⇒ **`v1.0`'ı bloke eden model değil, ölçüm aygıtıdır.**
+
+**2026-09-12 güncellemesi — madde (b)'nin dar koşulu kapandı**
+([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)): ADR-0074'ün tek
+cümlelik koşulu (`3.5 Flash` aynı ikinci hakemle — `claude-sonnet-5` — puanlansın) karşılandı
+ve §5'in üç maddesi **iki bağımsız hakem ailesi altında da** GEÇTİ (marj çıpaya göre
+**+7,57 p**, `claude-sonnet-5`). **κ değişmedi** (hâlâ 0,534/0,409, 0,6 eşiğinin altında) —
+kapanan şey κ değil, **eşit sınavın yokluğuydu**; üçüncü aile (Google) hâlâ eklenmedi. Bu
+**`v1.0` etiketi VERMEZ** — sürüm kararı ayrı bir adımın işidir.
 
 ---
 
