@@ -12,7 +12,7 @@
 
 | # | iş | durum |
 | :-- | :--- | :--- |
-| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **50/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.7** (kapının üç maddesi, DUR ②) · harcanan **$5,7338** / tavan $8,00 · OpenRouter bakiyesi **$6,2294** |
+| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **50/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.8** (turun kaydı — ADR-0084 yazıldı, research_log **#70**, manşet aralık) · harcanan **$5,7338** / tavan $8,00 · OpenRouter bakiyesi **$6,2294** |
 | **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
@@ -67,7 +67,7 @@ Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-huk
 | **S17** kuantizasyon eğrisi | `Q4` 0,7921 ↔ `Q5` **0,8673** ↔ `Q8` 0,7909 — **monoton değil** |
 | araç zinciri sapması | **−0,90 p ⇒ BELİRSİZ** (32 bayt fark davranışsal değil) |
 | κ borcu tahmini ↔ gerçek | **$1,97** tahmin ↔ **$1,6831** gerçek (düz ön-tahmin $2,81'di) |
-| ⭐ **κ BORCU — kapı ikinci hakem altında** | `3.5 Flash` GÖZ-katı **0,6183** → eşik **0,5983**; bizim **0,6940** ⇒ marj **+7,57 p** (çıpaya göre; `gpt-4o-mini`'de +5,86 p). **İki hakem de aynı yönde.** Hüküm 6.7'nin işi |
+| ⭐ **κ BORCU KAPANDI — kapı ikinci hakem altında da GEÇTİ** | `3.5 Flash` GÖZ-katı **0,6183** → eşik **0,5983**; bizim **0,6940** ⇒ marj **+7,57 p** (çıpaya göre; `gpt-4o-mini`'de +5,86 p). **İki hakem de aynı yönde.** Hüküm 6.7'de GEÇTİ, kayıt [ADR-0084](../adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)'te — κ'nın kendisi **değişmedi** (0,534/0,409) |
 | kusur 23 | **KAPANMADI** — deterministik taraf 3 sınamada temiz, kök neden hâlâ yok ⇒ `v2` |
 | ⭐ **öz-tercih** (Anthropic ailesi) | hakem **kendi ailesini** bizden ~2 kat sert cezalandırdı (−20,03 p ↔ −10,71 p) ⇒ **kayırma YOK, ters yön**. Tek özne/tek koşu ⇒ gösterge |
 | Sonnet-5 **isabetsiz atıf** (göz) | **7/80** ↔ biz **8/80** — tek kalem. ⚠️ Vekil ölçüt ~9 kat fark iddia ediyordu ⇒ **vekil ölçüt bu ekseni yanlış temsil ediyor** |
@@ -125,8 +125,8 @@ doğruymuş**; hedefi kaydıran tek bir satırdı. Ayrıntı ve üçüncü tutar
      6.6b öz-tercih (Anthropic ailesi)      BİTTİ  — ⭐ kayırma YOK, TERS yön
      6.6c Sonnet-5'in isabetsiz atıfı       BİTTİ  — 7/80 (biz 8/80); ön-kayıt ÇÜRÜDÜ
      6.6d Sonnet-5'in ezber kütlesi M5      BİTTİ  — 0,7772 (havuz içi, biz 0,3899 en düşük kaldı)
-     6.7 kapının üç maddesi                 ← ŞU AN · DUR ②
-     6.8 ADR-0084 + #68 + manşet ARALIK
+     6.7 kapının üç maddesi                 BİTTİ · DUR ② ateşlenmedi — GEÇTİ
+     6.8 turun kaydı (ADR-0084 · #70 · manşet ARALIK · MODEL_CARD 6 sütun · tuzak 7.8 kod)  ← ŞU AN
 7 · bekleyen commit'leri push
 8 · PUBLIC kontrolü   repo + HF
 9 · her şey PUBLIC    HF görünürlüğü açılır ← DUR ③
@@ -169,9 +169,9 @@ araç kullanımının **öğrenilmesi** (GRPO ödülüne *"doğru aracı doğru 
 
 ```
 sürüm      v0.3 (ürün) · artefakt HakHukuk-4B-v0.1 · ağırlıklar HF'te ÖZEL
-test       323 yeşil, 2 xfail
+test       331 yeşil, 2 xfail
 dal        master (docs-tazeleme birleştirildi) · commit'ler HENÜZ PUSH EDİLMEDİ → adım 7
-kayıt      ADR 0001-0083 · research_log #1-#68 · tuzak defteri 1.1-7.8
+kayıt      ADR 0001-0084 · research_log #1-#70 · tuzak defteri 1.1-7.8 · 2.19 · 2.20
 indeks     Rfetha/HakHukuk-mevzuat-bge-m3-s2 — dataset, PUBLIC (G8 açıldı 2026-09-12)
 bakiye     OpenRouter $11,876 (ölçüldü 2026-09-12; goal'deki $2,04 BAYATTI)
 ```
