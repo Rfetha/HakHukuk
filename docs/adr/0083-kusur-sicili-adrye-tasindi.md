@@ -595,3 +595,64 @@ uyguluyor; gerçeği ~0,87 sa'dir — yön emniyetli, **tahmin gerekçesiz taş�
   canlı sorgu"* kaydıdır; bu tur **$0 / ağsız** koştuğu için yeniden ölçülmedi —
   **çürütülmedi de**. Kat merdiveninin belge sayıları bu ölçüme dayanır.
 - **Modal bakiyesi bugün doğrulanmadı**: $29,19 ADR-0066'nın 2026-08 tarihli kaydıdır.
+
+---
+
+## EK-2 — model kartından çıkarılan ÖLÇÜM AÇIK SORULARI (2026-09-13)
+
+`MODEL_CARD.md` 2026-09-13'te akademik/manuel forma yeniden yazıldı (insan kararı: kart
+yürürlükteki hâli anlatır, onarım günlüğü tutmaz). Kartın *"Açık sorular"* bölümü **dışa
+dönük belgede durmamalı** diye çıkarıldı; içeriği **kaybolmasın diye** buraya alındı.
+
+⚠️ **Burada ölçüm bedeli olan bir şey var:** 1. maddedeki Wilson aralıkları **kartın içinde
+hesaplanmıştı** (`z=1,96`, `n=80`) ve başka hiçbir dosyada yoktu. Kart silinseydi bu sayılar
+kaybolacaktı.
+
+**1 · Set küçük ve dar: `n=80`, tek dil, tek alan.**
+
+| oran | nokta tahmin | Wilson %95 | genişlik |
+| :--- | ---: | :--- | ---: |
+| **isabetsizlik 8/80** | 0,1000 | **[0,0515 – 0,1851]** ≈ **[4/80 – 15/80]** | **13,4 puan** |
+| aşırı-red 4/80 | 0,0500 | [0,0196 – 0,1216] ≈ [2/80 – 10/80] | 10,2 puan |
+
+⇒ *"8/80 ↔ 6/80"* gibi farklar bu genişliğin **çok altındadır**. Aynı sınıfta ölçülmüş ikinci
+örnek: M2'nin kuantumu `1/66 = 1,52 puan`, yani `+0,000` ile `±1 kalem` **ayırt edilemiyor**
+([#59](../record/research_log/2026-08-06-m2-paydasi-ve-karar-4.md)).
+**Soru:** kaç kalem, hangi çeşitlilikte yeterlidir? (İkili oranların çözünürlük sınırı açık
+karar **S5**; ilgili kusur **5a** bu ADR'nin §(A) sicilinde açık.)
+
+**2 · DEV ile TEST aynı sınav değil.** Ayrım kanuna göre kusursuz katmanlı (2:1) ama **madde
+uzunluğuna göre katmanlanmamış**; bileşim farkın **%81**'ini açıklıyor
+([ADR-0069](0069-kabul-testi-tavan-kullanimi-raporlamasi.md)). Yeniden katmanlama ADR-0069'da
+*"donmuş TEST'i açar, usulü kırar"* diye **reddedilmişti**. **Soru:** ayrım uzunluğa göre de
+katmanlanmalı mı — ve bu, donmuş TEST'i açmadan nasıl yapılır?
+
+**3 · Her sayı tek hakem ailesinin hükmü.** Üç aileli panel
+([ADR-0032](0032-hakem-paneli-uc-aile-ve-aile-dislama.md)) hiç kurulmadı; genişleme rakip
+havuzunun da ön koşulu ([ADR-0072](0072-v1-rakip-havuzu-genisler.md), açık karar **S16**).
+**Soru:** κ hangi eşiğin altında kalırsa kartın sayıları yeniden koşulur?
+
+**4 · Manşet ölçüt bir çarpım:** `kütle = coverage × A1`. İki çarpan **farklı örnekleme
+birimlerinden** gelir — `coverage` **kalem** başına (80 kalem), `A1` **iddia** başına ve yalnız
+cevaplanan kalemler üzerinden makro ⇒ çarpıma ikili bir güven aralığı **doğrudan uygulanamaz**.
+Aynı sebep `v1.0` kapısının δ'sının **ölçümden değil insan kararından** gelmesinin
+gerekçesidir: gürültü tabanı (0,3 puan) yalnız `A1` için ölçüldü, `coverage`'ın varyansı o
+tabanda yok ([ADR-0064](0064-v1-kapisi-uc-maddeli-on-kayit.md) §δ). **Soru:** kütle için
+savunulabilir bir belirsizlik ifadesi (bootstrap? kalem-başına birleşik skor?) kurulmalı mı?
+
+**5 · Dış karşılaştırılabilirlik yok.** Sayılar kendi CANON setimizde üretiliyor ve **kimse bu
+sette koşamaz**. Dış benchmark'lara gitmemek [ADR-0016](gemma4-12b-dersler.md#adr-0016)'nın
+kayıtlı kararı ve gerekçesi sağlam, ama bedeli **doğrulanabilirliktir**. **Seçeneklerden biri**
+— karar değil — CANON'un kamuya açık bir alt kümesini yayımlamak. Bedeli de ölçülü: donmuş
+TEST bir **kabul testidir**, yayımlanması onu yakar; DEV ise **seçim yapılmış** settir.
+
+**6 · Yer-gerçeği denetimi.** Üç kolda da **sınır durum** sayıldı ve hiçbirinde sayıya
+katılmadı ⇒ üç isabetsizlik sayısı da **alt sınırdır**. Etiketler **değiştirilmedi**: sonucu
+gördükten sonra yer-gerçeğini oynatmak [ADR-0067](0067-soru-onarimi-dev-test-v2.md)'nin
+yanlılık korumasının doğrudan ihlalidir. **Soru:** yer-gerçeği denetimi ayrı, **kör** ve
+koşudan **önce** yapılan bir adım olmalı mı?
+
+**7 · Ölçüm aleti hâlâ onarım altında.** Faz 0'da beş alet kusuru bulundu ve **hiçbiri sayısal
+kapıya takılmadı**; dedektör üç kez yanıldı ve `exact_reject`'in **kör mod dalı açık borç**.
+**Soru:** *"gözle okuma"* kalıcı bir kapı mı, yoksa aletin olgunlaşmasıyla azalması beklenen
+bir maliyet mi?
