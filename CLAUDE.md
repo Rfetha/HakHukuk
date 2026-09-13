@@ -32,9 +32,18 @@
 > holds **exactly one** file. The 9 links that died with the deletion are listed in ADR-0083 §(D)
 > and are **deliberately left unrepaired** inside `docs/adr/**` and `docs/record/**`.
 >
+> ⚠️ **That last sentence was true on 2026-09-12 and then went stale.** Between 2026-09-12 and
+> 2026-09-13 the folder carried **four** more files (the `v1-son-iş` plan + its goal, and the
+> record-compaction plan + its spec). All four were **deleted 2026-09-13** under the same ADR-0083
+> precedent — *a closed plan is not re-run; the day it closes it turns into record* — after the four
+> findings that lived **only** in the compaction plan's closing block were moved into
+> [ADR-0086](docs/adr/kararlar-0064-0085.md#adr-0086). So the folder holds exactly one file **again**
+> (`00-IS-SIRASI.md`) — git tracks no empty folder, so `plans/` and `specs/` reappear the day the
+> next round writes its first file into them.
+>
 > | you want | read |
 > | :--- | :--- |
-> | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. `v1-son-iş` **CLOSED 2026-09-13** (plan: [`plans/2026-09-12-v1-son-is.md`](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71) — HF weights are **PUBLIC**, the release is tagged **`v1.0`** (weights unchanged, `sha256` identical to `v0.3` — the tag records the measuring instrument passing under a second judge family, not a model improvement; [ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)). Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round (ADR-0083 §EK, 9 items still to grill). |
+> | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. `v1-son-iş` **CLOSED 2026-09-13** (plan ~~`plans/2026-09-12-v1-son-is.md`~~ **deleted 2026-09-13** — its load-bearing content is in [ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084) and [ADR-0086](docs/adr/kararlar-0064-0085.md#adr-0086), 71/71) — HF weights are **PUBLIC**, the release is tagged **`v1.0`** (weights unchanged, `sha256` identical to `v0.3` — the tag records the measuring instrument passing under a second judge family, not a model improvement; [ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)). Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round (ADR-0083 §EK, 9 items still to grill). |
 > | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — **4 defects still open** (5a · 23 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · closed in the `v1-son-iş` round: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`) · **25** (Adım 8, kesir birimi düzeltildi) · **10** (Adım 9, HF görünürlüğü PUBLIC) |
 > | what closed on 2026-09-12 | the `hp-hat-a-hat-b` round, **115/115** — narrative in [#66](docs/record/kronoloji-63-71.md#66) and [#67](docs/record/kronoloji-63-71.md#67) |
 > | what closed on 2026-09-06/07 | the `faz0-olcum-zinciri` plan, **48/48** *(plan deleted 2026-09-12)* — [#62](docs/record/kronoloji-53-62.md#62) |
@@ -223,7 +232,7 @@ thing (OFF hands the model the gold article by construction).
 | you want | read |
 | :--- | :--- |
 | every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries **#39-#71**, in three chronology files with per-entry anchors |
-| what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — `v1-son-iş` **CLOSED 2026-09-13** ([plan](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71), `v1.0` tagged. Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round · direction in [`ROADMAP.md`](ROADMAP.md) |
+| what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — `v1-son-iş` **CLOSED 2026-09-13** (plan ~~deleted 2026-09-13~~ → [ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084) · [ADR-0086](docs/adr/kararlar-0064-0085.md#adr-0086), 71/71), `v1.0` tagged. Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round · direction in [`ROADMAP.md`](ROADMAP.md) |
 | the open debt queue | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) §(A) register + §(C) handover — **4 open** (5a · 23 · 27 · 31; five of the original nine — 24 · 29 · 33 · 25 · 10 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
 | why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with its anchor; ledger runs to **0086**, next is **0087** |
 | questions raised and not yet answered | the nine items that go **into the grill**, [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) §EK E.5 *(they passed through `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted)* |
