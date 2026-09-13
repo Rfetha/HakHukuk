@@ -82,3 +82,8 @@ bağlı. TDD ile onarıldı (TEST atıf `DOGRULANDI` 50→52, `MULGA` 2→0).
 **Hakem paneli (b).** Bugünkü hâliyle bağlayıcı hüküm tek ailenin ve κ eşiğin altında.
 Kapatma yolu: üçüncü hakem ailesi (G2) ya da κ'yı yükselten bir hakem protokolü.
 ⛔ Bu ADR o işi **planlamıyor**, yalnız `v1.0`'ın önündeki engelin **adını** koyuyor.
+
+> **2026-09-13 güncellemesi:** madde (b)'nin kapanma koşulu
+> [ADR-0084](0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)'te karşılandı — κ **değişmedi**
+> (hâlâ 0,534/0,409), ama kapının üç maddesi artık **iki** bağımsız hakem ailesi altında da
+> GEÇTİ. Bu ADR'nin metni **değiştirilmedi**; o gün öyle yazılmıştı ve kayıt öyle durur.
