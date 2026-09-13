@@ -12,8 +12,9 @@
 
 | # | iş | durum |
 | :-- | :--- | :--- |
-| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ▶️ **İCRADA** · [plan](plans/2026-09-12-v1-son-is.md) **62/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · şu an **6.8** (turun kaydı — ADR-0084 yazıldı, research_log **#70**, manşet aralık) · harcanan **$5,7338** / tavan $8,00 · OpenRouter bakiyesi **$6,2294** |
-| **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak |
+| **1** | **`v1-son-iş`** — `v1.0`'ı kapatan tur | ✅ **KAPANDI 2026-09-13** · [plan](plans/2026-09-12-v1-son-is.md) **71/71** · [goal](plans/goal-2026-09-12-v1-son-is.md) · [kapanış bloğu](plans/2026-09-12-v1-son-is.md#7--kapanış-bloğu--2026-09-13) · sürüm etiketi **`v1.0`**, HF deposu **PUBLIC** (kusur 10 kapandı) · harcanan **$5,7338** / tavan $8,00 |
+| **2** | **`v2-RL-GRPO`** — `tgta_v1` üstüne GRPO + düşünce ayarı | ⏸️ **DURUYOR** · planlanmadı, açılmayacak — **sıradaki aday** |
+| **3** | **korpus turu** — mevzuat kapsam + tazelik (40.496 → ~287,6-287,8 bin madde) | ⏸️ **DURUYOR** · plan yazılmadı; girdisi [ADR-0083](../adr/0083-kusur-sicili-adrye-tasindi.md) §EK'te — grill'e giren **9 madde açık** — **sıradaki aday** |
 
 **Klasör 2026-09-12'de boşaltıldı.** Kapanan iki plan ve iki spec **silindi**; taşıyıcı içerikleri
 [ADR-0083](../adr/0083-kusur-sicili-adrye-tasindi.md)'e alındı — **32 kusurun sicili**, **devir
@@ -22,7 +23,7 @@ tablosu** ve silinen tasarımın **mimari özü**. Gerekçe ve kabul edilen bede
 
 ---
 
-## 1 · `v1-son-iş` — AÇIK, planı yazıldı
+## 1 · `v1-son-iş` — ✅ KAPANDI 2026-09-13
 
 ### `v1.0`'ı bugün ne engelliyor — **tek şey**
 
@@ -73,8 +74,9 @@ Borcun kapanma koşulu [ADR-0074](../adr/0074-hakem-paneli-kuruldu-baglayici-huk
 | Sonnet-5 **isabetsiz atıf** (göz) | **7/80** ↔ biz **8/80** — tek kalem. ⚠️ Vekil ölçüt ~9 kat fark iddia ediyordu ⇒ **vekil ölçüt bu ekseni yanlış temsil ediyor** |
 
 **Bu turda kapanan kusurlar:** **24** (bayat README) · **29** (imajdaki yedek) · **33** (yeniden
-üretim kapısı hiç geçmiyordu) · **25** (Adım 8, kesir birimi — tüm paydalar `DOGRULANDI`).
-**Açık: 5** — 5a · 10 · 23 · 27 · 31.
+üretim kapısı hiç geçmiyordu) · **25** (Adım 8, kesir birimi — tüm paydalar `DOGRULANDI`) ·
+**10** (Adım 9, HF görünürlüğü PUBLIC).
+**Açık: 4** — 5a · 23 · 27 · 31 (hepsi adıyla devredildi — bkz. plan §7 kapanış bloğu).
 
 **Yeni tuzaklar:** **7.7** (kapı var olmayan alanı okuyup her zaman düşüyor) · **7.8** (sağlık
 kontrolü başkasının sunucusunu kendi sanıyor — 8 kalem yanlış modele üretildi).
@@ -87,17 +89,18 @@ Kural: her açık kusur ya **bu turda biter** ya **`v2`'ye gider**. Üçüncü s
 | # | kusur | nereye | niçin |
 | :-- | :--- | :--- | :--- |
 | **5a** | zayıf eşleşme sinyali — ölçüldü, **ayrışma YOK** (n=4) | ~~BU TUR~~ → **`v2`** | ⚠️ **GRILL'DE DEĞİŞTİ 2026-09-12.** Gerekçesi *"korpus büyürse ölçüm zaten yeniden koşulacak"*idi; grill **karar 1** korpus işini `v1.0`'dan **sonraya** aldı ve **karar 9** bu planın dışında bıraktı ⇒ tetikleyici **düştü**. Ölçüm `v2`'de korpusla birlikte yeniden koşar |
-| **10** | **HF görünürlüğü** (`push` yarısı kapandı) | **BU TUR · adım 9** | Turun son adımı zaten bu |
-| **23** | bir yeniden-puanlama koşusu **tekrarlanamadı** | **BU TUR** | κ borcu **puanlama** işidir; aynı boru hattı koşarken bu sınıf **ikinci kez** sınanır. Kural: bu sınıftan sayı **tek koşuya dayandırılmaz** |
+| ~~10~~ | ~~**HF görünürlüğü** (`push` yarısı kapandı)~~ | ✅ **2026-09-13'te KAPANDI (adım 9)** | Turun son adımı |
+| **23** | bir yeniden-puanlama koşusu **tekrarlanamadı** | ⚠️ **PLANLANAN "BU TUR" GERÇEKLEŞMEDİ → `v2`** | İkinci sınama (adım 6.6) deterministik tarafı 3. kez temiz buldu ama kök neden bulunamadı; kapatmak için kendimizi zorlamadık. `v2`'nin işi artık hakem-katmanı `temp=0` gürültüsünü `--runs N` ile azaltmak |
 | ~~24~~ | ~~bayat README tablosu~~ | ✅ **2026-09-12'de KAPANDI** | public açılışın ön koşuluydu |
-| **25** | aynı satırda **iki kesir birimi** | **BU TUR · adım 8** | Public kontrolünde kapanır; kıyas tablosu vatandaşa gidiyor |
+| ~~25~~ | ~~aynı satırda iki kesir birimi~~ | ✅ **2026-09-13'te KAPANDI (adım 8)** | Public kontrolünde kapandı; kıyas tablosu vatandaşa gidiyor |
 | **27** | Kaynaklar listesinde **madde biçimi tutmuyor** | **`v2`** | Korpusun **ham** tutarsızlığının gösterim katmanına yansıması. Veriyi bozmadan çözmek ayrı bir tasarım işi |
-| **29** | imaja ürünün okumadığı **36,1 MiB** korpus yedeği giriyor | **BU TUR** | Tek satırlık `.dockerignore` düzeltmesi; imaj bu turda zaten elleniyor |
+| ~~29~~ | ~~imaja ürünün okumadığı 36,1 MiB korpus yedeği giriyor~~ | ✅ **2026-09-12'de KAPANDI (adım 6.3.1)** | `.dockerignore` düzeltmesi |
 | **31** | `compose` volume adını **proje adından** türetiyor | **KAYIT** | Kusur değil, **kayda değer davranış**: artefaktı elle koymak `sha256` kapısını hiç ateşlemeyecekti. Kapanmaz, **hatırlanır** |
 
-⇒ **BU TUR: 4** (10 · 23 · 25 · 29) · **`v2`: 2** (5a · 27) · **kayıt: 1** (31) · **kapandı: 1** (24).
+⇒ **Gerçekleşen:** kapandı **5** (10 · 24 · 25 · 29 · 33) · `v2`'ye devredildi **3** (5a · 23 · 27)
+· kayıt **1** (31). Plandaki *"BU TUR"* niyeti dörttü (10 · 23 · 25 · 29); **23 gerçekleşmedi**
+ve `v2`'ye gitti — bu satır o farkı **saklamadan** taşır.
 ✅ **Grill koştu 2026-09-12** ve bir kusuru yerinden aldı: **5a → `v2`**, gerekçesi yukarıda.
-Diğer altısı yerinde kaldı.
 
 ⭐ **Grill'e girmeden bilinmesi gereken tek düzeltme:** silinen tasarımın hedef sayısı
 (**340.303 madde**) **yanlıştı** — `KANUN` satırı `917 × 102,7` sayıyordu, oysa korpustan ölçülen
@@ -127,10 +130,10 @@ doğruymuş**; hedefi kaydıran tek bir satırdı. Ayrıntı ve üçüncü tutar
      6.6c Sonnet-5'in isabetsiz atıfı       BİTTİ  — 7/80 (biz 8/80); ön-kayıt ÇÜRÜDÜ
      6.6d Sonnet-5'in ezber kütlesi M5      BİTTİ  — 0,7772 (havuz içi, biz 0,3899 en düşük kaldı)
      6.7 kapının üç maddesi                 BİTTİ · DUR ② ateşlenmedi — GEÇTİ
-     6.8 turun kaydı (ADR-0084 · #70 · manşet ARALIK · MODEL_CARD 6 sütun · tuzak 7.8 kod)  ← ŞU AN
-7 · bekleyen commit'leri push
-8 · PUBLIC kontrolü   repo + HF
-9 · her şey PUBLIC    HF görünürlüğü açılır ← DUR ③
+     6.8 turun kaydı (ADR-0084 · #70 · manşet ARALIK · MODEL_CARD 6 sütun · tuzak 7.8 kod)  BİTTİ
+7 · bekleyen commit'leri push                BİTTİ
+8 · PUBLIC kontrolü   repo + HF               BİTTİ  — kusur 25 kapandı, sır taraması temiz
+9 · her şey PUBLIC    HF görünürlüğü açılır  BİTTİ · DUR ③ ateşlenmedi (onay girdi olarak geldi) — kusur 10 KAPANDI, sürüm `v1.0`  ← TUR KAPANDI
 ```
 
 **`4b` bir kutucuk değil, kapıdır:** grill planı doğurur, **goal o planı yürütür**. Prompt
@@ -166,18 +169,27 @@ araç kullanımının **öğrenilmesi** (GRPO ödülüne *"doğru aracı doğru 
 
 ---
 
-## Durum künyesi — 2026-09-12
+## Durum künyesi — 2026-09-13
 
 ```
-sürüm      v0.3 (ürün) · artefakt HakHukuk-4B-v0.1 · ağırlıklar HF'te ÖZEL
+sürüm      v1.0 (ürün, 2026-09-13 etiketlendi) · artefakt HakHukuk-4B-v0.1 · ağırlıklar HF'te PUBLIC
 test       331 yeşil, 2 xfail
-dal        master (docs-tazeleme birleştirildi) · commit'ler HENÜZ PUSH EDİLMEDİ → adım 7
+dal        master · ağaç temiz · commit'ler origin/master'a push edildi
 kayıt      ADR 0001-0084 · research_log #1-#70 · tuzak defteri 1.1-7.8 · 2.19 · 2.20
 indeks     Rfetha/HakHukuk-mevzuat-bge-m3-s2 — dataset, PUBLIC (G8 açıldı 2026-09-12)
-bakiye     OpenRouter $11,876 (ölçüldü 2026-09-12; goal'deki $2,04 BAYATTI)
+bakiye     OpenRouter — turun toplam harcaması $5,7338 / tavan $8,00 (ADIM 9 kendisi $0)
 ```
 
-**Kapanan son tur** (`hp` → Hat A → Hat B, **115/115**, 2026-09-12): hakem paneli kuruldu ve κ
+**Kapanan son tur** (`v1-son-iş`, **71/71**, 2026-09-13): κ borcu ADR-0074'ün dar koşuluyla
+kapandı, ADR-0064 kapısının üç maddesi **ikinci, bağımsız bir hakem ailesi** (`claude-sonnet-5`)
+altında da yeniden okunup **GEÇTİ** (ADR-0084) · ağırlıklar HF'te **PUBLIC** yapıldı, kusur **10**
+kapandı · sürüm etiketi **`v1.0`** verildi — ⛔ **ağırlıklar hiç değişmedi** (`sha256` birebir),
+κ **değişmedi** (0,534/0,409), panel hâlâ **iki** aileli. Manşet artık koşulsuz bir **ARALIK**:
+`%69,4-80,1` (`claude-sonnet-5` ↔ `gpt-4o-mini`). Açık kusur **5 → 4** (5a · 23 · 27 · 31,
+hepsi adıyla devredildi — plan [§7 kapanış bloğu](plans/2026-09-12-v1-son-is.md#7--kapanış-bloğu--2026-09-13)).
+Anlatısı [#70](../record/research_log/2026-09-13-on-dort-bulgu-kappa-kapisi-gecti.md)'te.
+
+**Önceki tur** (`hp` → Hat A → Hat B, **115/115**, 2026-09-12): hakem paneli kuruldu ve κ
 **ilk kez** ölçüldü · Sonnet-5 rakip havuzuna girdi ve **önde** (0,8348 ↔ 0,8011) · donmuş TEST
 **tek kez** açıldı (0,5804) · `hakhukuk/` paketi doğdu (CLI · TUI · HTTP API · araç katmanı) ·
 konteyner **uçtan uca çalışıyor** · ürün yolunda boş cevap **4/80 → 0/80**.
