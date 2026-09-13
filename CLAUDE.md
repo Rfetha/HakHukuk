@@ -21,7 +21,7 @@
 >
 > | you want | read |
 > | :--- | :--- |
-> | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. Next is **`v1-son-iş`**; its plan is **not written yet** — it comes out of a grill session. `v2-RL-GRPO` is parked. |
+> | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. `v1-son-iş` is **IN EXECUTION** (plan: [`plans/2026-09-12-v1-son-is.md`](docs/superpowers/plans/2026-09-12-v1-son-is.md), currently step 6.8 of 9) — the κ debt closed and the gate re-passed under a second judge ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)); steps 7-9 (push, public review, visibility) remain. `v2-RL-GRPO` is parked. |
 > | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) — **6 defects still open** (5a · 10 · 23 · 25 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · closed in the `v1-son-iş` round: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`) |
 > | what closed on 2026-09-12 | the `hp-hat-a-hat-b` round, **115/115** — narrative in [#66](docs/record/research_log/2026-09-11-urun-yuzeyi-ve-aygit-kusurlari.md) and [#67](docs/record/research_log/2026-09-12-konteyner-ve-alet-onarimlari.md) |
 > | what closed on 2026-09-06/07 | the `faz0-olcum-zinciri` plan, **48/48** *(plan deleted 2026-09-12)* — [#62](docs/record/research_log/2026-09-06-faz0-olcum-zinciri.md) |
@@ -86,17 +86,29 @@ Card: [`MODEL_CARD.md`](MODEL_CARD.md) · registry: [`docs/record/kollar.md`](do
 
 ```
 product number — v2 unit, 2026-09-07 (harness ON, k=10, S2 corpus, NO preamble — ADR-0063)
-             faithful-answer mass          80.1%      ← headline, binding
+             faithful-answer mass          69.4-80.1% (claude-sonnet-5 ↔ gpt-4o-mini) ← headline
              recall@10                     0.9500     ← mass cannot exceed this
              over-refusal (by eye)          4/80
              misattribution (by eye)        8/80      ← next first-rank axis (B1)
              fabricated article numbers     0/114     ↔ competitors 0 · 4 · 4  (re-scored 2026-09-11)
+
+   ⚠️ The headline is an UNCONDITIONAL RANGE across the two judge families that have scored it
+   (ADR-0084, 2026-09-13): formatting the headline to the outcome — one number when a gate
+   passes, a range when you're unsure — is a self-deception pattern. The three competitor arms
+   remain SINGLE-judge and are stamped as such in every table (ADR-0057); the asymmetry is
+   deliberate, not an oversight.
 
    v1.0 GATE CLOSED 2026-09-07 — all three clauses, with numbers (ADR-0064):
    (1) mass ≥ 3.5 Flash − 2,0 p   0.8011 ↔ threshold 0.7225   PASSED  +5.86 p
    (2) misattribution no worse    anchor re-nailed at 8/80      PASSED
    (3) M5 must not rise           memorised mass −6.82 p vs BASE PASSED
    (*) eye-reading at every counting step — the tool was wrong TWICE
+
+   RE-READ 2026-09-12 under a SECOND, independent judge family (ADR-0084): the κ debt closed
+   under ADR-0074's own one-sentence condition (`3.5 Flash` scored by the same second judge)
+   and all three clauses PASS again, margins vs. the anchor +5.86 p (`gpt-4o-mini`) / +7.57 p
+   (`claude-sonnet-5`). κ itself did NOT move (still 0.534/0.409, below 0.6) — what closed was
+   the absence of an equal exam, not κ. This is still not `v1.0`: that label is step 9's job.
 
    The gain came from the INSTRUMENT, not the model. Weights never changed. Five defects were
    found, each of the "produces a wrong number without erroring" class: question set (ADR-0067)
@@ -181,10 +193,10 @@ thing (OFF hands the model the gold article by construction).
 
 | you want | read |
 | :--- | :--- |
-| every measurement, dated, with its source file | [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — entries **#39-#67** |
+| every measurement, dated, with its source file | [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — entries **#39-#70** |
 | what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — next is **`v1-son-iş`**, **plan not yet written** · direction in [`ROADMAP.md`](ROADMAP.md) |
-| the open debt queue | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A) register + §(C) handover — 8 open, 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
-| why a decision went the way it did | [`docs/adr/`](docs/adr/) — ledger runs to **0083**, next is **0084** |
+| the open debt queue | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A) register + §(C) handover — **6 open** (5a · 10 · 23 · 25 · 27 · 31; three of the original nine — 24 · 29 · 33 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
+| why a decision went the way it did | [`docs/adr/`](docs/adr/) — ledger runs to **0084**, next is **0085** |
 | questions raised and not yet answered | the nine items that go **into the grill**, [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK E.5 *(they passed through `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted)* |
 
 **Two things a new session must not get wrong** (both were *measured*, not assumed):
@@ -311,8 +323,8 @@ decision ledger.
   version* answerable from the filename), `HakHukuk-4B-v0.1` is outward-facing. Carries the
   base/ours/Gemini table under an explicit **"NOT a parity claim"** banner.
 - [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — the chronological
-  record, **authoritative for "what happened."** New findings continue at **#68**.
-- [`docs/adr/`](docs/adr/) — new decisions get a new ADR; numbering continues at **0084**.
+  record, **authoritative for "what happened."** New findings continue at **#71**.
+- [`docs/adr/`](docs/adr/) — new decisions get a new ADR; numbering continues at **0085**.
   **0059 is RESERVED** — the round's `τ_a` v2 data-symmetry ADR, written in Görev 10. Six
   places already cite `ADR-0059 §sapma-1`; do not take that number for anything else.
 

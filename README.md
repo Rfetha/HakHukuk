@@ -138,7 +138,7 @@ budget **1536** · judge `openai/gpt-4o-mini`.
 
 | axis | value | source file |
 | :--- | ---: | :--- |
-| **faithful-answer mass** | **0.8011** | [`outputs/eval/f02-biz-onsozsuz/KUNYE.json`](outputs/eval/f02-biz-onsozsuz/KUNYE.json) |
+| **faithful-answer mass** | **69.4-80.1%** (`claude-sonnet-5` ↔ `gpt-4o-mini`) | [`outputs/eval/f02-biz-onsozsuz/KUNYE.json`](outputs/eval/f02-biz-onsozsuz/KUNYE.json) · [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md) |
 | `coverage` | 0.9375 | same manifest |
 | A1 · answered-only | 0.8545 | same manifest |
 | A1 · gold-retrieved subset | 0.8902 | same manifest |
@@ -149,6 +149,15 @@ budget **1536** · judge `openai/gpt-4o-mini`.
 | truncated items | 4 / 80 (5.0% — exactly at the validity threshold) | same manifest |
 | mean completion tokens | 782.5 | [`outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) |
 | VRAM (ctx 4,096 / 32,768 / 131,072) | 3.09 / 3.70 / 5.76 GiB | `outputs/eval/_artefakt/vram_stack_tgta_v1.json` ([ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md)) |
+
+⚠️ **The headline is an unconditional range, not a single number picked after seeing the
+result.** Two independent judge families have now scored the same 80 answers —
+`gpt-4o-mini` (0.8011) and `claude-sonnet-5` (0.6940) — and both readings are reported
+side by side ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md));
+formatting a headline to the outcome (one number when a gate passes, a range when unsure)
+is a self-deception pattern this project rejects. The other rows above are still
+`gpt-4o-mini`-only. The three competitor arms remain single-judge and are stamped as such
+in the comparison table below (ADR-0057) — the resulting asymmetry is deliberate.
 
 **The harness-OFF ("ceiling") regime was NOT re-measured in this unit.** The old `v1`-unit
 ceiling figure is not comparable to today's numbers and is not repeated in this document.
@@ -193,9 +202,13 @@ Other axes (raw tool numbers, same file):
    retrieval ceiling is ≈75%
    ([ADR-0069](docs/adr/0069-kabul-testi-tavan-kullanimi-raporlamasi.md)) and the acceptance
    test **has not been run**.
-2. **"A verdict that survived a judge panel."** It is still a **single judge family**
-   (`gpt-4o-mini`), there is **no** κ, and self-preference was **not measured**. This is an open
-   debt — the plan's **`HP`** phase closes it.
+2. **"A verdict that survived a full three-family judge panel."** Two families now agree in
+   direction (`gpt-4o-mini` and `claude-sonnet-5`, [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)),
+   but agreement (κ) itself is **weak and unchanged** (0.534 / 0.409, below the tool's 0.6
+   threshold) and the third family (Google) was never added, for budget reasons — a registered
+   gap, not an oversight. Self-preference **was** measured for the Anthropic family only, and
+   found in the **opposite** direction (the judge penalized its own family harder than ours).
+   Neither of these upgrades the headline to "panel-verified" — that remains an open debt.
 3. **"The model got this much better."** Most of the gain came not from training but from
    **measurement** (see below).
 
@@ -240,6 +253,13 @@ mechanically ([ADR-0064](docs/adr/0064-v1-kapisi-uc-maddeli-on-kayit.md)).
 | **(1)** mass ≥ 3.5 Flash − 2.0 points | **PASSED** | strict-by-eye: **0.8011 ↔ threshold 0.7225** → **+5.86 p** | [`f04 summary`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) |
 | **(2)** misattribution does not regress | (true by definition today) | anchor re-pinned at **8/80** in the new unit; it binds at the **next training round** | [`GOZLE_OKUMA_80.md`](outputs/eval/f02-biz-onsozsuz/GOZLE_OKUMA_80.md) |
 | **(3)** M5 (blind/parametric) does **not** rise — anti-target | **PASSED** | memorized mass **0.3899 ↔ base 0.4697** (tool) · **0.4057 ↔ 0.4739** (by eye) | [`outputs/eval/f07-m5-anti-hedef/KUNYE.json`](outputs/eval/f07-m5-anti-hedef/KUNYE.json) · [`GOZLE_OKUMA_CEKINME.md`](outputs/eval/f07-m5-anti-hedef/GOZLE_OKUMA_CEKINME.md) |
+
+**Re-read 2026-09-12 under a second, independent judge family**
+([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)): the κ debt closed
+under ADR-0074's own one-sentence condition (`3.5 Flash` scored by the same second judge,
+`claude-sonnet-5`), and all three clauses **pass again** — margin vs. the anchor **+7.57 p**
+(clause 1). κ itself **did not move** (still 0.534 / 0.409, below 0.6) — what closed was the
+absence of an equal exam, not κ. This is still not `v1.0`.
 
 **The version is still `v0.1`, on purpose.** Versioning was deliberately split
 ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)): the **product version** (`v0.2 → v1.0`) passes

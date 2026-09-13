@@ -138,7 +138,7 @@ KV önbelleğinin `q8_0` kuantizasyonu bir insan kararıdır (2026-09-11): fp16 
 
 | eksen | değer | kaynak dosya |
 | :--- | ---: | :--- |
-| **sadık-cevap kütlesi** | **0,8011** | [`outputs/eval/f02-biz-onsozsuz/KUNYE.json`](outputs/eval/f02-biz-onsozsuz/KUNYE.json) |
+| **sadık-cevap kütlesi** | **%69,4-80,1** (`claude-sonnet-5` ↔ `gpt-4o-mini`) | [`outputs/eval/f02-biz-onsozsuz/KUNYE.json`](outputs/eval/f02-biz-onsozsuz/KUNYE.json) · [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md) |
 | `coverage` | 0,9375 | aynı künye |
 | A1 · cevaplanan | 0,8545 | aynı künye |
 | A1 · altın getirilen alt küme | 0,8902 | aynı künye |
@@ -149,6 +149,15 @@ KV önbelleğinin `q8_0` kuantizasyonu bir insan kararıdır (2026-09-11): fp16 
 | kesik kalem | 4 / 80 (%5,0 — geçerlilik eşiği tam sınırda) | aynı künye |
 | ortalama completion token | 782,5 | [`outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) |
 | VRAM (ctx 4.096 / 32.768 / 131.072) | 3,09 / 3,70 / 5,76 GiB | `outputs/eval/_artefakt/vram_stack_tgta_v1.json` ([ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md)) |
+
+⚠️ **Manşet, sonuç görüldükten sonra seçilmiş tek bir sayı değil, koşulsuz bir aralıktır.**
+İki bağımsız hakem ailesi aynı 80 cevabı puanladı — `gpt-4o-mini` (0,8011) ve `claude-sonnet-5`
+(0,6940) — ve ikisi de yan yana raporlanıyor
+([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)); manşeti sonuca göre
+biçimlendirmek (kapı geçince tek sayı, emin olmayınca aralık) bu projenin reddettiği bir
+kendini-kandırma kalıbıdır. Yukarıdaki diğer satırlar hâlâ yalnız `gpt-4o-mini`'nindir. Üç
+rakip kolu **tek hakemli** kalır ve aşağıdaki kıyas tablosunda **öyle damgalanır** (ADR-0057) —
+ortaya çıkan asimetri **bilinçlidir**.
 
 **Harness KAPALI ("tavan") rejimi bu birimde YENİDEN ÖLÇÜLMEDİ.** Eski `v1` birimindeki
 tavan sayısı bugünküyle kıyaslanamaz ve bu belgede tekrarlanmıyor.
@@ -189,8 +198,14 @@ Diğer eksenler (ham alet sayıları, aynı dosya):
 1. **"TEST'te de geçeriz."** Ölçüm **DEV**'de. Donmuş TEST'in erişim tavanı ≈%75
    ([ADR-0069](docs/adr/0069-kabul-testi-tavan-kullanimi-raporlamasi.md)) ve kabul testi
    **koşulmadı**.
-2. **"Hakem panelinden geçmiş bir hüküm."** Hâlâ **tek hakem ailesi** (`gpt-4o-mini`),
-   κ **yok**, öz-tercih **ölçülmedi**. Kapanmamış borç — planın **`HP`** fazı bunu kapatıyor.
+2. **"Üç aileli tam bir hakem panelinden geçmiş bir hüküm."** İki aile artık **aynı yönde**
+   hükmediyor (`gpt-4o-mini` ve `claude-sonnet-5`,
+   [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)), ama uyumun
+   kendisi (κ) **zayıf ve değişmedi** (0,534 / 0,409, aracın 0,6 eşiğinin altında) ve üçüncü
+   aile (Google) bütçe nedeniyle hiç eklenmedi — kayıtlı bir eksiklik, gözden kaçma değil.
+   Öz-tercih **yalnız Anthropic ailesi için** ölçüldü ve **ters yönde** çıktı (hakem kendi
+   ailesini bizden daha sert cezalandırdı). İkisi de manşeti "panelden geçti" seviyesine
+   çıkarmıyor — bu hâlâ açık bir borç.
 3. **"Model bu kadar iyileşti."** Kazancın büyük kısmı eğitimden değil **ölçümden** geldi
    (aşağı bak).
 
@@ -233,6 +248,13 @@ Formül **rakip sayıları görülmeden** yazıldı; sayılar mekanik olarak tü
 | **(1)** kütle ≥ 3.5 Flash − 2,0 puan | **GEÇTİ** | GÖZ-katı: **0,8011 ↔ eşik 0,7225** → **+5,86 p** | [`f04 özeti`](outputs/eval/f04-rakip-onsozsuz/KALIBRASYON_ve_OZET.md) |
 | **(2)** isabetsizlik gerilemez | (bugün tanım gereği) | çıpa yeni birimde **8/80**'e çivilendi; bağlayıcı olduğu yer **sonraki eğitim turu** | [`GOZLE_OKUMA_80.md`](outputs/eval/f02-biz-onsozsuz/GOZLE_OKUMA_80.md) |
 | **(3)** M5 (kör/parametrik) **yükselmez** — anti-hedef | **GEÇTİ** | ezber kütlesi **0,3899 ↔ base 0,4697** (ALET) · **0,4057 ↔ 0,4739** (GÖZ) | [`outputs/eval/f07-m5-anti-hedef/KUNYE.json`](outputs/eval/f07-m5-anti-hedef/KUNYE.json) · [`GOZLE_OKUMA_CEKINME.md`](outputs/eval/f07-m5-anti-hedef/GOZLE_OKUMA_CEKINME.md) |
+
+**2026-09-12'de ikinci, bağımsız bir hakem ailesi altında yeniden okundu**
+([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)): ADR-0074'ün tek
+cümlelik koşulu (`3.5 Flash`'ın aynı ikinci hakemle — `claude-sonnet-5` — puanlanması)
+karşılandı ve kapının üç maddesi **yeniden GEÇTİ** — marj çıpaya göre **+7,57 p** (madde 1).
+κ'nın kendisi **değişmedi** (hâlâ 0,534 / 0,409, 0,6 eşiğinin altında) — kapanan şey κ değil,
+**eşit sınavın yokluğuydu**. Bu hâlâ `v1.0` **değildir**.
 
 **Sürüm yine de `v0.1`.** Sürümleme bilerek ikiye ayrıldı
 ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)): **ürün sürümü** `v0.2 → v1.0` ürünün kendi
