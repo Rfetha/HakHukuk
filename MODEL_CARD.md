@@ -129,7 +129,7 @@ belgede düz metin olarak duruyordu ve hiçbiri kapı değildi. `compose.yaml` b
 
 ```bash
 export HF_TOKEN=...                # opsiyonel — depo herkese açık
-export HAKHUKUK_INDEKS_DEPO=...    # varsayılanı bilerek boş (aşağıya bakınız)
+export HAKHUKUK_INDEKS_DEPO=...    # opsiyonel — varsayılanı yayımlanmış indeks deposu (aşağıya bakınız)
 docker compose up
 ```
 
