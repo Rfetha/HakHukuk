@@ -212,7 +212,7 @@ thing (OFF hands the model the gold article by construction).
 | every measurement, dated, with its source file | [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — entries **#39-#71** |
 | what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — `v1-son-iş` **CLOSED 2026-09-13** ([plan](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71), `v1.0` tagged. Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round · direction in [`ROADMAP.md`](ROADMAP.md) |
 | the open debt queue | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A) register + §(C) handover — **4 open** (5a · 23 · 27 · 31; five of the original nine — 24 · 29 · 33 · 25 · 10 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
-| why a decision went the way it did | [`docs/adr/`](docs/adr/) — ledger runs to **0084**, next is **0085** |
+| why a decision went the way it did | [`docs/adr/`](docs/adr/) — ledger runs to **0085**, next is **0086** |
 | questions raised and not yet answered | the nine items that go **into the grill**, [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK E.5 *(they passed through `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted)* |
 
 **Two things a new session must not get wrong** (both were *measured*, not assumed):
@@ -340,7 +340,7 @@ decision ledger.
   base/ours/Gemini table under an explicit **"NOT a parity claim"** banner.
 - [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — the chronological
   record, **authoritative for "what happened."** New findings continue at **#72**.
-- [`docs/adr/`](docs/adr/) — new decisions get a new ADR; numbering continues at **0085**.
+- [`docs/adr/`](docs/adr/) — new decisions get a new ADR; numbering continues at **0086**.
   **0059 is RESERVED** — the round's `τ_a` v2 data-symmetry ADR, written in Görev 10. Six
   places already cite `ADR-0059 §sapma-1`; do not take that number for anything else.
 
