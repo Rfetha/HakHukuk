@@ -21,8 +21,8 @@
 >
 > | you want | read |
 > | :--- | :--- |
-> | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. `v1-son-iş` is **IN EXECUTION** (plan: [`plans/2026-09-12-v1-son-is.md`](docs/superpowers/plans/2026-09-12-v1-son-is.md), currently step 6.8 of 9) — the κ debt closed and the gate re-passed under a second judge ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)); steps 7-9 (push, public review, visibility) remain. `v2-RL-GRPO` is parked. |
-> | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) — **5 defects still open** (5a · 10 · 23 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · closed in the `v1-son-iş` round: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`) · **25** (Adım 8, kesir birimi düzeltildi) |
+> | **what to do next** | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — **the work order**, and the folder's only file. `v1-son-iş` **CLOSED 2026-09-13** (plan: [`plans/2026-09-12-v1-son-is.md`](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71) — HF weights are **PUBLIC**, the release is tagged **`v1.0`** (weights unchanged, `sha256` identical to `v0.3` — the tag records the measuring instrument passing under a second judge family, not a model improvement; [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)). Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round (ADR-0083 §EK, 9 items still to grill). |
+> | the defect register, the handover, the deleted design's core | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) — **4 defects still open** (5a · 23 · 27 · 31) · **3 handed on** (6 · 11 · 12b) · closed in the `v1-son-iş` round: **24** (`b077f13`) · **29** (adım 6.3.1) · **33** (`cc12b6e`) · **25** (Adım 8, kesir birimi düzeltildi) · **10** (Adım 9, HF görünürlüğü PUBLIC) |
 > | what closed on 2026-09-12 | the `hp-hat-a-hat-b` round, **115/115** — narrative in [#66](docs/record/research_log/2026-09-11-urun-yuzeyi-ve-aygit-kusurlari.md) and [#67](docs/record/research_log/2026-09-12-konteyner-ve-alet-onarimlari.md) |
 > | what closed on 2026-09-06/07 | the `faz0-olcum-zinciri` plan, **48/48** *(plan deleted 2026-09-12)* — [#62](docs/record/research_log/2026-09-06-faz0-olcum-zinciri.md) |
 > | the rescued debt queue | `DEVIR-PROMPT.md` *(deleted 2026-09-07 — its job was done)*; the queue it carried was folded into the `hp-hat-a-hat-b` plan, and from there into [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(C) |
@@ -153,21 +153,29 @@ is paid on **its own axis** (B1), not with a prompt patch.
 > (not total citations). This was written down nowhere and had already misled one probe.
 > Measurement: `outputs/eval/g22-rakip-yeniden-puanlama/BULGU.md` · repair: `g22-atif-onarim/BULGU.md`.
 
-**Product version is `v0.3` (tagged 2026-09-09); the model artifact is still `HakHukuk-4B-v0.1`.**
+~~**Product version is `v0.3` (tagged 2026-09-09); the model artifact is still `HakHukuk-4B-v0.1`.**
 `v1.0` was NOT granted — the acceptance test on the frozen TEST ran (raw mass **0,5804**, ceiling
 `recall@10` **0,7500**) and the blocker is **the measuring instrument, not the model**: every
 figure is still one judge family's verdict and κ is **0,534**, below the tool's 0,6 threshold
-([ADR-0077](docs/adr/0077-v1-0-verilmedi-v0-3.md) · [#65](docs/record/research_log/2026-09-09-kabul-testi-ve-frontier-kiyasi.md)).
-Weights are published at `Rfetha/HakHukuk-4B-v0.3-Q4_K_M` and are **currently private** while
-open defects are resolved — **5 are still open**, registered in
-[ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A)/§(C) (5a · 10 · 23 · 27 · 31).
-Closed in the running `v1-son-iş` round: **24** (`b077f13`, the stale README table),
+([ADR-0077](docs/adr/0077-v1-0-verilmedi-v0-3.md) · [#65](docs/record/research_log/2026-09-09-kabul-testi-ve-frontier-kiyasi.md)).~~ → **`v1.0` GRANTED 2026-09-13** (Adım 9, human sign-off): the
+gate's three clauses were re-read under a **second, independent judge family**
+(`claude-sonnet-5`) and passed again ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+⛔ **This is NOT a model improvement** — the weights never changed (`sha256` identical to
+`v0.3`'s) and κ itself did not move (still **0,534/0,409**, below the tool's 0,6 threshold; the
+judge panel is still **two** families, not three, ADR-0032). What closed was the absence of an
+equal exam, not κ. The model artifact stays `HakHukuk-4B-v0.1` (`tgta_v1`) — versioning is
+deliberately split ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)).
+Weights are published at `Rfetha/HakHukuk-4B-v0.3-Q4_K_M` and have been **PUBLIC since
+2026-09-13** (verified with a token-less subprocess: `sha256` matched byte for byte) —
+**4 defects are still open**, registered in
+[ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A)/§(C) (5a · 23 · 27 · 31).
+Closed in the `v1-son-iş` round: **24** (`b077f13`, the stale README table),
 **29** (adım 6.3.1, the backup file in the image), **33** (`cc12b6e` — the one-command
 reproduction path's `recall@10` gate read a field that does not exist, so it **always** failed
-with a false *"harness OYNAMIŞ"* accusation; it fails on the anchor's own data too) and **25**
+with a false *"harness OYNAMIŞ"* accusation; it fails on the anchor's own data too), **25**
 (Adım 8 — `MODEL_CARD`'ın uydurulmuş-madde satırı iki farklı kesir birimi taşıyordu, tüm
-paydalar `DOGRULANDI`'ya çevrildi, sayı oynamadı).
-Defect **10** is exactly this one: the HF **visibility** half is still a human decision.
+paydalar `DOGRULANDI`'ya çevrildi, sayı oynamadı) and **10** (Adım 9 — the HF **visibility**
+half; the `push` half had already closed 2026-09-12).
 **A frontier subject entered the pool and is AHEAD:** `claude-sonnet-5` mass **0,8348** ↔ ours
 **0,8011** (eye-corrected reading). The claim *"we are not behind on B1"* held only in the Gemini
 pool: `wrong_ref_rate` **0,0769 ↔ 0,0083**.
@@ -191,13 +199,19 @@ unmeasured — ADR-0064 *"Ne KURULMAZ"* clause 2). Product vs. claim versioning 
 The OFF number is a **ceiling, not a rival** — the two settings do not measure the same
 thing (OFF hands the model the gold article by construction).
 
+> **2026-09-13 — superseded by the paragraph above.** The **artifact** identity is unchanged
+> and permanent (`HakHukuk-4B-v0.1` / `tgta_v1`); the **product/claim** version moved to
+> `v1.0` once the gate's remaining clause (b) — one-judge-family verdicts — closed under a
+> second, independent judge ([ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md)).
+> κ itself did not move.
+
 **Where the numbers actually live — do not re-derive them here:**
 
 | you want | read |
 | :--- | :--- |
 | every measurement, dated, with its source file | [`docs/record/research_log/README.md`](docs/record/research_log/README.md) — entries **#39-#70** |
-| what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — `v1-son-iş` is **IN EXECUTION** ([plan](docs/superpowers/plans/2026-09-12-v1-son-is.md), steps 7-9 remain) · direction in [`ROADMAP.md`](ROADMAP.md) |
-| the open debt queue | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A) register + §(C) handover — **5 open** (5a · 10 · 23 · 27 · 31; four of the original nine — 24 · 29 · 33 · 25 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
+| what to work on next, tied to measured gaps | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — `v1-son-iş` **CLOSED 2026-09-13** ([plan](docs/superpowers/plans/2026-09-12-v1-son-is.md), 71/71), `v1.0` tagged. Next: `v2-RL-GRPO` (parked) and the legislation-scope/freshness round · direction in [`ROADMAP.md`](ROADMAP.md) |
+| the open debt queue | [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A) register + §(C) handover — **4 open** (5a · 23 · 27 · 31; five of the original nine — 24 · 29 · 33 · 25 · 10 — closed inside the `v1-son-iş` round), 3 handed on *(it passed through `DEVIR-PROMPT.md` and the `hp-hat-a-hat-b` plan, both deleted)* |
 | why a decision went the way it did | [`docs/adr/`](docs/adr/) — ledger runs to **0084**, next is **0085** |
 | questions raised and not yet answered | the nine items that go **into the grill**, [`ADR-0083`](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §EK E.5 *(they passed through `docs/open_questions.md` and then the `hp-hat-a-hat-b` plan, both deleted)* |
 
