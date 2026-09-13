@@ -3,18 +3,18 @@
 > **Türkçe bir hukuk asistanı: dizüstünde koşacak kadar küçük, "bu kaynaklarda yok" demeyi öğrenmiş 4B'lik bir model.**
 > Açık kaynak **ürün** — ağırlık + kod + veri + **araştırma kaydının tamamı**. Tez değil.
 
-[Model kartı](MODEL_CARD.md) · [English](README.md) · [Yol haritası](ROADMAP.md) · [İş sırası](docs/superpowers/00-IS-SIRASI.md) · [Hugging Face'te ağırlıklar](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) · [Lisans](LICENSE)
+[Model kartı](MODEL_CARD.md) · [English](README.md) · [Yol haritası](ROADMAP.md) · [İş sırası](docs/superpowers/00-IS-SIRASI.md) · [Hugging Face'te ağırlıklar](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [Lisans](LICENSE)
 
 ## Ağırlıklar
 
 > ~~**Not (2026-09-09):** ağırlık deposu, açık kusurlar giderilene kadar geçici olarak **özeldir**. Aşağıdaki bağlantı yeniden herkese açılana dek 404 verecektir.~~ → **2026-09-13'te PUBLIC yapıldı** (`v1-son-iş` turunun 9. adımı, kusur 10 kapandı — [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md)). Token'sız bir alt süreçle doğrulandı: `sha256` bayt bayt tuttu.
 
-2026-09-09'da yayımlandı: [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) — tek GGUF,
+2026-09-09'da yayımlandı: [`Rfetha/HakHukuk-4B-GGUF`](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) — tek GGUF,
 `HakHukuk-4B-v0.3-Q4_K_M.gguf`, 2.783.446.720 bayt (2,592 GiB),
 `sha256 755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc`.
 
 ```bash
-hf download Rfetha/HakHukuk-4B-v0.3-Q4_K_M HakHukuk-4B-v0.3-Q4_K_M.gguf --local-dir models/gguf
+hf download Rfetha/HakHukuk-4B-GGUF HakHukuk-4B-v0.3-Q4_K_M.gguf --local-dir models/gguf
 ```
 
 Kullanmadan önce oradaki model kartı okunmalıdır. İki kısıt kartın ilk ekranında
@@ -46,7 +46,7 @@ teslim edilebilir durumda değildir.
 
 | parça | durum | kanıt (ölçüldü, 2026-09-12) |
 | :--- | :--- | :--- |
-| Model ağırlıkları (Q4_K_M GGUF, **2,59 GiB**) | 2026-09-09'da **yayımlandı**, depo **2026-09-13'ten beri PUBLIC** — `HF_TOKEN` gerekmez | `Rfetha/HakHukuk-4B-v0.3-Q4_K_M`, tek dosya, **2.783.446.720 bayt**, `sha256 755e15e9…86e7bffc`. Kimlik kapısı [`hakhukuk/indir.py`](hakhukuk/indir.py)'dir (`GGUF_SHA256` · `GGUF_BAYT`) ve konteyner koşusunda **ateşlendi ve tuttu** · [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
+| Model ağırlıkları (Q4_K_M GGUF, **2,59 GiB**) | 2026-09-09'da **yayımlandı**, depo **2026-09-13'ten beri PUBLIC** — `HF_TOKEN` gerekmez | `Rfetha/HakHukuk-4B-GGUF`, tek dosya, **2.783.446.720 bayt**, `sha256 755e15e9…86e7bffc`. Kimlik kapısı [`hakhukuk/indir.py`](hakhukuk/indir.py)'dir (`GGUF_SHA256` · `GGUF_BAYT`) ve konteyner koşusunda **ateşlendi ve tuttu** · [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
 | Erişim indeksi (**40.496** madde) | **tek gerçek tıkaç.** Yerelde var, **git'te yok** ve **hiçbir yerde yayımlanmadı**: dağıtım kararı verildi (HF dataset) ama **koşulmadı**, çünkü korpus 8,4× büyümek üzere | `git ls-files data/index` → **2 `KUNYE.json`, başka hiçbir şey**; `du -sh data/index/mevzuat_bge_m3_s2` → **80 MB**. İki yollu indeks (önce volume, sonra HF) [ADR-0078 madde 4](docs/adr/0078-konteyner-dagitimi-rejim-kilidi.md)'tür; ikisi de yoksa `indir` **kasten** sıfırdan farklı kodla çıkar ve tam yolu yazar |
 | Servis katmanı (API / CLI / TUI) | **kod olarak var ve çalışıyor.** `pip install -e .` üç komut üretir; konteyner yolu uçtan uca gerçek soru cevapladı | `git ls-files hakhukuk/` → **11 dosya** (`cli.py` · `tui.py` · `api.py` · `servis.py` · `araclar.py` · `terazi.py` · `istem.py` · `tipler.py` · `indir.py`) · [`pyproject.toml`](pyproject.toml) `[project.scripts]` → `hakhukuk` · `hakhukuk-tui` · `hakhukuk-api` · `pytest tests/` → **281 passed, 2 xfailed** |
 | İstem (prompt) | **dağıtılabilir artefakt**; artık ölçüm script'lerinin içindeki bir kopya değil: [`hakhukuk/istem.py`](hakhukuk/istem.py) **tek kaynaktır** | ölçüm hattı da onu içe aktarır (`scripts/olcum_uretim/gen_eval_grounded.py:55` → `from hakhukuk.istem import …`); [`tests/test_istem.py`](tests/test_istem.py) bir kapıdır — metni `ISTEM_SURUMU` / `DAMGA_v1` yükseltmeden değiştirirsen düşer |
@@ -108,7 +108,7 @@ docker compose up
 | :--- | :--- |
 | API | `127.0.0.1:8000` |
 | `llama-server` | `127.0.0.1:8080` |
-| `HF_TOKEN` | **opsiyonel.** [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) **2026-09-13'ten beri public**; tanımsız kalması yalnız hız sınırını düşürür, hata vermez |
+| `HF_TOKEN` | **opsiyonel.** [`Rfetha/HakHukuk-4B-GGUF`](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) **2026-09-13'ten beri public**; tanımsız kalması yalnız hız sınırını düşürür, hata vermez |
 | `HAKHUKUK_INDEKS_DEPO` | **bilerek boş.** `G8` (indeks dağıtımı) bekletiliyor ⇒ **yayımlanmış indeks deposu yok**. İndeks ya volume'e elle konur ya depo adı verilir; aksi hâlde `indir` kutusu **kasten** patlar |
 | gereksinim | NVIDIA GPU + Docker. Ölçülen ortam: Docker **28.4.0** · compose **v2.39.4-desktop.1** · RTX 5070 Ti Laptop **12227 MiB** · sürücü **591.97**. `gpus: all` anahtarı compose **v2.30+** ister |
 | imaj etiketi | `hakhukuk:1.0.0` — bu **ürünün** sürümüdür ([`pyproject.toml`](pyproject.toml)). Model artefaktı hâlâ `HakHukuk-4B-v0.1`'dir: sürümleme **bölünmüştür** ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)) |

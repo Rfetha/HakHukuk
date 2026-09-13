@@ -14,7 +14,7 @@ import re
 
 KOK = pathlib.Path(__file__).resolve().parent.parent
 KAYNAK = KOK / "MODEL_CARD.md"
-GITHUB = "https://github.com/Rfetha/Hukuk-SLM/blob/master/"
+GITHUB = "https://github.com/Rfetha/HakHukuk/blob/master/"
 
 ON_BILGI = """---
 license: apache-2.0

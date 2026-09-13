@@ -165,7 +165,7 @@ gate's three clauses were re-read under a **second, independent judge family**
 judge panel is still **two** families, not three, ADR-0032). What closed was the absence of an
 equal exam, not κ. The model artifact stays `HakHukuk-4B-v0.1` (`tgta_v1`) — versioning is
 deliberately split ([ADR-0065](docs/adr/0065-bolunmus-surumleme.md)).
-Weights are published at `Rfetha/HakHukuk-4B-v0.3-Q4_K_M` and have been **PUBLIC since
+Weights are published at `Rfetha/HakHukuk-4B-GGUF` and have been **PUBLIC since
 2026-09-13** (verified with a token-less subprocess: `sha256` matched byte for byte) —
 **4 defects are still open**, registered in
 [ADR-0083](docs/adr/0083-kusur-sicili-adrye-tasindi.md) §(A)/§(C) (5a · 23 · 27 · 31).

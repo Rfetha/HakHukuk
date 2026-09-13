@@ -18,7 +18,7 @@ elenen alternatifler [`docs/adr/`](docs/adr/), kronolojik ölçüm kaydı
 | **Temel model** | `Qwen/Qwen3.5-4B` · commit `851bf6e8…` · Apache-2.0 | [`KUNYE_tgta_v1.json`](outputs/eval/cp3d-merge/KUNYE_tgta_v1.json) |
 | **Yöntem** | 2 × LoRA (r=16, α=32) → eşzamanlı 2-yollu ham TIES | [`KUNYE_tgta_v1.json`](outputs/eval/cp3d-merge/KUNYE_tgta_v1.json) |
 | **Taşıyıcı** | GGUF **Q4_K_M** · 2,59 GiB (2.783.446.720 bayt) | [ADR-0071](docs/adr/0071-v1-release-artefakti-tek-gguf.md) |
-| **Ağırlıklar** | [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) — herkese açık | ADIM 9, 2026-09-13 |
+| **Ağırlıklar** | [`Rfetha/HakHukuk-4B-GGUF`](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) — herkese açık | ADIM 9, 2026-09-13 |
 | **Ürün / iddia sürümü** | **`v1.0`** (2026-09-13) | [ADR-0084](docs/adr/0084-kappa-borcu-kapandi-kapi-yeni-birimde-gecti.md) |
 | **Dil** | Türkçe | — |
 | **Lisans** | Apache-2.0 — ağırlık, kod, veri ve araştırma kaydı | [`LICENSE`](LICENSE) · [`NOTICE`](NOTICE) |
@@ -60,12 +60,13 @@ yüksek güvenle yanlış hukuki içerik ürettiği ayrıca ölçülmüştür (�
 
 | Bileşen | Durum | kaynak |
 | :--- | :--- | :--- |
-| Ağırlıklar | Yayımlandı, herkese açık | [Hugging Face](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) |
-| Kod (retriever, servis, sınıflandırma) | Yayımlandı | [github.com/Rfetha/Hukuk-SLM](https://github.com/Rfetha/Hukuk-SLM) |
-| Arama indeksi (`bge-m3`, 40.496 madde, ~80 MB) | **Yayımlanmadı** | açık borç **G8** |
+| Ağırlıklar | Yayımlandı, herkese açık | [Hugging Face](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) |
+| Kod (retriever, servis, sınıflandırma) | Yayımlandı | [github.com/Rfetha/HakHukuk](https://github.com/Rfetha/HakHukuk) |
+| Arama indeksi (`bge-m3`, 40.496 madde, ~80 MB) | Yayımlandı, herkese açık | [`Rfetha/HakHukuk-mevzuat-bge-m3-s2`](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) |
 
-İndeksin dağıtımı açık bir iştir. Korpusun kapsamı yaklaşık 8,4 kat genişleyeceğinden,
-bugünkü indeksin paketlenmesi kısa ömürlü olacaktır.
+Üç bileşen de yayımlanmıştır; model tek başına indirildiğinde ölçümün yapıldığı rejim
+kurulmuş olmaz. İndeks de ağırlıklar gibi **kimlik kapısının** arkasındadır: `gomme.npy`'nin
+`sha256`'sı ve bayt sayısı sınanır, tutmazsa kurulum **erken durur**.
 
 Erişim katmanının künyesi:
 
@@ -142,7 +143,7 @@ başlamaz** ([ADR-0078](docs/adr/0078-konteyner-dagitimi-rejim-kilidi.md) ·
 | API | `127.0.0.1:8000` |
 | `llama-server` | `127.0.0.1:8080` |
 | `HF_TOKEN` | opsiyonel; tanımsız kalması yalnız hız sınırını düşürür |
-| `HAKHUKUK_INDEKS_DEPO` | **bilerek boş** — indeks dağıtımı (**G8**) bekletildiğinden yayımlanmış bir indeks deposu yoktur. İndeks ya volume'e elle konur ya depo adı verilir; aksi hâlde `indir` kutusu **kasten** durur |
+| `HAKHUKUK_INDEKS_DEPO` | opsiyonel — varsayılanı yayımlanmış indeks deposudur (`Rfetha/HakHukuk-mevzuat-bge-m3-s2`); yalnız başka bir indeksle koşmak isteyen tanımlar |
 | gereksinim | NVIDIA GPU + Docker. Ölçülen ortam: Docker 28.4.0 · compose v2.39.4 · RTX 5070 Ti Laptop 12.227 MiB · sürücü 591.97. `gpus: all` anahtarı compose v2.30+ ister |
 | imaj etiketi | `hakhukuk:1.0.0` — **ürünün** sürümü ([`pyproject.toml`](pyproject.toml)) |
 | imaj boyutu | `hakhukuk` **2,08 GB** · `llama.cpp:server-cuda-b10902` **6,99 GB** |
@@ -566,7 +567,6 @@ Kaynak: `outputs/eval/g24-urun-yolu-kutle-6.3b/` · üretim `outputs/eval/g23-ko
 | **Yalnız ilgisiz kaynak verildiğinde yine de cevaplayabiliyor** | M2b **0,766** | En zayıf eksen. Deterministik bir kapının bunu kapatamayacağı ölçüldü — model etiketi bağlamdan kopyaladığı için atıfları doğrulanıyor. Borç **eğitim** tarafında |
 | **Altın madde bağlamdayken susabiliyor** | 4/80 | Erişimin çözemeyeceği, modelin kendi kararı. Eğitimin bunu ne kadar aşağı çekeceği **ölçülmedi** |
 | **Uzun maddelerde erişim zayıflıyor** | en uzun dilimde `recall@10` **0,6667** | Parçalama stratejisi borcu |
-| **Arama indeksi yayımlanmadı** | — | Ağırlıklar açık, indeks değil; kurulum bugün indeksi elle ister |
 | **Canlı mevzuat kaynağına bağlı değil** | — | Korpus bir **anlık görüntüdür** (2026-08-06); API sözleşmesi doğrulandı ama ürün henüz kullanmıyor |
 
 **Kuantizasyon eğrisi ölçülmüştür** (2026-09-12): `Q4_K_M` (yayımlanan) **0,8011** ·
@@ -731,7 +731,7 @@ GGUF. **Kuantizasyon en sondadır.**
 | `sha256` | `755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc` |
 | Boyut | 2.783.446.720 bayt (2,592 GiB) |
 | İç ad (izlenebilirlik) | `tgta_v1-q4_k_m.gguf` |
-| Depo | [`Rfetha/HakHukuk-4B-v0.3-Q4_K_M`](https://huggingface.co/Rfetha/HakHukuk-4B-v0.3-Q4_K_M) |
+| Depo | [`Rfetha/HakHukuk-4B-GGUF`](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) |
 
 Deponun herkese açık olduğu, **token'sız bir alt süreçte** doğrulanmıştır: dosya inmiş ve
 `sha256` bayt bayt tutmuştur (token'lı erişimle **karıştırılmamıştır**).
@@ -744,7 +744,8 @@ Belgesi: [`docs/YENIDEN_URETIM.md`](docs/YENIDEN_URETIM.md).
 
 > 2026-09-07'ye kadar manşet değeri **modeli indiren hiç kimse yeniden üretemiyordu**: istem
 > üretim betiğinin içindeydi (çözüldü, `hakhukuk/istem.py`), komut zinciri hiçbir yerde tek
-> parça yazılı değildi (çözüldü), indeks git'te yok (**hâlâ açık**, borç G8).
+> parça yazılı değildi (çözüldü), indeks git'te yok — **HF'te public dataset olarak yayımlandı**
+> (2026-09-12), `indir` onu pinli kimlik kapısının arkasından çeker.
 
 **Merge yeniden üretimi:**
 
@@ -791,15 +792,12 @@ yararlı bulgularının birkaçı kendi planlarının çürütülmesidir.
 | **Temel model lisansı** | `Qwen/Qwen3.5-4B` · Apache-2.0 |
 | **Kapsam** | yalnız güncel Türkiye Cumhuriyeti mevzuatı |
 | **Yer gerçeği** | Mevzuat.gov.tr |
-| **İzinli kaynaklar** | Mevzuat.gov.tr · Resmî Gazete · Yargıtay açık portalı · açık Kaggle/HF setleri |
-| **Yasak** | **Lexpera · Kazancı — asla.** Telif zehri |
+| **Kaynaklar** | Yalnız kamuya açık ve lisansı uygun kaynaklar: Mevzuat.gov.tr · Resmî Gazete · Yargıtay açık portalı · açık lisanslı veri setleri |
 | **PII** | eğitim verisinde maskelenir |
 
-**Veri sertliği, pahalı öğrenilmiştir:** her veri seti kullanılmadan önce **EDA ile
-doğrulanır**. `newmindai/EuroHPC-Legal` kâğıt üstünde mükemmeldi (43K kalem, Apache-2.0), ancak
-örnekleme **uyuşmayan soru-cevaplar, uydurma kanunlar ve Osmanlı dönemi içerik** gösterdi ⇒
-**reddedildi**. Eksik veri (sade dil, vatandaş nişi, senaryo→kanun) **temellendirilmiş sentetik
-üretimle** karşılanır: gerçek madde metni → LLM çift üretir → **doğrulanır**
+**Her veri seti kullanılmadan önce EDA ile doğrulanır** — lisansı uygun olması yetmez, içeriği
+de sınanır. Eksik veri (sade dil, vatandaş nişi, senaryo→kanun) **temellendirilmiş sentetik
+üretimle** karşılanır: gerçek madde metni → model çift üretir → **doğrulanır**
 ([`VERI_PLANI.md`](docs/VERI_PLANI.md)).
 
 Örnek soru-cevap çıktıları için ağırlık deposundaki `ORNEK_CEVAPLAR.md` dosyasına bakınız.
@@ -808,7 +806,7 @@ doğrulanır**. `newmindai/EuroHPC-Legal` kâğıt üstünde mükemmeldi (43K ka
 @software{hakhukuk2026,
   title   = {HakHukuk: göreve-vektörü birleştirilmiş bir Türkçe hukuk asistanı},
   year    = {2026},
-  url     = {https://github.com/Rfetha/Hukuk-SLM},
+  url     = {https://github.com/Rfetha/HakHukuk},
   license = {Apache-2.0}
 }
 ```

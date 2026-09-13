@@ -82,4 +82,4 @@ varsayılanı geçersiz kılar. İnen `gomme.npy` bayt sayısı ve `sha256` ile 
 
 ## Kod deposu
 
-https://github.com/Rfetha/Hukuk-SLM
+https://github.com/Rfetha/HakHukuk
