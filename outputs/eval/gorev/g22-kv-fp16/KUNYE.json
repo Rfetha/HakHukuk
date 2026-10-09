@@ -1,0 +1,106 @@
+{
+  "kosu": "G22 Adım 1 — KV önbelleği kuantizasyonunun 80 kalemdeki etkisi (fp16 kolu)",
+  "tarih": "2026-09-11",
+  "etiket": "h1_tgta_v1_g22_fp16",
+  "ozne": "tgta_v1 = HakHukuk-4B-v0.1 (ağırlıklar DEĞİŞMEDİ)",
+  "amac": "Kusur 2: q8_0 ↔ fp16 KV farkı TEK soruda ölçülmüştü; bu koşu 80 kalemde sapmanın BÜYÜKLÜĞÜNÜ ölçer. DETERMİNİSTİK ve HAKEMSİZ.",
+  "KUTLE_HESAPLANMADI": "⛔ faithful-answer mass hakem ister — bu turda hakem ÇAĞRILMADI, para HARCANMADI ($0). Adım 2 bedel kapısı için tahmin aşağıda.",
+
+  "cipa": {
+    "kosu": "F0.2 — bizim kol, önsözsüz",
+    "dizin": "outputs/eval/f02-biz-onsozsuz/",
+    "detay_dosya": "outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl",
+    "detay_sha256": "e0536489d876d9aec5da33c32f692f252ce7c6c239aee4daa5d22075a08a0aad",
+    "kunye_sha256": "8593d0fd3738bd2e180675b50d16d0f8d9aa23570cecf35a3c1826ab98341d75",
+    "gozle_okuma": "outputs/eval/f02-biz-onsozsuz/GOZLE_OKUMA_80.md"
+  },
+
+  "tam_komut_satiri": {
+    "cipa_sunucu": "~/code/llama.cpp/build-cuda/bin/llama-server -m /home/ersoy/code/Hukuk-SLM/models/gguf/tgta_v1-q4_k_m.gguf -ngl 99 -fa on --no-context-shift --cache-type-k q8_0 --cache-type-v q8_0 -c 8192 --host 127.0.0.1 --port 8080",
+    "yeni_sunucu": "~/code/llama.cpp/build-cuda/bin/llama-server -m /home/ersoy/code/Hukuk-SLM/models/gguf/tgta_v1-q4_k_m.gguf -ngl 99 -fa on --no-context-shift -c 8192 --host 127.0.0.1 --port 8080",
+    "BAYRAK_FARKI": "YALNIZ iki bayrak DÜŞTÜ: --cache-type-k q8_0 · --cache-type-v q8_0. Başka hiçbir sunucu bayrağı değişmedi. Bayraklar düşünce llama.cpp varsayılanı devreye girer: f16/f16.",
+    "uretim": "MODES=h1 HARNESS_INDEKS=data/index/mevzuat_bge_m3_s2 HARNESS_K=10 THINK_BUDGET=1024 MAXTOK=512 CTX=8192 OUT_DIR=outputs/eval/g22-kv-fp16 SERVER_URL=http://127.0.0.1:8080/v1 bash scripts/olcum_uretim/cp0_thinking_gen.sh models/gguf/tgta_v1-q4_k_m.gguf tgta_v1_g22_fp16",
+    "uretim_ic_komut": "python scripts/olcum_uretim/gen_eval_grounded.py --server-url http://127.0.0.1:8080/v1 --server-model local --thinking on --max-new-tokens 512 --think-budget 1024 --max-chunk-chars 900 --seed 3407 --label h1_tgta_v1_g22_fp16 --out-dir outputs/eval/g22-kv-fp16 --data data/eval/dev/core_hard.jsonl --harness-indeks data/index/mevzuat_bge_m3_s2 --harness-k 10 --n 80",
+    "NEDEN_SERVER_URL": "cp0_thinking_gen.sh satır 102'de --cache-type-k/-v q8_0 SABİT KODLU. Betiği DEĞİŞTİRMEK yerine sunucu elle açılıp SERVER_URL ile devredildi — üretim yolu böylece çıpayla BİREBİR aynı kod, değişen yalnız taşıyıcının KV tipi."
+  },
+
+  "KUNYEDEKI_YANLIS_SATIR": "⚠️ kosu.log'daki 'sunucu : ... KV q8_0/q8_0' satırı cp0_thinking_gen.sh satır 89'da SABİT KODLU bir dizedir; bayrağı OKUMAZ. Bu koşuda YANLIŞTIR — gerçek KV tipi fp16'dır. Betik düzeltilmedi (DOKUNMA kapsamı dışı değil ama bu görev onu istemiyor); kusur kayda geçirildi.",
+
+  "rejim_degismezleri_CIPAYLA_AYNI": {
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "thinking": "on",
+    "think_budget": 1024,
+    "max_new_tokens": 512,
+    "toplam_uretim_butcesi": 1536,
+    "sufficiency_preamble": false,
+    "onsoz_kaniti": "kosu.log 'ekstra : <yok>' + '[gen-eval] ✅ ANA PROTOKOL: kaynak-yeterliliği önsözü KAPALI'",
+    "ctx": 8192,
+    "ngl": 99,
+    "flash_attn": "on",
+    "no_context_shift": true,
+    "n_slots": 4,
+    "harness_indeks": "data/index/mevzuat_bge_m3_s2",
+    "harness_k": 10,
+    "RRF_K": "10 — retriever.py:44 modül sabiti, komut satırından gelmiyor",
+    "veri": "data/eval/dev/core_hard.jsonl (v2)",
+    "n": 80,
+    "tasiyici": "YEREL llama-server, llama.cpp version 1 (0cea362), Q4_K_M",
+    "gguf_sha256": "755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc"
+  },
+
+  "KONTROL_DEGISKENI_DUSTU": {
+    "bulgu": "🚨 İki koşu arasındaki fark BAYRAK FARKINDAN İBARET DEĞİL. Retriever 2 kalemde (id 7, 63) FARKLI kaynak getirdi.",
+    "sebep": "KV değil KOD farkı: yürürlük süzgeci (commit 63b691e, 2026-09-07, A8b) çıpadan (2026-09-06) SONRA geldi. getir() artık varsayılan Yururluk.YALNIZ_YURURLUKTE ve mülga maddeyi düşürüyor.",
+    "kanit": "data/corpus/mevzuat_maddeler.jsonl — İŞ KANUNU Madde 87 mulga=True (id 63'te düştü) · İŞ KANUNU Madde 111'in mülga varyantı (id 7'de düştü). Her iki listede de tek kalem düşmüş, liste bir kaymış, 10. sıraya yeni kalem girmiş.",
+    "iliski": "CLAUDE.md'nin kaydettiği '800 getirilen kaynağın 2'si mülgaydı' ölçümüyle AYNI iki kalem.",
+    "sonuc": "id 7 ve 63 KV hükmünden DIŞLANDI. Temiz alt küme n=78. İkisi de her iki koşuda CEVAPLANMIŞ ve finish_reason=stop — bu yüzden çekinme/kesik/boş sayılarının HİÇBİRİNİ etkilemiyorlar."
+  },
+
+  "sarj_kapisi": {
+    "AC1_online": 1,
+    "durum": "ŞARJDA",
+    "dogrulama": "cat /sys/class/power_supply/AC1/online = 1, koşudan ÖNCE ve SONRA",
+    "not": "kosu.log künyesi de 'güç : ŞARJDA' bastı"
+  },
+
+  "sure_ve_donanim": {
+    "baslangic": "2026-09-11 14:55:38",
+    "bitis": "2026-09-11 15:37:51",
+    "sure": "42 dk 13 sn",
+    "cipa_suresi": "~17 dk 40 sn (f02 sunucu logu son damgası)",
+    "yavaslik_sebebi": "Üretim istekleri ÇIPAYLA AYNI hızda (8-17 sn/kalem, 63-78 t/s). Fark aralarda: ana bellek sıkıştı (15 GB'ın 10'u dolu) ve CPU'daki bge-m3 erişimi yavaşladı. Retriever DETERMİNİSTİK — süre çıktıyı etkilemez.",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU, sürücü 591.97, CUDA 13.1",
+    "vram_kosu_sirasinda": "~5.100-5.500 MiB / 12.227 MiB",
+    "vram_kosu_sonrasi": "1.748 MiB (WSL/ekran taban çizgisi) — llama-server KAPATILDI"
+  },
+
+  "araclar": {
+    "cekinme_dedektoru": "scripts/puanlama/score_abstention.exact_reject(cevap, mode='data')",
+    "cekinme_modu_gerekcesi": "harness_tablo.py:122 çekinmeyi BU modda sayar ve çıpanın 5/80'i oradan doğdu. GOZLE_OKUMA_80.md §1 o 5 kalemi tek tek okuyup yanlış pozitif 0 · yanlış negatif 0 buldu. Başka mod SESSİZCE başka sayı üretir (ADR-0061).",
+    "dedektor_dogrulamasi": "scripts/olcum_uretim/kv_kiyas.py çıpaya karşı koşuldu → çekinme 5/80, idler [15,37,45,66,79] — GOZLE_OKUMA_80.md ile BİREBİR. Alet doğru modda çağrılmıştır.",
+    "atif_dogrulama": "scripts/puanlama/harness_tablo.py (--gnd VERİLMEDEN → hakemsiz yol). Çıpada 114/0/0/0/0 üretti, yayımlanan harness_tablo.json ile BİREBİR.",
+    "kiyas_betigi": "scripts/olcum_uretim/kv_kiyas.py (bu turda yazıldı)"
+  },
+
+  "cikti_dosyalari": {
+    "h1_tgta_v1_g22_fp16_detail.jsonl": "8e5b89aa5f21e3da08770dda7de4d0001831e8f6b4281dfed515a3603583c455",
+    "harness_tablo.json": "c723def7b35d63051141cbcf17ecc8c9fbdce8ae4589630dc6b459994b3bac16",
+    "KARSILASTIRMA.json": "2ec1eb68a29267ec1dad8a5491d1f5e828c889d7c6bbc29ac3ae05e8b84af3c3",
+    "not": "kosu.log'un GEÇERLİLİK KAPISI bloğu YOK: üretim bittikten (80/80 yazıldıktan) sonra Python süreci bellek baskısı altında teardown'da asılı kaldı ve elle sonlandırıldı. Kapının sayıları KARSILASTIRMA.md'de kv_kiyas.py'den bağımsız olarak veriliyor (kesiklik %3,8 < %5 → GEÇTİ)."
+  },
+
+  "adim2_bedel_kapisi_TAHMIN": {
+    "hakem_cagrisi": "~160 (kayıt başına 2: extract_claims + verify_claims; iddiasız kayıt 1)",
+    "girdi_token": "~204.000 (hakeme gidecek istem karakteri 713.348 ÷ 3,5 — TR)",
+    "cikti_token": "~5.000-10.000",
+    "dogrusal_tahmin_usd": 0.0418,
+    "emniyet_payli_usd": 0.0626,
+    "dayanak": "ÇIPANIN ÖLÇÜLMÜŞ bedeli $0,0417 (outputs/eval/f02-biz-onsozsuz/gnd_h1_tgta_v1_f02_nb_summary.json) × hakem-istem karakter oranı 1,0014",
+    "orneklem": "DUMAN KOŞUSU DEĞİL — tahmin 80 kalemin TAMAMININ gerçek uzunluk dağılımından çıktı (tuzak 1.11'in istediğinden güçlü) ve ÜSTÜNE %50 emniyet payı kondu",
+    "bakiye": "$2,20 — tahmin bakiyenin %2,8'i"
+  },
+
+  "tuzaklar": ["1.6 (güç)", "1.11 (bedel tahmini emniyet payı)", "2.17 (çıpanın dosya adı + değeri künyede)", "6.12 (bayrak künyede görünmüyorsa koşulmuş sayılmaz)"],
+  "adr": ["ADR-0040", "ADR-0043", "ADR-0057", "ADR-0061", "ADR-0067", "ADR-0068", "ADR-0070"]
+}

@@ -1,0 +1,1257 @@
+{
+  "olcum": "cevaba KÖR valid_trap — içerik-adresli, kalem düzeyinde (ADR-0048 · K3)",
+  "anahtar": "sha256(soru + NUL + kaynak[:3500])[:24]",
+  "n": 250,
+  "cache": {
+    "e7864834aa3dce9b96e4e264": {
+      "gecerli": true,
+      "reason": "Kaynak metinler mahkeme kararının sonuçları hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "edff93af9e9220e041a826ff": {
+      "gecerli": true,
+      "reason": "Kaynak metinler beraat kararlarının temyiz edilip edilemeyeceği hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5d3c7b96f19ffeb200707293": {
+      "gecerli": true,
+      "reason": "Kaynak metinler müdafinin dosya inceleme yetkisinin hangi suçlarla kısıtlanabileceğini belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "05494cb30978de59d06254e0": {
+      "gecerli": true,
+      "reason": "Kaynak metin, karşı tarafın yanılgıyı bilmesi durumunda tazminat alınıp alınamayacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "b2b7fb4a2e35db1852b7a8c0": {
+      "gecerli": true,
+      "reason": "Kaynak metinler el konulan gönderilerin akıbeti hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "f152be98ed277ad9c7218d3e": {
+      "gecerli": true,
+      "reason": "Kaynak metinler çocuğu fuhşa teşvik eden kişiye verilecek cezayı belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "f805dd20e537dcc258c95b42": {
+      "gecerli": true,
+      "reason": "Kaynak metinler ihbar sonrası süreç hakkında detaylı bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7e0594e28f75f74555219e51": {
+      "gecerli": true,
+      "reason": "Kaynak metinler, mahkeme kararı kesinleşmeden çalışmama durumunda ücret alınıp alınamayacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "ea52b62a8e9e7e72a6343592": {
+      "gecerli": true,
+      "reason": "Kaynak metinler evlât edinme şartlarını tam olarak açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6ba215e8a3fd0fd30fd2ed64": {
+      "gecerli": true,
+      "reason": "kaynak metin zamanaşımına uğramış alacakların takas edilip edilemeyeceğini doğrudan cevaplamıyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "5712138f6322525852b70cff": {
+      "gecerli": true,
+      "reason": "Kaynak metinler tedbir kararının tebliğ edilmemesinin bir sorun olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "25a58da1345f17157164fd35": {
+      "gecerli": true,
+      "reason": "Kaynak metinler ruhsatsız inşaata elektrik bağlatan kişinin cezasını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "660959ca2321a315b85164f1": {
+      "gecerli": true,
+      "reason": "Kaynaklar, 50'den az işçi çalıştıran tarım işyerlerinde İş Kanunu'nun geçerli olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e336d115366c8aa9063c2eb4": {
+      "gecerli": true,
+      "reason": "Kaynak metin engelli birini evlât edinmek için gereken süreyi belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0778edae2144d275232e98a7": {
+      "gecerli": true,
+      "reason": "Kaynak metin işverene başvurulmaması durumunda ne olacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "b8d9fbd65954b1f1cc9692fb": {
+      "gecerli": true,
+      "reason": "Kaynak metin vesayet altındaki kişinin menfaatinin nasıl belirleneceğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "ce604717bfcbd291b36be0b2": {
+      "gecerli": false,
+      "reason": "Kaynak 2'de hakem kararlarında karşı oyların belirtilebileceği açıkça ifade edilmiştir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c8be407db0308d109e89858e": {
+      "gecerli": true,
+      "reason": "Kaynak metin işverenin işçiyi yanıltması durumunda işçinin ne yapabileceğine dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "209ac28c473f609441c4e1b0": {
+      "gecerli": true,
+      "reason": "Kaynak metinler zorla fuhşa sevketmenin insanlığa karşı suç olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8cb6575de4d7964f226c893a": {
+      "gecerli": true,
+      "reason": "Kaynak metin promosyon uygulamalarında hangi tür mal veya hizmet verilebileceğini belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "ae73a11dc395e5ee52268d35": {
+      "gecerli": true,
+      "reason": "Kaynak metinler çalışılan günler dışında tatil günleri olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5dcdb9314058ef2e23eba7ec": {
+      "gecerli": true,
+      "reason": "Kaynak metinler sözleşmede para birimi belirlemenin sonuçlarını doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a15700ed5f9a9267e9deff60": {
+      "gecerli": true,
+      "reason": "Kaynak metinler gayrimenkul yönetimi kurallarını doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "27193f26387e718237acff8a": {
+      "gecerli": false,
+      "reason": "Kaynak 1'de ilk toplantıda yeter sayı sağlanamazsa ikinci toplantının en çok on beş gün sonraya bırakılacağı belirtiliyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "9acf0f355e7c05704ef6aa7a": {
+      "gecerli": true,
+      "reason": "Kaynak metin, şiddet içeren müstehcen içerikle ilgili yayında bulunmanın cezasını doğrudan ele almıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6ac66a7f24df8aade896ea5f": {
+      "gecerli": true,
+      "reason": "Kaynak metinler kira bedelinin nasıl belirleneceğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "88c669b81056c26b7205f484": {
+      "gecerli": false,
+      "reason": "Kaynak 1 ve Kaynak 2, borcun bir kısmına itiraz prosedürünü açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "cbd14a2c4d43c51d355af9e5": {
+      "gecerli": true,
+      "reason": "Kaynak metin mahkemenin hangi kurallara göre karar verdiğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8df1804e498e8d204cddaab5": {
+      "gecerli": true,
+      "reason": "Kaynak metinler, ürün eklentilerinin ayıplı olması durumunda ana ürün için geri dönüş yapılıp yapılamayacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "de0f48fc213dd856d5742b09": {
+      "gecerli": true,
+      "reason": "Kaynak metinler cayma hakkının ne olduğunu tanımlamıyor, sadece kullanım koşullarını ve istisnalarını açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "24dde0d212ab2f289f4dab08": {
+      "gecerli": true,
+      "reason": "Kaynak metinler alacakların türü hakkında doğrudan bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "27d10ce5dd7acb1863b9bf6d": {
+      "gecerli": true,
+      "reason": "Kaynak metin toplu yapının tanımını içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "f4603a722dbeb57548989109": {
+      "gecerli": false,
+      "reason": "Kaynak 2, mazeret bildirmeden duruşmaya katılmamanın sonuçlarını açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d8f5ba9168895d76490cc889": {
+      "gecerli": true,
+      "reason": "Kaynak metinler başvurunun kabul edilmesi durumunda ne olacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "05eab7c18dc7fec6209f82d2": {
+      "gecerli": true,
+      "reason": "Kaynaklar, Cumhuriyet savcılarının doğrudan soruşturma yapabileceği durumları açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a556d4dc35c6f765a0b8092c": {
+      "gecerli": true,
+      "reason": "Kaynak metinler nafaka davalarının hangi yargılama usulüne tabi olduğunu belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "45c3e5bf3af1447dc5699ab6": {
+      "gecerli": true,
+      "reason": "Kaynak metinler kat mülkiyetine geçiş sürecindeki kuralları doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "b2b429e509597d0e0e10eb52": {
+      "gecerli": true,
+      "reason": "Kaynak metin, aile meclisinin vesayet altındaki kişi için zorunlu olup olmadığını açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "23dfb9d94a78da5cfdf969dd": {
+      "gecerli": true,
+      "reason": "Kaynak metin, kamu kurumu zarar görmediğinde ihaleye fesat karıştıran kişinin alacağı cezayı belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e6b4402def93a9d7ad9d2a17": {
+      "gecerli": false,
+      "reason": "Kaynak 1, atama kararı kesinleşince vesayet makamının vasinin göreve başlaması için gerekli işlemleri yapacağını belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "cded91bd1e197612fd56e1fe": {
+      "gecerli": true,
+      "reason": "Kaynak metinler ruhsatsız bina yapmanın cezasını doğrudan belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6309cff98977723e668fe06b": {
+      "gecerli": true,
+      "reason": "Kaynak metin ilamların icrası hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7fb55f7e2a3d15aad79fd9eb": {
+      "gecerli": true,
+      "reason": "Kaynak metin, ürünün geri alınması hakkında doğrudan bir bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "f3be4e56d41009baefffd8d2": {
+      "gecerli": true,
+      "reason": "Kaynak metinler suçun nitelendirilmesi nedeniyle iddianamenin iadesi hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "693b0c12130f77821907ec5f": {
+      "gecerli": true,
+      "reason": "Kaynak metinler derneklerin zorunlu organları dışında oluşturdukları organların niteliklerini açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a930101330ecbd7c621ce6ba": {
+      "gecerli": true,
+      "reason": "Kaynak metin, tüketici davalarında mahkeme kararlarının nasıl yayınlandığına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "62a29426ae1ab01e5dd8f961": {
+      "gecerli": false,
+      "reason": "Kaynak 1'de kat mülkiyetine geçişte yönetim planı istenmediği belirtiliyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d24cd755ab28e23345556556": {
+      "gecerli": true,
+      "reason": "Kaynak metin organ almanın cezasını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "29874022d660dfab4caa0a4a": {
+      "gecerli": true,
+      "reason": "Kaynak metinlerde konut finansmanı kuruluşunun sorumluluğunun süresi hakkında bilgi yok.",
+      "hakem": "openai/gpt-4o"
+    },
+    "696135d50c9522a7306cd4eb": {
+      "gecerli": true,
+      "reason": "Kaynak metinler abonelik sonlandırma sonrası bedel ödenip ödenmeyeceği hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "86582ae533afbfcdd32f9446": {
+      "gecerli": true,
+      "reason": "Kaynak metin işverenin işçiye yaptığı harcamaları nasıl ödemesi gerektiğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "80c834d9371c8e19d4f9487a": {
+      "gecerli": true,
+      "reason": "Kaynaklar, birden fazla kişiye zarar verme durumunda uygulanacak cezayı doğrudan belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "2a3717f0ad6342956b503bf4": {
+      "gecerli": false,
+      "reason": "Kaynak 3, tutuklama kararının nasıl verileceğini açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0a285b943c910e01df1776e9": {
+      "gecerli": true,
+      "reason": "Kaynak metin zincirleme suçlarda yetkili mahkemeyi belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "88df64bdfcdf3517a2a8c7c5": {
+      "gecerli": true,
+      "reason": "Kaynak metinler işten ayrılıp tekrar işe dönme durumunda aynı şartlarda çalışılıp çalışılmayacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "f0323ba67ecf20a6fd3e7ebd": {
+      "gecerli": false,
+      "reason": "Kaynak 2'de ödeme emrinin borçluya takip talebinden itibaren en geç 3 gün içinde gönderileceği belirtilmiştir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "86485c4515dc6396394acbc4": {
+      "gecerli": true,
+      "reason": "Kaynak metin, sigorta bedelinin kişinin kendisi için yaptırılması durumunu açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5ac9629b6c428d504f368ff7": {
+      "gecerli": false,
+      "reason": "Kaynak 1'de kolluk güçlerinin çocuk hukuku, çocuk suçluluğunun önlenmesi, çocuk gelişimi ve psikolojisi, sosyal hizmet gibi konularda eğitim aldığı belirtiliyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a743a7bffdb3e5c05b1fa3c9": {
+      "gecerli": true,
+      "reason": "Kaynak metinler, silah bulundurmanın sonuçlarını doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a91e194cb64b2565748fe4b0": {
+      "gecerli": true,
+      "reason": "Kaynak metinler garanti belgesi ile hangi malların satılmak zorunda olduğunu belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "cb2caafa5cf741b68d66b527": {
+      "gecerli": true,
+      "reason": "Kaynak metinler istinaf başvurusu için gerekli belgeleri belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "fc30f21e0bc4902b31c42711": {
+      "gecerli": true,
+      "reason": "Kaynak metinler soruşturma yapılmasına yer olmadığına dair karara itiraz hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "da568000dcaf29c143e80ea8": {
+      "gecerli": false,
+      "reason": "Kaynak 1, gider veya avans payını ödemeyen kat maliki hakkında işlem yapılabileceğini belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "138d7882d45efc065c8c43fd": {
+      "gecerli": true,
+      "reason": "Kaynak metinler emziren kadın işçilerin süt izni süreleri hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "1e4d56deb6a78ecd966bd1ae": {
+      "gecerli": true,
+      "reason": "Kaynaklar temyiz dilekçesinin nasıl yapılacağına dair detaylı bir açıklama sunmuyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8cc961cbaa3486d9da4d436c": {
+      "gecerli": true,
+      "reason": "Kaynak metinler hükmün hangi durumlarda kesin hüküm sayılacağını doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6eabad1ac3b3660e45ea148e": {
+      "gecerli": true,
+      "reason": "Kaynak metin, tüketici hakem heyetinin oluşamaması durumunda ne olacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "59571bf5f10b3d4e0647118b": {
+      "gecerli": true,
+      "reason": "Kaynak metinlerde tüketici hakem heyetinin başkanının kim olduğu belirtilmemiştir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "30ed2722bfa6b02d35233b91": {
+      "gecerli": false,
+      "reason": "Kaynak 2'de borçlunun taşınmaz mallarının haczedilebileceği belirtiliyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "da6115d693446633e4850e4e": {
+      "gecerli": false,
+      "reason": "Kaynak metin, alkol bağımlılığı sebebiyle kısıtlanmanın mümkün olduğunu açıkça belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "fa0cff26518303211acee0b7": {
+      "gecerli": true,
+      "reason": "Kaynak metinler borçlu olan eşin mal varlığına nasıl ulaşılacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5818ec269b384f078ec3f211": {
+      "gecerli": true,
+      "reason": "Kaynak metinlerde taraf değişikliği için hâkimin neye baktığına dair bilgi yok.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a9e6d7a25803a912fcbf297d": {
+      "gecerli": true,
+      "reason": "Kaynak metinler engelli işçi çalıştırılma oranının nasıl hesaplanacağını açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6c864514b3b35d3ea80a2fa8": {
+      "gecerli": true,
+      "reason": "Kaynak metin zorlama hapsinin süresinin nasıl belirlendiğini açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "eb42880f8171453f9f80d6ee": {
+      "gecerli": true,
+      "reason": "Kaynak metin konutta hacizle ilgili özel bir durumu açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "06ee931ef4a96455b7667209": {
+      "gecerli": true,
+      "reason": "Kaynak metinler mahkemenin davayı ne zaman sona erdireceğini doğrudan belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e494bf371ea593753cd5c076": {
+      "gecerli": true,
+      "reason": "Kaynak metinler borçlu ile başka birinin aynı taşınır malı elinde bulundurmaları durumunda kimin mal sahibi sayılacağını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8c6a405261efae071d113f03": {
+      "gecerli": true,
+      "reason": "Kaynak metinler vücuda cisim sokularak yapılan cinsel saldırının cezasını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5524be4499364e85e6824135": {
+      "gecerli": true,
+      "reason": "Kaynak metinler borçlunun taşınır mallarının neden haczedilebileceğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5a61d7074dade267a61a0e3f": {
+      "gecerli": true,
+      "reason": "Kaynak metinler mağdurun on iki yaşından küçük olması durumunda verilecek cezayı belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0d87e2bf83f8675b7f98ea12": {
+      "gecerli": true,
+      "reason": "Kaynak metinler mahkeme kararının lehe olması durumunda ne olacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "3c58ff8ef320f0dacccde840": {
+      "gecerli": true,
+      "reason": "Kaynak metinler beraat kararının temyiz edilip edilemeyeceği hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "82672cd50e7ff38fa6aa8b1b": {
+      "gecerli": true,
+      "reason": "Kaynak metinler müdafinin dosya inceleme yetkisinin kısıtlanabileceği suçlarla ilgili bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d6e14c6fe59629f0b8c0451b": {
+      "gecerli": true,
+      "reason": "Kaynak metinler, karşı tarafın yanıldığını bilmesi durumunda tazminat alınıp alınamayacağına dair doğrudan bir cevap içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0019c8e6237c560155bb8d3f": {
+      "gecerli": true,
+      "reason": "Kaynak metinler el konulan gönderilerin akıbeti hakkında doğrudan bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "55225a7b365428b55d28b977": {
+      "gecerli": true,
+      "reason": "Kaynak metin ihbar sonrası süreç hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "3d97d4a8484eb594ca4db5e7": {
+      "gecerli": true,
+      "reason": "Kaynak metinler sorunun cevabını içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8bbe4dbd82e4b98ecadbb744": {
+      "gecerli": false,
+      "reason": "Kaynak metinler evlât edinme şartlarını detaylı olarak açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0e3f9d2ebef20012ad60324a": {
+      "gecerli": true,
+      "reason": "kaynak metin zamanaşımına uğramış alacakların takas edilip edilemeyeceğini doğrudan cevaplamıyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "f1ca5755e1050e77bcaeb294": {
+      "gecerli": true,
+      "reason": "Kaynak metinler tedbir kararının tebliğ edilmemesinin bir sorun olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "350fd919825de91775dd95b7": {
+      "gecerli": true,
+      "reason": "Kaynak metin engelli birini evlât edinmek için ne kadar süre bakılması gerektiğini belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8695f90f603a438396f8cdc8": {
+      "gecerli": true,
+      "reason": "Kaynak metin işverene başvurmamanın sonuçlarını açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d5f9afbfe3b264ae45678569": {
+      "gecerli": true,
+      "reason": "Kaynak metin vesayet altındaki kişinin menfaatinin nasıl belirleneceğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "1a65f19fca355f621aba3391": {
+      "gecerli": true,
+      "reason": "Kaynak metin işverenin işçiyi yanıltması durumunda işçinin ne yapabileceğini doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d0142ba46ab6c3aaf6928f09": {
+      "gecerli": true,
+      "reason": "Kaynak metinler promosyon uygulamalarında hangi tür mal veya hizmet verilebileceğini doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e8597d733802e1765a198103": {
+      "gecerli": true,
+      "reason": "Kaynak metinler çalışılan günler dışında tatil günleri olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "06f795a8cfd632d22eb6f8b4": {
+      "gecerli": true,
+      "reason": "Kaynak metin, sözleşmede bir para birimi belirtildiğinde ne olacağına dair doğrudan bir cevap içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a3e55ebf5fc02a612fa5808c": {
+      "gecerli": true,
+      "reason": "Kaynak metinler gayrimenkul yönetimi kurallarını doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0647fedfb6f8e232df4b8d4b": {
+      "gecerli": false,
+      "reason": "Kaynak 1'de ilk toplantıda yeter sayı sağlanamazsa ikinci toplantının en çok on beş gün sonraya bırakılacağı belirtiliyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "323f734fc6b75200115e65d0": {
+      "gecerli": true,
+      "reason": "Kaynak metin şiddet içeren müstehcen içerikle ilgili ceza konusunu doğrudan ele almıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0d5f659a03d045a1774bccac": {
+      "gecerli": true,
+      "reason": "Kaynak metinler kira bedelinin nasıl belirleneceğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "93bc73fd5ce18d885b4fa100": {
+      "gecerli": false,
+      "reason": "Kaynak 1 ve 2, borcun bir kısmına itiraz prosedürünü açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "ccfffbb1abcacac0c2ec0ab3": {
+      "gecerli": true,
+      "reason": "Kaynak metinler mahkemenin hangi kurallara göre karar verdiğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0c7abc53ff79de45dfd443a8": {
+      "gecerli": true,
+      "reason": "Kaynak metin cayma hakkının ne olduğunu tanımlamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "97df6958693d9338cb24a8a6": {
+      "gecerli": true,
+      "reason": "Kaynak metinler alacakların türü hakkında doğrudan bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8e6ca5cadbf29964ca4f8255": {
+      "gecerli": true,
+      "reason": "Kaynak metin 'toplu yapı'nın tanımını doğrudan vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d9aabce232a5516f237008a1": {
+      "gecerli": false,
+      "reason": "Kaynak 2, mazeret bildirmeden duruşmaya katılmayan tarafların yokluklarında duruşmaya devam edileceğini ve itiraz edemeyeceklerini belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "76cce2e97ed73c5fe1c21bfb": {
+      "gecerli": true,
+      "reason": "Kaynak metinler başvurunun kabul edilmesi durumunda ne olacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "2e294738e6d0fc0542df3aa0": {
+      "gecerli": true,
+      "reason": "Kaynaklar, Cumhuriyet savcılarının doğrudan soruşturma yapabileceği durumları açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d29839f88ceb1f1dfcc5aede": {
+      "gecerli": true,
+      "reason": "Kaynak metin, nafaka davalarının hangi yargılama usulüne tabi olduğunu açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "58321f13659ced64e33e0855": {
+      "gecerli": true,
+      "reason": "Kaynak metin, vesayet altındaki kişi için aile meclisi kurulmasının zorunlu olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c64c6c5641aac010cc963449": {
+      "gecerli": true,
+      "reason": "Kaynak metinler, kamu kurumu zarar görmediğinde ihaleye fesat karıştıran kişinin alacağı cezayı belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6d432a52be16e48b7d6bcdbc": {
+      "gecerli": false,
+      "reason": "Kaynak 1'de, atama kararı kesinleşince vesayet makamının vasinin göreve başlaması için gerekli işlemleri yapacağı belirtiliyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "edc8069711ce2888372d0019": {
+      "gecerli": true,
+      "reason": "Kaynak metinler ruhsatsız bina yapmanın cezasını doğrudan belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c58110fc68ca142710de331c": {
+      "gecerli": false,
+      "reason": "Kaynak 6, ilamların icrasının zorla yapılabileceği durumu açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "475aca220d4eb7853e7a6da0": {
+      "gecerli": true,
+      "reason": "Kaynak metinler derneklerin zorunlu organları dışında oluşturdukları organların niteliklerini belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7d2d7cd10245c8c2021f9cae": {
+      "gecerli": true,
+      "reason": "Kaynak metinler tüketici davalarında mahkeme kararlarının nasıl yayınlandığına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "63805b89176daf820e9b09b2": {
+      "gecerli": true,
+      "reason": "Kaynak metinler organ almanın cezasını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7dc086535076ab1aca052ed5": {
+      "gecerli": true,
+      "reason": "Kaynak metinler abonelik sonlandırma sonrası bedel ödenip ödenmeyeceği hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "da0de4375417868eddef5395": {
+      "gecerli": true,
+      "reason": "Kaynak metin işverenin işçiye yaptığı harcamaları nasıl ödemesi gerektiğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "152ad589a1f6d1df26a34d02": {
+      "gecerli": false,
+      "reason": "Kaynak 1 ve Kaynak 3, birden fazla kişiye zarar verme durumunda uygulanacak cezaları açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "96541c09ca0dc707baac5343": {
+      "gecerli": false,
+      "reason": "Kaynak 3, tutuklama kararının nasıl verileceğini açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0c2ccb3d3f9a4013cc6a46d9": {
+      "gecerli": true,
+      "reason": "Kaynak metin zincirleme suçlarda hangi mahkemenin yetkili olduğunu belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d4183d22358663e219a839bf": {
+      "gecerli": true,
+      "reason": "Kaynak metin işten ayrılıp aynı şartlarda işe dönme konusunu doğrudan ele almıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7da9864f2144123b9ecc483b": {
+      "gecerli": false,
+      "reason": "Kaynak 2'de ödeme emrinin borçluya takip talebinden itibaren nihayet 3 gün içinde tebliğe gönderileceği belirtilmiştir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "3e36d97e0465694358df91b4": {
+      "gecerli": true,
+      "reason": "Kaynak metin, sigorta bedelinin kişinin kendisi için yaptırılması durumunu açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "78f4c9ac1a9abcc83e415643": {
+      "gecerli": true,
+      "reason": "Kaynak metin, silah bulundurmanın sonuçları hakkında doğrudan bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "1086dde3ecde8c04c6358933": {
+      "gecerli": true,
+      "reason": "Kaynak metinler istinaf başvurusu için gerekli belgeleri açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "f58205f68d0947e7be842728": {
+      "gecerli": true,
+      "reason": "Kaynak metin soruşturma yapılmasına yer olmadığına dair karara itiraz edilebileceğini açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "4865991868ccae21275b74c2": {
+      "gecerli": true,
+      "reason": "Kaynak metinlerde emziren kadın işçilerin süt vermesi için süreye dair bilgi yok.",
+      "hakem": "openai/gpt-4o"
+    },
+    "bc036ec43d8a9d5271aaac50": {
+      "gecerli": true,
+      "reason": "Kaynaklar temyiz dilekçesinin nasıl yapılacağına dair detaylı bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "3008a692a7e334ef0c101c85": {
+      "gecerli": true,
+      "reason": "Kaynak metinler hükmün hangi durumlarda kesin hüküm sayılacağını doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a23fdab00bcaf9af74d83eb6": {
+      "gecerli": true,
+      "reason": "Kaynak metinlerde tüketici hakem heyetinin başkanının kim olduğu belirtilmemiştir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a7d1c927247d25ca7eaf961c": {
+      "gecerli": false,
+      "reason": "Kaynak 2'de borçlunun taşınmaz mallarının haczedilebileceği belirtilmiştir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e158e010feea14d457faf1b1": {
+      "gecerli": false,
+      "reason": "Kaynak 1 ve 2, alkol bağımlılığı nedeniyle kısıtlanmanın mümkün olduğunu açıkça belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6ccf44ae4f44ad63499b1d5e": {
+      "gecerli": true,
+      "reason": "Kaynak metinler borçlu olan eşin mal varlığına nasıl ulaşılacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8977e5603b624af53f4ee266": {
+      "gecerli": true,
+      "reason": "Kaynak metinlerde taraf değişikliği için hâkimin neye bakacağına dair bilgi yok.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0abbafcd4afa9d923b990014": {
+      "gecerli": true,
+      "reason": "Kaynak metinler engelli işçi çalıştırılma oranının nasıl hesaplanacağını açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0d5f256379d269ae77c4edd4": {
+      "gecerli": true,
+      "reason": "Kaynak metin zorlama hapsinin süresinin nasıl belirlendiğini açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "1f2249842e67f9ca19ed19bc": {
+      "gecerli": true,
+      "reason": "Kaynak metin konutta haciz yapılırken özel bir durumu açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c1c2ecc1cd005e50a2bc0609": {
+      "gecerli": true,
+      "reason": "Kaynak metinler mahkemenin davayı ne zaman sona erdireceğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6c37be79a0e6d03d1616d645": {
+      "gecerli": true,
+      "reason": "Kaynak metinler borçlu ile başka birinin aynı taşınır malı elinde bulundurmaları durumunda kimin mal sahibi sayılacağını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "4b2e82968045487826cc543c": {
+      "gecerli": true,
+      "reason": "Kaynak metinler vücuda cisim sokularak yapılan cinsel saldırının cezasını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "82d1a3075dc41732fbe32a02": {
+      "gecerli": true,
+      "reason": "Kaynak metinler borçlunun taşınır mallarının neden haczedilebileceğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "33e2262b60ea9e5db8408b32": {
+      "gecerli": true,
+      "reason": "Kaynak metinler mağdurun on iki yaşından küçük olması durumunda uygulanacak cezayı belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "ad5dcf18e59684cc7cf7a4c3": {
+      "gecerli": true,
+      "reason": "Kaynak metin, mahkeme kararının lehe sonuçlanması durumunda ne olacağına dair bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "87d4d4df917a916ccbb5f338": {
+      "gecerli": true,
+      "reason": "Kaynak metinler ilk derece mahkemesinin beraat kararının temyiz edilip edilemeyeceğini doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "88ebd45d2072c33f263b6a4f": {
+      "gecerli": true,
+      "reason": "Kaynak metinler müdafinin dosya inceleme yetkisinin kısıtlanabileceği suçları belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "27fa0adc5af74aef20b00fe0": {
+      "gecerli": true,
+      "reason": "Kaynak metin, karşı tarafın yanılmayı bilmesi durumunda tazminat alınıp alınamayacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7b6a28feb35dd1cfac171d13": {
+      "gecerli": false,
+      "reason": "Kaynak 2, el konulan eşyaların geri verilmesi koşullarını açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "3146710d2a37f399b4c66046": {
+      "gecerli": true,
+      "reason": "Kaynak metinler çocuğu fuhşa teşvik eden kişiye verilecek cezayı içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "3f5082b37a4936267cbd9436": {
+      "gecerli": true,
+      "reason": "Kaynak metinler ihbar sonrası süreç hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "2be0bfa2dcb09c29143cb5bf": {
+      "gecerli": true,
+      "reason": "Kaynak metin, mahkeme kararı kesinleşmeden çalışmama durumunda ücret alınıp alınamayacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "1498d6e0dc13218e370d2dfb": {
+      "gecerli": true,
+      "reason": "Kaynak metin evlât edinme şartlarını açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e9555709003e5c90472fb075": {
+      "gecerli": true,
+      "reason": "Kaynak metin zamanaşımına uğramış bir alacakla takas yapılıp yapılamayacağını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "a0f4f67d3c5acc6d536d2946": {
+      "gecerli": true,
+      "reason": "Kaynak metin, tedbir kararının tebliğ edilmemesinin bir sorun olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "174e8b681f173a71a3ccba2a": {
+      "gecerli": true,
+      "reason": "Kaynak metin ruhsatsız inşaata elektrik bağlatmanın cezasını içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c09510586d1b0ba054cd573d": {
+      "gecerli": true,
+      "reason": "Kaynak metinler, 50'den az işçi çalıştıran bir tarım işyerinde İş Kanunu'nun geçerli olup olmadığını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6813b6f94f5ce21a5307ef73": {
+      "gecerli": true,
+      "reason": "Kaynak metin, engelli birini evlât edinmek için ne kadar süre bakılması gerektiğine dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "bb3fbd1bf187101bd3324559": {
+      "gecerli": true,
+      "reason": "Kaynak metin işverene başvurulmaması durumunda ne olacağını doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "d006d2007a9b7e0f711ef12a": {
+      "gecerli": true,
+      "reason": "Kaynak metin vesayet altındaki kişinin menfaatinin nasıl belirleneceğine dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "2f90d6ab5f73dc898cab5556": {
+      "gecerli": true,
+      "reason": "Kaynak metin, hakem kararında karşı oy yazısının yer alıp almayacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "806754873c182ee87eaa1caa": {
+      "gecerli": true,
+      "reason": "Kaynak metin işverenin işçiyi yanıltması durumunda işçinin ne yapabileceğini doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "84d22c830aaae806db77e3f1": {
+      "gecerli": true,
+      "reason": "Kaynak metin zorla fuhşa sevketmenin insanlığa karşı suç olup olmadığını cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5546950f78be41a6a7d71a16": {
+      "gecerli": true,
+      "reason": "Kaynak metin promosyon uygulamalarında hangi tür mal veya hizmet verilebileceği hakkında bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "209d97279f97da4f7c349af7": {
+      "gecerli": true,
+      "reason": "Kaynak metin, çalışılan günler dışında tatil günleri olup olmadığını doğrudan belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "87591dc571b7a6d467dfd7cf": {
+      "gecerli": true,
+      "reason": "Kaynak metin, sözleşmede para birimi belirlemenin sonuçları hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "9745c1412e00c124cae4b7b7": {
+      "gecerli": true,
+      "reason": "Kaynak metin gayrimenkul yönetimiyle ilgili kuralları belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0fff3f107ea0e75c5273ec7c": {
+      "gecerli": true,
+      "reason": "Kaynak metinler ilk toplantıda yeter sayı sağlanamazsa ne olacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "cdf64eb00b3e846f7050a069": {
+      "gecerli": true,
+      "reason": "Kaynak metin şiddet içeren müstehcen içerikle ilgili cezai durumu açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "25f8610dba082a3da73bfa0b": {
+      "gecerli": true,
+      "reason": "Kaynak metin kira bedelinin nasıl belirleneceğini açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "9a86a656c10925312c248bcd": {
+      "gecerli": true,
+      "reason": "Kaynak metin borcun bir kısmına itiraz etme sürecini açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "98bf70186996c4bc391fa74c": {
+      "gecerli": true,
+      "reason": "Kaynak metin mahkemenin hangi kurallara göre karar verdiğini açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "29f37cdcb5bfca946236f5ca": {
+      "gecerli": true,
+      "reason": "Kaynak metin, ürünün eklentilerinin ayıplı olması durumunda ana ürün için geri dönüş yapılıp yapılamayacağını doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "3ec08fad2913fbc28f30e5e3": {
+      "gecerli": true,
+      "reason": "Kaynak metin cayma hakkını tanımlamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "97f70d423321f91f48f8e1e7": {
+      "gecerli": true,
+      "reason": "Kaynak metin takas işlemi sırasında alacakların türü hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "f7cef651cbb63b037b12bf76": {
+      "gecerli": true,
+      "reason": "Kaynak metinler toplu yapının tanımını içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "90560e5d244f60654110ddbd": {
+      "gecerli": true,
+      "reason": "Kaynak metin duruşmaya katılmamanın sonuçlarını açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "8fd37f64fb87f21ab695a9c9": {
+      "gecerli": true,
+      "reason": "Kaynak metin başvurunun kabul edilmesi durumunda ne olacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "2a286b903d7402a842abcac9": {
+      "gecerli": true,
+      "reason": "Kaynak metin, Cumhuriyet savcılarının doğrudan soruşturma yapma durumlarını açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e4a5e8885c7cc77f7da6f2b3": {
+      "gecerli": true,
+      "reason": "Kaynak metin nafaka davalarının yargılama usulüne dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "43c152c5a499556728788f31": {
+      "gecerli": true,
+      "reason": "Kaynak metinler kat mülkiyetine geçiş sürecindeki kuralları doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7eddea4825abcf3a0f55d7ba": {
+      "gecerli": true,
+      "reason": "Kaynak metin, aile meclisinin vesayet altındaki kişi için zorunlu olup olmadığını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "68377712f0b815c978d15746": {
+      "gecerli": true,
+      "reason": "Kaynak metin, kamu kurumu zarar görmediğinde ihaleye fesat karıştıran kişinin cezasını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "af1b4ccd0c6345e9603b0712": {
+      "gecerli": true,
+      "reason": "Kaynak metinler vasiliğe atanma kararı kesinleşince ne yapılması gerektiğini belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "6945861d35ee3e75a066c02f": {
+      "gecerli": true,
+      "reason": "Kaynak metin ruhsatsız bina yapmanın cezasını içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e76fbb9b2daf5a23df4cfd41": {
+      "gecerli": true,
+      "reason": "Kaynak metinler ilamların icrası hakkında genel bilgiler veriyor ancak zorla icra edilme durumlarını açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c3ffda611c4f7d94ac0c66cf": {
+      "gecerli": true,
+      "reason": "Kaynak metin, ürünün elden alınması durumunda geri alınıp alınamayacağına dair doğrudan bir cevap içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "700eeee5bfed4e639d731fe1": {
+      "gecerli": true,
+      "reason": "Kaynak metin, suçun nitelendirilmesi nedeniyle iddianamenin iadesi hakkında bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "fe96990490a530e6508a14f3": {
+      "gecerli": true,
+      "reason": "Kaynak metin, derneklerin zorunlu organları dışında oluşturdukları organların niteliklerine dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "dbeee6dc9903a23d26fb7f06": {
+      "gecerli": true,
+      "reason": "Kaynak metin, tüketici davalarında mahkeme kararlarının nasıl yayınlandığına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5795f3d24ff6456ca18d761e": {
+      "gecerli": true,
+      "reason": "Kaynak metinler, kat mülkiyetine geçişte yönetim planı yapılmasının zorunlu olup olmadığını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5132c8c283365f4a71d77c9f": {
+      "gecerli": true,
+      "reason": "Kaynak metinler, örgüt kapsamında organ almanın cezasını doğrudan belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "9fb203395b503c280a7dcc13": {
+      "gecerli": true,
+      "reason": "Kaynak metin konut finansmanı kuruluşunun sorumluluğunun süresi hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c4e21f3fd081a09c1727ca92": {
+      "gecerli": true,
+      "reason": "Kaynak metin abonelik sonlandırma sonrası bedel ödenip ödenmeyeceği hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "642cd0d48f6f7dd872265d4d": {
+      "gecerli": false,
+      "reason": "Kaynak 3, işçinin yaptığı giderlerin ücretle birlikte ödenmesi gerektiğini belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "211cf088d58cc3524f74d411": {
+      "gecerli": true,
+      "reason": "Kaynak metin, birden fazla kişiye zarar verme durumunda uygulanacak cezayı doğrudan belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "9aa5e4b7da5c6c4e2e8fe1bf": {
+      "gecerli": false,
+      "reason": "Kaynak 1, tutuklama kararının nasıl verileceğini açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "4141402625f3cc38f5e48208": {
+      "gecerli": true,
+      "reason": "Kaynak metin zincirleme suçlarda hangi mahkemenin yetkili olduğunu belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "b5efed8dc89939b51eee143f": {
+      "gecerli": true,
+      "reason": "Kaynak metin işten ayrılıp tekrar işe dönme durumunda aynı şartlarda çalışılıp çalışılmayacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "cd4d8e1eb1bc4f1d93383f8c": {
+      "gecerli": true,
+      "reason": "Kaynak metinler icra memurunun borçluya ödeme emri gönderme zamanını açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "9247c54351747bba0de8dd82": {
+      "gecerli": true,
+      "reason": "Kaynak metin sigorta bedelinin bireysel olarak yaptırılması durumunu ele almıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "61d5a9caf007d743feecd28c": {
+      "gecerli": true,
+      "reason": "Kaynak metin kolluk güçlerinin eğitimleri hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "caf5506b0525045d9d9392e4": {
+      "gecerli": true,
+      "reason": "Kaynak metin silah bulundurmanın sonuçları hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7ecd9d7aa4ae70a747d088ed": {
+      "gecerli": true,
+      "reason": "Kaynak metinler garanti belgesi ile hangi malların satılmak zorunda olduğunu belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c7e9f46d9c195df6c7b2d3b4": {
+      "gecerli": true,
+      "reason": "Kaynak metinler istinaf başvurusu için gerekli belgeleri belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "b0041e3031e1dec18f260356": {
+      "gecerli": true,
+      "reason": "kaynak metin soruşturma kararına itiraz hakkında bilgi içermiyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "920e57a6104595b28e4fa885": {
+      "gecerli": true,
+      "reason": "Kaynak metinler kat maliklerinin ortak giderleri ödememesi durumunu ele almıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "42df14ff4b94f428e183054c": {
+      "gecerli": true,
+      "reason": "kaynak metin emziren kadın işçilerin süt vermesi için süre hakkında bilgi içermiyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "ded70f10e7076247efcc6e26": {
+      "gecerli": true,
+      "reason": "Kaynak metin temyiz dilekçesinin nasıl yapılacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "bbc7473a206e1d70b4377d72": {
+      "gecerli": true,
+      "reason": "Kaynak metin, hükmün hangi durumlarda kesin hüküm sayılacağını açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c2bd4b3c17b89d9c79f6d816": {
+      "gecerli": true,
+      "reason": "Kaynak metin, tüketici hakem heyetinin oluşamaması durumunda ne olacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "415daebec216d12f4ba1c77c": {
+      "gecerli": true,
+      "reason": "Kaynak metinlerde tüketici hakem heyetinin başkanının kim olduğu belirtilmemiştir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "927baf0a66d6381ac9bec08b": {
+      "gecerli": true,
+      "reason": "kaynak metin taşınmaz malların haczine dair bilgi içermiyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "01f484e3e608abb446c569f6": {
+      "gecerli": true,
+      "reason": "Kaynak metin alkol bağımlılığı nedeniyle kısıtlanma konusunu ele almıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "ed6bb4853291f51cc8dce174": {
+      "gecerli": true,
+      "reason": "kaynak metin borçlu olan eşin mal varlığına ulaşma yöntemlerini açıklamıyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "29d70137bd6f12aa2e020a5a": {
+      "gecerli": true,
+      "reason": "kaynak metin taraf değişikliği için hâkimin neye baktığını açıklamıyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "eef7cfdc268dc9ec7c063513": {
+      "gecerli": true,
+      "reason": "Kaynak metinler engelli işçi çalıştırılma oranının hesaplanması hakkında bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "1486bdc5e95c1af84474a74e": {
+      "gecerli": true,
+      "reason": "Kaynak metin zorlama hapsinin süresinin nasıl belirlendiğine dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "322f6bd3b33bb4cce8f7916e": {
+      "gecerli": true,
+      "reason": "Kaynak metin konutta hacizle ilgili özel bir durumu açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "642132f68ae102a13e16ee24": {
+      "gecerli": true,
+      "reason": "Kaynak metin, mahkemenin davayı ne zaman sona erdireceği hakkında doğrudan bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "48dbbd5fbd586144ebdbcc02": {
+      "gecerli": true,
+      "reason": "Kaynak metin, borçlu ile başka birinin aynı taşınır malı elinde bulundurmaları durumunda kimin mal sahibi sayılacağına dair doğrudan bir cevap içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "7b1626a40089acf8fbd8a65b": {
+      "gecerli": true,
+      "reason": "Kaynak metinler vücuda cisim sokularak yapılan cinsel saldırının cezasını belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "db67cb13f359363e8df20fbf": {
+      "gecerli": true,
+      "reason": "kaynak borçlunun taşınır mallarının neden haczedilebileceğini açıklamıyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "38f3e8ad88e86cb3db31ac22": {
+      "gecerli": true,
+      "reason": "Kaynak metin mağdurun on iki yaşından küçük olması durumunda uygulanacak cezayı açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "53ed6fd8a31e070c0004e0c0": {
+      "gecerli": true,
+      "reason": "Kaynak metin toplantının ertelenmesi durumunda ne olacağını açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "5782ebce5b17f73bb7b0c117": {
+      "gecerli": false,
+      "reason": "Kaynak metin, üçüncü kişinin müdahale talebinde bulunma sürecini ve gerekliliklerini açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "f1b55a4cdae0db8d559ae592": {
+      "gecerli": true,
+      "reason": "Kaynak metin, bir belgenin bir kişi aleyhine olup olmadığı veya başkaları için geçerli olup olmadığı hakkında bilgi vermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "de34f4f49cbc2ef33b67e1cb": {
+      "gecerli": false,
+      "reason": "Kaynak 4, mirasçı olamayacak kişileri açıkça tanımlıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "9d01d1959974bd1f4e5f46ef": {
+      "gecerli": false,
+      "reason": "Kaynak 2'de intifa hakkının sona erme sebepleri açıkça belirtilmiştir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "729a843f55d698a0b5386a1f": {
+      "gecerli": false,
+      "reason": "Kaynak 4, ortak yerlerin nasıl değerlendirileceğini açıklar.",
+      "hakem": "openai/gpt-4o"
+    },
+    "0e53864fa28e8cbd24b61dfe": {
+      "gecerli": false,
+      "reason": "Kaynak 1, bilirkişilik görevinin kime verilebileceğini açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "bc2f2887c1d66dcdd03bfa17": {
+      "gecerli": false,
+      "reason": "Kaynak 4, komşunun taşkınlık yaparak sarsıntı yaratmasının yasak olduğunu belirtiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "ec9a3a7390b53bc39f1cf9c7": {
+      "gecerli": false,
+      "reason": "Kaynak 1, işletmelerin birleşmesi durumunda borçların yeni işletmeden tahsil edilebileceğini belirtiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "fa70c3363f00f9c9af8eda98": {
+      "gecerli": true,
+      "reason": "Kaynak metin, yemin teklifinde bulunulabilecek durumları açıkça belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "567ab7a19878baed763c478f": {
+      "gecerli": true,
+      "reason": "Kaynak metin, mal rejimi sona erdiğinde eşin katkısı için ne talep edilebileceği konusunda doğrudan bir cevap içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "2925992bb4ab3667c2be4497": {
+      "gecerli": false,
+      "reason": "Kaynak metin, intifa hakkı sahibinin üstlenmesi gereken masrafları açıkça belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "599778db416a69d4bd79f594": {
+      "gecerli": true,
+      "reason": "Kaynak metin, yüklenicinin işini tamamlayamaması durumunda hangi giderleri talep edebileceğini doğrudan cevaplamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "489276432525297d3d09b576": {
+      "gecerli": false,
+      "reason": "Kaynak 1, işçinin başka bir işverene geçici olarak devredilebileceğini açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "359aef5db4db1bf1dc2f2743": {
+      "gecerli": false,
+      "reason": "Kaynak metin, tanıklıktan çekinme sebeplerini açıkça belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "95f7ce67a13b51d6441e9c34": {
+      "gecerli": true,
+      "reason": "Kaynak metin alacaklının giderim isteme hakkını doğrudan ele almıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "db404005e523211691ac76c4": {
+      "gecerli": true,
+      "reason": "Kaynak metinler tescil işlemi için gerekenleri doğrudan belirtmiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "fe1c4bc4b58b38a17ad98b4d": {
+      "gecerli": true,
+      "reason": "Kaynak metin, temsilci yetkisinin sona ermesi durumunda ne olacağına dair doğrudan bir cevap içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "10d9dc375ac3e27a4eaa2c22": {
+      "gecerli": false,
+      "reason": "Kaynak 4, zimmet suçunda pişmanlık gösterilmesi durumunda ceza indirimi yapılabileceğini açıkça belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "cb1c2aa6e946696fbc8a6155": {
+      "gecerli": true,
+      "reason": "kaynak metin talebin nasıl yapılacağını açıklamıyor",
+      "hakem": "openai/gpt-4o"
+    },
+    "8c24ccd78ab3519f9bf0fb37": {
+      "gecerli": true,
+      "reason": "Kaynak metin geçici iş ilişkisinin nasıl kurulacağına dair bilgi içermiyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "1ffd8914eb13d6f0de0ac366": {
+      "gecerli": false,
+      "reason": "Kaynak 2, zorla getirme sürecinin davetiye ile çağrılma ve gelinmezse zorla getirilme şeklinde başladığını belirtmektedir.",
+      "hakem": "openai/gpt-4o"
+    },
+    "e671994051241e36adea75d5": {
+      "gecerli": false,
+      "reason": "Kaynak, imzanın sahte olduğunu iddia ettiğinizde izlenecek hukuki süreci açıklıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "c165d1386664add76ade72c6": {
+      "gecerli": true,
+      "reason": "Kaynak metin, rehin sona erdiğinde rehnedilen malı geri almak için ne yapılması gerektiğini doğrudan açıklamıyor.",
+      "hakem": "openai/gpt-4o"
+    },
+    "4307c5d067898e7a00741670": {
+      "gecerli": true,
+      "reason": "Kaynak metin bilirkişilikten çekinme durumunu açıkça tanımlamıyor.",
+      "hakem": "openai/gpt-4o"
+    }
+  }
+}

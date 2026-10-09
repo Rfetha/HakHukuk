@@ -1,0 +1,21 @@
+{
+  "label": "m5_anthropic_claude-sonnet-5_m5",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "runs": 1,
+  "total_claims": 640,
+  "faithfulness_micro": 0.7781,
+  "hallucination_micro": 0.2219,
+  "unsupported_micro": 0.2219,
+  "cit_precision_micro": 0.8125,
+  "wrong_ref_rate_micro": 0.0625,
+  "cit_recall_macro": 0.9125,
+  "faithfulness_macro": 0.7772,
+  "judge_cost_usd": 0.0577,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

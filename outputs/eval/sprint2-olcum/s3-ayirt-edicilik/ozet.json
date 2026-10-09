@@ -1,0 +1,13 @@
+{
+  "n": 80,
+  "ayirt_edici": 62,
+  "belirsiz": 18,
+  "judge_model": "gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "judge_cost_usd": 0.0069,
+  "kor": "hakem yalnız soru metnini gördü — altın madde/kanun ve erişim sonucu gönderilmedi",
+  "olcut": "Soru tek başına okunduğunda, hangi kanun/konu alanına ait olduğu anlaşılıyor mu? (Bir hukukçu soruyu görüp 1-2 kanuna daraltabiliyorsa EVET.)"
+}

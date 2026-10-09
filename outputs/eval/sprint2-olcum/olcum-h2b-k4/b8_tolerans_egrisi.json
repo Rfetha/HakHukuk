@@ -1,0 +1,26 @@
+{
+  "kaynak": "outputs/eval/olcum-h2b-k4/h2b_tgta_v1_h2b_k4_detail.jsonl",
+  "esik_egrisi": {
+    "0": {
+      "kurtarilan": 0,
+      "yanlis_esleme": 0,
+      "belirsiz": 0
+    },
+    "1": {
+      "kurtarilan": 0,
+      "yanlis_esleme": 0,
+      "belirsiz": 0
+    },
+    "2": {
+      "kurtarilan": 0,
+      "yanlis_esleme": 0,
+      "belirsiz": 0
+    },
+    "3": {
+      "kurtarilan": 0,
+      "yanlis_esleme": 0,
+      "belirsiz": 0
+    }
+  },
+  "ornekler": []
+}

@@ -1,0 +1,87 @@
+{
+  "kaynak": "outputs/eval/s2-harness-k10-etiketli/h1_tgta_v1_h1_k10_et_detail.jsonl",
+  "n": 80,
+  "harness_k": 10,
+  "erisim": {
+    "recall@1": 0.45,
+    "recall@3": 0.65,
+    "recall@5": 0.75,
+    "recall@10": 0.875
+  },
+  "kutle_ekseni": {
+    "coverage": 0.9,
+    "A1_cevaplanan": 0.811,
+    "faith_macro_tum_cekinme_dahil": 0.7958,
+    "A1_tum": 0.811,
+    "A1_altin_getirilen_alt_kume": 0.8593,
+    "kutle_tum": 0.7299
+  },
+  "kapi": {
+    "kati": {
+      "gecen": 79,
+      "reddedilen": 1,
+      "atifsiz_gecen": 8,
+      "kapi_sonrasi_coverage": 0.8875
+    },
+    "cogunluk": {
+      "gecen": 80,
+      "reddedilen": 0,
+      "atifsiz_gecen": 8,
+      "kapi_sonrasi_coverage": 0.9
+    },
+    "cerrahi": {
+      "gecen": 80,
+      "reddedilen": 0,
+      "atifsiz_gecen": 8,
+      "kapi_sonrasi_coverage": 0.9
+    }
+  },
+  "atif_dagilimi": {
+    "DOGRULANDI": 116,
+    "MADDE_YOK": 0,
+    "KANUN_YOK": 2,
+    "AYRISTIRILAMADI": 0,
+    "MULGA": 0
+  },
+  "erisim_davranis_caprazi": {
+    "altin_geldi_cevapladi": 65,
+    "altin_geldi_cekindi": 5,
+    "altin_gelmedi_cevapladi": 7,
+    "altin_gelmedi_cekindi": 3
+  },
+  "k2_bedeli": {
+    "ALTIN_GELMEDI": 10,
+    "TAM": 22,
+    "KIRPILDI": 46,
+    "KIRPILDI_CEVAP_DISI": 2
+  },
+  "ayirt_edicilik_alt_kumeleri": {
+    "ayirt_edici": {
+      "n": 62,
+      "erisim": {
+        "recall@1": 0.5323,
+        "recall@3": 0.7419,
+        "recall@5": 0.8226,
+        "recall@10": 0.9355
+      },
+      "coverage": 0.9355,
+      "A1_tum": 0.8365,
+      "A1_altin_getirilen_alt_kume": 0.8701,
+      "kutle_tum": 0.7825
+    },
+    "belirsiz": {
+      "n": 18,
+      "erisim": {
+        "recall@1": 0.1667,
+        "recall@3": 0.3333,
+        "recall@5": 0.5,
+        "recall@10": 0.6667
+      },
+      "coverage": 0.7778,
+      "A1_tum": 0.7053,
+      "A1_altin_getirilen_alt_kume": 0.8067,
+      "kutle_tum": 0.5486
+    }
+  },
+  "not": "A1 tek-altın yer-gerçeğine göre; harness AÇIK'ta model BAŞKA bir maddeden doğru cevaplasa da sadakatsiz sayılır → ON/OFF kıyası için A1_altin_getirilen_alt_kume kullanılır."
+}

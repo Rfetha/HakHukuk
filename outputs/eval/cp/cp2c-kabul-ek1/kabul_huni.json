@@ -1,0 +1,17 @@
+{
+  "m2": {
+    "regex_kabul": 1192,
+    "teyit_fabricate": 293,
+    "kor_gecerli_sonra": 266
+  },
+  "m2b": {
+    "regex_kabul": 731,
+    "teyit_fabricate": 105,
+    "kor_gecerli_sonra": 100
+  },
+  "toplam_kabul": 366,
+  "karisim_orani": {
+    "m2": 266,
+    "m2b": 100
+  }
+}

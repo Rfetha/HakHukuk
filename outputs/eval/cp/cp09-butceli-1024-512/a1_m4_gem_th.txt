@@ -1,0 +1,12 @@
+{
+  "label": "m4_gem_th",
+  "n_total": 80,
+  "n_answered": 77,
+  "n_abstain": 3,
+  "over_refusal_rate": 0.0375,
+  "A1_faithfulness_macro_answered": 0.973,
+  "faithfulness_macro_ALL(çekinme dahil)": 0.974,
+  "cit_precision_micro_answered": 1.0,
+  "wrong_ref_rate_macro_answered": 0.0,
+  "note": "A1=cevaplanan (exact_reject mod-duyarlı, ADR-0011 + ADR-0044). Aynı kural tüm modellere."
+}

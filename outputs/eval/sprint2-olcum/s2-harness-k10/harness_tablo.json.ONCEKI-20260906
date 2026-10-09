@@ -1,0 +1,80 @@
+{
+  "kaynak": "outputs/eval/s2-harness-k10/h1_tgta_v1_h1_k10_s2_detail.jsonl",
+  "n": 80,
+  "harness_k": 10,
+  "erisim": {
+    "recall@1": 0.425,
+    "recall@3": 0.6375,
+    "recall@5": 0.7375,
+    "recall@10": 0.8625
+  },
+  "kutle_ekseni": {
+    "coverage": 0.7625,
+    "A1_cevaplanan": 0.8069,
+    "faith_macro_tum_cekinme_dahil": 0.7978,
+    "A1_tum": 0.8069,
+    "A1_altin_getirilen_alt_kume": 0.8627,
+    "kutle_tum": 0.6153
+  },
+  "kapi": {
+    "kati": {
+      "gecen": 79,
+      "reddedilen": 1,
+      "atifsiz_gecen": 8,
+      "kapi_sonrasi_coverage": 0.75
+    },
+    "cogunluk": {
+      "gecen": 80,
+      "reddedilen": 0,
+      "atifsiz_gecen": 8,
+      "kapi_sonrasi_coverage": 0.7625
+    },
+    "cerrahi": {
+      "gecen": 80,
+      "reddedilen": 0,
+      "atifsiz_gecen": 8,
+      "kapi_sonrasi_coverage": 0.7625
+    }
+  },
+  "atif_dagilimi": {
+    "DOGRULANDI": 116,
+    "MADDE_YOK": 0,
+    "KANUN_YOK": 2,
+    "AYRISTIRILAMADI": 0
+  },
+  "erisim_davranis_caprazi": {
+    "altin_geldi_cevapladi": 53,
+    "altin_geldi_cekindi": 16,
+    "altin_gelmedi_cevapladi": 8,
+    "altin_gelmedi_cekindi": 3
+  },
+  "ayirt_edicilik_alt_kumeleri": {
+    "ayirt_edici": {
+      "n": 62,
+      "erisim": {
+        "recall@1": 0.5,
+        "recall@3": 0.7258,
+        "recall@5": 0.8065,
+        "recall@10": 0.9194
+      },
+      "coverage": 0.7742,
+      "A1_tum": 0.8302,
+      "A1_altin_getirilen_alt_kume": 0.8686,
+      "kutle_tum": 0.6427
+    },
+    "belirsiz": {
+      "n": 18,
+      "erisim": {
+        "recall@1": 0.1667,
+        "recall@3": 0.3333,
+        "recall@5": 0.5,
+        "recall@10": 0.6667
+      },
+      "coverage": 0.7222,
+      "A1_tum": 0.7211,
+      "A1_altin_getirilen_alt_kume": 0.8374,
+      "kutle_tum": 0.5208
+    }
+  },
+  "not": "A1 tek-altın yer-gerçeğine göre; harness AÇIK'ta model BAŞKA bir maddeden doğru cevaplasa da sadakatsiz sayılır → ON/OFF kıyası için A1_altin_getirilen_alt_kume kullanılır."
+}

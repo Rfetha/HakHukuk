@@ -1,0 +1,23 @@
+{
+  "kip": "dogrulama",
+  "n": 36,
+  "gecerli": 29,
+  "gecerli_orani": 0.8056,
+  "judge_model": "gpt-4o-mini",
+  "judge_gateway": "openai",
+  "judge_providers": [],
+  "birim_maliyet_usd": 8.4e-05,
+  "toplam_maliyet_usd": 0.003,
+  "seed": 3407,
+  "trap_clip": 900,
+  "uyum": {
+    "n": 36,
+    "uyum": 0.778,
+    "kappa": 0.505,
+    "ikisi_de_gecerli": 21,
+    "ikisi_de_gecersiz": 7,
+    "on_eleme_kacirdi": 8,
+    "on_eleme_gecerliyi_kesti": 0,
+    "yorum": "on_eleme_gecerliyi_kesti = filtrenin BEDELİ (geçerli tuzak kaybı); on_eleme_kacirdi = filtrenin FAYDASIZ kaldığı kalemler"
+  }
+}

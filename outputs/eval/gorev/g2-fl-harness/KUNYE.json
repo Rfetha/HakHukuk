@@ -1,0 +1,164 @@
+{
+  "kosu": "G2 — Gemini FL harness AÇIK, iki sürüm (ADR-0057 eşit sınav)",
+  "ozneler": [
+    "google/gemini-3.1-flash-lite",
+    "google/gemini-3.5-flash-lite"
+  ],
+  "kapi": "openrouter",
+  "aile": "google (hakem OpenAI → aile dışlama sağlanıyor, ADR-0032)",
+  "indeks": "data/index/mevzuat_bge_m3_s2",
+  "korpus": "data/corpus/mevzuat_maddeler.jsonl",
+  "etiketler": {
+    "h1_fl31": {
+      "model": "google/gemini-3.1-flash-lite",
+      "harness_k": 10
+    },
+    "h2b_fl31_k4": {
+      "model": "google/gemini-3.1-flash-lite",
+      "harness_k": 4,
+      "harness_no_gold": true
+    },
+    "h1_fl35": {
+      "model": "google/gemini-3.5-flash-lite",
+      "harness_k": 10
+    },
+    "h2b_fl35_k4": {
+      "model": "google/gemini-3.5-flash-lite",
+      "harness_k": 4,
+      "harness_no_gold": true
+    }
+  },
+  "seed": 3407,
+  "max_chunk_chars": 900,
+  "max_new_tokens": 512,
+  "reasoning_budget": 1024,
+  "sufficiency_preamble": true,
+  "n": 80,
+  "veri": "data/eval/dev/core_hard.jsonl",
+  "not": "3.5 FL 2026-07-21 cikti; 3.1 FL kaydin surekliligi icin tutuluyor",
+  "adr": [
+    "ADR-0032",
+    "ADR-0057",
+    "ADR-0058"
+  ],
+  "hakem_yigini": {
+    "judge_model": "openai/gpt-4o-mini",
+    "judge_gateway": "openrouter",
+    "judge_providers": [
+      "OpenAI"
+    ],
+    "LLM_PROVIDER_ORDER": "OpenAI",
+    "not": "DORT puanlamanin dordu de ayni yiginda. cp09un ESKI FL sayilari (gpt-4o-mini/openai dogrudan, ADR-0041 oncesi istem) BU TABLOYA GIRMEZ."
+  },
+  "uretim_saglayicisi_PINLENMEDI": {
+    "3.1_FL": "Google AI Studio",
+    "3.5_FL": "Google",
+    "uyari": "LLM_PROVIDER_ORDER yalniz HAKEM kapisinda etkili; gen_eval_grounded dogrudan --server-url ile konusuyor. Iki modeli FARKLI upstream saglayici servis etti → 3.1-3.5 farkinin bir kismi saglayici kaynakli OLABILIR."
+  },
+  "gecerlilik_kapisi": {
+    "kaynak_sayisi": {
+      "h1": 10,
+      "h2b": 4,
+      "hepsi_tam": true
+    },
+    "altin_sizan_h2b": 0,
+    "recall_at_10": {
+      "h1_fl31": 0.875,
+      "h1_fl35": 0.875,
+      "BIZ_olcum_bi": 0.875,
+      "not": "ucu de AYNI → erisim modelden bagimsiz, harness ISPATLI ayni"
+    },
+    "kesik_orani": {
+      "h1_fl31": 0.038,
+      "h2b_fl31_k4": 0.0,
+      "h1_fl35": 0.1,
+      "h2b_fl35_k4": 0.1,
+      "BIZ_olcum_bi": 0.038
+    },
+    "KESIK_UYARISI": "3.5 FL iki kosuda da %10 kesik — onceki turun %5 esigini ASIYOR. Ayni 1024+512 butcesi altinda 3.5 FL daha cok muhakeme harciyor. Sayilari raporlanir ama kesime duyarli eksenlerde TAVAN/TANIMSIZ damgasi tasir."
+  },
+  "reasoning_tokens": {
+    "DUZELTME_2026-08-06_K1": "ONCEKI KUNYE YANLISTI. 'dolu 78/80 · 41/80' rakamlari None ile 0'i karistirmisti: sunucu alani 80/80 BILDIRDI, bazi kalemlerde deger GERCEKTEN 0 (hic muhakeme yok). Eski ortalamalar yalnizca rt>0 olan kalemlerin KOSULLU ortalamasiydi. Asagidaki degerler 80'in TAMAMI uzerinden. gen_eval_grounded dogrusunu zaten kosu.log'a basmisti.",
+    "h1_fl31": {
+      "ort": 769.6,
+      "medyan": 735,
+      "bildirilen": "80/80",
+      "sifir_olan": 2,
+      "ONCEKI_YANLIS_ort": 789.4
+    },
+    "h2b_fl31_k4": {
+      "ort": 626.9,
+      "medyan": 596,
+      "bildirilen": "80/80",
+      "sifir_olan": 0
+    },
+    "h1_fl35": {
+      "ort": 445.2,
+      "medyan": 198,
+      "bildirilen": "80/80",
+      "sifir_olan": 39,
+      "ONCEKI_YANLIS_ort": 868.8
+    },
+    "h2b_fl35_k4": {
+      "ort": 454.4,
+      "medyan": 344,
+      "bildirilen": "80/80",
+      "sifir_olan": 38,
+      "ONCEKI_YANLIS_ort": 865.6
+    },
+    "DAGILIM_SEKLI": "3.5 FL IKI KUTUPLU: 39/80 kalemde muhakeme SIFIR, 8 kalemde 1103-1475 (kacak). Ortalama bu iki kutbun arasinda bir yerde ve tek basina yaniltici — medyan (198) sekli daha iyi anlatiyor.",
+    "YON_DUZELTMESI": "'3.5 FL daha cok muhakeme harciyor' cumlesi TERSINE YANLISTI: 3.5 FL cevap basina 445,2 token harciyor, 3.1 FL 769,6 — yani 3.1 FL'in %42 AZI.",
+    "BIZ": {
+      "ort": null,
+      "bildirilen": "0/80",
+      "not": "llama-server reasoning_tokens BILDIRMIYOR. Kiyaslanabilir vekil completion_tokens (iki tarafta da dusunce DAHIL). Muhakeme ekseni bizim tarafimizda TANIMSIZ."
+    },
+    "completion_tokens_ort": {
+      "BIZ_h1": 803.9,
+      "h1_fl31": 970.5,
+      "h1_fl35": 573.6
+    }
+  },
+  "MUHAKEME_BUTCESI_ESLESMIYOR_K2": {
+    "onceki_iddia": "Butce ESLESIK (1024 iki tarafta da).",
+    "hukum": "YANLIS — NOMINAL butce ayni, ETKIN butce degil.",
+    "olcum": "Kesik kalemlerin muhakeme token'lari: fl35 [1473,1103,1475,1405,1472,1473,1470,1472] · fl31 [1157,1267,1222]. Hepsi 1024'un USTUNDE. Ayrica 1024'u asan kalem sayisi: h1_fl31 14 · h1_fl35 15 · h2b_fl31_k4 3 · h2b_fl35_k4 11; gorulen en buyuk deger 1475.",
+    "mekanizma": "extra['reasoning']={'max_tokens':1024} saglayici tarafindan YOK SAYILIYOR; tek baglayici sinir max_tokens=1536 (=1024+512). Yani rakipte muhakeme cevabin 512'lik payini YIYOR. Bizde ADR-0043 geregi ayrik butce + zorunlu kapanis var (2. gecis), dolayisiyla cevap payi korunuyor.",
+    "sonuc": "Bu ADR-0057 anlaminda bir EKSEN UYUSMAZLIGIDIR. Maliyet ve muhakeme duyarli HICBIR hukum bu eksende kurulmaz. 3.5 FL'in %10 kesikliginin gercek sebebi de budur — modelin ozelligi degil, REJIMIN."
+  },
+  "olaylar": [
+    "INDEKS YANLIS ALARMI: retriever (bayt,mtime) vekili bugunku git checkout yuzunden bayat sandi (bayt AYNI). Icerik blob-hash ile ayni kanitlandi, indeks YENIDEN KURULMADI, kunyedeki mtime tazelendi.",
+    "h2b_fl31_k4 IKI KEZ COKTU: OpenRouter/Google AI Studio HTTP 200 + finish_reason=error + bos content, 22. ve 32. kalemde (FARKLI kalem → gecici). gen_eval_grounded icine geri-cekilmeli retry eklendi (commit 334880d); ucuncu deneme 80/80 tamamlandi. Yarim dosyalar YARIM-KOSU-DURDU olarak saklandi.",
+    "RED-REGEX IKI KEZ DUZELTILDI (commit b8938a6 + 334880d). Bizim cipalarimiz (olcum-bi, olcum-h2b-k4) HER IKI duzeltmeden de ETKILENMEDI — 0 satir."
+  ],
+  "brief_ten_sapma": [
+    "Adim 2.4 score_abstention komutuna --source-field context_shown EKLENDI. Brief bunu tasimiyordu; varsayilan referans=ALTIN madde hakeme gosterilir ve tuzaklarin cogu gecersiz sayilirdi. Bizim cipamiz (cp0_thinking_score.sh:58) context_shown kullaniyor → eslesme icin zorunlu.",
+    "groundedness --mode data ACIKCA verildi (varsayilan zaten data, cipayla ayni)."
+  ],
+  "M2b_EKSEN_UYUSMAZLIGI": "BIZIM M2b cipamiz (olcum-h2b-k4) --sufficiency-preamble OLMADAN kosuldu; bu gorevin dort kosusu onsoz ACIK. ADR-0057 geregi M2b satiri ESLESMEMIS eksendir → TANIMSIZ damgali, hukum kurulmaz. KAPATMA KOSUSU: outputs/eval/g2b-m2b-onsozlu (onsozlu h2b@k=4, yerel, $0).",
+  "MALIYET_EKSENI_DUZELTMESI_O7": {
+    "onceki_satir": "$/cevap YALNIZ CIKTI uzerinden hesaplanmisti: 3.1 FL $0,001456 · 3.5 FL $0,001434 → tabloda 3.5 FL DAHA UCUZ gorunuyordu.",
+    "girdi_olculdu": "OpenRouter'a ayni istem yeniden gonderilerek usage.prompt_tokens OKUNDU (tahmin degil): h1 icin ort. 2471,4 (3.1 FL) ve 2471,2 (3.5 FL) girdi token'i.",
+    "girdi_dahil_usd_cevap": {
+      "3.1_FL": 0.002074,
+      "3.5_FL": 0.002175
+    },
+    "hukum": "SIRALAMA TERSINE DONUYOR: 3.5 FL yalniz cikti bakilinca %1,5 UCUZ, girdi dahil edilince %4,9 PAHALI. Yayimlanan satir ADR-0017 maliyet ekseni damgasi tasidigi icin bu duzeltme zorunluydu.",
+    "not": "Girdi token'i iki modelde neredeyse ayni (ayni istem); fark tamamen tarifeden geliyor ($0,25/M vs $0,30/M girdi)."
+  },
+  "git_sha_KOSU_BASINA": {
+    "DUZELTME_O6": "Onceki kunye dort kosunun dordune de '334880d' yaziyordu; o commit 17:25:45'te, yani DORT KOSUDAN DA SONRA atildi. Kunye kosan kodu tarif etmiyordu.",
+    "h1_fl31": "d88786c (uretim 16:32:17; HEAD 16:29:43'ten beri d88786c)",
+    "h1_fl35": "d88786c (uretim 16:38:28)",
+    "h2b_fl35_k4": "d88786c (uretim 16:42:40)",
+    "h2b_fl31_k4": "d88786c + COMMIT EDILMEMIS AGAC (uretim 16:54:27; gen_eval_grounded'a geri-cekilmeli retry eklenmisti, sonradan 334880d olarak commit edildi)",
+    "rejim_etkisi": "YOK — degisen tek sey retry sarmalayicisiydi; istem, temperature, seed, butce ayni. Yine de kunye yanlisti ve duzeltildi (tuzak 6.12)."
+  },
+  "PUANLAMA_SURUMU": {
+    "abst_*_summary.json": "2026-08-06 18:xx'te K3 ile YENIDEN PUANLANDI — valid_trap paydasi artik cevaba KOR. Eski dosyalar *.ONCEKI-PAYDA olarak yaninda duruyor.",
+    "sha": "ff64682"
+  },
+  "git_sha": "334880d (KUNYENIN YAZILDIGI an; kosularin sha'si icin git_sha_KOSU_BASINA)",
+  "yazildi": "2026-08-06T17:28:18",
+  "duzeltildi": "2026-08-06 (bagimsiz inceleme: K1 muhakeme ortalamalari · K2 etkin butce · K3 payda · O6 kosu sha'lari · O7 maliyet)"
+}

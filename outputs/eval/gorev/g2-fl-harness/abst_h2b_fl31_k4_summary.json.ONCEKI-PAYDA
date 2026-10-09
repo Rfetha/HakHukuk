@@ -1,0 +1,18 @@
+{
+  "label": "h2b_fl31_k4",
+  "n": 80,
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "valid_traps": 45,
+  "invalid_traps": 35,
+  "rejection_rate": 0.978,
+  "rejection_exact": 0.911,
+  "fabrication_rate": 0.022,
+  "parametric_leak": 0.044,
+  "judge_cost_usd": 0.0189,
+  "note": "RGB negative-rejection. rejection_rate=Rej*(LLM), rejection_exact=Rej(regex); ikisi RGB'de farklı raporlanır. ↑ iyi (tavan yok). invalid=kaynak cevaplıyor→tuzak geçersiz.",
+  "rejection_exact_not": "2026-08-06 G2: acilis-yeterlilik-hukmu kurali sonrasi yeniden hesaplandi (0.911 -> 0.911). rejection_rate (LLM hakemi) DEGISMEDI; hakem yeniden CAGRILMADI."
+}

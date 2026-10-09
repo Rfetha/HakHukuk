@@ -1,0 +1,108 @@
+{
+ "kosu": "ADIM 6.3b — urun yolunun KUTLESI, ILK KEZ olculdu",
+ "tarih": "2026-09-12",
+ "girdiler": {
+  "urun_yolu_cevaplari": {
+   "yol": "outputs/eval/g23-konteyner-urun-yolu-80/urun_yolu_80.json",
+   "sha256": "08805b96e7c633bb44a9c5bfd50177693fcc99383174b97d52dd198e145e3f12",
+   "n": 80,
+   "not": "yeniden uretilmedi — 6.3.5'te uretilmis veri, oldugu gibi okundu"
+  },
+  "cipa_olcum_hatti": {
+   "yol": "outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl",
+   "sha256": "e0536489d876d9aec5da33c32f692f252ce7c6c239aee4daa5d22075a08a0aad",
+   "n": 80,
+   "sonuc": {"kutle": 0.8011, "coverage": 0.9375, "A1_cevaplanan": 0.8545},
+   "not": "yeniden puanlanmadi — sonuc oldugu gibi cipa alindi"
+  }
+ },
+ "birlestirme": {
+  "anahtar": "normalize edilmis soru metni — \" \".join(s.split())",
+  "id_ile_eslesme": "0/80 — dogrulandi (koordinatorun iddiasi kendimiz olculdu, tutuyor)",
+  "benzersiz_soru_g23": 80,
+  "benzersiz_soru_f02": 80,
+  "kesisim": 80,
+  "eslesme_bicimi": "birebir — hicbir f02 kalemi iki g23 kalemine baglanmiyor (assert edildi)",
+  "id_farkli_kalem_sayisi": "80/80",
+  "ornek_eslesmeler_ilk5_f02id_to_g23id": [[0, 49], [1, 4], [2, 11], [3, 67], [4, 22]],
+  "kurulan_kural": "altin taraf (soru/referans/kanun_no/madde_no/kanun_adi/harness/context_shown) f02'den TAMAMEN kopyalandi; yalniz 'cevap' alani g23'un 'metin' alaniyla (sunum DEGIL) degistirildi; id f02'nin id'si korundu",
+  "kurulan_dosya": {
+   "yol": "outputs/eval/g24-urun-yolu-kutle-6.3b/urun_yolu_kutle_6.3b_detail.jsonl",
+   "sha256": "57908ed01ebc9716563a0a57f922c9f1d073200259861b781047b84546264cdf",
+   "n": 80
+  }
+ },
+ "hakem": {
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "runs": 1,
+  "judge_providers_bu_kosu": ["Azure", "OpenAI"],
+  "judge_providers_cipa_f02": ["OpenAI"],
+  "SAGLAYICI_AYRISMASI": {
+   "durum": "OLCULDU, ONARILMADI (koordinator karari: yeniden kosma)",
+   "sebep_kok": "f02 KUNYE.json 'LLM_PROVIDER_ORDER: OpenAI' pinlemesiyle kosulmus (ad-hoc export, .env'de YOK — grep ile dogrulandi); bu kosuda LLM_PROVIDER_ORDER hic export edilmedi ⇒ OpenRouter varsayilan yonlendirmesi bir kismini Azure-barindirmali gpt-4o-mini'ye yolladi. Bu, docs/record/yurutme-tuzaklari.md tuzak 2.7'nin ('saglayici pinlenmemis') bu turdaki tekrari",
+   "kalem_duzeyinde_dagilim": "OLCULEMEDI — llm_client.note_provider() saglayiciyi yalniz global bir kumeye (_SEEN_PROVIDERS) ekliyor, id/timestamp tasimiyor; groundedness.py bu bilgiyi ne gnd_*.jsonl satirina ne stdout'a per-id yaziyor (kod okunarak dogrulandi: scripts/puanlama/llm_client.py note_provider/seen_providers, scripts/puanlama/groundedness.py L153/L168/L288). Azure'a kac, OpenAI'a kac kalem dustugu bu kosunun ciktisindan TAHMIN DAHI EDILEMEZ",
+   "etki_degerlendirmesi": "model kimligi (gpt-4o-mini) ayni kaldi ama upstream sunucu/kuantizasyon farkli olabilir (llm_client.py'nin kendi uyarisi) ⇒ bu kosunun kutle/A1/cit_precision sayilari cipayla KISMEN farkli bir hakem yiginindan gecti. Fark ONE eksende degil: cipa TEK sabit yigin (yalniz OpenAI), bu kosu KARISIK yigin — ayrisma yonu onceden kestirilemez, sadece ayristirilamaz oldugu rapor edilir",
+   "sonraki_kosu_onerisi": "llm_client.request_kwargs() zaten LLM_PROVIDER_ORDER ortam degiskenini okuyup extra_body={'provider':{'order':[...],'allow_fallbacks':False}} kuruyor — bir sonraki koşuda `export LLM_PROVIDER_ORDER=OpenAI` ile pinlenmeli. BU KOSUDA KULLANILMADI (once olcum bitti, sonra fark edildi); onarim icin yeniden kosulmadi (para harcanmis, sayi var — karar koordinatorden)"
+  }
+ },
+ "para_kapisi": {
+  "tahmin_usd": 0.0417,
+  "tavan_usd": 0.10,
+  "gerceklesen_usd": 0.0438,
+  "sapma_tahminden": "+%5,04",
+  "sonuc": "GECTI — tavanin altinda",
+  "kaynak": "outputs/eval/g24-urun-yolu-kutle-6.3b/gnd_urun_yolu_kutle_6.3b_summary.json alani judge_cost_usd",
+  "teknik_kilit": "OPENAI_BUDGET_USD=0.10 export edilerek kosuldu — betigin kendi ic butce kapisi da 0,10$'da durdurulacak sekilde ayarlandi (varsayilan 5$'i degil)"
+ },
+ "harness_tablo_tekrar_uretilebilirlik": {
+  "kural": "kusur 23 sinifi: ayni girdiden IKI kez kosulup cikti bayt-bayt karsilastirilir ($0, deterministik)",
+  "kosu1_sha256": "52b386684139fa0a0a322333bc392b285a861d5800f2da9db26824d2a079eb34",
+  "kosu2_sha256": "52b386684139fa0a0a322333bc392b285a861d5800f2da9db26824d2a079eb34",
+  "sonuc": "BAYT-BAYT AYNI — dosya adi outputs/eval/g24-urun-yolu-kutle-6.3b/harness_tablo.json olarak (run1) saklandi, run2 ayni oldugu icin tutulmadi"
+ },
+ "sonuc": {
+  "kutle_tum": 0.7792,
+  "coverage": 0.9375,
+  "A1_cevaplanan": 0.8312,
+  "A1_altin_getirilen_alt_kume": 0.8724,
+  "recall_at_10": 0.95,
+  "kaynak": "outputs/eval/g24-urun-yolu-kutle-6.3b/harness_tablo.json"
+ },
+ "cipa_ile_yanyana": {
+  "not": "KIYAS DEGIL, YAN YANA GOSTERIM — bkz. on-kayit: bu sayi v1.0 kapisina GIRMEZ, hukum kurulmaz (ADR-0057 esit sinav)",
+  "cipa_f02": {"kutle": 0.8011, "coverage": 0.9375, "A1_cevaplanan": 0.8545},
+  "bu_kosu_urun_yolu": {"kutle": 0.7792, "coverage": 0.9375, "A1_cevaplanan": 0.8312},
+  "fark_kutle": -0.0219,
+  "fark_A1": -0.0233,
+  "fark_coverage": 0.0
+ },
+ "durum_ayrismasi": {
+  "not": "urunun KENDI hukmu (Durum enum, hakhukuk/servis.py::siniflandir) ile olcum hattinin dedektoru (score_abstention.exact_reject, mode=data) FARKLI SEYLER olcuyor — ikinci bir olcumdur, ayrismasi kendi basina bulgudur",
+  "urun_durum_dagilimi": {"cevap": 71, "cekinceli": 1, "suskunluk": 4, "kesik": 4},
+  "dedektor_dagilimi": {"cevapladi_true": 75, "cevapladi_false_cekindi": 5},
+  "capraz_tablo": {
+   "cevap_ve_dedektor_cevapladi": 70,
+   "cevap_ve_dedektor_cekindi": 1,
+   "cekinceli_ve_dedektor_cevapladi": 1,
+   "cekinceli_ve_dedektor_cekindi": 0,
+   "suskunluk_ve_dedektor_cevapladi": 0,
+   "suskunluk_ve_dedektor_cekindi": 4,
+   "kesik_ve_dedektor_cevapladi": 4,
+   "kesik_ve_dedektor_cekindi": 0
+  },
+  "ayrisan_kalemler": [
+   {"id_f02": 34, "id_g23": 0, "urun_durum": "cevap", "dedektor": "cekindi",
+    "aciklama": "Cevap dolu ve atif iceriyor ama 'diger kaynaklar ... spesifik duzenlemeler icermemektedir' cumlesi exact_reject regex'ini tetikliyor gibi gorunuyor (ADR-0061'in tarif ettigi sinifin tekrari: dedektor butun cevabi tariyor). Cevabin sonunda doldurulmamis bir sablon izi de var: '(CANUN ADI, Madde X)' — bu urunun kendi sunum katmaninda ayri bir kusur, bu turun kapsami disi, sadece gozlemlendi"},
+   {"id_f02": 51, "id_g23": 1, "urun_durum": "cekinceli", "dedektor": "cevapladi",
+    "aciklama": "Urun kendi siniflandiricisinda bunu 'cekinceli' (hedge) olarak ayirt ediyor; dedektorun ikili dunyasinda (cevapladi/cekindi) boyle bir ucuncu durum yok, ret regex'i tetiklenmedigi icin 'cevapladi' sayiliyor. Metin fiilen somut bir hukumle bitiyor (TCK Madde 88 atfi) — dedektorun sinifi burada dogru, urunun 'cekinceli' etiketi daha ince taneli bir ayrimdir"}
+  ],
+  "kesik_notu": "4 'kesik' kalemin 4'u de dedektor tarafindan 'cevapladi' sayiliyor — beklenen: kesiklik finish_reason='length' tabanli, ret-regex icerikten bagimsiz calisiyor; bu bir hata degil, iki farkli eksenin (tamlik vs. cekinme) olcumu"
+ },
+ "kapsam_disi_uyulan": [
+  "urun_yolu_80.json yeniden uretilmedi",
+  "f02 yeniden puanlanmadi",
+  "donmuş TEST, rakip kollari, agirlik deposu, hakhukuk/ kodu, retriever.py, indir.py'ye dokunulmadi",
+  "ikinci hakem (Anthropic) cagrilmadi"
+ ]
+}

@@ -1,0 +1,99 @@
+{
+  "operator": "eşzamanlı k-yollu TIES (kırp → işaret seç → ayrık ortalama)",
+  "karar_belgeleri": [
+    "ADR-0027",
+    "ADR-0036",
+    "ADR-0031 (bf16 ΔW)"
+  ],
+  "base": "/home/ersoy/.cache/huggingface/hub/models--Qwen--Qwen3.5-4B/snapshots/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "kollar": {
+    "tg": "outputs/tg_v1",
+    "ta": "outputs/ta_v1"
+  },
+  "norm_dengeleme": true,
+  "norm_kapsami": "global",
+  "tau_norm_fro": {
+    "tg": 10.472179,
+    "ta": 1.180576
+  },
+  "tau_norm_modul_kirilimi": {
+    "tg": {
+      "down_proj": 2.738357,
+      "gate_proj": 6.150399,
+      "in_proj_a": 0.30563,
+      "in_proj_b": 0.2985,
+      "in_proj_qkv": 4.2924,
+      "in_proj_z": 3.302392,
+      "k_proj": 0.832576,
+      "o_proj": 1.299012,
+      "q_proj": 2.532663,
+      "up_proj": 5.047082,
+      "v_proj": 0.747987
+    },
+    "ta": {
+      "down_proj": 0.337809,
+      "gate_proj": 0.620758,
+      "in_proj_a": 0.030309,
+      "in_proj_b": 0.030346,
+      "in_proj_qkv": 0.49477,
+      "in_proj_z": 0.353572,
+      "k_proj": 0.097716,
+      "o_proj": 0.166557,
+      "q_proj": 0.283881,
+      "up_proj": 0.627632,
+      "v_proj": 0.104187
+    }
+  },
+  "norm_katsayilari": {
+    "tg": {
+      "down_proj": 0.09549111,
+      "gate_proj": 0.09549111,
+      "in_proj_a": 0.09549111,
+      "in_proj_b": 0.09549111,
+      "in_proj_qkv": 0.09549111,
+      "in_proj_z": 0.09549111,
+      "k_proj": 0.09549111,
+      "o_proj": 0.09549111,
+      "q_proj": 0.09549111,
+      "up_proj": 0.09549111,
+      "v_proj": 0.09549111
+    },
+    "ta": {
+      "down_proj": 0.84704396,
+      "gate_proj": 0.84704396,
+      "in_proj_a": 0.84704396,
+      "in_proj_b": 0.84704396,
+      "in_proj_qkv": 0.84704396,
+      "in_proj_z": 0.84704396,
+      "k_proj": 0.84704396,
+      "o_proj": 0.84704396,
+      "q_proj": 0.84704396,
+      "up_proj": 0.84704396,
+      "v_proj": 0.84704396
+    }
+  },
+  "geri_olcek": {
+    "down_proj": 1.180576,
+    "gate_proj": 1.180576,
+    "in_proj_a": 1.180576,
+    "in_proj_b": 1.180576,
+    "in_proj_qkv": 1.180576,
+    "in_proj_z": 1.180576,
+    "k_proj": 1.180576,
+    "o_proj": 1.180576,
+    "q_proj": 1.180576,
+    "up_proj": 1.180576,
+    "v_proj": 1.180576
+  },
+  "geri_olcek_kurali": "min",
+  "trim_k": 0.2,
+  "lam": 1.0,
+  "birlesik_tensor": 224,
+  "ortak_lora_hedefi": 224,
+  "ties_istatistikleri": {
+    "catisan_parametre_orani": 0.022451,
+    "sifir_kalan_oran": 0.645578
+  },
+  "out": "models/merged/tg_ta_globalmin",
+  "not": "Nicemleme BU ADIMDAN SONRA (llama.cpp Q4_K_M). Merge ana RAM'de akıtmalı koştu."
+}

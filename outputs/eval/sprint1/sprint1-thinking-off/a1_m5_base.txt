@@ -1,0 +1,12 @@
+{
+  "label": "m5_base",
+  "n_total": 80,
+  "n_answered": 30,
+  "n_abstain": 50,
+  "over_refusal_rate": 0.625,
+  "A1_faithfulness_macro_answered": 0.2852,
+  "faithfulness_macro_ALL(çekinme dahil)": 0.3992,
+  "cit_precision_micro_answered": 0.5588,
+  "wrong_ref_rate_macro_answered": 0.3722,
+  "note": "A1=cevaplanan (ABSTAIN_RE ile çekinme ayrıldı, ADR-0011). Aynı kural tüm modellere."
+}

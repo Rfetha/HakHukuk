@@ -1,0 +1,53 @@
+[
+ {
+  "base_mib": 899,
+  "peak_mib": 4068,
+  "server_mib": 3169,
+  "server_gib": 3.09,
+  "power": {
+   "pstate": "P5",
+   "clocks_sm_mhz": 307,
+   "clocks_mem_mhz": 810,
+   "power_w": 14.07,
+   "temp_c": 50
+  },
+  "gguf": "tgta_v1-q4_k_m.gguf",
+  "file_gib": 2.59,
+  "ctx": 4096,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 899,
+  "peak_mib": 4684,
+  "server_mib": 3785,
+  "server_gib": 3.7,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 1515,
+   "clocks_mem_mhz": 9001,
+   "power_w": 17.0,
+   "temp_c": 51
+  },
+  "gguf": "tgta_v1-q4_k_m.gguf",
+  "file_gib": 2.59,
+  "ctx": 32768,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 899,
+  "peak_mib": 6796,
+  "server_mib": 5897,
+  "server_gib": 5.76,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 307,
+   "clocks_mem_mhz": 9001,
+   "power_w": 17.52,
+   "temp_c": 52
+  },
+  "gguf": "tgta_v1-q4_k_m.gguf",
+  "file_gib": 2.59,
+  "ctx": 131072,
+  "kv_type": "q8_0"
+ }
+]

@@ -1,0 +1,21 @@
+{
+  "yontem": "bm25",
+  "n": 80,
+  "korpus": 40496,
+  "cihaz": "cpu",
+  "recall": {
+    "recall@1": 0.275,
+    "recall@5": 0.5375,
+    "recall@10": 0.625,
+    "recall@20": 0.75
+  },
+  "kanun_recall": {
+    "kanun_recall@1": 0.5625,
+    "kanun_recall@5": 0.8,
+    "kanun_recall@10": 0.8625,
+    "kanun_recall@20": 0.875
+  },
+  "hic_bulunmayan": 20,
+  "gecen_sure_s": 9.7,
+  "esik_karari": "DUR — INSANA SOR"
+}

@@ -1,0 +1,40 @@
+{
+  "kosu": "CP0.9 ek — A/B ayrım ablasyonu: düşüncenin kazancı MUHAKEMEDEN mi BİÇİMDEN mi?",
+  "tarih": "2026-07-29",
+  "tur": "ABLASYON — ana tabloya GİRMEZ",
+  "kayit": "docs/record/research_log/2026-07-29-cp09-butceli-dusunce-cipalari.md (Bulgu 5-b)",
+
+  "soru": "Bütçeli düşünce M2 tuzak reddini 0.633 → 0.814 çıkardı. Bu (A) muhakemeden mi, yoksa (B) zorunlu kapatma sonrası oluşan CEVAP BİÇİMİNDEN mi geliyor? CP0.9 ikisini ayıramadı: 70 örneğin 69'u zorla kapatıldı, kendi duran kontrol grubu yok.",
+
+  "mudahale": {
+    "bayrak": "gen_eval_grounded.py --sufficiency-preamble",
+    "eklenen_satir": "Cevabına başlamadan ÖNCE, verilen kaynağın soruyu cevaplayıp cevaplamadığını tek cümleyle belirt. Kaynak soruyu cevaplamıyorsa bunu söyle ve cevap uydurma.",
+    "dusunce": "KAPALI (--thinking off) — biçim var, muhakeme yok"
+  },
+
+  "degismezler": {
+    "seed": 3407, "max_chunk_chars": 900, "temperature": 0.0, "max_new_tokens": 512,
+    "havuz": "data/eval/dev/", "ozne": "base — models/gguf/q35-4b-q4_k_m.gguf",
+    "tasiyici": "llama-server, -c 8192, -ngl 99, -fa on, KV q8_0/q8_0"
+  },
+
+  "sonuc": {
+    "m2_rej_llm": 0.968, "m2_valid_traps": 62, "m2_ort_token": 115.6,
+    "m1_kutle_pct": 28.2, "m1_coverage": "25/80", "m1_A1": 0.9025,
+    "m1_asiri_red_orani": 0.6875,
+    "kiyas": {
+      "base_thinking_off": {"m1_kutle_pct": 42.6, "m2_rej": 0.633, "ort_token": 249},
+      "base_butceli": {"m1_kutle_pct": 56.7, "m2_rej": 0.814, "ort_token": 1116}
+    }
+  },
+
+  "karar": "Mekanizma (A) DOĞRULANDI. Önsöz tek eksende kaydırıyor (M2 +33.5p, M1 −14.4p) — bu ayırt etme değil, red eşiğini indirmek. Bütçeli düşünce iki ekseni AYNI ANDA taşıyor; bir eşik kaydırması tanım gereği bunu yapamaz. Prompt-mühendisliği alternatifi ELENDİ; 4.5× token'ın karşılığı var.",
+
+  "hakem": {"model": "gpt-4o-mini", "gateway": "openai (pinli)", "runs": 1, "maliyet_usd": 0.046},
+
+  "serh": [
+    "Paydalar farklı: valid_traps 62 (bu kol) / 59 (base bütçeli) / 60 (base off) — tuzak 2.6, oranlar payda ile okunur.",
+    "runs=1, güven aralığı yok.",
+    "Bu kolun sistem istemi ana protokolden FARKLI — hiçbir ana tablo hücresi bu bayrakla üretilmez; betik künyeye uyarı basar."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "olcum": "ARA KAPI eşikleri — düzeltilmiş cevaba-kör çıpadan türetildi",
+  "karar_belgesi": "ADR-0049 m.1 (formül ön-kayıtlı, sayı değil) · ADR-0045",
+  "cipalar": {
+    "base_m2": {
+      "eski": 0.814,
+      "yeni": 0.803
+    },
+    "base_m2b": {
+      "eski": 0.986,
+      "yeni": 0.949
+    },
+    "base_m3": {
+      "eski": 1.0,
+      "yeni": 1.0
+    }
+  },
+  "paydalar": {
+    "m2": {
+      "eski": 59,
+      "yeni": 66,
+      "n": 70
+    },
+    "m2b": {
+      "eski": 72,
+      "yeni": 79,
+      "n": 80
+    },
+    "m3": {
+      "eski": 54,
+      "yeni": 80,
+      "n": 80
+    }
+  },
+  "esikler": {
+    "m2_tekil": {
+      "eski": 0.934,
+      "yeni": 0.923,
+      "formul": "base + 0.12"
+    },
+    "m2b_merge": {
+      "eski": 0.887,
+      "yeni": 0.8541,
+      "formul": "base × 0.90"
+    },
+    "m1_a1_muhafiz": {
+      "eski": 0.888,
+      "yeni": 0.8799,
+      "formul": "base A1 × 0.90",
+      "not": "valid_trap'ten ETKİLENMEZ"
+    }
+  },
+  "m2b_kurgu_tabani": {
+    "taban": 40,
+    "olculen": 79,
+    "n": 80,
+    "ayakta": true,
+    "kural": "ADR-0049 m.3 — altında merge onarımı tanımlayıcıya iner"
+  },
+  "serh": "Eşik hareketi τ_a LEHİNE. Savunma: (a) τ_a henüz yok; (b) düzeltme her özneye aynı; (c) bozuk ölçümden türeyen eşiği korumak hatayı korumaktır. Eski eşiğe karşı da raporlanır."
+}

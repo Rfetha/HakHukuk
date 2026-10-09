@@ -1,0 +1,29 @@
+[
+  {
+    "id": 0,
+    "soru": "İşverenin bu yükümlülüğü hangi durumlarda geçerlidir?",
+    "tok": 1074,
+    "forced_close": true,
+    "iz": 3974,
+    "finish": "stop",
+    "cevap_200": "İşverenin yükümlülüğü, işin işsahibi tarafından uygun bulunması hâlinde geçerlidir.\n\n**Kaynak:** KAYNAK MADDE (Madde numarası belirtilmemiştir)"
+  },
+  {
+    "id": 1,
+    "soru": "Ürünümdeki ayıp kullanma amacımı etkiliyorsa ne yapmalıyım?",
+    "tok": 1141,
+    "forced_close": true,
+    "iz": 4172,
+    "finish": "stop",
+    "cevap_200": "Saklayan, saklatanın izni olmadan saklananı kullanamaz. Bu yasağa aykırı davranırsanız, saklatana uygun bir kullanım bedeli ödemekle yükümlü olursunuz. Ayrıca, kullanmamış olsaydınız bile zararın doğa"
+  },
+  {
+    "id": 2,
+    "soru": "Ret kararına itiraz edebilir miyim?",
+    "tok": 1131,
+    "forced_close": true,
+    "iz": 4079,
+    "finish": "stop",
+    "cevap_200": "Verilen kaynak metni, itiraz sürecinin genel işleyişini (İstinaf dilekçesi) anlatmaktadır ancak \"ret kararı\" ile ilgili spesifik bir bilgi içermemektedir.\n\n**Cevap:** Kaynak metinde itiraz sürecinin n"
+  }
+]

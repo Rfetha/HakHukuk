@@ -1,0 +1,5 @@
+DEV   bileşimden BEKLENEN recall@10 = 0.8617   ↔   GÖZLENEN 0.8875   (artık +0.0258)
+TEST  bileşimden BEKLENEN recall@10 = 0.7767   ↔   GÖZLENEN 0.7500   (artık -0.0267)
+
+TEST, DEV'in uzunluk bileşimine STANDARDİZE edilseydi ≈ 0.8617
+Gözlenen fark 0,8875 − 0,7500 = 0,1375 · bileşimin açıkladığı ≈ 0.1118 (~%81)

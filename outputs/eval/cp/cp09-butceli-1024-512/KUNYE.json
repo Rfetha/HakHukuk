@@ -1,0 +1,75 @@
+{
+  "kosu": "CP0.9 — üç çıpanın bütçeli düşünce kipinde yeniden koşulması",
+  "tarih": "2026-07-29",
+  "sprint": "sprint2.md CP0.9",
+  "karar_belgeleri": ["ADR-0043 (protokol)", "ADR-0044 (mod-duyarlı feragat kuralı)"],
+  "kayit": "docs/record/research_log/2026-07-29-cp09-butceli-dusunce-cipalari.md",
+
+  "protokol": {
+    "dusunce": "AÇIK — bütçeli zorunlu kapatma (ADR-0043)",
+    "dusunce_butcesi_token": 1024,
+    "cevap_butcesi_token": 512,
+    "mekanizma": "istemci-taraflı: bütçe içinde </think> kapanmazsa iz + '</think>' yapıştırılıp /completions ile sürdürülür",
+    "rakip_mekanizma": "sunucu-taraflı: OpenRouter reasoning.max_tokens=1024, max_tokens=1536"
+  },
+
+  "degismezler": {
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "temperature": 0.0,
+    "n_per_mod": {"m1": 80, "m4": 80, "m2": 70, "m2b": 80, "m3": 80, "m5": 80},
+    "n_toplam_per_ozne": 470,
+    "havuz": "data/eval/dev/ (80 core_hard + 70 trap) — DEV, TEST görülmedi"
+  },
+
+  "ozneler": [
+    {
+      "etiket": "base_th",
+      "model": "Qwen3.5-4B — models/gguf/q35-4b-q4_k_m.gguf",
+      "tasiyici": "llama-server (llama.cpp build-cuda), -c 8192, -ngl 99, -fa on, KV q8_0/q8_0",
+      "kesik_orani": 0.036,
+      "ort_completion_tokens": 1135.2,
+      "zorunlu_kapatma": "445/470"
+    },
+    {
+      "etiket": "tg_v1_th",
+      "model": "τ_grounding v1 merged — models/gguf/tg_v1-q4_k_m.gguf",
+      "tasiyici": "aynı (tuzak 1.7: özne hep aynı taşıyıcıdan)",
+      "kesik_orani": 0.036,
+      "ort_completion_tokens": 772.0,
+      "zorunlu_kapatma": "209/470"
+    },
+    {
+      "etiket": "gem_th",
+      "model": "google/gemini-3.1-flash-lite",
+      "tasiyici": "OpenRouter → provider PİNLİ: Google AI Studio",
+      "kesik_orani": 0.0,
+      "ort_completion_tokens": 542.5,
+      "ort_reasoning_tokens": 443.8,
+      "zorunlu_kapatma": "0/470 (sunucu bütçesi, kendi sonlanıyor)"
+    }
+  ],
+
+  "hakem": {
+    "model": "gpt-4o-mini",
+    "gateway": "openai (direct) — PİNLİ (ADR-0029)",
+    "aile_dislama": "Google özneyi OpenAI hakem notlar (ADR-0032)",
+    "runs": 1,
+    "not": "runs=1 → güven aralığı yok; cit_precision'da ±0.04 hakem gürültüsüdür (tuzak 2.8)"
+  },
+
+  "red_kurali": "score_abstention.exact_reject(cevap, mode) — MOD-DUYARLI (ADR-0044): kör modda feragat cümlesi red sayılmaz",
+
+  "gecerlilik_kapilari": {
+    "kesik_esigi": "> %5 → koşu geçersiz",
+    "sonuc": "üç özne de geçti (%3.6 · %3.6 · %0.0)",
+    "dusunce_kanali": "470/470 üç öznede de (enable_thinking işledi)"
+  },
+
+  "guc_durumu": "şarjda (tuzak 1.6)",
+
+  "serh": [
+    "base_th kayıtlarında `reasoning_tokens` alanı YOK — o alan koşu başladıktan sonra eklendi; üretim davranışı özdeş (reasoning_budget=0 yolunda tek satır değişmiyor).",
+    "Bu bir parite iddiası DEĞİL: harness kapalı, maliyet normalize edilmedi."
+  ]
+}

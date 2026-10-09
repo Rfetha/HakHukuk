@@ -1,0 +1,271 @@
+{
+  "cipa_dosya": "outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl",
+  "yeni_dosya": "outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl",
+  "cekinme_dedektoru": "score_abstention.exact_reject(cevap, mode='data')",
+  "kontrol_degiskenleri": {
+    "getirilen_kaynak_sapan_idler": [
+      7,
+      63
+    ],
+    "soru_metni_sapan_idler": []
+  },
+  "bayt_kimligi": {
+    "degisen_n": 65,
+    "degismeyen_n": 15,
+    "degisen_idler": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      30,
+      31,
+      32,
+      33,
+      34,
+      36,
+      37,
+      39,
+      41,
+      43,
+      44,
+      46,
+      47,
+      48,
+      49,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78
+    ]
+  },
+  "cipa": {
+    "n": 80,
+    "cekinme_n": 5,
+    "cekinme_idler": [
+      15,
+      37,
+      45,
+      66,
+      79
+    ],
+    "kesik_n": 4,
+    "kesik_idler": [
+      29,
+      32,
+      51,
+      75
+    ],
+    "bos_n": 0,
+    "bos_idler": [],
+    "zorla_kapatma_n": 3,
+    "uzunluk_medyan": 715.0,
+    "uzunluk_ortalama": 774.3,
+    "uzunluk_min": 58,
+    "uzunluk_maks": 3352,
+    "completion_tokens_ort": 782.5,
+    "completion_tokens_medyan": 731.0,
+    "completion_tokens_toplam": 62603
+  },
+  "yeni": {
+    "n": 80,
+    "cekinme_n": 5,
+    "cekinme_idler": [
+      15,
+      45,
+      51,
+      66,
+      79
+    ],
+    "kesik_n": 3,
+    "kesik_idler": [
+      25,
+      29,
+      41
+    ],
+    "bos_n": 0,
+    "bos_idler": [],
+    "zorla_kapatma_n": 3,
+    "uzunluk_medyan": 706.5,
+    "uzunluk_ortalama": 780.6,
+    "uzunluk_min": 58,
+    "uzunluk_maks": 3824,
+    "completion_tokens_ort": 779.1,
+    "completion_tokens_medyan": 718.5,
+    "completion_tokens_toplam": 62332
+  },
+  "cekinme_yon_degistiren": {
+    "cipada_cekindi_yenide_cevapladi": [
+      37
+    ],
+    "cipada_cevapladi_yenide_cekindi": [
+      51
+    ]
+  },
+  "uzunluk_farki_karakter": {
+    "uzayan_n": 35,
+    "kisalan_n": 30,
+    "ayni_n": 15,
+    "en_cok_uzayan": [
+      {
+        "id": 25,
+        "fark": 2983
+      },
+      {
+        "id": 41,
+        "fark": 2360
+      }
+    ],
+    "en_cok_kisalan": [
+      {
+        "id": 69,
+        "fark": -1627
+      },
+      {
+        "id": 75,
+        "fark": -2220
+      }
+    ],
+    "mutlak_fark_medyan": 47.5
+  },
+  "uzunluk_farki_token": {
+    "uzayan_n": 33,
+    "kisalan_n": 41,
+    "ayni_n": 6,
+    "en_cok_uzayan": [
+      {
+        "id": 25,
+        "fark": 898
+      },
+      {
+        "id": 41,
+        "fark": 800
+      }
+    ],
+    "en_cok_kisalan": [
+      {
+        "id": 75,
+        "fark": -654
+      },
+      {
+        "id": 51,
+        "fark": -759
+      }
+    ],
+    "mutlak_fark_medyan": 18.5
+  },
+  "atif_cipa": {
+    "n_atif": 114,
+    "atifsiz_cevap": 7,
+    "dagilim": {
+      "DOGRULANDI": 114
+    },
+    "uydurulmus_madde": "0/114",
+    "uydurulmus_kalemler": [],
+    "ayristirilamadi_idler": []
+  },
+  "atif_yeni": {
+    "n_atif": 152,
+    "atifsiz_cevap": 5,
+    "dagilim": {
+      "DOGRULANDI": 149,
+      "AYRISTIRILAMADI": 2,
+      "MADDE_YOK": 1
+    },
+    "uydurulmus_madde": "1/152",
+    "uydurulmus_kalemler": [
+      {
+        "id": 25,
+        "kanun": "Gelir Vergisi Kanunu",
+        "madde": "73"
+      }
+    ],
+    "ayristirilamadi_idler": [
+      23,
+      36
+    ]
+  },
+  "durum_sinifi": {
+    "cipa_dagilim": {
+      "cekinceli": 1,
+      "cevap": 70,
+      "kesik": 4,
+      "suskunluk": 5
+    },
+    "yeni_dagilim": {
+      "cekinceli": 1,
+      "cevap": 71,
+      "kesik": 3,
+      "suskunluk": 5
+    },
+    "degisen_n": 6,
+    "gecisler": {
+      "cevap → kesik": [
+        25,
+        41
+      ],
+      "kesik → cevap": [
+        32,
+        75
+      ],
+      "suskunluk → cevap": [
+        37
+      ],
+      "kesik → suskunluk": [
+        51
+      ]
+    }
+  },
+  "kesik_yon_degistiren": {
+    "cipada_kesik_yenide_degil": [
+      32,
+      51,
+      75
+    ],
+    "cipada_degil_yenide_kesik": [
+      25,
+      41
+    ]
+  }
+}

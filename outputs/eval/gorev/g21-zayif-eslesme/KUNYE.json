@@ -1,0 +1,17 @@
+{
+  "tarih": "2026-09-11",
+  "indeks": "data/index/mevzuat_bge_m3_s2",
+  "k": 10,
+  "rrf_k": "modül sabiti RRF_K=10 (retriever.py, ADR-0068) — indeksin KUNYE.json'undaki rrf_k=60 kur-zamanı METADATA'dır, sorgu ANINDA kullanılmaz",
+  "yururluk_suzgeci": "Yururluk.YALNIZ_YURURLUKTE (varsayılan)",
+  "dev": "data/eval/dev/core_hard.jsonl",
+  "n": 80,
+  "retriever_dosya_commit": "49198adcc914b189e0b07cbf05894858a9c74303",
+  "komut_satiri": "python scripts/erisim_korpus/zayif_eslesme_olc.py --out outputs/eval/g21-zayif-eslesme",
+  "recall_at_10_olculen": 0.95,
+  "recall_at_10_cipa": 0.95,
+  "cipa_tutuyor_mu": true,
+  "hic_bulunmayan": 4,
+  "gecen_sure_s": 65.7,
+  "kaynak_cipa": "outputs/eval/f02-biz-onsozsuz/KUNYE.json (recall_at_10) · docs/record/research_log/2026-09-09-kabul-testi-ve-frontier-kiyasi.md"
+}

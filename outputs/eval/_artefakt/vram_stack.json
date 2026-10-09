@@ -1,0 +1,257 @@
+[
+ {
+  "base_mib": 1361,
+  "peak_mib": 4530,
+  "server_mib": 3169,
+  "server_gib": 3.09,
+  "power": {
+   "pstate": "P2",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 11101,
+   "power_w": 31.32,
+   "temp_c": 60
+  },
+  "gguf": "q35-4b-q4_k_m.gguf",
+  "file_gib": 2.59,
+  "ctx": 4096,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1361,
+  "peak_mib": 5146,
+  "server_mib": 3785,
+  "server_gib": 3.7,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 9001,
+   "power_w": 35.66,
+   "temp_c": 66
+  },
+  "gguf": "q35-4b-q4_k_m.gguf",
+  "file_gib": 2.59,
+  "ctx": 32768,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1361,
+  "peak_mib": 7259,
+  "server_mib": 5898,
+  "server_gib": 5.76,
+  "power": {
+   "pstate": "P2",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 11101,
+   "power_w": 30.37,
+   "temp_c": 66
+  },
+  "gguf": "q35-4b-q4_k_m.gguf",
+  "file_gib": 2.59,
+  "ctx": 131072,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1362,
+  "peak_mib": 4891,
+  "server_mib": 3529,
+  "server_gib": 3.45,
+  "power": {
+   "pstate": "P2",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 11101,
+   "power_w": 46.47,
+   "temp_c": 68
+  },
+  "gguf": "q35-4b-q5_k_m.gguf",
+  "file_gib": 2.94,
+  "ctx": 4096,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1359,
+  "peak_mib": 5502,
+  "server_mib": 4143,
+  "server_gib": 4.05,
+  "power": {
+   "pstate": "P5",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 810,
+   "power_w": 35.19,
+   "temp_c": 67
+  },
+  "gguf": "q35-4b-q5_k_m.gguf",
+  "file_gib": 2.94,
+  "ctx": 32768,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1357,
+  "peak_mib": 7614,
+  "server_mib": 6257,
+  "server_gib": 6.11,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 9001,
+   "power_w": 37.23,
+   "temp_c": 69
+  },
+  "gguf": "q35-4b-q5_k_m.gguf",
+  "file_gib": 2.94,
+  "ctx": 131072,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1357,
+  "peak_mib": 5266,
+  "server_mib": 3909,
+  "server_gib": 3.82,
+  "power": {
+   "pstate": "P5",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 810,
+   "power_w": 39.52,
+   "temp_c": 66
+  },
+  "gguf": "q35-4b-q6_k.gguf",
+  "file_gib": 3.32,
+  "ctx": 4096,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1355,
+  "peak_mib": 5882,
+  "server_mib": 4527,
+  "server_gib": 4.42,
+  "power": {
+   "pstate": "P2",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 11101,
+   "power_w": 31.42,
+   "temp_c": 70
+  },
+  "gguf": "q35-4b-q6_k.gguf",
+  "file_gib": 3.32,
+  "ctx": 32768,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1355,
+  "peak_mib": 7988,
+  "server_mib": 6633,
+  "server_gib": 6.48,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 9001,
+   "power_w": 30.13,
+   "temp_c": 70
+  },
+  "gguf": "q35-4b-q6_k.gguf",
+  "file_gib": 3.32,
+  "ctx": 131072,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1349,
+  "peak_mib": 6258,
+  "server_mib": 4909,
+  "server_gib": 4.79,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 9001,
+   "power_w": 30.09,
+   "temp_c": 71
+  },
+  "gguf": "q35-4b-q8_0.gguf",
+  "file_gib": 4.29,
+  "ctx": 4096,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1349,
+  "peak_mib": 6874,
+  "server_mib": 5525,
+  "server_gib": 5.4,
+  "power": {
+   "pstate": "P2",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 11101,
+   "power_w": 33.69,
+   "temp_c": 65
+  },
+  "gguf": "q35-4b-q8_0.gguf",
+  "file_gib": 4.29,
+  "ctx": 32768,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1349,
+  "peak_mib": 8986,
+  "server_mib": 7637,
+  "server_gib": 7.46,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 9001,
+   "power_w": 34.69,
+   "temp_c": 61
+  },
+  "gguf": "q35-4b-q8_0.gguf",
+  "file_gib": 4.29,
+  "ctx": 131072,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1349,
+  "peak_mib": 10120,
+  "server_mib": 8771,
+  "server_gib": 8.57,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 352,
+   "clocks_mem_mhz": 9001,
+   "power_w": 21.75,
+   "temp_c": 60
+  },
+  "gguf": "q35-4b-f16.gguf",
+  "file_gib": 8.07,
+  "ctx": 4096,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1349,
+  "peak_mib": 10736,
+  "server_mib": 9387,
+  "server_gib": 9.17,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 9001,
+   "power_w": 25.35,
+   "temp_c": 60
+  },
+  "gguf": "q35-4b-f16.gguf",
+  "file_gib": 8.07,
+  "ctx": 32768,
+  "kv_type": "q8_0"
+ },
+ {
+  "base_mib": 1349,
+  "peak_mib": 11754,
+  "server_mib": 10405,
+  "server_gib": 10.16,
+  "power": {
+   "pstate": "P4",
+   "clocks_sm_mhz": 225,
+   "clocks_mem_mhz": 9001,
+   "power_w": 22.59,
+   "temp_c": 61
+  },
+  "gguf": "q35-4b-f16.gguf",
+  "file_gib": 8.07,
+  "ctx": 131072,
+  "kv_type": "q8_0"
+ }
+]

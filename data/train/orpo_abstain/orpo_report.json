@@ -1,0 +1,16 @@
+{
+  "abstain_pairs": 1495,
+  "grounding_replay": 299,
+  "total": 1794,
+  "train": 1741,
+  "validation": 53,
+  "replay_frac_eff": 0.2,
+  "interleave_step": 6,
+  "skipped": {
+    "abstained_no_contrast": 224,
+    "dev_excluded": 9,
+    "no_chosen": 0
+  },
+  "hi_overlap_provisional": 108,
+  "note": "hi_overlap fabrikasyonlar DAHİL (ADIM 4 judge τ'sü RAFİNE edecek). is_pref=1 abstain, 0 grounding."
+}

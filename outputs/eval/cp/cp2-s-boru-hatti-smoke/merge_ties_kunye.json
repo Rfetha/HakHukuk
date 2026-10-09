@@ -1,0 +1,62 @@
+{
+  "operator": "eşzamanlı k-yollu TIES (kırp → işaret seç → ayrık ortalama)",
+  "karar_belgeleri": [
+    "ADR-0027",
+    "ADR-0036",
+    "ADR-0031 (bf16 ΔW)"
+  ],
+  "base": "/home/ersoy/.cache/huggingface/hub/models--Qwen--Qwen3.5-4B/snapshots/851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "kollar": {
+    "tg": "outputs/tg_v1",
+    "ta_SENTETIK": "/tmp/claude-1000/-home-ersoy-code-Hukuk-SLM/4490ab0f-c939-4756-aa00-a2f64e5a56e4/scratchpad/ta_SENTETIK_SMOKE"
+  },
+  "norm_dengeleme": true,
+  "norm_kapsami": "global (tek ‖τ‖_F) — modül-başına alternatifi alınmadı, bkz. open_questions",
+  "tau_norm_fro": {
+    "tg": 10.472179,
+    "ta_SENTETIK": 0.580389
+  },
+  "tau_norm_modul_kirilimi": {
+    "tg": {
+      "down_proj": 2.738357,
+      "gate_proj": 6.150399,
+      "in_proj_a": 0.30563,
+      "in_proj_b": 0.2985,
+      "in_proj_qkv": 4.2924,
+      "in_proj_z": 3.302392,
+      "k_proj": 0.832576,
+      "o_proj": 1.299012,
+      "q_proj": 2.532663,
+      "up_proj": 5.047082,
+      "v_proj": 0.747987
+    },
+    "ta_SENTETIK": {
+      "down_proj": 0.152014,
+      "gate_proj": 0.329866,
+      "in_proj_a": 0.015763,
+      "in_proj_b": 0.015915,
+      "in_proj_qkv": 0.239564,
+      "in_proj_z": 0.18324,
+      "k_proj": 0.047931,
+      "o_proj": 0.071552,
+      "q_proj": 0.143935,
+      "up_proj": 0.289081,
+      "v_proj": 0.041949
+    }
+  },
+  "norm_katsayilari": {
+    "tg": 0.09549111,
+    "ta_SENTETIK": 1.72298337
+  },
+  "geri_olcek": 5.526284,
+  "trim_k": 0.2,
+  "lam": 1.0,
+  "birlesik_tensor": 224,
+  "ortak_lora_hedefi": 224,
+  "ties_istatistikleri": {
+    "catisan_parametre_orani": 0.001596,
+    "sifir_kalan_oran": 0.673234
+  },
+  "out": "/tmp/claude-1000/-home-ersoy-code-Hukuk-SLM/4490ab0f-c939-4756-aa00-a2f64e5a56e4/scratchpad/merged_smoke",
+  "not": "Nicemleme BU ADIMDAN SONRA (llama.cpp Q4_K_M). Merge ana RAM'de akıtmalı koştu."
+}

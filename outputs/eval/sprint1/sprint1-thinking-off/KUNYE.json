@@ -1,0 +1,53 @@
+{
+  "kosu": "Sprint 1 — base ↔ Gemini 3.1 Flash-Lite ↔ τ_grounding v1, thinking-off protokolü",
+  "tarih": "2026-07-24 … 2026-07-29",
+  "sprint": "sprint1.md (KAPALI) · CP2 · CP6 · CP7",
+  "kayit": [
+    "docs/record/sprint1/sprint1-sonuc-tablosu.md (kalıcı sonuç kaydı)",
+    "docs/record/research_log/2026-07-24-cp0-base-dogrulama-kapisi.md (#39)",
+    "docs/record/research_log/2026-07-29-cp6-tau-grounding-olcumu.md (#41)"
+  ],
+
+  "protokol": {
+    "dusunce": "KAPALI — `--thinking off` (ADR-0030 m.2)",
+    "durum": "🔴 SÜPERSEDE (ADR-0043, 2026-07-29): hat artık thinking-on + bütçeli kapatma koşuyor",
+    "not": "Bu klasörün sayıları SİLİNMEZ — thinking-off protokolünün kalıcı kaydıdır ve iki kip yan yana raporlanır. Ama τ_a ve kafes hücreleri bunlara karşı ÖLÇÜLEMEZ."
+  },
+
+  "degismezler": {
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "temperature": 0.0,
+    "max_new_tokens": 512,
+    "n_per_mod": {"m1": 80, "m4": 80, "m2": 70, "m2b": 80, "m3": 80, "m5": 80},
+    "n_toplam_per_ozne": 470,
+    "havuz": "data/eval/dev/ (80 core_hard + 70 trap)"
+  },
+
+  "ozneler": [
+    {"etiket": "base", "model": "Qwen3.5-4B — models/gguf/q35-4b-q4_k_m.gguf",
+     "tasiyici": "llama-server, -c 4096, KV q8_0/q8_0"},
+    {"etiket": "tg", "model": "τ_grounding v1 merged — models/gguf/tg_v1-q4_k_m.gguf",
+     "tasiyici": "aynı", "not": "‖τ_g‖_F = 10.4589 · 1.083 adım · lr 1e-4"},
+    {"etiket": "gem", "model": "google/gemini-3.1-flash-lite",
+     "tasiyici": "OpenRouter → Google AI Studio", "dusunce": "reasoning_tokens = 0 (varsayılan)"}
+  ],
+
+  "hakem": {"model": "gpt-4o-mini", "gateway": "openai (direct)", "runs": 1},
+
+  "red_kurali": {
+    "orijinal": "score_abstention.REJECT_RE (mod-bağımsız) — a1_*.txt dosyaları BU kuralla",
+    "duzeltilmis": "exact_reject(cevap, mode) mod-duyarlı (ADR-0044) — a1_*_adr0044.txt dosyaları",
+    "etki": "YALNIZ m5. M1/M4 hücrelerinin hepsi yeniden hesapta birebir aynı çıktı.",
+    "neden": "Kör modun sistem istemi feragat cümlesini emrediyor; eski regex onu çekinme sayıyordu → M5 coverage düşük, ezber kütlesi ~3.4× küçük ölçüldü (sapma BİZİM LEHİMİZE).",
+    "okunacak_dosya": "a1_m5_*_adr0044.txt — eski a1_m5_*.txt AUDIT için duruyor, sayı olarak KULLANILMAZ"
+  },
+
+  "bilinen_sorunlar": [
+    "gnd_m4_gem_summary.run2-BOZUK-DETAY.json ve gnd_m5_gem_summary.run1-BOZUK-DETAY.json — bozuk koşuların kaydı, sayı olarak kullanılmaz",
+    "Gemini'nin regex-red satırları Sprint 1'de kalibre edilmemişti; kalibrasyon CP0.9'da yapıldı ve temiz çıktı (190 yakalanmayan cevabın hiçbiri red değil)",
+    "completion_tokens alanı bu koşuda kaydedilmiyordu → maliyet ekseni bu klasörden okunamaz (249 tok/cevap rakamı research_log #42'nin ayrı ölçümünden)"
+  ],
+
+  "serh": "Bu bir parite iddiası DEĞİL: harness kapalı, maliyet normalize edilmedi."
+}

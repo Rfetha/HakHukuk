@@ -1,0 +1,66 @@
+{
+  "gorev": "Görev 22 · Adım 4 — ürün yolunda iki geçişli zorunlu düşünce kapatması (kusur 1)",
+  "tarih": "2026-09-11",
+  "insan_rejim_onayi": "2026-09-11 — 'Ürün yolu, ölçüm hattının iki geçişli zorunlu düşünce kapatmasına gelir. Yayımlanan 0,8011 ÖLÇÜM HATTININ sayısıdır ve DEĞİŞMEZ — değişen ÜRÜN YOLUDUR.'",
+  "kod_yolu": "hakhukuk.servis.answer() (ÜRÜN yolu) — ölçüm hattı ÇALIŞTIRILMADI",
+  "soru_seti": "data/eval/dev/core_hard.jsonl (80 DEV kalemi)",
+  "cipa": "outputs/eval/g18-arac-katmani/aracsiz_yol_80.json (2026-09-09, tek geçiş)",
+  "cikti": "outputs/eval/g22-rejim/aracsiz_yol_80_zorunlu_kapatma.json",
+  "model": {
+    "gguf": "models/gguf/tgta_v1-q4_k_m.gguf",
+    "sha256": "755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc",
+    "kol": "tgta_v1 = HakHukuk-4B-v0.1"
+  },
+  "sunucu": {
+    "ikili": "~/code/llama.cpp/build-cuda/bin/llama-server",
+    "surum": "version: 1 (0cea362)",
+    "proc_cmdline": "/home/ersoy/code/llama.cpp/build-cuda/bin/llama-server -m models/gguf/tgta_v1-q4_k_m.gguf -ngl 99 -fa on --no-context-shift --cache-type-k q8_0 --cache-type-v q8_0 -c 8192 --host 127.0.0.1 --port 8080",
+    "not": "⚠️ tuzak 1.12 — bu satır sabit dize DEĞİL, koşan sürecin /proc/<pid>/cmdline'ından OKUNDU. KV kuantizasyonu q8_0 (çıpanın rejimi)."
+  },
+  "uretim_rejimi": {
+    "gecis_1": {
+      "uc_nokta": "/v1/chat/completions",
+      "max_tokens": 1536,
+      "aciklama": "DUSUNCE_BUTCESI 1024 + CEVAP_BUTCESI 512 (ADR-0043 · ADR-0070)"
+    },
+    "gecis_2_zorunlu_kapatma": {
+      "tetik": "content BOŞ ve reasoning_content DOLU",
+      "uc_noktalar": [
+        "/apply-template (kök)",
+        "/v1/completions"
+      ],
+      "istem": "ham_sablon + dusunce_izi + '\\n</think>\\n\\n'",
+      "max_tokens": 512,
+      "stop": [
+        "<|im_end|>"
+      ]
+    },
+    "temperature": 0.0,
+    "seed": 3407,
+    "k": 10,
+    "indeks": "data/index/mevzuat_bge_m3_s2 (yürürlük süzgeci AÇIK)"
+  },
+  "makine": {
+    "sarj_kapisi": "/sys/class/power_supply/AC1/online = 1",
+    "gpu": "RTX 5070 Laptop (sm_120)"
+  },
+  "maliyet": "$0 — yerel GPU, hakem ÇAĞRILMADI, kütle HESAPLANMADI",
+  "git_head": "f566c8e395569c5fef61f98921c19edfd96b9a75",
+  "sonuc": {
+    "tamamen_bos": {
+      "oncesi": 4,
+      "sonrasi": 0
+    },
+    "kesik": {
+      "oncesi": 7,
+      "sonrasi": 3
+    },
+    "durum_dagilimi_sonrasi": {
+      "CEVAP": 71,
+      "CEKINCELI": 1,
+      "SUSKUNLUK": 5,
+      "KESIK": 3
+    },
+    "adr_0040_gecerlilik_kapisi": "%5 ⇒ ≤4/80"
+  }
+}

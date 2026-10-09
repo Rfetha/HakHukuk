@@ -1,0 +1,57 @@
+{
+  "kosu": "CP1 — RAFT meta-iddia muafiyeti: üç öznenin M1 groundedness'ı YENİDEN PUANLANDI",
+  "tarih": "2026-07-30",
+  "sprint": "sprint2.md CP1",
+  "karar_belgeleri": ["ADR-0041 (seçenek A — meta-iddia hakemde ayrıştırılmaz)"],
+  "kayit": "docs/record/research_log/2026-07-30-cp05-cp1-cp2-zemin.md",
+
+  "bu_kosuda_URETIM_YOK": {
+    "aciklama": "Cevaplar yeniden üretilmedi. Girdi = CP0.9'un detay dosyaları; değişen TEK şey groundedness hakeminin AŞAMA-1 (iddia çıkarımı) istemidir.",
+    "girdi_klasoru": "outputs/eval/cp09-butceli-1024-512/m1_{base_th,tg_v1_th,gem_th}_detail.jsonl",
+    "sonuc": "üretim protokolü, taşıyıcı, seed, klip, n — hepsi CP0.9 künyesiyle AYNI (o künye yürürlükte)"
+  },
+
+  "kapsam": {
+    "mod": "M1 — YALNIZ",
+    "gerekce": "Meta-cümle (`KAYNAK N`) ampirik olarak yalnız çok-kaynaklı modda görülüyor: M1'de base 36/80 · τ_g 58/80 · Gemini 0/80; M4 ve M5'te ÜÇ ÖZNEDE DE 0/80. Ölçüldü, varsayılmadı.",
+    "ozneler": ["base_th", "tg_v1_th", "gem_th"],
+    "uygulama_kurali": "ADR-0041 m.1 — ÜÇ ÖZNEYE AYNI ANDA. Tek kola uygulamak sayıyı doğrudan bizim lehimize kaydırırdı."
+  },
+
+  "hakem": {
+    "model": "gpt-4o-mini",
+    "gateway": "openai (direct) — PİNLİ (ADR-0029)",
+    "runs": 1,
+    "degisen": "scripts/groundedness.py EXTRACT_SYSTEM — 'KAYNAK SEÇİMİ/ELEME cümlesi İDDİA DEĞİL' kuralı + muafiyet sınırı satırı",
+    "degismeyen": "VERIFY_SYSTEM · abstention regex · atıf doğrulayıcı · register hakemi (ADR-0041 son madde)",
+    "maliyet_usd": 0.1130,
+    "gurultu_kontrolu_maliyet_usd": 0.0368
+  },
+
+  "eski_skorlar": {
+    "yer": "outputs/eval/cp09-butceli-1024-512/gnd_m1_*",
+    "durum": "SİLİNMEDİ — ADR-0041 m.2 gereği kontrol olarak duruyor",
+    "yayim_kurali": "ADR-0041 m.3 — düzeltilmiş sayıların YANINDA ham sayılar da yayımlanır; τ_g'nin kalan açığı maskelenmez"
+  },
+
+  "sonuc_ozeti": {
+    "not": "Tam tablo cp1_delta.py ile dosyalardan üretilir; aşağıdakiler o çıktının kopyasıdır.",
+    "hatali_iddia_orani_eski_yeni": {
+      "base_th": "11.7% → 7.6%",
+      "tg_v1_th": "18.1% → 9.6%",
+      "gem_th": "9.6% → 6.6%"
+    },
+    "A1_cevaplanan_eski_yeni": {
+      "base_th": "0.9864 → 0.9777",
+      "tg_v1_th": "0.8658 → 0.9283",
+      "gem_th": "0.9561 → 0.9421"
+    },
+    "tau_g_A1_acigi": "base'e karşı 0.120 → 0.049 (açığın %59'u meta-iddia artefaktıymış)"
+  },
+
+  "serhler": [
+    "⚠️ ARA KAPI'nın M1 A1 MUHAFIZI bu koşudan etkilenir: 0.888 sayısı 0.90 × base 0.986 (ESKİ hakem) idi; düzeltilmiş çıpayla 0.90 × 0.9777 = 0.880. Hangi çıpanın geçerli olduğu İNSAN KARARINA bırakıldı — sayı kendiliğinden değiştirilmedi.",
+    "✅ ARA KAPI'nın M2 EKSENİ ETKİLENMEZ: ADR-0041 yalnız groundedness hakemini değiştiriyor; abstention regex'i sabit (ADR-0044 §1 ile de teyitli). Eşik 0.934 ve merge onarım eşiği 0.887 aynen durur.",
+    "runs=1 — güven aralığı yok (tuzak 2.8)."
+  ]
+}

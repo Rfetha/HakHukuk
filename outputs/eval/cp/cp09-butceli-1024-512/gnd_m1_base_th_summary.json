@@ -1,0 +1,19 @@
+{
+  "label": "m1_base_th",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "gpt-4o-mini",
+  "judge_gateway": "openai",
+  "judge_providers": [],
+  "runs": 1,
+  "total_claims": 309,
+  "faithfulness_micro": 0.8835,
+  "hallucination_micro": 0.1165,
+  "unsupported_micro": 0.1165,
+  "cit_precision_micro": 0.9898,
+  "wrong_ref_rate_micro": 0.0102,
+  "cit_recall_macro": 0.9875,
+  "faithfulness_macro": 0.8005,
+  "judge_cost_usd": 0.0382,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

@@ -1,0 +1,110 @@
+{
+  "kosu": "G21/kusur-18 — atıf doğrulayıcı ONARIMI + ÇIPALARIN YENİDEN PUANLANMASI",
+  "tarih": "2026-09-11",
+  "maliyet": "$0 — hakem çağrılmadı, GPU kullanılmadı, ağa çıkılmadı",
+  "insan_onayi": "ALINDI (2026-09-11) — onarım + yeniden puanlama, iki parça da onaylı.",
+  "SERH_DONMUS_TEST": "⛔ Donmuş TEST'e YENİ SORU SORULMADI, YENİ ÜRETİM YAPILMADI. Model çağrılmadı, llama-server açılmadı. Diskte zaten duran cevaplara düzeltilmiş alet yeniden uygulandı (ADR-0050 kalıbı: alet düzelir, eşik oynamaz).",
+  "kusur": "tuzak 1.13 — Dogrulayici kanun adını GEVŞEK eşleştirip YANLIŞ kanuna çözüyordu",
+  "onarim": {
+    "kural": "Ad çözümünde EN ÇOK TEK gevşeme: ya atıftaki adın TAMAMI bir kanun adının (sondaki parantezi atılmış hâli dahil) ≥2 sözcüklü soneki olur, ya da ayrıştırıcının kattığı BAŞTAKİ sözcükler atılır ve kalan BİREBİR bir kanun adı olur. İkisi birden gerekiyorsa hüküm AYRISTIRILAMADI — sessizce kanun SEÇİLMEZ.",
+    "ek": "Hukum artık çözülen kanunun ADINI taşıyor (kanun_adi).",
+    "commit": "YOK — onarım çalışma ağacında, COMMIT ATILMADI (kaydı insan tutuyor).",
+    "olcum_anindaki_HEAD": "7d1af544094917c38d380afe6ee1b6bd88283531",
+    "HEAD_dogrulamasi": "git show HEAD:scripts/erisim_korpus/atif_dogrula.py içinde '_dizin_kur' YOK — 'önce' sütunu gerçekten onarım öncesi sürümle üretildi.",
+    "dosya_sha256": {
+      "scripts/erisim_korpus/atif_dogrula.py": "9791ba183f85650a28c7c04687b3510a2e40a827a46c1e4a03f5016ecd9de75d",
+      "tests/test_atif_dogrula.py": "1827cbf2ed91a44a605dc4cb75d5ac15eec52a77eabbebf9736d0d28074447d7",
+      "scripts/erisim_korpus/atif_cozum_denetle.py": "dedd1d5a5c50a27e7fa780e3738ac5c325afeb2b8b22b0de71bea08fa9e20e31",
+      "scripts/veri_hazirlik/b8_tolerans_supurme.py": "5027656f3854dcc2d181ababf2240b6001fb1500b578e8aba96b280ca0d506ff"
+    }
+  },
+  "komutlar": [
+    "python -m pytest tests/test_atif_dogrula.py -q   # ÖNCE: 4 failed, 25 passed (KIRMIZI)",
+    "python -m pytest tests/ -q                        # SONRA: 239 passed, 2 xfailed",
+    "python outputs/eval/g22-atif-onarim/yeniden_puanla.py",
+    "python outputs/eval/g22-atif-onarim/genis_supurme.py",
+    "python scripts/erisim_korpus/atif_cozum_denetle.py --details outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl:DEV-cipa --details outputs/eval/g16-kabul-testi/h1_tgta_v1_g16_test_nb_detail.jsonl:donmus-TEST --details outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl:fp16 --out-dir outputs/eval/g22-atif-onarim/denetim-sonrasi"
+  ],
+  "ham_dosya_sha256": {
+    "outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl": "e0536489d876d9aec5da33c32f692f252ce7c6c239aee4daa5d22075a08a0aad",
+    "outputs/eval/g16-kabul-testi/h1_tgta_v1_g16_test_nb_detail.jsonl": "5af9287a106673fd93b7aa9e590d4c5822737f4836f80690e9128392d629df06",
+    "outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl": "8e5b89aa5f21e3da08770dda7de4d0001831e8f6b4281dfed515a3603583c455",
+    "data/corpus/mevzuat_maddeler.jsonl": "a35e6efc16123f70c4d0eaf48951f0e4d5bd3134a6faa942964222117c0af468"
+  },
+  "sonuc": {
+    "DEV_cipa_114": {
+      "once": {
+        "DOGRULANDI": 114
+      },
+      "sonra": {
+        "DOGRULANDI": 114
+      },
+      "degisen": 0
+    },
+    "donmus_TEST_52": {
+      "once": {
+        "DOGRULANDI": 52
+      },
+      "sonra": {
+        "DOGRULANDI": 52
+      },
+      "degisen": 0
+    },
+    "fp16_152": {
+      "once": {
+        "DOGRULANDI": 149,
+        "MADDE_YOK": 1,
+        "AYRISTIRILAMADI": 2
+      },
+      "sonra": {
+        "DOGRULANDI": 150,
+        "MADDE_YOK": 0,
+        "AYRISTIRILAMADI": 2
+      },
+      "degisen": 1
+    },
+    "genis_supurme": {
+      "dosya": 94,
+      "atif": 11634,
+      "degisen": 41,
+      "gecisler": {
+        "DOGRULANDI→AYRISTIRILAMADI": 22,
+        "MADDE_YOK→AYRISTIRILAMADI": 16,
+        "MADDE_YOK→DOGRULANDI": 2,
+        "DOGRULANDI→MULGA": 1
+      }
+    },
+    "parantezli_prob_parantezsiz_ad": {
+      "once": {
+        "dogru": 0,
+        "YANLIS_kanun_DOGRULANDI": 7,
+        "AYRISTIRILAMADI": 9
+      },
+      "sonra": {
+        "dogru": 7,
+        "YANLIS_kanun_DOGRULANDI": 0,
+        "AYRISTIRILAMADI": 9
+      }
+    },
+    "rakip_3_1_flash_lite_uydurma": {
+      "once": 1,
+      "sonra": 0,
+      "not": "aleyhimize — 'rakipler 1·4·4' cümlesindeki 1 artık 0"
+    }
+  },
+  "hukum": "Onarım manşeti OYNATMADI: 0/114 (DEV çıpa) ve 0/52 (donmuş TEST) aynen duruyor; hiçbir çıpa atfının hükmü değişmedi.",
+  "gozle_okuma": {
+    "hukmu_degisen_atif": 1,
+    "okunan": 1,
+    "yeni_hukum_dogru": 1,
+    "yeni_hukum_yanlis": 0,
+    "not": "fp16 id=25 «Gelir Vergisi Kanunu Madde 73» MADDE_YOK/1319 → DOGRULANDI/193; korpus tanığı 193/Madde 73 var, mulga=False."
+  },
+  "kapsam_disi": [
+    "ayrıştırıcı (regex) onarılmadı: şapkalı â, ortada parantez",
+    "B8 yazım-hatası toleransı kapatılmadı (1 gerçek kayıp ölçüldü, GEÇERSIZ koşuda)",
+    "hakhukuk/araclar.py'nin ikinci ad indeksi onarılmadı (görev tanımı gereği)",
+    "kütle/A1/hakem sayıları yeniden hesaplanmadı"
+  ],
+  "UYARI_kosu_kararliligi": "İlk yeniden-puanlama koşusu fp16 için ESKİ sayıyı (MADDE_YOK 1) verdi ve tekrar edilemedi; sebebi bulunamadı (modül gölgeleme aranıp bulunamadı, __pycache__ temizlendi). Yayımlanan sayılar ardışık 4 koşuda bayt-bayt aynı (yeniden_puanlama.json sha256 4101cc12…) ve bağımsız bir ad-hoc probla teyit edildi. Bir sayıyı TEK koşuya dayandırma."
+}

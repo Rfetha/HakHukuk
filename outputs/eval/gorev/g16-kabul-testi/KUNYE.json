@@ -1,0 +1,82 @@
+{
+  "kosu": "G16 — v1.0 KABUL TESTİ · DONMUŞ TEST (data/eval/canon/core_hard.jsonl) TEK KEZ AÇILDI",
+  "tarih": "2026-09-09",
+  "insan_onayi": "ALINDI — donmuş TEST'in açılması için açık onay verildi (2026-09-09).",
+  "etiket": "h1_tgta_v1_g16_test_nb",
+  "ozne": "tgta_v1 = HakHukuk-4B-v0.1",
+  "tasiyici": "models/gguf/tgta_v1-q4_k_m.gguf · llama.cpp llama-server · YEREL",
+  "kosucu": "scripts/olcum_uretim/cp0_thinking_gen.sh (DEV=data/eval/canon MODES=h1 N_OVERRIDE=40)",
+  "rejim": {
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "thinking": "on",
+    "think_budget": 1024,
+    "max_new_tokens": 512,
+    "toplam_uretim_butcesi": 1536,
+    "sufficiency_preamble": false,
+    "arac_katmani": "YOK — ADR-0076 m.4, eşit sınav",
+    "ctx": 8192,
+    "ngl": 99,
+    "flash_attn": "on",
+    "kv_type": "q8_0/q8_0",
+    "harness_indeks": "data/index/mevzuat_bge_m3_s2",
+    "harness_k": 10,
+    "RRF_K": 10,
+    "veri": "data/eval/canon/core_hard.jsonl (DONMUŞ)",
+    "n": 40,
+    "rejim_notu": "f02-biz-onsozsuz/KUNYE.json ile HER EKSENDE birebir aynı."
+  },
+  "gecerlilik_kapilari": {
+    "kesiklik": {
+      "deger": 0.025,
+      "esik": 0.05,
+      "sonuc": "GEÇTİ"
+    },
+    "zorla_kapatma": "3/40",
+    "dusunce_kanali": "40/40"
+  },
+  "sonuc": {
+    "kutle": 0.5804,
+    "coverage": 0.775,
+    "A1_cevaplanan": 0.7489,
+    "A1_altin_getirilen": 0.7927,
+    "recall_at_10": 0.75,
+    "tavan_kullanimi": 0.7739,
+    "asiri_red_altin_baglamda_sustu": "5/40",
+    "uydurulmus_madde": "0/52",
+    "mulga_atif": 0,
+    "atifsiz_gecen": 10
+  },
+  "dev_kiyasi": {
+    "dev_kutle": 0.8011,
+    "dev_recall_at_10": 0.95,
+    "dev_tavan_kullanimi": 0.8433,
+    "tavan_esdeger_beklenti": 0.6324,
+    "toplam_dusus_p": -22.07,
+    "tavanin_acikladigi_p": -16.87,
+    "tavanin_aciklamadigi_p": -5.2,
+    "not": "⛔ DEV ve TEST AYNI METRİK DEĞİLDİR — tavanları farklı (ADR-0069)."
+  },
+  "gozle_okuma": {
+    "cekinme_alet": 9,
+    "okunan": 9,
+    "acik_yanlis_pozitif": 0,
+    "sonuc": "ALET = GÖZ; kütle üç okumada da 0,5804"
+  },
+  "alet_onarimi": {
+    "dosya": "scripts/erisim_korpus/atif_dogrula.py",
+    "kusur": "çok anlamlı kanun adında adaylar sorted() ile alfabetik geziliyor, ilk taşıyan kazanıyordu; İŞ KANUNU için bu MÜLGA 1475 idi",
+    "etki": "TEST atıf DOGRULANDI 50→52, MULGA 2→0",
+    "manset_etkisi": "YOK — kütle 0,5804 değişmedi",
+    "gecmis_sayilar": "DEV ve Sonnet-5 kolları DEĞİŞMEDİ"
+  },
+  "hakem_yigini": {
+    "judge_model": "openai/gpt-4o-mini",
+    "gateway": "openrouter",
+    "runs": 1,
+    "judge_cost_usd": 0.0195,
+    "serh": "tek aile; κ 0,534 aracın 0,6 eşiğinin ALTINDA (ADR-0074)"
+  },
+  "HUKUM": "KURULMADI — donmuş TEST için ön-kayıtlı sayısal kabul eşiği YOK. ADR-0064 m.(1) çıpası DEV'de ölçüldü ve rakipler TEST'te koşmadı; ADR-0069 m.3 tavan kullanımını KAPI OLMAKTAN men ediyor. v1.0 hükmü İNSAN KARARIDIR.",
+  "KIYASLANAMAZ": "⛔ Bu sayı DEV sayısıyla doğrudan kıyaslanmaz (tavan 0,75 ↔ 0,95) ve rakip kıyası bu koşudan KURULMAZ (rakipler TEST'te koşmadı)."
+}

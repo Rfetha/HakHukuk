@@ -1,0 +1,802 @@
+[
+  {
+    "id": 0,
+    "soru": "Mahkeme benim lehime bir karar verirse ne olur?",
+    "cevap": "1) İlgili kaynak, verilen kaynaklar arasında yer almamaktadır. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması gerekmektedir. \n\n2)",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta mahkemenin lehine karar vermesi durumunda ne olacağına dair bilgi yok."
+  },
+  {
+    "id": 1,
+    "soru": "İlk derece mahkemesinin beraat kararı temyiz edilebilir mi?",
+    "cevap": "1) İlgili kaynak, bu konuyu düzenleyen maddeyi içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması gerekmektedir. \n\n2)",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta beraat kararlarının temyiz edilebilirliği hakkında bilgi yok."
+  },
+  {
+    "id": 2,
+    "soru": "Hangi suçlarla ilgili olarak müdafinin dosya inceleme yetkisi kısıtlanabilir?",
+    "cevap": "1) İlgili kaynak, müdafinin dosya inceleme yetkisi ile ilgili düzenlemeleri içermemektedir. Bu nedenle, doğru kaynak metni bulunamadığı için herhangi bir maddey",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta müdafinin dosya inceleme yetkisinin kısıtlanabileceği suçlar açıkça belirtilmiştir."
+  },
+  {
+    "id": 3,
+    "soru": "Eğer karşı taraf benim yanıldığımı biliyorsa, tazminat alabilir miyim?",
+    "cevap": "1) İlgili kaynak metni bulunmadığından, bu konuyu düzenleyen bir maddeye dayanarak yanıt vermem mümkün değildir. \n\n2) ##begin_quote## \"İlgili kaynak metni bulun",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bu bilgi yok."
+  },
+  {
+    "id": 4,
+    "soru": "El konulan gönderilerim ne olacak?",
+    "cevap": "1) İlgili kaynak metni bulunmadığından, bu konuyu düzenleyen bir maddeye dayanarak yanıt vermem mümkün değildir. \n\n2) ##begin_quote## \"El konulan gönderilerim n",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta el konulan gönderilerin ne olacağına dair net bir bilgi yok."
+  },
+  {
+    "id": 5,
+    "soru": "Bir çocuğu fuhşa teşvik eden kişiye ne ceza verilir?",
+    "cevap": "1) İlgili kaynak, çocuğun fuhşa teşvik edilmesi durumunu düzenleyen bir madde içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta çocuğu fuhşa teşvik eden kişiye verilecek ceza açıkça belirtilmiştir."
+  },
+  {
+    "id": 6,
+    "soru": "İhbar ettikten sonra ne olacak?",
+    "cevap": "1) İlgili kaynak, ihbar süreciyle ilgili herhangi bir düzenleme içermemektedir. Sunulan kaynaklar, farklı konulara odaklanmış olup, ihbarın sonuçlarıyla ilgili ",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta ihbar sonrası süreçle ilgili bilgi yok."
+  },
+  {
+    "id": 7,
+    "soru": "Mahkeme kararı kesinleşmeden çalışmazsam ücretimi alabilir miyim?",
+    "cevap": "1) İlgili kaynak metni bulunmadığından, bu konuyu düzenleyen maddeyi doğrudan alınamaz. Ancak genel olarak, Türk hukukunda mahkeme kararının kesinleşmeden önce ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, mahkeme kararı kesinleşmeden çalışmama durumunda ücretin ödenip ödenmeyeceği konusunda net bir bilgi sunmamaktadır."
+  },
+  {
+    "id": 8,
+    "soru": "Evlât edinmek için ne tür şartlar gerekiyor?",
+    "cevap": "1) İlgili kaynak, evlât edinme şartlarını düzenleyen bir madde içermemektedir. Sunulan kaynaklar, miras, velayet ve aile hukuku gibi konulara odaklanmakta olup,",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynak, evlât edinme şartlarını düzenleyen bir madde içermektedir."
+  },
+  {
+    "id": 9,
+    "soru": "Zamanaşımına uğramış bir alacakla takas yapılabilir mi?",
+    "cevap": "1) İlgili kaynak, zamanaşımına uğramış alacakların takas edilebilirliği konusunu ele almadığı için bu soruya yanıt veremem. Sağlanan kaynaklar, takasın tanımı v",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Verilen kaynakta zamanaşımına uğramış alacakların takas edilebilirliği ile ilgili bilgi yok."
+  },
+  {
+    "id": 10,
+    "soru": "Tedbir kararının tebliğ edilmemesi bir sorun mu?",
+    "cevap": "1) İlgili kaynak, tedbir kararının tebliğ edilmesiyle ilgili düzenlemeleri içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin sa",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Verilen kaynakta tedbir kararının tebliğ edilmemesinin bir sorun olup olmadığına dair net bir bilgi bulunmamaktadır."
+  },
+  {
+    "id": 11,
+    "soru": "Ruhsatsız inşaata elektrik bağlatan kişi ne kadar ceza alır?",
+    "cevap": "1) İlgili kaynak, ruhsatsız inşaatlara elektrik bağlatma ile ilgili düzenlemeleri içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metn",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta ruhsatsız inşaatlara elektrik bağlatma cezası hakkında net bir bilgi bulunmamaktadır."
+  },
+  {
+    "id": 12,
+    "soru": "50'den az işçi çalıştıran bir tarım işyerinde İş Kanunu geçerli mi?",
+    "cevap": "1) İlgili kaynak, İş Kanunu'nun geçerliliği ile ilgili bir düzenleme içermemektedir. Sunulan kaynaklar, \"işyeri\" tanımını ve işyeri ile ilgili diğer konuları el",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bu konuya dair net bir bilgi bulunmamaktadır."
+  },
+  {
+    "id": 13,
+    "soru": "Engelli birini evlât edinmek için ne kadar süre bakmak gerekiyor?",
+    "cevap": "1) İlgili kaynak, engelli bireylerin evlat edinimi ile ilgili süreleri düzenleyen bir madde içermemektedir. Bu nedenle, doğru kaynak metni bulunamadı. \n\n2) ##be",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta engelli bireylerin evlât edinimi için gereken süre açıkça belirtilmiştir."
+  },
+  {
+    "id": 14,
+    "soru": "İşverene başvurmazsam ne olur?",
+    "cevap": "1) İlgili kaynak, işverene başvurma konusunu ele almayan ve bu nedenle sorunun cevabını sağlamayan bir kaynak metnidir. Diğer kaynaklar da işverene başvurma ile",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde yer almayan bir bilgi ekleyerek soruya iddialı bir cevap vermiştir."
+  },
+  {
+    "id": 15,
+    "soru": "Vesayet altındaki kişinin menfaati nasıl belirlenir?",
+    "cevap": "1) İlgili kaynak, vesayet altındaki kişinin menfaatinin belirlenmesiyle ilgili düzenlemeleri içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili m",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir bilgi ekleyerek yanıltıcı bir cevap vermiştir."
+  },
+  {
+    "id": 16,
+    "soru": "Hakem kararında karşı oy yazısı yer alabilir mi?",
+    "cevap": "1) İlgili kaynak, hakem kararında karşı oy yazısının yer alıp almayacağına dair bir düzenleme içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta hakem kararında karşı oy yazısının yer alabileceği açıkça belirtilmiştir."
+  },
+  {
+    "id": 17,
+    "soru": "İşverenin işçiyi yanıltması durumunda işçi ne yapabilir?",
+    "cevap": "1) İlgili kaynak, işverenin işçiyi yanıltması durumunda işçinin hakları ve yükümlülükleri hakkında bilgi veren bir düzenleme içermektedir. Ancak, sunulan kaynak",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta işverenin işçiyi yanıltması durumunda işçinin ne yapabileceği açıkça belirtilmemektedir."
+  },
+  {
+    "id": 18,
+    "soru": "Zorla fuhşa sevketme, insanlığa karşı suç mudur?",
+    "cevap": "Verilen kaynaklarda bu konuyu düzenleyen madde bulunmuyor.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta zorla fuhşa sevketmenin insanlığa karşı suç olup olmadığına dair net bir değerlendirme yok."
+  },
+  {
+    "id": 19,
+    "soru": "Promosyon uygulamalarında hangi tür mal veya hizmet verilebilir?",
+    "cevap": "1) İlgili kaynak, promosyon uygulamalarıyla ilgili düzenlemeleri içeren bir madde metni olmadığından, bu soruya yanıt vermem mümkün değildir. Verilen kaynaklard",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta promosyon uygulamalarında hangi tür mal veya hizmet verilebileceğine dair bilgi yok."
+  },
+  {
+    "id": 20,
+    "soru": "Çalıştığım günler dışında tatil günlerim var mı?",
+    "cevap": "Verilen kaynaklarda bu konuyu düzenleyen madde bulunmuyor. İlgili bilgi için Türk İş Kanunu'nun tatil günleri ile ilgili düzenlemelerini incelemeniz önerilir.",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta tatil günleri hakkında net bir bilgi yok."
+  },
+  {
+    "id": 21,
+    "soru": "Sözleşmemde bir para birimi belirttiğimde ne olur?",
+    "cevap": "1) İlgili kaynak, sözleşmelerin geçerliliği ve tarafların yükümlülükleri hakkında bilgi veren bir kaynak metni değildir. Bu nedenle, sorunuzla doğrudan bağlantı",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde yer almayan bir madde ve bilgi ekleyerek yanıltıcı bir cevap vermiştir."
+  },
+  {
+    "id": 22,
+    "soru": "Gayrimenkulün yönetimiyle ilgili hangi kurallara uyulmalı?",
+    "cevap": "1) İlgili kaynak, gayrimenkul yönetimiyle ilgili kuralları düzenleyen bir madde içermemektedir. Verilen kaynaklar, Türk Medeni Kanunu, Türk Ceza Kanunu ve Türk ",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta gayrimenkul yönetimiyle ilgili kurallar düzenlenmemiştir."
+  },
+  {
+    "id": 23,
+    "soru": "İlk toplantıda yeter sayı sağlanamazsa ne olur?",
+    "cevap": "1) İlgili kaynak, toplantı yeter sayısına dair bir düzenleme içermemektedir. Bu nedenle, doğru bilgiye ulaşabilmek için ilgili mevzuat metninin sağlanması gerek",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta yeter sayının sağlanamaması durumunda ikinci toplantının yapılacağı belirtilmiştir."
+  },
+  {
+    "id": 24,
+    "soru": "Şiddet içeren bir müstehcen içerikle ilgili bir yayında bulunursam ceza alır mıy",
+    "cevap": "1) İlgili kaynak, şiddet içeren müstehcen içerikle ilgili ceza düzenlemelerini içermemektedir. Bu nedenle, doğru kaynak metni bulunamadığından dolayı herhangi b",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta şiddet içeren müstehcen içerikle ilgili ceza düzenlemeleri bulunmamaktadır."
+  },
+  {
+    "id": 25,
+    "soru": "Kira bedelini nasıl belirliyoruz?",
+    "cevap": "1) İlgili kaynak, kira bedelinin belirlenmesiyle ilgili herhangi bir düzenleme içermemektedir. Sunulan kaynaklar, \"kendi\" kavramının tanımı ve hukuki sonuçları ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde yer alan kira bedelinin belirlenmesi ile ilgili düzenlemeleri göz ardı ederek yanıltıcı bir şekilde cevap vermiştir."
+  },
+  {
+    "id": 26,
+    "soru": "Borcun bir kısmına itiraz ederken ne yapmalıyım?",
+    "cevap": "1) İlgili kaynak, borçların itirazı ile ilgili düzenlemeleri içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması gerek",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde yer almayan sözleşme hükümlerine atıfta bulunarak yanıltıcı bir bilgi vermiştir."
+  },
+  {
+    "id": 27,
+    "soru": "Mahkeme hangi kurallara göre karar verir?",
+    "cevap": "1) İlgili kaynak, mahkeme karar verme süreçleriyle ilgili herhangi bir bilgi içermemektedir. Sunulan kaynaklar, Sağlık Bakanlığı bütçesi ve harcama planlarıyla ",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta mahkeme karar verme kurallarıyla ilgili bilgi yok."
+  },
+  {
+    "id": 28,
+    "soru": "Aldığım ürünün eklentileri ayıplıysa, ana ürün için geri dönüş yapabilir miyim?",
+    "cevap": "1) İlgili kaynak, tüketici hakları ve ürün geri dönüşü konularında düzenlemeler içeren bir madde metni sunmamaktadır. Bu nedenle, doğru kaynak metnini temin ede",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynak metni doğru yorumlayarak geri dönüş hakkını açıklamış ancak ek bilgi ekleyerek yanıltıcı bir sonuç vermiştir."
+  },
+  {
+    "id": 29,
+    "soru": "Cayma hakkı nedir?",
+    "cevap": "1) İlgili kaynak metni bulunmadığından, bu konuyu düzenleyen maddeye dayanarak bir yanıt vermem mümkün değildir. Kaynak metinlerinde cayma hakkı ile ilgili herh",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Kaynak metin cayma hakkını düzenlemekte ancak model, bu bilgiyi göz ardı ederek yanıt vermekten kaçınmıştır."
+  },
+  {
+    "id": 30,
+    "soru": "Takas işlemi sırasında alacakların türü ne olmalı?",
+    "cevap": "1) İlgili kaynak, takas işlemleri ve alacakların türü hakkında bilgi veren bir madde içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili kaynak me",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Verilen kaynakta takas işlemi sırasında alacakların türü hakkında bilgi yok."
+  },
+  {
+    "id": 31,
+    "soru": "Toplu yapı nedir?",
+    "cevap": "1) İlgili kaynak, toplu yapı kavramını tanımlayan bir düzenleme içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması ge",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde yer alan tanımı kendi ifadesiyle tekrar ederek yanıltıcı bir şekilde net bir bilgi sunmuştur."
+  },
+  {
+    "id": 32,
+    "soru": "Mazeret bildirmezsem ve duruşmaya katılmazsam ne olur?",
+    "cevap": "1) İlgili kaynak, mazeret bildirimine dair düzenlemeleri içermemektedir. Bu nedenle, sorunuzun yanıtı için gerekli olan hukuki çerçeve sağlanmamıştır. \n\n2) ##be",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta mazeret bildirmemenin sonuçları hakkında bilgi yok."
+  },
+  {
+    "id": 33,
+    "soru": "Başvurum kabul edilirse ne olur?",
+    "cevap": "1) İlgili kaynak metni bulunmamaktadır. Bu nedenle, başvurunun kabul edilmesi durumunda ne olacağına dair bilgi vermem mümkün değildir. \n\n2) ##begin_quote## \"Ba",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta başvurunun kabul edilmesi durumunda ne olacağına dair bilgi yok."
+  },
+  {
+    "id": 34,
+    "soru": "Cumhuriyet savcıları hangi durumlarda doğrudan soruşturma yapar?",
+    "cevap": "1) İlgili kaynak metni, Cumhuriyet savcılarının doğrudan soruşturma yapma durumlarını düzenleyen bir hüküm içermemektedir. Bu nedenle, sorunun yanıtı için gerek",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta Cumhuriyet savcılarının doğrudan soruşturma yapma durumları hakkında yeterli bilgi sağlanmamıştır."
+  },
+  {
+    "id": 35,
+    "soru": "Nafaka davaları hangi yargılama usulüne tabidir?",
+    "cevap": "1) İlgili kaynak, nafaka davalarının hangi yargılama usulüne tabi olduğunu açıklayan bir madde içermemektedir. Verilen kaynaklar, hukukun tanımı ve hukukun işle",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynak, nafaka davalarının hangi yargılama usulüne tabi olduğunu açıkça belirtmektedir."
+  },
+  {
+    "id": 36,
+    "soru": "Kat mülkiyetine geçiş sürecinde hangi kurallar geçerli?",
+    "cevap": "1) İlgili kaynak, kat mülkiyetine geçiş sürecine dair herhangi bir düzenleme içermemektedir. Sunulan kaynaklar, hukuki terimlerin tanımıyla ilgili olup, kat mül",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Verilen kaynakta kat mülkiyetine geçiş sürecine dair net bir bilgi bulunmamaktadır."
+  },
+  {
+    "id": 37,
+    "soru": "Vesayet altındaki kişi için aile meclisi kurulması zorunlu mu?",
+    "cevap": "1) İlgili kaynak, aile meclisi kurulması zorunluluğu ile ilgili bir düzenleme içermemektedir. Bu nedenle, verilen kaynaklarda bu konuyu düzenleyen bir madde bul",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta aile meclisi kurulması zorunluluğu ile ilgili bir düzenleme yoktur."
+  },
+  {
+    "id": 38,
+    "soru": "Bir kamu kurumu zarar görmezse, ihaleye fesat karıştıran kişi ne kadar ceza alır",
+    "cevap": "1) İlgili kaynak, ihaleye fesat karıştıran kişilerin cezasını düzenleyen maddeyi içermemektedir. Bu nedenle, doğru bilgiye ulaşmak için ilgili mevzuat metninin ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde yer almayan para cezası bilgisi ekleyerek yanıltıcı bir cevap vermiştir."
+  },
+  {
+    "id": 39,
+    "soru": "Vasiliğe atanma kararı kesinleşince ne yapılmalı?",
+    "cevap": "1) İlgili kaynak, vasiliğe atanma kararının kesinleşmesi sonrası yapılması gereken işlemleri düzenleyen bir madde içermemektedir. Bu nedenle, doğru kaynak metni",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Verilen kaynakta vasiliğe atanma kararının kesinleşmesi sonrası yapılması gereken işlemlerle ilgili bilgi yok."
+  },
+  {
+    "id": 40,
+    "soru": "Ruhsatsız bina yapmanın cezası nedir?",
+    "cevap": "1) İlgili kaynak, ruhsatsız bina yapmanın cezasını düzenleyen bir madde içermemektedir. Sunulan kaynaklar, Türk Ceza Kanunu ve Türk Medeni Kanunu ile sınırlıdır",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynak, ruhsatsız bina yapmanın cezasını açıkça düzenlemektedir."
+  },
+  {
+    "id": 41,
+    "soru": "İlamların icrası hangi durumlarda zorla yapılır?",
+    "cevap": "1) İlgili kaynak, ilamların icrası ile ilgili düzenlemeleri içermemektedir. Sunulan kaynaklar, farklı konulara odaklanmış olup, ilamların icrası ile ilgili herh",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta ilamların icrası ile ilgili bilgi yok."
+  },
+  {
+    "id": 42,
+    "soru": "Ürünüm elimden alınırsa, geri alabilir miyim?",
+    "cevap": "Bu konuyu düzenleyen bir madde verilen kaynaklarda yer almıyor. Doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması gerekmektedir.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta, ürünün geri alınmasıyla ilgili net bir bilgi bulunmamaktadır."
+  },
+  {
+    "id": 43,
+    "soru": "Suçun nitelendirilmesi nedeniyle iddianameyi iade edebilir miyim?",
+    "cevap": "1) İlgili kaynak, suçun nitelendirilmesi ve iddianame iadesi konusunu ele almadığı için bu soruya yanıt veremem. Sağlanan kaynaklar, suçun tanımı ve Türk Ceza K",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta suçun nitelendirilmesi nedeniyle iddianame iadesi ile ilgili bir düzenleme bulunmamaktadır."
+  },
+  {
+    "id": 44,
+    "soru": "Dernekler zorunlu organları dışında oluşturdukları organların nitelikleri ne olm",
+    "cevap": "1) İlgili kaynak, derneklerin organlarıyla ilgili düzenlemeleri içeren bir madde olarak bulunmamaktadır. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzu",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir bilgi ekleyerek yanıltıcı bir cevap vermiştir."
+  },
+  {
+    "id": 45,
+    "soru": "Tüketici davalarında mahkeme kararları nasıl yayınlanır?",
+    "cevap": "1) İlgili kaynak metni bulunmadığından, bu konuyu düzenleyen maddeye dayanarak bir yanıt vermem mümkün değildir. \n\n2) ##begin_quote## \"Tüketici davalarında mahk",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta mahkeme kararlarının nasıl yayınlanacağına dair bilgi bulunmaktadır."
+  },
+  {
+    "id": 46,
+    "soru": "Kat mülkiyetine geçişte yönetim planı yapılması zorunlu mu?",
+    "cevap": "1) İlgili kaynak, kat mülkiyeti ile ilgili düzenlemeleri içeren bir madde olmadığından, bu konuya dair bir bilgi sunmak mümkün değildir. Diğer kaynaklar, kat mü",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta yönetim planı yapılması zorunluluğu hakkında bilgi yok."
+  },
+  {
+    "id": 47,
+    "soru": "Bir örgüt kapsamında organ alırsam cezam ne olur?",
+    "cevap": "Bu konuyu düzenleyen bir madde elimdeki kaynaklarda yer almıyor. Organ alımı ile ilgili cezai yaptırımlar hakkında doğru bilgiye ulaşabilmek için resmi hukuki k",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bu bilgi yok."
+  },
+  {
+    "id": 48,
+    "soru": "Konut finansmanı kuruluşunun sorumluluğu ne kadar sürer?",
+    "cevap": "1) İlgili kaynak, konut finansmanı kuruluşlarının sorumluluğu ile ilgili düzenlemeleri içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde belirtilen bir yıllık sorumluluk süresini atıf yapmadan net bir şekilde ifade etmiştir."
+  },
+  {
+    "id": 49,
+    "soru": "Aboneliğimi sonlandırdıktan sonra herhangi bir bedel ödeyecek miyim?",
+    "cevap": "1) İlgili kaynak, abonelik sonlandırma ve bedel ödemeleri konusunu düzenleyen bir madde içermemektedir. Bu nedenle, doğru kaynak metni bulunamadığı için herhang",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta abonelik sonlandırma ve bedel ödemeleri hakkında bilgi yok."
+  },
+  {
+    "id": 50,
+    "soru": "İşveren işçiye yaptığı harcamaları nasıl ödemeli?",
+    "cevap": "1) İlgili kaynak, işverenin işçiye yaptığı harcamaları nasıl ödemesi gerektiğine dair düzenlemeleri içeren bir madde metni olarak bulunmamaktadır. Bu nedenle, d",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde olmayan bir bilgi ekleyerek yanıltıcı bir cevap vermiştir."
+  },
+  {
+    "id": 51,
+    "soru": "Birden fazla kişiye zarar verirsem cezam ne olur?",
+    "cevap": "Bu konuyu düzenleyen bir madde verilen kaynaklarda yer almıyor. Doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması gerekmektedir.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta birden fazla kişiye zarar verme durumunun cezası açıkça belirtilmiştir."
+  },
+  {
+    "id": 52,
+    "soru": "Tutuklama kararı nasıl verilir?",
+    "cevap": "1) İlgili kaynak, tutuklama kararının nasıl verileceği ile ilgili bilgi sunmamaktadır. Verilen kaynaklar, Türkiye'nin tanımı ve Türk hukukunun tanımı gibi konul",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metni doğru değerlendirmeyip yanıltıcı bir bilgi sunmuştur."
+  },
+  {
+    "id": 53,
+    "soru": "Zincirleme suçlarda hangi mahkeme yetkilidir?",
+    "cevap": "1) İlgili kaynak, zincirleme suçların tanımı ve mahkeme yetkisi hakkında bilgi vermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili kaynak metninin ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta zincirleme suçlar için mahkeme yetkisi belirtilmiştir, ancak modelin cevabı bu bilgiyi yeterince değerlendirmemektedir."
+  },
+  {
+    "id": 54,
+    "soru": "İşten ayrılıp işe dönmek istersem eski işimle aynı şartlarda mı çalışırım?",
+    "cevap": "Bu konuyu düzenleyen bir madde verilen kaynaklarda yer almıyor. Doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması gerekmektedir.",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta işten ayrılıp işe dönme şartlarıyla ilgili bilgi yok."
+  },
+  {
+    "id": 55,
+    "soru": "İcra memuru ne zaman borçluya ödeme emri gönderir?",
+    "cevap": "1) İlgili kaynak, icra memurunun borçluya ödeme emri gönderme sürecini düzenleyen bir madde içermemektedir. Sunulan kaynaklar, Türk Ceza Kanunu, Türk Medeni Kan",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde yer alan bilgileri yanlış yorumlayarak yanıltıcı bir cevap vermiştir."
+  },
+  {
+    "id": 56,
+    "soru": "Sigorta bedeli ben kendim için yaptırırsam ne olur?",
+    "cevap": "1) İlgili kaynak, sigorta bedeli ile ilgili düzenlemeleri içeren bir madde olmadığından, bu konuyu ele alacak bir kaynak metni bulunmamaktadır. Bu nedenle, doğr",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bu bilgi yok."
+  },
+  {
+    "id": 57,
+    "soru": "Kolluk güçleri bu eğitimleri ne için alıyor?",
+    "cevap": "1) İlgili kaynak, KAYNAKLAR bölümünde belirtilen maddelerden bulunmamaktadır. Bu nedenle, doğru bir atıf yapabilmem için ilgili kaynak metninin sağlanması gerek",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bu konuya dair bilgi yok."
+  },
+  {
+    "id": 58,
+    "soru": "Birisi silah bulunduruyorsa ne olur?",
+    "cevap": "1) İlgili kaynak, silah bulundurma ile ilgili düzenlemeleri içermemektedir. Bu nedenle, doğru bilgiye ulaşmak için ilgili mevzuat metninin sağlanması gerekmekte",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta silah bulundurmanın sonuçları hakkında bilgi yok."
+  },
+  {
+    "id": 59,
+    "soru": "Garanti belgesi ile hangi malların satılmak zorunda olduğu nereden öğrenilir?",
+    "cevap": "1) İlgili kaynak, garanti belgesi ile ilgili düzenlemeleri içeren bir madde metni sunmamaktadır. Bu nedenle, doğru bilgiye ulaşmak için ilgili mevzuat metninin ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta hangi malların garanti belgesi ile satılmak zorunda olduğu belirtilmemiştir."
+  },
+  {
+    "id": 60,
+    "soru": "İstinaf başvurusu için gerekli belgeler nelerdir?",
+    "cevap": "1) İlgili kaynak, istinaf başvurusu için gerekli belgeleri düzenleyen bir madde içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metnin",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta istinaf başvurusu için gerekli belgeler hakkında bilgi yok."
+  },
+  {
+    "id": 61,
+    "soru": "Soruşturma yapılmasına yer olmadığına dair karara itiraz edebilir miyim?",
+    "cevap": "1) İlgili kaynak, soruşturma yapılmasına yer olmadığına dair karara itiraz edilebilmesi konusunu düzenleyen bir madde içermemektedir. Bu nedenle, doğru kaynak m",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Model, kaynak metinde açıkça belirtilen itiraz hakkını yanlış bir şekilde reddetmektedir."
+  },
+  {
+    "id": 62,
+    "soru": "Eğer bir kat maliki ortak giderleri ödemiyorsa ne olur?",
+    "cevap": "1) İlgili kaynak, kat mülkiyeti ile ilgili düzenlemeleri içermektedir. Ancak, kat malikinin ortak giderleri ödememesi durumunda ne olacağına dair spesifik bir d",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta kat malikinin ortak giderleri ödememesi durumuna dair spesifik bir bilgi bulunmamaktadır."
+  },
+  {
+    "id": 63,
+    "soru": "Emziren kadın işçilerin süt vermesi için süre var mı?",
+    "cevap": "1) İlgili kaynak bulunamadığı için bu konuyu düzenleyen maddeyi veremem. Doğru bilgiye ulaşabilmek için ilgili mevzuat metninin sağlanması gerekmektedir.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta emziren kadın işçilerin süt vermeleri için sürelerin belirtileceği ifade edilmiştir."
+  },
+  {
+    "id": 64,
+    "soru": "Temyiz dilekçesi nasıl yapılır?",
+    "cevap": "1) İlgili kaynak, temyiz dilekçesi ile ilgili herhangi bir bilgi içermemektedir. Bu nedenle, doğru kaynak metni bulunmadığı için doğru bir yanıt vermem mümkün d",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta temyiz dilekçesinin nasıl yapılacağına dair yeterli bilgi bulunmaktadır."
+  },
+  {
+    "id": 65,
+    "soru": "Hüküm hangi durumlarda kesin hüküm sayılır?",
+    "cevap": "1) İlgili kaynak, verilen kaynaklar arasında yer almamaktadır. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması gerekmektedir. \n\n2)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynak metinde yer almayan bir bilgi ekleyerek kesin hüküm tanımını yapmıştır."
+  },
+  {
+    "id": 66,
+    "soru": "Eğer tüketici hakem heyetinin oluşumu sağlanamazsa ne olur?",
+    "cevap": "Verilen kaynaklarda bu konuyu düzenleyen madde bulunmuyor. İlgili düzenleme elimdeki metinlerde yer almıyor, bu nedenle madde atfı yapmam doğru olmaz.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynak, tüketici hakem heyetinin oluşumunun sağlanamadığı durumları düzenlemektedir."
+  },
+  {
+    "id": 67,
+    "soru": "Tüketici hakem heyetinin başkanı kimdir?",
+    "cevap": "1) İlgili kaynak, tüketici hakem heyetinin başkanının kim olduğunu belirten bir madde içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta tüketici hakem heyetinin başkanının kim olduğu açıkça belirtilmiştir."
+  },
+  {
+    "id": 68,
+    "soru": "Borçlu olan birinin taşınmaz malı haczedilebilir mi?",
+    "cevap": "1) İlgili kaynak, borçlu olan birinin taşınmaz malının haczedilebilmesi konusunu düzenleyen bir madde içermemektedir. Bu nedenle, doğru kaynak metni bulunamadığ",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta borçlu olan birinin taşınmaz malının haczedilebilmesi konusunu düzenleyen bir bilgi yok."
+  },
+  {
+    "id": 69,
+    "soru": "Birinin alkol bağımlılığı sebebiyle kısıtlanması mümkün mü?",
+    "cevap": "1) İlgili kaynak, alkol bağımlılığı ve bu durumun hukuki sonuçları hakkında bilgi veren bir düzenleme içermemektedir. Sunulan kaynaklar, çocukların korunması il",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta alkol bağımlılığı sebebiyle kısıtlama ile ilgili bilgi yok."
+  },
+  {
+    "id": 70,
+    "soru": "Borçlu olan eşin mal varlığına nasıl ulaşabilirim?",
+    "cevap": "1) İlgili kaynak metni bulunmadığından, bu konuyu düzenleyen maddeye dayanarak bir yanıt vermem mümkün değildir. \n\n2) ##begin_quote## \"İlgili kaynak bulunamadı.",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta borçlu eşin mal varlığına ulaşma yöntemleri hakkında bilgi yok."
+  },
+  {
+    "id": 71,
+    "soru": "Taraf değişikliği için hâkim neye bakar?",
+    "cevap": "1) İlgili kaynak, taraf değişikliği konusunu düzenleyen bir madde içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Verilen kaynakta hâkimin taraf değişikliği için neye bakacağına dair net bir bilgi yok."
+  },
+  {
+    "id": 72,
+    "soru": "Bir işyerinde engelli işçi çalıştırılma oranı nasıl hesaplanır?",
+    "cevap": "1) İlgili kaynak, engelli işçi çalıştırma oranının hesaplanmasıyla ilgili herhangi bir düzenleme içermemektedir. Sunulan kaynaklar, işçi hakları ve sağlık hizme",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta engelli işçi çalıştırılma oranının hesaplanmasıyla ilgili bilgi yok."
+  },
+  {
+    "id": 73,
+    "soru": "Zorlama hapsinin süresi nasıl belirlenir?",
+    "cevap": "1) İlgili kaynak, zorlama hapsinin süresinin belirlenmesiyle ilgili herhangi bir düzenleme içermemektedir. Sunulan kaynaklar, sağlık, içişleri ve eğitim bakanlı",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": true,
+    "used_parametric": true,
+    "reason": "Model, kaynakta belirtilen süreleri doğru bir şekilde aktarmak yerine genel bir ifade kullanarak yanıltıcı bir bilgi vermiştir."
+  },
+  {
+    "id": 74,
+    "soru": "Konutta haciz yapılırken özel bir durum var mı?",
+    "cevap": "1) İlgili kaynak, konutta haciz yapılmasıyla ilgili özel durumları düzenleyen bir madde içermemektedir. Bu nedenle, doğru kaynak metni bulunamadığı için herhang",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta konutta haciz yapılmasıyla ilgili özel durumlar düzenlenmemiştir."
+  },
+  {
+    "id": 75,
+    "soru": "Mahkeme ne zaman davayı sona erdirir?",
+    "cevap": "1) İlgili kaynak, mahkeme davalarını sona erdirme koşullarını düzenleyen bir madde içermemektedir. Sunulan kaynaklar, hukuki terimlerin tanımlarıyla ilgili olup",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta mahkemenin davayı sona erdirme koşulları hakkında bilgi yok."
+  },
+  {
+    "id": 76,
+    "soru": "Borçlu ile başka birinin aynı taşınır malı elinde bulundurmaları durumunda kim m",
+    "cevap": "1) İlgili kaynak bulunamadığı için bu konuyu düzenleyen maddeyi elimde bulamadım. Ancak genel olarak, taşınır malın sahibi, malın üzerinde hak sahibi olan kişid",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Verilen kaynakta bu konuya dair bir bilgi bulunmamaktadır."
+  },
+  {
+    "id": 77,
+    "soru": "Vücuda bir cisim sokularak yapılan cinsel saldırıda ceza ne olur?",
+    "cevap": "1) İlgili kaynak, cinsel saldırı ile ilgili ceza hükümlerini düzenleyen Türk Ceza Kanunu'nun 104. maddesidir. Ancak, bu madde, vücuda bir cisim sokularak yapıla",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta vücuda bir cisim sokularak yapılan cinsel saldırının cezası açıkça belirtilmiştir."
+  },
+  {
+    "id": 78,
+    "soru": "Borçlunun taşınır malları neden haczedilebilir?",
+    "cevap": "1) İlgili kaynak, borçlunun taşınır mallarının haczedilebilmesi konusunu düzenleyen bir madde içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili ",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta borçlunun taşınır mallarının haczedilme nedenleri düzenlenmemiştir."
+  },
+  {
+    "id": 79,
+    "soru": "Mağdur on iki yaşından küçükse ceza ne olur?",
+    "cevap": "1) İlgili kaynak, bu konuyu düzenleyen bir madde içermemektedir. Bu nedenle, doğru bir atıf yapabilmem için ilgili mevzuat metninin sağlanması gerekmektedir. \n\n",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": true,
+    "used_parametric": false,
+    "reason": "Kaynak metin, mağdurun on iki yaşından küçük olması durumunda verilecek ceza hakkında net bilgiler sunmaktadır."
+  }
+]

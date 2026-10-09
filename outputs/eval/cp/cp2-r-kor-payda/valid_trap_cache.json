@@ -1,0 +1,1186 @@
+{
+  "olcum": "cevaba KÖR valid_trap — kalem düzeyinde, bir kez (ADR-0048 · ADR-0049 m.2)",
+  "run_dir": "outputs/eval/cp09-butceli-1024-512",
+  "judge_model": "gpt-4o",
+  "judge_gateway": "openai",
+  "judge_providers": [],
+  "temperature": 0,
+  "clip": 900,
+  "baglam_ayniligi_dogrulandi": true,
+  "mod_ozet": {
+    "m2": {
+      "n": 70,
+      "gecerli": 66,
+      "gecerli_orani": 0.9429,
+      "hakem": "gpt-4o",
+      "maliyet_usd": 0.0965
+    },
+    "m2b": {
+      "n": 80,
+      "gecerli": 79,
+      "gecerli_orani": 0.9875,
+      "hakem": "gpt-4o",
+      "maliyet_usd": 0.1333
+    },
+    "m3": {
+      "n": 80,
+      "gecerli": 80,
+      "hakem": "YOK (tanım gereği)",
+      "maliyet_usd": 0.0
+    }
+  },
+  "toplam_maliyet_usd": 0.2298,
+  "not": "Skorlama hakemi gpt-4o-mini OLARAK KALIR; bu bir kürasyon etiketi. verdict yeniden hesaplanmaz — cevaba bağlılığı meşrudur.",
+  "cache": {
+    "m2:0": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak, işverenin yükümlülüğünün hangi durumlarda geçerli olduğunu belirtmiyor."
+    },
+    "m2:1": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin ürün ayıplarıyla ilgili bir çözüm sunmuyor."
+    },
+    "m2:2": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "metin ret kararına itiraz edilip edilemeyeceğini açıkça belirtmiyor"
+    },
+    "m2:3": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin evlenme izni veya evlendirme memurunun yetkileri hakkında bilgi içermiyor."
+    },
+    "m2:4": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, tebligat adresi bildirmenin zorunlu olduğu durumları açıkça belirtmiyor."
+    },
+    "m2:5": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, mahkemenin yasal danışman atanması durumunda ne yapacağına dair bilgi içermiyor."
+    },
+    "m2:6": {
+      "gecerli": false,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, yargılamanın yenilenmesi için geçerli durumları açıkça listeliyor."
+    },
+    "m2:7": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, başkasının hayatını tehlikeye atmanın cezası hakkında bilgi vermiyor."
+    },
+    "m2:8": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin müflisin mal satışı ve alıcının yapabilecekleri hakkında bilgi vermiyor."
+    },
+    "m2:9": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, işyerlerinin faaliyet konularının kanuna etkisi hakkında bilgi vermiyor."
+    },
+    "m2:10": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin akademik unvan almanın suç sayılıp sayılmadığına dair bilgi içermiyor."
+    },
+    "m2:11": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, devlete ait yargılama giderlerinin neye göre yerine getirileceğini açıklamıyor."
+    },
+    "m2:12": {
+      "gecerli": false,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, kazancın nasıl paylaşılacağını sözleşme hükümlerine göre açıklar."
+    },
+    "m2:13": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin sorunun cevabını içermiyor"
+    },
+    "m2:14": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, mücbir sebep dışında ücretin ödenmemesi durumunda ne olacağına dair bilgi içermiyor."
+    },
+    "m2:15": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, kiracının icra takibinden ne zaman haberdar olacağına dair bilgi içermiyor."
+    },
+    "m2:16": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin sigorta bedeli hakkında bilgi içermiyor."
+    },
+    "m2:17": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin müdafilik şartının nasıl belirlendiğini açıklamıyor."
+    },
+    "m2:18": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak, ticari defterlerin tamamının sunulup sunulmayacağını belirtmiyor"
+    },
+    "m2:19": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin aile vakfı kurma harcamaları hakkında bilgi vermiyor."
+    },
+    "m2:20": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak, vakıf yönetiminde değişiklik yapmak için gerekenleri açıklamıyor."
+    },
+    "m2:21": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak, borçlu olan eşin mal varlığına nasıl ulaşılacağına dair bilgi içermiyor"
+    },
+    "m2:22": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, mirası reddettikten sonra sorumluluk kalıp kalmadığını açıklamıyor."
+    },
+    "m2:23": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, borçlunun kimlik bilgilerini verme zorunluluğuna dair bilgi içermiyor."
+    },
+    "m2:24": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, hükmün kesin hüküm sayılma koşullarını açıklamıyor."
+    },
+    "m2:25": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin soruyla ilgili bilgi içermiyor"
+    },
+    "m2:26": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin yetkili makamın aldığı tedbirler hakkında bilgi vermiyor."
+    },
+    "m2:27": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, borçlunun iflası durumunda alacaklının ne yapması gerektiğini açıklamıyor."
+    },
+    "m2:28": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin ödünç alınan paranın geri ödeme tarihi hakkında bilgi vermiyor"
+    },
+    "m2:29": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin ayıplı parçanın diğer parçaları etkilemesi durumunu ele almıyor"
+    },
+    "m2:30": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin borcun zamanında ödenmesi durumunda ne olacağını belirtmiyor."
+    },
+    "m2:31": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin yapı ruhsatı olmadan konut satışı hakkında bilgi içermiyor."
+    },
+    "m2:32": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin alacağın terkini hakkında dava kazanılması durumunu açıklamıyor"
+    },
+    "m2:33": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin mağdurun on iki yaşından küçük olması durumunda uygulanacak cezayı belirtmiyor."
+    },
+    "m2:34": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, tüketicinin ölüm veya kazanç elde edememe durumunda sözleşmeden dönme hakkını ele almıyor."
+    },
+    "m2:35": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, kefilin borçlunun borcunu ödememesi durumunda ne yapması gerektiğini doğrudan açıklamıyor."
+    },
+    "m2:36": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, ortakların karar alırken nelere dikkat etmesi gerektiğini belirtmiyor."
+    },
+    "m2:37": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin garanti belgesi olmadan mal satılıp satılamayacağını doğrudan cevaplamıyor."
+    },
+    "m2:38": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, kovuşturma evresinde görevli mahkemenin kim olduğunu belirtmiyor."
+    },
+    "m2:39": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, malvarlığının terkini ve konkordatodaki anlamı hakkında bilgi içermiyor."
+    },
+    "m2:40": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin koruma tedbirlerinin nasıl bir kanunla düzenlendiğini belirtmiyor."
+    },
+    "m2:41": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, faiz oranını kimin belirlediğini açıkça belirtmiyor."
+    },
+    "m2:42": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, iş müfettişlerinin iş yerini durdurma yetkisine sahip olup olmadığını belirtmiyor."
+    },
+    "m2:43": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin adli yardım talebinin nereden yapılacağına dair bilgi içermiyor."
+    },
+    "m2:44": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, eşteki eksiklikler durumunda ne yapılması gerektiğini doğrudan cevaplamıyor."
+    },
+    "m2:45": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin konfederasyon tüzüğünün işlevini açıklamıyor."
+    },
+    "m2:46": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin eski hâle getirme istemi kabul edilene kadar ne olacağını açıklamıyor"
+    },
+    "m2:47": {
+      "gecerli": false,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, vasiyetname ile yapılacak tasarrufun saklı paylar dışında kalan kısımda yapılabileceğini belirtiyor."
+    },
+    "m2:48": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin yedek mirasçı atamanın zorunlu olup olmadığını belirtmiyor."
+    },
+    "m2:49": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, sözleşmede ceza yoksa ne yapılabileceği konusunda doğrudan bir cevap içermiyor."
+    },
+    "m2:50": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin el koyma işlemi hakkında bilgi vermiyor, sadece arama işlemiyle ilgili detaylar içeriyor."
+    },
+    "m2:51": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin konutta haciz yapılırken özel bir durumdan bahsetmiyor."
+    },
+    "m2:52": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, hâkimin nasıl bir kural koyacağını açıklamıyor."
+    },
+    "m2:53": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, bir şirket müdürünün suç işlemesi durumunda kimin cezalandırılacağına dair bilgi içermiyor."
+    },
+    "m2:54": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak, gizli bilgileri neden elde ettiğini ispatlama konusunu ele almıyor."
+    },
+    "m2:55": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, tüketici ödüllerinin kimlere verildiği hakkında bilgi içermiyor."
+    },
+    "m2:56": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin kamu görevlisinin tanımını içermiyor."
+    },
+    "m2:57": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "metin konkordato dışında yapılan vaatlerin geçerliliği hakkında bilgi vermiyor"
+    },
+    "m2:58": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, ayıplı ürünlerin iadesi hakkında bilgi vermiyor."
+    },
+    "m2:59": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin çekinme kararının kesinliği hakkında bilgi vermiyor."
+    },
+    "m2:60": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin kira bedelinin ödenip ödenmeyeceği hakkında bilgi vermiyor."
+    },
+    "m2:61": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin miras sözleşmesinin tanıklarının kimler olduğunu belirtmiyor."
+    },
+    "m2:62": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin konkordato komiseri hakkında şikâyet edilmesi durumunda ne olacağına dair bilgi içermiyor."
+    },
+    "m2:63": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, aile yurdunun kurulmasına kimin izin verdiğini belirtmiyor."
+    },
+    "m2:64": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "metin harç ve masrafların sorumluluğuna dair bilgi içermiyor"
+    },
+    "m2:65": {
+      "gecerli": false,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, belirli süreli kira sözleşmesinin sürenin bitiminde kendiliğinden sona erdiğini ve yenilenen sözleşmelerin feshi için bildirim gerektiğini belirtmektedir."
+    },
+    "m2:66": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, bir suçtan dolayı ceza alacak kişi açısından hangi unsurların dikkate alınacağını belirtmiyor."
+    },
+    "m2:67": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin tutukluluğun devamı veya serbest bırakılması hakkında doğrudan bilgi vermiyor."
+    },
+    "m2:68": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, 634 Sayılı Kanun'un yürürlüğe girmesinden önceki davaların sonuçlandırılmasına dair bilgi içermiyor."
+    },
+    "m2:69": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin rekabet yasağının sona ermesi için işverenin zararı olmaması gerekip gerekmediğini açıklamıyor."
+    },
+    "m2b:0": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, mahkeme kararının lehe sonuçlanması durumunda ne olacağına dair bilgi vermiyor."
+    },
+    "m2b:1": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, ilk derece mahkemesinin beraat kararının temyiz edilip edilemeyeceği konusunda doğrudan bir bilgi sağlamıyor."
+    },
+    "m2b:2": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, müdafinin dosya inceleme yetkisinin kısıtlanabileceği suçları belirtmiyor."
+    },
+    "m2b:3": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, karşı tarafın yanılmayı bilmesi durumunda tazminat alınıp alınamayacağını doğrudan cevaplamıyor."
+    },
+    "m2b:4": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin el konulan gönderilerin akıbeti hakkında bilgi vermiyor."
+    },
+    "m2b:5": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin çocukları fuhşa teşvik eden kişilere verilecek cezayı içermiyor."
+    },
+    "m2b:6": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak ihbar sonrası süreç hakkında bilgi vermiyor"
+    },
+    "m2b:7": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, mahkeme kararı kesinleşmeden çalışmama durumunda ücret alınıp alınamayacağına dair bilgi içermiyor."
+    },
+    "m2b:8": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin evlât edinme şartlarını açıkça belirtmiyor"
+    },
+    "m2b:9": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin zamanaşımına uğramış bir alacakla takas yapılabilir mi sorusunu cevaplamıyor."
+    },
+    "m2b:10": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin tedbir kararının tebliğ edilmemesinin bir sorun olup olmadığını doğrudan cevaplamıyor."
+    },
+    "m2b:11": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin ruhsatsız inşaata elektrik bağlatmanın cezasını içermiyor."
+    },
+    "m2b:12": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, 50'den az işçi çalıştıran bir tarım işyerinde İş Kanunu'nun geçerli olup olmadığını doğrudan cevaplamıyor."
+    },
+    "m2b:13": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, engelli birini evlât edinmek için ne kadar süre bakılması gerektiği hakkında bilgi vermiyor."
+    },
+    "m2b:14": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak işverene başvurmamanın sonuçlarını açıklamıyor"
+    },
+    "m2b:15": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin vesayet altındaki kişinin menfaatinin nasıl belirleneceğini açıklamıyor."
+    },
+    "m2b:16": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, hakem kararında karşı oy yazısının yer alıp almayacağına dair bilgi içermiyor."
+    },
+    "m2b:17": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin işverenin işçiyi yanıltması durumunda işçinin ne yapabileceğini doğrudan cevaplamıyor."
+    },
+    "m2b:18": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, zorla fuhşa sevketmenin insanlığa karşı suç olup olmadığını belirtmiyor."
+    },
+    "m2b:19": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin promosyon uygulamalarında hangi tür mal veya hizmet verilebileceğini belirtmiyor."
+    },
+    "m2b:20": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin çalışılmayan günler dışında tatil günleri olup olmadığını doğrudan cevaplamıyor."
+    },
+    "m2b:21": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, sözleşmede bir para birimi belirtilmesi durumunda ne olacağına dair bilgi içermiyor."
+    },
+    "m2b:22": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin gayrimenkul yönetimi kurallarını içermiyor"
+    },
+    "m2b:23": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, ilk toplantıda yeter sayı sağlanamazsa ne olacağı hakkında bilgi vermiyor."
+    },
+    "m2b:24": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin şiddet içeren müstehcen içerikle ilgili cezaları belirtmiyor."
+    },
+    "m2b:25": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin kira bedelinin nasıl belirleneceğini açıklamıyor."
+    },
+    "m2b:26": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin borcun bir kısmına itiraz ederken ne yapılması gerektiğini açıkça belirtmiyor."
+    },
+    "m2b:27": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin mahkemenin hangi kurallara göre karar verdiğini açıklamıyor."
+    },
+    "m2b:28": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, eklentilerin ayıplı olması durumunda ana ürün için geri dönüş yapılıp yapılamayacağını doğrudan cevaplamıyor."
+    },
+    "m2b:29": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin cayma hakkını tanımlamıyor"
+    },
+    "m2b:30": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin takas işlemi sırasında alacakların türü hakkında bilgi vermiyor."
+    },
+    "m2b:31": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin 'toplu yapı'nın tanımını vermiyor."
+    },
+    "m2b:32": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin duruşmaya katılmamanın sonuçlarını açıklamıyor."
+    },
+    "m2b:33": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin başvurunun kabul edilmesi durumunda ne olacağına dair bilgi içermiyor."
+    },
+    "m2b:34": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, Cumhuriyet savcılarının doğrudan soruşturma yapma durumlarını açıkça belirtmiyor."
+    },
+    "m2b:35": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin nafaka davalarının hangi yargılama usulüne tabi olduğunu belirtmiyor."
+    },
+    "m2b:36": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak, kat mülkiyetine geçiş sürecindeki kuralları tam olarak açıklamıyor"
+    },
+    "m2b:37": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, aile meclisinin vesayet altındaki kişi için zorunlu olup olmadığını belirtmiyor."
+    },
+    "m2b:38": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, kamu kurumu zarar görmediğinde ihaleye fesat karıştıran kişinin alacağı cezayı belirtmiyor."
+    },
+    "m2b:39": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin vasiliğe atanma kararı kesinleşince ne yapılması gerektiğini açıklamıyor."
+    },
+    "m2b:40": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin ruhsatsız bina yapmanın cezasını içermiyor."
+    },
+    "m2b:41": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, ilamların icrasının zorla yapılacağı durumları açıkça belirtmiyor."
+    },
+    "m2b:42": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, ürünün elden alınması durumunda geri alınıp alınamayacağına dair doğrudan bir cevap içermiyor."
+    },
+    "m2b:43": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, suçun nitelendirilmesi nedeniyle iddianamenin iadesi hakkında bilgi içermiyor."
+    },
+    "m2b:44": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin derneklerin zorunlu organları dışında oluşturdukları organların niteliklerine dair bilgi içermiyor."
+    },
+    "m2b:45": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, tüketici davalarında mahkeme kararlarının nasıl yayınlandığına dair bilgi içermiyor."
+    },
+    "m2b:46": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, kat mülkiyetine geçişte yönetim planı yapılmasının zorunlu olup olmadığını belirtmiyor."
+    },
+    "m2b:47": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, örgüt kapsamında organ almanın cezasını belirtmiyor."
+    },
+    "m2b:48": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin konut finansmanı kuruluşunun sorumluluğunun süresi hakkında bilgi vermiyor."
+    },
+    "m2b:49": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin abonelik sonlandırma bedelleri hakkında bilgi vermiyor"
+    },
+    "m2b:50": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin işverenin işçiye yaptığı harcamaları nasıl ödemesi gerektiğini doğrudan açıklamıyor."
+    },
+    "m2b:51": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin birden fazla kişiye zarar verme durumunda uygulanacak cezayı belirtmiyor."
+    },
+    "m2b:52": {
+      "gecerli": false,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak, tutuklama kararının nasıl verileceğini açıklamaktadır."
+    },
+    "m2b:53": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin zincirleme suçlarda yetkili mahkemeyi belirtmiyor."
+    },
+    "m2b:54": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin işten ayrılıp tekrar işe dönme durumunu ve şartlarını ele almıyor."
+    },
+    "m2b:55": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin icra memurunun borçluya ödeme emri gönderme zamanını açıklamıyor."
+    },
+    "m2b:56": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin sigorta bedelinin bireysel olarak yaptırılması durumunu açıklamıyor."
+    },
+    "m2b:57": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Metin, kolluk güçlerinin eğitimleri hakkında bilgi vermiyor."
+    },
+    "m2b:58": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin silah bulundurmanın sonuçları hakkında bilgi vermiyor."
+    },
+    "m2b:59": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak, garanti belgesi ile hangi malların satılması gerektiğini belirtmiyor."
+    },
+    "m2b:60": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin istinaf başvurusu için gerekli belgeleri belirtmiyor."
+    },
+    "m2b:61": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, soruşturma yapılmasına yer olmadığına dair karara itiraz edilip edilemeyeceği hakkında bilgi içermiyor."
+    },
+    "m2b:62": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin ortak giderlerin ödenmemesi durumunu ele almıyor"
+    },
+    "m2b:63": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin emziren kadın işçilerin süt vermesi için süre olup olmadığını belirtmiyor."
+    },
+    "m2b:64": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin temyiz dilekçesinin nasıl yapılacağını açıklamıyor."
+    },
+    "m2b:65": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, hükmün hangi durumlarda kesin hüküm sayılacağını açıkça belirtmiyor."
+    },
+    "m2b:66": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak, tüketici hakem heyetinin oluşamaması durumunda ne olacağını belirtmiyor."
+    },
+    "m2b:67": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metinler tüketici hakem heyetinin başkanının kim olduğunu belirtmiyor."
+    },
+    "m2b:68": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin taşınmaz malların haczi hakkında bilgi vermiyor."
+    },
+    "m2b:69": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin alkol bağımlılığı nedeniyle kısıtlanma konusunu ele almıyor."
+    },
+    "m2b:70": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin borçlu olan eşin mal varlığına ulaşma konusunu ele almıyor."
+    },
+    "m2b:71": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, taraf değişikliği için hâkimin neye bakacağına dair bilgi içermiyor."
+    },
+    "m2b:72": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak engelli işçi çalıştırılma oranı hesaplamasını içermiyor"
+    },
+    "m2b:73": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin zorlama hapsinin süresinin nasıl belirlendiğini açıklamıyor."
+    },
+    "m2b:74": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "kaynak metin konutta hacizle ilgili özel bir durumu açıklamıyor"
+    },
+    "m2b:75": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, mahkemenin davayı ne zaman sona erdireceğini açıkça belirtmiyor."
+    },
+    "m2b:76": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, borçlu ile başka birinin aynı taşınır malı elinde bulundurmaları durumunda kimin mal sahibi sayılacağına dair doğrudan bir cevap içermiyor."
+    },
+    "m2b:77": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin, vücuda cisim sokularak yapılan cinsel saldırının cezasını belirtmiyor."
+    },
+    "m2b:78": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin borçlunun taşınır mallarının neden haczedilebileceğini açıklamıyor."
+    },
+    "m2b:79": {
+      "gecerli": true,
+      "kaynak": "gpt-4o",
+      "reason": "Kaynak metin mağdurun on iki yaşından küçük olması durumunda uygulanacak cezayı belirtmiyor."
+    },
+    "m3:0": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:1": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:2": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:3": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:4": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:5": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:6": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:7": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:8": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:9": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:10": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:11": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:12": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:13": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:14": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:15": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:16": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:17": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:18": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:19": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:20": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:21": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:22": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:23": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:24": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:25": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:26": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:27": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:28": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:29": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:30": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:31": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:32": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:33": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:34": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:35": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:36": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:37": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:38": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:39": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:40": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:41": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:42": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:43": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:44": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:45": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:46": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:47": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:48": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:49": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:50": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:51": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:52": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:53": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:54": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:55": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:56": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:57": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:58": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:59": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:60": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:61": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:62": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:63": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:64": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:65": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:66": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:67": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:68": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:69": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:70": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:71": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:72": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:73": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:74": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:75": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:76": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:77": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:78": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    },
+    "m3:79": {
+      "gecerli": true,
+      "kaynak": "TANIM",
+      "reason": "bağlam boş — kaynak metni yok (ADR-0048 m.2)"
+    }
+  }
+}

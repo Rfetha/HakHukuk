@@ -1,0 +1,21 @@
+{
+  "label": "m5_google_gemini-3_5-flash-lite_m5",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "runs": 1,
+  "total_claims": 424,
+  "faithfulness_micro": 0.7146,
+  "hallucination_micro": 0.2854,
+  "unsupported_micro": 0.283,
+  "cit_precision_micro": 0.7312,
+  "wrong_ref_rate_micro": 0.2366,
+  "cit_recall_macro": 0.85,
+  "faithfulness_macro": 0.7013,
+  "judge_cost_usd": 0.0475,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

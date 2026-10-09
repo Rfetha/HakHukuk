@@ -1,0 +1,68 @@
+{
+  "kosu": "G1 düzeltme — eşleştirilmiş alt küme A1, hakem yığını EŞİTLENMİŞ hâlde",
+  "tarih": "2026-08-06",
+  "gorev": ".superpowers/sdd/gorev-1-brief.md + denetim kalemleri K2·K3·Ö1·Ö2·Ö3·Ö4",
+  "rapor": ".superpowers/sdd/gorev-1-report.md",
+  "alet": "scripts/eslesmis_a1.py @ 9b9be30",
+  "neden": "Üç kıyastan ikisi ADR-0029 sınırını geçiyordu: base/FL kolları openai-doğrudan yığınında, tgta_v1 kolu openrouter yığınında puanlanmıştı. base/FL M1 koşuları GÜNCEL yığınla yeniden puanlandı (_or soneki); eski gnd dosyalarına DOKUNULMADI.",
+  "hakem": {
+    "model": "openai/gpt-4o-mini",
+    "gateway": "openrouter",
+    "provider_pin": "LLM_PROVIDER_ORDER=OpenAI",
+    "judge_providers_gorulen": [
+      "OpenAI"
+    ],
+    "runs": 1,
+    "gnd_mode": "data"
+  },
+  "yeniden_puanlanan": [
+    {
+      "etiket": "m1_base_th_or",
+      "girdi": "outputs/eval/cp09-butceli-1024-512/m1_base_th_detail.jsonl",
+      "n": 80,
+      "maliyet_usd": 0.0374
+    },
+    {
+      "etiket": "m1_gem_th_or",
+      "girdi": "outputs/eval/cp09-butceli-1024-512/m1_gem_th_detail.jsonl",
+      "n": 80,
+      "maliyet_usd": 0.0371
+    }
+  ],
+  "yeniden_puanlanmayan": {
+    "etiket": "m1_tg_ta_ham_th",
+    "dosya": "outputs/eval/cp3-supurme-ham/gnd_m1_tg_ta_ham_th.jsonl",
+    "gerekce": "zaten GÜNCEL yığında (openrouter + OpenAI pinli, 2026-08-03) — rejim dışı kalan cp09 kollarıydı"
+  },
+  "degismezler": {
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "dusunce_butcesi_token": 1024,
+    "cevap_butcesi_token": 512,
+    "havuz": "DEV (data/eval/dev/) — data/eval/canon/ DONDURULMUŞ, açılmadı",
+    "mode": "distractor (M1) — KAYITTAN okundu, --mode verilmedi (ADR-0044)"
+  },
+  "uretilen": {
+    "guncel_yigin": [
+      "base_vs_tgta.json",
+      "fl_vs_tgta.json",
+      "base_vs_fl.json",
+      "uc_kol_tek_payda.json"
+    ],
+    "eski_yigin_arsiv": [
+      "base_vs_tgta_openai_dogrudan.json",
+      "fl_vs_tgta_openai_dogrudan.json",
+      "base_vs_fl_openai_dogrudan.json"
+    ]
+  },
+  "butce": {
+    "cuzdan": "A (hakem)",
+    "harcanan_usd": 0.0745,
+    "tahmin_usd": 0.08,
+    "tavan_usd": 10
+  },
+  "kapatilamayan": "gateway ↔ hakem-istemi sürüm etkisi AYRIŞTIRILAMADI: izolasyon koşusu (openai-doğrudan + güncel kod) denendi, OpenAI hesabında kredi yok (429 insufficient_quota). Eski yığın artık ERİŞİLEMEZ.",
+  "log": "kosu.log (repo geneli .gitignore:147 '*.log' gereği izlenmiyor)",
+  "git_sha": "9b9be30",
+  "yazildi": "2026-08-06T15:58:35"
+}

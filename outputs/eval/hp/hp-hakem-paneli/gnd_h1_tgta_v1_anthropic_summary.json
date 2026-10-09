@@ -1,0 +1,21 @@
+{
+  "label": "h1_tgta_v1_anthropic",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "anthropic/claude-sonnet-5",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "Anthropic"
+  ],
+  "runs": 1,
+  "total_claims": 341,
+  "faithfulness_micro": 0.7302,
+  "hallucination_micro": 0.2698,
+  "unsupported_micro": 0.2698,
+  "cit_precision_micro": 0.6458,
+  "wrong_ref_rate_micro": 0.0833,
+  "cit_recall_macro": 0.7125,
+  "faithfulness_macro": 0.7306,
+  "judge_cost_usd": 1.8604,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

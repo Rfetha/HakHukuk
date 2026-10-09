@@ -1,0 +1,15 @@
+{
+  "label": "m3_gem_th",
+  "n": 80,
+  "judge_model": "gpt-4o-mini",
+  "judge_gateway": "openai",
+  "judge_providers": [],
+  "valid_traps": 56,
+  "invalid_traps": 24,
+  "rejection_rate": 1.0,
+  "rejection_exact": 1.0,
+  "fabrication_rate": 0.0,
+  "parametric_leak": 0.0,
+  "judge_cost_usd": 0.0113,
+  "note": "RGB negative-rejection. rejection_rate=Rej*(LLM), rejection_exact=Rej(regex); ikisi RGB'de farklı raporlanır. ↑ iyi (tavan yok). invalid=kaynak cevaplıyor→tuzak geçersiz."
+}

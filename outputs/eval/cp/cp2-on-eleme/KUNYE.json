@@ -1,0 +1,109 @@
+{
+  "kosu": "CP2-a — ön-eleme UYUM KAPISI + hakem tie-break (ADR-0046 m.3)",
+  "tarih": "2026-07-30",
+  "sprint": "sprint2.md CP2-a",
+  "karar_belgeleri": [
+    "ADR-0046 m.3 (uyum kapısı — bu koşu onun uygulanmasıdır)",
+    "ADR-0047 (hedef 750 · Modal)",
+    "→ SONUCU: ADR-0048 (cevaba kör tuzak geçerliliği · ön-eleme koşulmaz)"
+  ],
+  "kayit": "docs/record/research_log/2026-07-30-cp2a-hakem-capalanmasi.md (#45)",
+  "durum": "🔴 KAPI, ÖLÇMEK İÇİN KURULDUĞU ŞEYDEN BAŞKASINI BULDU. Ön-eleme KOŞULMADI ve koşulmayacak (net zararlı). ADR-0046'nın premisi (%42 geçersiz tuzak) çürüdü. Ve asıl bulgu: `valid_trap` kalemin değil ÖZNENİN özelliği olmuş.",
+
+  "⚠️_kayit_notu": "Bu dosya 2026-07-30'da ana oturum tarafından ÜZERİNE YAZILDI (00:28). Ölçüm çıktıları (dogrulama_m2* · tiebreak_gpt4o_m2* · abst_tiebreak_cevapli_m2*, 22:40-22:46) etkilenmedi ve #45'in tüm sayıları onlardan doğrulanabilir. Kaybedilen tek şey önceki KUNYE metninin çerçevelemesiydi; içerik #45'ten geri birleştirildi. Dosya hiç commit edilmemişti — git'ten dönmedi.",
+
+  "soru": "Cevabı GÖRMEYEN ön-eleme hakemi ile cevabı GÖREN denetim hakemi `source_answers` ekseninde aynı şeyi mi söylüyor? Ayrışırlarsa havuz bir ölçütle elenip sonuç başkasıyla raporlanır (yurutme-tuzaklari 4.7'nin bir katman yukarısı).",
+
+  "protokol": {
+    "uretim": "YOK — hiçbir hedef model çağrılmadı; girdi CP2 pilotunun 36 kabul edilmiş adayı",
+    "tasarim": "2×2 tek değişkenli: {gpt-4o-mini, gpt-4o} × {cevap gizli, cevap görünür}",
+    "cevap_gizli_yol": "scripts/cp2_prefilter.py --against — girdi (soru, trap_text[:900])",
+    "cevap_gorunur_yol": "scripts/score_abstention.py --judge-model — girdi (soru, referans, cevap)",
+    "semantik_kilit": "geçerlilik sorusu score_abstention.JUDGE_SYSTEM'den IMPORT edildi, kopyalanmadı",
+    "gateway": "openai (pinli)", "temperature": 0, "seed": 3407, "trap_clip": 900, "n": 36
+  },
+
+  "1_kapi_sonucu": {
+    "uyum": 0.778, "kappa": 0.505,
+    "ikisi_de_gecerli_TP": 21, "ikisi_de_gecersiz_TN": 7,
+    "on_eleme_kacirdi_FP": 8, "on_eleme_gecerliyi_kesti_FN": 0,
+    "okuma": "FN=0 → ZAYIF referansa göre 'bedeli sıfır'. Ama 15 geçersizin yalnız 7'sini yakalıyor.",
+    "duzeltme": "#44'ün '%42 kalkar → verim %8,6' tahmini YÜKSEKTİ. Ölçülen: havuzun %19,4'ü elenir, verim %5,0 → %6,2."
+  },
+
+  "2_hakemin_kendi_gerekcesiyle_celismesi": {
+    "ayrisan_8_vakanin_3u": [13937, 16456, 5129],
+    "ornek": "id=13937 · ön-eleme: 'Kaynak metin mirasçı olamayan kimler olduğunu belirtmiyor' → geçerli · denetim: 'Verilen kaynakta ... belirtilmemiştir' → etiket GEÇERSİZ. Aynı cümle, zıt etiket."
+  },
+
+  "3_capalanma_2x2_gecerli_tuzak_orani": {
+    "gpt-4o-mini · cevap GİZLİ": 0.806,
+    "gpt-4o-mini · cevap GÖRÜNÜR": 0.583,
+    "gpt-4o · cevap GİZLİ": 0.917,
+    "gpt-4o · cevap GÖRÜNÜR": 0.833,
+    "kayma": "mini −22,3 puan · gpt-4o −8,4 puan",
+    "gpt4o_kip_kararliligi": "36 kalemin 31'inde (%86,1) aynı karar",
+    "kappa_gpt4o_gizli_vs_mini_gorunur": 0.097,
+    "okuma": "Çapalanma gerçek ama BÜYÜK ÖLÇÜDE mini'ye özgü bir zayıflık. Bu ayrışmada zayıf halka ön-eleme değil, REFERANSIN KENDİSİ."
+  },
+
+  "4_on_eleme_guclu_referansta_NET_ZARARLI": {
+    "kesilen_kalem": 7,
+    "referans_gpt4o_gizli": {"isabet": 0.14, "bosa_atilan_gecerli_tuzak": 6},
+    "referans_gpt4o_cevapli": {"isabet": 0.57, "bosa_atilan_gecerli_tuzak": 3},
+    "hukum": "Her iki referansta filtre, eleyeceği geçersizden DAHA FAZLA geçerli tuzak atıyor. Havuz da korkulandan temiz: geçersiz %42 değil %8,3-16,7.",
+    "karar": "ÜRETİM ÖN-ELEMESİ KOŞULMUYOR — ADR-0046 m.2 SÜPERSED (ADR-0048 m.4)"
+  },
+
+  "5_⭐_ASIL_BULGU_valid_trap_ozneye_bagli": {
+    "ic_kontrol": "outputs/eval/cp09-butceli-1024-512/ · M3 · üç özne · id kümeleri BİREBİR AYNI (doğrulandı)",
+    "valid_trap": {"abst_m3_base_th": "54/80", "abst_m3_gem_th": "56/80", "abst_m3_tg_v1_th": "39/80"},
+    "ozneye_gore_degisen_kalem": 19,
+    "tanimsal_kanit": "gen_eval_grounded.py:473-476 — M3'te sources_block='(İlgili kaynak bulunamadı.)', kaynak metni YOK → valid_trap 80/80 olmalıydı. Ölçülen 54/56/39: sadece gürültülü değil, TANIMSAL OLARAK YANLIŞ.",
+    "etiket_gerekce_celiskisi": "cp09 çekinme koşularında valid_trap=False etiketli 172 kalemin 37'sinde (%22) gerekçe 'kaynak bu bilgiyi vermiyor' diyor",
+    "sapmanin_yonu": {
+      "m2b": "gem +0,150 vs τ_g +0,082 → gem↔τ_g açığı 0,325 iken 0,393 raporlanmış: ALEYHİMİZE 7 puan",
+      "m3": "τ_g +0,123 vs base/gem +0,000 → açık 0,200 iken 0,077 raporlanmış: LEHİMİZE 12 puan",
+      "hukum": "Tek yönlü bias değil, YÖN DEĞİŞTİREN gürültü — ön-kayıtlı karar kuralı için en kötüsü"
+    },
+    "etkilenen_kayitlar": "22 çekinme koşusunun 21'i (sprint1-thinking-off/ · cp09-butceli-1024-512/ · cp09-ab-ayrimi/ · cp2-rejected-hasat/)",
+    "dogrudan_duzelen": "M3 doğru payda 80/80 → base 1,000 · gem 1,000 · τ_g 0,800. #43'te τ_g için 0,923 yazılmıştı → çelişki #43 ve #45'te işaretlendi.",
+    "esikler": "ADR-0040 🟡 hükmü kontrol edildi: filtresiz M2 base 0,786 ≥ 0,78 → hüküm DEĞİŞMİYOR. ARA KAPI/Kapı 5 eşiklerine dokunulmadı."
+  },
+
+  "6_iki_eksen_ayriliyor": {
+    "source_answers": {"mini_vs_4o_uyum": 0.750, "kappa_araligi": "0,097 – 0,505", "hukum": "🔴 GÜVENİLMEZ"},
+    "verdict_ABSTAIN_vs_FABRICATE": {
+      "mini_vs_4o_uyum": 0.857,
+      "ayrisan": ["4396 (mini FABRICATE / 4o ABSTAIN)", "7605 (mini ABSTAIN / 4o FABRICATE)", "16709 (mini FABRICATE / 4o ABSTAIN)"],
+      "hukum": "🟢 GÜVENİLİR — ADR-0046 m.1'in (kabul ölçütü hakeme) dayandığı eksen budur ve sağlam"
+    }
+  },
+
+  "7_gercek_verim": {
+    "gpt-4o-mini": "6/36 kabul → 120 üretimde %5,0",
+    "gpt-4o": "12/36 kabul → 120 üretimde %10,0",
+    "sonuc": "Verim İKİ KAT. mini, geçerli tuzakları geçersiz sayarak gerçek fabrikasyonların yarısını çöpe atıyordu.",
+    "adr_0047_yeniden_hesap": {
+      "uretim_750_hedef": "750 ÷ %10,0 = 7.500 (8.721 değil)",
+      "tek_akis": "23,2 sa",
+      "modal_np32_10_20x": "~1,2-2,3 sa — ADR-0047'nin ~1,4 sa tahmini AYAKTA, başka sebeple",
+      "on_eleme_maliyeti": "$0",
+      "kosullu_geri_alma": "TETİKLENMEDİ — havuz 19.284 kalem ≫ 7.500"
+    }
+  },
+
+  "maliyet": {
+    "gpu_usd": 0.0,
+    "hakem_usd": 0.121,
+    "dokum": {"on_eleme_mini": 0.003, "tiebreak_gpt4o_gizli": 0.0494, "tiebreak_gpt4o_cevapli": 0.069}
+  },
+
+  "kapinin_esigi_serhi": "⚠️ ADR-0046 m.3 uyum kapısını yazarken SAYISAL EŞİK ÖN-KAYITLANMADI — eksiklik, öyle raporlanıyor. Kapının hükmü eşikten değil ölçümün YÖNÜNDEN geldi: hakemler %58,3 ile %91,7 arasında dağıldı, yani ön-elemenin dayandığı büyüklük güvenilir biçimde ölçülebilir bir büyüklük değil.",
+
+  "acik_kalemler": [
+    "⏳ Kabul hakemi seçimi: saf gpt-4o (~$4,3) / saf mini (~$0,26, verim yarıya iner) / HİBRİT (~$2,0: kabul=verdict mini, geçerlilik nihai kümede bir kez gpt-4o, ham ~900 → temiz ~750). İnsan onayı bekliyor, kendi ADR'sini alacak.",
+    "⏳ 21 çekinme koşusu cevaba-kör paydayla yeniden puanlanacak (girdi diskte, para yükü yok)",
+    "⏳ M2b'nin metrik olarak sağlamlığı — bu bulgu onu daha acil kıldı: M2b'nin paydası da özneye bağlıydı"
+  ]
+}

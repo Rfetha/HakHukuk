@@ -1,0 +1,25 @@
+{
+  "abstain_pairs": 726,
+  "grounding_replay": 145,
+  "total": 871,
+  "train": 845,
+  "validation": 26,
+  "replay_frac_eff": 0.2,
+  "interleave_step": 6,
+  "skipped": {
+    "abstained_no_contrast": 0,
+    "dev_excluded": 2,
+    "no_chosen": 0
+  },
+  "abstain_mod_karisimi": {
+    "m2": 538,
+    "m2b": 188
+  },
+  "hasat_kaynak_karisimi": {
+    "cp2c": 3,
+    "cp2c-64": 357,
+    "cp2c-ek1": 366
+  },
+  "hi_overlap_provisional": 0,
+  "note": "hi_overlap fabrikasyonlar DAHİL (ADIM 4 judge τ'sü RAFİNE edecek). is_pref=1 abstain, 0 grounding."
+}

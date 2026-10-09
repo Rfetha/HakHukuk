@@ -1,0 +1,21 @@
+{
+  "yontem": "BAAI_bge-m3_kanunkapsam",
+  "n": 80,
+  "korpus": 40496,
+  "cihaz": "cuda",
+  "recall": {
+    "recall@1": 0.6,
+    "recall@5": 0.8875,
+    "recall@10": 0.9375,
+    "recall@20": 0.9625
+  },
+  "kanun_recall": {
+    "kanun_recall@1": 1.0,
+    "kanun_recall@5": 1.0,
+    "kanun_recall@10": 1.0,
+    "kanun_recall@20": 1.0
+  },
+  "hic_bulunmayan": 3,
+  "gecen_sure_s": 630.0,
+  "esik_karari": "PLAN AYNEN"
+}

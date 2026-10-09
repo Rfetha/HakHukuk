@@ -1,0 +1,252 @@
+[
+  {
+    "id": 11660,
+    "soru": "Toplantı ertelenirse ne olur?",
+    "cevap": "Verilen kaynaklarda toplantı ertelenmesi durumunda neyin yapılacağına dair düzenleme aşağıda belirtilmiştir:\n\n**KAYNAK 3, TÜRK MEDENİ KANUNU Madde 78**\n\nÇoğunlu",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta toplantı ertelenmesi durumunda ne olacağına dair net bir düzenleme yok."
+  },
+  {
+    "id": 1053,
+    "soru": "Davada üçüncü kişi olarak nasıl müdahale edebilirim?",
+    "cevap": "Davada üçüncü kişi olarak müdahale etmek için aşağıdaki adımları izlemeniz gerekmektedir:\n\n1.  **Müdahale Sebebi ve Dayanakları:** Müdahale talebinde bulunan üç",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metinlerden alıntılar yaparak soruya net bir cevap vermiştir."
+  },
+  {
+    "id": 1827,
+    "soru": "Bir kişinin aleyhine olan belgeler başkaları için de geçerli mi?",
+    "cevap": "Verilen kaynaklarda bu konuyu düzenleyen madde bulunuyor.\n\n**KAYNAK 1**\nHUKUK MUHAKEMELERİ KANUNU MADDE 214\n(1) Belgenin sahte olmadığına dair hukuk mahkemesinc",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta belgelerin başkaları için geçerliliği hakkında net bir bilgi yok."
+  },
+  {
+    "id": 13937,
+    "soru": "Mirasçı olamayan kimlerdir?",
+    "cevap": "Verilen kaynaklarda mirasçı olamayan kimseler ile ilgili düzenleme **TÜRK MEDENİ KANUNU Madde 578**'de yer almaktadır.\n\nBu maddeye göre aşağıdaki kimseler miras",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta yer alan bilgiyi doğru bir şekilde aktarmış ve detaylandırmıştır."
+  },
+  {
+    "id": 15055,
+    "soru": "İntifa hakkı ne zaman sona erer?",
+    "cevap": "İntifa hakkının sona erme sebepleri ve zamanı aşağıdaki kaynağa göre belirlenir:\n\nİntifa hakkı, konusunun tamamen yok olması ve taşınmazlarda tescilin terkini; ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta intifa hakkının sona erme sebepleri belirtilmiş ancak zamanla ilgili net bir bilgi yok."
+  },
+  {
+    "id": 16047,
+    "soru": "Ortak yerler kat mülkiyetinde nasıl değerlendirilir?",
+    "cevap": "Verilen kaynaklarda ortak yerlerin kat mülkiyetindeki yeri ve kapsamı aşağıdaki maddelerde belirtilmiştir:\n\n**KAYNAK 3 (Kat Mülkiyeti Kanunu Madde 2)**\nOrtak ye",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta ortak yerlerin tanımı ve kapsamı açıkça belirtilmiştir."
+  },
+  {
+    "id": 7091,
+    "soru": "Bilirkişilik görevi kime verilebilir?",
+    "cevap": "Bilirkişilik görevi, bölge adliye mahkemelerinin yargı çevreleri esas alınmak suretiyle bilirkişilik bölge kurulu tarafından hazırlanan listede yer alan kişiler",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bilirkişilik görevinin kime verileceği konusunda yeterli bilgi bulunmamaktadır."
+  },
+  {
+    "id": 14742,
+    "soru": "Komşumun yaptığı inşaat benim toprağımı sarsarsa ne olur?",
+    "cevap": "Verilen kaynaklarda, komşunuzun inşaatı nedeniyle toprağınızı sarsması durumunda doğan durum için düzenleyici madde **KAYNAK 4, Madde 737**'de yer almaktadır.\n\n",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta yer alan maddeyi doğru bir şekilde atıf yaparak soruyu yanıtlamaktadır."
+  },
+  {
+    "id": 4235,
+    "soru": "İşletmelerin birleşmesi durumunda borçlar nasıl etkilenir?",
+    "cevap": "İşletmelerin birleşmesi durumunda borçların etkilenmesi, **TÜRK BORÇLAR KANUNU MADDE 203**'te düzenlenmiştir.\n\nİşletmelerin birleşmesi (aktif ve pasiflerin karş",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, işletmelerin birleşmesi durumunda borçların etkilenmesi hakkında bilgi vermektedir."
+  },
+  {
+    "id": 1909,
+    "soru": "Yemin teklifinde bulunulabilecek durumda neler var?",
+    "cevap": "Verilen kaynaklarda yemin teklifinde bulunulabilecek durumlar ve hükümler aşağıdaki maddelerde düzenlenmiştir:\n\n**HUKUK MUHAKEMELERİ KANUNU MADDE 228**\nYemin te",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta yemin teklifinde bulunulabilecek durumlar açıkça belirtilmemiştir."
+  },
+  {
+    "id": 12382,
+    "soru": "Mal rejimi sona erdiğinde eşimin katkısı için ne talep edebilirim?",
+    "cevap": "Verilen kaynaklarda, mal rejiminin sona ermesi durumunda eşin katkısı veya payı ile ilgili talep hakkı **TÜRK MEDENİ KANUNU Madde 248** ve **TÜRK MEDENİ KANUNU ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metinlerdeki bilgileri kullanarak soruya net bir cevap vermiştir."
+  },
+  {
+    "id": 15128,
+    "soru": "İntifa hakkı sahibi hangi masrafları üstlenmek zorunda?",
+    "cevap": "Verilen kaynaklara göre, intifa hakkı sahibi aşağıdaki masrafları ve yükümlülükleri üstlenmek zorundadır:\n\n1.  **Borçların faizlerini ödemekle yükümlüdür:** Mal",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metinlerde belirtilen yükümlülükleri doğru bir şekilde özetlemiş ancak bakım ve işletme giderleri ile ilgili net bir bilgi verilmemiştir."
+  },
+  {
+    "id": 5793,
+    "soru": "Eğer yüklenici işini tamamlayamazsa hangi giderleri talep edebilir?",
+    "cevap": "Verilen kaynaklarda yüklenici işini tamamlayamazsa talep edebileceği giderler ile ilgili düzenleme aşağıdaki maddelerde yer almaktadır:\n\n**TÜRK BORÇLAR KANUNU M",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metinlerdeki bilgileri kullanarak yüklenicinin talep edebileceği giderleri açıklamaktadır."
+  },
+  {
+    "id": 11379,
+    "soru": "Bir işçinin başka bir işverene devredilmesi mümkün mü?",
+    "cevap": "Verilen kaynaklarda, bir işçinin başka bir işverene devredilmesi konusunu düzenleyen maddeler bulunmaktadır.\n\nİş Kanunu Madde 6'ya göre, işyeri veya işyerinin b",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metinlerdeki bilgileri kullanarak işçinin başka bir işverene devredilmesi konusunu net bir şekilde açıklamıştır."
+  },
+  {
+    "id": 2031,
+    "soru": "Tanık olarak ifade vermekten çekinmem için ne tür durumlar geçerli?",
+    "cevap": "Verilen kaynaklarda, tanık olarak ifade vermekten **çekinmemek** (yani çekinme hakkının kullanılmaması veya çekinme sebeplerinin bulunmaması) için geçerli durum",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, soruya yanıt vermek yerine tanıklıktan çekinmeme durumlarını açıklamış ve kaynakta olmayan bilgi eklemiştir."
+  },
+  {
+    "id": 3750,
+    "soru": "Alacaklının giderim isteme hakkı var mı?",
+    "cevap": "Verilen kaynaklarda, borç ifa edilmemesi durumunda alacaklının zararını giderme hakkı (giderim borcu) düzenlenmektedir.\n\n**KAYNAK 2 (TÜRK BORÇLAR KANUNU MADDE 1",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metinlerde alacaklının zararını giderme hakkını net bir şekilde ifade ederek soruyu cevaplamaktadır."
+  },
+  {
+    "id": 15959,
+    "soru": "Tescil işlemi için ne gerekiyor?",
+    "cevap": "Tescil işlemi için aşağıdaki şartlar aranır:\n\n1.  Tescil, tasarrufa konu olan taşınmaz malikinin yazılı beyanı üzerine yapılır. Edinen kimse, kanun hükmüne, kes",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta tescil işlemi için gereken belgeler ve şartlar açıkça belirtilmiştir."
+  },
+  {
+    "id": 3400,
+    "soru": "Bir işlemde temsilci yetkisi sona ermişse ne olur?",
+    "cevap": "Verilen kaynaklarda temsilci yetkisinin sona ermesi ve bunun sonuçları aşağıdaki maddelerde düzenlenmiştir:\n\n**KAYNAK 4 (TÜRK BORÇLAR KANUNU MADDE 43)**\nYetki s",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta temsilci yetkisinin sona ermesi durumunda ne olacağına dair net bir bilgi yok."
+  },
+  {
+    "id": 10092,
+    "soru": "Zimmet suçunu işleyen bir kamu görevlisi, pişmanlık gösterirse ceza indirilir mi",
+    "cevap": "Evet, pişmanlık gösterilirse ceza indirilir.\n\nVerilen kaynaklarda bu konuyu düzenleyen madde **KAYNAK 4**'tür.\n\n**TÜRK CEZA KANUNU Madde 248 (3)** numaralı fıkr",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta yer alan etkin pişmanlık düzenlemesini doğru bir şekilde aktarmış ve ceza indirimine dair net bir cevap vermiştir."
+  },
+  {
+    "id": 1200,
+    "soru": "Eski hâle getirme talebini nasıl yapabilirim?",
+    "cevap": "Verilen kaynaklarda eski hâle getirme talebini nasıl yapılacağına dair düzenleyen maddeler bulunmaktadır. Talebin yapılabilmesi için aşağıdaki şartlar ve sürele",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta eski hâle getirme talebinin nasıl yapılacağına dair bilgiler bulunmaktadır, ancak detaylı bir açıklama yapılmamıştır."
+  },
+  {
+    "id": 10767,
+    "soru": "Geçici iş ilişkisi nasıl kurulabilir?",
+    "cevap": "Verilen kaynaklarda geçici iş ilişkisinin kurulabilmesi ile ilgili düzenleme aşağıda belirtilmiştir:\n\nİŞ KANUNU Geçici Madde 7, geçici iş ilişkilerinin \"işçinin",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta geçici iş ilişkisi ile ilgili bir düzenleme bulunmakta ancak sorunun detaylarına tam olarak yanıt vermemektedir."
+  },
+  {
+    "id": 7605,
+    "soru": "Zorla getirme süreci nasıl başlar?",
+    "cevap": "Verilen kaynaklarda zorla getirme sürecinin başlangıcı ile ilgili düzenleme aşağıda belirtilmiştir:\n\n**CEZA MUHAKEMESİ KANUNU Madde 145**\nİfadesi alınacak veya ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta zorla getirme sürecinin başlangıcı belirtilmiş ancak detaylı bir açıklama yapılmamıştır."
+  },
+  {
+    "id": 1807,
+    "soru": "Bir senette imzanın sahte olduğunu iddia ettiğimde ne olur?",
+    "cevap": "Verilen kaynaklarda senetteki imzanın sahte olduğunu iddia etmenin sonuçları ve usulü aşağıdaki maddelerle düzenlenmiştir:\n\n**HUKUK MUHAKEMELERİ KANUNU MADDE 20",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta, imzanın sahte olduğu iddiasının sonuçları ve usulü detaylı bir şekilde açıklanmıştır."
+  },
+  {
+    "id": 15787,
+    "soru": "Rehin sona erdiğinde, rehnedilen malı geri almak için ne yapmalıyım?",
+    "cevap": "Verilen kaynaklarda rehnedilen malın rehin sona erdiğinde nasıl geri alınacağına dair düzenleyici madde bulunur.\n\n**TÜRK MEDENİ KANUNU Madde 967**\n\nRehin sona e",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta rehnedilen malın geri alınmasıyla ilgili adımlar belirtilmiş, ancak modelin cevabı kaynak metinle tam olarak örtüşmüyor."
+  },
+  {
+    "id": 7119,
+    "soru": "Bilirkişilikten çekinme durumu nedir?",
+    "cevap": "Verilen kaynaklarda bilirkişilikten çekinme durumunun tanımı ve kapsamı **CEZA MUHAKEMESİ KANUNU Madde 71** ve **CEZA MUHAKEMESİ KANUNU Madde 70**'de belirtilmi",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metinlerdeki bilgileri kullanarak bilirkişilikten çekinme durumunu açıklamaktadır."
+  }
+]

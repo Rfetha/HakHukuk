@@ -1,0 +1,51 @@
+{
+  "olcum": "girdi token sayımı (prompt_tokens) — h1 istemleri, n=80",
+  "tarih": "2026-09-07",
+  "yontem": "istem 80/80 bayt-bayt aynı; üç Gemini AYNI tokenizer (3 kalemde sınandı, prompt_tokens birebir) ⇒ sayım yalnız en ucuz modelde yapıldı, fiyatlar ayrı uygulandı",
+  "olcum_modeli": "google/gemini-3.1-flash-lite",
+  "olcum_bedeli_usd": 0.04874,
+  "girdi_token": {
+    "toplam": 193042,
+    "ortalama": 2413.0,
+    "min": 1195,
+    "max": 3842
+  },
+  "fiyat_usd_per_M": {
+    "3_1_flash_lite": {
+      "girdi": 0.25,
+      "cikti": 1.5
+    },
+    "3_5_flash_lite": {
+      "girdi": 0.3,
+      "cikti": 2.5
+    },
+    "3_5_flash": {
+      "girdi": 1.5,
+      "cikti": 9.0
+    }
+  },
+  "kaynak_fiyat": "OpenRouter /api/v1/models, çekildi 2026-09-07",
+  "ozne": {
+    "3_1_flash_lite": {
+      "girdi_token": 193042,
+      "cikti_token": 68916,
+      "toplam_usd": 0.15163,
+      "usd_per_cevap": 0.001895,
+      "cikti_token_per_cevap": 861.5
+    },
+    "3_5_flash_lite": {
+      "girdi_token": 193042,
+      "cikti_token": 13685,
+      "toplam_usd": 0.09213,
+      "usd_per_cevap": 0.001152,
+      "cikti_token_per_cevap": 171.1
+    },
+    "3_5_flash": {
+      "girdi_token": 193042,
+      "cikti_token": 55950,
+      "toplam_usd": 0.79311,
+      "usd_per_cevap": 0.009914,
+      "cikti_token_per_cevap": 699.4
+    }
+  }
+}

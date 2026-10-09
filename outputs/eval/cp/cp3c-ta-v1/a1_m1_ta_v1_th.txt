@@ -1,0 +1,12 @@
+{
+  "label": "m1_ta_v1_th",
+  "n_total": 80,
+  "n_answered": 34,
+  "n_abstain": 46,
+  "over_refusal_rate": 0.575,
+  "A1_faithfulness_macro_answered": 0.9697,
+  "faithfulness_macro_ALL(çekinme dahil)": 0.963,
+  "cit_precision_micro_answered": 1.0,
+  "wrong_ref_rate_macro_answered": 0.0,
+  "note": "A1=cevaplanan (exact_reject mod-duyarlı, ADR-0011 + ADR-0044). Aynı kural tüm modellere."
+}

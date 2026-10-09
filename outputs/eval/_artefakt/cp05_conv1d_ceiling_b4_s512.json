@@ -1,0 +1,19 @@
+{
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "model": "Qwen/Qwen3.5-4B",
+  "batch": 4,
+  "seq": 512,
+  "iters": 20,
+  "warmup": 8,
+  "n_linear_attention_layers": 24,
+  "n_layers": 32,
+  "A_torch_fallback_ms_median": 16.4871,
+  "A_ms_stdev": 1.5411,
+  "B_ideal_free_kernel_ms_median": 13.7835,
+  "B_ms_stdev": 1.8665,
+  "conv_share_of_layer_step": 0.164,
+  "speedup_ceiling_layer": 1.1961,
+  "gate": "≥2.0× yoksa causal-conv1d EKLENMEZ (sprint2.md CP0.5 · ADR-0033)",
+  "verdict": "KALDI — eklenmez, negatif bulgu",
+  "note": "Katman-seviyesi tavan, model-seviyesi tavanın ÜST SINIRIdır: conv yalnız 24/32 katmanda var, kalan katmanlar + MLP + lm_head (vocab 248320) paydaya eklenir, paya eklenmez."
+}

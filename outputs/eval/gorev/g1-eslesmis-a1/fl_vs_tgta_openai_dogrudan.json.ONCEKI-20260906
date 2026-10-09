@@ -1,0 +1,114 @@
+{
+  "n_kesisim": 51,
+  "n_ortak_id": 80,
+  "n_cevaplayan": {
+    "gemini_fl": 61,
+    "tgta_v1": 63
+  },
+  "a1_kollar": {
+    "gemini_fl": 0.9695470588235294,
+    "tgta_v1": 0.9362745098039216
+  },
+  "farklar": {
+    "gemini_fl−tgta_v1": 0.033272549019607855
+  },
+  "ayrisma": {
+    "gemini_fl−tgta_v1": {
+      "n_ayrisan": 10,
+      "n_berabere": 41,
+      "a_lehine": 6,
+      "b_lehine": 4,
+      "fark_sd": 0.2337803551014767
+    }
+  },
+  "hakem_yigini": {
+    "gemini_fl": [
+      "gpt-4o-mini",
+      "openai"
+    ],
+    "tgta_v1": [
+      "openai/gpt-4o-mini",
+      "openrouter"
+    ]
+  },
+  "hakem_yigini_uyusuyor": false,
+  "mode": [
+    "distractor"
+  ],
+  "girdiler": {
+    "gemini_fl": {
+      "detail": "outputs/eval/cp09-butceli-1024-512/m1_gem_th_detail.jsonl",
+      "gnd": "outputs/eval/cp09-butceli-1024-512/gnd_m1_gem_th.jsonl"
+    },
+    "tgta_v1": {
+      "detail": "outputs/eval/cp3-supurme-ham/m1_tg_ta_ham_th_detail.jsonl",
+      "gnd": "outputs/eval/cp3-supurme-ham/gnd_m1_tg_ta_ham_th.jsonl"
+    }
+  },
+  "git_sha": "9b9be30",
+  "uretildi": "2026-08-06T15:54:58",
+  "uyarilar": [],
+  "id_listesi": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "11",
+    "12",
+    "13",
+    "16",
+    "18",
+    "20",
+    "21",
+    "22",
+    "23",
+    "25",
+    "27",
+    "30",
+    "31",
+    "32",
+    "33",
+    "34",
+    "37",
+    "39",
+    "40",
+    "44",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50",
+    "52",
+    "55",
+    "56",
+    "60",
+    "63",
+    "64",
+    "65",
+    "67",
+    "68",
+    "69",
+    "70",
+    "71",
+    "72",
+    "74",
+    "75",
+    "77",
+    "78"
+  ],
+  "n_cevaplayan_a": 61,
+  "n_cevaplayan_b": 63,
+  "a1_a": 0.9695470588235294,
+  "a1_b": 0.9362745098039216,
+  "fark": 0.033272549019607855,
+  "n_ayrisan": 10,
+  "n_berabere": 41,
+  "a_lehine": 6,
+  "b_lehine": 4,
+  "fark_sd": 0.2337803551014767
+}

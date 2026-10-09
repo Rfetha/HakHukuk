@@ -1,0 +1,8 @@
+{
+  "label": "m2_tg_v1_th",
+  "n": 70,
+  "register_mean": 0.929,
+  "expert_frac(>=0.6)": 0.871,
+  "citizen_frac(<=0.4)": 0.014,
+  "method": "v1-lexical-proxy (hakemsiz); kanonik=LLM-judge rubriği (ADR-0013, TODO)"
+}

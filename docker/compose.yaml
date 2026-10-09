@@ -1,0 +1,125 @@
+# HakHukuk — üç kutu, iki daemon, iki imaj (ADR-0078).
+#
+# ⛔ BU DOSYA BİR REJİM KİLİDİDİR, kolaylık değil. `llama` servisinin komutundaki bayraklar
+# yayımlanan sayıların koşulduğu bayraklardır ve DEĞİŞMEZ kopyalanmıştır (ADR-0078 madde 1).
+# Ölçüldü (ticket 2): aynı soru, aynı kod, `--seed 3407`, sıcaklık 0 — yalnız KV önbelleğinin
+# kuantizasyonu değişince (q8_0 ↔ varsayılan fp16) cevabın `sha256`'sı ve uzunluğu değişti
+# (201 ↔ 622 karakter), durum sınıfı SUSKUNLUK'tan ÇEKİNCELİ'ye döndü.
+# Bayrak kümesi `tests/test_konteyner.py`'de KAPI olarak sınanır — dosya ayrıştırılır.
+#
+# ⚠️ Bu kurulum yayımlanan `0,8011`'i ÜRETMEZ: o sayı ölçüm hattınındır (harness AÇIK, iki
+# geçişli zorunlu düşünce kapatma). Burada paketlenen ÜRÜN yoludur (ADR-0078 §"Ne KURULMAZ").
+#
+# ⚠️ YEREL ve TEK KULLANICI: `AÇIK KARAR S9` açılmadı. İki daemon da yalnız host'un
+# `127.0.0.1`'ine yayımlar; kimlik ve hız sınırı yoktur.
+
+name: hakhukuk
+
+volumes:
+  # GGUF (2,6 GB) + indeks: `indir` yazar, iki daemon salt-okunur bağlar.
+  # ⛔ İmaja GÖMÜLMEZ — gömmek yayımlanan artefaktın ikinci bir kopyasını yaratır ve
+  # *"gerçek artefakt hangisi"* sorusunu doğurur (ADR-0078, elenen seçenekler).
+  artefakt:
+
+services:
+
+  # ── TEK SEFERLİK: kimlik kapısı. Tutmazsa çıkış ≠ 0 ⇒ iki daemon da HİÇ başlamaz. ──────
+  indir:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: hakhukuk:1.0.0
+    command: ["python", "-m", "hakhukuk.dagitim.indir", "/artefakt"]
+    environment:
+      # Depo 2026-09-13'ten beri PUBLIC (kusur 10 kapandı, ADIM 9). `HF_TOKEN` artık
+      # ZORUNLU değil — tokensız erişim doğrulandı (bkz. MODEL_CARD.md §"HF deposu PUBLIC").
+      # Tanımlıysa yalnız hız sınırını gevşetir.
+      HF_TOKEN: ${HF_TOKEN:-}
+      # İndeks deposu: Görev 8 bekletiliyor ⇒ varsayılanı YOK. Boşsa indeks volume'de
+      # aranır, orada da yoksa kapı erken patlar (ADR-0078 madde 4).
+      HAKHUKUK_INDEKS_DEPO: ${HAKHUKUK_INDEKS_DEPO:-}
+    volumes:
+      - artefakt:/artefakt
+    restart: "no"
+
+  # ── DAEMON · GPU. Hazır llama.cpp sunucu imajı; ağırlık volume'den okunur. ─────────────
+  llama:
+    # ⚠️ SÜRÜM PİNLİ (`latest` yasak). İmajın ENTRYPOINT'i `/app/llama-server`'dır —
+    # imaj yapılandırmasından OKUNDU (ghcr.io manifest, 2026-09-11), varsayılmadı ⇒
+    # aşağıdaki `command` yalnız BAYRAKLARI taşır.
+    image: ghcr.io/ggml-org/llama.cpp:server-cuda-b10902
+    command:
+      - "-m"
+      - "/artefakt/HakHukuk-4B-v0.3-Q4_K_M.gguf"
+      - "-ngl"
+      - "99"
+      - "-fa"
+      - "on"
+      - "--no-context-shift"
+      - "--cache-type-k"
+      - "q8_0"
+      - "--cache-type-v"
+      - "q8_0"
+      - "-c"
+      - "8192"
+      # ⚠️ AÇIKÇA PİNLENDİ 2026-09-11 (insan kararı, açık kusur 20) — üretimin bağlayıcı
+      # komutunda BU BAYRAK YOKTU ve varsayılan `auto`'ya güveniyordu. Ürün yolunun iki
+      # geçişli zorunlu düşünce kapatması (ADR-0080) `message.reasoning_content` alanına
+      # BAĞIMLIDIR; `auto` başka bir biçime çözülürse mekanizma SESSİZCE tek geçişe düşer
+      # ve boş cevap kusuru (4/80) geri gelir.
+      # ⛔ REJİM DEĞİŞMİYOR: `auto`'nun bugün ne yaptığı ÖLÇÜLDÜ (2026-09-11, koşan sunucuya
+      # doğrudan istek) — `reasoning_content` DOLU, `content` BOŞ, `<think>` content'te YOK
+      # ⇒ `auto` ≡ `deepseek`. Bayrak o davranışı SABİTLER, değiştirmez.
+      # ⚠️ Ölçüm hattının betiği (`scripts/olcum_uretim/cp0_thinking_gen.sh`) bu bayrağı
+      # TAŞIMIYOR ve bilerek dokunulmadı: oraya bayrak eklemek rejim değişikliğidir.
+      - "--reasoning-format"
+      - "deepseek"
+      # ⚠️ TEK İZİNLİ SAPMA (ADR-0078 madde 2): üretimde `--host 127.0.0.1`'dir.
+      # Konteyner içinde `127.0.0.1` KOMŞU KUTUDAN erişilemez — `app` sunucuyu bulamaz.
+      # Erişim yüzeyi daralmaz da GENİŞLEMEZ: aşağıdaki `ports` yayını host'un
+      # `127.0.0.1`'ine kısıtlar. Bu bayrak üretimi etkilemez; diğer altısı eder.
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "8080"
+    gpus: all
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - artefakt:/artefakt:ro
+    depends_on:
+      indir:
+        condition: service_completed_successfully
+
+  # ── DAEMON · CPU. `hakhukuk` + bge-m3 gömücü. ⛔ GPU'ya GİRMEZ. ────────────────────────
+  app:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: hakhukuk:1.0.0
+    # ⚠️ `hakhukuk-api` girdi noktası yerine uvicorn DOĞRUDAN çağrılır ve sebebi `llama`
+    # sapmasıyla AYNI sınıftandır: `api.py` `HOST = "127.0.0.1"` der, konteyner içinde o
+    # arayüz host'tan erişilemez. Erişim yüzeyi yine `ports` ile `127.0.0.1`'e kısıtlıdır;
+    # S9 (barındırma/mahremiyet) AÇILMAZ.
+    command: ["python", "-m", "uvicorn", "hakhukuk.arayuz.api:uygulama",
+              "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      HAKHUKUK_SUNUCU: "http://llama:8080/v1"
+      # ⚠️ Yol İKİ SEVİYE DERİN ve bu ZORUNLU (kusur 32): indeksin künyesi korpusu
+      # `../../corpus/…` ile arar, yani indeks dizininden iki seviye yukarı çıkar. Düz
+      # `/artefakt/mevzuat_bge_m3_s2` düzeninde bu `/corpus`'a varıyordu ve retriever
+      # *"korpus bulunamadı"* ile ölüyordu (canlı konteynerde HTTP 500, ölçüldü).
+      # Yerleşim repo ağacını AYNALAR: `data/index/<ad>/` ↔ `data/corpus/` ⇒
+      # `/artefakt/index/<ad>/` ↔ `/artefakt/corpus/`. Korpusu tek başına `/artefakt/corpus`'a
+      # koymak YETMEZDİ — indeksin de iki seviye derine inmesi gerekti.
+      # `tests/test_konteyner.py` bunu künyeden OKUYUP `normpath` ile çiviler.
+      HAKHUKUK_INDEKS: "/artefakt/index/mevzuat_bge_m3_s2"
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - artefakt:/artefakt:ro
+    depends_on:
+      indir:
+        condition: service_completed_successfully
+      llama:
+        condition: service_started

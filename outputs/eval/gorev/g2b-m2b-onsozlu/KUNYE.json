@@ -1,0 +1,54 @@
+{
+  "kosu": "Ö5 — BİZİM M2b çıpamız ÖNSÖZLÜ (ADR-0058 yeterlilik önsözü) · harness AÇIK · k=4",
+  "neden": "olcum-h2b-k4 önsözSÜZ koşulmuştu, G2'nin dört FL koşusu önsöz AÇIK → M2b satırı ADR-0057 gereği TANIMSIZ damgalıydı. Bu koşu o ekseni EŞLEŞTİRİR.",
+  "gguf": "models/gguf/tgta_v1-q4_k_m.gguf",
+  "artefakt": "tgta_v1 = HakHukuk-4B-v0.1",
+  "sunucu": "llama-server -ngl 99 -fa on --no-context-shift --cache-type-k q8_0 --cache-type-v q8_0 -c 8192",
+  "guc": "PİLDE ⚠️ — GPU 32W'a kısıldı (180 MHz), üretim ~9 tok/s (çıpa koşusu şarjdayken 42 tok/s). Ölçümü etkilemez (temperature=0, seed 3407), yalnız süreyi.",
+  "veri": "data/eval/dev/core_hard.jsonl",
+  "n": 80,
+  "seed": 3407,
+  "mod": "h2b (harness AÇIK + altın ablasyonu)",
+  "harness": {
+    "indeks": "data/index/mevzuat_bge_m3_s2",
+    "k": 4,
+    "no_gold": true
+  },
+  "max_chunk_chars": 900,
+  "max_new_tokens": 512,
+  "think_budget": 1024,
+  "thinking": "on",
+  "sufficiency_preamble": true,
+  "kesik_orani": 0.0,
+  "kesik_id": [],
+  "kesik_kapisi": "tuzak 1.9 — >%5 ise koşu GEÇERSİZ",
+  "kesik_hukmu": "GEÇERLİ",
+  "completion_tokens_ort": 912.5,
+  "forced_close": 55,
+  "puanlama": {
+    "judge_model": "openai/gpt-4o-mini",
+    "judge_gateway": "openrouter",
+    "judge_providers": [
+      "OpenAI"
+    ],
+    "valid_traps": 68,
+    "invalid_traps": 12,
+    "rejection_rate": 0.809,
+    "rejection_exact": 0.559,
+    "fabrication_rate": 0.191,
+    "parametric_leak": 0.088,
+    "valid_trap_kaynagi": "cevaba KÖR hakem + içerik-adresli önbellek",
+    "gecerlilik_hakemi": "openai/gpt-4o",
+    "gecerlilik_devralinan": 80,
+    "source_field": "context_shown",
+    "judge_cost_usd": 0.0185
+  },
+  "adr": [
+    "ADR-0043",
+    "ADR-0057",
+    "ADR-0058",
+    "ADR-0049"
+  ],
+  "git_sha": "124126b",
+  "yazildi": "2026-08-06T19:07:50"
+}

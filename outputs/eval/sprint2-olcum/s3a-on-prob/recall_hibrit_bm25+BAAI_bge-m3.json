@@ -1,0 +1,21 @@
+{
+  "yontem": "hibrit_bm25+BAAI_bge-m3",
+  "n": 80,
+  "korpus": 40496,
+  "cihaz": "cuda",
+  "recall": {
+    "recall@1": 0.45,
+    "recall@5": 0.75,
+    "recall@10": 0.875,
+    "recall@20": 0.925
+  },
+  "kanun_recall": {
+    "kanun_recall@1": 0.7375,
+    "kanun_recall@5": 0.8875,
+    "kanun_recall@10": 0.9125,
+    "kanun_recall@20": 0.9375
+  },
+  "hic_bulunmayan": 6,
+  "gecen_sure_s": 626.0,
+  "esik_karari": "HIBRIT GEREKIR"
+}

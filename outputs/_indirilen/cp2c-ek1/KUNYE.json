@@ -1,0 +1,77 @@
+{
+  "checkpoint": "CP2-c",
+  "karar": "ADR-0047 · ADR-0045 m.4",
+  "tasiyici": {
+    "runtime": "llama.cpp/llama-server",
+    "surum": "version: 10223 (11924d4c1)",
+    "gguf": "q35-4b-q4_k_m.gguf",
+    "gguf_sha256": "214826aaca724dc790bb0294dc77446505a40c8fe09d9f170260d6434600baf3",
+    "quant": "Q4_K_M",
+    "kv_cache": "q8_0",
+    "flash_attn": true,
+    "context_shift": false,
+    "np": 64,
+    "ctx_toplam": 524288,
+    "ctx_slot": 8192,
+    "gpu_etiket": "A100",
+    "gpu_gercek": "NVIDIA A100-SXM4-40GB, 40960 MiB"
+  },
+  "rejim": {
+    "dusunce_butcesi": 1024,
+    "cevap_butcesi": 512,
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "kaynak": "ADR-0043 rejim değişmezi"
+  },
+  "uretim_butcesi": {
+    "limit_per_tip": 3750,
+    "target_per_tip": null,
+    "skip_first": 3813
+  },
+  "verim_kapisi": {
+    "gate_after_s": 600,
+    "esik_s_per_uretim": 2.88
+  },
+  "huni": {
+    "m2": {
+      "tip": "m2",
+      "mod": "oracle",
+      "denenen": 3813,
+      "kabul": 1192,
+      "elenen_red": 2621,
+      "kabul_orani": 0.3126,
+      "saniye_per_uretim": 1.41,
+      "saniye_per_uretim_kararli": 1.37,
+      "ort_completion_tokens": 1106.2,
+      "zorunlu_kapatma": "3811/3813",
+      "dusunce_butcesi": 1024,
+      "cevap_butcesi": 512,
+      "seed": 3407,
+      "toplam_kayit": 1192,
+      "gecen_sure_s": 5361.7,
+      "es_zamanlilik": 64,
+      "skip_first": 3813,
+      "verim_kapisi": "geçildi (eşik 2.88 s/üretim)"
+    },
+    "m2b": {
+      "tip": "m2b",
+      "mod": "distractor_nogold",
+      "denenen": 3813,
+      "kabul": 731,
+      "elenen_red": 3082,
+      "kabul_orani": 0.1917,
+      "saniye_per_uretim": 1.57,
+      "saniye_per_uretim_kararli": 1.54,
+      "ort_completion_tokens": 1125.3,
+      "zorunlu_kapatma": "3813/3813",
+      "dusunce_butcesi": 1024,
+      "cevap_butcesi": 512,
+      "seed": 3407,
+      "toplam_kayit": 731,
+      "gecen_sure_s": 5984.1,
+      "es_zamanlilik": 64,
+      "skip_first": 3813,
+      "verim_kapisi": "geçildi (eşik 2.88 s/üretim)"
+    }
+  }
+}

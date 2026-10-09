@@ -1,0 +1,18 @@
+{
+  "olcum": "KARAR-3 — 10 koşunun M2 paydası bugünkü hakem yığınıyla yeniden ödendi",
+  "tarih": "2026-08-06",
+  "sinav": "m2 · n=70 · DEV · 70/70 anahtar kesişimi (10 koşu birebir aynı sınav)",
+  "hakem_payda": "openai/gpt-4o · cevaba KÖR · içerik-adresli önbellek · klip 3500",
+  "hakem_pay": "ÇAĞRILMADI (--pay-kaynagi onceki) — payda etkisi payın gürültüsünden ayrılsın",
+  "kapi": "openrouter",
+  "saglayici_pin": "OpenAI",
+  "seed": 3407,
+  "butce_usd": 0.11,
+  "gerceklesen_hakem_usd": 0.1054,
+  "gpu_usd": 0.0,
+  "komut": "scripts/score_abstention.py --pay-kaynagi onceki --payda-kaynagi hakem --source-field referans",
+  "cikti": "m2_payda_2026-08-06.json (eski→yeni tablo + ARA KAPI 1. gözlem türetmesi)",
+  "not": "Skorlanan dosyalar kendi koşu klasörlerinde güncellendi; eski değerler *.ONCEKI-M2PAYDA yedeklerinde.",
+  "git_sha": "6a6d3b7",
+  "yazildi": "2026-08-06T21:27:20"
+}

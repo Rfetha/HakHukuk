@@ -1,0 +1,73 @@
+{
+  "kosu": "CP2 PİLOT — `rejected` hasadının boyutlandırması ve kabul ölçütünün denetimi",
+  "tarih": "2026-07-30",
+  "sprint": "sprint2.md CP2",
+  "karar_belgeleri": ["ADR-0042 (tek havuz, ham base'den)", "ADR-0045 m.4 (iki tip)", "ADR-0043 (bütçeli düşünce)"],
+  "kayit": "docs/record/research_log/2026-07-30-cp05-cp1-cp2-zemin.md",
+  "durum": "🔴 PİLOT — ÜRETİM HASADI BAŞLAMADI. Kabul ölçütü karara bağlanmadan devam edilmedi.",
+
+  "protokol": {
+    "dusunce": "AÇIK — bütçeli zorunlu kapatma (ADR-0043)",
+    "dusunce_butcesi_token": 1024,
+    "cevap_butcesi_token": 512,
+    "seed": 3407,
+    "temperature": 0.0,
+    "max_chunk_chars": 900,
+    "uretim_yolu": "gen_eval_grounded.generate_http — ikinci bir üretim gövdesi YAZILMADI (protokol sapması kapısı)"
+  },
+
+  "ozne": {
+    "etiket": "base (çıplak)",
+    "model": "models/gguf/q35-4b-q4_k_m.gguf",
+    "tasiyici": "llama-server (llama.cpp build-cuda), -c 8192, -ngl 99, -fa on, KV q8_0/q8_0",
+    "not": "CP0.9 ile aynı taşıyıcı (tuzak 1.7)"
+  },
+
+  "havuz": {
+    "kaynak": "data/_ham_ve_ara/orpo_packed.jsonl · slice=abstain_trap_v3",
+    "boyut": 19284,
+    "sizinti_kontrolu": "DEV kesişimi 0/144 · CANON kesişimi 0/74 (soru metni üzerinden) — TEMİZ"
+  },
+
+  "istem_bicimi": {
+    "m2": "build_orpo_v3 ORACLE framing ile BİREBİR — SYSTEM_PROMPT_RAG + 'KAYNAK MADDE:\\n{trap_text[:900]}'. Havuzdaki `chosen` bu isteme karşı üretilmişti; istem kayarsa çift tutarsızlaşır.",
+    "m2b": "eval m2b ile birebir — SYSTEM_PROMPT_RAG_MULTI + raft_pack.pack_context(include_gold=False, k=4) + 900 klip"
+  },
+
+  "huni": {
+    "m2":  {"denenen": 120, "kabul": 36, "kabul_orani": 0.300, "s_per_uretim": 11.12, "ort_completion_tokens": 1110.2, "zorunlu_kapatma": "120/120", "kesik": 0},
+    "m2b": {"denenen": 120, "kabul": 25, "kabul_orani": 0.208, "s_per_uretim": 11.69, "ort_completion_tokens": 1133.1, "zorunlu_kapatma": "120/120", "kesik": 0}
+  },
+
+  "🚨_kabul_olcutunun_denetimi": {
+    "yontem": "kabul edilen adaylar LLM red hakemine verildi (cp2_audit.py → score_abstention.py, gpt-4o-mini, $0.009)",
+    "gerekce": "ADR-0042'nin ölçütü REGEX; τ_a'nın raporlanacağı ve ARA KAPI'nın okuyacağı sayı LLM HAKEMİ. CP0.9'da ikisi arasındaki fark base M2'de 0.61 → 0.814 = 20 puan (tuzak 2.5).",
+    "m2": {
+      "n": 36, "gecersiz_tuzak": 15, "gecerli_tuzak": 21,
+      "LLM_ABSTAIN": "15/21 = 0.714  ← havuza YANLIŞ tarafla giriyor",
+      "gercek_fabrikasyon": "6/21 = 0.286",
+      "gercek_verim": "6/120 = %5.0 (ölçütün bildirdiği %30'un altıda biri)"
+    },
+    "m2b": {
+      "n": 25, "gecersiz_tuzak": 24, "gecerli_tuzak": 1,
+      "sonuc": "NİTELİKSEL — sayı olarak okunmaz. İki okuma ayrılamadı: (a) seçim etkisi (denetlenen küme tanım gereği 'modelin cevapladığı' örnekler) · (b) --no-gold bağlamı cevaplanamaz olmayabiliyor (distractor'lar aynı kanundan, komşu madde soruyu fiilen cevaplıyor olabilir)."
+    }
+  },
+
+  "boyutlandirma": {
+    "m2_duzeltilmis": "1.495 ÷ 0.050 = 29.900 üretim ≈ 92 saat — VE 29.900 > havuzdaki 19.284 kalem → hedef mevcut havuzdan ULAŞILAMAZ",
+    "sonuc": "Sorun zamanlama değil YAPISAL. Üretim hasadı bilerek başlatılmadı."
+  },
+
+  "maliyet": {"gpu_usd": 0.0, "hakem_usd": 0.009, "gecen_sure_dk": 46},
+  "guc_durumu": "şarjda (tuzak 1.6)",
+
+  "acik_kalemler": [
+    "Kabul ölçütü LLM hakemine çevrilsin mi? (raporlanan metrikle aynı olur; ~$0.3 ek, verim %5)",
+    "Geçersiz tuzaklar (%42) elensin mi — ve aynı dilimden üretilmiş `chosen` tarafı denetlensin mi?",
+    "Hedef negatif sayısı 1.495'ten düşürülsün mü — τ_a'nın 82 adım / 3 epoch rejimini (TASARIM §4.1.1) değiştirir",
+    "M2b'nin `--no-gold` kurgusu gerçekten cevaplanamaz bağlam üretiyor mu — ADR-0045'in merge onarım eşiği (M2b ≥ 0.887) bu metriğin üstünde duruyor"
+  ],
+
+  "yeni_tuzaklar": ["yurutme-tuzaklari.md 4.7 (kabul ölçütü ≠ raporlanan metrik)", "4.8 (tuzak havuzunun kendisi geçersiz)"]
+}

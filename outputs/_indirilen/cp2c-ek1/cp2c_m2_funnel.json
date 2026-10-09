@@ -1,0 +1,20 @@
+{
+  "tip": "m2",
+  "mod": "oracle",
+  "denenen": 3813,
+  "kabul": 1192,
+  "elenen_red": 2621,
+  "kabul_orani": 0.3126,
+  "saniye_per_uretim": 1.41,
+  "saniye_per_uretim_kararli": 1.37,
+  "ort_completion_tokens": 1106.2,
+  "zorunlu_kapatma": "3811/3813",
+  "dusunce_butcesi": 1024,
+  "cevap_butcesi": 512,
+  "seed": 3407,
+  "toplam_kayit": 1192,
+  "gecen_sure_s": 5361.7,
+  "es_zamanlilik": 64,
+  "skip_first": 3813,
+  "verim_kapisi": "geçildi (eşik 2.88 s/üretim)"
+}

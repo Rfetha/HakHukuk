@@ -1,0 +1,176 @@
+{
+  "kosu": "G22 Adım 2 — fp16 KV koşusunun KÜTLESİ hakemle ölçüldü",
+  "tarih": "2026-09-11",
+  "etiket": "h1_tgta_v1_g22_fp16",
+  "ozne": "tgta_v1 = HakHukuk-4B-v0.1 (ağırlıklar DEĞİŞMEDİ)",
+  "git_sha": "7c61d854b39ba37de49a3bdd46a2080bffa564c9",
+
+  "MANSET_DEGISMEZ": "⛔ Yayımlanan kütle 0,8011 (outputs/eval/f02-biz-onsozsuz/) DEĞİŞMEZ. Bu ölçüm yalnız 'fp16 KV rejiminde kütle şudur' der; ürünün ya da modelin manşetini YENİDEN YAZMAZ. Ürünün taşıyıcı rejimi q8_0/q8_0'dır ve manşet o koşunun sayısıdır.",
+
+  "sonuc": {
+    "kutle_tum": 0.7932,
+    "coverage": 0.9375,
+    "A1_cevaplanan": 0.8461,
+    "faith_macro_tum_cekinme_dahil": 0.835,
+    "A1_altin_getirilen_alt_kume": 0.8693,
+    "recall_at_10": 0.95,
+    "faithfulness_micro": 0.8106,
+    "cit_precision_micro": 0.8252,
+    "wrong_ref_rate_micro": 0.1553,
+    "total_claims": 301,
+    "cekinme": "5/80",
+    "cekinme_idler": [15, 45, 51, 66, 79]
+  },
+
+  "cipa": {
+    "kosu": "F0.2 — bizim kol, önsözsüz",
+    "dizin": "outputs/eval/f02-biz-onsozsuz/",
+    "detay_dosya": "outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl",
+    "gnd_dosya": "outputs/eval/f02-biz-onsozsuz/gnd_h1_tgta_v1_f02_nb.jsonl",
+    "tablo_dosya": "outputs/eval/f02-biz-onsozsuz/harness_tablo.json",
+    "kutle_tum": 0.8011,
+    "coverage": 0.9375,
+    "A1_cevaplanan": 0.8545,
+    "cekinme_idler": [15, 37, 45, 66, 79]
+  },
+
+  "fark": {
+    "delta_kutle_puan": -0.79,
+    "delta_A1_puan": -0.84,
+    "gurultu_tabani_A1_puan": 0.30,
+    "gurultu_tabani_kutle_puan": 0.28,
+    "oran": "2,8×",
+    "hukum": "Fark tabanın ÜSTÜNDE ama yalnız 2,8× ve tek yönlü hükme YETMEZ. Devralınan ~0,3 puanlık taban AYNI CEVAPLARA hakemi yeniden koşmanın gürültüsüdür; burada cevaplar da değişti (65/80 bayt farklı) ve bu koşu çifti için aynı-cevap tabanı ÖLÇÜLMEDİ. Kalem düzeyinde 18/80 kalem iki yönlü ±0,5-1,0 salındı; toplam fark bu salınımların artakalanıdır.",
+    "temiz_alt_kume_n78": {
+      "gerekce": "id 7 ve 63 Adım 1'de KV dışı bir sebeple (yürürlük süzgeci, commit 63b691e) farklı kaynak aldı",
+      "cipa_kutle": 0.796,
+      "fp16_kutle": 0.7879,
+      "delta_puan": -0.81
+    },
+    "taban_ustunde_tek_net_eksen": "cit_precision_micro 0,9231 → 0,8252 (−9,79 puan) · wrong_ref_rate_micro 0,0769 → 0,1553 (2 katı). Tabanın ~26 katı. B1 ekseniyle aynı eksen; hüküm KURULMADI, kayda geçirildi."
+  },
+
+  "tam_komut": {
+    "duman_kosusu_5_kalem": "cd /home/ersoy/code/Hukuk-SLM && source ~/code/global_venv/bin/activate && set -a && . ./.env && set +a && LLM_PROVIDER_ORDER=OpenAI python scripts/puanlama/groundedness.py --details <scratchpad>/duman/h1_duman5_detail.jsonl --label h1_duman5 --mode data --judge-model openai/gpt-4o-mini --out-dir <scratchpad>/duman",
+    "tam_kosu": "cd /home/ersoy/code/Hukuk-SLM && source ~/code/global_venv/bin/activate && set -a && . ./.env && set +a && LLM_PROVIDER_ORDER=OpenAI python scripts/puanlama/groundedness.py --details outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl --label h1_tgta_v1_g22_fp16 --mode data --judge-model openai/gpt-4o-mini --out-dir outputs/eval/g22-kv-fp16",
+    "tablo": "python scripts/puanlama/harness_tablo.py --details outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl --gnd outputs/eval/g22-kv-fp16/gnd_h1_tgta_v1_g22_fp16.jsonl --korpus data/corpus/mevzuat_maddeler.jsonl --out outputs/eval/g22-kv-fp16/harness_tablo_gnd.json",
+    "capraz_dogrulama": "python scripts/puanlama/rescore_answered.py --gnd outputs/eval/g22-kv-fp16/gnd_h1_tgta_v1_g22_fp16.jsonl --bench outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl --label h1_tgta_v1_g22_fp16",
+    "cipa_komutu": "AYNI groundedness.py komutu; değişen YALNIZ --details · --label · --out-dir (çıpanın yolları: outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl · h1_tgta_v1_f02_nb · outputs/eval/f02-biz-onsozsuz). Kaynak: docs/superpowers/plans/2026-09-06-faz0-olcum-zinciri.md Görev 2 Adım 2-3.",
+    "NEDEN_harness_tablo_gnd": "Adım 1'in KUNYE.json'u hakemsiz harness_tablo.json'un sha256'sını (c723def7b35d63051141cbcf17ecc8c9fbdce8ae4589630dc6b459994b3bac16) kaydetmişti; üzerine yazmak kaydı bozardı. Yeni dosya yalnız kutle_ekseni bloğunu doldurur, diğer TÜM bloklar programla karşılaştırıldı ve BİREBİR aynı."
+  },
+
+  "hakem_yigini": {
+    "judge_model": "openai/gpt-4o-mini",
+    "gateway": "openrouter",
+    "LLM_PROVIDER_ORDER": "OpenAI",
+    "temperature": 0,
+    "seed": null,
+    "seed_notu": "groundedness.py hakeme seed GÖNDERMEZ — belirlenimi yalnız temperature=0 sağlar. İki kolda da aynı ⇒ birim eşitliği bozulmaz, ama 'hakem birebir tekrar eder' garantisi YOKTUR. Gürültü şerhinin mekanik sebebi budur.",
+    "runs": 1,
+    "mode": "data",
+    "source_field": "referans",
+    "answer_field": "cevap",
+    "SOURCE_CLIP": 3500,
+    "istem_surumu": {
+      "EXTRACT_SYSTEM": {"len": 1584, "sha256_24": "3b56942c67fe0b7309004a9c"},
+      "VERIFY_SYSTEM": {"len": 2006, "sha256_24": "cf1a97e86c26b6784fe0bc9e"}
+    }
+  },
+
+  "olculen_gercek_harcama": {
+    "kaynak": "OpenRouter GET /api/v1/credits (total_usage), koşudan ÖNCE ve SONRA",
+    "total_usage_once": 17.91293753,
+    "total_usage_sonra": 17.95800443,
+    "GERCEK_HARCAMA_USD": 0.045067,
+    "kapsam": "duman koşusu (5 kalem) + tam koşu (80 kalem)",
+    "betigin_kendi_hesabi_usd": 0.0465,
+    "betik_hesabi_notu": "judge_cost_usd liste fiyatından HESAPLANIR; $0,045067 sağlayıcının FATURALADIĞIDIR. %3 içinde uyuşuyorlar.",
+    "bakiye_once_usd": 2.087062,
+    "bakiye_sonra_usd": 2.041996,
+    "SERT_KAPI_USD": 0.15,
+    "kapi_sonucu": "GEÇİLMEDİ — gerçek harcama kapının %30'u"
+  },
+
+  "duman_kosusu": {
+    "n": 5,
+    "tabakalama": "80 kalem cevap uzunluğuna göre sıralandı; 5 eşit tabakanın MEDYANI seçildi",
+    "secilen_idler": [43, 61, 47, 13, 22],
+    "cevap_uzunluklari": [376, 587, 707, 820, 975],
+    "olcek_yontemi": "kalem sayısı DEĞİL, hakem-istemi karakter yükü: 2*len(cevap)+len(soru)+len(referans[:3500])",
+    "olcek": 18.04,
+    "naif_olcek_5_80": 16.0,
+    "gercek_bedel_usd": 0.0027,
+    "dogrusal_tahmin_usd": 0.0487,
+    "emniyet_payli_usd": 0.0731,
+    "tahmin_vs_gercek": "doğrusal tahmin $0,0487 ↔ tam koşunun gerçeği $0,0438 → tahmin %11 YÜKSEK (güvenli yön)"
+  },
+
+  "onbellek_davranisi": {
+    "hukum": "HAKEM ÖNBELLEĞİ YOK — hiçbir sayı çıpadan DEVRALINMADI",
+    "gecerlilik_onbellekten": "alan YOK — bu boru hattına ait değil (valid_trap_cache.py yalnız score_abstention/M2·M2b hattında, bu koşuda ÇAĞRILMADI)",
+    "kod_kaniti": "groundedness.py · llm_client.py · harness_tablo.py içinde 'cache/önbellek' → 0 eşleşme",
+    "davranis_kaniti": "80 kalemin hepsi için taze hakem çağrısı yapıldı ve $0,0438 harcandı; devralınsaydı ≈$0 olurdu",
+    "ikinci_kanit": "duman koşusunda id 43: çıpa faith=0,6/claims=5 → fp16 faith=0,5/claims=2 (değer yeniden kullanılmadı)"
+  },
+
+  "birim_esitligi_kontrol_listesi": {
+    "uyusmayan_kalem": "YOK",
+    "denetlenen": [
+      "puanlama betiği: scripts/puanlama/groundedness.py — AYNI",
+      "betik içeriği: çıpa günündeki scripts/groundedness.py ile diff → yalnız docstring yol dizesi; kod BİREBİR",
+      "hakem modeli: openai/gpt-4o-mini — AYNI",
+      "geçit: openrouter — AYNI",
+      "LLM_PROVIDER_ORDER: OpenAI — AYNI",
+      "sıcaklık: 0 (kodda sabit) — AYNI",
+      "runs: 1 — AYNI",
+      "--mode: data — AYNI",
+      "--source-field: referans — AYNI",
+      "--answer-field: cevap — AYNI",
+      "SOURCE_CLIP (MAX_SOURCE_CHARS): 3500 — AYNI",
+      "EXTRACT_SYSTEM istem sürümü: sha256 3b56942c67fe0b7309004a9c — AYNI",
+      "VERIFY_SYSTEM istem sürümü: sha256 cf1a97e86c26b6784fe0bc9e — AYNI",
+      "A1 filtresi: cevaplanan-only makro (ADR-0011), exact_reject(mode='data') — AYNI",
+      "n: 80 — AYNI",
+      "kütle formülü: coverage × A1_cevaplanan (harness_tablo.py:220) — AYNI"
+    ],
+    "kod_degisikligi_denetimi": {
+      "groundedness.py": "35dac1f (2026-09-07, T5 klasör bölünmesi) — git mv; içerik aynı, yalnız docstring yolu. Hakemlik mantığı DEĞİŞMEDİ.",
+      "llm_client.py": "94e79d8 (2026-09-07) — YALNIZ PRICE'a anthropic/claude-sonnet-5 satırı eklendi. gpt-4o-mini yolu / geçit / sağlayıcı pinleme DEĞİŞMEDİ.",
+      "harness_tablo.py": "yalnız docstring yolu",
+      "rescore_answered.py": "yalnız docstring yolu",
+      "git_status_scripts": "temiz — çalışma ağacında yamalı betik yok"
+    },
+    "betik_sha256": {
+      "groundedness.py": "4cedec3da9640db5ddb10f57d31709c557aa7ed99e44778ede3a0856370285c7",
+      "llm_client.py": "70c647cce1d5a8b7a0f749f487325396689639c725b80880a74a5d01411e60fd",
+      "harness_tablo.py": "a09b733de53fe4f1cf2755ddd866732625707c4b5efbb18196ca3baf3b71cdd0",
+      "rescore_answered.py": "45e0dbd4c4ead9462b22ab1c53e6702c7724dc854d449f0cb39849e0260e0fc6"
+    }
+  },
+
+  "capraz_dogrulama_tuzak_2_16": {
+    "kural": "A1 = cevaplanan-only makro; faith_macro_tum AYRI alan",
+    "cipa": {"harness_tablo_A1_cevaplanan": 0.8545, "rescore_answered_A1": 0.8545, "tuttu": true},
+    "fp16": {"harness_tablo_A1_cevaplanan": 0.8461, "rescore_answered_A1": 0.8461, "tuttu": true},
+    "ayri_alan": {"cipa_faith_macro_tum": 0.8499, "fp16_faith_macro_tum": 0.835},
+    "cekinme_bilesimi": "sayı aynı (5/80) ama KÜME farklı: çıpa {15,37,45,66,79} ↔ fp16 {15,45,51,66,79}. id 37 fp16'da cevapladı, id 51 çekindi."
+  },
+
+  "cikti_dosyalari": {
+    "gnd_h1_tgta_v1_g22_fp16.jsonl": "0e4f5b19b085cd2fce9e2721c64dec7012363f2d8f318218d35706db65b9d1d2",
+    "gnd_h1_tgta_v1_g22_fp16_summary.json": "830cd09304befdbba9d87107c460adb6d1974e03cde286d1241e09164712882b",
+    "harness_tablo_gnd.json": "b7386d45ade7de0ee6319c2d2b8f1b879f2487987f5b2e022a1992b2a8cafd3b",
+    "a1_h1_tgta_v1_g22_fp16.txt": "b3f16ebd3594dab954c4493490a919a13e5fe303096c492ac8c3be7f592c29a6",
+    "hakem.log": "ac711e5e30a6923f2063354f20af695b22d6e1e642429e408ad7fc696053974a"
+  },
+
+  "olculmeyenler": [
+    "bu koşu çiftine ait AYNI-CEVAP hakem gürültü tabanı — ölçülmedi (ikinci hakem koşusu ≈$0,044 ister); ~0,3 puanlık taban CLAUDE.md'den DEVRALINDI",
+    "fp16 kolunun 80 kaleminin GÖZLE OKUNMASI — yapılmadı; çıpanın GOZLE_OKUMA_80.md'si fp16 cevaplarını KAPSAMAZ",
+    "κ (hakemler arası uyum) — hesaplanmadı; tek hakem ailesi, v1.0 blokerinin kendisi (ADR-0077) ve bu koşu onu oynatmaz",
+    "atıf isabetindeki düşüşün SEBEBİ — açıklanmadı, kayda geçirildi"
+  ],
+
+  "tuzaklar": ["1.11 (bedel tahmini emniyet payı)", "2.11 (.env)", "2.16 (A1 cevaplanan-only)", "2.17 (önbellek)", "6.12 (komut künyede)"],
+  "adr": ["ADR-0011", "ADR-0040", "ADR-0043", "ADR-0044", "ADR-0057", "ADR-0061", "ADR-0064", "ADR-0067", "ADR-0068", "ADR-0070", "ADR-0077"]
+}

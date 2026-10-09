@@ -1,0 +1,15 @@
+{
+  "yontem": "bm25_kanunkapsam",
+  "n": 80,
+  "korpus": 40496,
+  "cihaz": "cpu",
+  "recall": {
+    "recall@1": 0.4,
+    "recall@5": 0.7875,
+    "recall@10": 0.875,
+    "recall@20": 0.9125
+  },
+  "hic_bulunmayan": 7,
+  "gecen_sure_s": 10.3,
+  "esik_karari": "HIBRIT GEREKIR"
+}
