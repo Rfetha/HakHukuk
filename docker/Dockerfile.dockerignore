@@ -1,0 +1,38 @@
+# Build bağlamı dışında kalanlar. Boyutlar ÖLÇÜLDÜ 2026-09-11 (`du -sb`), tahmin yazılmadı.
+#
+# ⛔ Ağırlıklar ve gömme matrisi imaja GİRMEZ: GGUF ve indeks çalışma anında `indir`
+# kutusunun doldurduğu volume'den gelir (ADR-0078). Buraya girerlerse build bağlamı
+# 74 GB'a çıkar ve imaj yayımlanan artefaktın ikinci bir kopyasını taşır.
+models/**
+data/index/**/*.npy
+
+# ⛔ GİZLİ: host'un `.env`'i imaja SIZMAZ. HF token compose'dan ortam değişkeni olarak geçer.
+.env
+.env.*
+*.pem
+*.key
+
+# Ölçüm çıktıları (323 MB) — ürün yolu bunları OKUMAZ, kaydı repoda durur.
+outputs/
+
+# Tarihçe (146 MB) ve yerel oturum/alet artıkları.
+.git
+.gitignore
+.claude/
+.superpowers/
+.pytest_cache/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+unsloth_compiled_cache/
+scratchpad/
+
+# Ürün yolunun okumadığı ham/ara veri.
+data/_ham_ve_ara/
+data/external/
+
+# Kusur 29 — korpus yedeği ürünün HİÇ okumadığı dosyadır (yalnız `mevzuat_maddeler.jsonl`
+# okunur), `.gitignore` zaten dışlıyor (satır 169) ama bu dosya dışlamıyordu: `COPY
+# data/corpus/ data/corpus/` yedeği de imaja alıyordu. ÖLÇÜLDÜ 2026-09-12 (`du -sb`):
+# 37.903.062 bayt = 36,1 MiB — korpus katmanının %49'u.
+data/corpus/*.yedek-*

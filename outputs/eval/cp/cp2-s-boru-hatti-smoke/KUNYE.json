@@ -1,0 +1,98 @@
+{
+  "kosu": "CP2-s — boru hattı MEKANİK smoke (ADR-0049 m.4)",
+  "tarih": "2026-07-30",
+  "sprint": "sprint2.md CP2-s",
+  "karar_belgesi": "ADR-0049 m.4",
+  "kayit": "docs/record/research_log/2026-07-30-cp2s-boru-hatti.md (#47)",
+  "durum": "✅ ZİNCİR KAPANDI — dört halkanın dördü de çalışıyor. Ve smoke, var olmayan bir kodu ortaya çıkardı.",
+
+  "🚨_AMAC": "SAYI ÜRETMEK DEĞİL. Ölçtüğü şey 'çalışıyor mu', 'iyi mi' DEĞİL. Buradaki hiçbir performans değeri raporlanmaz, çıpa olarak kullanılmaz — ADR-0049 m.4'ün çıpalama riski gerekçesi.",
+
+  "zincir": {
+    "1_tau_a_egitimi": {
+      "durum": "✅ Modal A100-40GB, 50 adım (--smoke), --fresh-adapter",
+      "dogrulanan": "eğitilebilir parametre 29.908.992 / 4.569.174.528 = %0,65 → 11 hedef modül (in_proj_* dahil) uygulandı",
+      "rejim": "bf16 taban (ADR-0031) · lora_dropout 0.05 · lr 1e-5 · etkin batch 64",
+      "veri": "/data/orpo_abstain_SMOKE_dir — ⚠️ ESKİ OFF-POLICY SET, yalnız mekanik amaçlı"
+    },
+    "2_norm_dengeli_TIES_merge": {
+      "durum": "✅ 224/224 tensör, gerçek ağırlıklarda, ana RAM'de akıtmalı",
+      "🔴_BULGU": "BU KOD YOKTU. merge_lora.py tek adaptörlük; norm-dengeli k-yollu TIES hiç yazılmamıştı — ve Sprint 3'ün 8 kafes hücresi + ARA KAPI'nın 2. gözlemi tam onun üstünde duruyordu.",
+      "yazilan": "scripts/merge_ties.py"
+    },
+    "3_GGUF": {
+      "durum": "✅ f16 8.07 GiB → Q4_K_M 2.59 GiB, quantize 63 s",
+      "ayar": "QUANT=Q4_K_M PURE=0 (Qwen3.5-4B QAT DEĞİL — ADR-0023 pure-Q4_0'ı QAT'e özgüydü)",
+      "dogrulanan": "merge_ties.py'nin kopyaladığı config.json · tokenizer.json · chat_template.jinja · index dönüştürücüye yetiyor"
+    },
+    "4_servis_ve_uretim": {
+      "durum": "✅ llama-server açıldı, 3/3 istek DOLU cevap döndürdü",
+      "ayar": "-ngl 99 -fa on --cache-type-k/v q8_0 -c 8192 · düşünce 1024 + cevap 512",
+      "not": "forced_close 3/3 çıktı — SAYI OLARAK RAPORLANMAZ (sentetik kol gürültü taşıyor)"
+    }
+  },
+
+  "TIES_operatoru_dogrulamasi": {
+    "yontem": "Operatörün matematiksel özellikleri sentetik tensörlerde sınandı (seed 3407) — gerçek koşudan önce, $0",
+    "1_TIES(τ,τ)_≈_kirpilmis_τ": {"sonuc": "✅", "sifirdisi_oran": 0.199, "beklenen": 0.20,
+                                   "max_sapma": "3.08e-02 = bf16 yuvarlaması"},
+    "2_TIES(τ,−τ)_=_0": {
+      "ilk_sonuc": "❌ BAŞARISIZ — |ortalama| 1.023 çıktı, sıfır değil",
+      "kok_neden": "işaret toplamı TAM SIFIR olduğunda keyfi olarak sign=+1 atıyordum → tam çakışan kollarda sıfır yerine |τ| üretiyordu: birbirini götürmesi gereken parametrelerde SİSTEMATİK POZİTİF SAPMA",
+      "duzeltme": "seçilmiş işaret yoksa güncelleme de yok (merged=0)",
+      "duzeltme_sonrasi": "✅ TAM SIFIR"
+    },
+    "3_norm_dengeleme_kucuk_kolu_kurtariyor": {
+      "sonuc": "✅ küçük kolun işaretini izleme oranı HAM 0.656 → NORM-DENGELİ 0.734",
+      "anlami": "ADR-0036'nın gerekçesi kodda GERÇEKTEN çalışıyor, teoride kalmıyor"
+    },
+    "4_eszamanli_≠_iteratif": {"sonuc": "✅ max fark 2.9766",
+                               "anlami": "TASARIM'ın 'TIES(TIES(a,b),c) ≠ TIES(a,b,c)' iddiası doğrulandı"}
+  },
+
+  "merge_olculen_degerler": {
+    "tau_norm_fro": {"tg": 10.472179, "ta_SENTETIK": 0.580389},
+    "capraz_dogrulama": "kayıtlı artefakt tau_norm_tg.json = 10.458926 → %0,13 fark, bf16'da ΔW materyalize etmemden. Norm ölçümü BAĞIMSIZ olarak doğrulanmış oldu.",
+    "norm_asimetrisi": "18× (sentetik)",
+    "⚠️_gercek_tau_a_tahmini": "adım×lr kabası: τ_g 1083×1e-4 = 0.108 ↔ τ_a 73×1e-5 = 0.00073 → asimetri ~148× olabilir, sentetiğin 8 katı. Doğruysa norm-dengeleme sanılandan çok daha ağır iş yapıyor. CP3'te ÖLÇÜLECEK.",
+    "trim_k": 0.20, "lam": 1.0, "geri_olcek": 5.526284,
+    "catisan_parametre_orani": 0.001596,
+    "sifir_kalan_oran": 0.673234,
+    "⚠️_catisma_dusuk_cunku": "sentetik kol τ_g'nin ölçeklenmiş kopyası → yüksek korelasyon. GERÇEK τ_g ↔ τ_a çatışma oranı çok daha yüksek olmalı ve ADR-0036'nın asıl merak ettiği sayı O."
+  },
+
+  "sentetik_kol_serhi": "İkinci kol SENTETİKTİR: τ_g'nin lora_B tarafı 0.03 ile ölçeklenip gürültü eklenerek üretildi (seed 11). Amacı norm asimetrisi yaratıp merge mekaniğini sınamak. Hiçbir sayısı τ_a hakkında bilgi TAŞIMAZ. Scratchpad'de, repoya girmedi.",
+
+  "bulunan_iki_tuzak": {
+    "1_modal_run_detach_dusurulmesi": {
+      "belirti": "'✓ App completed' yazdı, log yalnızca 'Stopping app - local entrypoint completed' içeriyordu. HİÇBİR İŞ KOŞMADI, hata da vermedi.",
+      "kok_neden": "`modal run` EFEMER app yaratır; yerel giriş noktası dönünce app kapanır ve spawn() ile kuyruğa atılan iş onunla ölür",
+      "cozum": "`modal run --detach` — ders A4.1 zaten 'spawn() + --detach' diyordu, bayrak düşürülmüştü",
+      "bedel": "bir tur boşa (GPU $0, iş hiç başlamadı)"
+    },
+    "2_train_orpo_veri_kapisi_yoktu": {
+      "belirti": "A100 modeli YÜKLEDİ, sonra FileNotFoundError ile patladı → boşa GPU dakikası (~$0,10)",
+      "kok_neden": "`--data` bir DİZİN bekliyor (train.jsonl + validation.jsonl); dosya yolu verilince load_dataset '<dosya>/train.jsonl' arıyor. train_sft.py bu kapıyı MODEL YÜKLENMEDEN ÖNCE koyuyordu, train_orpo.py koymuyordu.",
+      "cozum": "aynı kapı train_orpo.py'ye eklendi (model yüklemeden önce)",
+      "onemi": "CP3 aynı yolu kullanacak — orada 20 dakikalık bir yükleme boşa gitmeyecek"
+    }
+  },
+
+  "maliyet": {
+    "modal_gpu_usd": "~0.20 (50 adım + bir başarısız yükleme)",
+    "openai_hakem_usd": 0.0,
+    "not": "TIES doğrulaması ve GGUF yerelde, $0"
+  },
+
+  "cikti_dosyalari": {
+    "merge_ties_kunye.json": "gerçek tensörlerdeki merge künyesi (norm'lar, TIES istatistikleri)",
+    "smoke_3cevap.json": "3 üretim kaydı — MEKANİK KANIT, kalite sayısı değil",
+    "gguf": "models/gguf/cp2s-ties-smoke-q4_k_m.gguf (2.59 GiB, gitignored)"
+  },
+
+  "acik_kalemler": [
+    "cp2_harvest.py eş zamanlı üretime alınmalı — CP2-c'nin ön koşulu (Modal -np 32 tek akışla anlamsız)",
+    "Norm-dengeleme KAPSAMI global; modül-başına alternatifi alınmadı → docs/open_questions.md",
+    "Gerçek τ_g ↔ τ_a çatışma oranı ve norm asimetrisi CP3'te ölçülecek"
+  ]
+}

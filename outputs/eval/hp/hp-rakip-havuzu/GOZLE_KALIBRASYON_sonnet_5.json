@@ -1,0 +1,37 @@
+{
+  "_not": "Red dedektörünün YENİ AİLEDE (anthropic/claude-sonnet-5) kalibrasyonu. CLAUDE.md zorunlu ön adımı: 'calibrate the refusal-detection regex on every competitor family'. Kalibresiz bırakmak rakibin reddini EKSİK sayar ve puanı BİZİM LEHİMİZE kaydırır. Sekiz kalemin sekizi de tek tek okundu.",
+  "tarih": "2026-09-09",
+  "kol": "h1_sonnet_5_nb",
+  "alet_cekinme_sayisi": 8,
+  "alet_id": [15, 17, 35, 41, 45, 59, 66, 79],
+  "siniflandirma": {
+    "temiz_cekinme": {
+      "id": [15, 45, 66, 79],
+      "n": 4,
+      "gerekce": "Dördü de 'Verilen kaynaklarda bu konuyu düzenleyen madde bulunmuyor.' ile AÇIYOR ve gerçekten cevap vermiyor. id 79'da altın zaten getirilmemişti (altin_sirasi=None) ⇒ o kalemde çekinme DOĞRU davranış."
+    },
+    "cekinceli_cevap": {
+      "id": [59],
+      "n": 1,
+      "gerekce": "TKHK m.56 alıntılanmış ve soru CEVAPLANMIŞ ('yönetmelikten öğrenilir'); son cümle yönetmeliğin metninin kaynaklarda olmadığını şerh düşüyor. Cevap var, şerh de var."
+    },
+    "acik_yanlis_pozitif": {
+      "id": [17, 35, 41],
+      "n": 3,
+      "gerekce": "Üçü de TAM, ALINTILI, doğru cevap. Dedektör SON esaslı ibareye bakıyor ve Sonnet şablonu cevabı alışkanlıkla bir ŞERH cümlesiyle KAPATIYOR.",
+      "kanit": {
+        "17": {"ilk_ibare": "İşverenin işçiyi yanıltması durumunda işçi, iş sözleşmesini haklı nedenle derhal feshedebilir", "son_ibare": "bu husus verilen kaynakta açıkça düzenlenmemiştir)", "altin": "İŞ KANUNU Madde 24", "altin_sirasi": 1},
+        "35": {"ilk_ibare": "Verilen kaynaklara göre, nafaka davaları basit yargılama usulüne tabidir", "son_ibare": "kanunlarda açıkça başka bir usul belirtilmediği sürece basit yargılama usulüne göre görülür", "altin": "HUKUK MUHAKEMELERİ KANUNU MADDE 316", "altin_sirasi": 0, "not": "Bu, olumlu bir hükmün İÇİNDEKİ olumsuzlamadır — en açık yanlış pozitif."},
+        "41": {"ilk_ibare": "İlgili kaynaklara göre ilamların icrasında zorla icra şu durumlarda uygulanır", "son_ibare": "bu nedenle doğrudan 'zorla icra' ifadesi bu maddede geçmemektedir", "altin": "İCRA VE İFLAS KANUNU Madde 31", "altin_sirasi": 6}
+      }
+    }
+  },
+  "bulgu": "Kusur ADR-0061'in BİREBİR AYNI SINIFI, yalnız aile değişti: dedektör tüm cevabı değil SON esaslı ibareyi tarıyor ve bu ailenin şablonu cevabı şerhle kapatıyor ⇒ 3/8 yanlış pozitif. ⛔ REJECT_RE'ye DOKUNULMADI — kusur regex'in içeriğinde değil, uygulandığı KAPSAMDA; F0.4'te de böyle bırakıldı ve düzeltme GÖZ okumalarıyla yapıldı.",
+  "kiyas_f04": {
+    "BIZ_tgta_v1": {"alet": 4, "temiz": 4, "cekinceli": 0, "yanlis_pozitif": 0},
+    "3_1_flash_lite": {"alet": 8, "temiz": 5, "cekinceli": 0, "yanlis_pozitif": 3},
+    "3_5_flash_lite": {"alet": 9, "temiz": 5, "cekinceli": 2, "yanlis_pozitif": 2},
+    "3_5_flash": {"alet": 11, "temiz": 7, "cekinceli": 3, "yanlis_pozitif": 1},
+    "sonnet_5": {"alet": 8, "temiz": 4, "cekinceli": 1, "yanlis_pozitif": 3}
+  }
+}

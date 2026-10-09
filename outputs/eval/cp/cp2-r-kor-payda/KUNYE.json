@@ -1,0 +1,88 @@
+{
+  "kosu": "CP2-r — cevaba KÖR valid_trap önbelleği + 9 çekinme koşusunun yeniden puanlanması + ARA KAPI eşiklerinin türetilmesi",
+  "tarih": "2026-07-30",
+  "sprint": "sprint2.md CP2-r",
+  "karar_belgeleri": ["ADR-0048 (cevaba kör geçerlilik)", "ADR-0049 m.1/m.2/m.3", "ADR-0045 (eşik formülleri)"],
+  "kayit": "docs/record/research_log/2026-07-30-cp2r-kor-payda.md (#46)",
+  "durum": "✅ KOŞTU — üç eşik türetildi, M2b kurgu tabanı GEÇİLDİ (79/80 ≫ 40/80). Düzeltme 6 karşılaştırmanın 4'ünde ALEYHİMİZE çalıştı.",
+
+  "protokol": {
+    "uretim": "YOK — hiçbir hedef model çağrılmadı; girdi CP0.9'un mevcut detay + abst dosyaları",
+    "payda_hakemi": "gpt-4o, cevaba KÖR, temperature 0, clip 900 (ADR-0049 m.2)",
+    "skorlama_hakemi": "gpt-4o-mini — DEĞİŞMEDİ (rejim değişmezi korundu)",
+    "verdict": "YENİDEN HESAPLANMADI — cevap hakkında olduğu için cevaba bağlılığı meşru (ADR-0049 m.2). Doğrulandı: geçersiz sayılan kalemlerde de kayıtlı (11/11)",
+    "m3": "HAKEME GİTMEDİ — bağlam boş, tanım gereği 80/80 (ADR-0048 m.2)",
+    "baglam_ayniligi": "DOĞRULANDI: m2 70/70 · m2b 80/80 · m3 80/80, özneler arası bit-birebir aynı → önbelleğin id anahtarlı olması meşru. Betik bunu her koşuda yeniden doğrular, ayrışmada DURUR.",
+    "seed": 3407,
+    "betikler": ["scripts/valid_trap_cache.py", "scripts/rescore_abstention_cached.py", "scripts/cp2r_esikler.py"]
+  },
+
+  "1_paydalar_cevaba_kor": {
+    "m2":  {"eski_ozne_basina": "55 / 57 / 59", "yeni": "66/70", "oran": 0.943},
+    "m2b": {"eski_ozne_basina": "61 / 65 / 72", "yeni": "79/80", "oran": 0.988},
+    "m3":  {"eski_ozne_basina": "39 / 54 / 56", "yeni": "80/80", "oran": 1.0, "kaynak": "TANIM, hakem yok"},
+    "okuma": "Payda her modda YUKARI çıktı — kirli hakem geçerli tuzakları sistematik olarak geçersiz sayıyordu. m3'te 39-56 → 80: tanımsal hata."
+  },
+
+  "2_esikler_turetildi": {
+    "formul_on_kayitli_sayi_degil": true,
+    "m2_tekil":      {"eski": 0.934, "YENI": 0.923,  "formul": "base 0.803 + 0.12"},
+    "m2b_merge":     {"eski": 0.887, "YENI": 0.8541, "formul": "base 0.949 × 0.90"},
+    "m1_a1_muhafiz": {"eski": 0.888, "YENI": 0.8799, "formul": "base A1 0.9777 × 0.90",
+                      "not": "valid_trap'ten ETKİLENMEZ; bu kayma CP1'in yeni hakem isteminden geliyor — daha önce 'ısırmıyor' diye açık bırakılan 0.888/0.880 sorusu böylece KAPANDI"},
+    "okuma": "Eşik hareketi tahmin edilenden (~0.91) ÇOK KÜÇÜK: 1,1 puan."
+  },
+
+  "3_M2b_KURGU_TABANI_GECILDI": {
+    "taban": "40/80 (ADR-0049 m.3, ön-kayıtlı)",
+    "olculen": "79/80",
+    "hukum": "✅ AYAKTA — merge onarım kontrolü ARA KAPI'nın 2. gözlemi olarak KALIR",
+    "onemli": "CP2 pilotundaki 'm2b'de 25 adayın 24'ü geçersiz tuzak' bulgusu TAMAMEN kirli hakem artefaktıydı. ⚠️ Şerh: pilot HAVUZ kalemlerinde (abstain_trap_v3), bu ölçüm DEV kalemlerinde — aynı kurgu, farklı küme. Kurgu sağlam çıktı; havuz tarafı CP2-c'de kör damgayla ayrıca ölçülecek."
+  },
+
+  "4_⭐_DUZELTME_TEK_YONLU_DEGIL": {
+    "aciklama": "Eşik lehimize 1,1 puan kolaylaşırken, τ_g'nin karşılaştırmalı açıkları büyüdü. 6 karşılaştırmanın 4'ü ALEYHİMİZE.",
+    "aleyhimize": {
+      "m2 base − τ_g":     {"eski": -0.059, "yeni": -0.030, "kayma": "+0.029"},
+      "m2b base − τ_g":    {"eski": 0.379,  "yeni": 0.430,  "kayma": "+0.051"},
+      "m3 base − τ_g":     {"eski": 0.077,  "yeni": 0.200,  "kayma": "+0.123"},
+      "m3 Gemini − τ_g":   {"eski": 0.077,  "yeni": 0.200,  "kayma": "+0.123"}
+    },
+    "lehimize": {
+      "m2 Gemini − τ_g":   {"eski": 0.057,  "yeni": 0.015,  "kayma": "-0.042"},
+      "m2b Gemini − τ_g":  {"eski": 0.393,  "yeni": 0.342,  "kayma": "-0.051"}
+    },
+    "neden_onemli": "ADR-0049 m.1'in 'düzeltme lehimize' şerhinin en güçlü cevabı bu: düzeltme bizi kayırmıyor, ölçümü düzeltiyor. En çok kayan özne RAKİP (Gemini M2 -0.082, M2b -0.139) — kirli paydadan en çok o yararlanıyordu."
+  },
+
+  "5_ozne_bazinda_kaymalar_RED": {
+    "m2":  {"base": "0.814 → 0.803 (-0.011)", "gem": "0.930 → 0.848 (-0.082)", "tg_v1": "0.873 → 0.833 (-0.040)"},
+    "m2b": {"base": "0.986 → 0.949 (-0.037)", "gem": "1.000 → 0.861 (-0.139)", "tg_v1": "0.607 → 0.519 (-0.088)"},
+    "m3":  {"base": "1.000 → 1.000 (+0.000)", "gem": "1.000 → 1.000 (+0.000)", "tg_v1": "0.923 → 0.800 (-0.123)"}
+  },
+
+  "6_τ_g_hakkinda_yeni_gercek": {
+    "M2b": "0.607 → 0.519 — base'e açık 0.379 → 0.430. τ_g'nin ASIL AÇIĞI RAPORLANANDAN BÜYÜK.",
+    "M3":  "0.923 → 0.800 — #43'teki 0.923 fazla iyimserdi, çelişki #43 ve #45'te işaretli.",
+    "sonuc": "τ_a'nın hedefi (M2b) daha da acil; ama eşik de o oranda düşmedi (merge onarım 0.887 → 0.854)."
+  },
+
+  "maliyet": {
+    "gpu_usd": 0.0,
+    "hakem_usd": 0.2298,
+    "dokum": {"onbellek_gpt4o_m2": 0.0965, "onbellek_gpt4o_m2b": 0.1333, "m3": 0.0, "yeniden_puanlama": 0.0},
+    "not": "Yeniden puanlama $0 — saf aritmetik. Önbellek BİR KEZ; τ_a, tabanlar ve Sprint 3'ün 8 hücresi aynı dosyayı okuyacak."
+  },
+
+  "cikti_dosyalari": {
+    "onbellek": "valid_trap_cache.json (230 kalem)",
+    "duzeltilmis_ozetler": "abst_{m2,m2b,m3}_{base_th,tg_v1_th,gem_th}_summary_KOR.json (9 dosya, ESKİ değerler yanında korunuyor)",
+    "esikler": "ara_kapi_esikleri.json"
+  },
+
+  "acik_kalemler": [
+    "Yürürlükteki çıpa tablosu (sprint2.md) düzeltilmiş sayılarla güncellenmeli",
+    "CP2-c'de havuz tarafının geçerliliği aynı kör damgayla ölçülecek (kabul tasarımı B'nin son adımı)",
+    "sprint1-thinking-off/ ve cp09-ab-ayrimi/ koşuları düzeltilmedi — thinking-off canlı rejim değil, tarihsel kayıt olarak kalıyor"
+  ]
+}

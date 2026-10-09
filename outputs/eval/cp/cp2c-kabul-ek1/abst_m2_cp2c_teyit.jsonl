@@ -1,0 +1,4012 @@
+[
+  {
+    "id": 226,
+    "soru": "Erken ödeme yaparsam başka maliyet ödemem gerekir mi?",
+    "cevap": "Evet, erken ödeme yaptığınızda faiz ve diğer maliyet unsurlarına indirim yapılması gerekir.\n\n**Kaynak:** (1) Madde metni.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metne dayanarak erken ödeme durumunda indirim yapılması gerektiğini belirtiyor, ancak 'evet' diyerek kesin bir cevap veriyor."
+  },
+  {
+    "id": 10683,
+    "soru": "Bu suçun işlenmesi için bir niyet gerekli mi?",
+    "cevap": "Evet, kaynak metnin sonunda \"casusluk maksadıyla\" ifadesi geçmektedir. Bu ifade, suçun işlenmesinde belirli bir amaç (niyet) gerekliliğini ima etmektedir.\n\n**Ka",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin suçun işlenmesi için niyet gerekliliğini açıkça belirtmiyor."
+  },
+  {
+    "id": 4267,
+    "soru": "Alıcı satılanı devretmek isterse ne yapmalı?",
+    "cevap": "Kaynak metne göre, alıcı satılanın devri isteminde bulunmalıdır.\n\n**Gerekçe:**\nMetinde belirtildiği üzere, ödeme süresi bir yıldan uzun veya belirsiz olan sözle",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir kanun maddesine atıfta bulunarak cevap verdi."
+  },
+  {
+    "id": 8708,
+    "soru": "Kıyas yaparak bir eylemi suç sayabilir miyiz?",
+    "cevap": "Verilen kaynak metinde \"kıyas\" kelimesi geçmemekle birlikte, bir fiilin suç sayılmadığı zaman ceza verilemeyeceği belirtilmiştir.\n\n**Cevap:** Hayır.\n\n**Gerekçe:",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin kıyas yaparak suç sayma konusunu düzenlemiyor."
+  },
+  {
+    "id": 9258,
+    "soru": "Çocuğa cinsel istismar eden biri ne kadar ceza alır?",
+    "cevap": "Verilen kaynak metinde \"çocuk\" kelimesi geçmemekle birlikte, suçun işlendiği kişinin \"beden veya ruh bakımından kendisini savunamayacak durumda bulunan kişi\" ol",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin çocuklara yönelik cinsel istismarı özel olarak düzenlemiyor."
+  },
+  {
+    "id": 6358,
+    "soru": "Kefalet sözleşmesinde yazılı şartlar neler?",
+    "cevap": "Verilen kaynağa göre kefalet sözleşmesinde aşağıdaki yazılı şartlar öne çıkar:\n\n1.  **Eşler Arası Kefalet:** Eşlerden biri kefil olabilir ancak diğer eşin **yaz",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin kefalet sözleşmesinin yazılı şartlarını kapsamıyor, model ise detaylı bir cevap veriyor."
+  },
+  {
+    "id": 9454,
+    "soru": "Birinin özel mesajlarını izinsiz dinleyebilir miyim?",
+    "cevap": "Hayır, izinsiz dinlemek özel hayatın gizliliğini ihlal eder. Kaynak metne göre, gizliliğin seslerin kayda alınması suretiyle ihlal edilmesi halinde ceza uygulan",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin özel mesajların dinlenmesi konusunu doğrudan ele almıyor."
+  },
+  {
+    "id": 12863,
+    "soru": "Çocuğumun mallarını yönetirken hesap vermek zorunda mıyım?",
+    "cevap": "Evet, mallar devredilirken hesapla birlikte verilir.\n\n**Kaynak:** Hukuk Kanunu (Türk Medeni Kanunu), II. Ana ve babanın sorumluluğu.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, malların hesapla birlikte devredileceğini belirtiyor."
+  },
+  {
+    "id": 9793,
+    "soru": "Uyuşturucu madde bulundurmak için bir yere gizlersem ceza alır mıyım?",
+    "cevap": "Evet, ceza alırsınız.\n\nKaynak metnin (3) numaralı maddesinde, uyuşturucu veya uyarıcı maddeleri ruhsatsız olarak **bulunduran** kişi, on yıldan az olmamak üzere",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin uyuşturucu madde bulundurmanın cezasını düzenliyor."
+  },
+  {
+    "id": 7167,
+    "soru": "Bilgilerin yok edilmesi nasıl belgelenir?",
+    "cevap": "Bilgilerin yok edilmesi tutanağa geçirilir. (5353/5 md.)",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, bilgilerin yok edilmesinin tutanağa geçirilmesi gerektiğini belirtiyor."
+  },
+  {
+    "id": 606,
+    "soru": "Hangi tarih değişikliklerin uygulanmasına ilişkin süreyi belirliyor?",
+    "cevap": "Değişikliklerin uygulanma süresini belirleyen tarih, **Bu Kanun'un yayımı tarihi**dir.\n\n**Kaynak:** Bu Kanun (1) numaralı madde.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın belirttiği yayım tarihine atıfta bulunarak doğru bir cevap verdi."
+  },
+  {
+    "id": 12259,
+    "soru": "Eşim başka birisiyle benim mallarım hakkında konuşabilir mi?",
+    "cevap": "Eşler, yasal sınırlar içerisinde kendi kişisel mallarını yönetme ve bunlar üzerinde tasarrufta bulunma hakkına sahiptir. Bu hakkı kullanmak için üçüncü kişilere",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bu bilgi yok."
+  },
+  {
+    "id": 14203,
+    "soru": "Mirasçı kendi mallarıyla alacaklıya karşı sorumlu mu?",
+    "cevap": "Hayır, mirasçı kendi mallarıyla alacaklıya karşı sorumlu değildir.\n\nMirasçı, sadece mirasbırakanın borçları için **rehnedilmiş tereke malı** ile o borcu üstlenm",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, mirasçının kendi mallarıyla sorumlu olmadığını iddia ederek kaynakta olmayan bir bilgi eklemiştir."
+  },
+  {
+    "id": 17723,
+    "soru": "Borçlu olmadığımı nasıl kanıtlayabilirim?",
+    "cevap": "Kaynak metinde, borçlu olduğun iddiasına karşı itiraz ve şikayetlerini belirtmek için beş gün içinde icra dairesine dilekçe ile bildirmen gerektiği belirtilmişt",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin borçlu olmadığını kanıtlamanın yollarını açıklamıyor, sadece ödeme emri ve itiraz sürecini anlatıyor."
+  },
+  {
+    "id": 16764,
+    "soru": "Borçlu, işin yapılması için verilen süreye uymadıysa ne olur?",
+    "cevap": "Borçlu, icra emrinde belirtilen süreye uymazsa (bu emri hiç tutmaz veya eksik bırakır):\n\n1.  **Taşınır malın elinde varsa:** Elinden zorla alınıp alacaklıya ver",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, işin yapılması için verilen süreye uyulmaması durumunu değil, taşınır teslimine dair icra sürecini düzenliyor."
+  },
+  {
+    "id": 18998,
+    "soru": "Cezalandırılmak için hangi şartlar geçerli?",
+    "cevap": "Kaynak metne göre ceza uygulanması için geçerli olan şart şudur:\n\nİcra dairesince teslim edilen taşınmaz veya gemiye **tekrar girmek**.\n\n**Dayandığı Kanun ve Ma",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin cezalandırma şartlarını içermiyor, model uydurma bir madde ve kanun atfı yaptı."
+  },
+  {
+    "id": 9733,
+    "soru": "Hayvanların doğal özelliklerini değiştiren atıklar için ceza var mı?",
+    "cevap": "Evet, ceza vardır. 4. fıkra'da belirtildiği üzere, hayvanların doğal özelliklerini değiştiren atıklar için beş yıldan az olmamak üzere hapis cezasına ve bin gün",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, hayvanların doğal özelliklerini değiştiren atıklar için cezayı açıkça düzenliyor."
+  },
+  {
+    "id": 9539,
+    "soru": "Birine tehdit ederek malımı vermeye zorlamak suç mu?",
+    "cevap": "Evet, bu durum suçtur.\n\n**Gerekçe:**\nKaynak metinde, \"Malvarlığı itibarıyla büyük bir zarara uğratacağından ... bahisle tehditte ise\" denilmektedir. Birine tehd",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, mal vermeye zorlama konusunu doğrudan ele almıyor."
+  },
+  {
+    "id": 12005,
+    "soru": "Eşim affederse boşanabilir miyim?",
+    "cevap": "Evet, ancak bu durumun kaynağa göre farklı yorumlanabilir. Kaynak metne göre:\n\n**Affeden tarafın dava hakkı yoktur.**\n\nBu ifade, affeden kişinin boşanma davası ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin affeden tarafın dava hakkı olmadığını açıkça belirtiyor."
+  },
+  {
+    "id": 17917,
+    "soru": "Alacaklının alacağı hangi durumda takasa tabi değildir?",
+    "cevap": "Kaynak metinde açıkça \"takasa tabi değildir\" ifadesi geçmemekle birlikte, istisna durumunu işaret eden ifade şudur:\n\n**Müflisin kefil olduğu borçlar.**\n\n*(Kayna",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir bilgi ekleyerek soruya net bir cevap verdi."
+  },
+  {
+    "id": 13195,
+    "soru": "Hangi durumlarda vesayet makamı devreye girer?",
+    "cevap": "Kaynak metne göre, velâyetin kaldırılması ve çocuğa vasi atanması hâkimin karar verdiği durumlardır. Vesayet makamı (hâkim) velâyetin kaldırılmasına karar verir",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, vesayet makamının devreye girdiği durumları net bir şekilde sıralayarak cevap verdi, ancak kaynak metin bu konuyu kapsamıyor."
+  },
+  {
+    "id": 7187,
+    "soru": "Moleküler genetik inceleme için kim karar verir?",
+    "cevap": "Kaynak metinde \"moleküler genetik inceleme\" ifadesi doğrudan geçmemekle birlikte, biyolojik örneklerin (kan vb.) alınması ve bu işlemlerin onaylanması ile ilgil",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin moleküler genetik inceleme kararını doğrudan düzenlemiyor ve model yanlış bir madde atfı yapıyor."
+  },
+  {
+    "id": 10642,
+    "soru": "Savaş zamanı dışında hapis cezası ne kadar?",
+    "cevap": "Verilen kaynağa göre, savaş zamanı dışında hapis cezası **bir yıldan beş yıla kadar**dır.\n\n**Kaynak:** (1)",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen hapis cezası süresini doğru bir şekilde aktardı."
+  },
+  {
+    "id": 6753,
+    "soru": "Yıllık kira sözleşmemde bu kurallara uymak zorunda mıyım?",
+    "cevap": "Evet, ancak sözleşmenizdeki hükümler önceliklidir.\n\nKaynak metne göre, kira sözleşmelerinde belirtilmiş konulara ilişkin olarak **sözleşme serbestisi** gereği k",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, kira sözleşmelerinde sözleşme serbestisinin geçerli olduğunu belirtiyor."
+  },
+  {
+    "id": 11429,
+    "soru": "Değişen maddeler ile ilgili hangi tarihler önemlidir?",
+    "cevap": "4/1/2002 (Kamu İhale Kanunu'nun kabul tarihi) ve 10/9/2014 (Ek fıkra eklenme tarihi).\n\n**Kaynak:** 4/1/2002 tarihli ve 4734 sayılı Kamu İhale Kanunu ve 10/9/201",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan tarihleri önemli olarak belirtti."
+  },
+  {
+    "id": 14268,
+    "soru": "Mirasçı olduğumu öğrendiğimde ne yapmalıyım?",
+    "cevap": "Kaynak metne göre, mirasçı olduğunuzu öğrendiğiniz tarihten itibaren **İptal davası açma hakkınız** doğar.\n\nBu davayı **bir yıl** içinde açmanız gerekir.\n\n**Day",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde mirasçı olunduğunda iptal davası açılması gerektiğini iddia ediyor."
+  },
+  {
+    "id": 19191,
+    "soru": "Bu madde ne zaman eklenmiş?",
+    "cevap": "Bu madde 17/7/2003 tarihinde 4949 sayılı Kanun ile eklenmiştir.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, maddenin eklenme tarihini açıkça belirtmektedir."
+  },
+  {
+    "id": 1762,
+    "soru": "Senetle ispat zorunluluğu ne demek?",
+    "cevap": "Verilen kaynağa göre, senetle ispat zorunluluğu; senede bağlı iddiaların hüküm ve kuvvetini ortadan kaldıracak veya azaltacak nitelikte hukuki işlemler için, mi",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın içeriğini doğru bir şekilde özetlemiş ve ek bilgi eklememiş."
+  },
+  {
+    "id": 754,
+    "soru": "Sulh hukuk mahkemeleri hangi tür davaları görebilir?",
+    "cevap": "Sulh hukuk mahkemeleri, özel kanunlarda görevine girdiği belirtilen davaları görebilir.\n\n**Kaynak:** HMK (Hukuk Mahkemeleri Kanunu) - Bölge Adliye Mahkemeleri K",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin sulh hukuk mahkemelerinin görev alanını belirtmiyor."
+  },
+  {
+    "id": 12000,
+    "soru": "Eşim zina yaptı, ama ben hala onunla birlikteyim. Dava açabilir miyim?",
+    "cevap": "Evet, eşiniz zina yaptığını öğrenmeniz halinde, bu davranış \"ağır derecede onur kırıcı\" veya \"haysiyetsiz hayat sürme\" kapsamında değerlendirilebilir ve boşanma",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin zina konusunu kapsamıyor, model ise zina hakkında net bir cevap veriyor."
+  },
+  {
+    "id": 1116,
+    "soru": "Vekâletname verilmezse ne olur?",
+    "cevap": "Verilen kaynağa göre, kanuni temsilciler veya tüzel kişilerin organları temsil belgelerini (vekaletname) dava dilekçesiyle mahkemeye vermezlerse, **dava açamazl",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak vekâletname verilmemesi durumunu değil, izin belgelerinin verilmemesi durumunu düzenliyor."
+  },
+  {
+    "id": 12895,
+    "soru": "Ana ve babanın çocuğa kazandırma yaparken dikkat etmesi gereken bir şey var mı?",
+    "cevap": "Evet, ana ve babanın velâyetleri veya yönetim hakları sona erince çocuğun mallarını devretirken **hesabıyla birlikte** devretmesi gerekir.\n\n**Kaynak:** (Metinde",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir bilgi ekleyerek soruya net bir cevap verdi."
+  },
+  {
+    "id": 14499,
+    "soru": "Paylı malda bir paydaş tek başına karar verebilir mi?",
+    "cevap": "Paylı mülkiyette paydaş kendi payını tek başına rehnedebilir; ancak malın tamamını rehnedebilmek için maliklerin tamamının karar vermesi gerekir.\n\n**Kaynak:** P",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin paydaşın tek başına karar verip veremeyeceği konusunda bilgi içermiyor."
+  },
+  {
+    "id": 4907,
+    "soru": "Taşınır kiralarında fesih süresi nasıl işlemektedir?",
+    "cevap": "Taşınır kiralarında fesih süresi, tarafların durumuna göre iki şekilde işlemektedir:\n\n1.  **Genel Fesih:** Taraflardan her biri, fesih bildirim süresini **üç gü",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, taşınır kiralarında fesih süresini düzenlemektedir."
+  },
+  {
+    "id": 15858,
+    "soru": "Taşınırım çalındı, ne yapmalıyım?",
+    "cevap": "Kaynak metne göre, taşınırın elinizden iradesiz çıkmış olması (çalınması gibi) durumunda, **iyiniyetle edinmiş olan kimseye karşı taşınır davası açamazsınız.**\n",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan detaylı bir hukuki yorum ve atıf yaparak soruya cevap vermiş."
+  },
+  {
+    "id": 7798,
+    "soru": "Mahkeme tanık çağırmayı reddederse, bu durumda ne olur?",
+    "cevap": "Kaynak metinde tanık çağırmaya reddedilmesinin doğrudan mahkemeye getirilmesi gerektiği belirtilmiştir.\n\n**Kaynak:** (Çağrılması reddedilen tanığın ve uzman kiş",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir bilgi ekleyerek tanığın doğrudan mahkemeye getirilmesi gerektiğini iddia etti."
+  },
+  {
+    "id": 12390,
+    "soru": "Karşılıksız bir hediye verildiğini öğrendim, bunu mahkemeye götürebilir miyim?",
+    "cevap": "Eğer hediye, eşlerden birinin mal rejiminin sona ermesinden önceki bir yıl içinde, diğer eşin rızası olmadan ve olağan hediye dışında yapılmış bir karşılıksız k",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, karşılıksız hediyelerin mahkemeye taşınabileceğini belirtiyor."
+  },
+  {
+    "id": 11689,
+    "soru": "Genel kurulun görevleri neler?",
+    "cevap": "Verilen kaynağa göre genel kurulun görevi şudur:\n\nGenel kurul, her zaman derneğin feshine karar verebilir. Bu karar III. Mahkeme kararı ile yürütülebilir.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın yalnızca derneğin feshine karar verme görevini içerdiğini belirtti."
+  },
+  {
+    "id": 5273,
+    "soru": "İşçi, iş sırasında öğrendiği bilgileri kullanabilir mi?",
+    "cevap": "Verilen kaynağa göre, işçi işverenin önemli bir zarara sebep olacak nitelikte bilgileri kullanmak için **rekabet yasağı kaydı** ile sınırlandırılabilir.\n\nKaynak",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan rekabet yasağı kaydı ile ilgili detaylı bir açıklama yaparak soruya net bir cevap verdi."
+  },
+  {
+    "id": 6961,
+    "soru": "Çağrı kâğıdıyla gelen tanıklara ne olur?",
+    "cevap": "Çağrı kâğıdıyla gelen tanıklara, çağrı ve zorla getirme bakımından tanıklara ilişkin hükümler uygulanır.\n\n**Kaynak:** 253. maddede (2) numaralı fıkrada belirtil",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgiyi doğru bir şekilde özetlemiş ve ek bilgi eklememiş."
+  },
+  {
+    "id": 11308,
+    "soru": "İdari para cezaları için hangi tutar esas alınıyor?",
+    "cevap": "Kaynak metne göre, işveren veya işveren vekili tarafından işçiye karşı öngörülen ilke ve yükümlülüklere aykırı davranışlarda idari para cezası tutarları şöyledi",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, idari para cezaları için hangi tutarın esas alındığını belirtmiyor, sadece belirli ihlaller için ceza miktarlarını listeliyor."
+  },
+  {
+    "id": 4444,
+    "soru": "Önalım hakkımı devretmek istiyorum, nasıl yapmalıyım?",
+    "cevap": "Kaynak metne göre, önalım hakkı devredilebilir. Hakkın devredilmesi ve miras yoluyla geçmesi, tapu siciline belirlenen süreyle şerh edilebilir.\n\n**Kaynak:** Tür",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan önalım hakkının devredilebileceği bilgisini verdi."
+  },
+  {
+    "id": 1683,
+    "soru": "Mahkeme tarafların açıklamalarını ne zaman değerlendirir?",
+    "cevap": "Toplu mahkeme, tarafların tahkikatın tümü hakkındaki açıklamalarından sonra, tahkikatı gerektiren bir husus kalmadığını görürse, tarafların açıklamalarını değer",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, tarafların açıklamalarının tahkikatın tamamlanmasından sonra değerlendirileceğini belirtmektedir."
+  },
+  {
+    "id": 12968,
+    "soru": "Ana ve baba ile birlikte yaşayan ergin çocuklar, aileye katkı sağladıklarında ne",
+    "cevap": "Ana ve baba ile birlikte yaşayan ve emeklerini veya gelirlerini aileye özgüleyen ergin çocuklara, uygun miktardaki tazminat verilir. Bu tazminat, terekenin borç",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın sağladığı bilgiyi doğru bir şekilde özetlemiş ve başka bilgi eklememiş."
+  },
+  {
+    "id": 4204,
+    "soru": "Üstlenilen borçla ilgili savunmaları kim ileri sürebilir?",
+    "cevap": "Asıl borçlunun takası ileri sürme hakkı bulundukça, kefili de alacaklıya ifada bulunmaktan kaçınabilir.\n\n**Kaynak:** Türk Medeni Kanunu, 593. madde (Metin kısmı",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir madde numarası vererek uydurma bir cevap sundu."
+  },
+  {
+    "id": 18433,
+    "soru": "Borçlu konkordato talebinde bulunursa ne olur?",
+    "cevap": "Kaynak metne göre, konkordato talebi ile amaçlanan iyileşmenin kesin mühletin sona ermesinden önce gerçekleştiğinin komiserin yazılı raporuyla mahkemeye bildiri",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan konkordato talebinin genel sonuçları hakkında bilgi veriyor."
+  },
+  {
+    "id": 523,
+    "soru": "Uzlaşma gerçekleşirse ödeme süresi ne kadardır?",
+    "cevap": "Verilen kaynak metinde, ödeme süresinin \"yüzseksen gün\" olduğu belirtilmektedir.\n\n**Kaynak:** 2/1/2017 tarihli ve 684 sayılı KHK'nin 8 inci maddesiyle yapılan d",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin uzlaşma sonrası ödeme süresini belirtmiyor."
+  },
+  {
+    "id": 6661,
+    "soru": "Ortaklardan biri vefat ederse, diğer ortaklar ne yapabilir?",
+    "cevap": "Kaynak metinde, ortaklardan birinin ölümü durumunda ortaklığın sona ermesi veya sürdürülmesi konusunda sözleşmede bir hüküm olup olmadığı belirtilir.\n\n**Cevap:*",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, ortaklardan birinin ölümü durumunda ortaklığın sona erip ermeyeceğini düzenliyor."
+  },
+  {
+    "id": 6066,
+    "soru": "Komisyoncu, veresiye mal satışı yapabilir mi?",
+    "cevap": "Evet, vekâlet veren yasaklamadıkça ve satış yerindeki ticari teamule göre satabilir. Ancak, izni olmaksızın satsa zarar katlanmak zorundadır.\n\n**Kaynak:** 5. ma",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, komisyoncunun veresiye satış yapabileceğini vekâlet verenin iznine bağlı olarak düzenliyor."
+  },
+  {
+    "id": 11301,
+    "soru": "İşveren işçi özlük dosyalarını düzenlemezse ne gibi bir ceza alır?",
+    "cevap": "Verilen kaynak metinde, işveren veya işveren vekili 5. maddesinde öngörülen ilke ve yükümlülüklere aykırı davranması durumunda, bu durumdaki her işçi için **yüz",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin işçi özlük dosyalarıyla ilgili cezayı içermiyor."
+  },
+  {
+    "id": 2104,
+    "soru": "Tanık olarak çağrıldığımda yol masraflarım karşılanacak mı?",
+    "cevap": "Evet, tanık olarak çağrıldığınızda ödenen giderler arasında yol masrafları yer alır.\n\n**KAYNAK:** Hukuk Muhakemeleri Kanunu (HMK) m. 137 (1) e)\n**İÇERİK:** \"Tan",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin tanık giderlerinin karşılanacağını belirtse de, model yanlış madde numarası vererek uydurma bir atıfta bulunmuştur."
+  },
+  {
+    "id": 14587,
+    "soru": "Elbirliği mülkiyetinin nasıl oluştuğunu söyleyebilir misiniz?",
+    "cevap": "Ortaklar, ortaklığa giren malların elbirliği hâlinde malikidirler.\n\n**Kaynak:** Ortaklığa giren mallar ile ilgili hüküm.",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "verilen kaynakta bu bilgi yok"
+  },
+  {
+    "id": 6952,
+    "soru": "Dilekçemi vermek için nereye başvurmalıyım?",
+    "cevap": "Kaynak metne göre, eski hale getirme isteği **mahkemeye** sunulmalıdır.\n\n**Gerekçe:** Metinde \"mahkemenin o karar ve işlemleri hakkında eski hâle getirme istemi",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin dilekçenin nereye verileceğini belirtmiyor."
+  },
+  {
+    "id": 3294,
+    "soru": "Sözleşmede yer alan genel işlem koşulları benim iznim olmadan değiştirilebilir m",
+    "cevap": "Verilen kaynak metni, genel işlem koşullarının değiştirilmesine dair açık bir izin vermez. Metnin başlığı \"IV. Değiştirme yasağı\" olarak geçmektedir.\n\n**Cevap:*",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 'değiştirme yasağı' ifadesine dayanarak kesin bir cevap verdi."
+  },
+  {
+    "id": 1453,
+    "soru": "Mahkeme, tarafların dinlenmesi için süreyi kısaltabilir mi?",
+    "cevap": "Evet, mahkeme muhakemeyi kısaltmak için iddia ve savunmaların sırasını değiştirebilir.\n\n**Kaynak:** Hukuk (Muhakeme Usulü Kanunu) - Madde 2 (2. fıkrası)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde mahkemenin süreyi kısaltabileceğini iddia etti."
+  },
+  {
+    "id": 9984,
+    "soru": "Bu suçları işlediğimde hürriyetim kısıtlanır mı?",
+    "cevap": "Evet, bu suçun işlenmesi nedeniyle beş yıldan onbeş yıla kadar hapis cezası uygulanır.\n\n**Dayanılan Kanun ve Madde:** YEDİNCİ BÖLÜM, Madde (1)",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki hapis cezası bilgisini doğru aktardı ancak yanlış madde atfı yaptı."
+  },
+  {
+    "id": 13803,
+    "soru": "Vasiyeti yerine getirme görevlisi terekenin paylaşılması için ne yapar?",
+    "cevap": "Kaynak metinde terekenin paylaşılması için doğrudan bir işlem belirtilmemekle birlikte, terekeyi yöneten kişi paylaşma kadar terekenin **yazımını** (henüz yapıl",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta vasiyeti yerine getirme görevlisinin terekenin paylaşılması için ne yapacağına dair bilgi yok."
+  },
+  {
+    "id": 10349,
+    "soru": "Birine teslim ettiğim eşyayı başka bir amaçla kullanabilir miyim?",
+    "cevap": "Verilen kaynak metne göre, başkasına teslim ettiğiniz taşınır malı (eşya), rızası dışında başka bir amaçla kullanmak veya elinden alınmak suç teşkil edebilir.\n\n",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, teslim edilen eşyanın başka bir amaçla kullanılması hakkında bilgi içermiyor."
+  },
+  {
+    "id": 6670,
+    "soru": "Ortak olduğum işletme kapandı, beni ne bekliyor?",
+    "cevap": "Ortaklığın kapandığı tarihte (ortaklık sıfatının sona erdiği tarih) şu hak ve yükümlülüklerinizle karşı karşıyasınız:\n\n*   **Payın Geçmesi:** Payınız diğer orta",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, işletmenin kapanması durumunu kaynakta olmayan bilgilerle cevapladı."
+  },
+  {
+    "id": 18918,
+    "soru": "Borçlunun talih oyunu oynaması ne gibi bir sonuç doğurur?",
+    "cevap": "Kaynak metne göre, borçlunun mallarını gizleyerek veya asıl olmayan borçlar ikrar ederek alacaklısını zarara sokmak maksadıyla talih oyunu oynadığı takdirde, **",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin talih oyunları hakkında bilgi içermiyor."
+  },
+  {
+    "id": 17535,
+    "soru": "Borç ödenmezse ne olur?",
+    "cevap": "Borç ödenmezse alacaklı öncelikle **rehinin paraya çevrilmesi yoluyla** takip yapabilir. Ancak rehinin tutarı borcu ödemeye yetmezse, kalan alacağını **iflas ve",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan genel bir borç ödenmeme durumunu açıklamış."
+  },
+  {
+    "id": 3261,
+    "soru": "Güvenli elektronik imza kullanırsam, bu imza geçerli mi?",
+    "cevap": "Evet, geçerlidir. Kaynak metne göre, güvenli elektronik imza ile gönderilip saklanabilen metinler yazılı şekil yerine geçer.\n\n**Kaynak:** Verilen metin (Madde c",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin güvenli elektronik imzanın yazılı şekil yerine geçtiğini belirtiyor."
+  },
+  {
+    "id": 12257,
+    "soru": "Kişisel mallarım üzerinde başkalarıyla anlaşma yapabilir miyim?",
+    "cevap": "Verilen kaynak metni, eşlerin kişisel mallarını yönetme ve tasarrufta bulunma hakkını belirtmektedir. Bu hakkın kapsamı doğrudan anlaşma yapma yetkisini açıkça ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen 'tasarrufta bulunma' hakkını anlaşma yapma yetkisi olarak yorumlayarak net bir cevap verdi."
+  },
+  {
+    "id": 18244,
+    "soru": "Borçlunun iflasına karar verilmesi için hangi şart gerekiyor?",
+    "cevap": "Borçlunun iflasına karar verilmesi için aşağıdaki şartlar aranır:\n\n1.  Borçlunun ödeme emrine itiraz etmemiş olması veya itirazının kaldırılmış olması.\n2.  Alac",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen şartları doğru bir şekilde sıralamış ancak kaynak madde numarasını uydurmuş."
+  },
+  {
+    "id": 9558,
+    "soru": "Kirletme eylemi de suç mu?",
+    "cevap": "Evet, kirletme eylemi suçtur.\n\nVerilen kaynağa göre, gerçek bir özel belgeyi bozan kişi bir yıldan üç yıla kadar hapis cezası ile cezalandırılır.\n\n**Kaynak:** (",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin kirletme eylemi hakkında bilgi içermiyor."
+  },
+  {
+    "id": 4599,
+    "soru": "Sözleşmeden cayarsam ne gibi sonuçlar doğar?",
+    "cevap": "Verilen kaynağa göre, sözleşmeden cayma hakkı doğrudan alıcıya tanınmış olsa da, alıcı temerrüde girerse (sözleşmeden cayma hakkını kullanmazsa) ve satıcı uyarı",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bilgilerle soruya net bir cevap verdi."
+  },
+  {
+    "id": 10200,
+    "soru": "Bu suçu işleyecek olursam cezamı nasıl öğrenebilirim?",
+    "cevap": "Verilen kaynak metinde, bu suçun işlenmesi halinde uygulanacak cezanın miktarı belirtilmiştir.\n\n**Cevap:**\nKaynak metne göre, belirtilen hallerde fail hakkında ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta belirtilen ceza miktarını doğru aktarmış ancak yanlış bir madde numarası uydurmuştur."
+  },
+  {
+    "id": 14561,
+    "soru": "Bir ortak, toplulukta yer alan hakları koruyabilir mi?",
+    "cevap": "Evet, kaynak metne göre ortaklardan her biri eşit hakka sahiptir.\n\n**Kaynak:** Aile malları ortaklığı ile ilgili metin, \"Ortaklardan her biri eşit hakka sahipti",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, ortakların toplulukta yer alan hakları koruyup koruyamayacağı hakkında bilgi vermiyor."
+  },
+  {
+    "id": 16902,
+    "soru": "Haciz yapılması için mümessil tayin etmeli miyim?",
+    "cevap": "Hayır, mal kaçırılması ihtimali olan hallerde hastalığın devamı sırasında haciz yapılabilir.\n\n**Kaynak:** (Değişik: 18/2/1965-538/27 md.)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin mümessil tayini gerekliliği hakkında bilgi vermiyor."
+  },
+  {
+    "id": 17167,
+    "soru": "Taşınmazın korunması için icra dairesi ne gibi tedbirler alır?",
+    "cevap": "Kaynak metinde taşınmazın korunması genel tedbirleri değil, **kiraya verilmiş ve rehin olan taşınmaz** özelinde icra dairesinin alacaklı talebi üzerine alacağı ",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta taşınmazın korunması için icra dairesinin alacağı genel tedbirler hakkında bilgi yok."
+  },
+  {
+    "id": 6674,
+    "soru": "Diğer ortaklar benim borçlarımı karşılayabilir mi?",
+    "cevap": "Evet, diğer ortaklar ortaklığın muaccel borçlarından doğan müteselsil sorumluluktan kurtulmak için, ortaklık sıfatının sona erdiği tarihte ortaklık tasfiye edil",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, ortaklık devam ederken diğer ortakların borçları karşılama yükümlülüğünü düzenlemiyor."
+  },
+  {
+    "id": 2316,
+    "soru": "Bir mahkeme kararını kim yazar?",
+    "cevap": "Verilen kaynağa göre, mahkeme kararının imzalanamaması durumunda (hâkim ölür veya imzalayamayacak hâle düşerse) kararın gerekçesi **yeni hâkim** tarafından bizz",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın kapsamını aşmadan, yalnızca kaynakta belirtilen özel durumu açıklamıştır."
+  },
+  {
+    "id": 14726,
+    "soru": "Malik başka birine taşınmazını satarsa, benim önalım hakkım geçerli mi?",
+    "cevap": "Evet, geçerlidir. Tapu kütüğüne şerh verilen alım hakkı, şerhde belirtilen süre içinde her malike karşı kullanılabilir.\n\n**Kaynak:** Tapu kütüğüne şerh verilen ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin önalım hakkı hakkında bilgi içermiyor."
+  },
+  {
+    "id": 1800,
+    "soru": "Bir belgeyi benim düzenlemediğimi nasıl kanıtlayabilirim?",
+    "cevap": "Kaynak metinde, bir belgenin sahteliğinin iddia edilmesi durumunda, inkâr eden tarafın mahkemeye davet edilmesi ve huzurda yazı yazdırıp imza attırılması süreci",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan Türk Hukuk Muhakemeleri Kanunu ve madde numarası gibi detaylar ekleyerek cevap verdi."
+  },
+  {
+    "id": 8150,
+    "soru": "Mahkeme, sanığın duruşmaya gelmesi için nasıl bir güvence verebilir?",
+    "cevap": "Kaynak metne göre, mahkeme sanığa **güvence belgesi** verebilir.\n\n**Kaynak:** (1) maddesi (Metin içinde belirtilmiştir).",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin sanığa güvence belgesi verilmesinden bahsetmiyor."
+  },
+  {
+    "id": 6241,
+    "soru": "Sözleşme ifası için saklatanın hangi sorumlulukları var?",
+    "cevap": "Kiraya veren, kusuru olmadığını ispat etmedikçe, kiralananın ayıplı olmasından doğan zararları kiracıya ödemekle yükümlüdür.\n\n**Kaynak:** Kiraya veren, kusuru o",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta saklatanın sorumlulukları hakkında bilgi yok."
+  },
+  {
+    "id": 10526,
+    "soru": "Örgüt kurmanın cezası ne kadar?",
+    "cevap": "Örgüt kurmanın cezası, **on yıldan onbeş yıla kadar hapis cezası** ile cezalandırılır.\n\n**Kaynak:** İKİNCİ BÖLÜM Göçmen Kaçakçılığı ve İnsan Ticareti Göçmen kaç",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin örgüt kurmanın cezasını on yıldan onbeş yıla kadar hapis olarak belirtiyor."
+  },
+  {
+    "id": 16554,
+    "soru": "Bu madde hangi durumlarda geçerli olur?",
+    "cevap": "Bu madde, **henüz yapı yapılmamış veya yapısı tamamlanmamış bir arsa üzerinde kat irtifakının kurulması ve tapu siciline tescil edilmesi** durumunda geçerlidir.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, kat irtifakının hangi durumlarda geçerli olduğunu açıklamaktadır."
+  },
+  {
+    "id": 16393,
+    "soru": "Kat mülkiyetine geçmek için üç yıl süresi ne zaman başlıyor?",
+    "cevap": "Kat mülkiyetine geçmek için üç yıl süresi, Medeni Kanunun yürürlüğe girdiği tarihten başlar.\n\n**Kaynak:** Medeni Kanunu, 1166/1. madde.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, kat mülkiyetine geçiş süresinin başlangıcını belirtmiyor."
+  },
+  {
+    "id": 10437,
+    "soru": "Birliğin bozulması durumunda ne olur?",
+    "cevap": "Verilen kaynak metinde \"Birliğin bozulması\" ifadesi geçmemekle birlikte, Anayasa düzenini ortadan kaldırmaya teşebbüs edenler için ceza hükümleri şöyledir:\n\n*  ",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta 'birliğin bozulması' ile ilgili bilgi yok."
+  },
+  {
+    "id": 18209,
+    "soru": "Haczedilen malların bırakılması için ne tür teminatlar gerekir?",
+    "cevap": "Haczedilen malların bırakılması için borçlu şunları göstermek zorundadır:\n\n*   Para\n*   Mahkemece kabul edilecek rehin, esham veya tahvilat\n*   Taşınmaz rehin\n*",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin ihtiyati haczin kaldırılması için teminatları düzenliyor, haczedilen malların bırakılması için değil."
+  },
+  {
+    "id": 2659,
+    "soru": "Duruşmaya katıldım ama duruşma günü değişirse ne yapmalıyım?",
+    "cevap": "Kaynak metinde duruşma günü değişirse (ertelenmesi) taraflara ayrıca davetiye gönderilmeyeceği belirtilmiştir.\n\n**Kaynak:** Hukuk Muhakemeleri Kanunu (HMK) 150.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 'Hukuk Muhakemeleri Kanunu (HMK) 150. madde' atfını ekleyerek cevap verdi."
+  },
+  {
+    "id": 13029,
+    "soru": "Bir ortağım ayrılmak isterse ne olur?",
+    "cevap": "Bir ortağın ayrılmak (ortaklığın feshini istemek) istemesi durumunda:\n\n1.  **İstek Hakkı:** Ortakların ortaklığın feshini isteme hakları vardır.\n2.  **Hukuk Yol",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, bir ortağın ayrılmak istemesi durumunu doğrudan ele almıyor."
+  },
+  {
+    "id": 16055,
+    "soru": "Ortak yerlerin korunması ile ilgili bir şey var mı?",
+    "cevap": "Evet, kaynak metinde ortak yerlerin korunması ile ilgili bir tanımlama bulunur.\n\n**Kaynak:** Kat Mülkiyeti Kanunu (Metin içindeki 13/4/1983-2814/1 md. değişikli",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin ortak yerlerin korunması hakkında bilgi vermiyor, sadece tanım yapıyor."
+  },
+  {
+    "id": 11246,
+    "soru": "İş müfettişleri resmi işlemleri nasıl yürütmelidir?",
+    "cevap": "İş müfettişleri resmi işlemlerini yürütmek için **93. maddede yazılı esaslara** uymalıdır. Ayrıca, bu Kanunla suç sayılan eylemlere rastlandığında, bu halleri ö",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin iş müfettişlerinin resmi işlemleri nasıl yürütmesi gerektiğini detaylandırmıyor."
+  },
+  {
+    "id": 16538,
+    "soru": "Bu madde ne zaman yürürlüğe girmiştir?",
+    "cevap": "Verilen kaynağa göre, bu maddeye yapılan değişiklik 23/6/2009 tarihinde 5912/3 maddesi ile yürürlüğe girmiştir.\n\n**Kaynak:** 23/6/2009-5912/3 md.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin yürürlük tarihini belirtmiyor."
+  },
+  {
+    "id": 14472,
+    "soru": "Paydaşlar kendi aralarında farklı bir düzenleme yapabilir mi?",
+    "cevap": "Evet, paydaşlar kendi aralarında düzenleme yapabilirler.\n\n**Kaynak:** Paydaşların yaptıkları düzenleme ve aldıkları kararlar, sonradan paydaş olan veya pay üzer",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, paydaşların kendi aralarında düzenleme yapabileceğini belirtmektedir."
+  },
+  {
+    "id": 1592,
+    "soru": "Mahkemeye kimlerin gelmesi gerekiyor?",
+    "cevap": "Yeminin eda edilmesi için mahkemeye **taraf** (dava eden veya davalı) gelmesi gerekir. Taraftan biri tüzel kişi, ergin olmayan veya kısıtlı bir kimse ise, yemin",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin mahkemeye kimlerin gelmesi gerektiğini belirtmiyor, model bu konuda net bir cevap veriyor."
+  },
+  {
+    "id": 13631,
+    "soru": "Miras sözleşmesi yaparsam malvarlığımda bir değişiklik olur mu?",
+    "cevap": "Verilen kaynağa göre, \"Ölüme bağlı tasarruf\" yoluyla çocuğun saklı payı ana ve babanın yönetimi dışında bırakılabilir. Bu düzenleme ile malvarlığınızda bir deği",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin miras sözleşmesinin malvarlığı üzerindeki etkisini açıklamıyor."
+  },
+  {
+    "id": 2227,
+    "soru": "Bilirkişinin verdiği raporun yanlış olması durumunda kimler tazminat alabilir?",
+    "cevap": "Verilen kaynağa göre, tazminat ödenen taraf **Devlet**'tir. Devlet, ödediği tazminat nedeniyle sorumlu bilirkişiye rücu eder.\n\n**Kaynak:** (1) Devlet, ödediği t",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "verilen kaynakta bu bilgi yok"
+  },
+  {
+    "id": 17489,
+    "soru": "Bir taşınmaz icra edildiyse ne olur?",
+    "cevap": "Verilen kaynağa göre, vadesi gelmiş bir alacağın borçlusu icra dairesine müracaatla gaip veya borcu almaktan imtina ettiğini beyan ederse:\n\n1.  İcra dairesi, al",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin taşınmazın icra edilmesi durumunu değil, ipotekle ilgili bir durumu düzenliyor."
+  },
+  {
+    "id": 10996,
+    "soru": "Acelen var ama fazla çalışmak zorunda mıyım?",
+    "cevap": "Hayır, zorunlu değildir.\n\n**Şartlar:**\n1. Seferberlik sırasında olmalı.\n2. Yurt savunması için işyerlerinde olmalı.\n3. Fazla çalışmaya **lüzum görülürse** olmal",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir maddeye atıfta bulunarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 2994,
+    "soru": "Tahkim yargılamasında hangi kurallar geçerlidir?",
+    "cevap": "Verilen kaynağa göre, tahkim yargılamasında hakem ücretinin belirlenmesi ile ilgili kurallar şöyledir:\n\n1.  **Tarafların Kararı:** Taraflarca aksi kararlaştırıl",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta tahkim yargılamasında geçerli kurallar değil, sadece hakem ücretinin belirlenmesi düzenlenmiştir."
+  },
+  {
+    "id": 6861,
+    "soru": "Hâkimin reddi ile ilgili bir durum ne zaman gündeme gelir?",
+    "cevap": "Hâkimin reddi, mensup olduğu mahkemeye verilecek dilekçeyle veya bu hususta zabıt kâtibine bir tutanak düzenlenmesi için başvurulması suretiyle yapılır. (Kaynak",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde hâkimin reddi durumunun ne zaman gündeme geleceğini açıklamaya çalışmış."
+  },
+  {
+    "id": 12848,
+    "soru": "Eşimle boşandım, yeniden evlenmem çocuğumun velayetini etkiler mi?",
+    "cevap": "Evet, yeniden evlenmeniz çocuğunuzun velayetini etkiler.\n\n**Kaynak:**\nVerilen metinde, velâyetin kaldırılmasına karar verilebilecek hâller arasında \"Ana veya ba",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, yeniden evlenmenin velayeti etkileyebileceğine dair bir bilgi içermiyor."
+  },
+  {
+    "id": 12525,
+    "soru": "Eşimin vefatından sonra evde oturma hakkım var mı?",
+    "cevap": "Evet, ancak bazı şartlarla. Eşlerin birlikte yaşadıkları konut varsa, haklı sebeplerin varlığı hâlinde ve diğer yasal mirasçılardan birinin istemi üzerine, mülk",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 'Türk Medeni Kanunu Madde 513'e benzer hüküm' ifadesini eklemiş."
+  },
+  {
+    "id": 13977,
+    "soru": "Eğer mirasçı gaipse, onun miras payı ne olur?",
+    "cevap": "Kaynak metinde doğrudan \"mirasçı gaipse\" durumunda payın ne olduğu açıkça belirtilmemekle birlikte, \"Gaibin mirasçıları\" ile ilgili düzenleme şöyledir:\n\nEğer mi",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, mirasçının gaip olması durumunda miras payının ne olacağına dair bilgi içermiyor."
+  },
+  {
+    "id": 14560,
+    "soru": "Eğer sözleşmede farklı bir hüküm yoksa, ortakların paylaşma yapabilir mi?",
+    "cevap": "Hayır, ortaklar ortaklık devam ettiği sürece paylarını isteyemezler ve bu payları üzerinde tasarruf işlemleri yapamazlar.\n\n**Kaynak:** Türk Medeni Kanunu, Aile ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen bilgiyi doğru bir şekilde aktarmış ancak kaynak atfı uydurulmuş."
+  },
+  {
+    "id": 8485,
+    "soru": "Mahkeme, aleyhime bir durum ortaya çıkarsa kararımı yeniden inceleyebilir mi?",
+    "cevap": "Evet, ancak sadece kaynak metinde belirtilen özel hâllerde.\n\nKaynak metne göre, kesinleşen bir hükümle sonuçlanmış bir dava, aşağıda yazılı hâllerde hükümlü leh",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, yargılamanın yenilenmesi şartlarını açıklıyor."
+  },
+  {
+    "id": 15023,
+    "soru": "Eğer tesisler hem benim hem de komşumun taşınmazına yarıyorsa, bakım masrafları ",
+    "cevap": "Verilen kaynağa göre, tesisler hem sizin hem de komşunuzun arazisine yarıyorsa, bakım masrafları **kendi yararlanması oranında** paylaşılmalıdır.\n\n**KAYNAK:** T",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın sağladığı bilgiye dayanarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 12280,
+    "soru": "Eşimin katkısı azsa durumu nasıl değerlendiririz?",
+    "cevap": "Kaynak metinde \"katkısı az\" durumu açıkça belirtilmemekle birlikte, eşlerden birinin diğerine ait malın edinilmesine, iyileştirilmesine veya korunmasına katkıda",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta 'katkısı az' durumu hakkında bilgi yok."
+  },
+  {
+    "id": 16624,
+    "soru": "İcra daireleri hangi işlemleri elektronik ortamda yapabilir?",
+    "cevap": "İcra daireleri, tespit edilen mal, hak veya alacağının **elektronik ortamda haczini** yapabilir.\n\n**Kaynak:** 3890/1 md. (Değişik: 22/7/2020-7251/49 md.)",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, icra dairelerinin elektronik ortamda haciz işlemi yapabileceğini belirtmektedir."
+  },
+  {
+    "id": 8782,
+    "soru": "Yurt dışında bir suç işlediğimde Türkiye'de ne olur?",
+    "cevap": "Kaynak metne göre, yurt dışında işlediğiniz suç Türkiye'de cezalandırılabilmesi için aşağıdaki şartlar aranır:\n\n1.  **Suç Türü ve Cezası:** Türk kanunlarına gör",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri özetleyerek soruya yanıt vermiş."
+  },
+  {
+    "id": 16739,
+    "soru": "Borcumu ödemek istemezsem ne olur?",
+    "cevap": "Borç ödenmez veya teminat verilmezse **cebrî icra** yapılır. Ayrıca 7 gün içinde mal beyanı vermez veya yalan beyanda bulunursa **hapis cezası** uygulanır.\n\n**K",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetleyerek soruya cevap vermiştir."
+  },
+  {
+    "id": 12185,
+    "soru": "Mal rejimi değişikliği için mahkemeye gitmek şart mı?",
+    "cevap": "Verilen kaynağa göre, mal rejimi değişikliği için mahkemeye gitmek zorunlu değildir. Eşler, mal rejimi sözleşmesiyle edinilmiş mallara katılma rejimini kabul ed",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin mal rejimi değişikliği için mahkemeye gitmenin şart olup olmadığını belirtmiyor."
+  },
+  {
+    "id": 14767,
+    "soru": "Kendi arazimden geçen bir boru için ne yapmalıyım?",
+    "cevap": "Kaynak metinde \"boru\" kelimesi geçmemekle birlikte, üçüncü kişi lehine arazinin altında veya üstünde yapı veya mevcut yapıyı muhafaza etmek için **irtifak hakkı",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta boru ile ilgili bilgi yok."
+  },
+  {
+    "id": 12003,
+    "soru": "Eşim onurumu kırdı, boşanabilir miyim?",
+    "cevap": "Evet, kaynak metinde \"onur kırıcı davranış\" boşanma sebepleri arasında yer alır.\n\n**Kaynak:** Verilen metin (II. maddede belirtilmiştir).",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin onur kırıcı davranışı boşanma sebebi olarak belirtmektedir."
+  },
+  {
+    "id": 8468,
+    "soru": "Bir hakim görevini kötüye kullandı, bu benim için bir fırsat mı?",
+    "cevap": "Verilen kaynağa göre, bir hâkimin görevini yapmada sanık veya hükümlü lehine kusur etmesi (aleyhine ceza kovuşturması veya mahkûmiyet gerektirecek nitelikte) du",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, hakimin görevini kötüye kullanmasının bir fırsat olup olmadığını değerlendirmiyor."
+  },
+  {
+    "id": 19003,
+    "soru": "Tazyik hapsine ne zaman karar verilir?",
+    "cevap": "Tazyik hapsine karar, borçlunun kendisi tarafından yapılacak işin yapılması veya yapılmaması, irtifak hakkının tesisi veya kaldırılması hakkındaki ilâm hükümler",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin tazyik hapsine ne zaman karar verileceğini açıklıyor."
+  },
+  {
+    "id": 5558,
+    "soru": "Rakip bir işletmede çalışmak yasak mı?",
+    "cevap": "Evet, hizmet ilişkisi devam ettiği sürece rakip bir işletmede çalışmak yasaktır.\n\n**Kaynak:** Metinde belirtilen madde metni.\n**Madde:** İşçi, hizmet ilişkisi d",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, hizmet ilişkisi devam ettiği sürece rakip bir işletmede çalışmanın yasak olduğunu belirtmektedir."
+  },
+  {
+    "id": 8396,
+    "soru": "Eğer temyiz dilekçesinde belirtilen sebeplerle hüküm bozulursa ne olur?",
+    "cevap": "Yargıtay, hükümlü bozulan dosyayı 303 üncü maddede belirtilen hâller dışında yeniden incelenmek ve hüküm verilmek üzere bölge adliye mahkemesine veya diğer bir ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgiyi doğru şekilde özetlemiş ancak yanlış bir madde atfı yaparak uydurma bir kaynak belirtmiştir."
+  },
+  {
+    "id": 2405,
+    "soru": "Yargılama giderleri ne zaman ödenir?",
+    "cevap": "Verilen kaynağa göre yargılama giderleri (karar ve ilam harcı hariç) şu durumlarda ödenir:\n\n1.  **Gereksiz uzamaya veya gider yapmasına sebebiyet veren taraf:**",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, yargılama giderlerinin ne zaman ödeneceğini belirtmiyor, model ise bu konuda net cevap veriyor."
+  },
+  {
+    "id": 9430,
+    "soru": "Somut bir olayla ilgili olarak savunma yaparsam ceza alır mıyım?",
+    "cevap": "Verilen kaynağa göre, savunma dokunulmazlığı olduğu için savunma yapmanız durumunda ceza almayız.\n\n**Kaynak:** İddia ve savunma dokunulmazlığı (Madde 2)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin savunma dokunulmazlığı hakkında bilgi vermiyor."
+  },
+  {
+    "id": 9718,
+    "soru": "Bu maddeye göre ceza alabilir miyim?",
+    "cevap": "Evet, ancak kanun veya yetkili makamların emri uyarınca konulan mührü kaldıran veya konuluş amacına aykırı hareket eden kişiysen cezalandırılabilir.\n\n**Kaynak:*",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 'Resmi belgede sahtecilik' ifadesini ekleyerek yanıt verdi."
+  },
+  {
+    "id": 12006,
+    "soru": "Boşanma davası açmak için bir sebep yeterli mi?",
+    "cevap": "Hayır, sadece bir sebep yeterli değildir. Kaynak metne göre boşanma davası açabilmek için;\n\n1.  **Belirli bir sebep olması gerekir:** Eşlerden birinin zina etme",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan ek bilgiler ve genel bir değerlendirme sunarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 13728,
+    "soru": "Miras sözleşmesinin geçerli olabilmesi için ne gerekiyor?",
+    "cevap": "Verilen kaynağa göre, mirasbırakanın arzularını resmi memura bildirmesi, memurun vasiyetnameyi yazması veya yazdırması, mirasbırakanın okuması ve imzalaması, me",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin miras sözleşmesi için gerekenleri değil, vasiyetname düzenlenmesini anlatıyor."
+  },
+  {
+    "id": 11266,
+    "soru": "Alt işverenin işyeri bildiriminde yanlışlık yapması neye yol açar?",
+    "cevap": "Alt işverenin işyeri bildiriminde yanlışlık yapması, **14 üncü maddesi hükümlerine aykırı davranmak** anlamına gelir. Bu durumda, ilgili işçi başına **yüz elli ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin alt işverenin işyeri bildiriminde yanlışlık yapmasıyla ilgili bilgi içermiyor."
+  },
+  {
+    "id": 6655,
+    "soru": "Eğer ortaklıktan çıkarsam payım ne olur?",
+    "cevap": "Verilen kaynağa göre, ortaklık malvarlığı borçları karşılamaya yetmezse çıkan ortak, payına düşen borç tutarını diğer ortaklara ödemekle yükümlüdür.\n\n**Kaynak:*",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta ortaklıktan çıkıldığında payın ne olacağı hakkında bilgi yok."
+  },
+  {
+    "id": 16163,
+    "soru": "Bir kat maliki giderleri ödemekten kaçınabilir mi?",
+    "cevap": "Hayır, bir kat maliki giderleri ödemekten kaçınamaz.\n\nKaynak metne göre, bütün bağımsız bölümlerin ortak kullanım ve yararlanmasına tahsis edilmiş tesis ve yerl",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde kat maliklerinin giderleri ödemekten kaçınamayacağını iddia etti."
+  },
+  {
+    "id": 16864,
+    "soru": "Diğer borçlar için bu kanun geçerli mi?",
+    "cevap": "Evet, bu hükümler diğer borçlar için de geçerlidir.\n\n**Kaynak:**\nKanunun bu ikinci babında yazılı hükümlere muğayir olmayan diğer hükümler, ilamsız takiplerde d",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde diğer borçlar için de geçerli olduğunu iddia etti."
+  },
+  {
+    "id": 6610,
+    "soru": "Olağan dışı işlerin yürütülmesi için ne gerek?",
+    "cevap": "Verilen kaynak metinde \"olağan dışı işler\" ifadesi geçmemekle birlikte, temsil yetkisine sahip yönetici ortağın yapacağı **önemli tasarruf işlemlerine** ilişkin",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin 'olağan dışı işler' hakkında bilgi vermiyor, model bu konuda net bir cevap uydurdu."
+  },
+  {
+    "id": 2293,
+    "soru": "Hükmün tefhim edilmesi ne demektir?",
+    "cevap": "Kaynak metne göre, hükümün tefhim edilmesi; mahkemenin kararını okuyup taraflara bildirmesi anlamına gelir.\n\nBu işlem, mahkemece hükme ilişkin tüm hususların ge",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin hükmün tefhim edilmesinin ne anlama geldiğini açıklıyor."
+  },
+  {
+    "id": 1897,
+    "soru": "Yabancı bir devletin resmi belgesi Türkiye'de geçerli mi?",
+    "cevap": "Evet, yabancı bir devletin resmi belgesi Türkiye'de geçerlidir, ancak yetkili makamlar tarafından onaylanması zorunludur.\n\n**Kaynak:** (2) Mahkeme kendiliğinden",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin yabancı belgelerin geçerliliği hakkında bilgi vermiyor, sadece tercüme ve onay gerekliliğinden bahsediyor."
+  },
+  {
+    "id": 5130,
+    "soru": "Eğer zararımı sigorta ile karşıladıysam indirim talep edebilir miyim?",
+    "cevap": "Evet, talep edebilirsiniz.\n\n**Gerekçe:** Kaynak metinde, \"zararın giderilmesi istemi diğer seçimlik hakların kullanılmasını önlemez\" denmektedir. Bu ifade, zara",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin sigorta ile karşılanan zararlar hakkında bilgi içermiyor."
+  },
+  {
+    "id": 13985,
+    "soru": "Gaip olan kişinin miras payı kime kalır?",
+    "cevap": "Mirasın açıldığı anda ortada bulunmayan ve sağ olmaması hâlinde, onun miras payı **kendilerine kalacak olanlar** (mirasçılara) kalır.\n\n**Kaynak:** Metin (Mirası",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın belirttiği gibi miras payının 'kendilerine kalacak olanlar'a kalacağını doğru bir şekilde aktarmış."
+  },
+  {
+    "id": 12398,
+    "soru": "Eşimin mirasından aldığım mallar paylaşılır mı?",
+    "cevap": "Evet, kaynak metnine göre bu mallar **paylaşmaz**.\n\nKaynak metinde belirtilen kişisel mallar arasında, \"bir eşin sonradan miras yoluyla ... elde ettiği malvarlı",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, miras yoluyla elde edilen malların kişisel mal olduğunu belirtiyor."
+  },
+  {
+    "id": 9678,
+    "soru": "Atom enerjisini serbest bırakmakla ilgili suçun cezası nedir?",
+    "cevap": "Verilen kaynak metinde \"Atom enerjisini serbest bırakmak\" ifadesi doğrudan geçmemekle birlikte, radyasyon yaymak veya atom çekirdeklerinin parçalanması sürecine",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin atom enerjisini serbest bırakmakla ilgili cezayı doğrudan belirtmiyor."
+  },
+  {
+    "id": 11261,
+    "soru": "Bu cezanın uygulanabileceği durumlar nelerdir?",
+    "cevap": "Bu cezanın uygulanabileceği durumlar şunlardır:\n\n*   **Kimler:** İşveren veya işveren vekili.\n*   **Neden:** Bu Kanunun 29 uncu maddesindeki hükümlere aykırı ol",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 30. maddeye atıfta bulunarak kapsamlı bir cevap verdi."
+  },
+  {
+    "id": 18806,
+    "soru": "Cezalandırılmam için hangi hileli işlemleri yapmam gerekiyor?",
+    "cevap": "Kaynak metnine dayanarak, cezalandırılmamak için aşağıdaki hallerden kaçınmanız gerekir:\n\n1.  **Ziyan sebeplerini gösteremezseniz:** Zararlar için makul sebeple",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri kullanarak soruya cevap vermiştir ancak kaynak metin numarası uydurulmuştur."
+  },
+  {
+    "id": 12008,
+    "soru": "Eşimle boşanmak için ne kadar süre beklemeliyim?",
+    "cevap": "Kaynak metne göre, eşiniz zina ederse boşanma davası açma hakkınız şu sürelerle sınırlıdır:\n\n*   Boşanma sebebini (zina) öğrenmesinden itibaren **6 ay** içinde.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin sadece zina nedeniyle boşanma süresini düzenliyor, genel boşanma süresi hakkında bilgi vermiyor."
+  },
+  {
+    "id": 16416,
+    "soru": "Devre mülk hakkı hangi yapılar için geçerlidir?",
+    "cevap": "Devre mülk hakkı, üzerinde kurulan **yapı veya bağımsız bölüm** için geçerlidir.\n\n**Kaynak:** 3227/1.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin devre mülk hakkının hangi yapılar için geçerli olduğunu belirtmiyor."
+  },
+  {
+    "id": 17344,
+    "soru": "Satış işlemi nasıl yapılabilir?",
+    "cevap": "Muvakkaten veya ihtiyaten haczedilen mallar, ancak **113 üncü maddenin son fıkrasında yazılı hallerde** satılabilir.",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "verilen kaynakta bu bilgi yok"
+  },
+  {
+    "id": 17397,
+    "soru": "Taşınmazın açık artırma ilanında neler yer almalı?",
+    "cevap": "Verilen kaynak metni, taşınmazın açık artırma ilanında (şartnamesinde) yer alması gerekenleri şu şekilde belirtir:\n\n*   Taşınmazın, üzerindeki irtifak hakları, ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin açık artırma ilanında neler yer alması gerektiğini belirtmiyor, model ise bu konuda net cevap veriyor."
+  },
+  {
+    "id": 15456,
+    "soru": "Rehinli alacakların güvencesi ne anlama geliyor?",
+    "cevap": "Verilen kaynağa göre, rehinli alacakların güvencesi; alacaklıya, malikin rehinli taşınmazın değerini düşüren davranışlarını yasaklamasını isteme yetkisi ve gere",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin rehinli alacakların güvencesi kavramını açıklamıyor."
+  },
+  {
+    "id": 7180,
+    "soru": "Şüpheli veya sanığın hangi özellikleri kayda alınabilir?",
+    "cevap": "Kaynak metne göre, şüpheli veya sanığın **75, 76 ve 78 inci madde hükümlerine göre alınan örnekler üzerinde yapılan inceleme sonuçları** kayda alınır ve kişisel",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde şüpheli veya sanığın hangi özelliklerinin kayda alınabileceğini belirtti."
+  },
+  {
+    "id": 19194,
+    "soru": "Yeni değişiklikler ne zaman uygulanmaya başlanacak?",
+    "cevap": "Yeni değişiklikler, maddenin yürürlüğe girdiği tarihte iki hafta içinde uygulanmaya başlanacaktır.\n\n**Kaynak:** 7101/46 md.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin yeni değişikliklerin ne zaman uygulanacağına dair bilgi içermiyor."
+  },
+  {
+    "id": 6932,
+    "soru": "Tebligat nasıl yapılır?",
+    "cevap": "Verilen kaynağa göre tebligatın yapılması şu şekilde düzenlenmiştir:\n\nTebligat, mahkeme başkanı veya hâkim tarafından yapılır. Tebligatın konusu, tüm gerçek vey",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak tebligatın nasıl yapılacağını detaylandırmıyor, model ise tebligatın mahkeme başkanı veya hâkim tarafından yapıldığını iddia ediyor."
+  },
+  {
+    "id": 5463,
+    "soru": "Hizmet sözleşmem devredildiğinde haklarım ne olacak?",
+    "cevap": "Hizmet sözleşmeniz devredildiğinde şu haklarınız korunur:\n\n*   **Devralma:** Hizmet sözleşmeniz, bütün hak ve borçları ile birlikte devralana geçer.\n*   **Hizme",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetlemiş ve ek bilgi eklememiş."
+  },
+  {
+    "id": 12585,
+    "soru": "Baba olmadığını kim ispatlamak zorunda?",
+    "cevap": "Kaynak metinde doğrudan \"kim ispatlamak zorunda\" ifadesi geçmemekle birlikte, **soybağının reddi davasını açan kişi** bu konuda ispat yükümlülüğüne sahiptir.\n\n*",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, ispat yükümlülüğünün kimde olduğunu belirtmiyor."
+  },
+  {
+    "id": 17038,
+    "soru": "Hapis cezası almamak için ne yapmalıyım?",
+    "cevap": "Borcun tamamını veya o tarihe kadar icra veznesine yatırmak zorunda olduğu meblağı ödemek.\n\n**Kaynak:** İcra Hakkında Kanun, 111. Madde.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin genel olarak hapis cezasından kaçınma yollarını değil, sadece belirli bir borç durumunda tazyik hapsinden kaçınma yöntemini açıklıyor."
+  },
+  {
+    "id": 16585,
+    "soru": "İcra dairesi başkanları nasıl atanıyor?",
+    "cevap": "İcra dairesi başkanı (icra müdürü), **Adalet Bakanlığı tarafından atanır.**\n\n**Kaynak:** 6352 sayılı Kanun (Değişik: 7343/1 md.) – 1. Madde.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin icra dairesi başkanlarının atanması hakkında bilgi içermiyor."
+  },
+  {
+    "id": 13635,
+    "soru": "Mirasbırakan, miras sözleşmesi yaparken kime bırakmayı seçebilir?",
+    "cevap": "Mirasbırakan, miras sözleşmesi yaparken **çocuğun saklı payını ana ve babanın yönetimi dışında bırakabilir** veya **yönetimini bir üçüncü kişiye bırakabilir**.\n",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir bilgi vererek mirasbırakanın kime miras bırakabileceği konusunda net bir cevap sundu."
+  },
+  {
+    "id": 19004,
+    "soru": "Nafaka ödememek neden hapse sebep oluyor?",
+    "cevap": "Verilen kaynağa göre, nafaka ödememek hapse sebep olmasının temel nedeni, **nafakaya ilişkin kararlara uymama** durumudur.\n\nKaynak metinde belirtildiği üzere, m",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin nafaka ödememekle ilgili spesifik bir bilgi içermiyor."
+  },
+  {
+    "id": 1496,
+    "soru": "Mahkemede düzeni bozan birini ne yapıyor hakim?",
+    "cevap": "Kaynak metne göre, mahkemede düzeni bozan kişiye göre işlem şöyledir:\n\n1.  **Vekil için:** Hâkim önce uyarır. Uyarıya uymazsa ve fiil disiplin veya adli suç teş",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetlemiş ve başka bilgi eklememiş."
+  },
+  {
+    "id": 11163,
+    "soru": "Belirli çalışma saatleri dışında çalışan işçiler için hangi kurallar uygulanmıyo",
+    "cevap": "Kaynak metne göre, belirli çalışma saatleri dışında çalışan işçiler için hesaba katılmayan (uygulanmayan) kurallar şunlardır:\n\n*   Fazla çalışma karşılığı alına",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bilgileri belirli çalışma saatleri dışında çalışan işçiler için uygulanmayan kurallar olarak sundu."
+  },
+  {
+    "id": 10775,
+    "soru": "İş sözleşmemin süresi nasıl belirlenir?",
+    "cevap": "İş sözleşmesinin süresi, nitelikleri bakımından en çok otuz iş günü süren işlere süreksiz iş, bundan fazla devam edenlere sürekli iş olarak tanımlanır.\n\n**Kayna",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin iş sözleşmesinin süresinin nasıl belirleneceğini açıklamıyor."
+  },
+  {
+    "id": 18239,
+    "soru": "İhtiyati haciz kaldırılmadan önce ne tür belgeler sunmalıyım?",
+    "cevap": "Kaynak metinde, ihtiyati haciz kaldırılmadan önce (veya haczolunan mallar istenildiği zaman) sunulabilecek teminat türleri şunlardır:\n\n*   Para veya ayın olarak",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin ihtiyati haciz kaldırılması için sunulacak belgeler hakkında bilgi vermiyor."
+  },
+  {
+    "id": 12582,
+    "soru": "Eşimle birlikte evlenmeden önce çocuğumuz varsa, ne yapmalıyız?",
+    "cevap": "Eşimle evlenmeniz durumunda, evlilik dışında doğan çocuk, evlilik içinde doğan çocuklara ilişkin hükümlere tabi olur.\n\n**Kaynak:** II. Bildirim",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, evlilik dışı doğan çocuğun evlilikle birlikte evlilik içi çocuk statüsüne geçeceğini belirtiyor."
+  },
+  {
+    "id": 6962,
+    "soru": "Çağrı nasıl yapılabilir?",
+    "cevap": "Çağrı, Cumhuriyet savcısı, mahkeme başkanı veya hâkim tarafından **çeviri kâğıdı ile** yapılabilir. Ayrıca, iddianameye ilişkin bilgiler ve duruşma tarihi için ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, 'çağrı kâğıdı' terimini yanlışlıkla 'çeviri kâğıdı' olarak ifade etmiş ve kaynakta olmayan bir terim kullanmıştır."
+  },
+  {
+    "id": 13843,
+    "soru": "Saklı payı aşan kısım nasıl dağıtılır?",
+    "cevap": "Verilen kaynağa göre, saklı payı aşan kısım (tenkis) orantılı olarak dağıtılır.\n\n**Kaynak:** Tenkis, mirasbırakanın arzusunun başka türlü olduğu tasarruftan anl",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, saklı payı aşan kısmın nasıl dağıtılacağını açıklamıyor."
+  },
+  {
+    "id": 12739,
+    "soru": "Ana ve babanın çocukla ilişkisi nasıl etkilenebilir?",
+    "cevap": "Ana ve babanın çocukla ilişkisi, olağanüstü hâller mevcutsa ve çocuğun menfaatine uygun düştüğü ölçüde, üçüncü kişilere (özellikle hısımlara) tanınan kişisel il",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde ana ve babanın çocukla ilişkisini etkileyen faktörleri açıklamıştır."
+  },
+  {
+    "id": 6112,
+    "soru": "Komisyoncumun işlem yapma hakkı ne zaman sona erer?",
+    "cevap": "Komisyoncumun işlem yapma hakkı, sözleşmenin diğer tarafını göstermeksizin vekâlet verene vekâlet yerine getirildiğini bildirdiğinde sona erer.\n\n**Kaynak:** KAY",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin komisyoncunun işlem yapma hakkının sona erme zamanını belirtmiyor."
+  },
+  {
+    "id": 17488,
+    "soru": "İlamımın icrası sırasında ne yapabilirim?",
+    "cevap": "Kaynak Madde'ye göre, borçlu yerleşim yerinin meçhul veya borcu almaktan imtina ettiğini beyan edersen, icra dairesine müracaat ederek borçluya 15 gün içinde ge",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan ilamın icrası hakkında bilgi verdi."
+  },
+  {
+    "id": 15624,
+    "soru": "Bir borç senedim var, bunu başkasına devredebilir miyim?",
+    "cevap": "Evet, devri mümkündür ancak koşullar vardır.\n\n**Kaynak:** İpotekli borç senedindeki veya irat senedindeki alacağın devri, rehin senedinin teslim edilmesine bağl",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, genel borç senetlerinin devri hakkında bilgi vermiyor, sadece ipotekli borç senetleriyle ilgili bir durumdan bahsediyor."
+  },
+  {
+    "id": 14204,
+    "soru": "Alacaklı, mirasçıdan ne zaman sorumlu tutulabilir?",
+    "cevap": "Alacaklı, mirasçıdan **paylaşmada** (miras bölünmesinde), mirasçıya düşen malın **rehnedilmiş olması** durumunda sorumlu tutulabilir.\n\n**Kaynak:** IV. Taşınmazl",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde alacaklının mirasçıdan sorumlu tutulabileceği durumu net bir şekilde tanımlamış."
+  },
+  {
+    "id": 15267,
+    "soru": "Süresi dolmadan üst hakkı yenileyebilir miyim?",
+    "cevap": "Evet, vasiyetnameniz süresi dolmadan yenileyebilirsiniz.\n\n**Gerekçe:**\nKaynak metne göre mirasbırakan, kanunda öngörülen şekillerden birine uymak suretiyle yeni",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin üst hakkı yenileme konusunu kapsamıyor, vasiyetname ile ilgili bilgi veriyor."
+  },
+  {
+    "id": 3290,
+    "soru": "Sözleşmemdeki bir koşulun içeriğini bilmiyorum, bu benim için sorun mu?",
+    "cevap": "Evet, bu bir sorun olabilir. Kaynak metne göre, düzenleyene tek yanlı olarak karşı taraf aleyhine genel işlem koşulları içeren sözleşmenin bir hükmünü değiştirm",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde sözleşme koşulunu bilmenin sorun olabileceğini iddia etti."
+  },
+  {
+    "id": 12123,
+    "soru": "Hâkim, temsil yetkisini kaldırdıktan sonra tekrar değerlendirme yapabilir mi?",
+    "cevap": "Evet, koşullar değiştiğinde hâkim kararında gerekli değişikliği yapabilir.\n\n**Kaynak:** VII. Yetki\n**Madde:** Koşullar değiştiğinde hâkim, eşlerden birinin iste",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, hâkimin koşullar değiştiğinde kararını değiştirebileceğini belirtiyor."
+  },
+  {
+    "id": 10835,
+    "soru": "Eğer işim altı aydan az sürdüyse, ne kadar bildirim yapmalıyım?",
+    "cevap": "Verilen kaynağa göre, bu haktan (iş sözleşmesinin feshedilmiş sayılması) faydalanabilmek için işte **en az bir yıl** çalışmış olmanız şarttır.\n\nEğer işiniz altı",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin bildirim süreleri hakkında bilgi içermiyor."
+  },
+  {
+    "id": 632,
+    "soru": "Eşim şiddet uyguladı, ne yapmalıyım?",
+    "cevap": "Kaynak metinde belirtilen tedbirler şunlardır:\n\n*   **Barınma:** Kendinize ve gerekirse çocuklarınıza barınma yeri sağlanması.\n*   **Maddi Yardım:** Geçici madd",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki tedbirleri doğru şekilde sıralamış ancak 'Bu Kanun (Madde 1)' ifadesi uydurma bir atıf."
+  },
+  {
+    "id": 16671,
+    "soru": "İcra daireleri kimlerin denetimi altında çalışır?",
+    "cevap": "İcra daireleri, **Adalet Bakanlığı** tarafından görevlendirilen icra daireleri başkanı ve başkan yardımcıları ile icra başmüdürü, icra müdürü, icra müdür yardım",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, icra dairelerinin denetimi hakkında bilgi vermiyor."
+  },
+  {
+    "id": 13310,
+    "soru": "Vesayet altındaki bir kişi hangi durumlarda işlem yapabilir?",
+    "cevap": "Vesayet altındaki kişi, **Vesayet makamından izinle** işlem yapabilir.\n\n**Kaynak:** B. İzin I. Vesayet makamından",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, vesayet altındaki kişinin işlem yapabilme durumunu açıklamıyor."
+  },
+  {
+    "id": 2427,
+    "soru": "Mahkeme ek süre verebilir mi?",
+    "cevap": "Evet, mahkeme ek süre verebilir.\n\n**KAYNAK:** Verilen Kaynak Madde\n**MADDE:** 13. (1)\n\n**AÇIKLAMA:** Cevap dilekçesinin hazırlanması çok zor veya imkânsız olduğ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, mahkemenin ek süre verebileceğini açıkça belirtmektedir."
+  },
+  {
+    "id": 16556,
+    "soru": "Tamamlanmamış bir yapı için kat irtifakı nasıl elde edilir?",
+    "cevap": "Tamamlanmamış bir yapı üzerinde kat irtifakı elde etmek için aşağıdaki adımlar izlenmelidir:\n\n1.  **İstem ve Onay:** Arsanın malikinin veya bütün paydaşlarının ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri kullanarak soruya cevap vermiş ancak kaynak metne atıfta bulunarak uydurma bir madde numarası belirtmiştir."
+  },
+  {
+    "id": 4529,
+    "soru": "Sözleşmeyi imzaladıktan sonra fikrimi değiştirdim, ne yapmalıyım?",
+    "cevap": "Kaynak metne göre, sözleşmeden **cayma hakkınız** bulunmaktadır. Ancak bu cayma hakkı kullanırken, sözleşmede belirtilen **cayma parasını ödemek** zorunda kalab",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin cayma hakkını ve cayma parasını öne sürerek soruyu cevaplıyor."
+  },
+  {
+    "id": 14736,
+    "soru": "Evimin yanında inşaat var, bu süreçte komşularımın hakları nedir?",
+    "cevap": "Verilen kaynağa göre, taşınmazın (ev) mülkiyet hakkını yasal kısıtlamalara aykırı kullanması sonucu zarar gören veya zarar tehlikesiyle karşılaşan kişi (komşunu",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, komşuların zarar veya zarar tehlikesi durumunda dava açma hakkını düzenliyor."
+  },
+  {
+    "id": 6938,
+    "soru": "Tebligatın nasıl yapılacağını nereden öğrenebilirim?",
+    "cevap": "Verilen kaynağa göre, tebligatın nasıl yapılacağı **Tebligat usulleri** başlığı altında düzenlenmiştir.\n\n**Kaynak:** Kaynak metni (Tebligat usulleri)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, tebligat usullerinin düzenlendiğini iddia ederek kaynakta olmayan bir bilgi sundu."
+  },
+  {
+    "id": 11940,
+    "soru": "Evlenirken resmi bir belge gerekiyor mu?",
+    "cevap": "Evet, evlendirme memuru eşlere bir aile cüzdanı verir ve bu cüzdan gösterilmeden evlenmenin dinî töreni yapılamaz.\n\n**Kaynak:** C. Yönetmelik",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, evlenirken resmi bir belge gerekip gerekmediğini belirtmiyor."
+  },
+  {
+    "id": 12332,
+    "soru": "Zina nedeniyle boşanırsak, eşimin mal payı değişir mi?",
+    "cevap": "Evet, değişebilir.\n\nZina nedeniyle boşanma durumunda hâkim, kusurlu eşin mal payını hakkaniyete uygun olarak azaltabilir veya kaldırabilir.\n\n**Kaynak:** Verilen",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, zina nedeniyle boşanma durumunda mal paylaşımının değişebileceğini belirtiyor."
+  },
+  {
+    "id": 947,
+    "soru": "Hâkim reddi talebimi ne zaman yapmalıyım?",
+    "cevap": "Verilen kaynağa göre, hâkim reddi talebini **hükümle birlikte** yapmalısınız.\n\n**Kaynak:** Verilen Kaynak Madde (1)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, hâkim reddi talebi zamanlamasını düzenlemiyor."
+  },
+  {
+    "id": 18464,
+    "soru": "Borçlu, aşırı külfetli borç ilişkilerini nasıl sona erdirebilir?",
+    "cevap": "Borçlu, aşırı külfetli borç ilişkilerini sona erdirmek için **konkordato** (konkordato projesi) ile çözüm yolu izlenebilir. Konkordato, tasdik kararıyla bağlayı",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, konkordatonun borç ilişkilerini sona erdirmek için bir çözüm yolu olduğunu iddia ediyor, ancak kaynak metin bu konuda bilgi vermiyor."
+  },
+  {
+    "id": 11451,
+    "soru": "Hısımlar arasında hangi tür akrabalık ilişkileri vardır?",
+    "cevap": "Kaynak metne göre eşlerden biri ile diğer eşin kan hısımları arasında **kan hısımlığı** ve **kayın hısımlığı** ilişkileri oluşur.\n\n**Kaynak:** V. Yerleşim yeri ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin hısımlar arasındaki akrabalık türlerini detaylandırmıyor."
+  },
+  {
+    "id": 10614,
+    "soru": "Gizli bilgileri açıklarsam ne olur?",
+    "cevap": "Gizli bilgileri açıklarsanız, Türk Ceza Kanunu'na göre hapis cezası alırsınız.\n\n*   **Genel Durum:** 3 yıldan 5 yıla kadar hapis cezası.\n*   **Savaşla İlgili Du",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta belirtilmeyen 'Türk Ceza Kanunu (TCK) Madde 304' atfını ekleyerek yanıt verdi."
+  },
+  {
+    "id": 3796,
+    "soru": "Yardımcılarımın yaptıkları hatalar için bir anlaşma yapmam mümkün mü?",
+    "cevap": "Verilen kaynak metne göre, hizmet sözleşmesinden kaynaklanan borç sebebiyle sorumluluk reddine ilişkin önceden yapılan anlaşmalar kesin olarak hükümsüzdür. Yard",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, yardımcıların fiillerinden sorumluluk konusunda kaynakta olmayan bir yorum yapmış."
+  },
+  {
+    "id": 17234,
+    "soru": "Haciz işlemlerinde alacaklıların hakları nelerdir?",
+    "cevap": "Verilen kaynağa göre haciz işlemlerinde alacaklıların ve borçlunun yakınlarının hakları şunlardır:\n\n*   **Alacaklılar:** Borçlunun eşi, çocukları, vasi veya kay",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin alacaklıların genel haklarını değil, belirli kişilerin hacze iştirak haklarını düzenliyor."
+  },
+  {
+    "id": 1695,
+    "soru": "Mahkeme, sunduğum delilin geçerli olup olmadığına nasıl karar verir?",
+    "cevap": "Mahkeme, tarafların yazılı beyanları veya mahkeme önünde tutanağa geçirilen imzalı beyanları ile kanunda belirtilen deliller dışında başka deliller kabul edebil",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "verilen kaynakta bu bilgi yok"
+  },
+  {
+    "id": 10664,
+    "soru": "Gizli bilgileri açıklarsam ne ceza alırım?",
+    "cevap": "Kaynak Madde'ye göre gizli bilgileri açıklama durumunda ceza şunlardır:\n\n*   **Genel Durum:** Beş yıldan on yıla kadar hapis cezası verilir. (Kaynak Madde (1))\n",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, gizli bilgileri açıklamanın cezalarını detaylı bir şekilde açıklamaktadır."
+  },
+  {
+    "id": 6839,
+    "soru": "Eğer hâkim görevini yapamazsa ne olur?",
+    "cevap": "Kaynak metne göre, reddi istenen hâkim müzakereye katılamaz. Bu nedenle mahkeme teşekkül edemezse, reddi istenen hâkimin mahkemesine bağlı olarak karar verilir:",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin hâkimin görevini yapamaması durumunu değil, reddi durumunu düzenliyor."
+  },
+  {
+    "id": 1606,
+    "soru": "İsticvap için neden gelmem gerektiğini biliyor muyum?",
+    "cevap": "Evet, yemin için bir davetiye çıkarılır.\n\n**Kaynak:** Türk Hukukuna Göre (Verilen Kaynak) - Madde (1)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, isticvap konusunu yeminle karıştırarak yanlış bir cevap verdi."
+  },
+  {
+    "id": 15610,
+    "soru": "Eski alacaklıya ödeme yapma zorunluluğu var mı?",
+    "cevap": "Hayır, eski alacaklıya ödeme yapma zorunluluğu yoktur.\n\n**Gerekçe:**\nKaynak metne göre, alacaklı yerleşim yerini borçlunun zararına değiştirdiği takdirde, borçl",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin eski alacaklıya ödeme yapma zorunluluğu hakkında bilgi içermiyor."
+  },
+  {
+    "id": 16109,
+    "soru": "Tapu memuru hangi belgeleri kontrol eder?",
+    "cevap": "Tapu müdürlüğüne gönderilmesi gereken belgeler şunlardır:\n\n1.  Yetkili kamu kurum ve kuruluşlarınca onaylanmış, arsanın maliklerinin veya paydaşlarının imzaları",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, tapu memurunun hangi belgeleri kontrol edeceğini belirtmiyor."
+  },
+  {
+    "id": 2709,
+    "soru": "Temyiz yaptım, bu benim kararın uygulanmasını durdurur mu?",
+    "cevap": "Genel kural olarak **hayır**, temyiz (istinaf) kararın uygulanmasını durdurmaz.\n\nAncak aşağıdaki istisnalar kaynakta belirtilmiştir:\n*   İcra ve İflas Kanunu 36",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, temyiz ve istinaf kavramlarını karıştırarak kaynakta olmayan bilgilerle cevap verdi."
+  },
+  {
+    "id": 2312,
+    "soru": "Hükmün sonuç kısmında neler bulunur?",
+    "cevap": "Verilen kaynağa göre, hüküm sonuç kısmında gerekçeye ait herhangi bir **s** (metnin devamı eksik olduğu için tam ifade edilememektedir).\n\n**Kaynak:** (2) maddes",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bu bilgi yok."
+  },
+  {
+    "id": 18339,
+    "soru": "Haciz sürecinde yaptığım tasarruflar nasıl etkilenir?",
+    "cevap": "Kaynak metne göre, hacizden veya iflasın açılmasından önceki bir yıl içinde yapılan tasarruflar (rehin, para dışı ödeme, vadesi gelmemiş borç için ödeme, tapu ş",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru şekilde özetlemiş ve ek bilgi eklememiş."
+  },
+  {
+    "id": 3603,
+    "soru": "Elden çıkardığım şey için geri vermek zorunda mıyım?",
+    "cevap": "Kaynak metinde \"elden çıkardığım şey\" ifadesi geçmemekle birlikte, haklı bir sebep olmaksızın bir başkasının malvarlığından zenginleşen kişi, bu zenginleşmeyi g",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, haksız zenginleşme durumunda geri verme yükümlülüğünü düzenliyor."
+  },
+  {
+    "id": 9239,
+    "soru": "Yaşlı birine yardım etmezsem ne olur?",
+    "cevap": "Verilen kaynağa göre, yaşlı birine yardım etmemen durumunda ceza uygulanabilmesi için kişinin **koruma ve gözetim yükümlülüğü altında** olması gerekir.\n\nEğer bu",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynağın içeriğini doğru özetlemiş ancak yanlış madde numarası vererek uydurma bir atıfta bulunmuştur."
+  },
+  {
+    "id": 8419,
+    "soru": "Hükmün bozulması durumunda, hangi sanıklar bu durumdan yararlanır?",
+    "cevap": "Bu durumdan yalnızca **sanık** yararlanır.\n\n**Kaynak:** Ceza Muhakemesi Kanunu, 114. Madde (1).",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, hükmün bozulması durumunda hangi sanıkların yararlanacağını belirtmiyor."
+  },
+  {
+    "id": 18387,
+    "soru": "Konkordato talebini hangi mahkemeye yapmalıyım?",
+    "cevap": "Konkordato talebi için yetkili mahkeme, Hakimler ve Savcılar Kurulu tarafından bu maddenin yürürlüğe girdiği tarihten itibaren iki hafta içinde belirlenecek ola",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, konkordato talebinin asliye ticaret mahkemesine yapılacağını belirtmektedir."
+  },
+  {
+    "id": 1903,
+    "soru": "Yabancı belgenin onaylanması zorunlu mu?",
+    "cevap": "Evet, kaynak metinde yabancı resmi belgelerin yetkili makamlar tarafından onaylanması zorunluluğu belirtilmiştir.\n\n**Kaynak:** HMK (Tahmin edilen), (2) maddesi.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin yabancı belgelerin onaylanması zorunluluğunu açıkça belirtmiyor."
+  },
+  {
+    "id": 9753,
+    "soru": "Bir doktor bu suçu işlerse cezası artar mı?",
+    "cevap": "Evet, artar. Kaynak metnin (2) numaralı fıkrasına göre, resmi izne dayalı meslek kapsamında işlenmesi halinde ceza üçte bir oranında artırılır.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, resmi izne dayalı meslek kapsamında işlenmesi halinde cezanın artırılacağını belirtiyor."
+  },
+  {
+    "id": 12732,
+    "soru": "Çocukla kişisel ilişki kurmak için bir şart var mı?",
+    "cevap": "Evet, bir şart vardır.\n\n**Şart:** Çocuk velâyeti altında bulunmamalı veya velâyeti kendisine bırakılmamalıdır.\n\n**Kaynak:** Verilen metin.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin çocukla kişisel ilişki kurmak için bir şarttan bahsetmiyor."
+  },
+  {
+    "id": 2876,
+    "soru": "İhtiyati tedbir kararım haksız çıkarsa ne olur?",
+    "cevap": "İhtiyati tedbir kararınız haksız çıkarsa, karşı tarafın ve üçüncü kişilerin bu yüzden uğrayacakları muhtemel zararlara karşılık teminat göstermek zorundasınız.\n",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen teminat zorunluluğunu doğru şekilde aktarmış ancak madde numarasını uydurmuştur."
+  },
+  {
+    "id": 1203,
+    "soru": "Talep için belirli bir süre var mı?",
+    "cevap": "Evet, talep için belirli bir süre vardır.\n\n*   **Genel Süre:** Engelin ortadan kalkmasından itibaren **iki hafta** içinde talep edilmelidir. (Kaynak (1))\n*   **",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin talep için belirli bir süre olduğunu açıkça belirtmektedir."
+  },
+  {
+    "id": 5344,
+    "soru": "Eğer işveren benim çalışmamı kabul etmezse, ücretimi alabilir miyim?",
+    "cevap": "Evet, ancak işveren ürününü kabulde temerrüde düştüğü veya işçinin kişiliğinden kaynaklanan sebeplerle ve kusuru olmaksızın çalışma engellendiği takdirde ücreti",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model kaynakta belirtilen şartları doğru şekilde aktarmış ancak 'İş Kanunu (V. Sona ermesi)' şeklinde uydurma bir atıf yapmıştır."
+  },
+  {
+    "id": 12447,
+    "soru": "Eşim miras olarak aldığı eşyayı benimle paylaşmak zorunda mı?",
+    "cevap": "Evet, kaynak metne göre miras yoluyla elde edilen malvarlığı değerleri \"kişisel mal\" olarak tanımlanır. Bu nedenle, bu eşyayı paylaşmak zorunda değilsiniz.\n\n**K",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgiyi kullanarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 15648,
+    "soru": "Rehin senedi çıkarılması genel olarak neyi ifade eder?",
+    "cevap": "Kaynak metne göre, taşınmaz rehni (rehin) ancak ipotek, ipotekli borç senedi veya irat senedi şeklinde kurulabilir.\n\n**Kaynak:** Türk Medeni Kanunu (Türk Hukuku",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "verilen kaynakta bu bilgi yok"
+  },
+  {
+    "id": 4607,
+    "soru": "Alıcı olarak satılanı devretmek istiyorum, ne yapmalıyım?",
+    "cevap": "Verilen kaynak metni, alıcının satıcıya karşı **satılanın devri isteminde bulunması** gerektiğini belirtir.\n\n**Yapmanız gereken:**\nSatılanın devri isteminde bul",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin alıcının satılanı devretmesi hakkında bilgi içermiyor."
+  },
+  {
+    "id": 12870,
+    "soru": "Aile ihtiyaçları için çocuk mallarının gelirinden harcama yapılabilir mi?",
+    "cevap": "Evet, olağan ihtiyaçlar gerektirdiği ölçüde çocuk mallarından harcama yapılabilir.\n\n**Kaynak:** Türk Medeni Kanunu (TMK) - Çocuğun serbest malları (Kazandırmala",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen olağan ihtiyaçlar için harcama yapılabileceği bilgisini doğru aktardı ancak Türk Medeni Kanunu'na atıf yaparak kaynakta olmayan bir bilgi ekledi."
+  },
+  {
+    "id": 129,
+    "soru": "Faiz ödemek zorunda mıyım?",
+    "cevap": "Verilen kaynağa göre, kredi borcunun tamamını erken ödeyebilir veya vadesi gelmemiş taksitleri ödeyebilirsiniz. Bu hâllerde kredi veren, erken ödenen miktara gö",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin faiz ödeme zorunluluğu hakkında bilgi vermiyor, model ise net bir cevap verip uydurma madde atfında bulunmuş."
+  },
+  {
+    "id": 3586,
+    "soru": "Eğer birine mal verdiysem ve o geri vermiyorsa ne yapmalıyım?",
+    "cevap": "Verilen kaynak metni, birine mal verip geri verilmemesi durumunda doğrudan bir \"yapılacak işlem\" (örneğin dava açma, talep etme) hakkında bilgi vermez. Metin sa",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta bu konuda doğrudan bir işlem önerisi veya çözüm yolu yok."
+  },
+  {
+    "id": 9142,
+    "soru": "Cezamda indirim yapılabilir mi?",
+    "cevap": "Evet, ceza indirim yapılabilir.\n\n**Kaynak:** 3. Madde (3) fıkra.\n**İçerik:** \"Diğer hallerde verilecek cezada, üçte bir oranında indirim yapılabilir.\"",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin ceza indirimi hakkında bilgi veriyor."
+  },
+  {
+    "id": 13984,
+    "soru": "Mirasçıların gaiplik kararı almaları gerekiyor mu?",
+    "cevap": "Hayır, mirasçıların kendi kararı almaları gerekmez. Miras payı kendilerine kalacak olanlar, gaiplik kararının verilmesini ve miras payının teslimini talep edebi",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen bilgiyi doğru bir şekilde özetlemiş ancak 'hayır' şeklinde net bir cevap vererek kesin bir yargıda bulunmuş."
+  },
+  {
+    "id": 74,
+    "soru": "Eğer iki yıl geçtiyse artık şikayet edemem mi?",
+    "cevap": "Evet, genel kural olarak iki yıl geçtiyse şikayet edemezsiniz. Ancak ayıp ağır kusur ya da hile ile gizlenmişse zamanaşımı hükümleri uygulanmaz.\n\n**Kaynak:** (1",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki zamanaşımı sürelerini doğru bir şekilde aktarmış ve ağır kusur ya da hile durumunda zamanaşımı hükümlerinin uygulanmayacağını belirtmiştir."
+  },
+  {
+    "id": 753,
+    "soru": "Asliye hukuk mahkemesinin görev alanı sadece malvarlığı davalarıyla mı sınırlı?",
+    "cevap": "Verilen kaynağa göre, yetkili mahkeme sadece malvarlığı davalarıyla sınırlı değildir.\n\n**Gerekçe:**\nKaynak metni, malvarlığı haklarına ilişkin davaların uyuşmaz",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin asliye hukuk mahkemesinin görev alanını açıklamıyor, model ise kapsamlı bir cevap veriyor."
+  },
+  {
+    "id": 9096,
+    "soru": "Bu madde hangi suçları kapsıyor?",
+    "cevap": "Bu madde, **uyuşturucu veya uyarıcı madde** ile ilgili aşağıdaki eylemleri kapsar:\n\n1.  Kullanmak için satın almak\n2.  Kabul etmek\n3.  Bulundurmak\n4.  Kullanmak",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki suçları doğru bir şekilde listelemiştir ancak kaynak belirtimi uydurmadır."
+  },
+  {
+    "id": 10162,
+    "soru": "Nüfuz ticareti aracılığı yapan kişi ne ceza alır?",
+    "cevap": "Verilen kaynak metni, kamu görevlisine göreviyle ilgili bir işi yapması veya yapmaması için menfaat sağlayan kişi (rüşvet) için ceza hükümlerini içerir. Metinde",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin nüfuz ticareti hakkında bilgi vermiyor."
+  },
+  {
+    "id": 11445,
+    "soru": "Hısımlık nedir?",
+    "cevap": "Kaynak metne göre, eşlerden biri ile diğer eşin kan hısımları, aynı tür ve dereceden kayın hısımları olur. Kayın hısımlığı, kendisini meydana getiren evliliğin ",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta hısımlığın genel tanımı yok."
+  },
+  {
+    "id": 3846,
+    "soru": "Üçüncü kişinin hakları ne zaman geçerli olur?",
+    "cevap": "Üçüncü kişinin hakları, rehin sonradan bir üçüncü kişi tarafından verildiği takdirde geçerli olur.\n\n**Kaynak:** Verilen metin (Kefalet ve Rehin hükümleri).",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, üçüncü kişinin haklarının ne zaman geçerli olacağına dair net bir cevap veriyor ancak kaynak metin bu bilgiyi içermiyor."
+  },
+  {
+    "id": 14882,
+    "soru": "Başkasına devrettiğim bir malın mülkiyeti nasıl saklı tutulur?",
+    "cevap": "Verilen kaynağa göre, mülkiyeti saklı tutma sözleşmesi yapılması ile malın mülkiyeti saklı tutulur.\n\n**Kaynak:** Taksitle mal satan kimse, bu satımlara ilişkin ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, mülkiyeti saklı tutma sözleşmesinin nasıl yapılacağını açıklamıyor."
+  },
+  {
+    "id": 10935,
+    "soru": "Eğer iş sözleşmem belirli süreli ise bu madde geçerli mi?",
+    "cevap": "Evet, bu madde belirli süreli iş sözleşmelerine de uygulanır.\n\n**Gerekçe:** Kaynak metinde, çalıştırılacak işçi sayısının tespitinde \"belirli ve belirsiz süreli",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin belirli süreli iş sözleşmelerinin geçerliliği hakkında bilgi vermiyor."
+  },
+  {
+    "id": 10638,
+    "soru": "Devletin gizli alanlarına girmenin cezası nedir?",
+    "cevap": "Verilen kaynağa göre, devletin güvenliği veya iç veya dış siyasal yararları bakımından gizli kalması gereken bilgileri elde etmeye yarayan ve kabul edilebilir b",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, gizli alanlara girmenin cezasını değil, gizli bilgileri elde etmenin cezasını düzenliyor."
+  },
+  {
+    "id": 16143,
+    "soru": "Kat irtifakı sahipleri olarak borçlarımız neler?",
+    "cevap": "Kat irtifakı sahipleri, sözleşmeye ve plana göre yapılacak yapının tamamlanması için kendilerine düşen borçları vaktinde yerine getirmek ve yapı işini doğruluk ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen yükümlülükleri doğru şekilde aktarmış ancak kaynak madde numarasını uydurmuştur."
+  },
+  {
+    "id": 8454,
+    "soru": "Mahkûmiyete ilişkin hükmün yeniden yargılanması durumunda ne olur?",
+    "cevap": "Yargıtay, 303 üncü maddede belirtilenlerin dışında kalan hâllerde, hükmü bozulan dosyayı yeniden incelenmek ve hüküm verilmek üzere hükmü bozulan bölge adliye m",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir maddeye atıfta bulunarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 12515,
+    "soru": "Ortak mal ile kişisel mal arasında nasıl bir ilişki var?",
+    "cevap": "Kaynak metne göre, eşlerin mal varlıkları iki ayrı kesime ayrılır: **kişisel mallar** ve **ortaklık mallar**.\n\nBu iki mal kesimi arasında borç ödeme ilişkisi sö",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin ortak mal ve kişisel mal arasındaki ilişkiyi kapsamıyor, sadece borçların ödenmesiyle ilgili bir durumdan bahsediyor."
+  },
+  {
+    "id": 13643,
+    "soru": "Mirasın geçişinde tasarruf yapılabilir mi?",
+    "cevap": "Evet, miras geçişinde tasarruf yapılabilir.\n\n**Kaynak:** Metinde \"Tasarrufta geçiş anı\" ifadesi geçmektedir.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin mirasın geçişinde tasarruf yapılabilir mi sorusunu cevaplamıyor."
+  },
+  {
+    "id": 12166,
+    "soru": "Eşlerden biri başka bir yere taşınırsa ne olur?",
+    "cevap": "Eşlerden birinin yerleşim yeri değişirse, yetkili mahkeme o yeni yerleşim yeri mahkemesi olur.\n\n**Kaynak:** Yetkili mahkeme eşlerden herhangi birinin yerleşim y",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir bilgi ekleyerek soruya net bir cevap verdi."
+  },
+  {
+    "id": 9947,
+    "soru": "Bu kanun hangi durumlarda hapis cezası öngörüyor?",
+    "cevap": "Verilen kaynağa göre, hapis cezası (altı aydan iki yıla kadar) şu durumlarda öngörülür:\n\n1.  **Halkı kanunlara uymamaya alenen tahrik eden kişi** olduğunda.\n2. ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, hapis cezasının hangi durumlarda öngörüldüğünü açıkça belirtmektedir."
+  },
+  {
+    "id": 3909,
+    "soru": "Eğer sözleşme yapıldığında beklenmeyen bir durum olursa ne yapabilirim?",
+    "cevap": "Sözleşme yapıldığında beklenmeyen bir durumla karşılaşırsanız, bu durum eserin yapılmasını engelleyecek veya son derece güçlendirecekse, yüklenici olarak şunlar",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, beklenmeyen durumlarda sözleşmenin uyarlanması veya feshi hakkında bilgi veriyor."
+  },
+  {
+    "id": 15672,
+    "soru": "Senetlerin geri ödenmesi için bir şart var mı?",
+    "cevap": "Evet, senetlerin geri ödenmesi için bir şart vardır. Borçlu, ödemeleri alacaklının yerleşim yerinde yapmalıdır.\n\n**Kaynak:** Ticaret Kanunu (Rehin Senedi maddes",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde senetlerin geri ödenmesi için genel bir şarttan bahsediyor."
+  },
+  {
+    "id": 4164,
+    "soru": "Devralan, devredenin zararını ispatlamadığı sürece neyi talep edemez?",
+    "cevap": "Kaynak metinde, satıcı kendisine kusur yüklenemeyeceğini ispat etmediği sürece alıcının diğer zararlarını gidermekle yükümlüdür. Bu ifadeyi tersine çevirerek so",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir hüküm uydurarak soruya cevap vermiş."
+  },
+  {
+    "id": 11411,
+    "soru": "Kanun her durumda mı uygulanır?",
+    "cevap": "Hayır, kanun her durumda uygulanmaz.\n\n**Gerekçe:**\nKanunda aksine hüküm bulunmadıkça intifa hakkına ilişkin hükümler oturma hakkına da uygulanır.\n\n**Kaynak:**\nV",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin kanunların her durumda uygulanıp uygulanmadığına dair bilgi içermiyor."
+  },
+  {
+    "id": 8127,
+    "soru": "Duruşmada katılma isteğimi belirtmezsem ne olur?",
+    "cevap": "Kaynak metinde, mahkemenin karar vermesinin \"ilgiliilerin istemi üzerine\" olması zorunlu değil, \"mahkemece re'sen\" (mahkemenin kendi inisiyatifinde) de mümkün o",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta duruşmada katılma isteğinin belirtilmemesi durumunda ne olacağına dair bilgi yok."
+  },
+  {
+    "id": 10082,
+    "soru": "Ödünç para verirken bir örgütle bağlantım varsa cezam artar mı?",
+    "cevap": "Evet, suçun bir örgütün faaliyeti çerçevesinde işlenmesi halinde ceza artırılır.\n\n**Kaynak:** Ceza Kanunu, 277/4. maddesi.\n**Madde Metni:** \"Suçun bir örgütün f",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak madde ödünç para verme konusunu düzenlemiyor, model yanlış madde atfı yaparak cevap verdi."
+  },
+  {
+    "id": 4445,
+    "soru": "Alım hakkım var, bunu birine verebilir miyim?",
+    "cevap": "Evet, alım hakkı devredilebilir ve miras yoluyla geçebilir.\n\n**Kaynak:** II. Devredilmesi ve miras yoluyla geçmesi",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin alım hakkının devredilebilirliğini açıkça belirtmiyor."
+  },
+  {
+    "id": 4525,
+    "soru": "Sözleşme sonucunu doğurması için ne gerekir?",
+    "cevap": "Verilen kaynağa göre, sözleşmenin hüküm ve sonuçlarını doğurması için **yasal temsilcinin rızası** gerekir.\n\n**Kaynak:** Taksitle satışa ilişkin hükümlerden yas",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, sözleşmenin hüküm ve sonuçlarını doğurması için yasal temsilcinin rızasının gerektiğini belirtmiyor."
+  },
+  {
+    "id": 15006,
+    "soru": "İrtifak hakkından yararlanan kişi neler yapabilir?",
+    "cevap": "Yararlanan kişi, irtifak hakkının terkin edilmesi durumunda tapu sicil memurunun bildirdiği istemin **bir ay içinde itiraz edebilir**.\n\n**Kaynak:** Verilen meti",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, irtifak hakkından yararlanan kişinin itiraz edebileceğini belirterek kaynakta olmayan bir bilgi sundu."
+  },
+  {
+    "id": 1185,
+    "soru": "Taraflar teminatı neye göre belirleyebilir?",
+    "cevap": "Taraflar teminatın tutarını ve türünü **87 nci maddeye** göre belirleyebilirler.\n\n**Kaynak:** 395. maddenin 2. fıkrası.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, teminatın belirlenmesi konusunda 87. maddeye atıfta bulunarak net bir cevap verdi, ancak kaynak metin bu bilgiyi içermiyor."
+  },
+  {
+    "id": 18837,
+    "soru": "Borçlu ya da alacaklı olarak itiraz etme hakkım var mı?",
+    "cevap": "Evet, ancak kararın türüne göre değişir:\n\n1.  **Kesin mühlet talebinin kabulü veya mühletin kaldırılması talebinin reddine ilişkin kararlar:** Kanun yoluna başv",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, borçlu veya alacaklının itiraz hakkını belirli durumlar için düzenliyor."
+  },
+  {
+    "id": 18634,
+    "soru": "Konkordato sürecinde alacaklıların yetkileri neler?",
+    "cevap": "Verilen kaynak metni, konkordato sürecinde alacaklıların **takip yetkilerinin kısıtlandığını** ve **faiz alma yetkisinin durduğunu** belirtir.\n\n**Kaynak:** 28/2",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, konkordato sürecinde alacaklıların yetkilerinin kısıtlandığını açıklıyor."
+  },
+  {
+    "id": 4312,
+    "soru": "Tamamen elimden alınan ürünüm yüzünden başka zararlarım oldu, ne yapmalıyım?",
+    "cevap": "Verilen kaynağa göre, satılan ürün tamamen elinizden alındıysa ve bu durumdan doğan diğer zararlarınız varsa, satıcıya karşı şunları talep edebilirsiniz:\n\n**Sat",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, satıcının alıcının diğer zararlarını gidermekle yükümlü olduğunu belirtiyor."
+  },
+  {
+    "id": 14750,
+    "soru": "Komşumun su akışını değiştirmesi durumunda ne yapabilirim?",
+    "cevap": "Kaynak metne göre, üst araziden akan suyun akışını değiştirmeniz durumunda aşağıdaki haklarınız ve yükümlülükler söz konusudur:\n\n1.  **Su Kabulü:** Alt arazinin",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan detaylı bir cevap vererek uydurma yapmıştır."
+  },
+  {
+    "id": 3036,
+    "soru": "Hakem duruşma yapmadan nasıl karar verebilir?",
+    "cevap": "Hakem veya hakem kurulu, bilirkişileri seçimine, tarafların açıklamaları yapmalarına, belge ve bilgileri vermelerine veya keşif yapılmasına karar vermeden önce,",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, hakemin duruşma yapmadan nasıl karar verebileceğini açıklamıyor."
+  },
+  {
+    "id": 872,
+    "soru": "Dava açıldıktan sonra, taraflar dava konusu üzerinde tasarruf edebilir mi?",
+    "cevap": "Evet, ancak tarafların üzerinde serbestçe tasarruf edebilecekleri davalarda hüküm doğurur.\n\n**Kaynak:** Kaynak Madde (2)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde dava konusu üzerinde tasarruf edilebileceğini iddia etti."
+  },
+  {
+    "id": 18315,
+    "soru": "İtirazı hangi maddelere dayanarak yapabilirim?",
+    "cevap": "Kaynak metni, ödeme emrine itiraz veya şikayet etmek isteyen borçlunun, ödeme emrinin tebliğinden itibaren beş gün içinde itirazını dilekçe ile icra dairesine b",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan madde numarası ve değişiklik tarihini uydurdu."
+  },
+  {
+    "id": 11536,
+    "soru": "Sicil kayıtlarıyla ilgili görev kimlere aittir?",
+    "cevap": "Kaynak metinde, kişisel durum sicilinin tutulmasından doğan zararlar için tazminat ve rücu davalarında \"kusurlu memura\" rücu edilebileceği belirtilmiştir. Bu if",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin sicil kayıtlarıyla ilgili görevin kimlere ait olduğunu belirtmiyor."
+  },
+  {
+    "id": 9039,
+    "soru": "Cezam kalktı ama haklarımda bir şey değişiyor mu?",
+    "cevap": "Hak yoksunlukları ceza zamanaşımı doluncaya kadar devam eder.\n\n**Kaynak:** (1) Cezaya bağlı olan veya hükümde belirtilen hak yoksunluklarının süresi ceza zamana",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın belirttiği gibi hak yoksunluklarının ceza zamanaşımı doluncaya kadar devam ettiğini söyleyerek doğru bir şekilde çekimser kalmıştır."
+  },
+  {
+    "id": 5392,
+    "soru": "Hayvanlarını kullanan işçi ne bekleyebilir?",
+    "cevap": "Verilen kaynağa göre, işçi işverenle anlaşarak kendi araç veya malzemesini işin görülmesine özgürlükse, işveren bunun için işçiye uygun bir karşılık ödemekle yü",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen işverenin işçiye uygun bir karşılık ödemesi yükümlülüğünü doğru bir şekilde aktarmış ancak İş Kanunu (TCK) atfı uydurmadır."
+  },
+  {
+    "id": 11092,
+    "soru": "İş sözleşmem sona erdi, yıllık izin ücretim ne zaman ödenecek?",
+    "cevap": "Verilen kaynağa göre, iş sözleşmesinin sona ermesinde izin ücreti ödenir.\n\n**Kaynak:** Yıllık ücretli iznini kullanmakta olan işçinin izin süresi içinde ücret k",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, izin ücretinin ne zaman ödeneceğine dair bilgi içermiyor."
+  },
+  {
+    "id": 5604,
+    "soru": "Pazarlamacıma yetki verdim, başka biriyle işlem yapmamın bir sakıncası var mı?",
+    "cevap": "Verilen metne göre, yetkinin sadece pazarlamacıya verilmiş olması durumunda, işveren (siz) o alanda başkalarıyla işlem yaparsa pazarlamacı tüm işlerde komisyon ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde soruya net bir cevap veriyor."
+  },
+  {
+    "id": 10672,
+    "soru": "Gizli bilgileri açıklamak için ne tür bir amaç gerekir?",
+    "cevap": "Gizli bilgileri açıklamak için **siyasi veya askerî casusluk maksadıyla** bir amaç gerekir.\n\n**Kaynak:** Madde (1)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, gizli bilgilerin açıklanması için gereken amacı belirtmiyor, sadece temin edilmesi durumunda cezayı düzenliyor."
+  },
+  {
+    "id": 3485,
+    "soru": "Zararımı hangi duruma göre tazmin ettirebilirim?",
+    "cevap": "Verilen kaynağa göre, zararınızı tazmin ettirebilmeniz için **ayırt etme gücü bulunmayan kişinin verdiği zarar** durumuna karar vermeniz gerekir.\n\n**Kaynak:** H",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın belirttiği durumu doğru bir şekilde aktarmış ancak kaynakta olmayan bir 'karar verme' ifadesi eklemiş."
+  },
+  {
+    "id": 11799,
+    "soru": "Vakıf tescil edilmeden önce ne yapılmalı?",
+    "cevap": "Vakıf kurma iradesi resmî senetle veya ölüme bağlı tasarrufla açıklanır. Vakıf, yerleşim yeri mahkemesi nezdinde tutulan sicile tescil ile tüzel kişilik kazanır",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, vakıf tescilinden önce yapılması gerekenleri açıkça belirtmiyor, model ise detaylı bir liste sunuyor."
+  },
+  {
+    "id": 12343,
+    "soru": "Eşimle boşanırsak mal varlığımız nasıl paylaşılacak?",
+    "cevap": "Boşanma veya evlilik iptali hâllerinde mal paylaşımı şu şekilde yapılır:\n\n1.  **Kişisel mallar:** Her eş, kendi kişisel mallarını geri alır.\n2.  **Ortak mallar:",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynak, boşanma durumunda mal paylaşımının nasıl yapılacağını açıklıyor."
+  },
+  {
+    "id": 160,
+    "soru": "Kredi veren borcumu talep etmek için hangi şartları sağlamalı?",
+    "cevap": "Kaynak (1) maddesine göre, satıcı veya sağlayıcı borcun tümünü talep etmek için şu şartları sağlamalıdır:\n\n1.  Satıcı veya sağlayıcı, borcun tümünün ifasını tal",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, taksitle satış sözleşmeleri için geçerli olan şartları genel kredi verenler için geçerliymiş gibi sundu."
+  },
+  {
+    "id": 7412,
+    "soru": "Eğer nafaka borcum varsa, güvence nasıl etki eder?",
+    "cevap": "Güvence, suç mağduruna veya nafaka alacaklısına verilmemiş olan ikinci kısmı, kovuşturmaya yer olmadığı veya beraat kararları verildiğinde şüpheli veya sanığa g",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bilgiyi güvence ve nafaka borcu ilişkisi hakkında net bir cevap olarak sundu."
+  },
+  {
+    "id": 12527,
+    "soru": "Eşim öldüğünde evin tapusunu nasıl alabilirim?",
+    "cevap": "Kaynak metne göre, eşiniz öldüğünde birlikte yaşadığınız konut üzerinde mülkiyet hakkı talep edebilirsiniz. Bunun için miras ve paylaşma hakkınız mahsup edilmel",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri kullanarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 17424,
+    "soru": "Taşınmazı aldım ama hemen ödemek istemiyorum, ne yapabilirim?",
+    "cevap": "Kaynak metne göre, ihale alıcısı satış bedelini nakden ödemek zorundadır ve bu ödeme, artırma sonuç tutanağının ilanından itibaren yedi gün içinde yapılmalıdır.",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta taşınmaz alımında ödeme erteleme imkanı hakkında bilgi yok."
+  },
+  {
+    "id": 12374,
+    "soru": "Eşimden mal almak için ne yapmalıyım?",
+    "cevap": "Verilen kaynağa göre, eşinizden mal almak için aşağıdaki adımları izleyebilirsiniz:\n\n1.  **Malları Geri Almak:** Her eş, diğer eşte bulunan mallarını geri alabi",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın sağladığı bilgileri özetleyerek cevap vermiş."
+  },
+  {
+    "id": 16944,
+    "soru": "İtirazımı ne zaman bildirmeliyim?",
+    "cevap": "Kaynak metne göre, takip müstenidi (alacaklı) kambiyo senedindeki imza kendisine ait olmadığı iddiasında ise, bunu **beş gün içinde** açıkça bir dilekçe ile icr",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen beş günlük itiraz süresini doğru bir şekilde aktarmış ancak kaynakta olmayan bir madde ve fıkra numarası uydurmuştur."
+  },
+  {
+    "id": 13758,
+    "soru": "Vasiyetname ile bıraktığım mallar için bir sorun olur mu?",
+    "cevap": "Evet, sorun olabilir. Mirasbırakandan önce ölen kişinin mirasçıları, miras sözleşmesi uyarınca elde ettiği zenginleşmeyi geri isteyebilirler.\n\n**Kaynak:** C. Ta",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir bilgiyle soruya net bir cevap verdi."
+  },
+  {
+    "id": 9543,
+    "soru": "Birine cinsel dokunulmazlığına yönelik tehditte bulunmak suç mudur?",
+    "cevap": "Evet, birine cinsel dokunulmazlığına yönelik tehditte bulunmak suçtur.\n\n**Gerekçe:**\nVerilen kaynak metnin (1) numaralı fıkrasında, \"kendisinin veya yakınının h",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, cinsel dokunulmazlığa yönelik tehdidin suç olduğunu açıkça belirtmektedir."
+  },
+  {
+    "id": 124,
+    "soru": "Borçlu olduğum miktarı önceden ödeyebilir miyim?",
+    "cevap": "Evet, ödeyebilirsiniz.\n\n**Kaynak:** (1)",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, borcun erken ödenebileceğini açıkça belirtmektedir."
+  },
+  {
+    "id": 16573,
+    "soru": "Kat mülkiyetine sahip olanların hakları nelerdir?",
+    "cevap": "Verilen kaynağa göre, kat mülkiyetine sahip olanların hakları şunlardır:\n\n1.  **Kat mülkiyeti:** Bağımsız bölümler üzerinde kurulan mülkiyet hakkı.\n2.  **Kullan",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin kat mülkiyetine sahip olanların haklarını değil, sadece tanımları içeriyor."
+  },
+  {
+    "id": 178,
+    "soru": "Konut finansmanı sözleşmesinin geçerli olması için ne gerekir?",
+    "cevap": "Verilen kaynak metinde \"Konut finansmanı sözleşmesi\" ifadesi geçmemekle birlikte, geçerli olması için gereken şartlar \"Taksitle satış sözleşmesi\" ve \"finansal k",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin konut finansmanı sözleşmesini düzenlemiyor."
+  },
+  {
+    "id": 10282,
+    "soru": "Eğer bir kişi tanığı etkilemeye çalışırsa ne olur?",
+    "cevap": "Tanığı hukuka aykırı olarak etkilemek amacıyla alenen beyanda bulunan kişi, elli günden az olmamak üzere adli para cezası ile cezalandırılır.\n\n**Kaynak:** 6352/",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgiyi doğru bir şekilde aktarmış ve başka bir bilgi eklememiş."
+  },
+  {
+    "id": 12491,
+    "soru": "Bana ödenen tazminatın peşin değeri nasıl belirlenir?",
+    "cevap": "Kaynak metinde belirtilen hüküme göre, tazminatın peşin değeri; mal rejiminin sona erdiği tarihte, ömür boyunca irat bağlanmış olsaydı bundan sonraki döneme ait",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin tazminatın peşin değerinin nasıl belirleneceğini açıklamıyor."
+  },
+  {
+    "id": 11802,
+    "soru": "Vakıf malvarlığının sağlanması nasıl mümkün olmaktadır?",
+    "cevap": "Vakıf malvarlığının sağlanması, vakıf senedinde vakfın amacı ile bu amaca özgülenen mal ve hakların yeterince belirlenmesi ile mümkün olmaktadır.\n\nEğer mal ve h",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, vakıf malvarlığının sağlanması konusunu doğrudan açıklamıyor."
+  },
+  {
+    "id": 3363,
+    "soru": "Sözleşmeyi onaylamış sayılmam için ne yapmam gerekiyor?",
+    "cevap": "Sözleşme ile bağlı olmadığını diğer tarafa bildirerek ediminin geri verilmesini talep etmeniz gerekir.\n\n**Kaynak:** IV. Önsözleşme (Metin içindeki hükümlere gör",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir prosedür önererek soruya net bir cevap verdi."
+  },
+  {
+    "id": 2957,
+    "soru": "Hakemim reddedilirse ne olur?",
+    "cevap": "Verilen kaynak metinde \"reddedilirse\" ifadesi geçmemekle birlikte, hakemin görevinin herhangi bir sebeple sona ermesi durumunda (1. maddede) yeni bir hakem seçi",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin hakemin reddedilmesi durumunu kapsamıyor, model ise bu durumu yorumlayarak cevap veriyor."
+  },
+  {
+    "id": 16863,
+    "soru": "Hangi durumlarda bu kanunun hükümleri uygulanıyor?",
+    "cevap": "Bu kanunun hükümleri, **ilamsız takip** (Üçüncü Bap) ve **ilama müstenit takiplerde** uygulanır. Ayrıca **para borcu ve teminat için takip** (İlk Takibin Muhtel",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan detaylı bir cevap vererek uydurma yapmıştır."
+  },
+  {
+    "id": 4248,
+    "soru": "Sözleşmeye katılan kişi, hangi tarafla birlikte hareket eder?",
+    "cevap": "Katılan kişi, **borçlu** ile birlikte hareket eder.\n\n**Kaynak:** Borca katılma (Maddede belirtilmiştir: \"katılanın, borçlu ile birlikte borçtan sorumlu olması s",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, katılan kişinin borçlu ile birlikte hareket ettiğini açıkça belirtmektedir."
+  },
+  {
+    "id": 10505,
+    "soru": "Hükümete karşı şiddet kullanmanın sonuçları neler?",
+    "cevap": "Verilen kaynağa göre, ceza ve şiddet kullanarak TBMM'yi ortadan kaldırmaya veya görevlerini engellemeye teşebbüs edenler **ağırlaştırılmış müebbet hapis cezasıy",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 'Türk Ceza Kanunu - 106. Madde' atfını yaparak uydurma bilgi sundu."
+  },
+  {
+    "id": 3900,
+    "soru": "Bir borç sona ererse, bunun etkisi ne zaman başlar?",
+    "cevap": "Kaynak metne göre, borçlar **takas edilebilecekleri anda daha az olan borç tutarınca** sona erer.\n\n**Kaynak:** Takas, ancak borçlunun takas iradesini alacaklıya",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin borcun sona ermesinin etkisinin ne zaman başlayacağını açıklamıyor."
+  },
+  {
+    "id": 17842,
+    "soru": "Sattığım mal iflas ilanından önce başkasına geçti, geri alabilir miyim?",
+    "cevap": "Verilen kaynağa göre, iflas açılmadan önce borçlu tarafından üçüncü şahsa yapılan ve iflastan haberdar olmayan birine ödenen meblağ (örneğin senet veya poliçe ü",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde iflas öncesi yapılan satışların geri alınamayacağını iddia etti."
+  },
+  {
+    "id": 16087,
+    "soru": "Kat mülkiyetinde bir sorun olduğunda hangi yasaya başvurmalıyım?",
+    "cevap": "Kat mülkiyetinde bir sorun olduğunda öncelikle **Kat Mülkiyeti Kanunu**'na başvurulmalıdır. Bu Kanunda, sözleşmede veya yönetim planında hüküm bulunmayan haller",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin kat mülkiyeti sorunları için hangi yasaya başvurulacağını belirtmiyor."
+  },
+  {
+    "id": 10401,
+    "soru": "Hükümlülerin toplu olarak ayaklanması ne zaman ceza alır?",
+    "cevap": "Verilen kaynak metinde \"ayaklanma\" terimi geçmemekle birlikte, birden fazla tutuklu veya hükümlünün birlikte kaçması durumunda ceza artırılmasını belirtir.\n\n**K",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin ayaklanma konusunu düzenlemiyor, model ise ayaklanma ile ilgili net bir cevap veriyor."
+  },
+  {
+    "id": 10447,
+    "soru": "Savaş halindeki bir devlete karşı silahlı mücadeleye katılmanın sonucu ne?",
+    "cevap": "Verilen kaynağa göre, Devletin savaş halinde olması sağladığı kolaylıktan yararlanarak silahlı isyan suçları işlenmesi halinde, **ağırlaştırılmış müebbet hapis ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, savaş halindeki bir devlete karşı silahlı mücadeleye katılmanın sonucunu düzenlemiyor."
+  },
+  {
+    "id": 9392,
+    "soru": "Bu tür rahatsızlıklarda şikayet yapmazsam ne olur?",
+    "cevap": "Verilen kaynak metne göre, tehdidin malvarlığı itibarıyla büyük bir zarara uğratacağından veya sair bir kötülük edeceğinden bahisle işlenmesi halinde, **mağduru",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin şikayet yapılmaması durumunda ne olacağını açıklamıyor."
+  },
+  {
+    "id": 9702,
+    "soru": "İnşaatta tedbir almazsam ceza miktarı ne kadar olabilir?",
+    "cevap": "Verilen kaynağa göre, ilgili kanunlarla belirlenen yükümlülüklere aykırı olarak, başka bir kimsenin sağlığının zarar görmesine elverişli bir şekilde gürültüye n",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, inşaatta tedbir almama cezası yerine gürültüye neden olma cezasını kaynakla ilişkilendirerek yanlış bir cevap verdi."
+  },
+  {
+    "id": 16931,
+    "soru": "Takip masraflarıyla ilgili ne yapmalıyım?",
+    "cevap": "Ödeme emrinde belirtilen banka hesabına borcun ve masrafların yedi gün içinde ödenmesi gerekir.\n\n**Kaynak:** İcra ve İflas Kanunu, 538/31 md. (Emir maddesi 2. f",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin takip masraflarıyla ilgili ne yapılması gerektiğini açıkça belirtmiyor."
+  },
+  {
+    "id": 4463,
+    "soru": "Taşınmaz satışı önalım hakkını nasıl etkiler?",
+    "cevap": "Taşınmaz satışı, önalım hakkını kullanmak isteyen hak sahibinin dava açma süresini belirler. Hak sahibi, hak şerhedilmiş ve mülkiyet alıcı adına tescil edilmişs",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, önalım hakkının dava açma süresini belirlediğini açıklıyor."
+  },
+  {
+    "id": 8786,
+    "soru": "Yurt dışında işlediğim bir suçta ceza alanında hangi kurallar geçerli?",
+    "cevap": "Yurt dışında işlediğiniz bir suçta Türk ceza kanununa göre cezalandırılma koşulları aşağıdaki maddede belirtilmiştir:\n\n1.  **Suç Türkiye'ye zarar verirse:** Yab",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru şekilde özetlemiş ancak yanlış madde numarası vererek uydurma bir atıfta bulunmuştur."
+  },
+  {
+    "id": 4914,
+    "soru": "Kira sözleşmem süresiz mi devam ediyor?",
+    "cevap": "Hayır, kira sözleşmesi **süresiz** değildir.\n\nVerilen kaynağa göre, belirli süreli kira sözleşmesi sürenin bitiminde kendiliğinden sona erer. Tarafların sözleşm",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynağın kapsamını aşarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 9571,
+    "soru": "Yangın veya sel gibi felaketlere karşı korunmaya tahsis edilmiş eşyalara zarar v",
+    "cevap": "Kaynak metne göre, bir afet veya genel bir felaketin meydana getirebileceği zararları önlemek veya hafifletmek maksadıyla hazırlanan eşya hakkında hırsızlık işl",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgiyi doğru şekilde aktarmış ve soruya net bir cevap vermiştir."
+  },
+  {
+    "id": 12782,
+    "soru": "Hakim nafaka miktarını değiştirebilir mi?",
+    "cevap": "Evet, hakim nafaka miktarını değiştirebilir.\n\n**Gerekçe:**\nTarafların malî durumlarının değişmesi veya hakkaniyetin gerektirdiği hâllerde iradın artırılması vey",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, nafaka miktarının değiştirilebileceğini açıkça belirtmektedir."
+  },
+  {
+    "id": 1985,
+    "soru": "Tanık çağrıldığında hangi bilgileri içeren bir davetiye alır?",
+    "cevap": "Kaynak metinde belirtilen madde numarası bulunmadığı için, sadece metin içindeki bilgileri dayandırarak cevap verilir.\n\n**Cevap:**\nDavetiye, yemin için tayin ol",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin tanık davetiyesini değil, yemin davetiyesini düzenliyor."
+  },
+  {
+    "id": 4309,
+    "soru": "Eğer aldığım ürün benden tamamen alındıysa ne olacak?",
+    "cevap": "Eğer aldığınız ürün tamamen elinizden çıkmışsa (satılanın tamamen zaptında olduğu gibi), satıcıdan aşağıdaki istemlerde bulunabilirsiniz:\n\n*   Ödemiş olduğunuz ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri kullanarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 19001,
+    "soru": "Eğer nafaka borcumu ödersem, hapsim sona erer mi?",
+    "cevap": "Evet, öderseniz hapsiniz sona erer. Kaynak metinde belirtildiği üzere, hapsin tatbikine başlandıktan sonra ilâmın gereği (borcun ödenmesi) yerine getirilirse, b",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, ilâmın gereği yerine getirilirse borçlunun tahliye edileceğini belirtiyor."
+  },
+  {
+    "id": 7055,
+    "soru": "Tanığın bildiklerini açıklaması için ne yapılır?",
+    "cevap": "Tanık, yemin edilerek bildiklerini açıklamak üzere mahkeme salonunda tutulur. Tanığa, yalan tanıklık suçundan cezalandırılacağı, doğruyu söyleyeceği hususunda y",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın içeriğini kullanarak tanığın bildiklerini açıklaması için yemin edilmesi gerektiğini belirtiyor."
+  },
+  {
+    "id": 6098,
+    "soru": "Satış kararı verilmeden önce bana haber verilir mi?",
+    "cevap": "Evet, satış kararı verilmeden önce alacaklıya haber verilmesi gerekir.\n\n**Kaynak:** Verilen metin (borçlu, alacaklıya önceden ihtarda bulunması koşuluyla).",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, satış kararı öncesinde alacaklıya ihtarda bulunulması gerektiğini belirtiyor."
+  },
+  {
+    "id": 965,
+    "soru": "Bölge adliye mahkemesinin hâkim reddi talebiyle ilgili kararları kesin mi?",
+    "cevap": "Evet, ancak esas hüküm bakımından temyiz yolu kapalı bulunan davalar ve işlerde kesinleşir. Temyiz yolu açık bulunan davalar ve işlerde ise temyiz edilebilir.\n\n",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetleyerek soruya cevap vermiştir."
+  },
+  {
+    "id": 7677,
+    "soru": "Kolluk görevlisi kimdir?",
+    "cevap": "Verilen kaynağa göre, kolluk görevlileri **Kolluk âmir ve memurları** olarak tanımlanır.\n\n**Kaynak:** CMK (Türk Ceza Muhakemeleri Kanunu) Madde 103 (2)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin kolluk görevlisinin kim olduğunu tanımlamıyor."
+  },
+  {
+    "id": 4327,
+    "soru": "Hayvan satın alırken dikkat etmem gereken bir şey var mı?",
+    "cevap": "Evet, saklayan (kullanıcı) saklatanın izni olmadan saklananı kullanamaz. Bu yasağa aykırı davranırsa, saklatana uygun bir kullanım bedeli ödemekle yükümlü olur.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir konuyu cevaplamış ve kaynak metni yanlış yorumlamış."
+  },
+  {
+    "id": 18189,
+    "soru": "Teminatı kim verir?",
+    "cevap": "Teminat, alacaklıdan alınabilir. Ancak borçlu ödeme emrine itiraz etmiş veya alacak bir ilama bağlı ise teminat aranmaz. Devlet ve adli yardıma nail kimseler de",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru şekilde özetlemiş ancak Hukuk Usulü Muhakemeleri Kanunu 96. maddesine atıfta bulunarak kaynakta olmayan bir detay eklemiştir."
+  },
+  {
+    "id": 13274,
+    "soru": "Vesayet altındaki birinin eşyaları satılabilir mi?",
+    "cevap": "Vesayet altındaki birinin taşınmazlarının satışı mümkündür. Ancak bu satış, vesayet makamının talimatı uyarınca ve ancak vesayet altındaki kişinin menfaati gere",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta vesayet altındaki birinin eşyalarının satışı hakkında bilgi yok."
+  },
+  {
+    "id": 9885,
+    "soru": "Bu madde hangi tür eşyalar için geçerlidir?",
+    "cevap": "Bu madde **resmi belge** ve **özel belge** türü eşyalar için geçerlidir.\n\n**Kaynak:** Verilen metin (Madde içeriği)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin eşya türleri hakkında bilgi içermiyor."
+  },
+  {
+    "id": 14853,
+    "soru": "Bir başkasının kuyu veya su kaynağını kirlettiğimde ne yapmalıyım?",
+    "cevap": "Kaynak metne göre, başkasının kuyu veya su kaynağını kirletmesi, başkasının taşınmazına müdahale ile önlenemeyecek bir zarar veya tehlikeye yol açabilir.\n\nEğer ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir durumu yorumlayarak cevap vermiş."
+  },
+  {
+    "id": 9660,
+    "soru": "Toprak kaymasına yol açarsam cezam ne olur?",
+    "cevap": "KAYNAK MADDE'ye göre, taksirle (dikkatsizlikle) başkalarının hayatı, sağlığı veya malvarlığı bakımından tehlikeli olan bir fiil nedeniyle toprak kaymasına yol a",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model kaynak metindeki bilgiyi doğru şekilde aktarmış."
+  },
+  {
+    "id": 4323,
+    "soru": "Eğer ürünümde bir sorun varsa, geri vermek zorunda mıyım?",
+    "cevap": "Kaynak Madde'ye göre, ürününüzde bir sorun varsa (ayıp varsa), ürün yok olmuşsa veya ağır zarara uğramışsa, sözleşmeden dönme hakkınızı kullanabilirsiniz. Ancak",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, ayıplı ürünün geri verilmesi durumunu düzenliyor."
+  },
+  {
+    "id": 12127,
+    "soru": "Temsil yetkisi ile ilgili ilk karar verildiyse, sonrasında ne yapılmalıdır?",
+    "cevap": "Koşullar değiştiğinde hâkim, eşlerden birinin istemi üzerine kararında gerekli değişikliği yapar veya sebebi sona ermişse alınan önlemi kaldırır.\n\n**Kaynak:** V",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "verilen kaynakta bu bilgi yok"
+  },
+  {
+    "id": 15904,
+    "soru": "Taşınmazlar üzerindeki haklar nerede gösterilir?",
+    "cevap": "Verilen kaynağa göre taşınmazlar üzerindeki haklar **Tapu sicilinin tutulması** (Tapu Sicili) ile gösterilir.\n\n**Kaynak:** Tapu Kanunu, II. Madde (Tapu sicilini",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin taşınmazlar üzerindeki hakların nerede gösterileceğini belirtmiyor."
+  },
+  {
+    "id": 198,
+    "soru": "Sigorta yaptırmadan kredi alabilir miyim?",
+    "cevap": "Evet, sigorta yaptırmadan kredi alabilirsiniz. Konut finansmanı kuruluşu, sigorta içermeyen bir sözleşmeyi de teklif etmek koşuluyla sigorta yaptırılmasını içer",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgiyi kullanarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 17061,
+    "soru": "İcra dairesine malım yok dedim, sonra bir mal kazandım ne yapmalıyım?",
+    "cevap": "İcra dairesine bildirmeniz gerekir.\n\n**Gerekçe:**\nKaynak metne göre, sonradan kazandığınız malları bildirmeye mecbur olan borçlu, makbul bir mazereti olmaksızın",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, sonradan kazanılan malların icra dairesine bildirilmesi gerektiğini açıkça belirtmektedir."
+  },
+  {
+    "id": 17235,
+    "soru": "Haciz işlemine katılmak için ne yapılması gerekiyor?",
+    "cevap": "Kaynak metne göre haciz işlemine katılmak için şunlar gereklidir:\n\n1.  **Önce icrası lazım gelen takip merasimine lüzum olmaksızın** (önceden icra takibine gere",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri kullanarak haciz işlemine katılma şartlarını açıklamış, ancak 'Borçlar Kanunu, 3890/1. Madde' şeklinde yanlış bir atıf yapmıştır."
+  },
+  {
+    "id": 155,
+    "soru": "Kredi veren borcumu hemen talep edebilir mi?",
+    "cevap": "Evet, ancak satıcı veya sağlayıcı bütün edimlerini ifa etmişse, tüketicinin bedelin en az onda birini oluşturan ve birbirini izleyen en az iki taksidi veya en a",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin yalnızca taksitle satış sözleşmelerini kapsıyor, genel kredi borcu talebi hakkında bilgi vermiyor."
+  },
+  {
+    "id": 10369,
+    "soru": "Cebir olmadan kaçarsa ceza ne olur?",
+    "cevap": "Kaynak metne göre, suçun işleniş şekline (cebir veya tehdit kullanılıp kullanılmadığına) göre ceza farklılık gösterir. Cebir veya tehdit kullanılmadığı durumlar",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, cebir olmadan kaçma durumunda uygulanacak cezaları açıkça belirtiyor."
+  },
+  {
+    "id": 4805,
+    "soru": "Ayıplı bir mal kiraladım, ne tür haklarım var?",
+    "cevap": "Verilen kaynak metne göre, ayıplı bir mal kiraladığınızda şu haklarınız vardır:\n\n1.  **Kira İndirimi Hakkı:** Ayıpların öğrenilmesinden giderilmesine kadar geçe",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynakta zarar giderimi hakkı belirtilmemiş."
+  },
+  {
+    "id": 18088,
+    "soru": "İflas idaresinin görevleri arasında neler var?",
+    "cevap": "Verilen kaynağa göre iflas idaresinin görevleri şunlardır:\n\n1.  Alacakların tespit işini yapma.\n2.  İkinci toplantıya ilanla davet etme.\n3.  Toplantıyı iflas me",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan görevleri listeleyerek iflas idaresinin görevlerini uydurdu."
+  },
+  {
+    "id": 14738,
+    "soru": "Komşumun evinde çıkan koku beni rahatsız ediyor, bu konuda ne yapabilirim?",
+    "cevap": "Komşunuzun evinde çıkan koku nedeniyle zarar gördüğünüz veya zarar tehlikesiyle karşılaştığınız durum, mülkiyet hakkının yasal kısıtlamalarına aykırı kullanım s",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 666. maddeye atıfta bulunarak uydurma yaptı."
+  },
+  {
+    "id": 4481,
+    "soru": "Taşınır satışında bu madde geçerli mi?",
+    "cevap": "Evet, bu madde taşınır satışlarında geçerlidir.\n\n**Gerekçe:**\nKaynak metnin ilk cümlesinde açıkça belirtilmiştir: \"taşınır satışlarında zilyetliğin devri, taşın",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin taşınır satışlarında yarar ve hasarın devrini düzenliyor."
+  },
+  {
+    "id": 2922,
+    "soru": "Tahkim sözleşmesi yaparken dikkat edilmesi gereken bir şey var mı?",
+    "cevap": "Evet, dikkat edilmesi gereken bir şey var.\n\nTahkim sözleşmesi geçerli olmalıdır ve tarafların bu konudaki **yazılı sözleşmesi** olmalıdır. Mahkemeye başvuru, sa",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin tahkim sözleşmesi yaparken dikkat edilmesi gereken hususları içermiyor."
+  },
+  {
+    "id": 2802,
+    "soru": "Resmi makamlar çekişmesiz yargı işlerinde hangi kurallara uyar?",
+    "cevap": "Kaynak metinde \"Resmi makamlar\" ifadesi geçmemekle birlikte, çekişmesiz yargı işleri için yetkili mahkeme kuralları şöyledir:\n\nKanunda aksine hüküm bulunmadıkça",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 'Hukuk Muhakemeleri Kanunu' ve 'Madde 1' atıfları yaparak cevap verdi."
+  },
+  {
+    "id": 10625,
+    "soru": "Yabancı devletin casusluk amacıyla bilgi alması durumunda ne olur?",
+    "cevap": "Verilen kaynak metinde \"yabancı devlet\" ifadesi geçmemekle birlikte, devletin güvenliği için gizli bilgileri temin eden kimseye (kimseye) aşağıdaki cezalar uygu",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, casusluk amacıyla bilgi almanın cezalarını düzenliyor."
+  },
+  {
+    "id": 16183,
+    "soru": "Evim harabe oldu, diğer kat maliklerinden yardım alabilir miyim?",
+    "cevap": "Evet, ancak anagayrimenkulün ortak yerleri ile ilgili durumlar söz konusu olduğunda.\n\nKat malikleri, anagayrimenkulün bakımını titizlikle korumaya mecburdurlar.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde kat maliklerinden yardım alınabileceğini iddia ediyor."
+  },
+  {
+    "id": 17528,
+    "soru": "Adres gösterme zorunluluğu var mı?",
+    "cevap": "Evet, adres gösterme zorunluluğu vardır.\n\nKredi sözleşmesinde belirtilen adres, hesap özetinin gönderilmesi için kullanılır. Adresin değiştirilmesi veya yeni ad",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin adres gösterme zorunluluğunu genel olarak düzenlemiyor, sadece kredi sözleşmeleri için özel bir durumu ele alıyor."
+  },
+  {
+    "id": 7426,
+    "soru": "Şüpheli veya sanığın bulunduğu yer aranmaya dahil mi?",
+    "cevap": "Evet, şüphelinin veya sanığın konutu, işyeri veya ona ait diğer yerleri aranabilir.\n\n**Kaynak:** Hukuk Kanunu (TCK) Madde 24 (1)",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen arama kapsamını doğru bir şekilde aktarmış ancak yanlış bir madde numarası ve kanun adı uydurmuştur."
+  },
+  {
+    "id": 9219,
+    "soru": "Gebe bir kadına eziyet eden biri ne kadar hapis cezası alır?",
+    "cevap": "Kaynak metne göre, bu suçun işlenişine iştirak eden kişi **kamu görevlisi** ise ve eylem **gebe kadına** karşı işlenmişse, ceza **sekiz yıldan onbeş yıla kadar ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin gebe kadına eziyet eden kamu görevlisi için ceza süresini belirtiyor."
+  },
+  {
+    "id": 839,
+    "soru": "Görevsizlik kararı sonrası ne zaman başvurmalıyım?",
+    "cevap": "Verilen kaynak metinde \"Görevsizlik kararı\" terimi geçmemekle birlikte, \"İstinaf dilekçesinin reddine karar\" (ret kararı) ile ilgili başvuru süresi şöyledir:\n\nR",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin görevsizlik kararı sonrası başvuru süresini içermiyor."
+  },
+  {
+    "id": 10586,
+    "soru": "Düşmanla anlaşarak yanlış bilgi yayarsam ne olur?",
+    "cevap": "Kaynak metinde \"düşmanla anlaşarak\" ifadesi geçmemekle birlikte, yalan haber veya havadis yaymakla ilgili ceza hükümleri şöyledir:\n\nİşçi ücretleri, besin veya m",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin düşmanla anlaşarak yanlış bilgi yayma konusunu kapsamıyor, model ise TCK Madde 203'ü uydurarak cevap verdi."
+  },
+  {
+    "id": 16905,
+    "soru": "Temsilci tayin etmemek ne gibi sonuç doğurur?",
+    "cevap": "Kaynak metne göre, takip borçlunun temsilcisi (mümissil) tayin edilemeyecek derecede ağır hastalığı durumunda:\n\n1.  **İcra takibinin talaği:** İcra memurluğu, m",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, temsilci tayin etmemenin sonuçları hakkında kaynakta olmayan bilgiler sundu."
+  },
+  {
+    "id": 15240,
+    "soru": "Üst hakkı ipotek ettirmek için ne yapmalıyım?",
+    "cevap": "Verilen kaynak metni, bir para alacağını güvence altına almak amacıyla kurulan taşınmaz yükü (ipotek) hakkında **irad senedine ilişkin hükümlerin uygulanması** ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir madde numarası ve detaylı bilgi vererek soruya net bir cevap oluşturmuş."
+  },
+  {
+    "id": 4370,
+    "soru": "Ayıplı bir ürün aldım, ama ben bu ürünü onarılmasını istiyorum, ne yapmalıyım?",
+    "cevap": "Verilen kaynak metni \"Eser\" (İnşaat/İş) ve \"Yüklenici\" ile ilgili olduğu için, \"Ürün\" (Satın alınan mal) hakkında genel bilgi vermez. Ancak kaynak metnine göre,",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta ürün onarımı hakkında bilgi yok."
+  },
+  {
+    "id": 11304,
+    "soru": "İşveren ara dinlenmelere uymuyorsa ne olur?",
+    "cevap": "Verilen kaynak metni incelendiğinde, işverenin 7. maddede öngörülen ilke ve yükümlülüklere aykırı davranması durumunda (ara dinlenmelere uymama dahil olabileceğ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin ara dinlenmelere uymama durumunu kapsamıyor."
+  },
+  {
+    "id": 14465,
+    "soru": "Eşya ile birleştirilen şeyler eklenti midir?",
+    "cevap": "Evet, kaynak metne göre eşya ile birleştirilen şeyler **eklenti** sayılabilir.\n\n**Gerekçe:**\nMetinde eklenti tanımı şöyledir: \"...kullanılmasında **birleştirme*",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin eklenti tanımını vererek soruyu cevaplıyor."
+  },
+  {
+    "id": 12880,
+    "soru": "Eğer ana ve babanın maddi durumu iyi değilse çocukların masrafları kim tarafında",
+    "cevap": "Ana ve babanın ödeme gücü yoksa, bu önlemlerin gerektirdiği giderler **Devletçe** karşılanır.\n\n**Kaynak:** Türk Medeni Kanunu (Türk Hukuku), Velâyetin kaldırılm",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, ana ve babanın ödeme gücü yoksa giderlerin Devletçe karşılanacağını belirtiyor."
+  },
+  {
+    "id": 10718,
+    "soru": "İşçiler bu kanundan nasıl etkilenir?",
+    "cevap": "4734 sayılı Kamu İhale Kanunu'na göre, kamu kurumlarında alt işverenler tarafından çalıştırılan işçilerin kıdem tazminatı hesaplanırken, alt işveren değişse bil",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgiyi doğru bir şekilde özetlemiş ancak kaynak metin tam olarak verilmediği için eksik bilgiyle net bir cevap vermiş."
+  },
+  {
+    "id": 8022,
+    "soru": "Tutanak imzalanmadan önce ne yapılmalıdır?",
+    "cevap": "Verilen kaynağa göre, tutanak imzalanmadan önce tanıkların dinlendirilmesi gerekmektedir.\n\n**Kaynak:** (1) Tanıklar, dinlendikten sonra ancak mahkeme başkanı ve",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynağın tutanak imzalanması öncesi süreçle ilgili bilgi verdiğini iddia ederek yanlış bir çıkarımda bulunmuş."
+  },
+  {
+    "id": 10343,
+    "soru": "Bilirkişiye yanlış bilgi verirsem ceza alır mıyım?",
+    "cevap": "Evet, ceza alırsınız.\n\n**6352/90 md.** gereği, bilirkişiyi hukuka aykırı olarak etkilemeye teşebbüs eden kişi cezalandırılır.\n\n*   **Ceza:** 2 yıldan 4 yıla kad",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, yanlış bilgi verme durumunu değil, bilirkişiyi etkilemeye teşebbüs durumunu düzenliyor."
+  },
+  {
+    "id": 10294,
+    "soru": "Hangi durumlarda hapis cezası alabilirim?",
+    "cevap": "Verilen kaynak maddeye göre, hapis cezası şu durumlarda uygulanabilir:\n\n1.  **Kamu görevlisi** olarak, göreviyle bağlantılı olarak bir suçun işlendiğini öğrenip",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan genel bir hapis cezası durumu hakkında bilgi verdi."
+  },
+  {
+    "id": 4442,
+    "soru": "Eğer ben ölürsem önalım hakkım mirasçılarıma geçer mi?",
+    "cevap": "Evet, önalım hakkı miras yoluyla geçebilir. Kaynak metnin \"II. Devredilmesi ve miras yoluyla geçmesi\" başlığı altında bu durumu belirtmektedir.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin önalım hakkının miras yoluyla geçip geçmediğini belirtmiyor."
+  },
+  {
+    "id": 10631,
+    "soru": "Devletin güvenliği ile ilgili gizli bilgileri açıklamak suç mu?",
+    "cevap": "Evet, Devletin güvenliği ile ilgili gizli bilgileri açıklamak suçtur.\n\n**KAYNAK MADDE (1):** Yetkili makamların kanun ve düzenleyici işlemlere göre açıklanmasın",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak madde, gizli bilgilerin açıklanmasının suç olduğunu belirtmektedir."
+  },
+  {
+    "id": 110,
+    "soru": "Sağlayıcı talebimi yerine getirmezse ne yapmalıyım?",
+    "cevap": "Sağlayıcı talebinizi yerine getirmeyi reddetmezse, satıcı, üretici ve ithalatçı müteselsilen sorumludur. Bu hakların yerine getirilmesi konusunda bu üç taraf bi",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde sağlayıcının talebi yerine getirmemesi durumunda ne yapılması gerektiğine dair net bir cevap veriyor."
+  },
+  {
+    "id": 12623,
+    "soru": "Gecikmeli bir sebeple dava açmak istiyorum, bu mümkün mü?",
+    "cevap": "Evet, gecikmeli bir sebeple dava açmak mümkündür. İptal davası açma hakkı, iptal sebebinin öğrenildiği tarihten başlayarak altı ay süresine tabidir. Ancak bu sü",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde gecikmeli dava açmanın mümkün olduğunu iddia ediyor."
+  },
+  {
+    "id": 918,
+    "soru": "Çekinme kararı aldım, ne yapmalıyım?",
+    "cevap": "Kaynak metne göre durumunuzun ne olduğu, davanın istinaf yolu kapalı mı açık mı olduğuna bağlıdır:\n\n1.  **İstinaf yolu kapalı ise:** Karar kesinleşmiştir.\n2.  *",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin çekinme kararı hakkında bilgi içermiyor."
+  },
+  {
+    "id": 17469,
+    "soru": "Alacaklılar arasındaki öncelik nasıl belirleniyor?",
+    "cevap": "Verilen kaynağa göre, alacaklılar arasındaki öncelik **sıra cetvelinin müddet ve şekli** ile belirlenir.\n\n**Kaynak:** Tapu siciline yazılı alacaklar ile ilgili ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 'sıra cetvelinin müddet ve şekli' ifadesini kullanarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 12507,
+    "soru": "Eşimin borcunun ortak mallardan ödenmesi durumunda haklarım nelerdir?",
+    "cevap": "Kaynak metne göre, eşinizin kişisel mallara ilişkin borcunun edinilmiş mallardan (ortak mallar) ödenmesi durumunda, malın tasfiyesi sırasında **denkleştirme ist",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, borçların yanlış kesimden ödenmesi durumunda denkleştirme talep hakkını düzenliyor."
+  },
+  {
+    "id": 986,
+    "soru": "Hangi mahkeme, ilk derece mahkemesi sıfatıyla hareket ediyor?",
+    "cevap": "Verilen kaynağa göre, ilk derece mahkemesi sıfatıyla hareket eden mahkeme **ilk derece mahkemesi** olarak belirtilmiştir.\n\n**Kaynak:** (1) maddesi.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, hangi mahkemenin ilk derece mahkemesi sıfatıyla hareket ettiğini belirtmiyor."
+  },
+  {
+    "id": 174,
+    "soru": "Kredi sözleşmesinde erken ödeme yapabilir miyim?",
+    "cevap": "Evet, erken ödeme yapma hususu ilgili yönetmelikle belirlenir.\n\n**Kaynak:** Konut Finansmanı Sözleşmesi Hakkında Kanun (4. Bölüm, 4. Madde)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir yönetmelikten bahsederek soruya net bir cevap verdi."
+  },
+  {
+    "id": 18610,
+    "soru": "Rehinli alacaklıların hakları nedir?",
+    "cevap": "Verilen kaynak metinde rehinli alacaklıların hakları açıkça listelenmemekle birlikte, konkordato sürecindeki durumu şu şekilde belirtilmiştir:\n\nRehinle temin ed",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta rehinli alacaklıların hakları hakkında bilgi yok."
+  },
+  {
+    "id": 10197,
+    "soru": "Birden fazla kişi ile birlikte bu suçu işlersem cezam artar mı?",
+    "cevap": "Evet, cezam artar. Kaynak metinde belirtilen \"Birden fazla kişi tarafından birlikte\" suçun işlenmesi hali, fail hakkında on yıldan onbeş yıla kadar hapis cezası",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan madde numarası vererek uydurma bir atıfta bulundu."
+  },
+  {
+    "id": 7423,
+    "soru": "Bu madde hangi durumları kapsıyor?",
+    "cevap": "Bu madde şunları kapsar:\n\n1.  **Cumhuriyet savcısının istemi:** Tutuklama kararı verilmiş şüpheliyi sulh ceza hâkiminden adlî kontrol altında serbest bırakılmas",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri özetleyerek cevap vermiş."
+  },
+  {
+    "id": 3759,
+    "soru": "Borçlunun alacaklıdan kaynaklanan bir sebebi varsa ne olur?",
+    "cevap": "Kaynak metinde \"borçlunun alacaklıdan kaynaklanan bir sebebi\" ifadesi doğrudan geçmemekle birlikte, \"Asıl borç herhangi bir sebeple geçersiz ise\" durumunda beli",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir durumu yorumlayarak cevap verdi."
+  },
+  {
+    "id": 16650,
+    "soru": "Ret talebim reddedilirse ne yapmalıyım?",
+    "cevap": "Verilen kaynağa göre, konkordato talebinizin reddine karar verilirse, borçlu veya alacaklı olarak kararın tebliğinden itibaren **iki hafta içinde istinaf yoluna",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin ret talebinin reddedilmesi durumunu kapsamıyor."
+  },
+  {
+    "id": 14735,
+    "soru": "Komşumun bahçesinden çıkan duman beni rahatsız ediyorsa ne yapmalıyım?",
+    "cevap": "Komşunuzun bahçesinden çıkan duman, mülkiyet hakkını yasal kısıtlamalara aykırı kullanması sonucu zararınız varsa veya zarar tehlikesi oluşturuyorsa, durumun es",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, mülkiyet hakkının yasal kısıtlamalarına aykırı kullanılması durumunda dava açılabileceğini belirtiyor."
+  },
+  {
+    "id": 15729,
+    "soru": "Hapis hakkı ile ilgili hangi durumlar önemli?",
+    "cevap": "Kaynak metne göre Hapis Hakkı'nın kullanılabileceği önemli durumlar şunlardır:\n\n1.  **Borçlunun Acizliği:** Borçlunun ödemeden acize düşmesi hâlinde.\n2.  **Alac",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetlemiş ancak 'Kaynak: IV. Hükümleri' ifadesi uydurmadır."
+  },
+  {
+    "id": 3186,
+    "soru": "Temyiz süreleriyle ilgili değişiklikler hangi maddeleri kapsıyor?",
+    "cevap": "Verilen kaynak metinde \"temyiz süreleri\" ifadesi doğrudan geçmemekle birlikte, geçici hükümler kapsamında uygulanmaya devam edilecek maddeler **427 ilâ 444 üncü",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta temyiz süreleriyle ilgili değişiklikleri kapsayan maddeler belirtilmemiş."
+  },
+  {
+    "id": 11019,
+    "soru": "Hafta tatili günü çalışmazsam ne olur?",
+    "cevap": "Hafta tatili günleri yıllık ücretli izin hakkının hesabında çalışılmış gibi sayılır.\n\n**Kaynak:** Aşağıdaki süreler yıllık ücretli izin hakkının hesabında çalış",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "verilen kaynakta bu bilgi yok"
+  },
+  {
+    "id": 955,
+    "soru": "Hâkimin reddi talebine nasıl karar verilir?",
+    "cevap": "Verilen kaynağa göre, hâkimin reddi talebiyle ilgili merci kararının kesinliği ve istinaf yolu şöyledir:\n\n1.  **İstinaf Yolu Kapalı Olan Davalarda:** Karar kesi",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynağın sağladığı bilgileri özetleyerek cevap vermiş."
+  },
+  {
+    "id": 1600,
+    "soru": "İsticvap için bana davetiye geldi, ne yapmalıyım?",
+    "cevap": "Davetiye geldiğinde, yemin için tayin olunan gün ve saatte mahkemeye bizzat gelip yemini etmelisiniz. Mahkemeye gelmemek veya yemini etmemek durumunda kalırsanı",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin isticvap hakkında bilgi içermiyor, model yeminle ilgili bilgiyi kullanarak cevap verdi."
+  },
+  {
+    "id": 16197,
+    "soru": "Dava açmak için kat maliklerinin ne yapması gerekiyor?",
+    "cevap": "Kaynak metinde dava açma süreci açıkça belirtilmemekle birlikte, kat irtifakı sahiplerinden birinin borçlarını ödememesi durumunda hâkimin karar vermesi için di",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan dava açma süreci hakkında bilgi veriyor."
+  },
+  {
+    "id": 7159,
+    "soru": "Moleküler genetik inceleme kararını kim verebilir?",
+    "cevap": "Verilen kaynak metinde \"moleküler genetik inceleme\" ifadesi geçmemekle birlikte, uzmanlık gerektiren hâllerde bilirkişi atanması ve karar vermesi ile ilgili gen",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta moleküler genetik inceleme kararıyla ilgili bilgi yok."
+  },
+  {
+    "id": 18745,
+    "soru": "Yeniden yapılandırma projesi için başvurduğumda hangi hükümler geçerli değildir?",
+    "cevap": "6183 sayılı Kanun 22. maddesine göre yeniden yapılandırma projesi (mühlet) süresince aşağıdaki hükümler uygulanmaz:\n\n*   **Takipler:** Hiçbir takip yapılamaz ve",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan '6183 sayılı Kanun 22. maddesine göre' ifadesini ekleyerek yanıt verdi."
+  },
+  {
+    "id": 12189,
+    "soru": "Kimler mal ayrılığına karar verilmesini isteyebilir?",
+    "cevap": "Verilen kaynağa göre mal ayrılığına karar verilmesini isteyebilecek kişiler **eşlerden herhangi birinin** yerleşim yeri mahkemesinde yetkili mahkeme olduğu beli",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak, mal ayrılığına karar verilmesini kimin isteyebileceğini belirtmiyor."
+  },
+  {
+    "id": 4563,
+    "soru": "Peşinat ödenmezse satıcının hakları nelerdir?",
+    "cevap": "Verilen kaynağa göre, satış bedelinin tamamen ödenmemesi durumunda satıcının malı alıcıya devredebilmesi için, **geri kalan kısmın yüzde onunun kendisine güvenc",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin peşinat ödenmemesi durumunu açıkça ele almıyor."
+  },
+  {
+    "id": 4793,
+    "soru": "Kiraya verenin sorumluluğu sadece kendisiyle mi sınırlıdır?",
+    "cevap": "Hayır, sorumluluk sadece kendisiyle sınırlı değildir. Kaynak metni, kiraya verenin sorumluluğunun \"Üçüncü kişinin ileri sürdüğü haklar sebebiyle\" de devam ettiğ",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki 'Üçüncü kişinin ileri sürdüğü haklar sebebiyle sorumluluk' ifadesine dayanarak sorumluluğun sadece kiraya verenle sınırlı olmadığını doğru bir şekilde belirtmiştir."
+  },
+  {
+    "id": 19248,
+    "soru": "Eğer bir eşya daha önce haczedilmişse, yeni değişiklikler geçerli mi?",
+    "cevap": "Hayır, yeni değişiklikler uygulanmaz. Kaynak metne göre, bu Kanunun ilgili hükümlerinin yürürlüğe girdiği tarihten önce başlatılan takip işlemleri hakkında, değ",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, değişiklikten önce başlatılan işlemlere eski hükümlerin uygulanacağını belirtiyor."
+  },
+  {
+    "id": 15014,
+    "soru": "İrtifakımın kapsamını kim belirler?",
+    "cevap": "Kaynak metne göre, ipotekli borç senedi veya irat senedinin geçerliliği ve kapsamı, senet **içinde yazılı olanlara göre** belirlenir.\n\n**Kaynak:** Usulüne göre ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin irtifak hakkının kapsamını belirleyen kişi veya makam hakkında bilgi vermiyor."
+  },
+  {
+    "id": 3193,
+    "soru": "Sözleşme kurmak için her konuda anlaşmak mı gerekiyor?",
+    "cevap": "Sözleşme kurulması için her konuda anlaşmak zorunda değildir. Öneren, kanun veya işin özelliği ya da durumun gereği açık bir kabulü beklemek zorunda değilse, ön",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, sözleşme kurmak için her konuda anlaşma gerekip gerekmediğini açıklamıyor."
+  },
+  {
+    "id": 17562,
+    "soru": "İtirazım için hangi süre içinde başvurmalıyım?",
+    "cevap": "Hesap özetinin alındığı tarihten itibaren **1 ay içinde** itiraz etmelisiniz.\n\n**Kaynak:** Borçlar Kanunu, 3494/4.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model kaynakta belirtilen 1 aylık itiraz süresini doğru aktarmış ancak Borçlar Kanunu'na atıf yaparak uydurma bir referans vermiş."
+  },
+  {
+    "id": 16977,
+    "soru": "İtiraz eden kişi kimler olabilir?",
+    "cevap": "Kaynak metne göre itiraz eden kişi **borçludur**.\n\n**Gerekçe:** Metinde \"Borçlu itirazını varit gösterecek hiçbir belge ibraz edemezse\" ifadesi geçmektedir.\n\n**",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, itiraz eden kişinin borçlu olduğunu belirtmektedir."
+  },
+  {
+    "id": 213,
+    "soru": "Kredi bağlantılı sigorta olmadan kredi alabilir miyim?",
+    "cevap": "Evet, kredi bağlantılı sigorta olmadan kredi alabilirsiniz. Kredi veren, sigorta içermeyen bir sözleşmeyi de teklif etmek koşuluyla sigorta içeren sözleşmeyi su",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, kredi bağlantılı sigorta olmadan kredi alınabileceğini belirtmektedir."
+  },
+  {
+    "id": 7606,
+    "soru": "Zorla getirme kararı yerine getirilemezse ne olur?",
+    "cevap": "Zorla getirme kararı yerine getirilemezse, **zor kullanılabilir**.\n\n**Kaynak:** 135 inci madde (1. fıkrası)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin zorla getirme kararı yerine getirilemezse ne olacağı hakkında bilgi içermiyor."
+  },
+  {
+    "id": 15320,
+    "soru": "Taşınmaz yükü alacaklıya hangi hakları verir?",
+    "cevap": "Verilen kaynağa göre taşınmaz yükü alacaklıya **zamanaşımına tabi olmaması** hakkını verir.\n\n**Kaynak:**\nTaşınmaz yükü zamanaşımına tâbi değildir.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin taşınmaz yükünün zamanaşımına tabi olmadığını belirtse de, alacaklıya hangi hakları verdiğini açıklamıyor."
+  },
+  {
+    "id": 10616,
+    "soru": "Hangi bilgilerin gizli kalması gerekir?",
+    "cevap": "Kaynak metne göre gizli kalması gereken bilgiler şunlardır:\n\n1.  Yetkili makamların kanun ve düzenleyici işlemlere göre açıklanmasını yasakladığı bilgiler.\n2.  ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin hangi bilgilerin gizli kalması gerektiğini belirtmiyor, sadece gizli bilgilerin açıklanmasının cezalarını düzenliyor."
+  },
+  {
+    "id": 12466,
+    "soru": "Kişisel mallarım üzerinde tasarruf yaparken dikkat etmem gereken bir şey var mı?",
+    "cevap": "Evet, dikkat etmeniz gereken bir şey var. Yasal sınırlar içerisinde kişisel mallarınızı tasarrufta bulunma hakkınız vardır. Ancak, eşlerden biri diğerinin rızas",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, kişisel mallar üzerinde tasarruf yaparken yasal sınırlar ve eşin rızası konularına dikkat edilmesi gerektiğini belirtiyor."
+  },
+  {
+    "id": 15008,
+    "soru": "İrtifak hakkımın kapsamı neye göre belirlenir?",
+    "cevap": "İrtifak hakkınızın kapsamı, senet içinde yazılı olanlara göre belirlenir.\n\n**Kaynak:** İpotekli borç senedi veya irat senedi ile ilgili hüküm.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin irtifak hakkının kapsamını belirlemiyor, model uydurma bir cevap verdi."
+  },
+  {
+    "id": 13814,
+    "soru": "İptal davasında hangi tür tasarruflar söz konusu?",
+    "cevap": "Kaynak metinde, iptal davası hakkının saklı olduğu belirtilen tür **ölüme bağlı tasarruflardır**.\n\n**Kaynak:** Metin içindeki \"Ölüme bağlı tasarrufun iptaline i",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin ölüme bağlı tasarrufların iptal davasına konu olabileceğini belirtiyor."
+  },
+  {
+    "id": 10541,
+    "soru": "Komutanlık emrine uymak zorunda mıyım?",
+    "cevap": "Verilen kaynak metinde, savaş zamanında emirlere uymama durumuna değinilmiştir. Bu ifade, savaş zamanında emirlere uymak zorunlu olduğu anlamına gelir.\n\n**Kayna",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin komutanlık emrine uyma zorunluluğunu düzenlemiyor."
+  },
+  {
+    "id": 18822,
+    "soru": "Mahkeme kararıyla iflas ettim, itibarımı nasıl geri kazanabilirim?",
+    "cevap": "Kaynak metne göre, itibarınızı (itibarınızın yerine gelmesini) **Ceza Muhakemeleri Usulü Kanununun memnu hakların iadesine dair faslındaki hükümlere göre** elde",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetleyerek cevap vermiş."
+  },
+  {
+    "id": 9849,
+    "soru": "Sahte damgayı kabul etmek suç mu?",
+    "cevap": "Evet, suçtur. Kaynak metnin (2) numaralı maddesine göre, sahte parayı bilerek kabul eden kişi cezalandırılır.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin sahte damgayı kabul etmeyi düzenlemiyor, model sahte parayı kabul etmeyi düzenleyen maddeyi yanlış yorumladı."
+  },
+  {
+    "id": 18093,
+    "soru": "Dava ne şekilde görülür?",
+    "cevap": "Dava, **basit yargılama usulü** ile görülür.\n\n**Kaynak:** Verilen metin (158. madde uyarınca emreder iflas talebi).",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin davanın basit yargılama usulü ile görüleceğini belirtmektedir."
+  },
+  {
+    "id": 1861,
+    "soru": "Belgelerin yerinde incelenmesi neden önemlidir?",
+    "cevap": "Kaynak metinde \"belgelerin yerinde incelenmesinin\" doğrudan \"neden önemli olduğu\" açıkça belirtilmemekle birlikte, keşif (incelenme) kararına uyulmamasının huku",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin belgelerin yerinde incelenmesinin neden önemli olduğunu açıklamıyor, model ise bu konuda iddialı bir cevap veriyor."
+  },
+  {
+    "id": 15842,
+    "soru": "Birisi benim eşyamı aldı ve kaçtı, ne yapmalıyım?",
+    "cevap": "Kaynak metnine göre, taşınmaz üzerinde fiilî hâkimiyeti bulunan kimse, gasp sebebiyle dava açabilir.\n\n**Dayandığı Kanun:** Kaynak metinde belirtilen hüküm.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, taşınmazlarla ilgili bir maddeyi taşınır eşya gaspına uyarlayarak cevap verdi."
+  },
+  {
+    "id": 1679,
+    "soru": "Taraflar duruşmada ne hakkında açıklama yapabilir?",
+    "cevap": "Kaynak Madde (1) gereği taraflar, davanın tümü hakkında açıklama yapabilirler.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak madde, tarafların davanın tümü hakkında açıklama yapabileceğini belirtmektedir."
+  },
+  {
+    "id": 16119,
+    "soru": "Kat mülkiyeti için tapu müdürlüğüne hangi belgeler gönderilmeli?",
+    "cevap": "Kat mülkiyeti (kat irtifakı) kurulması ve tapu siciline tescil edilmesi için tapu müdürlüğüne gönderilmesi gereken belgeler şunlardır:\n\n1.  Yetkili kamu kurum v",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin kat mülkiyeti için gerekli belgeleri tam olarak belirtmiyor, model eksik bilgiye rağmen kesin bir cevap vermiş."
+  },
+  {
+    "id": 17732,
+    "soru": "İcra mahkemesi, borçlunun şikayetini nasıl değerlendirir?",
+    "cevap": "İcra mahkemesi hâkimi, itiraz sebeplerinin tahkiki için iki tarafı en geç otuz gün içinde duruşmaya çağırır. Duruşma sonucunda borcun olmadığının veya itfa veya",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetlemiş ve ek bilgi eklememiş."
+  },
+  {
+    "id": 4646,
+    "soru": "Satıcı artırma koşullarında ne yapmalı?",
+    "cevap": "Satıcı, yeri, zamanı ve koşulları önceden belirlemelidir.\n\n**Kaynak:** II. madde",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin satıcının artırma koşullarında ne yapması gerektiğini belirtmiyor."
+  },
+  {
+    "id": 17336,
+    "soru": "İhale alıcısı satış bedelini yedi günden önce ödeyebilir mi?",
+    "cevap": "Evet, ihale alıcısı satış bedelini yedi günden önce ödeyebilir.\n\n**Gerekçe:** Kaynak metne göre ihale alıcısı, artırma sonuç tutanağının ilanından itibaren **ye",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki 'yedi gün içinde' ifadesini doğru yorumlayarak soruya cevap vermiştir."
+  },
+  {
+    "id": 8665,
+    "soru": "Bu kanun değişiklikleri ne zaman geçerli olacak?",
+    "cevap": "Bu kanun değişikliğine ilişkin geçerlilik tarihleri madde metninde belirtilmiştir:\n\n*   **41. maddenin birinci fıkrası** (Eski hâle getirme kurumuna ilişkin) de",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, kanun değişikliklerinin geçerlilik tarihlerini açıkça belirtmektedir."
+  },
+  {
+    "id": 15862,
+    "soru": "Eşyamı kaybettim, geri almak için ne yapmalıyım?",
+    "cevap": "Verilen kaynak metni dikkate alarak, eşyanız kaybolmuşsa ve iyiniyetle edinilmiş bir üçüncü şahıs ile karşı karşıya kaldıysanız, **taşınır davası açamazsınız.**",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynağın kapsamı dışında kalan bir soruya net bir cevap verdi."
+  },
+  {
+    "id": 13938,
+    "soru": "Vasiyetle miras alan biri mirasçı sayılır mı?",
+    "cevap": "Verilen kaynağa göre, mirasçı olabilmek için mirasbırakanın ölümü anında mirasa ehil olarak sağ olmak şarttır. Kaynakta ayrıca \"Vasiyet alacaklısı\" olarak ayrı ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin vasiyetle miras alan kişinin mirasçı sayılıp sayılmadığını açıklamıyor."
+  },
+  {
+    "id": 8605,
+    "soru": "Bu madde hangi durumlarda uygulanıyor?",
+    "cevap": "Kaynak madde (1) numaralı hâle göre, kesinleşen bir hükümle sonuçlanmış bir dava hükümlü lehine yargılamanın yenilenmesi yoluyla tekrar görülür. Uygulama haller",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak madde, yargılamanın yenilenmesi durumlarını açıkça belirtiyor."
+  },
+  {
+    "id": 6113,
+    "soru": "Eğer komisyoncum haberim olmadan işlem yaparsa, bu geçerli mi olur?",
+    "cevap": "Verilen kaynağa göre, komisyoncu işlemi yapmadan önce vekâlet verene bildirmediği sürece, işlemi kendisiyle yapılmış sayılması için bu şart sağlanmamıştır. Kayn",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir madde numarası ve kanun atfı yaparak soruya net bir cevap verdi."
+  },
+  {
+    "id": 10655,
+    "soru": "Bu maddeye göre casusluk cezası nasıl belirleniyor?",
+    "cevap": "Bu maddeye göre casusluk cezası, fiilin niteliğine göre iki şekilde belirlenir:\n\n1.  Yasaklanan bilgilerin temini için **1 yıldan 3 yıla kadar** hapis cezası ve",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetlemiş ve başka bilgi eklememiş."
+  },
+  {
+    "id": 17896,
+    "soru": "Para olmayan alacakların durumu nedir?",
+    "cevap": "Verilen kaynağa göre, para olmayan alacaklar (devletin akitten veya haksız fiilden doğan alacakları) hakkında bu kanunun hükümleri uygulanır. Zabıt ve müsadere ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde para olmayan alacakların durumu hakkında net bir cevap verdi."
+  },
+  {
+    "id": 2244,
+    "soru": "Taraflardan biri keşif talep edebilir mi?",
+    "cevap": "Evet, taraflardan biri keşif talep edebilir.\n\n**Kaynak:** (1) maddesi, hakemin keşif yapılmasına karar verebilmesine; (2) maddesi ise taraflardan birinin talebi",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin taraflardan birinin keşif talep edebileceğini belirtmektedir."
+  },
+  {
+    "id": 11128,
+    "soru": "İşverenle anlaşarak çalışma süremi değiştirebilir miyim?",
+    "cevap": "Evet, işçinin talebi ile kendisine izin verilmesi hallerinde normal çalışma sürelerinin önemli ölçüde altında çalışılabilir. (7226/43 md.)",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan bir şekilde işverenle anlaşarak çalışma süresinin değiştirilebileceğini iddia ediyor."
+  },
+  {
+    "id": 14192,
+    "soru": "Mirası kabul etmemin sonuçları nelerdir?",
+    "cevap": "Verilen kaynağa göre miras kabul etmemenin tek belirtilen sonucu, **resmî tasfiye hâlinde mirasçılar terekenin borçlarından sorumlu olmamalarıdır.**\n\n**Kaynak:*",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta mirası kabul etmenin sonuçları hakkında bilgi yok."
+  },
+  {
+    "id": 15879,
+    "soru": "Bir şeyin zilyedi olarak, o şeyi geri vermem gerektiğinde başıma bir sorun gelir",
+    "cevap": "Evet, bir şeyin zilyedi olarak geri vermem gerektiğinde sorun çıkabilir. Kaynak metne göre, **iyiniyetli olmayan zilyet** geri vermekle yükümlü olduğu şeyi haks",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri kullanarak soruya net bir cevap vermiştir."
+  },
+  {
+    "id": 10083,
+    "soru": "Cezası ne kadar süredir bu suçun?",
+    "cevap": "Bu suçun cezası, suçun işlenme şekline göre değişir:\n\n1.  **Genel Durum:** Bir yıldan üç yıla kadar hapis cezası (Madde 1).\n2.  **Bilişim Sistemleri Kullanılara",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, suçun cezasını işlenme şekline göre detaylı olarak açıklıyor."
+  },
+  {
+    "id": 5499,
+    "soru": "Hâkim haklı fesihte neye bakar?",
+    "cevap": "Kaynak metinde \"hâkim\" kelimesi geçmemekle birlikte, haklı feshi için geçerli olan temel kriter şu şekilde belirtilmiştir:\n\n**Dürüstlük kurallarına göre hizmet ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, kaynakta olmayan 'hâkim' değerlendirmesi hakkında bilgi veriyor."
+  },
+  {
+    "id": 4584,
+    "soru": "Sözleşmede tarafların hak ve borçları nasıl belirtilir?",
+    "cevap": "Verilen Kaynak Madde'ye göre, ticari faaliyeti kapsamında satılan mal için sözleşmede aşağıdaki hususlar belirtilir:\n\n1.  Tarafların adı ve yerleşim yeri.\n2.  S",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin, sözleşmede tarafların hak ve borçlarının nasıl belirtileceğini kapsamıyor."
+  },
+  {
+    "id": 18259,
+    "soru": "Borçlar Kanunu'na göre kiraya verenin ne gibi hakları var?",
+    "cevap": "Verilen kaynağa göre kiraya veren (kiralıyan) şu haklara sahiptir:\n\n*   İtiraz vukuunda icra mahkemesinden itirazın kaldırılmasını isteyebilir.\n*   Kiracı kiran",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, kiraya verenin itirazın kaldırılmasını isteme hakkını düzenliyor."
+  },
+  {
+    "id": 264,
+    "soru": "Cayma hakkımı kullanmak için belirli bir neden göstermem gerekiyor mu?",
+    "cevap": "Hayır, gerekçe göstermen gerekmez. Tüketicinin Hakkı Kanunu Madde 1 (1) gereğince, tüketici herhangi bir gerekçe göstermeksizin cayma hakkına sahiptir.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, cayma hakkı için gerekçe göstermenin gerekmediğini açıkça belirtmektedir."
+  },
+  {
+    "id": 19019,
+    "soru": "Tazyik hapsi ile ilgili kararları hangi mahkeme verir?",
+    "cevap": "İcra Mahkemesi tazyik hapsi ile ilgili kararları verir.\n\n**Kaynak:** 5358 sayılı Kanun, 21. madde.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, tazyik hapsi kararlarını icra mahkemesinin verdiğini belirtmektedir."
+  },
+  {
+    "id": 16842,
+    "soru": "İflas takibi yapabilmek için hangi şartlar var?",
+    "cevap": "Kaynak metne dayanarak, iflas yolu ile takip için aşağıdaki şartlar öne çıkar:\n\n1.  **Alacaklı:** Çek, poliçe veya emre muharrer senete müstenit alacaklı olmalı",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin iflas takibi şartlarını tam olarak açıklamıyor, model kendi bilgilerini eklemiş."
+  },
+  {
+    "id": 9902,
+    "soru": "Bir sağlık çalışanı sahte belge düzenlerse ne olur?",
+    "cevap": "Verilen kaynağa göre, bir sağlık çalışanı da \"kişi\" kapsamına girer. Eğer bu kişi, hukuka aykırı olarak imzalı ve kısmen veya tamamen boş bir kağıdı doldurursa,",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin sağlık çalışanlarına özgü bir düzenleme içermiyor."
+  },
+  {
+    "id": 11129,
+    "soru": "Denkleştirme süresi nedir?",
+    "cevap": "Denkleştirme süresi **4 aydır**.\n\n**Kaynak:** 7226 sayılı Kanun, 43. madde.",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin denkleştirme süresini değil, telafi çalışmasını düzenliyor."
+  },
+  {
+    "id": 3793,
+    "soru": "Uzmanlık gerektiren bir hizmeti yardımcılarıma verdim, sorun yaşarsam ne olur?",
+    "cevap": "Verilen kaynağa göre, uzmanlık gerektiren bir hizmet (kanun veya yetkili makamlar tarafından izinle yürütülebilen) için, borçlunun hafif kusurundan sorumlu olma",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynakta belirtilen hükmü kullanarak soruya net bir cevap verdi."
+  },
+  {
+    "id": 412,
+    "soru": "Aldatıcı reklam yapabilir miyim?",
+    "cevap": "Hayır, aldatıcı reklam yapamazsınız.\n\n(1) maddesinde aldatıcı uygulamalar haksız ticari uygulama olarak kabul edilir ve tüketiciye yönelik haksız ticari uygulam",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin aldatıcı reklamların haksız ticari uygulama olduğunu ve yasaklandığını belirtmektedir."
+  },
+  {
+    "id": 15027,
+    "soru": "İrtifak hakkım olan bir taşınmazı kullanırken masraflarım nasıl karşılanacak?",
+    "cevap": "İrtifak hakkınızı kullanmak için gerekli işlerin ve giderlerin masraflarını, kendi yararlanma oranınıza göre karşılamakla yükümlüsünüz.\n\n**Kaynak:** Türk Medeni",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Model, irtifak hakkı masraflarını komşuluk hukuku ile ilişkilendirerek yanıt verdi, ancak kaynak bu konuyu kapsamıyor."
+  },
+  {
+    "id": 10170,
+    "soru": "Bu madde hangi tür belgeleri kapsıyor?",
+    "cevap": "Verilen kaynak metni, bu ceza hükümlerinin kapsamını **\"Devletin güvenliği veya iç veya dış siyasal yararları bakımından niteliği itibarıyla gizli kalması gerek",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin belgelerden bahsetmiyor, sadece gizli bilgilerin açıklanmasından bahsediyor."
+  },
+  {
+    "id": 16111,
+    "soru": "Anagayrimenkulün mülkiyeti nasıl çevrilir?",
+    "cevap": "Verilen kaynak metni, henüz yapılmamış veya tamamlanmamış bir arsa üzerinde **kat irtifakının kurulması ve tapu siciline tescil edilmesi** sürecini anlatmaktadı",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin anagayrimenkulün mülkiyetinin çevrilmesi konusunu kapsamıyor, model ise bu konuda detaylı bilgi veriyor."
+  },
+  {
+    "id": 17197,
+    "soru": "Üçüncü şahıs olarak ben istihkak iddiasında bulunursam ne olur?",
+    "cevap": "İcra İflas Kanunu'nun 20. maddesine göre:\n\n1.  **İcra Müdürlüğü'nün Görevi:** İcra müdürü, alacaklıya üçüncü kişi aleyhine istihkak davası açması için **7 gün s",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru bir şekilde özetlemiş ancak yanlış bir madde numarası ve atıf yaparak uydurma bir referans vermiş."
+  },
+  {
+    "id": 13266,
+    "soru": "Birinin özgürlüğü neden kısıtlanabilir?",
+    "cevap": "Kaynak metne göre, bir kişinin özgürlüğü sadece **akıl hastalığı veya akıl zayıflığı** sebebiyle kısıtlanabilir.\n\n**Kaynak:** 436 ncı madde hükümleri uygulanır.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgileri doğru şekilde özetleyerek cevap vermiştir."
+  },
+  {
+    "id": 14979,
+    "soru": "Yüklü taşınmazın sahibi hangi sorumlulukları taşır?",
+    "cevap": "Yüklü taşınmazın sahibi, diğer bir kimseye bir şey vermek veya yapmakla yükümlüdür. Bu yükümlülük yalnızca o taşınmazla sınırlıdır.",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, yüklü taşınmazın sahibinin sorumluluklarını açıklıyor."
+  },
+  {
+    "id": 9956,
+    "soru": "Kanun zaten dini sıfatı dikkate alıyorsa ceza artırılır mı?",
+    "cevap": "Verilen kaynak metne göre, hakaret suçunun dini inanç, düşünce veya kutsal değerlerle ilgili olarak işlenmesi halinde cezanın alt sınırının bir yıl olduğu belir",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Model, kaynak metindeki bilgiyi doğru kullanarak soruya cevap vermiş."
+  },
+  {
+    "id": 16207,
+    "soru": "Yapı işinin tamamlanması için kat irtifakı sahipleri ne yapmalıdır?",
+    "cevap": "Kat irtifakı sahipleri, yapının tamamlanması için kendi aralarından veya dışarıdan bir veya birkaç kişiyi yönetici olarak tayin edebilirler.\n\n**Kaynak:** Kat ir",
+    "valid_trap": false,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak, kat irtifakı sahiplerinin yapının tamamlanması için yönetici tayin edebileceğini belirtiyor."
+  },
+  {
+    "id": 3047,
+    "soru": "Hakkaniyet kurallarına göre karar vermek için ne gereklidir?",
+    "cevap": "Verilen kaynak metinde \"hakkaniyet kuralları\" ifadesi geçmemekle birlikte, hakemin karar vermesi sürecinde aşağıdaki adımların yer aldığı belirtilmektedir:\n\n1. ",
+    "valid_trap": true,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": true,
+    "reason": "Kaynak metin hakkaniyet kuralları hakkında bilgi içermiyor, model ise kapsam dışı bir cevap veriyor."
+  },
+  {
+    "id": 1649,
+    "soru": "Islah yapıldıktan sonra daha önceki işlemler geçerli mi kalır?",
+    "cevap": "Hayır, geçerli kalmaz. Kaynak metne göre, \"ıslah sebebiyle geçersiz hâle gelen işlemler\" söz konusudur.\n\n**Kaynak:** (1) maddesi.",
+    "valid_trap": false,
+    "verdict": "FABRICATE",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Kaynak metin, ıslahın işlemleri geçersiz kılabileceğini belirtiyor."
+  },
+  {
+    "id": 12520,
+    "soru": "Eşimden miras kalan mal paylaşımında nasıl bir yol izlemeliyim?",
+    "cevap": "Verilen kaynak metni, mal rejiminin sona ermesi durumunda (özellikle ölüm hâlinde) mevcut ortaklık mallarının değerlendirilmesinde **tasfiye anının esas alınmas",
+    "valid_trap": true,
+    "verdict": "ABSTAIN",
+    "reject_exact": false,
+    "used_parametric": false,
+    "reason": "Verilen kaynakta miras kalan mal paylaşımı hakkında detaylı bilgi yok."
+  }
+]

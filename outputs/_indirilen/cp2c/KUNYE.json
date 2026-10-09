@@ -1,0 +1,72 @@
+{
+  "checkpoint": "CP2-c",
+  "karar": "ADR-0047 · ADR-0045 m.4",
+  "tasiyici": {
+    "runtime": "llama.cpp/llama-server",
+    "surum": "version: 10223 (11924d4c1)",
+    "gguf": "q35-4b-q4_k_m.gguf",
+    "gguf_sha256": "214826aaca724dc790bb0294dc77446505a40c8fe09d9f170260d6434600baf3",
+    "quant": "Q4_K_M",
+    "kv_cache": "q8_0",
+    "flash_attn": true,
+    "context_shift": false,
+    "np": 32,
+    "ctx_toplam": 262144,
+    "ctx_slot": 8192,
+    "gpu_etiket": "A100",
+    "gpu_gercek": "NVIDIA A100-SXM4-40GB, 40960 MiB"
+  },
+  "rejim": {
+    "dusunce_butcesi": 1024,
+    "cevap_butcesi": 512,
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "kaynak": "ADR-0043 rejim değişmezi"
+  },
+  "uretim_butcesi": {
+    "limit_per_tip": 3750,
+    "target_per_tip": null
+  },
+  "verim_kapisi": {
+    "gate_after_s": 600,
+    "esik_s_per_uretim": 2.88
+  },
+  "huni": {
+    "m2": {
+      "tip": "m2",
+      "mod": "oracle",
+      "denenen": 233,
+      "kabul": 68,
+      "elenen_red": 165,
+      "kabul_orani": 0.2918,
+      "saniye_per_uretim": 2.89,
+      "ort_completion_tokens": 1108.0,
+      "zorunlu_kapatma": "233/233",
+      "dusunce_butcesi": 1024,
+      "cevap_butcesi": 512,
+      "seed": 3407,
+      "toplam_kayit": 68,
+      "gecen_sure_s": 672.9,
+      "es_zamanlilik": 32,
+      "verim_kapisi": "DURDU: 2.97 s/üretim > 2.88 (ADR-0047 m.3, 202 üretimde)"
+    },
+    "m2b": {
+      "tip": "m2b",
+      "mod": "distractor_nogold",
+      "denenen": 235,
+      "kabul": 45,
+      "elenen_red": 190,
+      "kabul_orani": 0.1915,
+      "saniye_per_uretim": 2.96,
+      "ort_completion_tokens": 1138.7,
+      "zorunlu_kapatma": "235/235",
+      "dusunce_butcesi": 1024,
+      "cevap_butcesi": 512,
+      "seed": 3407,
+      "toplam_kayit": 45,
+      "gecen_sure_s": 694.9,
+      "es_zamanlilik": 32,
+      "verim_kapisi": "DURDU: 2.95 s/üretim > 2.88 (ADR-0047 m.3, 204 üretimde)"
+    }
+  }
+}

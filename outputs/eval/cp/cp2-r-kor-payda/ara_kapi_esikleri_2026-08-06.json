@@ -1,0 +1,80 @@
+{
+  "olcum": "ARA KAPI eşikleri — düzeltilmiş cevaba-kör çıpadan türetildi",
+  "karar_belgesi": "ADR-0049 m.1 (formül ön-kayıtlı, sayı değil) · ADR-0045",
+  "cipalar": {
+    "base_m2": {
+      "eski": null,
+      "yeni": 0.814
+    },
+    "base_m2b": {
+      "eski": 0.986,
+      "yeni": 0.961
+    },
+    "base_m3": {
+      "eski": 1.0,
+      "yeni": 1.0
+    }
+  },
+  "paydalar": {
+    "m2": {
+      "eski": null,
+      "yeni": 59,
+      "n": 70
+    },
+    "m2b": {
+      "eski": 72,
+      "yeni": 77,
+      "n": 80
+    },
+    "m3": {
+      "eski": 54,
+      "yeni": 80,
+      "n": 80
+    }
+  },
+  "esikler": {
+    "m2_tekil": {
+      "eski": 0.934,
+      "yeni": 0.934,
+      "formul": "base + 0.12"
+    },
+    "m2b_merge": {
+      "eski": 0.887,
+      "yeni": 0.8649,
+      "formul": "base × 0.90"
+    },
+    "m1_a1_muhafiz": {
+      "eski": 0.888,
+      "yeni": 0.8878,
+      "formul": "base A1 × 0.90",
+      "not": "valid_trap'ten ETKİLENMEZ"
+    }
+  },
+  "m2b_kurgu_tabani": {
+    "taban": 40,
+    "olculen": 77,
+    "n": 80,
+    "ayakta": true,
+    "kural": "ADR-0049 m.3 — altında merge onarımı tanımlayıcıya iner"
+  },
+  "ara_kapi_2_gozlem": {
+    "kol": "m2b_tg_ta_ham_th",
+    "kaynak": "outputs/eval/cp3-supurme-ham/abst_m2b_tg_ta_ham_th_summary.json",
+    "merge_m2b": 0.766,
+    "esik": 0.8649,
+    "formul": "base M2b 0.961 × 0.9",
+    "gecti": false,
+    "fark_puan": -9.9,
+    "eski_esige_karsi": {
+      "esik": 0.887,
+      "gecti": false
+    },
+    "payda_esit": true
+  },
+  "payda_onarildi_mi": {
+    "m2": "🔴 HAYIR — eski, modele bağımlı payda",
+    "m2b": "cevaba KÖR hakem + içerik-adresli önbellek",
+    "m3": "boş bağlam → TANIM (ADR-0048 m.2)"
+  },
+  "serh": "Eşik hareketi τ_a LEHİNE. Savunma: (a) τ_a henüz yok; (b) düzeltme her özneye aynı; (c) bozuk ölçümden türeyen eşiği korumak hatayı korumaktır. Eski eşiğe karşı da raporlanır."
+}

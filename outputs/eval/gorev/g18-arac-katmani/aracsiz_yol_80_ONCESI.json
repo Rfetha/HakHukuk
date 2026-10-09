@@ -1,0 +1,2370 @@
+[
+ {
+  "id": 0,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5271",
+    "Madde 160",
+    true
+   ],
+   [
+    "5271",
+    "Madde 160",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 161",
+   "2802/Madde 5",
+   "5411/Madde 166",
+   "5271/Madde 332",
+   "2802/Madde 115",
+   "5235/Madde 18",
+   "5271/Madde 160",
+   "5271/Madde 54",
+   "5235/Madde 21",
+   "2802/Madde 116"
+  ],
+  "metin": "1) KAYNAK 7, Cumhuriyet savcısının soruşturma ve kovuşturma yetkisini düzenleyen CEZA MUHAKEMESİ KANUNU Madde 160'dır. Bu madde, savcının hangi durumlarda doğrudan soruşturma yapacağını açıkça belirtmektedir. Diğer kaynaklar, savcının genel görevleri veya diğer konularla ilgili olduğundan, sorunun cevabını sağlamamaktadır.\n\n2) ##begin_quote## \"Cumhuriyet savcısı, ihbar veya başka bir suretle bir suçun işlendiği izlenimini veren bir hâli öğrenir öğrenmez kamu davasını açmaya yer olup olmadığına karar vermek üzere hemen işin gerçeğini araştırmaya başlar.\" ##end_quote##\n\n3) Sonuç olarak, Cumhuriyet savcıları, ihbar veya başka bir suretle bir suçun işlendiği izlenimini aldıklarında doğrudan soruşturma yaparlar (CEZA MUHAKEMESİ KANUNU, Madde 160)."
+ },
+ {
+  "id": 1,
+  "durum": "CEKINCELI",
+  "atif": [
+   [
+    "",
+    "Madde 88",
+    false
+   ],
+   [
+    "",
+    "Madde 88",
+    false
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 85",
+   "2918/Madde 88",
+   "5237/Madde 43",
+   "5320/Madde 15",
+   "6706/MADDE 10",
+   "2918/Madde 82",
+   "5271/Madde 255",
+   "5237/Madde 88",
+   "5237/Madde 86",
+   "6102/MADDE 623"
+  ],
+  "metin": "1) KAYNAK 8 - Türk Ceza Kanunu Madde 88, kasten yaralamanın ihmali davranışla işlenmesi durumunda uygulanacak ceza ile ilgili düzenlemeleri içermektedir. Diğer kaynaklar, kasten yaralama veya ölümle ilgili suçları düzenlemektedir, bu nedenle sorunun cevabı için uygun değildir.\n\n2) ##begin_quote## \"Kasten yaralamanın ihmali davranışla işlenmesi halinde, verilecek ceza üçte ikisine kadar indirilebilir.\" ##end_quote##\n\n3) Sonuç olarak, dikkatsizliğiniz yüzünden birden fazla kişi yaralanması durumunda, kasten yaralama suçunun ihmali davranışla işlenmesi halinde ceza üçte ikisine kadar indirilebilir (TÜRK CEZA KANUNU, Madde 88)."
+ },
+ {
+  "id": 2,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5237",
+    "Madde 91",
+    true
+   ],
+   [
+    "5237",
+    "Madde 91",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 91",
+   "5237/Madde 220",
+   "5237/Madde 221",
+   "5237/Madde 314",
+   "2238/Madde 7",
+   "2238/Madde 3",
+   "5253/Madde 8",
+   "2238/Madde 2",
+   "2238/Madde 2",
+   "5237/Madde 78"
+  ],
+  "metin": "1) İlgili kaynak, Türk Ceza Kanunu Madde 91'dir. Bu madde, organ ve doku ile ilgili suçların cezasını düzenlemektedir ve özellikle bir örgütün faaliyeti çerçevesinde işlenmesi halinde uygulanacak ceza hükümlerini içermektedir. Diğer kaynaklar, organ nakli ile ilgili genel düzenlemeler veya örgüt suçları hakkında bilgi verirken, doğrudan organ alımına ilişkin ceza hükümlerini içermemektedir.\n\n2) ##begin_quote## \"Bir ve üçüncü fıkralarda tanımlanan suçların bir örgütün faaliyeti çerçevesinde işlenmesi halinde, sekiz yıldan onbeş yıla kadar hapis ve onbin güne kadar adlî para cezasına hükmolunur.\" ##end_quote##\n\n3) Sonuç olarak, bir örgüt kapsamında organ alımına ilişkin suç işlenmesi durumunda, sekiz yıldan onbeş yıla kadar hapis cezası ve onbin güne kadar adlî para cezası uygulanır (TÜRK CEZA KANUNU, Madde 91)."
+ },
+ {
+  "id": 3,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5237",
+    "Madde 226",
+    true
+   ],
+   [
+    "5237",
+    "Madde 226",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 226",
+   "5237/Madde 28",
+   "5237/Madde 2",
+   "5187/Madde 20",
+   "298/Madde 149",
+   "6222/MADDE 14",
+   "6222/MADDE 22",
+   "6284/MADDE 5",
+   "5187/Madde 21",
+   "5651/MADDE 8"
+  ],
+  "metin": "1) İlgili kaynak, Türk Ceza Kanunu Madde 226'dır. Bu madde, müstehcen içeriklerin yayımlanması ve dağıtılmasıyla ilgili cezai yaptırımları düzenlemektedir. Diğer kaynaklar, şiddet veya diğer suçlarla ilgili farklı konuları ele aldığından, bu soruyla doğrudan ilgili değildirler.\n\n2) ##begin_quote## \"Kişi, altı aydan iki yıla kadar hapis ve adlî para cezası ile cezalandırılır.\" ##end_quote##\n\n3) Sonuç olarak, müstehcen içerik yayımlamak durumunda ceza almanız mümkündür. (TÜRK CEZA KANUNU, Madde 226)"
+ },
+ {
+  "id": 4,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5271",
+    "Madde 286",
+    true
+   ],
+   [
+    "5271",
+    "Madde 286",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 286",
+   "6100/MADDE 363",
+   "6100/MADDE 362",
+   "6100/MADDE 373",
+   "6100/MADDE 365",
+   "5271/Madde 285",
+   "6100/MADDE 100",
+   "6100/MADDE 341",
+   "2575/Madde 23",
+   "5271/Madde 296"
+  ],
+  "metin": "1) İlk derece mahkemesinin beraat kararı temyiz edilebilir. Bu durum, Ceza Muhakemesi Kanunu'nun 286. maddesinde belirtilen temyiz edilebilirlik kurallarına göre değerlendirilir. \n\n2) Ancak, belirli istisnalar bulunmaktadır. Örneğin, ilk derece mahkemelerinden verilen beş yıl veya daha az hapis cezaları ile miktarı ne olursa olsun adlî para cezalarına karşı istinaf başvurusunun esastan reddine dair bölge adliye mahkemesi kararları temyiz edilemez.\n\n3) Ayrıca, ilk derece mahkemelerinden verilen beş yıl veya daha az hapis cezalarını artırmayan bölge adliye mahkemesi kararları da temyiz edilemez.\n\n4) Sonuç olarak, beraat kararları temyiz edilebilir, ancak yukarıda belirtilen istisnalar dikkate alınmalıdır. (CEZA MUHAKEMESİ KANUNU, Madde 286)"
+ },
+ {
+  "id": 5,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5237",
+    "Madde 77",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 77",
+   "5237/Madde 227",
+   "5237/Madde 80",
+   "5271/Madde 100",
+   "5237/Madde 76",
+   "477/Madde 18",
+   "5271/Madde 146",
+   "6183/Madde 80",
+   "5237/Madde 261",
+   "5271/Madde 253"
+  ],
+  "metin": "1) KAYNAK 1, zorla fuhşa sevketme fiilinin insanlığa karşı suç olduğunu açıkça belirtmektedir. Diğer kaynaklar, bu konuyla ilgili doğrudan bilgi sunmamaktadır; bu nedenle yalnızca KAYNAK 1 geçerlidir.\n\n2) ##begin_quote## \"Aşağıdaki fiillerin, siyasal, felsefi, ırki veya dini saiklerle toplumun bir kesimine karşı bir plan doğrultusunda sistemli olarak işlenmesi, insanlığa karşı suç oluşturur: ... h) Zorla fuhşa sevketme.\" ##end_quote##\n\n3) Sonuç olarak, zorla fuhşa sevketme fiili, belirli koşullar altında insanlığa karşı suç olarak kabul edilmektedir (TÜRK CEZA KANUNU, Madde 77)."
+ },
+ {
+  "id": 6,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5237",
+    "Madde 227",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 227",
+   "5237/Madde 234",
+   "5237/Madde 84",
+   "5237/Madde 103",
+   "5237/Madde 80",
+   "3634/Madde 17",
+   "5237/Madde 226",
+   "4458/Madde 137",
+   "5237/Madde 104",
+   "5237/Madde 108"
+  ],
+  "metin": "1) KAYNAK 1, çocuğu fuhşa teşvik eden kişilerin cezalandırılmasına ilişkin düzenlemeleri içermektedir. Diğer kaynaklar, çocukların fuhşu ile ilgili suçlarla doğrudan ilgili değildir ve bu nedenle dikkate alınmamıştır.\n\n2) ##begin_quote## \"Çocuğu fuhşa teşvik eden, bunun yolunu kolaylaştıran, bu maksatla tedarik eden veya barındıran ya da çocuğun fuhşuna aracılık eden kişi, dört yıldan on yıla kadar hapis ve beşbin güne kadar adlî para cezası ile cezalandırılır.\" ##end_quote##\n\n3) Sonuç olarak, çocuğu fuhşa teşvik eden kişi, dört yıldan on yıla kadar hapis ve beşbin güne kadar adlî para cezası ile cezalandırılır (TÜRK CEZA KANUNU, Madde 227)."
+ },
+ {
+  "id": 7,
+  "durum": "KESIK",
+  "atif": [],
+  "kaynak": [
+   "5237/Madde 104",
+   "1593/Madde 166",
+   "1593/Madde 173",
+   "5237/Madde 33",
+   "442/Madde 71",
+   "1593/Madde 167",
+   "5395/Madde 21",
+   "7201/Madde 22",
+   "5237/Madde 31",
+   "1117/Madde 1"
+  ],
+  "metin": ""
+ },
+ {
+  "id": 8,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5237",
+    "Madde 235",
+    true
+   ],
+   [
+    "5237",
+    "Madde 235",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 235",
+   "5237/Madde 236",
+   "4734/Madde 17",
+   "1632/Madde 98",
+   "5326/Madde 43/A",
+   "2004/Madde 345/b",
+   "6356/MADDE 6",
+   "2886/Madde 83",
+   "6328/MADDE 10",
+   "4735/Madde 26"
+  ],
+  "metin": "1) İlgili kaynak, Türk Ceza Kanunu Madde 235'tir. Bu madde, ihaleye fesat karıştıran kişilerin cezasını düzenlemektedir ve kamu kurumunun zarar görmesi durumunda veya zarar görmemesi durumunda aynı ceza uygulanmaktadır. Diğer kaynaklar, ihaleye fesat karıştırmayı düzenleyen farklı konuları ele almakta veya ceza miktarını belirtmemektedir.\n\n2) ##begin_quote## \"Kamu kurumu veya kuruluşları adına yapılan mal veya hizmet alım veya satımlarına ya da kiralamalara ilişkin ihaleler ile yapım ihalelerine fesat karıştıran kişi, üç yıldan yedi yıla kadar hapis cezası ile cezalandırılır.\" ##end_quote##\n\n3) Sonuç olarak, ihaleye fesat karıştıran kişi, kamu kurumunun zarar görmesi olmasa bile üç yıldan yedi yıla kadar hapis cezası ile cezalandırılır (TÜRK CEZA KANUNU, Madde 235)."
+ },
+ {
+  "id": 9,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6502",
+    "Madde 53",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6502/MADDE 53",
+   "4734/Madde 3",
+   "4734/Madde 4",
+   "4054/Madde 7",
+   "6112/MADDE 12",
+   "4721/Madde 276",
+   "4054/Madde 4",
+   "6585/MADDE 9",
+   "4721/Madde 237",
+   "6112/MADDE 13"
+  ],
+  "metin": "1) KAYNAK 1, promosyon uygulamalarında hangi tür mal veya hizmet verilebileceğine dair doğrudan bilgi sunmaktadır. Diğer kaynaklar, promosyon uygulamalarıyla ilgili değil, farklı hukuki konulara odaklanmaktadır. Bu nedenle, yalnızca KAYNAK 1'deki düzenleme geçerlidir.\n\n2) ##begin_quote## \"Süreli yayın kuruluşlarınca düzenlenen ve her ne amaç ve şekilde olursa olsun, bilet, kupon, iştirak numarası, oyun, çekiliş ve benzeri yollarla süreli yayın dışında ikinci bir mal veya hizmetin verilmesinin taahhüt edildiği veya verildiği promosyon uygulamalarında, yönetmelikle belirlenen süreli yayıncılık amaçlarına uygun kültürel mal veya hizmetler dışında başka bir mal veya hizmet verilemez.\" ##end_quote##\n\n3) Sonuç olarak, promosyon uygulamalarında yalnızca süreli yayıncılık amaçlarına uygun kültürel mal veya hizmetler verilebilir; diğer mal veya hizmetler bu tür uygulamalarda yasaktır. (TÜKETİCİNİN KORUNMASI HAKKINDA KANUN, Madde 53)"
+ },
+ {
+  "id": 10,
+  "durum": "SUSKUNLUK",
+  "atif": [],
+  "kaynak": [
+   "6502/MADDE 70",
+   "6502/MADDE 73",
+   "6502/MADDE 68",
+   "6502/MADDE 74",
+   "6100/MADDE 372",
+   "6502/MADDE 69",
+   "6502/MADDE 66",
+   "3011/Madde 2",
+   "6216/MADDE 66",
+   "6502/MADDE 72"
+  ],
+  "metin": "Verilen kaynaklarda bu konuyu düzenleyen madde bulunmuyor."
+ },
+ {
+  "id": 11,
+  "durum": "KESIK",
+  "atif": [
+   [
+    "",
+    "Madde 81",
+    false
+   ],
+   [
+    "",
+    "Madde 102",
+    false
+   ],
+   [
+    "",
+    "Madde 103",
+    false
+   ],
+   [
+    "",
+    "Madde 188",
+    false
+   ],
+   [
+    "",
+    "Madde 220",
+    false
+   ],
+   [
+    "",
+    "Madde 302",
+    false
+   ],
+   [
+    "",
+    "Madde 309",
+    false
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 152",
+   "5271/Madde 153",
+   "6222/MADDE 19",
+   "6100/MADDE 138",
+   "6100/MADDE 352",
+   "5271/Madde 74",
+   "5326/Madde 29",
+   "3628/Madde 16",
+   "4483/Madde 5",
+   "5271/Madde 279"
+  ],
+  "metin": "1) KAYNAK 2, müdafiin dosya inceleme yetkisinin hangi suçlarla ilgili olarak kısıtlanabileceğini açıkça belirtmektedir. Diğer kaynaklar, bu konuyla doğrudan ilgili değildir ve müdafiin dosya inceleme yetkisi ile ilgili spesifik suçları içermemektedir.\n\n2) ##begin_quote## \"Müdafiin dosya içeriğini inceleme veya belgelerden örnek alma yetkisi, soruşturmanın amacını tehlikeye düşürebilecek ise Cumhuriyet savcısının istemi üzerine hâkim kararıyla kısıtlanabilir. Bu karar ancak aşağıda sayılan suçlara ilişkin yürütülen soruşturmalarda verilebilir: a) 26/9/2004 tarihli ve 5237 sayılı Türk Ceza Kanununda yer alan; 1. Kasten öldürme (madde 81, 82, 83), 2. Cinsel saldırı (birinci fıkra hariç, madde 102), 3. Çocukların cinsel istismarı (madde 103), 4. Uyuşturucu veya uyarıcı madde imal ve ticareti (madde 188), 5. Suç işlemek amacıyla örgüt kurma (madde 220), 6. Devletin Güvenliğine Karşı Suçlar (madde 302, 303, 304, 307, 308), 7. Anayasal Düzene ve Bu Düzenin İşleyişine Karşı Suçlar (madde 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 4"
+ },
+ {
+  "id": 12,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5271",
+    "Madde 173",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 172",
+   "1136/Madde 60",
+   "1512/Madde 155",
+   "4483/Madde 9",
+   "4483/Madde 11",
+   "2802/Madde 92",
+   "3894/Madde 119",
+   "5271/Madde 158",
+   "5271/Madde 173",
+   "1512/Madde 131"
+  ],
+  "metin": "1) İlgili kaynak, KAYNAK 9'dur çünkü bu kaynak, \"kovuşturmaya yer olmadığına\" kararına itiraz sürecini detaylı bir şekilde açıklamaktadır. Diğer kaynaklar, itiraz süreçleri hakkında genel bilgiler içermekte olup, doğrudan sorunuzla ilgili spesifik bir düzenleme sunmamaktadır.\n\n2) ##begin_quote## \"Suçtan zarar gören, kovuşturmaya yer olmadığına dair kararın kendisine tebliğ edildiği tarihten itibaren iki hafta içinde, bu kararı veren Cumhuriyet savcısının yargı çevresinde görev yaptığı ağır ceza mahkemesinin bulunduğu yerdeki sulh ceza hâkimliğine itiraz edebilir.\" ##end_quote##\n\n3) Sonuç olarak, \"kovuşturmaya yer olmadığına\" kararına itiraz edebilirsiniz; bu itiraz, belirtilen süre içinde sulh ceza hâkimliğine yapılmalıdır. (CEZA MUHAKEMESİ KANUNU, Madde 173)"
+ },
+ {
+  "id": 13,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6100",
+    "Madde 364",
+    true
+   ],
+   [
+    "6100",
+    "Madde 364",
+    true
+   ]
+  ],
+  "kaynak": [
+   "2577/Madde 48",
+   "6100/MADDE 364",
+   "6100/MADDE 365",
+   "6100/MADDE 363",
+   "5271/Madde 296",
+   "5271/Madde 294",
+   "6085/MADDE 55",
+   "6100/MADDE 47",
+   "6085/MADDE 54",
+   "5271/Madde 291"
+  ],
+  "metin": "Temyiz dilekçesi, belirli bir düzenlemeye uygun olarak hazırlanmalıdır. İlgili kaynak, temyiz dilekçesinin içeriğini ve düzenlenmesi gereken unsurları detaylı bir şekilde açıklamaktadır. Diğer kaynaklar, temyiz sürecinin farklı yönlerini ele almakla birlikte, dilekçenin içeriği ve düzenlenmesi konusunda en kapsamlı bilgiyi sunmaktadır.\n\n**Güvenilir Kaynak:** HUKUK MUHAKEMELERİ KANUNU MADDE 364\n\n**Cevap:** Temyiz dilekçesi, belirli bir düzenlemeye uygun olarak hazırlanmalıdır. Dilekçeye, karşı tarafın sayısı kadar örnek eklenir ve aşağıdaki hususlar bulunmalıdır: a) Temyiz eden ile karşı tarafın davadaki sıfatları, adı, soyadı, Türkiye Cumhuriyeti kimlik numarası ve adresleri; b) Kanuni temsilci ve vekillerinin bilgileri; c) Temyiz edilen kararın hangi mahkemeden verilmiş olduğu, tarihi ve sayısı; d) Yargıtayın bozma kararı üzerine verilen yeni kararın bilgileri; e) İlamın temyiz edene tebliğ edildiği tarih; f) Kararın özeti; g) Temyiz sebepleri ve gerekçesi; h) Duruşma istenmesi; i) Temyiz edenin veya vekilinin imzası. (HUKUK MUHAKEMELERİ KANUNU, Madde 364)"
+ },
+ {
+  "id": 14,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5271",
+    "Madde 12",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 12",
+   "5271/Madde 14",
+   "5237/Madde 42",
+   "5271/Madde 15",
+   "5271/Madde 16",
+   "5271/Madde 13",
+   "7068/MADDE 29",
+   "5237/Madde 66",
+   "5411/Madde 164",
+   "5235/Madde 9"
+  ],
+  "metin": "1) KAYNAK 1, zincirleme suçlarda yetkili mahkeme hakkında bilgi veren tek kaynaktır. Diğer kaynaklar, zincirleme suçlarla ilgili yetki konusunu ele almamaktadır. Bu nedenle, yalnızca KAYNAK 1'deki madde metni kullanılmıştır.\n\n2) ##begin_quote## \"Teşebbüste son icra hareketinin yapıldığı, kesintisiz suçlarda kesintinin gerçekleştiği ve zincirleme suçlarda son suçun işlendiği yer mahkemesi yetkilidir.\" ##end_quote##\n\n3) Sonuç olarak, zincirleme suçlarda yetkili mahkeme, son suçun işlendiği yer mahkemesidir (CEZA MUHAKEMESİ KANUNU, Madde 12)."
+ },
+ {
+  "id": 15,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5271",
+    "Madde 174",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 174",
+   "6706/MADDE 11",
+   "6706/MADDE 10",
+   "5237/Madde 55",
+   "6085/MADDE 56",
+   "3894/Madde 152",
+   "1136/Madde 60",
+   "5237/Madde 281",
+   "1512/Madde 155",
+   "4483/Madde 8"
+  ],
+  "metin": "1) İddianamenin iadesi, suçun nitelendirilmesi ile ilgili eksiklikler durumunda mümkündür. 2) İddianamenin iadesi, suçun sübûtuna doğrudan etki edecek mevcut bir delil toplanmadan düzenlenen durumlarda, önödeme veya uzlaştırma usulü uygulanmaksızın düzenlenen durumlarda, izin alınmaksızın düzenlenen durumlarda ve diğer belirli hallerde gerçekleşir. 3) Bu durum, iddianamenin Cumhuriyet Başsavcılığına iadesine karar verilmesi anlamına gelir.\n\n(KAYNAK 1, CEZA MUHAKEMESİ KANUNU Madde 174)"
+ },
+ {
+  "id": 16,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5237",
+    "Madde 102",
+    true
+   ],
+   [
+    "5237",
+    "Madde 102",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 102",
+   "5237/Madde 77",
+   "5237/Madde 103",
+   "5237/Madde 101",
+   "5237/Madde 225",
+   "5237/Madde 104",
+   "5237/Madde 86",
+   "5237/Madde 89",
+   "5237/Madde 105",
+   "5846/Madde 10"
+  ],
+  "metin": "1) İlgili kaynak, Türk Ceza Kanunu Madde 102'dir. Bu madde, cinsel saldırı suçunun cezasını düzenlemektedir ve vücuda bir cisim sokulması durumunda uygulanacak ceza belirtilmiştir. Diğer kaynaklar, cinsel saldırı ile ilgili farklı konuları ele almakta olup, bu sorunun cevabı için uygun değildir.\n\n2) ##begin_quote## \"Fiilin vücuda organ veya sair bir cisim sokulması suretiyle gerçekleştirilmesi durumunda, on iki yıldan az olmamak üzere hapis cezasına hükmolunur.\" ##end_quote##\n\n3) Sonuç olarak, vücuda bir cisim sokularak yapılan cinsel saldırıda, on iki yıldan az olmamak üzere hapis cezası uygulanır (TÜRK CEZA KANUNU, Madde 102)."
+ },
+ {
+  "id": 17,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6502",
+    "Madde 52",
+    true
+   ],
+   [
+    "6502",
+    "Madde 52",
+    true
+   ]
+  ],
+  "kaynak": [
+   "7155/MADDE 5",
+   "6102/MADDE 801",
+   "6102/MADDE 1504",
+   "6112/MADDE 42",
+   "6502/MADDE 52",
+   "6502/MADDE 45",
+   "6102/MADDE 735",
+   "4721/Madde 829",
+   "6098/MADDE 497",
+   "6102/MADDE 734"
+  ],
+  "metin": "1) İlgili kaynak, abonelik sözleşmeleri ve tüketicinin feshetme hakkını düzenleyen Türk Tüketici Koruma Kanunu'nun 52. maddesidir. Diğer kaynaklar, abonelik sözleşmeleri veya feshatma ile ilgili doğrudan bir düzenleme içermemektedir.\n\n2) ##begin_quote## \"Tüketici, belirsiz süreli veya süresi bir yıldan daha uzun olan belirli süreli abonelik sözleşmesini herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin istediği zaman feshetme hakkına sahiptir.\" ##end_quote##\n\n3) Sonuç olarak, belirli süreli abonelik sözleşmelerinde tüketicinin feshetme hakkı bulunmaktadır ve bu feshatma işlemi sırasında herhangi bir bedel ödenmesi zorunlu değildir. Ancak, sözleşmenin içeriğine bağlı olarak farklı durumlar söz konusu olabilir. (TÜKETİCİNİN KORUNMASI HAKKINDA KANUN, Madde 52)"
+ },
+ {
+  "id": 18,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5237",
+    "Madde 184",
+    true
+   ],
+   [
+    "5237",
+    "Madde 184",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 184",
+   "2863/Madde 16",
+   "1262/Madde 19",
+   "2464/Madde 3",
+   "3621/Madde 14",
+   "2960/Madde 18",
+   "3092/Madde 2",
+   "2464/Madde 6",
+   "3194/Madde 32",
+   "5237/Madde 170"
+  ],
+  "metin": "1) Ruhsatsız bina yapmanın cezası, Türk Ceza Kanunu'nun 184. maddesinde düzenlenmiştir. Bu madde, yapı ruhsatı alınmadan veya ruhsata aykırı olarak bina yapan veya yaptıran kişilere bir yıldan beş yıla kadar hapis cezası uygulayarak cezalandırılmaktadır. Ayrıca, yapı kullanma izni alınmamış binalarda sınai faaliyet icrasına müsaade eden kişilere de benzer şekilde ceza uygulanmaktadır.\n\n2) (TÜRK CEZA KANUNU, Madde 184)"
+ },
+ {
+  "id": 19,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5237",
+    "Madde 184",
+    true
+   ],
+   [
+    "5237",
+    "Madde 184",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5237/Madde 184",
+   "5237/Madde 163",
+   "2960/Geçici Madde 11",
+   "3621/Madde 14",
+   "2960/Madde 18",
+   "1262/Madde 19",
+   "7381/MADDE 25",
+   "5237/Madde 188",
+   "5809/MADDE 63",
+   "3194/Madde 42"
+  ],
+  "metin": "1) İlgili kaynak, Türk Ceza Kanunu Madde 184'tür. Bu madde, ruhsatsız inşaatlara elektrik, su veya telefon bağlantısı sağlayan kişilerin cezalandırılmasını düzenlemektedir. Diğer kaynaklar, inşaat ruhsatı ile ilgili farklı konuları ele almakta olup, sorunun cevabını sağlamamaktadır.\n\n2) ##begin_quote## \"Yapı ruhsatiyesi olmadan başlatılan inşaatlar dolayısıyla kurulan şantiyelere elektrik, su veya telefon bağlantısı yapılmasına müsaade eden kişi, yukarıdaki fıkra hükmüne göre cezalandırılır.\" ##end_quote##\n\n3) Sonuç olarak, ruhsatsız inşaatlara elektrik bağlatan kişi, bir yıldan beş yıla kadar hapis cezası ile cezalandırılır (TÜRK CEZA KANUNU, Madde 184)."
+ },
+ {
+  "id": 20,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6100",
+    "Madde 342",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6100/MADDE 342",
+   "3894/Madde 136",
+   "6100/MADDE 346",
+   "6100/MADDE 344",
+   "6100/MADDE 345",
+   "6100/MADDE 348",
+   "3894/Madde 135",
+   "5271/Madde 276",
+   "6100/MADDE 343",
+   "6100/MADDE 340"
+  ],
+  "metin": "1) İstinaf başvurusu için gerekli belgeler, İstinaf dilekçesinde belirtilmesi gereken hususları içermektedir. Bu belgeler arasında başvuran ile karşı tarafın kimlik bilgileri, kararın tebliğ tarihi, kararın özeti ve başvuru sebepleri gibi unsurlar yer almaktadır.\n\n2) İstinaf dilekçesi, başvuranın kimliği ve imzasıyla, başvurulan kararı yeteri kadar belli edecek kayıtları taşıması durumunda diğer hususlar bulunmasa bile reddolunmayıp, 355 inci madde çerçevesinde gerekli inceleme yapılır.\n\n3) İstinaf dilekçesinin verilmesi (HUKUK MUHAKEMELERİ KANUNU, Madde 342)"
+ },
+ {
+  "id": 21,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5271",
+    "Madde 101",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 112",
+   "5275/Madde 112",
+   "5271/Madde 101",
+   "5271/Madde 100",
+   "6706/MADDE 14",
+   "5271/Madde 99",
+   "5271/Madde 146",
+   "5395/Madde 20",
+   "2802/Madde 85",
+   "5395/Madde 21"
+  ],
+  "metin": "1) KAYNAK 3, tutuklama kararının nasıl verildiğine dair detaylı bilgi sunmaktadır. Diğer kaynaklar, tutuklama kararının koşulları veya sonuçları hakkında bilgi verirken, KAYNAK 3 doğrudan tutuklama kararının verilme sürecini açıklamaktadır.\n\n2) ##begin_quote## \"Soruşturma evresinde şüphelinin tutuklanmasına Cumhuriyet savcısının istemi üzerine sulh ceza hâkimi tarafından, kovuşturma evresinde sanığın tutuklanmasına Cumhuriyet savcısının istemi üzerine veya re'sen mahkemece karar verilir.\" ##end_quote##\n\n3) Sonuç olarak, tutuklama kararı, soruşturma evresinde Cumhuriyet savcısının istemi üzerine sulh ceza hâkimi tarafından, kovuşturma evresinde ise Cumhuriyet savcısının istemi üzerine veya re'sen mahkemece verilmektedir. (CEZA MUHAKEMESİ KANUNU, Madde 101)"
+ },
+ {
+  "id": 22,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "5271",
+    "Madde 129",
+    true
+   ]
+  ],
+  "kaynak": [
+   "1380/Madde 34",
+   "5271/Madde 129",
+   "81/Madde 2",
+   "6475/MADDE 14",
+   "5607/GEÇİCİ MADDE 14",
+   "6475/MADDE 5",
+   "5607/GEÇİCİ MADDE 10",
+   "6102/MADDE 1204",
+   "3213/Madde 12",
+   "5275/Madde 68"
+  ],
+  "metin": "1) El konulan gönderiler, ilgili posta görevlilerinin huzuru ile mühür altına alınıp derhâl elkoyma kararını veya emrini veren hâkim veya Cumhuriyet savcısına teslim edilir. (CEZA MUHAKEMESİ KANUNU, Madde 129)"
+ },
+ {
+  "id": 23,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6502",
+    "Madde 24",
+    true
+   ],
+   [
+    "6502",
+    "Madde 18",
+    true
+   ],
+   [
+    "6502",
+    "Madde 43",
+    true
+   ],
+   [
+    "5846",
+    "Madde 58",
+    true
+   ],
+   [
+    "6502",
+    "Madde 23",
+    true
+   ],
+   [
+    "6102",
+    "Madde 1441",
+    true
+   ],
+   [
+    "5846",
+    "Madde 57",
+    true
+   ],
+   [
+    "6502",
+    "Madde 49",
+    true
+   ],
+   [
+    "6098",
+    "Madde 177",
+    true
+   ],
+   [
+    "6502",
+    "Madde 24",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6102/MADDE 1442",
+   "6502/MADDE 24",
+   "6502/MADDE 18",
+   "6502/MADDE 43",
+   "5846/Madde 58",
+   "6502/MADDE 23",
+   "6102/MADDE 1441",
+   "5846/Madde 57",
+   "6502/MADDE 49",
+   "6098/MADDE 177"
+  ],
+  "metin": "1) KAYNAK 2 - Tüketicinin Korunması Hakkında Kanun Madde 24 - Cayma hakkı, tüketicinin belirli bir süre içinde sözleşmeden vazgeçme hakkını ifade eder. Bu madde, tüketici kredisi sözleşmelerinde cayma hakkının nasıl kullanılacağını ve hangi koşullarda geçerli olduğunu açıkça düzenlemektedir.\n\n2) KAYNAK 3 - Tüketicinin Korunması Hakkında Kanun Madde 18 - Tüketici, taksitle satış sözleşmesinden cayma hakkına sahiptir ve bu hak, belirli bir süre içinde kullanılmak zorundadır.\n\n3) KAYNAK 4 - Tüketicinin Korunması Hakkında Kanun Madde 43 - Ön ödemeli konut satış sözleşmelerinde de tüketici, belirli bir süre içinde cayma hakkına sahiptir.\n\n4) KAYNAK 5 - Fikir ve Sanat Eserleri Kanunu Madde 58 - Fikir ve sanat eserleri sözleşmelerinde de cayma hakkı düzenlenmektedir.\n\n5) KAYNAK 6 - Tüketicinin Korunması Hakkında Kanun Madde 23 - Kredi sözleşmelerinde cayma hakkı ile ilgili bilgi verilmesi zorunludur.\n\n6) KAYNAK 7 - Türk Ticaret Kanunu Madde 1441 - Sigorta sözleşmelerinde cayma hakkı ile ilgili düzenlemeler bulunmaktadır.\n\n7) KAYNAK 8 - Fikir ve Sanat Eserleri Kanunu Madde 57 - Fikir ve sanat eserleri sözleşmelerinde cayma hakkı ile ilgili düzenlemeler bulunmaktadır.\n\n8) KAYNAK 9 - Tüketicinin Korunması Hakkında Kanun Madde 49 - Finansal hizmetler sözleşmelerinde cayma hakkı ile ilgili düzenlemeler bulunmaktadır.\n\n9) KAYNAK 10 - Türk Borçlar Kanunu Madde 177 - Cayma parası ile ilgili düzenlemeler bulunmaktadır.\n\n##begin_quote## \"Tüketici, on dört gün içinde herhangi bir gerekçe göstermeksizin ve cezai şart ödemeksizin tüketici kredisi sözleşmesinden cayma hakkına sahiptir.\" ##end_quote##\n\nCayma hakkı, tüketicinin belirli bir süre içinde sözleşmeden vazgeçme hakkını ifade eder ve bu hak, belirli koşullar altında kullanılabilmektedir. (TÜKETİCİNİN KORUNMASI HAKKINDA KANUN, Madde 24)"
+ },
+ {
+  "id": 24,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6284",
+    "Madde 10",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6284/MADDE 2",
+   "6284/MADDE 8",
+   "6284/MADDE 10",
+   "6284/MADDE 7",
+   "6458/MADDE 78",
+   "6325/MADDE 1",
+   "6284/MADDE 1",
+   "6769/MADDE 98",
+   "6284/MADDE 9",
+   "6754/MADDE 11"
+  ],
+  "metin": "1) KAYNAK 3, aile içi şiddet nedeniyle alınan tedbir kararlarının hangi mercilere bildirileceğini açıkça düzenlemektedir. Diğer kaynaklar, bu konuyla doğrudan ilgili bilgi sunmamaktadır.\n\n2) ##begin_quote## \"Bu Kanun hükümlerine göre alınan tedbir kararları, Bakanlığın ilgili il ve ilçe müdürlükleri ile verilen kararın niteliğine göre Cumhuriyet başsavcılığına veya kolluğa en seri vasıtalarla bildirilir.\" ##end_quote##\n\n3) Sonuç olarak, aile içi şiddet nedeniyle alınan tedbir kararları Bakanlık, Cumhuriyet Başsavcılığı ve kolluk birimlerine bildirilmektedir. (AİLENİN KORUNMASI VE KADINA KARŞI ŞİDDETİN ÖNLENMESİNE DAİR KANUN, Madde 10)"
+ },
+ {
+  "id": 25,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6100",
+    "Madde 393",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6284/MADDE 8",
+   "6100/MADDE 393",
+   "6100/MADDE 164",
+   "3091/Madde 8",
+   "2577/Madde 21",
+   "7201/Madde 58",
+   "6100/MADDE 398",
+   "7201/Madde 28",
+   "6100/MADDE 392",
+   "6100/MADDE 397"
+  ],
+  "metin": "1) İhtiyati tedbir kararının uygulanması için tebliğ zorunludur; aksi halde karar kendiliğinden kalkar. Bu durum, tedbirin uygulanabilmesi için gerekli bir prosedürdür ve tebliğ edilmemesi durumunda tedbirin geçersiz hale gelmesi riski doğar.\n\n2) HUKUK MUHAKEMELERİ KANUNU, ihtiyati tedbir kararının uygulanması için tebliğ süresini bir hafta olarak belirlemiştir. Bu süre içinde tebliğ edilmemesi durumunda, tedbir kararı kendiliğinden kalkar.\n\n3) Bu düzenleme, tedbir kararının uygulanabilmesi için gerekli olan tebliğ sürecinin önemini vurgulamaktadır. Tebliğ edilmemesi, tedbirin uygulanmasını engelleyebilir ve bu durum hukuki sonuçlar doğurabilir.\n\n4) (HUKUK MUHAKEMELERİ KANUNU, Madde 393)"
+ },
+ {
+  "id": 26,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6100",
+    "Madde 436",
+    true
+   ],
+   [
+    "6100",
+    "Madde 436",
+    true
+   ],
+   [
+    "6100",
+    "Madde 436",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6100/MADDE 436",
+   "6100/MADDE 418",
+   "4686/Madde 14",
+   "5271/Madde 34",
+   "6100/MADDE 442",
+   "4686/Madde 15",
+   "6100/MADDE 437",
+   "6502/MADDE 70",
+   "6100/MADDE 422",
+   "4054/Madde 53"
+  ],
+  "metin": "1) Hakem kararında karşı oy yazısı yer alabilir. Bu durum, Hukuk Muhakemeleri Kanunu'nun 436. maddesinde açıkça belirtilmiştir. \n\n2) İlgili kaynak, HUKUK MUHAKEMELERİ KANUNU MADDE 436'dır. Bu madde, hakem kararının içeriğini düzenleyerek karşı oy yazısının da yer alabileceğini belirtmektedir. Diğer kaynaklar, hakem kararının içeriği veya karşı oy yazısı ile ilgili doğrudan bilgi sunmamaktadır.\n\n3) (HUKUK MUHAKEMELERİ KANUNU, Madde 436)"
+ },
+ {
+  "id": 27,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6100",
+    "Madde 294",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6100/MADDE 294",
+   "6100/MADDE 315",
+   "6100/MADDE 321",
+   "6098/MADDE 215",
+   "6100/MADDE 332",
+   "5271/Madde 5",
+   "6100/MADDE 435",
+   "6100/MADDE 186",
+   "6100/MADDE 297",
+   "6100/MADDE 184"
+  ],
+  "metin": "1) Mahkeme, usule veya esasa ilişkin bir nihai kararla davayı sona erdirir. Yargılama sonunda uyuşmazlığın esası hakkında verilen nihai karar, hükümdür. (2) Hüküm, yargılamanın sona erdiği duruşmada verilir ve tefhim olunur. (3) Hükmün tefhimi, her hâlde hüküm sonucunun duruşma tutanağına geçirilerek okunması suretiyle olur. (4) Zorunlu nedenlerle sadece hüküm sonucunun tefhim edildiği hâllerde, gerekçeli kararın tefhim tarihinden başlayarak bir ay içinde yazılması gerekir. (5) Hükmün tefhimi, duruşmada bulunanlar ayakta dinler. (6) Hükme ilişkin hususlar, niteliğine aykırı düşmedikçe, usule ilişkin nihai kararlar hakkında da uygulanır.\n\n(HUKUK MUHAKEMELERİ KANUNU, Madde 294)"
+ },
+ {
+  "id": 28,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6100",
+    "Madde 303",
+    true
+   ],
+   [
+    "6100",
+    "Madde 294",
+    true
+   ],
+   [
+    "6100",
+    "Madde 311",
+    true
+   ],
+   [
+    "6100",
+    "Madde 388",
+    true
+   ],
+   [
+    "6100",
+    "Madde 332",
+    true
+   ],
+   [
+    "3402",
+    "Madde 34",
+    true
+   ],
+   [
+    "5718",
+    "Madde 58",
+    true
+   ],
+   [
+    "5718",
+    "Madde 59",
+    true
+   ],
+   [
+    "5252",
+    "Madde 9",
+    true
+   ],
+   [
+    "6100",
+    "Madde 94",
+    true
+   ],
+   [
+    "6100",
+    "Madde 303",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6100/MADDE 303",
+   "6100/MADDE 388",
+   "5718/MADDE 59",
+   "5718/MADDE 58",
+   "6100/MADDE 294",
+   "6100/MADDE 311",
+   "6100/MADDE 94",
+   "3402/Madde 34",
+   "6100/MADDE 332",
+   "5252/Madde 9"
+  ],
+  "metin": "1) HUKUK MUHAKEMELERİ KANUNU MADDE 303 - Bu madde, bir hükmün kesin hüküm teşkil etmesi için gerekli şartları düzenlemektedir. Diğer kaynaklar, kesin hüküm ile ilgili farklı konuları ele almakta olup, doğrudan bu soruya yanıt vermemektedir.\n\n2) HUKUK MUHAKEMELERİ KANUNU MADDE 294 - Bu madde, nihai kararların verilmesi ve tefhim edilmesi ile ilgili düzenlemeleri içermektedir. Ancak, kesin hüküm ile ilgili detaylı bilgi sunmamaktadır.\n\n3) HUKUK MUHAKEMELERİ KANUNU MADDE 311 - Bu madde, feragat ve kabulün hukuki sonuçlarını düzenlemektedir. Kesin hüküm ile doğrudan ilgili değildir.\n\n4) HUKUK MUHAKEMELERİ KANUNU MADDE 388 - Bu madde, çekişmesiz yargı kararlarının kesin hüküm teşkil etmemesi durumunu düzenlemektedir.\n\n5) HUKUK MUHAKEMELERİ KANUNU MADDE 332 - Bu madde, yargılama giderlerinin hükmedilmesi ile ilgili düzenlemeleri içermektedir.\n\n6) KADASTRO KANUNU MADDE 34 - Bu madde, kadastro mahkemeleri kararlarının kesin hüküm teşkil etmesi durumunu düzenlemektedir.\n\n7) MİLLETLERARASI ÖZEL HUKUK VE USUL HUKUKU HAKKINDA KANUN MADDE 58 - Bu madde, yabancı mahkeme ilâmının kesin delil veya kesin hüküm olarak kabul edilebilmesi için gerekli şartları düzenlemektedir.\n\n8) MİLLETLERARASI ÖZEL HUKUK VE USUL HUKUKU HAKKINDA KANUN MADDE 59 - Bu madde, yabancı ilâmın kesin hüküm veya kesin delil etkisi ile ilgili düzenlemeleri içermektedir.\n\n9) TÜRK CEZA KANUNUNUN YÜRÜRLÜK VE UYGULAMA ŞEKLİ HAKKINDA KANUN MADDE 9 - Bu madde, Türk Ceza Kanunu ile ilgili düzenlemeleri içermektedir.\n\n10) HUKUK MUHAKEMELERİ KANUNU MADDE 94 - Bu madde, kesin sürelerin uygulanması ile ilgili düzenlemeleri içermektedir.\n\n##begin_quote## \"Bir davaya ait şeklî anlamda kesinleşmiş olan hükmün, diğer bir davada maddi anlamda kesin hüküm oluşturabilmesi için, her iki davanın taraflarının, dava sebeplerinin ve ilk davanın hüküm fıkrası ile ikinci davaya ait talep sonucunun aynı olması gerekir.\" ##end_quote##\n\nSonuç olarak, bir hükmün kesin hüküm sayılabilmesi için, ilgili davanın tarafları, dava sebepleri ve ilk davanın hüküm fıkrası ile ikinci davaya ait talep sonucunun aynı olması gerekmektedir (HUKUK MUHAKEMELERİ KANUNU, Madde 303)."
+ },
+ {
+  "id": 29,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6100",
+    "Madde 316",
+    true
+   ],
+   [
+    "6100",
+    "Madde 316",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6100/MADDE 316",
+   "5718/MADDE 19",
+   "4721/Madde 365",
+   "4721/Madde 177",
+   "4721/Madde 329",
+   "5271/Madde 114",
+   "6100/MADDE 332",
+   "4721/Madde 330",
+   "6100/MADDE 322",
+   "6284/MADDE 18"
+  ],
+  "metin": "1) Nafaka davaları, Hukuk Muhakemeleri Kanunu'nun 316. maddesinde belirtilen basit yargılama usulüne tabidir. Bu madde, nafaka davalarının basit yargılama usulü ile yürütüleceğini açıkça belirtmektedir.\n\n2) Diğer kaynaklar, nafaka davalarının yargılama usulü ile ilgili bilgi vermemektedir; bu nedenle yalnızca KAYNAK 1 geçerlidir.\n\n3) (HUKUK MUHAKEMELERİ KANUNU, Madde 316)"
+ },
+ {
+  "id": 30,
+  "durum": "KESIK",
+  "atif": [
+   [
+    "6100",
+    "Madde 147",
+    true
+   ],
+   [
+    "477",
+    "Madde 19",
+    true
+   ],
+   [
+    "6100",
+    "Madde 358",
+    true
+   ],
+   [
+    "5271",
+    "Madde 188",
+    true
+   ],
+   [
+    "5271",
+    "Madde 195",
+    true
+   ],
+   [
+    "6100",
+    "Madde 245",
+    true
+   ],
+   [
+    "926",
+    "Madde 125",
+    true
+   ],
+   [
+    "6216",
+    "Madde 70",
+    true
+   ],
+   [
+    "3628",
+    "Madde 10",
+    true
+   ],
+   [
+    "7179",
+    "Madde 21",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 188",
+   "6100/MADDE 245",
+   "926/Madde 125",
+   "5271/Madde 195",
+   "6100/MADDE 147",
+   "6216/MADDE 70",
+   "3628/Madde 10",
+   "477/Madde 19",
+   "6100/MADDE 358",
+   "7179/MADDE 21"
+  ],
+  "metin": "1) KAYNAK 5 - HUKUK MUHAKEMELERİ KANUNU MADDE 147\n\n2) KAYNAK 8 - DİSİPLİN MAHKEMELERİ KURULUŞU, YARGILAMA USULÜ VE DİSİPLİN SUÇ VE CEZALARI HAKKINDA KANUN MADDE 19\n\n3) KAYNAK 9 - HUKUK MUHAKEMELERİ KANUNU MADDE 358\n\n4) KAYNAK 1 - CEZA MUHAKEMESİ KANUNU MADDE 188\n\n5) KAYNAK 4 - CEZA MUHAKEMESİ KANUNU MADDE 195\n\n6) KAYNAK 2 - HUKUK MUHAKEMELERİ KANUNU MADDE 245\n\n7) KAYNAK 3 - TÜRK SİLÂHLI KUVVETLERİ PERSONEL KANUNU MADDE 125\n\n8) KAYNAK 6 - ANAYASA MAHKEMESİNİN KURULUŞU VE YARGILAMA USULLERİ HAKKINDA KANUN MADDE 70\n\n9) KAYNAK 7 - MAL BİLDİRİMİNDE BULUNULMASI, RÜŞVET VE YOLSUZLUKLARLA MÜCADELE KANUNU MADDE 10\n\n10) KAYNAK 10 - ASKERALMA KANUNU MADDE 21\n\n##begin_quote## \"Taraflara gönderilecek davetiyede, belirlenen gün ve saatte geçerli bir özrü olmadan mahkemede hazır bulunmadıkları takdirde, duruşmaya yokluklarında devam edileceği ve yapılan işlemlere itiraz edemeyecekleri, tahkikatın sona erdiği duruşmada sözlü yargılamaya"
+ },
+ {
+  "id": 31,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6100",
+    "Madde 124",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6100/MADDE 124",
+   "6100/MADDE 164",
+   "4721/Madde 200",
+   "6100/MADDE 210",
+   "6100/MADDE 428",
+   "6100/MADDE 152",
+   "4686/Madde 15",
+   "6100/MADDE 291",
+   "6100/MADDE 140",
+   "1593/Madde 263"
+  ],
+  "metin": "1) KAYNAK 1, taraf değişikliği ile ilgili düzenlemeleri içermektedir. Diğer kaynaklar, tarafların değişikliği ile ilgili konuları ele almadığı için bu bağlamda dikkate alınmamıştır.\n\n2) ##begin_quote## \"Bir davada taraf değişikliği, ancak karşı tarafın açık rızası ile mümkündür.\" ##end_quote##\n\n3) Sonuç olarak, hâkim taraf değişikliği talebini karşı tarafın açık rızası ile değerlendirir; ancak maddi hatadan kaynaklanan veya dürüstlük kuralına aykırı olmayan taleplerde rıza aranmaksızın kabul edilebilir. (HUKUK MUHAKEMELERİ KANUNU, Madde 124)"
+ },
+ {
+  "id": 32,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4857",
+    "Madde 4",
+    true
+   ],
+   [
+    "4857",
+    "Madde 4",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4857/Madde 4",
+   "4857/Madde 29",
+   "4857/Madde 18",
+   "4857/Madde 7",
+   "6331/MADDE 38",
+   "4857/Madde 30",
+   "5084/Madde 6",
+   "4447/Geçici Madde 10",
+   "4447/Madde 2",
+   "5996/MADDE 50"
+  ],
+  "metin": "1) İlgili kaynak, İş Kanunu Madde 4'tür. Bu madde, 50'den az işçi çalıştırılan tarım ve orman işlerinin yapıldığı işyerlerinde İş Kanunu hükümlerinin uygulanmadığını açıkça belirtmektedir. Diğer kaynaklar, iş sözleşmesi, işçi çıkarma, iş sağlığı ve güvenliği gibi farklı konulara odaklanmakta olup, sorunun cevabını sağlamamaktadır.\n\n2) ##begin_quote## \"Aşağıda belirtilen işlerde ve iş ilişkilerinde bu Kanun hükümleri uygulanmaz; a) Deniz ve hava taşıma işlerinde, b) 50'den az işçi çalıştırılan (50 dahil) tarım ve orman işlerinin yapıldığı işyerlerinde veya işletmelerinde...\" ##end_quote##\n\n3) Sonuç olarak, 50'den az işçi çalıştıran bir tarım işyerinde İş Kanunu hükümleri uygulanmamaktadır. (İŞ KANUNU, Madde 4)"
+ },
+ {
+  "id": 33,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6502",
+    "Madde 66",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6502/MADDE 70",
+   "6502/MADDE 66",
+   "6502/MADDE 68",
+   "6502/MADDE 67",
+   "6502/MADDE 73",
+   "6502/MADDE 72",
+   "6502/MADDE 71",
+   "5957/MADDE 10",
+   "6502/MADDE 69",
+   "6502/MADDE 73/A"
+  ],
+  "metin": "1) KAYNAK 2, tüketici hakem heyetlerinin başkanının kim olduğunu açıkça belirtmektedir. Diğer kaynaklar, tüketici hakem heyetlerinin işleyişi, yetki alanı veya diğer konularla ilgili bilgiler içermekte olup, başkanın kimliğiyle ilgili bilgi sunmamaktadır.\n\n2) ##begin_quote## \"Başkanlığı illerde ticaret il müdürü, ilçelerde ise kaymakam veya bunların görevlendireceği bir memur tarafından yürütülen tüketici hakem heyeti\" ##end_quote##\n\n3) Sonuç olarak, tüketici hakem heyetinin başkanı illerde ticaret il müdürü, ilçelerde ise kaymakam veya görevlendireceği bir memurdur (TÜKETİCİNİN KORUNMASI HAKKINDA KANUN, Madde 66)."
+ },
+ {
+  "id": 34,
+  "durum": "SUSKUNLUK",
+  "atif": [],
+  "kaynak": [
+   "6502/MADDE 70",
+   "6502/MADDE 66",
+   "6502/MADDE 68",
+   "6502/MADDE 67",
+   "5957/MADDE 10",
+   "6502/MADDE 73/A",
+   "6502/MADDE 72",
+   "6502/MADDE 73",
+   "6502/MADDE 69",
+   "6502/MADDE 71"
+  ],
+  "metin": "Verilen kaynaklarda bu konuyu düzenleyen madde bulunmuyor. KAYNAK 7'de tüketici hakem heyetlerinin kurulması ve çalışma usulleri yönetmelikle belirlendiği belirtilse de, heyetin kurulamaması durumunda ne olacağına dair bir düzenleme bulunmamaktadır."
+ },
+ {
+  "id": 35,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6502",
+    "Madde 35",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6502/MADDE 35",
+   "6362/MADDE 57",
+   "6502/MADDE 34",
+   "4749/Geçici Madde 37",
+   "6502/MADDE 32",
+   "6502/MADDE 39",
+   "6502/MADDE 33",
+   "6362/MADDE 58",
+   "5737/MADDE 20",
+   "2985/Madde 1"
+  ],
+  "metin": "1) KAYNAK 1, konut finansmanı kuruluşunun sorumluluğunun süresi hakkında doğrudan bilgi vermektedir. Diğer kaynaklar, konut finansmanı ile ilgili farklı konuları ele almakta olup, sorumluluk süresi ile ilgili bilgi içermemektedir.\n\n2) ##begin_quote## \"Bağlı kredilerde, konutun hiç ya da gereği gibi teslim edilmemesi nedeniyle tüketicinin bu Kanunun 11 inci maddesinde belirtilen seçimlik haklarından birini kullanması hâlinde, satıcı ve konut finansmanı kuruluşu müteselsilen sorumludur. Ancak, konut finansmanı kuruluşunun sorumluluğu; konutun teslim edilmemesi durumunda konut satış sözleşmesinde veya bağlı kredi sözleşmesinde belirtilen konut teslim tarihinden, konutun teslim edilmesi durumunda konutun teslim edildiği tarihten itibaren, kullanılan kredi miktarı ile sınırlı olmak üzere bir yıldır.\" ##end_quote##\n\n3) Sonuç olarak, konut finansmanı kuruluşunun sorumluluğu, konutun teslim edilmemesi durumunda bir yıldır (TÜKETİCİNİN KORUNMASI HAKKINDA KANUN, Madde 35)."
+ },
+ {
+  "id": 36,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6502",
+    "Madde 56",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6502/MADDE 56",
+   "6502/MADDE 55",
+   "6502/MADDE 57/A",
+   "6769/Madde 32",
+   "6769/MADDE 31",
+   "6502/MADDE 58",
+   "4735/Madde 13",
+   "6331/MADDE 28",
+   "4760/Madde 5",
+   "6502/MADDE 57"
+  ],
+  "metin": "1) KAYNAK 1, garanti belgesi ile ilgili düzenlemeleri içermektedir. Diğer kaynaklar, garanti belgesi ile ilgili doğrudan bilgi sunmamaktadır. Bu nedenle, yalnızca KAYNAK 1'deki düzenleme dikkate alınmıştır.\n\n2) ##begin_quote## \"Üretici ve ithalatçılar, tüketiciye yönelik üretilen veya ithal edilen mallar için içeriği yönetmelikle belirlenen bir garanti belgesi düzenlemek zorundadır.\" ##end_quote##\n\n3) Sonuç olarak, garanti belgesi ile satılmak zorunda olan mallar, üretici ve ithalatçılar tarafından tüketiciye yönelik üretilen veya ithal edilen mallardır (TÜKETİCİNİN KORUNMASI HAKKINDA KANUN, Madde 56)."
+ },
+ {
+  "id": 37,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "2004",
+    "Madde 60",
+    true
+   ]
+  ],
+  "kaynak": [
+   "2004/Madde 24",
+   "2004/Madde 61",
+   "2004/Madde 60",
+   "2004/Madde 171",
+   "2004/Madde 149",
+   "2004/Madde 168",
+   "2004/Madde 149/b",
+   "2004/Madde 26",
+   "2004/Madde 32",
+   "2004/Madde 30"
+  ],
+  "metin": "1) İcra memuru, takip talebinin İcra ve İflas Kanunu'nda öngörülen şartları içerdiğine karar verirse borçluya ödeme emri gönderir. Bu durum, alacaklının veya vekilinin banka hesap numarası hariç olmak üzere, takip talebine yazılması gereken kayıtların ve borcun ödenmesi gereken sürelerin belirtilmesi gibi şartların sağlanmasıyla gerçekleşir.\n\n2) İlgili kaynak, İcra ve İflas Kanunu Madde 60'dur. Diğer kaynaklar, ödeme emrinin içeriği veya farklı icra süreçleri hakkında bilgi verirken, doğrudan ödeme emrinin gönderilme koşullarını açıklamamaktadır."
+ },
+ {
+  "id": 38,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4857",
+    "Madde 66",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4857/Madde 74",
+   "4857/Madde 66",
+   "1593/Madde 157",
+   "4857/Madde 73",
+   "1593/Madde 125",
+   "657/Madde 104",
+   "5510/MADDE 13",
+   "1593/Madde 177",
+   "1593/Madde 155",
+   "5275/Madde 72"
+  ],
+  "metin": "1) KAYNAK 2, işçinin günlük çalışma sürelerini tanımlayan ve çocuk emziren kadın işçilerin süt vermesi için ayrılan süreleri içeren bir madde olarak sorunun doğrudan yanıtını vermektedir. Diğer kaynaklar, doğum izni, sağlık raporları veya iş kazaları gibi konulara odaklanmakta olup, süt verme süreleri ile ilgili bilgi sunmamaktadır.\n\n2) ##begin_quote## \"e) Çocuk emziren kadın işçilerin çocuklarına süt vermeleri için belirtilecek süreler.\" ##end_quote##\n\n3) Sonuç olarak, çocuk emziren kadın işçilerin süt vermesi için ayrılan süreler işçinin günlük çalışma sürelerinden sayılmaktadır (İŞ KANUNU, Madde 66)."
+ },
+ {
+  "id": 39,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6284",
+    "Madde 13",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6284/MADDE 13",
+   "2004/Madde 340",
+   "2004/Madde 344",
+   "5275/Madde 108",
+   "5271/Madde 102",
+   "5271/Madde 112",
+   "477/Madde 45",
+   "3213/Madde 39",
+   "5271/Madde 146",
+   "4721/Madde 557"
+  ],
+  "metin": "1) KAYNAK 1, zorlama hapsinin süresinin nasıl belirlendiğine dair doğrudan bilgi içermektedir. Diğer kaynaklar ise icra, ceza muhakemesi ve diğer konularla ilgili olup, zorlama hapsinin süresiyle ilgili bilgi sunmamaktadır.\n\n2) ##begin_quote## \"Bu Kanun hükümlerine göre hakkında tedbir kararı verilen şiddet uygulayan, bu kararın gereklerine aykırı hareket etmesi hâlinde, fiili bir suç oluştursa bile ihlal edilen tedbirin niteliğine ve aykırılığın ağırlığına göre hâkim kararıyla üç günden on güne kadar zorlama hapsine tabi tutulur.\" ##end_quote##\n\n3) ##begin_quote## \"Tedbir kararının gereklerine aykırılığın her tekrarında, ihlal edilen tedbirin niteliğine ve aykırılığın ağırlığına göre zorlama hapsinin süresi onbeş günden otuz güne kadardır. Ancak zorlama hapsinin toplam süresi altı ayı geçemez.\" ##end_quote##\n\n4) (AİLENİN KORUNMASI VE KADINA KARŞI ŞİDDETİN ÖNLENMESİNE DAİR KANUN, Madde 13)"
+ },
+ {
+  "id": 40,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4857",
+    "Madde 24",
+    true
+   ],
+   [
+    "4857",
+    "Madde 24",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4857/Madde 22",
+   "4857/Madde 24",
+   "4857/Madde 28",
+   "4857/Madde 18",
+   "6098/MADDE 426",
+   "4857/Madde 3",
+   "6098/MADDE 414",
+   "4857/Madde 23",
+   "6098/MADDE 464",
+   "6098/MADDE 438"
+  ],
+  "metin": "1) İlgili kaynak, işverenin iş sözleşmesi sırasında yanlış bilgiler vermesi durumunda işçinin sözleşmeyi feshetme hakkını düzenleyen İŞ KANUNU Madde 24'tür. Diğer kaynaklar, iş sözleşmesinin feshi veya işçi hakları ile ilgili farklı konuları ele almakta olup, doğrudan işverenin yanıltması durumunu kapsamamaktadır.\n\n2) ##begin_quote## \"İşveren iş sözleşmesi yapıldığı sırada bu sözleşmenin esaslı noktalarından biri hakkında yanlış vasıflar veya şartlar göstermek yahut gerçeğe uygun olmayan bilgiler vermek veya sözler söylemek suretiyle işçiyi yanıltırsa.\" ##end_quote##\n\n3) İşçi, işverenin yanıltması durumunda iş sözleşmesini sürenin bitiminden önce veya bildirim süresini beklemeksizin feshedebilir (İŞ KANUNU, Madde 24)."
+ },
+ {
+  "id": 41,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4857",
+    "Madde 31",
+    true
+   ],
+   [
+    "4857",
+    "Madde 31",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4857/Madde 31",
+   "6356/MADDE 23",
+   "926/Madde 107",
+   "4857/Madde 16",
+   "6191/MADDE 8",
+   "6356/MADDE 66",
+   "6356/MADDE 68",
+   "4857/Madde 12",
+   "4857/Madde 23",
+   "4857/Madde 8"
+  ],
+  "metin": "1) İlgili kaynak, iş sözleşmesinin askerlik veya manevra nedeniyle feshedilmesi durumunu düzenleyen İŞ KANUNU Madde 31'dir. Diğer kaynaklar, iş sözleşmesi feshi ile ilgili farklı konuları ele almakta olup, bu sorunun cevabı için uygun değildir.\n\n2) ##begin_quote## \"Muvazzaf askerlik ödevi dışında manevra veya herhangi bir sebeple silah altına alınan veyahut herhangi bir kanundan doğan çalışma ödevi yüzünden işinden ayrılan işçinin iş sözleşmesi işinden ayrıldığı günden başlayarak iki ay sonra işverence feshedilmiş sayılır.\" ##end_quote##\n\n3) Sonuç olarak, askerlik veya manevra nedeniyle işten ayrılan işçinin iş sözleşmesi, işten ayrıldığı günden itibaren iki ay sonra işverence feshedilmiş sayılmaktadır (İŞ KANUNU, Madde 31)."
+ },
+ {
+  "id": 42,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "2004",
+    "Madde 97/a",
+    true
+   ]
+  ],
+  "kaynak": [
+   "2004/Madde 97/a",
+   "2004/Madde 85",
+   "6098/MADDE 208",
+   "2004/Madde 89",
+   "2004/Madde 96",
+   "6183/Madde 66",
+   "6183/Madde 67",
+   "6183/Madde 65",
+   "4721/Madde 776",
+   "6098/MADDE 203"
+  ],
+  "metin": "1) İlgili kaynak, KAYNAK 1'dir çünkü bu kaynak, taşınır malın elinde bulunan kişinin mal sahibi sayılacağını açıkça belirtmektedir. Diğer kaynaklar ise haciz, istihkak iddiaları veya taşınır malın devri gibi konulara odaklanmaktadır ve sorunun cevabını doğrudan vermemektedir.\n\n2) ##begin_quote## \"Bir taşınır malı elinde bulunduran kimse onun maliki sayılır. Borçlu ile üçüncü şahısların taşınır malı birlikte ellerinde bulundurmaları halinde dahi mal borçlu elinde addolunur.\" ##end_quote##\n\n3) Sonuç olarak, borçlu ile başka birinin aynı taşınır malı elinde bulundurmaları durumunda, mal borçlu elinde sayılmaktadır (İCRA VE İFLAS KANUNU, Madde 97/a)."
+ },
+ {
+  "id": 43,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4857",
+    "Madde 21",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4857/Madde 21",
+   "4857/Madde 20",
+   "6356/MADDE 43",
+   "6098/MADDE 393",
+   "6098/MADDE 464",
+   "1700/Madde 14",
+   "6706/MADDE 18",
+   "6356/MADDE 72",
+   "7036/MADDE 3",
+   "6098/MADDE 463"
+  ],
+  "metin": "1) İlgili kaynak, iş sözleşmesinin feshinin geçersizliğine dair mahkeme kararının uygulanması ve işverenin işe iade yükümlülüğü ile ilgili düzenlemeleri içeren KAYNAK 1'dir. Diğer kaynaklar, iş sözleşmesi feshi, sendika itirazları veya genel işçi yükümlülükleri gibi konulara odaklanmakta olup, sorunun özüne doğrudan yanıt vermemektedir.\n\n2) ##begin_quote## \"İşverence geçerli sebep gösterilmediği veya gösterilen sebebin geçerli olmadığı mahkemece veya özel hakem tarafından tespit edilerek feshin geçersizliğine karar verildiğinde, işveren, işçiyi bir ay içinde işe başlatmak zorundadır. İşçiyi başvurusu üzerine işveren bir ay içinde işe başlatmaz ise, işçiye en az dört aylık ve en çok sekiz aylık ücreti tutarında tazminat ödemekle yükümlü olur.\" ##end_quote##\n\n3) Sonuç olarak, mahkeme işe iademe karar verdiyse ve işveren bu sürede işe iade etmezse, işçi tazminat talep edebilir. (İŞ KANUNU, Madde 21)"
+ },
+ {
+  "id": 44,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4857",
+    "Madde 21",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6356/MADDE 51",
+   "6102/MADDE 537",
+   "6102/MADDE 1284",
+   "6100/MADDE 302",
+   "5015/Geçici Madde 8",
+   "5237/Madde 70",
+   "4857/Madde 25",
+   "4857/Madde 21",
+   "5237/Madde 274",
+   "5326/Madde 24"
+  ],
+  "metin": "1) İlgili kaynak, iş sözleşmesinin feshinin geçersizliğine dair mahkeme kararının sonuçlarını düzenleyen KAYNAK 8'dir. Diğer kaynaklar, iş sözleşmesi feshi, tazminat ve işçi hakları ile ilgili konulara değinse de, mahkeme kararının kesinleşmesi sonrası çalıştırılmadığı süre için ücret ve diğer hakların ödenmesi konusunu doğrudan ele almamaktadır.\n\n2) ##begin_quote## \"Kararın kesinleşmesine kadar çalıştırılmadığı süre için işçiye en çok dört aya kadar doğmuş bulunan ücret ve diğer hakları ödenir.\" ##end_quote##\n\n3) Sonuç olarak, mahkeme kararı kesinleşmeden çalışmazsanız, çalıştırılmadığınız süre için ücret ve diğer haklarınızı alabilirsiniz. (İŞ KANUNU, Madde 21)"
+ },
+ {
+  "id": 45,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4857",
+    "Madde 30",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4857/Madde 30",
+   "4857/Madde 29",
+   "4857/Madde 100",
+   "4857/Madde 12",
+   "854/Madde 50",
+   "4857/Madde 1",
+   "657/Madde 53",
+   "193/Madde 31",
+   "6356/MADDE 41",
+   "5378/Madde 14"
+  ],
+  "metin": "1) KAYNAK 1, işverenin engelli işçi çalıştırma yükümlülüğünü ve bu yükümlülüğün nasıl hesaplanacağını açıklayan tek kaynaktır. Diğer kaynaklar, engelli işçi çalıştırma oranı ile ilgili bilgi vermemektedir.\n\n2) ##begin_quote## \"İşverenler, elli veya daha fazla işçi çalıştırdıkları özel sektör işyerlerinde yüzde üç engelli, kamu işyerlerinde ise yüzde dört engelli ve yüzde iki eski hükümlü işçiyi veya 21/6/1927 tarihli ve 1111 sayılı Askerlik Kanunu veya 16/6/1927 tarihli ve 1076 sayılı Yedek Subaylar ve Yedek Askeri Memurlar Kanunu kapsamına giren ve askerlik hizmetini yaparken 12/4/1991 tarihli ve 3713 sayılı Terörle Mücadele Kanununun 21 inci maddesinde sayılan terör olaylarının sebep ve tesiri sonucu malul sayılmayacak şekilde yaralananları meslek, beden ve ruhi durumlarına uygun işlerde çalıştırmakla yükümlüdürler.\" ##end_quote##\n\n3) Bu kapsamda çalıştırılacak işçi sayısının tespitinde belirli ve belirsiz süreli iş sözleşmesine göre ç (İŞ KANUNU, Madde 30)"
+ },
+ {
+  "id": 46,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4857",
+    "Madde 46",
+    true
+   ],
+   [
+    "4857",
+    "Madde 46",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4857/Madde 46",
+   "4857/Madde 55",
+   "657/Madde 99",
+   "4857/Madde 49",
+   "854/Madde 42",
+   "6772/Madde 4",
+   "2429/Madde 2",
+   "4857/Madde 64",
+   "854/Madde 43",
+   "2429/Madde 3"
+  ],
+  "metin": "1) İlgili kaynak, işçilerin tatil günleri ve dinlenme süreleri hakkında bilgi veren İş Kanunu Madde 46'dır. Diğer kaynaklar, tatil ücretleri veya bayram günleri gibi konulara odaklanmakta olup, doğrudan tatil hakkı ile ilgili bilgi sağlamamaktadır.\n\n2) ##begin_quote## \"Bu Kanun kapsamına giren işyerlerinde, işçilere tatil gününden önce 63 üncü maddeye göre belirlenen iş günlerinde çalışmış olmaları koşulu ile yedi günlük bir zaman dilimi içinde kesintisiz en az yirmidört saat dinlenme (hafta tatili) verilir.\" ##end_quote##\n\n3) Sonuç olarak, işçilerin tatil günleri ve dinlenme süreleri, işveren tarafından belirlenen koşullar altında sağlanmaktadır. (İŞ KANUNU, Madde 46)"
+ },
+ {
+  "id": 47,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6284",
+    "Madde 6",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6284/MADDE 6",
+   "6284/MADDE 2",
+   "6284/MADDE 5",
+   "6284/MADDE 20",
+   "5237/Madde 119",
+   "5237/Madde 7",
+   "5237/Madde 311",
+   "4654/Madde 10",
+   "5237/Madde 2",
+   "2521/Madde 1"
+  ],
+  "metin": "1) KAYNAK 1, aile içi şiddet tedbiri uygulanan kişinin silah bulundurması durumunda ceza kanunlarındaki hükümlerin uygulanacağını açıkça belirtmektedir. Diğer kaynaklar, bu konuya doğrudan değinmemekte ve yalnızca genel tanımlar veya farklı konular içermektedir.\n\n2) ##begin_quote## \"Kişinin silah bulundurması, uyuşturucu veya uyarıcı madde kullanmasının suç oluşturması dolayısıyla ya da fiilinin başka bir suç oluşturması nedeniyle; a) Soruşturma ve kovuşturma evresinde koruma tedbirlerine veya denetimli serbestlik tedbirlerine, b) Mahkûmiyet hâlinde ceza veya güvenlik tedbirlerinin infazına ve bu çerçevede uygulanabilecek olan denetimli serbestlik tedbirlerine, ilişkin kanun hükümleri saklıdır.\" ##end_quote##\n\n3) Sonuç olarak, aile içi şiddet tedbiri uygulanan kişinin silah bulundurması suç oluşturuyorsa, ceza kanunlarındaki hükümler uygulanır ve bu durum koruma tedbirlerine veya mahkûmiyet hâlinde ceza veya güvenlik tedbirlerinin infazına etki eder. (AİLENİN KORUNMASI VE KADINA KARŞI ŞİDDETİN ÖNLENMESİNE DAİR KANUN, Madde 6)"
+ },
+ {
+  "id": 48,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "2004",
+    "Madde 26",
+    true
+   ],
+   [
+    "2004",
+    "Madde 31",
+    true
+   ],
+   [
+    "2004",
+    "Madde 26",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5271/Madde 44",
+   "5717/MADDE 19",
+   "5271/Madde 146",
+   "5271/Madde 145",
+   "2004/Madde 34",
+   "2004/Madde 26",
+   "2004/Madde 31",
+   "2004/Madde 30",
+   "9/Madde 24",
+   "2004/Madde 40"
+  ],
+  "metin": "1) İcra ve İflas Kanunu Madde 26, ilamların icrası sırasında zorla icra durumunu açıkça belirtmektedir. Borçlu, taşınmazı işgal etmekte iken icra emrini tutmazsa, ilamın hükmü zorla icra olunur. Bu durum, borçlunun itiraz etmesi veya emri yerine getirmemesi halinde icra müdürünün alacağı önlemleri kapsamaktadır.\n\n2) Ayrıca, İcra ve İflas Kanunu Madde 31'de de benzer bir durum belirtilmektedir: \"Borçlu muhalefet ederse ilamın hükmü zorla icra olunur.\" Bu, ilamların icrası sırasında borçlunun itiraz etmesi durumunda zorla icra yapılacağını göstermektedir.\n\n3) Sonuç olarak, ilamların icrası, borçlunun itiraz etmesi veya icra emrini yerine getirmemesi durumunda zorla icra edilmektedir. (İCRA VE İFLAS KANUNU, Madde 26)"
+ },
+ {
+  "id": 49,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "2004",
+    "Madde 31/a",
+    true
+   ],
+   [
+    "2004",
+    "Madde 31/a",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6102/MADDE 1100",
+   "2709/Madde 152",
+   "6216/MADDE 40",
+   "2004/Madde 31/a",
+   "5271/Madde 5",
+   "6102/MADDE 1384",
+   "6102/MADDE 59",
+   "6102/MADDE 1000",
+   "7326/MADDE 18",
+   "5312/Madde 9"
+  ],
+  "metin": "1) İlgili kaynak, İcra ve İflas Kanunu Madde 31/a'dır. Bu madde, gemiyle ilgili davada mahkemenin kararını gemi siciline bildirme yükümlülüğünü düzenlemektedir. Diğer kaynaklar, gemiyle ilgili davaların mahkeme süreçleri veya diğer hukuki konularla ilgilidir ve bu soruya doğrudan yanıt vermez.\n\n2) ##begin_quote## \"Sicile kayıtlı Türk gemilerine ve bunlarla ilgili aynî haklara ilişkin davalarda davacının lehine hüküm verilirse, mahkeme, davacının istemine gerek kalmaksızın, hükmün tefhimi ile birlikte özetini gemi sicili müdürlüğüne bildirir.\" ##end_quote##\n\n3) Sonuç olarak, gemiyle ilgili davayı kazanmanız durumunda mahkeme, gemi siciline bildirim yapacaktır. (İCRA VE İFLAS KANUNU, Madde 31/a)"
+ },
+ {
+  "id": 50,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6183",
+    "Madde 58",
+    true
+   ],
+   [
+    "2004",
+    "Madde 66",
+    true
+   ],
+   [
+    "2004",
+    "Madde 62",
+    true
+   ],
+   [
+    "2004",
+    "Madde 169",
+    true
+   ],
+   [
+    "2004",
+    "Madde 173",
+    true
+   ],
+   [
+    "7155",
+    "Madde 5",
+    true
+   ],
+   [
+    "7155",
+    "Madde 7",
+    true
+   ],
+   [
+    "6098",
+    "Madde 85",
+    true
+   ],
+   [
+    "2004",
+    "Madde 68/b",
+    true
+   ],
+   [
+    "2004",
+    "Madde 69",
+    true
+   ],
+   [
+    "6183",
+    "Madde 58",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6183/Madde 58",
+   "2004/Madde 62",
+   "2004/Madde 66",
+   "2004/Madde 169",
+   "2004/Madde 173",
+   "7155/MADDE 5",
+   "7155/MADDE 7",
+   "6098/MADDE 85",
+   "2004/Madde 68/b",
+   "2004/Madde 69"
+  ],
+  "metin": "1) KAYNAK 1 - AMME ALACAKLARININ TAHSİL USULÜ HAKKINDA KANUN Madde 58 - Bu kaynak, borcun bir kısmına itiraz ederken borçlunun o kısmın cihet ve miktarını açıkça göstermesi gerektiğini belirtmektedir. Diğer kaynaklar ise genel itiraz prosedürlerini veya farklı konuları ele alarak bu soruya doğrudan yanıt vermemektedir.\n\n2) KAYNAK 3 - İCRA VE İFLAS KANUNU Madde 66 - Bu kaynak, borcun yalnız bir kısmına itirazda bulunulması durumunda takibe, kabul edilen miktar için devam edileceğini ifade etmektedir.\n\n3) KAYNAK 2 - İCRA VE İFLAS KANUNU Madde 62 - Bu kaynak, itirazın genel bildirim süresini ve usulünü düzenlemekle birlikte, kısmi itirazla ilgili özel bir hüküm içermemektedir.\n\n4) KAYNAK 4 - İCRA VE İFLAS KANUNU Madde 169 - Bu kaynak, itirazın mahkemeye bildirilmesi ve satıştan başka icra takip muamelelerini durdurmadığını belirtmektedir.\n\n5) KAYNAK 5 - İCRA VE İFLAS KANUNU Madde 173 - Bu kaynak, borçlu beş gün içinde borcu ödemezse iflas talebinin nasıl yapılacağını düzenlemektedir.\n\n6) KAYNAK 6 - ABONELİK SÖZLEŞMESİNDEN KAYNAKLANAN PARA ALACAKLARINA İLİŞKİN TAKİBİN BAŞLATILMASI USULÜ HAKKINDA KANUN MADDE 5 - Bu kaynak, takip talebinin sisteme kaydedilmesini ve ödeme emrinin düzenlenmesini düzenlemektedir.\n\n7) KAYNAK 7 - ABONELİK SÖZLEŞMESİNDEN KAYNAKLANAN PARA ALACAKLARINA İLİŞKİN TAKİBİN BAŞLATILMASI USULÜ HAKKINDA KANUN MADDE 7 - Bu kaynak, itirazın nasıl yapılacağını ve süresini düzenlemektedir.\n\n8) KAYNAK 8 - TÜRK BORÇLAR KANUNU MADDE 85 - Bu kaynak, birden çok alacaklı ve borçlu durumunu düzenlemektedir.\n\n9) KAYNAK 9 - İCRA VE İFLAS KANUNU Madde 68/b - Bu kaynak, kredi hesap özetlerinin gönderilmesini düzenlemektedir.\n\n10) KAYNAK 10 - İCRA VE İFLAS KANUNU Madde 69 - Bu kaynak, itirazın muvakkaten kaldırılmasına ve borçtan kurtulma davası açılmasına ilişkin hükümleri içermektedir.\n\n##begin_quote## \"Borcun bir kısmına itiraz eden borçlunun o kısmın cihet ve miktarını açıkça göstermesi lazımdır, aksi halde itiraz edilmemiş sayılır.\" ##end_quote##\n\nSonuç olarak, borcun bir kısmına itiraz ederken, itiraz ettiğiniz kısmın cihet ve miktarını açıkça belirtmeniz gerekmektedir. Aksi takdirde, itirazınız geçerli sayılmayacaktır. (AMME ALACAKLARININ TAHSİL USULÜ HAKKINDA KANUN, Madde 58)"
+ },
+ {
+  "id": 51,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "2004",
+    "Madde 79/a",
+    true
+   ]
+  ],
+  "kaynak": [
+   "2004/Madde 79/a",
+   "2004/Madde 79",
+   "6183/Madde 78",
+   "2004/Geçici Madde 19",
+   "4473/Madde 20",
+   "2004/Madde 257",
+   "2004/Madde 83",
+   "5271/Madde 83",
+   "6183/Madde 65",
+   "5237/Madde 167"
+  ],
+  "metin": "1) İcra müdürü, haciz yapılması talep edilen yerin konut olduğunu tespit ederse, bu yerde haciz yapılmasına karar verir ve bu kararı derhal icra mahkemesinin onayına sunar. Mahkeme, dosyanın tevdi edildiği tarihten itibaren en geç üç gün içinde dosya üzerinden yapacağı inceleme sonunda haciz yapılması talep edilen yerin konut olduğunun anlaşılması halinde kararın onaylanmasına kesin olarak karar verir. Bu kararın icra dairesine bildirilmesi üzerine haciz işlemleri yapılır. Haciz yapılması talep edilen yerin konut olmadığının anlaşılması halinde ise mahkeme, konutta haciz yapılmasına dair kararı kesin olarak kaldırır. Bu kararın icra dairesine bildirilmesi üzerine icra müdürü, mevcut haciz talebi hakkında yeniden karar verir. Mahkemenin onaylama kararı üzerine hacze gidilen yerin konut olmadığının anlaşılması halinde hacze devam olunur. Ancak konut olmadığı kabul ed\n\n2) İlgili kaynak, İcra ve İflas Kanunu'nun 79/a maddesidir. Bu madde, konut üzerinde haciz yapılması durumunda özel bir prosedür izlenmesi gerektiğini belirtmektedir. Diğer kaynaklar, haciz işlemleri hakkında genel bilgiler sunmakta olup, konut haczi ile ilgili özel durumları ele almamaktadır.\n\n(KANUN ADI, Madde X)"
+ },
+ {
+  "id": 52,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "2004",
+    "Madde 85",
+    true
+   ],
+   [
+    "2004",
+    "Madde 85",
+    true
+   ]
+  ],
+  "kaynak": [
+   "2004/Madde 85",
+   "2004/Madde 257",
+   "2004/Madde 84",
+   "2004/Madde 132",
+   "2004/Madde 82",
+   "6183/Madde 66",
+   "3402/Madde 43",
+   "2004/Madde 77",
+   "2004/Madde 89",
+   "2004/Madde 33"
+  ],
+  "metin": "1) İlgili kaynak, İcra ve İflas Kanunu Madde 85'tir. Bu madde, borçlunun taşınmaz mallarının haczedilebileceğini açıkça belirtmektedir. Diğer kaynaklar, haciz konusunu ele alsa da, bu madde doğrudan taşınmaz mallarının haczi ile ilgili düzenlemeleri içermektedir.\n\n2) ##begin_quote## \"Borçlunun kendi yedinde veya üçüncü şahısta olan taşınır mallariyle taşınmazlarından ve alacak ve haklarından alacaklının ana, faiz ve masraflar da dahil olmak üzere bütün alacaklarına yetecek miktarı haczolunur; ancak bu miktarı aşacak şekilde haciz yapılamaz.\" ##end_quote##\n\n3) Sonuç olarak, borçlu olan birinin taşınmaz malı haczedilebilir; ancak haciz miktarı, alacaklının ana, faiz ve masraflar dahil olmak üzere bütün alacaklarına yetecek kadar olmalıdır (İCRA VE İFLAS KANUNU, Madde 85)."
+ },
+ {
+  "id": 53,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "2004",
+    "Madde 85",
+    true
+   ],
+   [
+    "2004",
+    "Madde 85",
+    true
+   ]
+  ],
+  "kaynak": [
+   "2004/Madde 85",
+   "2004/Madde 257",
+   "2004/Madde 298",
+   "2004/Madde 82",
+   "2004/Madde 86",
+   "3238/Madde 19",
+   "6183/Madde 70",
+   "2886/Madde 58",
+   "2004/Madde 112",
+   "4636/Madde 13"
+  ],
+  "metin": "1) İcra ve İflas Kanunu Madde 85, borçlunun taşınır mallarının haczedilebilme koşullarını düzenlemektedir. Bu madde, borçlunun kendi yedinde veya üçüncü şahısta olan taşınır mallarının haczedilebileceğini ve haciz miktarının alacaklının ana, faiz ve masraflarını karşılayacak şekilde sınırlı olduğunu belirtmektedir. Diğer kaynaklar, haciz edilemeyecek mallar veya özel durumlar hakkında bilgi vermektedir, bu nedenle bu sorunun cevabı için uygun değildir.\n\n2) ##begin_quote## \"Borçlunun kendi yedinde veya üçüncü şahısta olan taşınır mallariyle taşınmazlarından ve alacak ve haklarından alacaklının ana, faiz ve masraflar da dahil olmak üzere bütün alacaklarına yetecek miktarı haczolunur; ancak bu miktarı aşacak şekilde haciz yapılamaz.\" ##end_quote##\n\n3) Sonuç olarak, borçlunun taşınır malları, alacaklının alacaklarını karşılayacak şekilde haczedilebilir; ancak haciz miktarı, alacaklının ana, faiz ve masraflarını karşılayacak şekilde sınırlıdır. (İCRA VE İFLAS KANUNU, Madde 85)"
+ },
+ {
+  "id": 54,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "634",
+    "Madde 22",
+    true
+   ],
+   [
+    "634",
+    "Madde 20",
+    true
+   ],
+   [
+    "634",
+    "Madde 25",
+    true
+   ],
+   [
+    "634",
+    "Madde 72",
+    true
+   ],
+   [
+    "634",
+    "Madde 19",
+    true
+   ],
+   [
+    "634",
+    "Madde 42",
+    true
+   ],
+   [
+    "634",
+    "Madde 43",
+    true
+   ],
+   [
+    "634",
+    "Madde 1",
+    true
+   ],
+   [
+    "634",
+    "Madde 39",
+    true
+   ],
+   [
+    "634",
+    "Madde 48",
+    true
+   ],
+   [
+    "634",
+    "Madde 22",
+    true
+   ]
+  ],
+  "kaynak": [
+   "634/Madde 20",
+   "634/Madde 48",
+   "634/Madde 72",
+   "634/Madde 19",
+   "634/Madde 22",
+   "634/Madde 42",
+   "634/Madde 25",
+   "634/Madde 43",
+   "634/Madde 1",
+   "634/Madde 39"
+  ],
+  "metin": "1) KAYNAK 5 (Madde 22) - Kat malikinin borcundan ve gecikme tazminatından sorumlu tutulması ve diğer kat maliklerinin müştereken ve müteselsilen sorumluluğu.\n\n2) KAYNAK 1 (Madde 20) - Kat maliklerinin gider ve avans paylarını ödemekle yükümlü olması ve ödemeyenlerin diğer kat maliklerinden her biri veya yönetici tarafından takip edilebilmesi.\n\n3) KAYNAK 7 (Madde 25) - Kat malikinin borçlarını yerine getirmemesi durumunda diğer kat maliklerinin mülkiyet hakkının devredilmesini talep etme hakkı.\n\n4) KAYNAK 3 (Madde 72) - Toplu yapı kapsamındaki ortak giderlerin karşılanması ve kat maliklerinin yükümlülükleri.\n\n5) KAYNAK 4 (Madde 19) - Kat maliklerinin anagayrimenkulün bakımını koruma yükümlülüğü.\n\n6) KAYNAK 6 (Madde 42) - Kat maliklerinin ortak yerlerde değişiklik yapma yetkisi.\n\n7) KAYNAK 8 (Madde 43) - Yenilik ve ilavelerin giderine katılmayan kat maliklerinin durumu.\n\n8) KAYNAK 9 (Madde 1) - Kat mülkiyeti ve bağımsız mülkiyet hakları.\n\n9) KAYNAK 10 (Madde 39) - Yöneticinin hesap verme yükümlülüğü.\n\n10) KAYNAK 2 (Madde 48) - Anagayrimenkulün harabolması durumunda bildirim yükümlülüğü.\n\n##begin_quote## Kat malikinin, 20 nci madde uyarınca payına düşecek gider ve avans borcundan ve gecikme tazminatından, bağımsız bölümlerin birinde kira akdine, oturma (sükna) hakkına veya başka bir sebebe dayanarak devamlı bir şekilde faydalananlar da müştereken ve müteselsilen sorumludur. Ancak, kiracının sorumluluğu ödemekle yükümlü olduğu kira miktarı ile sınırlı olup, yaptığı ödeme kira borcundan düşülür. Kat malikinin borcu bu yolla da alınamazsa, mahkemece tesbit edilen borcunu ödemiyen kat malikinin bağımsız bölümü üzerine, varsa yöneticinin yoksa kat maliklerinden birinin yazılı istemiyle bu borç tutarı için, diğer kat malikleri lehine kanuni ipotek hakkı tescil edilir. ##end_quote##\n\nSonuç olarak, kat malikinin borcunu ödememesi durumunda diğer kat maliklerinin müştereken ve müteselsilen sorumluluğu doğar ve borcun tahsili için kanuni ipotek hakkı tescil edilebilir. (KAT MÜLKİYETİ KANUNU, Madde 22)"
+ },
+ {
+  "id": 55,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6098",
+    "Madde 344",
+    true
+   ],
+   [
+    "6098",
+    "Madde 345",
+    true
+   ],
+   [
+    "193",
+    "Madde 73",
+    true
+   ],
+   [
+    "6098",
+    "Madde 344",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6098/MADDE 362",
+   "6098/MADDE 344",
+   "2828/Geçici Madde 7",
+   "6098/MADDE 345",
+   "6098/MADDE 299",
+   "6098/MADDE 313",
+   "6098/MADDE 314",
+   "193/Madde 73",
+   "6098/MADDE 342",
+   "6098/MADDE 312"
+  ],
+  "metin": "1) KAYNAK 2 - Türk Borçlar Kanunu Madde 344, kira bedelinin belirlenmesi ile ilgili önemli düzenlemeleri içermektedir. Bu madde, uzun süreli kira sözleşmelerinde kira bedelinin nasıl belirleneceğini ve tüketici fiyat endeksine göre nasıl değişebileceğini açıklamaktadır.\n\n2) KAYNAK 4 - Türk Borçlar Kanunu Madde 345, kira bedelinin belirlenmesine ilişkin dava açma süreleri ve mahkemece belirlenecek kira bedelinin geçerliliği konusunu düzenlemektedir.\n\n3) KAYNAK 8 - Gelir Vergisi Kanunu Madde 73, kira bedelinin en az emsal kira bedeli olmasını ve vergi amaçlı olarak belirlenmesini düzenlemektedir.\n\nBu kaynaklar, kira bedelinin belirlenmesi ile ilgili farklı yönleri ele alarak, kiracının ve kiraya verenin haklarını korumaya yönelik düzenlemeleri içermektedir. (TÜRK BORÇLAR KANUNU, Madde 344)"
+ },
+ {
+  "id": 56,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6098",
+    "Madde 414",
+    true
+   ],
+   [
+    "6098",
+    "Madde 414",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6098/MADDE 414",
+   "4857/Madde 37",
+   "4857/Madde 38",
+   "6098/MADDE 462",
+   "6098/MADDE 413",
+   "6098/MADDE 411",
+   "4857/Madde 27",
+   "6098/MADDE 407",
+   "6098/MADDE 415",
+   "4857/Madde 24"
+  ],
+  "metin": "1) İlgili kaynak, işverenin işçiye harcamaları nasıl ödemesi gerektiğini açıklayan Türk Borçlar Kanunu Madde 414'tür. Diğer kaynaklar, işçi ücretleri, iş arama izni veya iş sözleşmesi feshi gibi konulara odaklandığı için bu soruyla doğrudan ilgili değildir.\n\n2) ##begin_quote## \"İşveren, işin görülmesinin gerektirdiği her türlü harcama ile işçiyi işyeri dışında çalıştırdığı takdirde, geçimi için zorunlu olan harcamaları da ödemekle yükümlüdür.\" ##end_quote##\n\n3) İşveren, işçiye yaptığı harcamaları, işin görülmesi için gerekli olan harcamalar ve geçimi için zorunlu harcamaları ödemekle yükümlüdür. Ayrıca, yazılı olarak yapılmış bir hizmet veya toplu iş sözleşmesinde, bizzat işçi tarafından karşılanması kararlaştırılan harcamaların, işçiye götürü biçimde günlük, haftalık veya aylık olarak ödenmesi öngörülebilir. (TÜRK BORÇLAR KANUNU, Madde 414)"
+ },
+ {
+  "id": 57,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "634",
+    "Madde 21",
+    true
+   ]
+  ],
+  "kaynak": [
+   "634/Madde 21",
+   "2920/Madde 77",
+   "6102/MADDE 1454",
+   "6102/MADDE 1463",
+   "634/Madde 20",
+   "6102/MADDE 1497",
+   "6102/MADDE 1490",
+   "6102/MADDE 1022",
+   "6102/MADDE 1494",
+   "6102/MADDE 1460"
+  ],
+  "metin": "1) KAYNAK 1, kat mülkiyeti kanunu kapsamında apartman sigortası ve kat maliklerinin kendi bağımsız bölümlerini sigorta ettirme hakkını düzenlemektedir. Diğer kaynaklar, sigorta sözleşmeleri veya ticari hukukla ilgili genel hükümler içermekte olup, apartman sigortası ile ilgili spesifik bir düzenleme sunmamaktadır.\n\n2) ##begin_quote## \"Kat malikleri anagayrimenkulün sigortasıyla giderilemeyecek olan zararlarını karşılamak üzere, kendi bağımsız bölümlerini ayrıca kendi ad ve hesaplarına sigorta ettirebilirler; bu halde alınacak sigorta bedeli, anagayrimenkulün sigorta bedelindeki payları da ayrıca saklı kalmak üzere, yalnız kendilerine ait.\" ##end_quote##\n\n3) Sonuç olarak, apartmandaki dairenizi kendi adıma sigorta ettirirseniz, sigorta bedeli sizin adınıza saklanacaktır (KAT MÜLKİYETİ KANUNU, Madde 21)."
+ },
+ {
+  "id": 58,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "634",
+    "Madde 25",
+    true
+   ]
+  ],
+  "kaynak": [
+   "634/Madde 25",
+   "634/Madde 26",
+   "634/Madde 20",
+   "634/Madde 33",
+   "634/Madde 40",
+   "634/Madde 22",
+   "634/Madde 31",
+   "634/Madde 42",
+   "634/Madde 17",
+   "634/Madde 32"
+  ],
+  "metin": "1) İlgili kaynak KAYNAK 1'dir, çünkü bu madde kat maliklerinin borçlarını yerine getirmemesi durumunda mahkemeye başvurup mülkiyet hakkının devri talep edebileceğini düzenlemektedir. Diğer kaynaklar bu konuya doğrudan değinmemektedir.\n\n2) ##begin_quote## \"Kat maliklerinden biri bu kanuna göre kendisine düşen borçları ve yükümleri yerine getirmemek suretiyle diğer kat maliklerinin haklarını, onlar için çekilmez hale gelecek derecede ihlal ederse, onlar, o kat malikinin müstakil bölümü üzerindeki mülkiyet hakkının kendilerine devredilmesini hakimden istiyebilirler.\" ##end_quote##\n\n3) Sonuç olarak, kat maliklerinden biri borçlarını yerine getirmemesi durumunda, diğer kat malikleri mahkemeye başvurarak mülkiyet hakkının devrini talep edebilirler (KAT MÜLKİYETİ KANUNU, Madde 25)."
+ },
+ {
+  "id": 59,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4721",
+    "Madde 72",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4721/Madde 72",
+   "5253/Madde 2",
+   "4688/Madde 8",
+   "5253/Madde 30",
+   "5253/Madde 8",
+   "5253/Madde 12",
+   "5253/Madde 25",
+   "3224/Madde 35",
+   "5253/Madde 1",
+   "4721/Madde 56"
+  ],
+  "metin": "1) Dernekler zorunlu organları dışında oluşturdukları organların nitelikleri, bu organlara zorunlu organların görev, yetki ve sorumlulukları devredilemez. (TÜRK MEDENİ KANUNU, Madde 72)"
+ },
+ {
+  "id": 60,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4721",
+    "Madde 241",
+    true
+   ],
+   [
+    "4721",
+    "Madde 241",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4721/Madde 230",
+   "4721/Madde 273",
+   "4721/Madde 241",
+   "4721/Madde 214",
+   "4721/Madde 269",
+   "2004/Madde 85",
+   "4721/Madde 268",
+   "4721/Madde 260",
+   "6183/Madde 62",
+   "4721/Madde 210"
+  ],
+  "metin": "1) KAYNAK 3, borçlu eşin malvarlığına ulaşma hakkını düzenleyen Türk Medeni Kanunu'nun 241. maddesidir. Diğer kaynaklar, mal rejimi, borçlar veya icra süreçleri hakkında bilgi verirken, doğrudan borçlu eşin malvarlığına erişim hakkını açıklamamaktadır. Bu nedenle, yalnızca KAYNAK 3'ü dikkate aldım.\n\n2) ##begin_quote## \"Tasfiye sırasında, borçlu eşin malvarlığı veya terekesi, katılma alacağını karşılamadığı takdirde, alacaklı eş veya mirasçıları, edinilmiş mallarda hesaba katılması gereken karşılıksız kazandırmaları bunlardan yararlanan üçüncü kişilerden eksik kalan miktarla sınırlı olarak isteyebilir.\" ##end_quote##\n\n3) Sonuç olarak, borçlu eşin malvarlığına ulaşmak için, alacaklı eş veya mirasçılar, borçlu eşin malvarlığının katılma alacağını karşılamadığı durumlarda, edinilmiş mallarda hesaba katılması gereken karşılıksız kazandırmaları talep edebilirler (TÜRK MEDENİ KANUNU, Madde 241)."
+ },
+ {
+  "id": 61,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4721",
+    "Madde 313",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5718/MADDE 18",
+   "4721/Madde 313",
+   "4721/Madde 315",
+   "4721/Madde 314",
+   "5490/MADDE 30",
+   "4721/Madde 306",
+   "4721/Madde 305",
+   "4721/Madde 308",
+   "5490/MADDE 29",
+   "4721/Madde 307"
+  ],
+  "metin": "1) Evlât edinme için gerekli şartlar Türk Medeni Kanunu'nun ilgili maddelerinde düzenlenmiştir. Evlât edinme, evlât edinenin altsoyunun açık muvafakatiyle ergin veya kısıtlı aşağıdaki hallerde mümkündür:\n\n- Bedensel veya zihinsel engeli sebebiyle sürekli olarak yardıma muhtaç ve evlât edinen tarafından en az beş yıldan beri bakılıp gözetilmekte ise,\n- Evlât edinen tarafından, küçükken en az beş yıl süreyle bakılıp gözetilmiş ve eğitilmiş ise,\n- Diğer haklı sebepler mevcut ve evlât edinilen, en az beş yıldan beri evlât edinen ile aile hâlinde birlikte yaşamakta ise.\n\nEvlâtlık, evlât edinenin mirasçısı olur ve evlâtlık küçük ise evlât edinenin soyadını alır. Evli bir kimse ancak eşinin rızasıyla evlât edinilebilir.\n\n2) Ayrıca, bir küçüğün evlât edinilmesi, evlât edinen tarafından bir yıl süreyle bakılmış ve eğitilmiş olması koşuluna bağlıdır. Evlât edinmenin her hâlde küçüğün yararına bulunması ve evlât edinenin diğer çocuklarının yararlarının hakkaniyete aykırı bir biçimde zedelenmemesi de gerekir.\n\n3) Evlât edinilenin, evlât edinenden en az onsekiz yaş küçük olması şarttır. Ayırt etme gücüne sahip olan küçük, rızası olmadıkça evlât edinilemez.\n\n4) Evli olmayan kişi otuz yaşını doldurmuş ise tek başına evlât edinebilir. Otuz yaşını doldurmuş olan eş, diğer eşin ayırt etme gücünden sürekli olarak yoksunluğu veya iki yılı aşkın süreden beri nerede olduğunun bilinmemesi ya da mahkeme kararıyla iki yılı aşkın süreden beri eşinden ayrı yaşamakta olması yüzünden birlikte evlât edinmesinin mümkün olmadığını ispat etmesi hâlinde, tek başına evlât edinebilir.\n\n5) Evlât edinme kararı, evlât edinenin oturma yeri; birlikte evlât edinmede eşlerden birinin oturma yeri mahkemesince verilir. Mahkeme kararıyla birlikte evlâtlık ilişkisi kurulmuş olur.\n\n6) Evlât edinme ile ilgili kayıtlar, belgeler ve bilgiler mahkeme kararı olmadıkça veya evlâtlık istemedikçe hiçbir şekilde açıklanamaz.\n\n(TÜRK MEDENİ KANUNU, Madde 313)"
+ },
+ {
+  "id": 62,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "4721",
+    "Madde 313",
+    true
+   ],
+   [
+    "4721",
+    "Madde 313",
+    true
+   ]
+  ],
+  "kaynak": [
+   "4721/Madde 313",
+   "4721/Madde 305",
+   "4721/Madde 306",
+   "4721/Madde 308",
+   "4721/Madde 307",
+   "5490/MADDE 29",
+   "4721/Madde 315",
+   "4721/Madde 314",
+   "5718/MADDE 18",
+   "2022/Madde 2"
+  ],
+  "metin": "1) Engelli birini evlât edinmek için, evlât edinen tarafından en az beş yıldan beri bakılıp gözetilmekte olması gerekmektedir. Bu durum, Türk Medeni Kanunu'nun 313. maddesinde açıkça belirtilmiştir.\n\n2) Diğer kaynaklar, evlât edinme ile ilgili genel hükümleri içermekte olup, engelli çocukların evlât edinilmesi ile ilgili özel koşulları düzenlememektedir. Bu nedenle, yalnızca KAYNAK 1'deki düzenleme bu soruya doğrudan yanıt vermektedir.\n\n3) Sonuç olarak, engelli bir çocuğu evlât edinmek için en az beş yıl süreyle bakılıp gözetilmekte olması gerekmektedir. (TÜRK MEDENİ KANUNU, Madde 313)"
+ },
+ {
+  "id": 63,
+  "durum": "SUSKUNLUK",
+  "atif": [],
+  "kaynak": [
+   "4721/Madde 450",
+   "4721/Madde 440",
+   "4721/Madde 454",
+   "4721/Madde 444",
+   "4721/Madde 464",
+   "4721/Madde 398",
+   "4721/Madde 443",
+   "5237/Madde 53",
+   "4721/Madde 427",
+   "4721/Madde 402"
+  ],
+  "metin": "Verilen kaynaklarda bu konuyu düzenleyen madde bulunmuyor."
+ },
+ {
+  "id": 64,
+  "durum": "KESIK",
+  "atif": [],
+  "kaynak": [
+   "4721/Madde 400",
+   "4721/Madde 398",
+   "4721/Madde 402",
+   "4721/Madde 399",
+   "4721/Madde 401",
+   "4721/Madde 463",
+   "4721/Madde 445",
+   "4721/Madde 450",
+   "4721/Madde 449",
+   "4721/Madde 416"
+  ],
+  "metin": ""
+ },
+ {
+  "id": 65,
+  "durum": "KESIK",
+  "atif": [],
+  "kaynak": [
+   "4721/Madde 409",
+   "4721/Madde 406",
+   "4721/Madde 475",
+   "4721/Madde 405",
+   "4721/Madde 432",
+   "6769/MADDE 131",
+   "4721/Madde 474",
+   "6112/MADDE 11",
+   "5237/Madde 34",
+   "4721/Madde 408"
+  ],
+  "metin": ""
+ },
+ {
+  "id": 66,
+  "durum": "KESIK",
+  "atif": [],
+  "kaynak": [
+   "4721/Madde 425",
+   "4721/Madde 438",
+   "4721/Madde 424",
+   "4721/Madde 423",
+   "4721/Madde 422",
+   "4721/Madde 416",
+   "4721/Madde 421",
+   "4721/Madde 410",
+   "4721/Madde 481",
+   "4721/Madde 491"
+  ],
+  "metin": ""
+ },
+ {
+  "id": 67,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6098",
+    "Madde 35",
+    true
+   ],
+   [
+    "6098",
+    "Madde 35",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6098/MADDE 35",
+   "6100/MADDE 285",
+   "4721/Madde 120",
+   "4721/Madde 991",
+   "6098/MADDE 295",
+   "4721/Madde 173",
+   "2918/Madde 96",
+   "6098/MADDE 39",
+   "5312/Madde 7",
+   "6100/MADDE 124"
+  ],
+  "metin": "1) KAYNAK 1, yanılma durumunda tazminat talebinin koşullarını düzenleyen Türk Borçlar Kanunu'nun 35. maddesidir. Diğer kaynaklar, yanılma ve tazminat konusunu ele almadığı için bu soruya yanıt vermede uygun değildir.\n\n2) ##begin_quote## \"Yanılan, yanılmasında kusurlu ise, sözleşmenin hükümsüzlüğünden doğan zararı gidermekle yükümlüdür. Ancak, diğer taraf yanılmayı biliyor veya bilmesi gerekiyorsa, tazminat istenemez.\" ##end_quote##\n\n3) Sonuç olarak, eğer karşı taraf yanılmayı biliyorsa, tazminat talep edilemez. (TÜRK BORÇLAR KANUNU, Madde 35)"
+ },
+ {
+  "id": 68,
+  "durum": "KESIK",
+  "atif": [
+   [
+    "4538",
+    "Madde 4",
+    true
+   ],
+   [
+    "4538",
+    "Madde 5",
+    true
+   ],
+   [
+    "4538",
+    "Madde 7",
+    true
+   ],
+   [
+    "5083",
+    "Madde 1",
+    true
+   ],
+   [
+    "213",
+    "Madde 215",
+    true
+   ],
+   [
+    "",
+    "Madde 9",
+    false
+   ],
+   [
+    "3516",
+    "Madde 6",
+    true
+   ],
+   [
+    "4538",
+    "Madde 7",
+    true
+   ],
+   [
+    "4538",
+    "Madde 4",
+    true
+   ],
+   [
+    "6102",
+    "Madde 69",
+    true
+   ]
+  ],
+  "kaynak": [
+   "5083/Madde 1",
+   "213/Madde 215",
+   "4538/Madde 5",
+   "5684/GEÇİCİ MADDE 9",
+   "4538/Madde 7",
+   "3516/Madde 6",
+   "5627/GEÇİCİ MADDE 7",
+   "5686/GEÇİCİ MADDE 4",
+   "4538/Madde 4",
+   "6102/MADDE 69"
+  ],
+  "metin": "1) KAYNAK 9 - EURO'NUN HUKUKİ ARAÇLARA ETKİSİ İLE AKARYAKIT TÜKETİM VERGİSİ KANUNUNDA DEĞİŞİKLİK YAPILMASI HAKKINDA KANUN Madde 4\n\n2) KAYNAK 3 - EURO'NUN HUKUKİ ARAÇLARA ETKİSİ İLE AKARYAKIT TÜKETİM VERGİSİ KANUNUNDA DEĞİŞİKLİK YAPILMASI HAKKINDA KANUN Madde 5\n\n3) KAYNAK 5 - EURO'NUN HUKUKİ ARAÇLARA ETKİSİ İLE AKARYAKIT TÜKETİM VERGİSİ KANUNUNDA DEĞİŞİKLİK YAPILMASI HAKKINDA KANUN Madde 7\n\n4) KAYNAK 1 - TÜRKİYE CUMHURİYETİ DEVLETİNİN PARA BİRİMİ HAKKINDA KANUN Madde 1\n\n5) KAYNAK 2 - VERGİ USUL KANUNU Madde 215\n\n6) KAYNAK 4 - SİGORTACILIK KANUNU GEÇİCİ MADDE 9\n\n7) KAYNAK 6 - ÖLÇÜLER VE AYAR KANUNU Madde 6\n\n8) KAYNAK 7 - ENERJİ VERİMLİLİĞİ KANUNU GEÇİCİ MADDE 7\n\n9) KAYNAK 8 - JEOTERMAL KAYNAKLAR VE DOĞAL MİNERALLİ SULAR KANUNU GEÇİCİ MADDE 4\n\n10) KAYNAK 10 - TÜRK TİCARET KANUNU MADDE 69\n\n##begin_quote## \"Kanunlarda ve diğer mevzuatta ulusal para birimlerine yapılan bütün göndermeler, ulusal paraların tedavülden kaldırıldıkları tarihten itibaren, Avrupa Birliği tarafından geri dönülmez şekilde sabitlenerek belirlenen ve Türkiye Cumhuriyet Merkez Bankası tarafından da ilan edilen değişim oranı uygulanarak EURO'ya yapılmış olarak kabul edilir.\" ##end_quote##\n\n##begin_quote## \"EURO'nun kullanıma girmesiyle, hukuki araçlarda ECU'nun 3 üncü maddenin (b) bendinde yapılan tanımına gönderme yapıldığı takdirde, ECU bire bir oranında EURO'ya dönüşür.\" ##end_quote##\n\n##begin_quote## \"Sözleşmelerin ve diğer hukuki işlemlerin devamlılığı\" ##end_quote##\n\n##begin_quote## \"EURO'nun kullanıma girmesi veya ulusal para birimlerinin tedavülden kaldırılarak tek para sistemine dahil Avrupa Birliğine üye devletlerde EURO'nun tek para birimi olma niteliğini kazanması veya ulusal para birimi ya da ECU için belirlenen faiz oranının veya oran belirleme yönteminin değişmesi, mevcut sözleşmenin veya diğer hukuki işlemlerin taraflarından birine, sözleşmeyi veya hukuki işlemi tek taraflı olarak değiştirme veya fesih hakkını vermez.\" ##end_quote##\n\n##begin_quote## \"Bu Kanunun kapsamında; a) Ulusal para birimlerinin EURO'ya dönüştürülmesine ilişkin işlemler ile bu işlemlerin yapılması sırasında her ne nam altında olursa olsun lehe alınan paralar hakkında 13.7.1956 tarihli ve 6802 sayılı Gider Vergileri Kanunu hükümleri, b) EURO'nun kullanıma girdiği tarihten önce veya sonraki dönemde ulusal para birimi cinsinden akdedilmiş sözleşmeler ile gerçekleştirilmiş diğer hukuki işlemlerde ulusal para birimine, komisyon, faiz ve diğer masraflara gönderme yapan hükümlerin EURO cinsinden değiştirilmesi için düzenlenecek kağıtlar hakkında 1.7.1964 tarihli ve 488 sayılı Damga Vergisi Kanunu ile 2.7.1964 tarihli ve 492 sayılı Harçlar Kanunu hükümleri, uygulanmaz.\" ##end_quote##\n\n##begin_quote## \"Resmi ve özel sözleşmeler, her türlü evrak, belge ve ilanlar ile miktar belirten etiketlerde ve kanunlara göre tutulan defterlerde, uluslararası birimlerin kullanılması zorunludur.\" ##end_quote##\n\n##begin_quote## \"Yılsonu finansal tablolar; a) Türkiye Muhasebe Standartlarına uyularak düzenlenmeli, b) Açık ve anlaşılır olmalı, c) Düzenli bir işletme faaliyeti akışının gerekli kıldığı süre içinde çıkarılmalıdır.\" ##end_quote##\n\n##begin_quote## \"Türkiye Cumhuriyeti Devletinin para birimi Yeni Türk Lirasıdır. Yeni Türk Lirasının alt birimi Yeni Kuruştur. Bir Yeni Türk Lirası (YTL) yüz Yeni Kuru"
+ },
+ {
+  "id": 69,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6098",
+    "Madde 139",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6098/MADDE 139",
+   "2004/Madde 200",
+   "6098/MADDE 143",
+   "6098/MADDE 152",
+   "6098/MADDE 144",
+   "6102/MADDE 242",
+   "6098/MADDE 145",
+   "6098/MADDE 150",
+   "6362/MADDE 78",
+   "6098/MADDE 142"
+  ],
+  "metin": "1) KAYNAK 1, zamanaşımına uğramış alacakların takas edilebilmesi koşullarını açıkça belirtmektedir. Diğer kaynaklar, takasın genel kuralları veya farklı konularla ilgili olduğundan, bu soruya doğrudan yanıt vermezler.\n\n2) ##begin_quote## \"Zamanaşımına uğramış bir alacağın takası, ancak takas edilebileceği anda henüz zamanaşımına uğramamış olması koşuluyla ileri sürülebilir.\" ##end_quote##\n\n3) Sonuç olarak, zamanaşımına uğramış bir alacakla takas yapılamaz; ancak takas edilebileceği anda henüz zamanaşımına uğramamış olması koşuluyla ileri sürülebilir. (TÜRK BORÇLAR KANUNU, Madde 139)"
+ },
+ {
+  "id": 70,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6098",
+    "Madde 144",
+    true
+   ],
+   [
+    "6098",
+    "Madde 144",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6098/MADDE 143",
+   "6098/MADDE 139",
+   "6098/MADDE 144",
+   "2004/Madde 200",
+   "6362/MADDE 78",
+   "5393/Madde 71",
+   "6102/MADDE 242",
+   "6362/MADDE 77",
+   "5302/Madde 53",
+   "6098/MADDE 257"
+  ],
+  "metin": "1) KAYNAK 3 - Türk Borçlar Kanunu Madde 144, takas işlemlerinde hangi tür alacakların geçerli olduğunu açıkça belirtmektedir. Diğer kaynaklar, takasın genel koşullarını veya özel durumları ele alsa da, alacakların türü konusunda spesifik bilgi sunmamaktadır.\n\n2) ##begin_quote## \"Aşağıdaki alacaklar takas haklarının doğumundan sonra, ancak alacaklıların rızasıyla takas edilebilir: 1. Tevdi edilmiş eşyanın geri verilmesine veya bedeline ilişkin alacaklar. 2. Haksız olarak alınmış veya aldatma sonucunda alıkonulmuş eşyanın geri verilmesine veya bedeline ilişkin alacaklar. 3. Nafaka ve işçi ücreti gibi, borçlunun ve ailesinin bakımı için zorunlu olup, özel niteliği gereği, doğrudan alacaklıya verilmesi gereken alacaklar.\" ##end_quote##\n\n3) Sonuç olarak, takas işlemlerinde geçerli olan alacaklar, alacaklıların rızasıyla belirli türlerdeki alacaklardır (TÜRK BORÇLAR KANUNU, Madde 144)."
+ },
+ {
+  "id": 71,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6098",
+    "Madde 214",
+    true
+   ],
+   [
+    "6098",
+    "Madde 214",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6098/MADDE 266",
+   "6098/MADDE 214",
+   "6098/MADDE 229",
+   "2004/Madde 99",
+   "6098/MADDE 217",
+   "2004/Madde 358",
+   "3628/Madde 22",
+   "6183/Madde 66",
+   "6098/MADDE 129",
+   "2521/Madde 8"
+  ],
+  "metin": "1) İlgili kaynak, Türk Borçlar Kanunu Madde 214'tür. Bu madde, satış sözleşmesi sırasında malın üçüncü bir kişi tarafından alıcının elinden alınması durumunda satıcının sorumluluğunu düzenlemektedir. Diğer kaynaklar, satış sözleşmesinin diğer yönlerini ele alsa da, bu spesifik durumu düzenleyen bir hüküm içermemektedir.\n\n2) ##begin_quote## \"Satış sözleşmesinin kurulduğu sırada var olan bir hak dolayısıyla, satılanın tamamı veya bir kısmı bir üçüncü kişi tarafından alıcının elinden alınırsa satıcı, bundan dolayı alıcıya karşı sorumlu olur.\" ##end_quote##\n\n3) Sonuç olarak, malın üçüncü bir kişi tarafından elinizden alınması durumunda, satıcıdan bu durumun sorumluluğunu talep edebilirsiniz. (TÜRK BORÇLAR KANUNU, Madde 214)"
+ },
+ {
+  "id": 72,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6098",
+    "Madde 230",
+    true
+   ],
+   [
+    "6098",
+    "Madde 230",
+    true
+   ]
+  ],
+  "kaynak": [
+   "7223/MADDE 19",
+   "5300/Madde 21",
+   "5300/Madde 15",
+   "6502/MADDE 11",
+   "6502/MADDE 15",
+   "7223/MADDE 10",
+   "6769/MADDE 54",
+   "6098/MADDE 230",
+   "7223/MADDE 9",
+   "7223/MADDE 21"
+  ],
+  "metin": "1) KAYNAK 8, Türk Borçlar Kanunu Madde 230, ürünün ayıplı parçaları ile ilgili geri dönüş haklarını düzenlemektedir. Bu madde, birden çok mal veya parçadan oluşan bir malın bazıları ayıplı çıkması durumunda, geri dönüş hakkının yalnızca ayıplı parçalar için kullanılacağını belirtmektedir. Ancak, ayıplı parçanın diğerlerinden ayrılması mümkün değilse, geri dönüş hakkı satılanın tamamını kapsar.\n\n2) Bu nedenle, ürününüzün eklentileri ayıplıysa, ana ürün için geri dönüş yapmanız mümkün değildir; yalnızca ayıplı parçalar için geri dönüş hakkı kullanılabilir. Ancak, ayıplı parçanın diğerlerinden ayrılması mümkün değilse, geri dönüş hakkı tüm ürünü kapsar.\n\n(TÜRK BORÇLAR KANUNU, Madde 230)"
+ },
+ {
+  "id": 73,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6356",
+    "Madde 13",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6356/MADDE 13",
+   "634/Madde 30",
+   "1136/Madde 116",
+   "1512/Madde 177",
+   "4688/Madde 10",
+   "2797/Madde 41",
+   "4054/Madde 51",
+   "2004/Madde 221",
+   "6102/MADDE 418",
+   "2797/Geçici Madde 16"
+  ],
+  "metin": "İlgili kaynak, KAYNAK 1'dir çünkü bu kaynak, ilk toplantıda yeter sayı sağlanamaması durumunda ikinci toplantının ne zaman yapılacağına dair açık bir düzenleme içermektedir. Diğer kaynaklar ya farklı konulara odaklanmakta ya da yeter sayı ile ilgili farklı hükümler içermektedir.\n\n##begin_quote## \"İlk toplantıda yeter sayı sağlanamazsa ikinci toplantı en çok on beş gün sonraya bırakılır.\" ##end_quote##\n\nSonuç olarak, ilk toplantıda yeter sayı sağlanamazsa ikinci toplantı en geç on beş gün sonra yapılmalıdır. (SENDİKALAR VE TOPLU İŞ SÖZLEŞMESİ KANUNU, Madde 13)"
+ },
+ {
+  "id": 74,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "634",
+    "Madde 14",
+    true
+   ],
+   [
+    "634",
+    "Madde 14",
+    true
+   ]
+  ],
+  "kaynak": [
+   "634/Madde 14",
+   "634/Madde 28",
+   "634/Madde 53",
+   "634/Madde 51",
+   "634/Madde 10",
+   "634/Madde 35",
+   "634/Madde 62",
+   "634/Madde 70",
+   "634/Geçici Madde 3",
+   "634/Madde 5"
+  ],
+  "metin": "1) KAYNAK 1, Kat Mülkiyeti Kanunu Madde 14, kat mülkiyetine geçişte yönetim planının zorunlu olup olmadığını açıkça belirtmektedir. Diğer kaynaklar, yönetim planının genel düzenlemeleri veya görevleri hakkında bilgi verirken, geçiş sürecinde yönetim planının gerekliliği konusunda doğrudan bir açıklama içermemektedir.\n\n2) ##begin_quote## \"Kat mülkiyetine geçişte ayrıca yönetim plânı istenmez.\" ##end_quote##\n\n3) Sonuç olarak, kat mülkiyetine geçişte yönetim planı yapılması zorunlu değildir. (KAT MÜLKİYETİ KANUNU, Madde 14)"
+ },
+ {
+  "id": 75,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "634",
+    "Madde 53",
+    true
+   ],
+   [
+    "634",
+    "Madde 53",
+    true
+   ]
+  ],
+  "kaynak": [
+   "634/Madde 53",
+   "634/Madde 14",
+   "634/Madde 52",
+   "634/Madde 51",
+   "634/Madde 2",
+   "4721/Madde 726",
+   "634/Madde 55",
+   "634/Madde 50",
+   "634/Madde 13",
+   "634/Madde 3"
+  ],
+  "metin": "1) İlgili kaynak, Kat Mülkiyeti Kanunu Madde 53'tür. Bu madde, henüz kat mülkiyetine geçilmemiş, eski tarihli irtifak hakkı bulunan bir binanın yönetiminde hangi kanun hükümlerinin uygulanacağını açıkça belirtmektedir. Diğer kaynaklar, kat mülkiyetinin kurulması, tescili veya tanımları ile ilgili konuları ele alırken, yönetim hususunu doğrudan düzenleyen bir hüküm içermemektedir.\n\n2) ##begin_quote## \"Bu Kanun yürürlüğe girdiği tarihten önce bir gayrimenkulün paydaşlarından birinin o gayrimenkulün bir bölümünden kat maliki gibi tek başına faydalanmasını sağlamak için kurulmuş olan irtifak hakları, bu Kanuna göre kat mülkiyetine çevrilinceye kadar anagayrimenkulün yönetimi, yönetim planı yapılması mecburiyeti ve giderlere ve sigorta mecburiyetine ve bunun primlerine katılma hususlarında bu kanun hükümleri uygulanır.\" ##end_quote##\n\n3) Sonuç olarak, henüz kat mülkiyetine geçilmemiş, eski tarihli irtifak hakkı bulunan bir binanın yönetimi Kat Mülkiyeti Kanunu hükümlerine tabidir. (KAT MÜLKİYETİ KANUNU, Madde 53)"
+ },
+ {
+  "id": 76,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "634",
+    "Madde 14",
+    true
+   ]
+  ],
+  "kaynak": [
+   "634/Madde 14",
+   "634/Madde 52",
+   "634/Madde 13",
+   "634/Madde 10",
+   "634/Madde 51",
+   "634/Madde 12",
+   "634/Madde 9",
+   "634/Madde 5",
+   "634/Madde 53",
+   "634/Madde 2"
+  ],
+  "metin": "1) KAYNAK 1, kat mülkiyetinin kurulması için gerekli belgeleri ve prosedürleri detaylı bir şekilde açıklamaktadır. Diğer kaynaklar, kat mülkiyetinin farklı yönlerini ele almakla birlikte, geçiş sürecine dair spesifik bilgiler sunmamaktadır. Bu nedenle, KAYNAK 1 en uygun kaynak olarak seçilmiştir.\n\n2) ##begin_quote## \"Henüz yapı yapılmamış veya yapısı tamamlanmamış bir arsa üzerinde kat irtifakının kurulması ve tapu siciline tescil edilmesi için o arsanın malikinin veya bütün paydaşlarının buna ait istem ile birlikte 12 nci maddenin birinci fıkrasının (a) bendine uygun olarak düzenlenen, yetkili kamu kurum ve kuruluşlarınca anagayrimenkulün maliki veya bütün paydaşlarının imzaları alınarak onaylanan ve elektronik ortamda tapu müdürlüğüne gönderilen proje ile (b) bendindeki yönetim plânını tapu idaresine vermeleri lazımdır.\" ##end_quote##\n\n3) Kat mülkiyetine geçiş sürecinde, anagayrimenkulün malikinin veya paydaşlarının yetkili kamu kurum ve kuruluşlarınca onaylanmış proje ile yönetim plânını tapu idaresine vermesi gerekmektedir (KAT MÜLKİYETİ KANUNU, Madde 14)."
+ },
+ {
+  "id": 77,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "634",
+    "Madde 66",
+    true
+   ]
+  ],
+  "kaynak": [
+   "634/Madde 66",
+   "634/Madde 67",
+   "634/Madde 70",
+   "634/Madde 68",
+   "775/Madde 31",
+   "634/Madde 69",
+   "2985/Madde 9",
+   "634/Madde 73",
+   "2985/Madde 1",
+   "634/Madde 72"
+  ],
+  "metin": "1) KAYNAK 1, \"toplu yapı\" kavramını tanımlayan ve bu tanımın hukuki çerçevesini belirten tek kaynaktır. Diğer kaynaklar, toplu yapı ile ilgili yönetmelik, yönetim planları veya diğer konulara odaklanmaktadır ve bu nedenle tanım açısından uygun değildir.\n\n2) ##begin_quote## \"Toplu yapı, bir veya birden çok imar parseli üzerinde, belli bir onaylı yerleşim plânına göre yapılmış veya yapılacak, alt yapı tesisleri, ortak kullanım yerleri, sosyal tesis ve hizmetler ile bunların yönetimi bakımından birbirleriyle bağlantılı birden çok yapıyı ifade eder.\" ##end_quote##\n\n3) Sonuç olarak, toplu yapı, belirli bir yerleşim planına göre yapılmış ve ortak kullanım yerleri, sosyal tesisler ile yönetimi birbirleriyle bağlantılı birden çok yapıdır (KAT MÜLKİYETİ KANUNU, Madde 66)."
+ },
+ {
+  "id": 78,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6284",
+    "Madde 7",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6284/MADDE 7",
+   "5271/Madde 158",
+   "4483/Madde 4",
+   "3628/Madde 18",
+   "7402/Madde 11",
+   "1593/Madde 196",
+   "6284/MADDE 2",
+   "6100/MADDE 62",
+   "6284/MADDE 16",
+   "7269/Madde 8"
+  ],
+  "metin": "1) İlgili kaynak, KAYNAK 1'dir çünkü bu kaynak, şiddet veya şiddet uygulanma tehlikesinin varlığı durumunda resmi makamlara yapılan ihbarın nasıl yapılması gerektiğini ve ihbarı alan kamu görevlilerinin ne yapması gerektiğini açıkça belirtmektedir. Diğer kaynaklar, şiddet ihbarı ile ilgili doğrudan bilgi vermemektedir.\n\n2) ##begin_quote## \"İhbarı alan kamu görevlileri bu Kanun kapsamındaki görevlerini gecikmeksizin yerine getirmek ve uygulanması gereken diğer tedbirlere ilişkin olarak yetkilileri haberdar etmekle yükümlüdür.\" ##end_quote##\n\n3) Sonuç olarak, şiddet gördüğünüzde resmi makamlara ihbar ettiğinizde, ihbarı alan kamu görevlileri bu Kanun kapsamındaki görevlerini gecikmeksizin yerine getirmek ve uygulanması gereken diğer tedbirlere ilişkin olarak yetkilileri haberdar etmekle yükümlüdür. (AİLENİN KORUNMASI VE KADINA KARŞI ŞİDDETİN ÖNLENMESİNE DAİR KANUN, Madde 7)"
+ },
+ {
+  "id": 79,
+  "durum": "CEVAP",
+  "atif": [
+   [
+    "6284",
+    "Madde 11",
+    true
+   ]
+  ],
+  "kaynak": [
+   "6284/MADDE 2",
+   "6284/MADDE 10",
+   "6284/MADDE 8",
+   "6284/MADDE 11",
+   "5271/Madde 167",
+   "6284/MADDE 7",
+   "6284/MADDE 1",
+   "6284/GEÇİCİ MADDE 1",
+   "6325/MADDE 1",
+   "6284/MADDE 15"
+  ],
+  "metin": "1) KAYNAK 4, kolluk görevlerinin niteliklerini ve eğitim gerekliliklerini düzenleyen maddeyi içermektedir. Diğer kaynaklar, şiddet önleme ve izleme merkezleri, başvuru süreçleri veya genel tanımlar gibi konulara odaklanmakta olup, kolluk personelinin nitelikleri ile ilgili spesifik bilgi sunmamaktadır.\n\n2) ##begin_quote## \"Kolluk görevleri, kolluğun merkez ve taşra teşkilâtında bu Kanunda belirtilen hizmetlerle ilgili olarak, çocuk ve kadının insan hakları ile kadın erkek eşitliği konusunda eğitim almış ve ilgili kolluk birimlerince belirlenmiş olan yeteri kadar personel tarafından yerine getirilir.\" ##end_quote##\n\n3) Sonuç olarak, aile içi şiddet ihbarlarına bakan kolluk personelinin çocuk ve kadının insan hakları ile kadın erkek eşitliği konusunda eğitim almış olması gerekmektedir. (AİLENİN KORUNMASI VE KADINA KARŞI ŞİDDETİN ÖNLENMESİNE DAİR KANUN, Madde 11)"
+ }
+]

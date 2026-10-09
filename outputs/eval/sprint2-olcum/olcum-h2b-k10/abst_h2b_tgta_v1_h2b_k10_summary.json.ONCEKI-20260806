@@ -1,0 +1,23 @@
+{
+  "label": "h2b_tgta_v1_h2b_k10",
+  "n": 80,
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "valid_traps": 65,
+  "invalid_traps": 15,
+  "valid_trap_kaynagi": "cevaba KÖR hakem + içerik-adresli önbellek",
+  "gecerlilik_hakemi": "openai/gpt-4o",
+  "gecerlilik_onbellegi": "outputs/eval/_artefakt/valid_trap_kor_onbellek.json",
+  "gecerlilik_devralinan": 15,
+  "gecerlilik_maliyet_usd": 0.2447,
+  "source_field": "context_shown",
+  "rejection_rate": 0.723,
+  "rejection_exact": 0.569,
+  "fabrication_rate": 0.277,
+  "parametric_leak": 0.215,
+  "judge_cost_usd": 0.2663,
+  "note": "RGB negative-rejection. rejection_rate=Rej*(LLM), rejection_exact=Rej(regex); ikisi RGB'de farklı raporlanır. ↑ iyi (tavan yok). invalid=kaynak cevaplıyor→tuzak geçersiz."
+}

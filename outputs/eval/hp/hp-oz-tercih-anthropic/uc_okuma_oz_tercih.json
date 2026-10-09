@@ -1,0 +1,29 @@
+{
+  "ALET": {
+    "kutle": 0.5995,
+    "n_cevaplanan": 72,
+    "toplam": 47.962
+  },
+  "GOZ_KATI": {
+    "eklenen": [
+      17,
+      35,
+      41,
+      59
+    ],
+    "kutle": 0.6345,
+    "n_cevaplanan": 76,
+    "toplam": 50.762
+  },
+  "GOZ_ORTA": {
+    "eklenen": [
+      17,
+      35,
+      41
+    ],
+    "kutle": 0.6245,
+    "n_cevaplanan": 75,
+    "toplam": 49.962
+  },
+  "n": 80
+}

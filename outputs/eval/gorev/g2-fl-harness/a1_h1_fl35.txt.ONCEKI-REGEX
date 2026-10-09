@@ -1,0 +1,12 @@
+{
+  "label": "h1_fl35",
+  "n_total": 80,
+  "n_answered": 69,
+  "n_abstain": 11,
+  "over_refusal_rate": 0.1375,
+  "A1_faithfulness_macro_answered": 0.7939,
+  "faithfulness_macro_ALL(çekinme dahil)": 0.7888,
+  "cit_precision_micro_answered": 0.8022,
+  "wrong_ref_rate_macro_answered": 0.0833,
+  "note": "A1=cevaplanan (exact_reject mod-duyarlı, ADR-0011 + ADR-0044). Aynı kural tüm modellere."
+}

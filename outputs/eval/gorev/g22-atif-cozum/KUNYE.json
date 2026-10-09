@@ -1,0 +1,44 @@
+{
+  "kosu": "g22-atif-cozum",
+  "ne": "Atıf ÇÖZÜM denetimi — tuzak 1.13'ün TERS YÖNÜ (yanlış kanuna çözülüp DOGRULANDI almak)",
+  "tarih": "2026-09-11",
+  "karar": "İnsan kararı 2026-09-11: '1.13 ONARILMADAN ÖNCE TERS YÖN ÖLÇÜLSÜN'. atif_dogrula.py DEĞİŞTİRİLMEDİ.",
+  "komut": "python scripts/erisim_korpus/atif_cozum_denetle.py --details outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl:cipa --details outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl:fp16 --out-dir outputs/eval/g22-atif-cozum",
+  "maliyet": {
+    "hakem": "ÇAĞRILMADI",
+    "gpu": "KULLANILMADI",
+    "ag": "ÇIKILMADI",
+    "usd": 0.0
+  },
+  "git_rev": "7c61d85",
+  "python": "3.12.3",
+  "girdiler": {
+    "outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl": {
+      "sha256_16": "e0536489d876d9ae",
+      "bayt": 878781
+    },
+    "outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl": {
+      "sha256_16": "8e5b89aa5f21e3da",
+      "bayt": 879265
+    },
+    "data/corpus/mevzuat_maddeler.jsonl": {
+      "sha256_16": "a35e6efc16123f70",
+      "bayt": 38751499
+    },
+    "scripts/erisim_korpus/atif_dogrula.py": {
+      "sha256_16": "e96d8e6838a78e43",
+      "bayt": 10579
+    },
+    "scripts/erisim_korpus/atif_cozum_denetle.py": {
+      "sha256_16": "925bf4a3e62d458d",
+      "bayt": 12606
+    }
+  },
+  "ciktilar": [
+    "atif_cozum.jsonl",
+    "parantezli_prob.json",
+    "kosu.log",
+    "BULGU.md"
+  ],
+  "not": "Ad karşılaştırması denetlenen modülden BAĞIMSIZ yazıldı (Türkçe i/I eşlemesi + casefold)."
+}

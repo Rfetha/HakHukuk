@@ -1,0 +1,27 @@
+{
+  "olay": "Soru onarımı — DEV core_hard v1→v2, TEST core_hard v1→v2",
+  "tarih": "2026-09-06",
+  "gerekce": "Sorular altın maddenin İÇİNDEN üretilmiş; bağlam sökülmüş. Ölçüt: soru tek başına okunduğunda (i) kanun ailesi (ii) hangi hüküm ayırt edilebiliyor mu.",
+  "kusur_siniflari": {"A": "askıda gönderim (öncülsüz zamir)", "B": "kanun ailesi belirsiz", "C": "kurum belirsiz"},
+  "degisen": {"DEV core_hard": 13, "TEST core_hard": 2, "TEST trap": 0},
+  "degisen_id": {"DEV": [1,24,27,41,43,47,49,57,58,71,75,78,79], "TEST": [7,36]},
+  "degismeyen_alanlar": ["kanun_adi", "kanun_no", "madde_no", "_complexity", "_src_len", "_set"],
+  "n_korundu": {"DEV": 80, "TEST_core_hard": 40, "TEST_trap": 35},
+  "yedekler": {
+    "DEV": "data/eval/dev/core_hard.jsonl.v1-2026-09-06 (sha256 ac5e2ef9554c9557…)",
+    "TEST": "data/eval/canon/core_hard.jsonl.v1-2026-09-06 (sha256 1bd0a9b48a13816a…)"
+  },
+  "yazarlik": {
+    "soru_yazari": "model (Claude Opus 5)",
+    "denetci": "insan — 15 önerinin tamamı liste hâlinde onaylandı, onaysız hiçbiri sete girmedi",
+    "koruma_1": "Her soru YALNIZ altın maddenin metnine bakılarak yazıldı; retriever çıktısına, model cevabına, hangi kalemin kaçırıldığına bakılmadı.",
+    "koruma_2": "Maddenin ayırt edici ifadeleri KOPYALANMADI — kopyalamak recall'u yapay şişirir.",
+    "koruma_3": "Eşleşmeler tam metinle denetlendi ve DOĞRU çıktı: kusur yer-gerçeğinde değil, sorunun bağlamının sökülmüş olmasında."
+  },
+  "dokunulmayanlar": {
+    "canon/trap.jsonl": "35 kalem — sorular kusur DEĞİL, reddetme davranışını ölçen kasıtlı tuzak; 'düzeltmek' testi yok ederdi",
+    "TEST id 31 (KMK 44)": "soru maddenin ifadesini BİREBİR kopyalıyor → erişimi yapay kolaylaştırıyor. Düzeltmek kendi sayımızı YÜKSELTİRDİ; dokunulmadı, damgalandı",
+    "TEST id 34 (TMK 727)": "mecra irtifakı; soru maddeyle uyumlu, kusur yok"
+  },
+  "sonuc": "#39-#61 arasındaki her DEV sayısı v1 birimindedir ve damgalanmalıdır: kütle (%68,4 · %73,0 · %62,8) · aşırı-red (9/80 · 8/80) · isabetsizlik (5/80 · 7/80) · ARA KAPI eşiği 0,8649 · merge M2b 0,766 · ADR-0052'nin 0,506→0,766 sıçraması · B10'un 80 kalemlik gözle okuması."
+}

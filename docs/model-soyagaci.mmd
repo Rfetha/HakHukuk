@@ -1,0 +1,73 @@
+%% HakHukuk — MODEL SOYAĞACI: ham base → kollar → yayımlanan model
+%% Güncellendi: 2026-10-10 · Statü: ÖLÇÜLMÜŞ (artık taslak değil)
+%% Künyeler: record/kollar.md · dış yüz: ../MODEL_CARD.md
+%% Sıra: superpowers/00-IS-SIRASI.md · ölçüm: record/kronoloji-*.md
+%% ---
+%% ⚠️ BU BİR ZAMAN ÇİZELGESİ DEĞİL. Doğrusallık YOK:
+%%    (1) kollar birbirinden BAĞIMSIZ — hiçbiri diğerinin üstüne eğitilmez
+%%        (τ = θ_ft − θ_base tanımı bunu ŞART koşar; üstüne eğitmek ardışık SFT olur)
+%%    (2) merge varyantları ALTERNATİF, zincir değil
+%%    (3) tabanlar ölü uç — yalnız kıyas için, asla final olamaz
+%% ---
+%% ⚠️ İKİ AYRI BİRİM, KIYASLANMAZ (MODEL_CARD §2 · §7.1):
+%%    v1 birimi = harness KAPALI · v1 soru seti · bütçe 1024  → M1/M2/M2b sayıları
+%%    v2 birimi = harness AÇIK k=10 · v2 soru seti · bütçe 1536 · önsözsüz → kütle 80,1%
+%% ---
+%% Ok dili: ==> ağırlık üretir (eğitim) · --> artefakt akışı · -.-> etkiler, ağırlığa girmez
+
+flowchart TD
+    BASE(["<b>HAM BASE</b> — Qwen/Qwen3.5-4B<br/>sha 851bf6e8 · Apache-2.0<br/>θ_base — her task-vector'ün TEK referansı"])
+
+    %% ── KOLLAR — ikisi de HAM BASE'den, bağımsız ──────────────────────
+    BASE ==>|"SFT · RAFT 17.323 satır<br/>1.083 adım · lr 1e-4"| TG["<b>τ_grounding v1</b> 🟢<br/>‖τ‖ = 10,4722 merge anında · 10,4589 artefakttan<br/><i>ikisi de DOĞRU — bf16 çapraz kontrolü, #47</i><br/>M1 kütle 71,4% · M2b <b>0,506</b> ᴷ³ 🔴"]
+    BASE ==>|"ORPO · 726 çift<br/>70 adım · lr 1e-5"| TA["<b>τ_abstention v1</b> 🟢<br/>‖τ‖ = 1,1806<br/>M2 <b>0,955</b> ᴷ⁴ · M1 kütle 41,2% 🔴"]
+
+    %% ── ÇATIŞMA — iç iddianın öncülü, ÖLÇÜLDÜ ─────────────────────────
+    TG -.->|"grounding eğitimi<br/>çekinmeyi çökertti"| CAT{{"<b>ÇATIŞMA GERÇEK</b><br/>hiçbir kol tek başına kullanılabilir değil<br/>norm oranı <b>8,87×</b> · çatışan parametre <b>%2,245</b>"}}
+    TA -.->|"çekinme eğitimi<br/>grounding'i çökertti"| CAT
+
+    %% ── MERGE VARYANTLARI — alternatif, DEV'de seçildi ────────────────
+    TG & TA --> MRG_NB["norm-dengeli · <code>tg_ta_nb</code><br/>geri ölçek <b>ortalama</b> 5,826"]
+    TG & TA --> MRG_MIN["norm-dengeli · <code>tg_ta_min</code><br/>geri ölçek <b>min</b> 1,181"]
+    TG & TA --> MRG_HAM["<b>HAM TIES</b><br/>norm dengeleme KAPALI · ADR-0052"]
+
+    MRG_NB --> R1["🛑 <b>DEJENERE</b><br/>tekrarlama döngüsü · kesik %5,2<br/>KOŞU GEÇERSİZ — τ_a 4,9× şişmiş"]
+    MRG_MIN --> R2["⚪ ablasyon<br/>M2b 0,987 ✅ · M1 kütle 53,4% 🔴<br/>çekinmeyi aldı, cevaplamayı alamadı"]
+    MRG_HAM --> FIN(["<b>🟦 HakHukuk-4B-v0.1</b> · tgta_v1<br/>GGUF Q4_K_M · 2,59 GiB<br/><i>v1 birimi (harness KAPALI):</i><br/>M1 kütle 71,6% · M2 0,833 ᴷ⁴ · M2b <b>0,766</b> ᴷ³"])
+
+    %% ── DÜŞENLER ─────────────────────────────────────────────────────
+    BASE -.-> DUS["τ_register ⬛ DÜŞTÜ — Kapı 0/#39 (base zaten 0,96-0,98)<br/>τ_reasoning ⬛ KAPSAM DIŞI — ADR-0035<br/><b>τ_a v2 ⬛ HİÇ EĞİTİLMEDİ</b> — B10 turu eğitimsiz kapandı (ADR-0062)"]
+
+    %% ── TABANLAR — ölü uç; İDDİA sürümünde, yetkisi DÜŞMÜŞ bir kapıda ──
+    %% ⚠️ "opsiyonel" DEĞİL, "yetkisiz". Zincir: ARA KAPI düştü (ADR-0045, 0,766 ↔ 0,8649)
+    %%    ⇒ CP4-CP5 yetkisi gitti ⇒ Kapı 5 (ADR-0037) koşulamaz ⇒ Taban A/B koşulmaz.
+    %%    Yetki YALNIZ şu zincirle geri gelir: τ_a v2 eğitilir (S12) → ARA KAPI yeniden
+    %%    koşar → GEÇERSE CP4-CP5 yetkilenir. Eşik oynatılmaz (ADR-0050).
+    BASE -.->|"⏸️ İDDİA sürümünde — ADR-0065"| TAB["<b>Taban A · karışık veri SFT</b><br/><b>Taban B · ardışık SFT</b><br/>Kapı 5'in kıyas kolları (ADR-0037)<br/>🚫 <b>YETKİSİZ</b> — ARA KAPI düştü (ADR-0045)<br/><i>ürünü ve arxiv yazısını BLOKE ETMEZ</i>"]
+
+    %% ── HARNESS — VAR ve ürünün varsayılan rejimi ────────────────────
+    FIN --> HARN["<b>HARNESS</b> ✅ VAR — hibrit BM25 + bge-m3, RRF_K=10 (ADR-0068)<br/>indeks <code>mevzuat_bge_m3_s2</code> · k=10 · CPU'da, ağırlığa GİRMEZ<br/>önsöz KALDIRILDI (ADR-0063) · üretim bütçesi 1536 (ADR-0070)<br/>⚠️ iki gerekçesi de ÇÜRÜDÜ: atıf doğrulayıcı (sınıf boş) · red kapısı (fire etmiyor)"]
+
+    HARN --> URUN(["<b>ÜRÜN SAYISI</b> — v2 birimi, 2026-09-07<br/>sadık-cevap <b>kütlesi 80,1%</b> · recall@10 0,9500<br/>aşırı-red 4/80 · isabetsizlik 8/80 · uydurulmuş madde 0/114<br/><i>kazanç ALETTEN geldi, ağırlıklar hiç değişmedi (#62)</i>"])
+
+    URUN --> KAPI{{"<b>v1.0 KAPISI</b> — üç madde, ön-kayıtlı (ADR-0064)<br/>✅ DEV'de 3/3 GEÇTİ · kütle +5,86 p (GÖZ-katı)<br/>ikinci hakem ailesi (claude-sonnet-5) altında yeniden okundu, 3/3 yine GEÇTİ (ADR-0084) · κ 0,534/0,409 oynamadı"}}
+
+    KAPI --> TEST["donmuş TEST — 40+35 · <b>BİR KEZ</b><br/>✅ 2026-09-09'da koştu · ham kütle 0,5804, tavan ≈%75 (DEV'in %95'i DEĞİL, ADR-0069)<br/>engel model değil tek hakem ailesiydi (ADR-0077)"]
+
+    TEST --> V1(["<b>v1.0</b> — etiketlendi 2026-09-13 (ADR-0084)<br/>ağırlıklar v0.3 ile sha256 birebir; dosya <code>HakHukuk-4B-v0.3-Q4_K_M.gguf</code><br/>ürün ↔ iddia sürümü ayrık (ADR-0065)"])
+
+    classDef origin fill:#1d3a4a,stroke:#4f9fc9,color:#fff
+    classDef kol fill:#1d3a5c,stroke:#5b8fd6,color:#fff
+    classDef dead fill:#2e2e2e,stroke:#777,color:#999
+    classDef bad fill:#4a1d1d,stroke:#c94f4f,color:#fff
+    classDef gate fill:#4a3a1d,stroke:#c9a04f,color:#fff
+    classDef star fill:#1d4a2e,stroke:#4fc97a,color:#fff
+    classDef todo fill:#3a2e4a,stroke:#9a7fc9,color:#fff
+
+    class BASE origin
+    class TG,TA kol
+    class DUS,TAB,R2,MRG_NB,MRG_MIN,MRG_HAM dead
+    class R1 bad
+    class CAT,KAPI,TEST gate
+    class FIN,URUN,V1 star
+    class HARN todo

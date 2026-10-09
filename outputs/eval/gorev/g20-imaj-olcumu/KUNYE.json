@@ -1,0 +1,95 @@
+{
+  "ne": "Görev 20 Adım 6 — imaj build + boyut ölçümü (token gerektirmeyen yarısı)",
+  "tarih": "2026-09-11",
+  "maliyet": "$0 — hakem yok, model çağrısı yok, HF indirmesi yok",
+  "ortam": {
+    "docker_istemci": "28.4.0",
+    "docker_istemci_build": "d8eb465",
+    "docker_sunucu": "28.4.0",
+    "imaj_deposu": "containerd snapshotter (io.containerd.snapshotter.v1)",
+    "storage_driver": "overlayfs",
+    "docker_root": "/var/lib/docker",
+    "bos_disk_build_oncesi": "834 GB (/, 1007 GB toplam)",
+    "platform": "Linux 6.6.87.2-microsoft-standard-WSL2"
+  },
+  "build": {
+    "komut": "docker build --progress=plain -t hakhukuk:0.3.0 -f Dockerfile .",
+    "calisma_dizini": "/home/ersoy/code/Hukuk-SLM",
+    "cikis_kodu": 0,
+    "sure_saniye": 234,
+    "sure_olcumu": "date +%s farkı (build öncesi/sonrası damga)",
+    "bagllam_bayt_buildkit": 77420000,
+    "baglam_gosterim_buildkit": "77.42MB — build log '#4 [internal] load build context / transferring context'",
+    "dockerfile_baglami_bayt": 926,
+    "baglam_tahmini_dockerignore_suzgecinden": 422408435,
+    "baglam_tahmini_gosterim": "402,8 MiB — du -sb, ignore listesi dışlanarak",
+    "baglam_farkinin_sebebi": "BuildKit yalnız COPY yönergelerinin gösterdiği yolları senkronize eder; data/train (169 MB), docs/ (1,9 MB), tests/ (880 KB) hiç aktarılmadı",
+    "dislanan_models_dizini": "75 GB (du -sh models)"
+  },
+  "imajlar": {
+    "hakhukuk:0.3.0": {
+      "kaynak": "build (bu koşu)",
+      "id": "sha256:9105f22dfa371e53977c4edbdef4eb52ab4feb206e75df6283feca29308097e5",
+      "repo_digest": "hakhukuk@sha256:9105f22dfa371e53977c4edbdef4eb52ab4feb206e75df6283feca29308097e5",
+      "boyut_acilmis": "2,13 GB",
+      "boyut_acilmis_olcumu": "docker images hakhukuk --format '{{.Size}}'",
+      "boyut_sikistirilmis_bayt": 452747745,
+      "boyut_sikistirilmis_olcumu": "docker image inspect --format '{{.Size}}'",
+      "en_buyuk_5_katman": [
+        {"boyut": "943 MB", "katman": "RUN pip install --index-url https://download.pytorch.org/whl/cpu ... torch"},
+        {"boyut": "504 MB", "katman": "RUN pip install \".[api]\""},
+        {"boyut": "85,3 MB", "katman": "debian.sh --arch amd64 out/ bookworm (temel imaj)"},
+        {"boyut": "76,7 MB", "katman": "COPY data/corpus/ data/corpus/"},
+        {"boyut": "52,4 MB", "katman": "CPython 3.11.16 derleme+kurulum (temel imaj)"}
+      ]
+    },
+    "ghcr.io/ggml-org/llama.cpp:server-cuda-b10902": {
+      "kaynak": "docker pull (build EDİLMEDİ)",
+      "id": "sha256:82de60bb2ba6e66d750f4b7db8752bc3071a2ed3999700d0b21c8b5c709b5513",
+      "repo_digest": "ghcr.io/ggml-org/llama.cpp@sha256:82de60bb2ba6e66d750f4b7db8752bc3071a2ed3999700d0b21c8b5c709b5513",
+      "boyut_acilmis": "6,99 GB",
+      "boyut_sikistirilmis_bayt": 2589343668,
+      "katman_toplami_history": "4,40 GB",
+      "en_buyuk_5_katman": [
+        {"boyut": "3,11 GB", "katman": "apt-get install cuda-libraries-12-8 libnpp libcusparse libcublas libnccl2"},
+        {"boyut": "766 MB", "katman": "apt-get install libgomp1 curl ffmpeg (+ llama.cpp artıkları)"},
+        {"boyut": "214 MB", "katman": "COPY /app/lib/ /app"},
+        {"boyut": "266 kB", "katman": "apt-mark hold cuBLAS/NCCL"},
+        {"boyut": "90,1 kB", "katman": "COPY /app/full/llama /app/full/llama-server /app"}
+      ],
+      "entrypoint_okundu": "/app/llama-server"
+    },
+    "iki_imaj_toplami_acilmis": "9,12 GB"
+  },
+  "torch_yapisi": {
+    "komut": "docker run --rm hakhukuk:0.3.0 python -c \"import torch; print(torch.__version__, torch.version.cuda)\"",
+    "surum": "2.14.0+cpu",
+    "version_cuda": null,
+    "hukum": "CPU tekerleği — istenen. CUDA tekerleği ÇEKİLMEDİ, imaj şişmedi.",
+    "torch_katmani": "943 MB",
+    "site_packages_torch": "773 MiB (455 MiB'ı torch/lib)"
+  },
+  "duman_denetimi": {
+    "ag": "--network none",
+    "import": {"komut": "python -c \"import hakhukuk, hakhukuk.api, hakhukuk.cli, hakhukuk.tui\"", "sonuc": "import OK", "gecti": true},
+    "giris_noktasi": {"komut": "hakhukuk --kuru-calisma \"duman testi\"", "cikis_kodu": 0, "gecti": true, "not": "açık kusur 28 imajda TEKRARLAMIYOR"},
+    "indir_modulu": {"komut": "python -c \"from hakhukuk.indir import *\"", "sonuc": "indir modülü OK", "gecti": true, "not": "indirme ÇALIŞTIRILMADI"},
+    "servis_answer": "ÇAĞRILMADI — llama-server ve indeks imajda yok"
+  },
+  "agirlik_indeks_kontrolu": {
+    "app_models": "yok (No such file or directory)",
+    "app_data_index": "yok (No such file or directory)",
+    "gguf_npy_safetensors_taramasi": "0 eşleşme (find / -xdev)",
+    "app_data_boyutu": "74 MB — yalnız data/corpus/"
+  },
+  "bulunan_kusurlar_onarilmadi": [
+    "A: COPY data/corpus/ imaja mevzuat_maddeler.jsonl.yedek-2026-08-05 (37.903.062 bayt = 36,1 MiB) sokuyor — korpus katmanının %49'u ölü yük",
+    "B: hakhukuk/cli.py:24 _KUNYE_YOLU repo köküne göreli; konsol betiğiyle koşulduğunda site-packages altında aranır ve BULUNAMAZ ⇒ kapsam cümlesi sessizce 'sayı belirsiz'e düşer"
+  ],
+  "kosulmayan": {
+    "docker_compose_up": "KOŞULMADI — HF_TOKEN yok (depo özel) ve HAKHUKUK_INDEKS_DEPO bilerek boş",
+    "sha256_kapisi": "denenmedi (2.783.446.720 bayt, revizyon 902ace67259b3fac18c56907070485f5cace272b)",
+    "uctan_uca": "app → llama yolu doğrulanmadı"
+  },
+  "degistirilen_dosya": "YOK — hakhukuk/**, tests/**, docs/**, compose.yaml, Dockerfile, scripts/** okundu, dokunulmadı"
+}

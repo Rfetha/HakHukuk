@@ -1,0 +1,21 @@
+{
+  "_not": "Korpusun ANLIK GÖRÜNTÜ künyesi. ⚠️ Bu dosya 2026-09-07'de eklendi çünkü korpusta TEK BİR TARİH ALANI bile yoktu — 'bu bilgi ne zamana göre günceldir' sorusu cevaplanamıyordu. Sayılar ölçülerek üretildi, hatırlanarak değil.",
+  "anlik_goruntu_tarihi": "2026-08-06",
+  "anlik_goruntu_kaynagi": "dosyanın mtime'ı — korpusun son yazıldığı an (korpus_yururluk.py mülga alanını o gün ekledi)",
+  "kaynak": "mevzuat.gov.tr",
+  "kapsam": "kanun",
+  "kapsam_disi": [
+    "yönetmelik",
+    "tüzük",
+    "KHK",
+    "tebliğ",
+    "genelge",
+    "CB kararı"
+  ],
+  "n_kanun": 892,
+  "n_madde": 40496,
+  "n_mulga": 2547,
+  "sha256": "a35e6efc16123f70c4d0eaf48951f0e4d5bd3134a6faa942964222117c0af468",
+  "bayt": 38751499,
+  "yururluk_susgeci": "retriever.getir() varsayılanı Yururluk.YALNIZ_YURURLUKTE — mülga maddeler elenir (2026-09-07, plan Görev 8b)"
+}

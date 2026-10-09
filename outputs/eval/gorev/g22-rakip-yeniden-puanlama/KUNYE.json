@@ -1,0 +1,141 @@
+{
+  "kosu": "G22 · kusur 22 — rakip kollarının YAYIMLANAN BORU HATTIYLA yeniden puanlanması",
+  "tarih": "2026-09-11",
+  "karar": "İnsan kararı 2026-09-11: sonuç aleyhimize çıksa bile yazılır (ADR-0057 eşit sınav).",
+  "onarim_commit": "0031976",
+  "onarim_commit_basligi": "Kusur 18 ONARILDI: doğrulayıcı artık yanlış kanuna DOGRULANDI basmıyor",
+  "repo_head": "0b8c803baec89da78a03c2c993a1c90744f127ba",
+  "bedel": {
+    "hakem": "$0 — çağrılmadı",
+    "gpu": "kullanılmadı",
+    "ag": "çıkılmadı",
+    "model": "çağrılmadı",
+    "yeni_uretim": "YOK — diskteki mevcut cevaplar"
+  },
+  "boru_hatti": {
+    "betik": "scripts/puanlama/harness_tablo.py",
+    "atif_hukmu": "scripts/erisim_korpus/atif_dogrula.py :: Dogrulayici.cevabi_dogrula(kayit['cevap'])",
+    "korpus": "data/corpus/mevzuat_maddeler.jsonl (betiğin varsayılanı)",
+    "MODEL_CARD_birimi": "pay = MADDE_YOK + KANUN_YOK ; payda = DOGRULANDI (TOPLAM ATIF DEĞİL)",
+    "sonnet_hucresi_birimi": "pay = MADDE_YOK ; payda = TOPLAM ATIF — Gemini sütunlarıyla AYNI BİRİM DEĞİL (BULGU.md §1)"
+  },
+  "kalibrasyon": {
+    "kol": "tgta_v1 (f02-biz-onsozsuz)",
+    "beklenen": "0/114",
+    "olculen": "0/114",
+    "tam_json_diff": "yayımlanan harness_tablo.json ile ALAN ALAN BİREBİR",
+    "sonuc": "GEÇTİ"
+  },
+  "sonuc": {
+    "biz": {
+      "once": "0/114",
+      "sonra": "0/114",
+      "degisti": false
+    },
+    "gemini-3.1-flash-lite": {
+      "once": "1/152",
+      "sonra": "0/153",
+      "degisti": true
+    },
+    "gemini-3.5-flash-lite": {
+      "once": "4/130",
+      "sonra": "4/130",
+      "degisti": false
+    },
+    "gemini-3.5-flash": {
+      "once": "4/133",
+      "sonra": "4/133",
+      "degisti": false
+    },
+    "claude-sonnet-5": {
+      "once": "2/163",
+      "sonra": "2/163",
+      "degisti": false
+    }
+  },
+  "hukmu_degisen_atif_sayisi": 1,
+  "hukmu_degisen_atiflar": [
+    {
+      "kol": "gemini-3.1-flash-lite",
+      "id": 25,
+      "sira": 4,
+      "ham": "GELİR VERGİSİ KANUNU, Madde 73",
+      "eski": {
+        "hukum": "MADDE_YOK",
+        "kanun_no": "1319",
+        "kanun_adi": "EMLAK VERGİSİ KANUNU"
+      },
+      "yeni": {
+        "hukum": "DOGRULANDI",
+        "kanun_no": "193",
+        "kanun_adi": "GELİR VERGİSİ KANUNU (G.V.K.)"
+      },
+      "gozle_okuma": "YENİ HÜKÜM DOĞRU — 193/Madde 73 korpusta var, mulga=False, metni cevapla birebir örtüşüyor (emsal kira bedeli · vergi değerinin %5'i)"
+    }
+  ],
+  "yan_etki_yayimlanmamis": {
+    "gemini-3.1-flash-lite": {
+      "kapi.kati.gecen": "78 → 79",
+      "kapi.kati.reddedilen": "2 → 1",
+      "kapi.kati.kapi_sonrasi_coverage": "0,8625 → 0,8750"
+    }
+  },
+  "iki_kosu_ayniligi": "beş kolun beşi de kosu1 ↔ kosu2 BAYT BAYT AYNI (cmp)",
+  "toplam_atif": 702,
+  "testler": "python -m pytest tests/ -q → 267 passed, 2 xfailed (düşen test yok)",
+  "komutlar": [
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl --gnd outputs/eval/f02-biz-onsozsuz/gnd_h1_tgta_v1_f02_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/biz_kosu1.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl --gnd outputs/eval/f02-biz-onsozsuz/gnd_h1_tgta_v1_f02_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/biz_kosu2.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/f04-rakip-onsozsuz/h1_3_1_flash_lite_nb_detail.jsonl --gnd outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_1_flash_lite_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/3_1_flash_lite_kosu1.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/f04-rakip-onsozsuz/h1_3_1_flash_lite_nb_detail.jsonl --gnd outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_1_flash_lite_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/3_1_flash_lite_kosu2.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/f04-rakip-onsozsuz/h1_3_5_flash_lite_nb_detail.jsonl --gnd outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_5_flash_lite_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/3_5_flash_lite_kosu1.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/f04-rakip-onsozsuz/h1_3_5_flash_lite_nb_detail.jsonl --gnd outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_5_flash_lite_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/3_5_flash_lite_kosu2.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/f04-rakip-onsozsuz/h1_3_5_flash_nb_detail.jsonl --gnd outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_5_flash_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/3_5_flash_kosu1.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/f04-rakip-onsozsuz/h1_3_5_flash_nb_detail.jsonl --gnd outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_5_flash_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/3_5_flash_kosu2.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/hp-rakip-havuzu/h1_sonnet_5_nb_detail.jsonl --gnd outputs/eval/hp-rakip-havuzu/gnd_h1_sonnet_5_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/sonnet_5_kosu1.json",
+    "python scripts/puanlama/harness_tablo.py --details outputs/eval/hp-rakip-havuzu/h1_sonnet_5_nb_detail.jsonl --gnd outputs/eval/hp-rakip-havuzu/gnd_h1_sonnet_5_nb.jsonl --out outputs/eval/g22-rakip-yeniden-puanlama/ham/sonnet_5_kosu2.json",
+    "# eski ↔ yeni alet atıf-atıf karşılaştırması (eski alet: git show 0031976^:scripts/erisim_korpus/atif_dogrula.py, scratchpad'e alınan scripts/ kopyasına yazıldı; REPO DEĞİŞTİRİLMEDİ)",
+    "python <scratchpad>/dump_atif.py <scratchpad>/eski_scripts '<5 kol>'  > ham/atif_hukumleri_ESKI_ALET.json",
+    "python <scratchpad>/dump_atif.py ./scripts           '<5 kol>'  > ham/atif_hukumleri_YENI_ALET.json",
+    "python -m pytest tests/ -q   # 267 passed, 2 xfailed"
+  ],
+  "sha256": {
+    "girdiler": {
+      "outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl": "e0536489d876d9aec5da33c32f692f252ce7c6c239aee4daa5d22075a08a0aad",
+      "outputs/eval/f02-biz-onsozsuz/gnd_h1_tgta_v1_f02_nb.jsonl": "6166a17774e193ca442f5a876329db9b334b5016e35b3ce06ed86fd31a05d404",
+      "outputs/eval/f02-biz-onsozsuz/harness_tablo.json": "c2e71d7487cb9371cc2bd01e53abc85e9ef5b9307c65fb0ba8b1994f9b481c5d",
+      "outputs/eval/f04-rakip-onsozsuz/h1_3_1_flash_lite_nb_detail.jsonl": "384b0fb34019a6982ad1151aa1adb587a657ba0de61c24ad23612a864baa2e69",
+      "outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_1_flash_lite_nb.jsonl": "74e705d11a4dd646219dacd7fdcc7fe233c13545a5eb45abc6486efd54b572a0",
+      "outputs/eval/f04-rakip-onsozsuz/harness_tablo_3_1_flash_lite_nb.json": "946f450312bcab3f3f4119665c331071bb80efaa7ff83583e7753dbe1f743ff7",
+      "outputs/eval/f04-rakip-onsozsuz/h1_3_5_flash_lite_nb_detail.jsonl": "2b5de075fdee393ed83a95c89e3bea2bc706a52adf2ac4da26de174c54916487",
+      "outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_5_flash_lite_nb.jsonl": "e62fb64206996c12ff00cdfcf9ce162753fc8bc2ac2c532ac170b20720c963b0",
+      "outputs/eval/f04-rakip-onsozsuz/harness_tablo_3_5_flash_lite_nb.json": "777c2a12f5c1f8699410e0fac479cb34850b302af6a272eb895b55ab50656b47",
+      "outputs/eval/f04-rakip-onsozsuz/h1_3_5_flash_nb_detail.jsonl": "86bd40c993bba2b54b65c4b476417271858d118682a7d7c2cf7decbaa91242fb",
+      "outputs/eval/f04-rakip-onsozsuz/gnd_h1_3_5_flash_nb.jsonl": "f2fb7d2e72efa7511dbe4e35f6b6df2f3a11ac01e41b094ff88deb87de121b5b",
+      "outputs/eval/f04-rakip-onsozsuz/harness_tablo_3_5_flash_nb.json": "1a55fbcdacb0e0f16749c0cdb31de4296bfe5f69ee2697fd6a74fff6dffe1f9e",
+      "outputs/eval/hp-rakip-havuzu/h1_sonnet_5_nb_detail.jsonl": "4f4f8fc9404709a5a02150bb697ef1b395060650dcf912720cf9ac71ccd9bd4c",
+      "outputs/eval/hp-rakip-havuzu/gnd_h1_sonnet_5_nb.jsonl": "c82732359f4c272b952467e6174fc64c5e36b6644b4ad274ed367f8a5697654a",
+      "outputs/eval/hp-rakip-havuzu/harness_tablo_sonnet_5_nb.json": "efeeecc3f8f426853cff1d62f2c0229a4cb69cd392b2b1bff4e851cd3c17f3d4",
+      "data/corpus/mevzuat_maddeler.jsonl": "a35e6efc16123f70c4d0eaf48951f0e4d5bd3134a6faa942964222117c0af468",
+      "scripts/puanlama/harness_tablo.py": "a09b733de53fe4f1cf2755ddd866732625707c4b5efbb18196ca3baf3b71cdd0",
+      "scripts/erisim_korpus/atif_dogrula.py": "9791ba183f85650a28c7c04687b3510a2e40a827a46c1e4a03f5016ecd9de75d"
+    },
+    "ciktilar": {
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/3_1_flash_lite_kosu1.json": "f85278771949458f085908479740621d644e07f581fe01350712c60383c92afa",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/3_1_flash_lite_kosu2.json": "f85278771949458f085908479740621d644e07f581fe01350712c60383c92afa",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/3_5_flash_kosu1.json": "1a55fbcdacb0e0f16749c0cdb31de4296bfe5f69ee2697fd6a74fff6dffe1f9e",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/3_5_flash_kosu2.json": "1a55fbcdacb0e0f16749c0cdb31de4296bfe5f69ee2697fd6a74fff6dffe1f9e",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/3_5_flash_lite_kosu1.json": "777c2a12f5c1f8699410e0fac479cb34850b302af6a272eb895b55ab50656b47",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/3_5_flash_lite_kosu2.json": "777c2a12f5c1f8699410e0fac479cb34850b302af6a272eb895b55ab50656b47",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/atif_hukumleri_ESKI_ALET.json": "5f9da97d7b0d375ec3e174b4d2302ed2a955d9cfa6b4e808c7a5513c76df3f04",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/atif_hukumleri_YENI_ALET.json": "9699f17ee5bdadda7b943b25367579e5d49429aa166faabb3bf24f75e5a96621",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/biz_kosu1.json": "c2e71d7487cb9371cc2bd01e53abc85e9ef5b9307c65fb0ba8b1994f9b481c5d",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/biz_kosu2.json": "c2e71d7487cb9371cc2bd01e53abc85e9ef5b9307c65fb0ba8b1994f9b481c5d",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/kalib_biz_kosu1.json": "eff13df3d969da1bb3f676ba0fffe6dd9ceaaa443067905abc4860428774aedd",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/sonnet_5_kosu1.json": "efeeecc3f8f426853cff1d62f2c0229a4cb69cd392b2b1bff4e851cd3c17f3d4",
+      "outputs/eval/g22-rakip-yeniden-puanlama/ham/sonnet_5_kosu2.json": "efeeecc3f8f426853cff1d62f2c0229a4cb69cd392b2b1bff4e851cd3c17f3d4",
+      "outputs/eval/g22-rakip-yeniden-puanlama/BULGU.md": "6074b858793e1af2648b734453c5290044713d7dbaca79650e2c4c5bf1a57524"
+    }
+  },
+  "not_kalib_dosyasi": "ham/kalib_biz_kosu1.json = ilk kalibrasyon koşusu, --gnd VERİLMEDEN; atif_dagilimi biz_kosu1.json ile birebir aynıdır, yalnız hakem (A1/kütle) alanları null'dur."
+}

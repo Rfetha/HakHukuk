@@ -1,0 +1,15 @@
+{
+  "in": 19305,
+  "kept": 18670,
+  "rejected": 635,
+  "reject_reasons": {
+    "alıntı gold'da değil (uydurma quote)": 630,
+    "atıf madde no eşleşmiyor": 5
+  },
+  "replay_added": 577,
+  "split": {
+    "train": 17323,
+    "validation": 962,
+    "test": 962
+  }
+}

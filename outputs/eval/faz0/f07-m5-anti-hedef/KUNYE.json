@@ -1,0 +1,108 @@
+{
+  "kosu": "F0.7 — M5 anti-hedef, DRY'li rejim (ADR-0073)",
+  "tarih": "2026-09-07",
+  "amac": "ADR-0064 madde (3): M5 (kör/parametrik) YÜKSELMEZ. Çıpa = BASE (ADR-0039 §2), rakip DEĞİL.",
+  "ozneler": {
+    "biz": {
+      "etiket": "m5_tgta_v1_m5_dry",
+      "gguf": "models/gguf/tgta_v1-q4_k_m.gguf",
+      "ad": "tgta_v1 = HakHukuk-4B-v0.1"
+    },
+    "cipa": {
+      "etiket": "m5_base_m5_dry",
+      "gguf": "models/gguf/q35-4b-q4_k_m.gguf",
+      "ad": "Qwen3.5-4B base"
+    }
+  },
+  "rejim": {
+    "mod": "m5 (kör — context_shown BOŞ, kaynak verilmiyor)",
+    "seed": 3407,
+    "thinking": "on",
+    "think_budget": 1024,
+    "max_new_tokens": 512,
+    "toplam_uretim_butcesi": 1536,
+    "butce_notu": "ADR-0070 formülü, F0.2 ile aynı",
+    "max_chunk_chars": 900,
+    "ctx": 8192,
+    "ngl": 99,
+    "flash_attn": "on",
+    "kv_type": "q8_0/q8_0",
+    "temperature": 0.0,
+    "ornekleme_ek": "--dry-multiplier 0.8 --dry-base 1.75 --dry-allowed-length 2",
+    "ornekleme_notu": "ADR-0073. DRY logit'i SEÇİMDEN ÖNCE değiştirir ⇒ temperature=0 ve determinizm KORUNUR. Kapsam YALNIZ M5: DRY llama.cpp örnekleyicisidir, Gemini'ye uygulanamaz ⇒ rakip içeren modlarda eşitlenemez; M5 rakip içermez (çıpa base).",
+    "sufficiency_preamble": false,
+    "veri": "data/eval/dev/core_hard.jsonl (v2 — ADR-0067)",
+    "n": 80,
+    "harness": "KAPALI (M5 tanımı gereği)"
+  },
+  "esit_sinav_kaniti": "iki kol da AYNI GGUF kuantizasyonu (Q4_K_M), AYNI taşıyıcı (llama-server, aynı bayraklar + aynı DRY), AYNI seed/bütçe/istem/soru seti. Değişen TEK şey model ağırlıkları.",
+  "onceki_gecersiz_kosu": {
+    "etiket": "m5_tgta_v1_m5_v2",
+    "yer": "GECERSIZ-kesik6.2-drysiz/",
+    "neden": "ADR-0040 geçerlilik ön şartı: kesik 5/80 = %6,2 > %5 → EXIT=2, hakem çağrılmadı",
+    "gozle_okuma": "KESIK_GOZLE_OKUMA.md — 3 yozlaşmış tekrar (×21, ×19, ×82) + 2 bütçe kesilmesi"
+  },
+  "birim_serhi": "🚨 DRY'li M5, cp09'un M5 sayılarıyla (base_th/gem_th/tg_v1_th) AYNI BİRİMDE DEĞİLDİR — DRY döngüyü akıcı-yanlış cevaba çevirir ve hakem notu değişir. Kıyas YALNIZ bu iki kol arasında kurulur.",
+  "git_sha": "e06f87e",
+  "sonuc": {
+    "biz": {
+      "coverage": 0.95,
+      "n_answered": 76,
+      "n_abstain": 4,
+      "A1_cevaplanan": 0.4105,
+      "ezber_kutlesi": 0.39,
+      "cit_precision": 0.3667,
+      "wrong_ref_rate": 0.6009,
+      "judge_cost_usd": 0.0404,
+      "total_claims": 329
+    },
+    "base_cipa": {
+      "coverage": 0.975,
+      "n_answered": 78,
+      "n_abstain": 2,
+      "A1_cevaplanan": 0.4818,
+      "ezber_kutlesi": 0.4698,
+      "cit_precision": 0.4904,
+      "wrong_ref_rate": 0.4541,
+      "judge_cost_usd": 0.0477,
+      "total_claims": 434
+    },
+    "madde3_hukmu": {
+      "kural": "ADR-0039 §2 — coverage VE ezber kütlesi base'i GEÇMEYECEK",
+      "iki_okuma": {
+        "ALET": {
+          "coverage": "0,9500 ≤ 0,9750 ✅",
+          "ezber_kutlesi": "0,3899 ≤ 0,4697 ✅ (−7,98 p)"
+        },
+        "GÖZ": {
+          "coverage": "1,0000 ≤ 1,0000 ✅",
+          "ezber_kutlesi": "0,4057 ≤ 0,4739 ✅ (−6,82 p)"
+        }
+      },
+      "hukum": "🟢 GEÇTİ — her iki okumada da; hüküm dedektöre BAĞIMLI DEĞİL",
+      "gozle_okuma": "GOZLE_OKUMA_CEKINME.md — alet 6 çekinme dedi, göz 6/6'sını YANLIŞ POZİTİF buldu",
+      "okuma": "model kaynaksızken base'den DAHA AZ isabetli (A1 0,4057 ↔ 0,4739) ve gözle bakıldığında İKİ KOL DA hiç susmuyor (80/80). Kazanç EZBERDEN gelmiyor — istenen yön bu: bilgi ağırlıkta değil kütüphanede."
+    },
+    "hakem_bedeli_usd": 0.0881
+  },
+  "gecerlilik_kapilari": {
+    "kesiklik": {
+      "biz": "0/80 (%0,0)",
+      "base": "2/80 (%2,5)",
+      "esik": "≤%5",
+      "sonuc": "İKİ KOL DA GEÇTİ"
+    },
+    "dongu_taramasi": {
+      "biz": "0/80",
+      "not": "deterministik kuyruk n-gram; DRY'siz koşuda 3/80 idi"
+    },
+    "zorla_kapatma": {
+      "biz": "78/80",
+      "base": "80/80"
+    },
+    "ort_completion_tokens": {
+      "biz": 1697.7,
+      "base": 1811.7
+    }
+  }
+}

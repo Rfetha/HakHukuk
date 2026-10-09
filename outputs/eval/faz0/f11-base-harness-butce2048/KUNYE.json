@@ -1,0 +1,136 @@
+{
+  "kosu": "F1.1 — BASE (Qwen3.5-4B) harness AÇIK (h1), BÜTÇE BÜYÜTÜLMÜŞ (2048)",
+  "tarih": "2026-09-07",
+  "etiket": "h1_base_h1_f11",
+  "ozne": "Qwen3.5-4B base — ince ayar YOK, kol YOK, merge YOK",
+  "amac": "Skor kartında base sütununun 8 boş hücresini doldurmak.",
+  "esit_sinav": false,
+  "esit_sinav_sebebi": "Üretim bütçesi 2048 (düşünce 1024 + cevap 1024). BİZ ve üç rakip 1536 ile koştu (ADR-0070 tek formülü). Bir sayı iki koldan farklıysa fark ince ayardan mı bütçeden mi AYIRT EDİLEMEZ. ADR-0057 gereği bu koşudan çıkan hiçbir hücre 'eşit sınav' hükmü taşımaz.",
+  "esit_sinav_sapmanin_yonu": "BİLİNMİYOR — 'base daha çok bütçe aldı, o hâlde kayrıldı' cümlesi KURULMADI. Karşı kanıt aynı ölçüm zincirinde var: F0.4'te 3.5 Flash-Lite cevap başına 171,1 token harcayıp GÖZ-katı 0,7622 aldı, 3.5 Flash 699,4 token harcayıp 0,7425 aldı — token harcaması bu veri kümesinde skoru YORDAMIYOR. Sapmanın işareti ölçülmedi.",
+  "neden_yeniden_kosuldu": {
+    "onceki_kosu": "outputs/eval/f08-base-harness/ (bütçe 1536 = 1024+512, YEREL)",
+    "onceki_sonuc": "GEÇERSİZ — kesik 16/80 = %20,0 > %5 eşiği (ADR-0040). Künyesi yok, puanlanmadı.",
+    "kesigin_16'sinin_sinifi": "İnsan sınıflaması: 15 GERÇEK kesilme, 1 döngü ⇒ DRY işe yaramaz; sebep bütçe.",
+    "capraz_kontrol": "Base KÖR modda (kaynaksız) yalnız 2/80 kesik veriyor ⇒ şişiren şey kaynakların kendisi.",
+    "degisen_tek_sey": "MAXTOK 512 → 1024. THINK_BUDGET 1024 sabit. Rejimin geri kalanı F0.2 ile BİREBİR."
+  },
+  "tasiyici": {
+    "nerede": "YEREL — Modal DEĞİL",
+    "neden_modal_degil": [
+      "(1) modal_train.py'de h1/harness üreten fonksiyon YOK (train · train_orpo · harvest_cp2 · harvest_b10 · harvest_rejected · diag_*; hiçbiri cp0_thinking_gen.sh ya da gen_eval_grounded.py --harness-indeks çağırmıyor).",
+      "(2) Modal imajı harness'ı taşımıyor: data/index/mevzuat_bge_m3_s2 (80 MB) ve data/corpus/ hiçbir imajda/volume'da yok; sentence_transformers + BAAI/bge-m3 (~2,2 GB) de yok. (add_local_dir('scripts') alt klasörleri KAPSIYOR — bu endişe yersizdi.)",
+      "(3) 🚨 F0.2'nin kendi künyesi bunu zaten reddediyor (alan: neden_yerel_neden_modal_degil): 'Modal taşıyıcısı paralel slot (-np) kullanıyor ve S12/KARAR-6 bunun çıktıyı değiştirdiğini ölçtü (Jaccard 0,5278 · birebir 3/19).' Base'i Modal'da koşmak, bütçe farkının ÜSTÜNE ikinci bir eşitsiz eksen (taşıyıcı) koyardı.",
+      "(4) Hız gerekçesi düştü: f08 yerelde 33 dk 15 s sürdü; Modal'ın satacağı şey hızdı."
+    ],
+    "modal_bedeli_usd": 0.0,
+    "modal_bedeli_notu": "Modal'a HİÇ iş gönderilmedi. 'modal app list' boş doğrulandı (tuzak 6.10). Koşulmayan tahmin (analitik, harcanmadı): L4 ~90 dk × $0,80/sa ≈ $1,2 · A100-40GB ~30 dk × $2,10/sa ≈ $1,0 — artı imaj derlemesi ve bge-m3 indirmesi. $2 eşiğinin altında; blokaj maliyet değil, (1)-(3).",
+    "runtime": "llama.cpp/llama-server",
+    "surum": "version: 1 (0cea362), built with GNU 13.3.0 for Linux x86_64",
+    "gguf": "models/gguf/q35-4b-q4_k_m.gguf",
+    "gguf_sha256_ilk32": "214826aaca724dc790bb0294dc774465",
+    "quant": "Q4_K_M",
+    "kv_cache": "q8_0/q8_0",
+    "flash_attn": "on",
+    "context_shift": false,
+    "np": 1,
+    "gpu_gercek": "NVIDIA GeForce RTX 5070 Ti Laptop GPU, 12227 MiB (nvidia-smi'den OKUNDU — etiket değil, tuzak 6.7)",
+    "guc": "ŞARJDA (tuzak 1.6 — koşu künyesinde basıldı)",
+    "duvar_saati": "40 dk 21 s (cp0_server_base_h1_f11.log son satırı: 40.21.943)",
+    "para": "$0"
+  },
+  "rejim": {
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "thinking": "on",
+    "think_budget": 1024,
+    "max_new_tokens": 1024,
+    "toplam_uretim_butcesi": 2048,
+    "butce_notu": "max_tokens = think_budget + max_new_tokens (ADR-0070 formülü). ⚠️ YAN ETKİ: MAXTOK'u büyütmek 1. geçişin tavanını da 1536→2048 büyütür. Base 76/80 kalemde </think>'i kendi kapatmadığı için 1. geçiş tavanı HER SEFERİNDE yakıyor — yani büyüyen yalnız cevap payı değil, 2. geçişe yapıştırılan düşünce izi de 1536→2048 uzadı. Bu, 'yalnız cevap bütçesi büyüdü' cümlesini YANLIŞ kılar.",
+    "sufficiency_preamble": false,
+    "onsoz_kaniti": "koşu künyesinde 'ekstra : <yok>' satırı + gen-eval'in 'ANA PROTOKOL: kaynak-yeterliliği önsözü KAPALI' satırı",
+    "ctx": 8192,
+    "ngl": 99,
+    "harness_indeks": "data/index/mevzuat_bge_m3_s2",
+    "harness_k": 10,
+    "RRF_K": 10,
+    "veri": "data/eval/dev/core_hard.jsonl (v2 — ADR-0067)",
+    "n": 80,
+    "server_extra": "<yok — varsayılan örnekleme, ceza yok>",
+    "cli_dogrulandi": "python scripts/olcum_uretim/gen_eval_grounded.py --server-url http://127.0.0.1:8080/v1 --server-model local --thinking on --max-new-tokens 1024 --think-budget 1024 --max-chunk-chars 900 --seed 3407 --label h1_base_h1_f11 --out-dir outputs/eval/f11-base-harness-butce2048 --data data/eval/dev/core_hard.jsonl --harness-indeks data/index/mevzuat_bge_m3_s2 --harness-k 10 --n 80   (ps'ten OKUNDU, tuzak 6.12)"
+  },
+  "gecerlilik_kapilari": {
+    "kesiklik": {
+      "deger": 0.038,
+      "sayi": "3/80",
+      "esik": 0.05,
+      "kural": "> %5 → koşu GEÇERSİZ (ADR-0040)",
+      "sonuc": "GEÇTİ",
+      "onceki_kosuda": "16/80 = %20,0 GEÇERSİZ"
+    },
+    "dusunce_kanali": {
+      "deger": "80/80",
+      "sonuc": "GEÇTİ — enable_thinking işledi (#38 mekanizması yok)"
+    },
+    "recall_at_10": {
+      "deger": 0.95,
+      "beklenen": 0.95,
+      "sonuc": "BİREBİR — harness oynamamış, F0.2/F0.4 ile aynı"
+    },
+    "zorla_kapatma": {
+      "deger": "76/80",
+      "notu": "⛔ BU BİR KAPI DEĞİL, BULGUDUR. Base 76/80 kalemde `</think>`'i kendi kapatmıyor (research_log #42 mekanizması, harness AÇIK'ta da geçerli). Kıyas: BİZ 3/80, 3.5 Flash 0/80."
+    }
+  },
+  "sonuc": {
+    "kutle": 0.6685,
+    "coverage": 0.7875,
+    "A1_cevaplanan": 0.8489,
+    "A1_altin_getirilen": 0.8593,
+    "recall_at_10": 0.95,
+    "asiri_red_altin_baglamda_sustu": "14/80",
+    "uydurulmus_madde": "MADDE_YOK 4 · KANUN_YOK 1 · AYRISTIRILAMADI 4 (doğrulanan 170)",
+    "ort_completion_token": 2354.3,
+    "atifsiz_gecen": 12,
+    "cekinme_alet": "17/80 (rescore_answered · exact_reject)"
+  },
+  "hakem_yigini": {
+    "judge_model": "openai/gpt-4o-mini",
+    "gateway": "openrouter",
+    "LLM_PROVIDER_ORDER": "OpenAI",
+    "runs": 1,
+    "judge_cost_usd": 0.0511,
+    "aile_dislamasi": "özne Qwen ↔ hakem OpenAI — çakışma yok",
+    "kalibrasyon_borcu": "🚨 Bu koşu için red dedektörü Qwen-base şablonunda GÖZLE KALİBRE EDİLMEDİ. F0.4'te üç Gemini kolunda 28 kalem okundu ve alet sistematik FAZLA red saydı (3.5 Flash'ta 1 açık yanlış pozitif). Base 17 çekinme veriyor; aynı sınıf hata burada da olabilir ve aşırı-red ile coverage eksenlerini DOĞRUDAN etkiler. 14/80 sayısı ALET sayısıdır, göz okuması YAPILMADI."
+  },
+  "KURULMAYAN_CUMLELER": [
+    "⛔ 'İnce ayar şu kadar kazandırdı.' — bütçe 2048 ↔ 1536 farkı bunu ayırt edilemez kılıyor.",
+    "⛔ 'Base bütçe kayrılmasına rağmen geride' — sapmanın İŞARETİ ölçülmedi (yukarıdaki 3.5 FL karşı kanıtı).",
+    "⛔ 'Base'in 1536'daki gerçek skoru şudur' — o koşu GEÇERSİZ, puanlanmadı, sayısı YOK.",
+    "⛔ 'Aşırı-red 14/80'dir' — alet sayısı; göz kalibrasyonu yapılmadı."
+  ],
+  "kaynak_dosyalar": {
+    "uretim": "h1_base_h1_f11_detail.jsonl",
+    "hakem_satir": "gnd_h1_base_h1_f11.jsonl",
+    "hakem_ozet": "gnd_h1_base_h1_f11_summary.json",
+    "tablo": "harness_tablo.json",
+    "sunucu_log": "cp0_server_base_h1_f11.log",
+    "kosu_log": "kosu.log",
+    "hakem_log": "hakem.log"
+  },
+  "adr": [
+    "ADR-0011",
+    "ADR-0040",
+    "ADR-0043",
+    "ADR-0044",
+    "ADR-0057",
+    "ADR-0067",
+    "ADR-0068",
+    "ADR-0070"
+  ],
+  "tekrarlanabilirlik_caprazi": {
+    "bulgu": "Bu koşu başlamadan ÖNCE HEAD (11a5a5c) aynı yolda 28 satırlık YARIM bir detail dosyası taşıyordu — daha erken bir oturum aynı rejimi (bütçe 2048, forced_close) başlatmış, 28 kalemde kesilmiş ve dosyayı commit'lemiş; çalışma ağacındaki kopya sonradan silinmiş.",
+    "capraz_kontrol": "O 28 kalem benim 80 kalemlik koşumla karşılaştırıldı: cevap metni BİREBİR aynı 28/28, context_shown BİREBİR aynı 28/28.",
+    "hukum": "Rejim DETERMİNİSTİK — seed 3407 + temperature 0 + aynı taşıyıcı iki bağımsız koşuda bayt-bayt aynı çıktıyı verdi. Bu bir tesadüf kontrolü değil, ücretsiz düşen bir tekrarlanabilirlik kanıtıdır.",
+    "eylem_gerekli": "⚠️ HEAD'deki 28 satırlık YARIM dosya hâlâ commit'li. Benim 80 satırlık dosyam onun üstüne yazdı ama COMMIT EDİLMEDİ. İnsan commit'lemezse depoda yarım artefakt kalır."
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "label": "m5_anthropic_claude-sonnet-5_m5",
+  "n_total": 80,
+  "n_answered": 80,
+  "n_abstain": 0,
+  "over_refusal_rate": 0.0,
+  "A1_faithfulness_macro_answered": 0.7772,
+  "faithfulness_macro_ALL(çekinme dahil)": 0.7772,
+  "cit_precision_micro_answered": 0.8125,
+  "wrong_ref_rate_macro_answered": 0.0791,
+  "note": "A1=cevaplanan (exact_reject mod-duyarlı, ADR-0011 + ADR-0044). Aynı kural tüm modellere."
+}

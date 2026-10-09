@@ -1,0 +1,15 @@
+{
+  "label": "tiebreak_cevapli_m2",
+  "n": 36,
+  "judge_model": "gpt-4o",
+  "judge_gateway": "openai",
+  "judge_providers": [],
+  "valid_traps": 30,
+  "invalid_traps": 6,
+  "rejection_rate": 0.6,
+  "rejection_exact": 0.0,
+  "fabrication_rate": 0.4,
+  "parametric_leak": 0.433,
+  "judge_cost_usd": 0.0691,
+  "note": "RGB negative-rejection. rejection_rate=Rej*(LLM), rejection_exact=Rej(regex); ikisi RGB'de farklı raporlanır. ↑ iyi (tavan yok). invalid=kaynak cevaplıyor→tuzak geçersiz."
+}

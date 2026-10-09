@@ -1,0 +1,51 @@
+# HakHukuk — ÜRÜN paketi. `scripts/` (ölçüm aleti) bilerek DIŞARIDA: kullanıcının kurulumu
+# ölçüm hattının 72 dosyalık bağımlılık ağına bağlanmasın (envanter 2026-09-07).
+# ⚠️ Sürümler `requirements.lock.txt` ve kurulu ortamdan OKUNARAK yazıldı, tahmin edilmedi.
+[project]
+name = "hakhukuk"
+version = "1.0.0"
+description = "Açık kaynak Türk hukuku asistanı — vatandaşın sorabileceği hukuk danışmanı"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = [
+    "numpy>=2.0",
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=5.0",   # bge-m3 gömücü — CPU'da koşar, GPU'ya GİRMEZ
+    "huggingface-hub>=1.0",         # indeks dağıtımı (S8 kararı (a))
+    # TUI. Gerekçe: tek ekranlı arayüzü elle yazmak prompt_toolkit/curses seviyesinde KENDİ
+    # MANTIĞINI doğurur; textual bunu hazır verip tui.py'nin answer() üstünde ince kabuk
+    # kalmasını sağlıyor (tests/test_tui.py bunu kapı olarak sınıyor).
+    "textual==8.2.8",              # ölçülen sürüm, 2026-09-07
+]
+
+# ⚠️ ÇEKİRDEK KURULUM ŞİŞMEZ: HTTP API isteğe bağlıdır (Görev 19 karar 6). CLI ve TUI
+# kullanan biri `fastapi`/`uvicorn` indirmez. Sürümler kurulu ortamdan OKUNDU (2026-09-10).
+[project.optional-dependencies]
+api = [
+    "fastapi>=0.141",    # ölçülen: 0.141.1
+    "uvicorn>=0.52",     # ölçülen: 0.52.4
+]
+
+[project.scripts]
+hakhukuk = "hakhukuk.arayuz.cli:main"
+hakhukuk-tui = "hakhukuk.arayuz.tui:main"
+hakhukuk-api = "hakhukuk.arayuz.api:main"
+
+[build-system]
+# ⚠️ setuptools>=77: `license = "Apache-2.0"` PEP 639 DİZE biçimidir ve eski setuptools
+# onu reddeder ("must be valid exactly by one definition"). Ölçüldü 2026-09-11: kurulu
+# 70.2.0 ile `--no-build-isolation` kurulumu PATLIYOR ⇒ hakhukuk-api gibi giriş noktaları
+# hiç oluşmuyor (açık kusur 28). Yalıtımlı kurulum çalışıyordu çünkü pip en yeniyi çekiyor;
+# beyan edilen gereksinim KULLANILAN biçimi karşılamalı. tests/test_belgeler.py bunu çiviler.
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["hakhukuk", "hakhukuk.cekirdek", "hakhukuk.arayuz", "hakhukuk.dagitim"]
+
+# ⚠️ `hakhukuk/veri/KUNYE.json` bir SEMBOLİK BAĞ → `data/corpus/KUNYE.json` (tek kaynak,
+# S18). Bu satır olmadan setuptools yalnız `.py` dosyalarını paketler; bu bağın normal
+# kurulumda (konteyner) SESSİZCE dışarıda kalması kusur B'nin ta kendisiydi.
+[tool.setuptools.package-data]
+hakhukuk = ["veri/KUNYE.json"]

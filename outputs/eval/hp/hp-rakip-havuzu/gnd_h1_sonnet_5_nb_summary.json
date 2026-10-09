@@ -1,0 +1,22 @@
+{
+  "label": "h1_sonnet_5_nb",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "Azure",
+    "OpenAI"
+  ],
+  "runs": 1,
+  "total_claims": 526,
+  "faithfulness_micro": 0.8688,
+  "hallucination_micro": 0.1312,
+  "unsupported_micro": 0.1312,
+  "cit_precision_micro": 0.9752,
+  "wrong_ref_rate_micro": 0.0083,
+  "cit_recall_macro": 0.9875,
+  "faithfulness_macro": 0.8729,
+  "judge_cost_usd": 0.0588,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

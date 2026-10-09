@@ -1,0 +1,173 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+wheels/
+*.whl
+.installed.cfg
+MANIFEST
+
+# Sanal ortamlar
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+*.ipynb
+
+# ══════════════════════════════════════════════════════════════════════════════
+# MODEL AĞIRLIKLARI — ASLA git'e.
+# GitHub tek dosyada 100 MB'ı REDDEDER (push bloke). Bir adapter 250 MB, bir GGUF
+# 6-15 GB. Bunlar HF Hub / Modal volume / yerel disk ile yönetilir.
+# ══════════════════════════════════════════════════════════════════════════════
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.gguf
+*.ggml
+checkpoint-*/
+checkpoints/
+models/
+runs/
+saved_model/
+lora_model/
+merged_model/
+
+# ══════════════════════════════════════════════════════════════════════════════
+# EMEKLİ HAT — 23 GB, git'e GİRMEZ.
+# İçinde 100 MB'ı aşan 9 dosya var → push reddedilirdi. Yerelde duruyor ve ayrıca
+# ~/code/hukuk-devir/ devir paketinde yedekli. Belgeler (record/, scripts/, README)
+# takip edilir; ağır artefaktlar edilmez.
+# ══════════════════════════════════════════════════════════════════════════════
+# ⚠️ gitignore SATIR-SONU YORUM DESTEKLEMEZ — yorumlar kendi satırında olmalı,
+#    yoksa "#" ve öncesindeki boşluklar desenin parçası olur ve kural sessizce çalışmaz.
+# LoRA adaptörleri (250 MB) + her turda tekrarlanan tokenizer.json (30.7 MB × 5):
+old-version-gemma4-12b/outputs/v*/
+# GGUF — 6-15 GB:
+old-version-gemma4-12b/models/
+# Kirli/reddedilen setler; içinde 100 MB'ı aşan dosya var:
+old-version-gemma4-12b/data/
+# İSTİSNA: outputs/eval/ (8.3 MB) SCORECARD'ın her hücresinin KANITI → aşağıda geri alınır.
+
+# ══════════════════════════════════════════════════════════════════════════════
+# data/ ve outputs/ VERSİYONLANIR (kullanıcı kararı, 2026-07-24)
+# Gerekçe: veri + ölçüm çıktısı araştırma repro'sunun kendisi; GitHub'da dursun.
+# Boyut denetimi: data/ = 403 MB, 100 MB üstü dosya YOK (en büyük 98.2 MB).
+# ⚠️ İki kural: (1) yeni bir jsonl 100 MB'ı aşarsa push REDDEDİLİR — böl veya LFS'e al.
+#              (2) outputs/ altına adapter/checkpoint koyma.
+#
+# ⚠️⚠️ DÜZELTME (2026-07-28): (2)'nin eski hâli *"yukarıdaki desenler kesiyor"* diyordu —
+# KESMİYORDU. Aşağıdaki `!outputs/**` negasyonu satır 37'deki `*.safetensors`'ı GEÇERSİZ
+# kılıyor (gitignore'da sonraki kural kazanır). Sonuç: `outputs/tg/adapter_model.safetensors`
+# (114 MB) sessizce commit'e girdi ve push GitHub'ın 100 MB sınırında reddedildi.
+# Negasyondan SONRA gelen ağırlık desenleri (aşağıda) bu boşluğu kapatıyor.
+# ══════════════════════════════════════════════════════════════════════════════
+data/external/
+*.parquet
+*.arrow
+*.jsonl
+*.csv
+*.tsv
+!data/**
+!outputs/**
+# Emekli hattın ölçüm çıktıları: 8.3 MB, SCORECARD'ın her hücresinin kanıtı.
+# (Bu negasyon *.jsonl'den SONRA gelmeli — sıra önemli.)
+!old-version-gemma4-12b/outputs/eval/**
+
+# ⚠️ MODEL AĞIRLIKLARI — `!outputs/**` / `!data/**` negasyonlarından SONRA gelmeli, yoksa
+# negasyon onları geri açar (2026-07-28'de tam bu oldu: 114 MB adapter push'u kırdı).
+# Bir adapter 114-250 MB, bir GGUF 6-15 GB; GitHub tek dosyada 100 MB'ı REDDEDER.
+outputs/**/*.safetensors
+outputs/**/*.gguf
+outputs/**/*.bin
+outputs/**/*.pt
+outputs/**/checkpoint-*/
+data/**/*.safetensors
+data/**/*.gguf
+
+# ⚠️ Ham sunucu logları — `!outputs/**` negasyonundan SONRA gelmeli (aynı boşluk).
+# `llama-server -lv 3` bir hasat turunda 37 MB üretiyor; ölçüm kanıtı huni/künye
+# dosyalarında, logda değil. Onlar takip edilir, log edilmez.
+outputs/**/*.log
+
+# Weights & Biases
+wandb/
+
+# HuggingFace cache
+.cache/
+~/.cache/huggingface/
+
+# DVC
+.dvc/tmp/
+.dvc/cache/
+
+# llama.cpp build çıktıları
+llama.cpp/build/
+*.o
+*.a
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Gizli bilgiler
+.env.local
+.env.*.local
+secrets.json
+credentials.json
+*.key
+*.pem
+
+# Geçici dosyalar
+tmp/
+temp/
+*.tmp
+*.log
+
+# Unsloth derleme cache (generated)
+unsloth_compiled_cache/
+
+# Claude Code yerel ayarlar/oturum
+.claude/
+
+# Geçici çalışma alanı (Claude scratchpad) — repoya girmez
+scratchpad/
+
+# runlock (yarış koruması) — süreç ömrü boyunca duran geçici kilit dosyaları
+*.lock
+
+# Ara/ham çalışma verisi — üretilebilir, provenansı outputs/ künyelerinde (OSS temizliği 2026-08-03)
+data/_ham_ve_ara/
+
+# Retriever indeksi — türetilmiş artefakt (korpus + gömme modelinden ~10 dk'da yeniden kurulur).
+# KUNYE.json kalır (ölçüm künyesi), gömme matrisi git'e girmez.
+data/index/**/*.npy
+
+# S2 korpus yedeği — tek seferlik, git tarihçesi zaten yedek
+data/corpus/*.yedek-*
+data/eval/**/*.yedek-*
+
+# pytest önbelleği — ne ignore ne tracked'tı (T3, 2026-09-06)
+.pytest_cache/

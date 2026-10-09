@@ -1,0 +1,48 @@
+{
+  "kosu": "F0.2 — bizim kol, YENİ REJİM (v2 soru · RRF_K=10 · önsözsüz · bütçe 1536)",
+  "tarih": "2026-09-06",
+  "etiket": "h1_tgta_v1_f02_nb",
+  "ozne": "tgta_v1 = HakHukuk-4B-v0.1",
+  "tasiyici": "models/gguf/tgta_v1-q4_k_m.gguf · llama.cpp llama-server · YEREL",
+  "neden_yerel_neden_modal_degil": "Modal taşıyıcısı paralel slot (-np) kullanıyor ve S12/KARAR-6 bunun çıktıyı değiştirdiğini ölçtü (Jaccard 0,5278 · birebir 3/19). Manşet sayının doğduğu koşuda taşıyıcı değiştirmek kıyası geçersiz kılar. Yerel koşu ayrıca $0.",
+  "rejim": {
+    "seed": 3407,
+    "max_chunk_chars": 900,
+    "thinking": "on",
+    "think_budget": 1024,
+    "max_new_tokens": 512,
+    "toplam_uretim_butcesi": 1536,
+    "butce_notu": "ADR-0070: max_tokens = (reasoning_budget or think_budget or 0) + max_new_tokens — rakiple BİREBİR AYNI FORMÜL. Eskiden bizim kol 1024 alıyordu.",
+    "sufficiency_preamble": false,
+    "onsoz_notu": "S14: ürünün varsayılanı ÖNSÖZSÜZ. Künyede 'ekstra : <yok>' satırı kanıttır.",
+    "ctx": 8192,
+    "ngl": 99,
+    "flash_attn": "on",
+    "kv_type": "q8_0/q8_0",
+    "harness_indeks": "data/index/mevzuat_bge_m3_s2",
+    "harness_k": 10,
+    "RRF_K": 10,
+    "rrf_notu": "ADR-0068: 60 → 10. Seçim gerekçesi r@5 platosunun (k∈[5,20]) ORTASI.",
+    "veri": "data/eval/dev/core_hard.jsonl (v2 — ADR-0067, 13 soru onarıldı)",
+    "n": 80
+  },
+  "gecerlilik_kapilari": {
+    "kesiklik": {"deger": 0.05, "esik": 0.05, "kural": "> %5 → koşu GEÇERSİZ (ADR-0040)", "sonuc": "GEÇTİ", "not": "TAM EŞİKTE — payı yok. 4 kalem 1536'ya da sığmıyor; izleniyor."},
+    "recall_at_10": {"deger": 0.95, "beklenen": 0.95, "sonuc": "BİREBİR — harness oynamamış"},
+    "zorla_kapatma": {"deger": "3/80", "onceki_kosuda": "5/80"}
+  },
+  "sonuc": {
+    "kutle": 0.8011,
+    "coverage": 0.9375,
+    "A1_cevaplanan": 0.8545,
+    "A1_altin_getirilen": 0.8902,
+    "recall_at_10": 0.95,
+    "asiri_red_altin_baglamda_sustu": "4/80",
+    "uydurulmus_madde": "0/114",
+    "atifsiz_gecen": 7
+  },
+  "hakem_yigini": {"judge_model": "openai/gpt-4o-mini", "gateway": "openrouter", "LLM_PROVIDER_ORDER": "OpenAI", "runs": 1},
+  "KIYASLANAMAZ": "⛔ Bu sayı v1 birimindeki hiçbir sayıyla kıyaslanmaz — soru seti, RRF_K ve üretim bütçesi DEĞİŞTİ. Rakip çıpaları (3.1 FL %61,7 · 3.5 FL %69,5) v1 soru + ÖNSÖZLÜ + 1024 bütçe rejiminde ölçüldü; üç eksende birden uyuşmuyor. 'Geçtik/geçemedik' cümlesi F0.4 koşmadan KURULMAZ.",
+  "onceki_gecersiz_kosu": "outputs/eval/f02-biz-onsozsuz.GECERSIZ-kesik6.2-eski-butce/ — kesiklik %6,2 ile düştü, ADR-0070'in kanıtı orada",
+  "adr": ["ADR-0040", "ADR-0043", "ADR-0057", "ADR-0067", "ADR-0068", "ADR-0070"]
+}

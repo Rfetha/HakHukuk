@@ -1,0 +1,21 @@
+{
+  "label": "h1_3_5_flash_anthropic_duman_kisa",
+  "n": 2,
+  "mode": "data",
+  "judge_model": "anthropic/claude-sonnet-5",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "Anthropic"
+  ],
+  "runs": 1,
+  "total_claims": 9,
+  "faithfulness_micro": 0.6667,
+  "hallucination_micro": 0.3333,
+  "unsupported_micro": 0.3333,
+  "cit_precision_micro": 0.3333,
+  "wrong_ref_rate_micro": 0.0,
+  "cit_recall_macro": 0.5,
+  "faithfulness_macro": 0.5,
+  "judge_cost_usd": 0.0477,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

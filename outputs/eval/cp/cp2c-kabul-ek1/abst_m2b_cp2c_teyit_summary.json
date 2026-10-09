@@ -1,0 +1,17 @@
+{
+  "label": "m2b_cp2c_teyit",
+  "n": 326,
+  "judge_model": "openai/gpt-4o",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "valid_traps": 102,
+  "invalid_traps": 224,
+  "rejection_rate": 0.088,
+  "rejection_exact": 0.0,
+  "fabrication_rate": 0.912,
+  "parametric_leak": 0.892,
+  "judge_cost_usd": 1.1758,
+  "note": "RGB negative-rejection. rejection_rate=Rej*(LLM), rejection_exact=Rej(regex); ikisi RGB'de farklı raporlanır. ↑ iyi (tavan yok). invalid=kaynak cevaplıyor→tuzak geçersiz."
+}

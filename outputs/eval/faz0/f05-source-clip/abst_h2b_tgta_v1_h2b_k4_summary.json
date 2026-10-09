@@ -1,0 +1,29 @@
+{
+  "label": "h2b_tgta_v1_h2b_k4",
+  "n": 80,
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "valid_traps": 69,
+  "invalid_traps": 11,
+  "valid_trap_kaynagi": "cevaba KÖR hakem + içerik-adresli önbellek",
+  "payda_kaynagi": "hakem",
+  "gecerlilik_hakemi": "openai/gpt-4o",
+  "gecerlilik_onbellegi": "outputs/eval/_artefakt/valid_trap_kor_onbellek_clip12000.json",
+  "gecerlilik_onbellekten": 0,
+  "gecerlilik_onceki_kosudan": 0,
+  "gecerlilik_tanimdan": 0,
+  "butce_kesildi": false,
+  "gecerlilik_maliyet_usd": 0.2591,
+  "source_field": "context_shown",
+  "rejection_rate": 0.739,
+  "rejection_exact": 0.551,
+  "fabrication_rate": 0.261,
+  "parametric_leak": 0.13,
+  "pay_kaynagi": "onceki",
+  "pay_maliyet_usd": 0.0,
+  "judge_cost_usd": 0.2591,
+  "note": "RGB negative-rejection. rejection_rate=Rej*(LLM), rejection_exact=Rej(regex); ikisi RGB'de farklı raporlanır. ↑ iyi (tavan yok). invalid=kaynak cevaplıyor→tuzak geçersiz. judge_cost_usd = pay_maliyet_usd + gecerlilik_maliyet_usd (iki AYRI hakem)."
+}

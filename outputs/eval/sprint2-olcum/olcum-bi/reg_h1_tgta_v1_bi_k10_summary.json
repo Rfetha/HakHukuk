@@ -1,0 +1,8 @@
+{
+  "label": "h1_tgta_v1_bi_k10",
+  "n": 80,
+  "register_mean": 1.0,
+  "expert_frac(>=0.6)": 1.0,
+  "citizen_frac(<=0.4)": 0.0,
+  "method": "v1-lexical-proxy (hakemsiz); kanonik=LLM-judge rubriği (ADR-0013, TODO)"
+}

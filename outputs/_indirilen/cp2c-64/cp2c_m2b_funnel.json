@@ -1,0 +1,19 @@
+{
+  "tip": "m2b",
+  "mod": "distractor_nogold",
+  "denenen": 3813,
+  "kabul": 708,
+  "elenen_red": 3105,
+  "kabul_orani": 0.1857,
+  "saniye_per_uretim": 1.63,
+  "saniye_per_uretim_kararli": 1.59,
+  "ort_completion_tokens": 1120.6,
+  "zorunlu_kapatma": "3813/3813",
+  "dusunce_butcesi": 1024,
+  "cevap_butcesi": 512,
+  "seed": 3407,
+  "toplam_kayit": 708,
+  "gecen_sure_s": 6209.4,
+  "es_zamanlilik": 64,
+  "verim_kapisi": "geçildi (eşik 2.88 s/üretim)"
+}

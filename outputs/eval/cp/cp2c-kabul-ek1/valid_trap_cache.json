@@ -1,0 +1,2426 @@
+{
+  "olcum": "cevaba KÖR valid_trap — kalem düzeyinde, bir kez (ADR-0048 · ADR-0049 m.2)",
+  "run_dir": "outputs/eval/cp2c-kabul-ek1",
+  "judge_model": "openai/gpt-4o",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "temperature": 0,
+  "clip": 900,
+  "baglam_ayniligi_dogrulandi": true,
+  "devralinan_onbellekler": null,
+  "sadece_teyitten_gecenler": "outputs/eval/cp2c-kabul-ek1",
+  "mod_ozet": {
+    "m2": {
+      "n": 293,
+      "gecerli": 266,
+      "gecerli_orani": 0.9078,
+      "devralinan": 0,
+      "yeni_hakem": 293,
+      "hakem": "openai/gpt-4o",
+      "maliyet_usd": 0.3944
+    },
+    "m2b": {
+      "n": 105,
+      "gecerli": 100,
+      "gecerli_orani": 0.9524,
+      "devralinan": 0,
+      "yeni_hakem": 105,
+      "hakem": "openai/gpt-4o",
+      "maliyet_usd": 0.1758
+    }
+  },
+  "toplam_maliyet_usd": 0.5701,
+  "not": "Skorlama hakemi gpt-4o-mini OLARAK KALIR; bu bir kürasyon etiketi. verdict yeniden hesaplanmaz — cevaba bağlılığı meşrudur.",
+  "cache": {
+    "m2:74": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, iki yıllık zamanaşımı süresini açıkça belirtiyor.",
+      "kaynak_izi": "3d8f6402c9251f16"
+    },
+    "m2:110": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, sağlayıcının talebi yerine getirmemesi durumunda ne yapılması gerektiğini doğrudan belirtmiyor.",
+      "kaynak_izi": "0ec6e24bc5e516a7"
+    },
+    "m2:129": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, faiz ödeme zorunluluğu hakkında doğrudan bilgi vermiyor.",
+      "kaynak_izi": "6df6d95fed42bbd0"
+    },
+    "m2:155": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kredi verenin borcu hemen talep edip edemeyeceği konusunda doğrudan bilgi sağlamıyor.",
+      "kaynak_izi": "8e1b3706148df6cc"
+    },
+    "m2:160": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kredi verenin borcu talep etmesi için gereken şartları değil, taksitle satış sözleşmelerinde satıcı veya sağlayıcının haklarını düzenlemektedir.",
+      "kaynak_izi": "8e1b3706148df6cc"
+    },
+    "m2:174": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin erken ödeme yapma hakkını açıkça belirtmiyor.",
+      "kaynak_izi": "1c2fd8e28145ecbf"
+    },
+    "m2:178": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin konut finansmanı sözleşmesinin geçerlilik şartlarını içermiyor.",
+      "kaynak_izi": "e895dcb3d0ef3ea9"
+    },
+    "m2:198": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, sigorta yaptırmadan da kredi alınabileceğini belirtiyor.",
+      "kaynak_izi": "d865554cbf6b157c"
+    },
+    "m2:226": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, erken ödeme durumunda indirim yapılacağını belirtse de, başka maliyet ödenip ödenmeyeceğini açıkça belirtmiyor.",
+      "kaynak_izi": "6df6d95fed42bbd0"
+    },
+    "m2:523": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin uzlaşma gerçekleşirse ödeme süresi hakkında bilgi vermiyor.",
+      "kaynak_izi": "d30f7a7980b9b2ef"
+    },
+    "m2:606": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, değişikliklerin uygulanmasına ilişkin süreyi belirlemiyor.",
+      "kaynak_izi": "929136454d5ff4c7"
+    },
+    "m2:632": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin, şiddet gören bir kişinin ne yapması gerektiğini doğrudan belirtmiyor",
+      "kaynak_izi": "562faae3f813ed9c"
+    },
+    "m2:753": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin asliye hukuk mahkemesinin görev alanını açıklamıyor",
+      "kaynak_izi": "3c8ae72a3f8f6d4f"
+    },
+    "m2:754": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak sulh hukuk mahkemelerinin hangi tür davaları görebileceğini belirtmiyor",
+      "kaynak_izi": "31606ecb9b291641"
+    },
+    "m2:839": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin görevsizlik kararı sonrası başvuru süresini belirtmiyor.",
+      "kaynak_izi": "0617c57343a6b27f"
+    },
+    "m2:872": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, dava açıldıktan sonra tarafların dava konusu üzerinde tasarruf edip edemeyeceğini doğrudan cevaplamıyor.",
+      "kaynak_izi": "47298ed3d32baa48"
+    },
+    "m2:918": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin çekinme kararı alındığında ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "786fb3979c293313"
+    },
+    "m2:947": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin hâkim reddi talebinin ne zaman yapılması gerektiği hakkında bilgi vermiyor.",
+      "kaynak_izi": "8d754b1c5e32d579"
+    },
+    "m2:965": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, bölge adliye mahkemesinin hâkim reddi talebiyle ilgili kararlarının kesin olup olmadığını açıklıyor.",
+      "kaynak_izi": "9794b68f61536bde"
+    },
+    "m2:986": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin, hangi mahkemenin ilk derece mahkemesi olarak hareket ettiğini belirtmiyor",
+      "kaynak_izi": "cce57cb64c04d79c"
+    },
+    "m2:1116": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin vekâletname verilmemesi durumunu doğrudan ele almıyor",
+      "kaynak_izi": "aaa1841bf9f3401f"
+    },
+    "m2:1185": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, tarafların teminatı neye göre belirleyebileceğini açıkça belirtmiyor.",
+      "kaynak_izi": "0b765279b9ccb80b"
+    },
+    "m2:1453": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, mahkemenin tarafların dinlenmesi için süreyi kısaltabileceğini belirtmiyor.",
+      "kaynak_izi": "0c18ec707eebb807"
+    },
+    "m2:1592": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin mahkemeye kimlerin gelmesi gerektiğini belirtmiyor",
+      "kaynak_izi": "dc5ea8bbcf0805d2"
+    },
+    "m2:1600": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, isticvap davetiyesi alındığında ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "6ab3d1f976d7002b"
+    },
+    "m2:1606": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, isticvap için neden gelinmesi gerektiğini açıklamıyor.",
+      "kaynak_izi": "6ab3d1f976d7002b"
+    },
+    "m2:1649": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin, ıslah sonrası önceki işlemlerin geçerliliği hakkında bilgi vermiyor",
+      "kaynak_izi": "ca42ca52e9223032"
+    },
+    "m2:1800": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, bir belgenin sahteliği iddiası durumunda izlenecek hukuki prosedürleri açıklıyor, ancak bir belgenin belirli bir kişi tarafından düzenlenmediğini kanıtlama yöntemlerini içermiyor.",
+      "kaynak_izi": "a6920fb2b2a9962f"
+    },
+    "m2:1861": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin belgelerin yerinde incelenmesinin neden önemli olduğunu açıklamıyor",
+      "kaynak_izi": "4cfc4759996d14cf"
+    },
+    "m2:1897": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, yabancı devletin resmi belgesinin Türkiye'de geçerliliği hakkında doğrudan bilgi vermemektedir.",
+      "kaynak_izi": "cc5e166341795907"
+    },
+    "m2:1903": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, yabancı belgelerin onaylanmasının zorunlu olup olmadığını açıkça belirtmiyor.",
+      "kaynak_izi": "cc5e166341795907"
+    },
+    "m2:1985": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin tanık davetiyesinin içeriğini açıklamıyor.",
+      "kaynak_izi": "6ab3d1f976d7002b"
+    },
+    "m2:2104": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin tanıkların yol masraflarının karşılanıp karşılanmayacağını açıkça belirtmiyor.",
+      "kaynak_izi": "de47003fb8ab10a3"
+    },
+    "m2:2244": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, taraflardan birinin keşif talep edip edemeyeceğini doğrudan belirtmiyor.",
+      "kaynak_izi": "a5795c1212fbf948"
+    },
+    "m2:2405": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, yargılama giderlerinin ne zaman ödeneceğini belirtmiyor.",
+      "kaynak_izi": "3ee64501c87d76a9"
+    },
+    "m2:2659": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin duruşma günü değişirse ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "dd3c966ab582a32b"
+    },
+    "m2:2709": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin temyizin kararın uygulanmasını durdurup durdurmadığını belirtmiyor.",
+      "kaynak_izi": "e2e45875c84db9b5"
+    },
+    "m2:2802": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin resmi makamların çekişmesiz yargı işlerinde uyması gereken kuralları belirtmiyor.",
+      "kaynak_izi": "121f88fcd29adb8d"
+    },
+    "m2:2876": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ihtiyati tedbir talep edenin haksız çıkması durumunda karşı tarafın zararlarına karşı teminat göstermek zorunda olduğunu belirtmektedir.",
+      "kaynak_izi": "f08ccc561d4fbcdf"
+    },
+    "m2:2922": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin tahkim sözleşmesi yaparken dikkat edilmesi gereken hususları içermiyor",
+      "kaynak_izi": "583cc9815a0f4755"
+    },
+    "m2:2957": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, hakemin reddedilmesi durumunda ne olacağına dair bilgi içermiyor.",
+      "kaynak_izi": "9c1abc83de8b4437"
+    },
+    "m2:3036": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hakemin duruşma yapmadan nasıl karar verebileceğini açıklamıyor.",
+      "kaynak_izi": "a5795c1212fbf948"
+    },
+    "m2:3047": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hakkaniyet kurallarına göre karar vermek için ne gerektiğini açıklamıyor.",
+      "kaynak_izi": "a5795c1212fbf948"
+    },
+    "m2:3193": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, sözleşme kurmak için her konuda anlaşmanın gerekip gerekmediğini açıklamıyor.",
+      "kaynak_izi": "15fda51d3273710f"
+    },
+    "m2:3290": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin sözleşme koşulunun bilinmemesinin sorun olup olmadığını açıklamıyor",
+      "kaynak_izi": "40e420d756c7aea7"
+    },
+    "m2:3294": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, genel işlem koşullarının izinsiz değiştirilebileceği hakkında bilgi vermiyor.",
+      "kaynak_izi": "f9ebc401d926a2c4"
+    },
+    "m2:3363": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, sözleşmeyi onaylamak için yapılması gerekenleri açıklamıyor.",
+      "kaynak_izi": "d0b4d4ca11ac95f0"
+    },
+    "m2:3485": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, zararın tazmin edileceği durumu açıkça belirtmiyor.",
+      "kaynak_izi": "b4f2b23b5868d86c"
+    },
+    "m2:3759": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin borçlunun alacaklıdan kaynaklanan bir sebebi olması durumunu açıklamıyor.",
+      "kaynak_izi": "1dec48c83fc21f07"
+    },
+    "m2:3793": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak, uzmanlık gerektiren hizmetin yardımcıya verilmesi durumunda ne olacağına dair bilgi vermiyor",
+      "kaynak_izi": "f7f5a0675eed4be5"
+    },
+    "m2:3796": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin yardımcıların hataları için anlaşma yapma konusunu doğrudan ele almıyor.",
+      "kaynak_izi": "f7f5a0675eed4be5"
+    },
+    "m2:3846": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, üçüncü kişinin haklarının ne zaman geçerli olacağına dair doğrudan bir bilgi içermiyor.",
+      "kaynak_izi": "551d272c1c1de3da"
+    },
+    "m2:3900": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin borcun sona ermesinin etkisinin ne zaman başlayacağını belirtmiyor.",
+      "kaynak_izi": "afe699dd60d461ac"
+    },
+    "m2:4164": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin devralanın devredenin zararını ispatlamadığı sürece neyi talep edemeyeceğini belirtmiyor.",
+      "kaynak_izi": "cae2dc3f90b79571"
+    },
+    "m2:4204": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, üstlenilen borçla ilgili savunmaları kimin ileri sürebileceğini belirtmiyor.",
+      "kaynak_izi": "ffc4fbb66a111b8b"
+    },
+    "m2:4267": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, alıcının satılanı devretmek istemesi durumunda ne yapması gerektiğini açıklamıyor.",
+      "kaynak_izi": "feafa4a7ce70c8f2"
+    },
+    "m2:4309": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, ürünün tamamen alındığı durumda ne olacağına dair doğrudan bir cevap içermiyor.",
+      "kaynak_izi": "cae2dc3f90b79571"
+    },
+    "m2:4327": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin hayvan satın alırken dikkat edilmesi gerekenlerle ilgili bilgi içermiyor.",
+      "kaynak_izi": "8c6dda474e4a0125"
+    },
+    "m2:4442": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, önalım hakkının mirasçılara geçip geçmeyeceği konusunda doğrudan bir bilgi sağlamıyor.",
+      "kaynak_izi": "1eb3b0e5c95bfe6a"
+    },
+    "m2:4444": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, önalım hakkının devredilmesi hakkında bilgi vermiyor.",
+      "kaynak_izi": "1eb3b0e5c95bfe6a"
+    },
+    "m2:4445": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin alım hakkının devredilip devredilemeyeceğini açıkça belirtmiyor.",
+      "kaynak_izi": "1eb3b0e5c95bfe6a"
+    },
+    "m2:4525": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, sözleşmenin sonucunu doğurması için gerekenleri açıklamıyor.",
+      "kaynak_izi": "ed74525b0d19bcde"
+    },
+    "m2:4529": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, alıcının sözleşmeden cayma hakkı ve bu sebeple ödeyeceği cayma parasını belirtmektedir.",
+      "kaynak_izi": "cfa930a7bf394dc2"
+    },
+    "m2:4563": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin peşinat ödenmemesi durumunda satıcının haklarını açıkça belirtmiyor.",
+      "kaynak_izi": "4da4413e5c8f8354"
+    },
+    "m2:4584": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, sözleşmede tarafların hak ve borçlarının nasıl belirtileceğini doğrudan açıklamıyor.",
+      "kaynak_izi": "2cd8c82044541899"
+    },
+    "m2:4599": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin sözleşmeden caymanın sonuçlarını doğrudan açıklamıyor",
+      "kaynak_izi": "feafa4a7ce70c8f2"
+    },
+    "m2:4607": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, alıcının satılanı devretmek istemesi durumunda ne yapması gerektiğini açıklamıyor.",
+      "kaynak_izi": "feafa4a7ce70c8f2"
+    },
+    "m2:4646": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin satıcının artırma koşullarında ne yapması gerektiğini açıklamıyor.",
+      "kaynak_izi": "dd66b7e34641ac62"
+    },
+    "m2:4793": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin kiraya verenin sorumluluğunun sadece kendisiyle sınırlı olup olmadığını açıkça belirtmiyor.",
+      "kaynak_izi": "c8dc3b343dfc7d2e"
+    },
+    "m2:4805": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin kiracının ayıplı mal kiralaması durumunda kira bedelinde indirim isteyebileceğini belirtse de, kiracının diğer hakları hakkında bilgi vermemektedir.",
+      "kaynak_izi": "d53a34abe84dc536"
+    },
+    "m2:4914": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kira sözleşmesinin süresiz devam edip etmediğini doğrudan cevaplamıyor.",
+      "kaynak_izi": "161bb95643dedb82"
+    },
+    "m2:5130": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin sigorta ile karşılanan zararlar için indirim talep edilip edilemeyeceğini açıklamıyor.",
+      "kaynak_izi": "16b3a44b7f9a779e"
+    },
+    "m2:5273": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, işçinin iş sırasında öğrendiği bilgileri kullanıp kullanamayacağına dair doğrudan bir cevap içermiyor.",
+      "kaynak_izi": "136a4cb21a629f68"
+    },
+    "m2:5344": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, işverenin çalışmayı kabul etmemesi durumunda ücret ödeme yükümlülüğünü açıklıyor.",
+      "kaynak_izi": "a980e043bcb9cf1a"
+    },
+    "m2:5392": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin hayvanlarını kullanan işçinin ne bekleyebileceğini doğrudan cevaplamıyor.",
+      "kaynak_izi": "63adbd4b11d8665f"
+    },
+    "m2:5499": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hâkimin haklı fesihte neye baktığını açıklamıyor.",
+      "kaynak_izi": "ae6a4f0ad2efb99b"
+    },
+    "m2:5604": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, başka biriyle işlem yapmanın sakıncası olup olmadığını doğrudan cevaplamıyor.",
+      "kaynak_izi": "9c164682058edcfa"
+    },
+    "m2:6112": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin komisyoncunun işlem yapma hakkının ne zaman sona ereceğini belirtmiyor",
+      "kaynak_izi": "85f776828b225367"
+    },
+    "m2:6113": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, komisyoncunun haber vermeden işlem yapmasının geçerli olup olmadığını açıklamıyor.",
+      "kaynak_izi": "85f776828b225367"
+    },
+    "m2:6358": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kefalet sözleşmesinde yazılı şartlar belirtilmemiş",
+      "kaynak_izi": "da36d4e81de651ae"
+    },
+    "m2:6610": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin olağan dışı işlerin yürütülmesi için gerekenleri açıklamıyor.",
+      "kaynak_izi": "75caf3386ce910ce"
+    },
+    "m2:6670": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, işletmenin kapanması durumunda bir ortağı nelerin beklediğini doğrudan açıklamıyor.",
+      "kaynak_izi": "7dfa6c13af424510"
+    },
+    "m2:6674": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin diğer ortakların borçları karşılayıp karşılamayacağını doğrudan cevaplamıyor",
+      "kaynak_izi": "7dfa6c13af424510"
+    },
+    "m2:6839": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin, hâkimin görevini yapamaması durumunu değil, hâkimin reddi durumunu ele alıyor",
+      "kaynak_izi": "7b88ded65d2667e0"
+    },
+    "m2:6861": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hâkimin reddi durumunun ne zaman gündeme geleceğini açıklamıyor.",
+      "kaynak_izi": "8f6e29788feb9db3"
+    },
+    "m2:6932": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin tebligatın nasıl yapılacağına dair detaylı bilgi vermiyor.",
+      "kaynak_izi": "99cf15cf0849d48a"
+    },
+    "m2:6938": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin tebligatın nasıl yapılacağını açıklamıyor.",
+      "kaynak_izi": "99cf15cf0849d48a"
+    },
+    "m2:6952": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak dilekçenin nereye verileceğini belirtmiyor",
+      "kaynak_izi": "f34cb25676984c71"
+    },
+    "m2:6962": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin çağrının nasıl yapılabileceğini açıklıyor.",
+      "kaynak_izi": "b5cb1703790de665"
+    },
+    "m2:7055": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, tanığın bildiklerini açıklaması için ne yapılacağını doğrudan açıklamıyor.",
+      "kaynak_izi": "631dd16c6eb36635"
+    },
+    "m2:7180": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin şüpheli veya sanığın hangi özelliklerinin kayda alınabileceğini belirtmiyor",
+      "kaynak_izi": "7c45930e72cf4a07"
+    },
+    "m2:7187": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin moleküler genetik inceleme için kimin karar vereceğini belirtmiyor.",
+      "kaynak_izi": "d5d3e3f95f6a595a"
+    },
+    "m2:7412": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, nafaka borcunun güvenceye etkisini açıklamıyor.",
+      "kaynak_izi": "ff1cb5b25033ecb7"
+    },
+    "m2:7426": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, şüphelinin veya sanığın üstü, eşyası, konutu, işyeri veya ona ait diğer yerlerin aranabileceğini belirtmektedir.",
+      "kaynak_izi": "78b631b5c70d259f"
+    },
+    "m2:7606": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin zorla getirme kararı yerine getirilemezse ne olacağını açıklamıyor",
+      "kaynak_izi": "7fb98940392e18a7"
+    },
+    "m2:7677": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin kolluk görevlisinin kim olduğunu tanımlamıyor.",
+      "kaynak_izi": "c9e59e203ce09e52"
+    },
+    "m2:7798": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin mahkemenin tanık çağırmayı reddetmesi durumunda ne olacağını açıklamıyor",
+      "kaynak_izi": "94d497d243d3654d"
+    },
+    "m2:8022": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, tutanak imzalanmadan önce ne yapılması gerektiği hakkında bilgi vermiyor.",
+      "kaynak_izi": "6f3b4e1b4269000c"
+    },
+    "m2:8150": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, sanığın duruşmaya gelmesi için mahkemenin nasıl bir güvence verebileceğini açıklamıyor.",
+      "kaynak_izi": "7ff0a4c4b7c1715e"
+    },
+    "m2:8396": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, temyiz dilekçesinde belirtilen sebeplerle hüküm bozulduğunda ne olacağına dair doğrudan bir cevap içermiyor.",
+      "kaynak_izi": "3da1f9019a8dec56"
+    },
+    "m2:8419": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, hükmün bozulması durumunda hangi sanıkların yararlanacağını belirtmiyor.",
+      "kaynak_izi": "e0785123bb61a75f"
+    },
+    "m2:8454": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin, mahkûmiyete ilişkin hükmün yeniden yargılanması durumunda ne olacağına dair bilgi içermiyor",
+      "kaynak_izi": "3da1f9019a8dec56"
+    },
+    "m2:8468": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin sorunun cevabını içermiyor",
+      "kaynak_izi": "22c4dc9bd0d2fddd"
+    },
+    "m2:8708": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin kıyas yaparak bir eylemi suç sayma konusunu doğrudan ele almıyor.",
+      "kaynak_izi": "00fb1aaaf8467791"
+    },
+    "m2:8786": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, yurt dışında işlenen suçlarda hangi ülke kanunlarının geçerli olduğunu doğrudan belirtmiyor.",
+      "kaynak_izi": "f5b289f56e82b2f0"
+    },
+    "m2:9096": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, uyuşturucu veya uyarıcı madde kullanımı ve bulundurulması suçlarını kapsadığını belirtmektedir.",
+      "kaynak_izi": "e86ba5a981cfc88a"
+    },
+    "m2:9142": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ceza indirimi hakkında genel bir bilgi vermiyor.",
+      "kaynak_izi": "0928775450526787"
+    },
+    "m2:9219": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, gebe bir kadına eziyet eden birinin sekiz yıldan onbeş yıla kadar hapis cezası alacağını belirtiyor.",
+      "kaynak_izi": "6b42b94ba8efc2ee"
+    },
+    "m2:9239": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, yaşlı birine yardım etmemenin hukuki sonuçlarını açıkça belirtiyor.",
+      "kaynak_izi": "074eeba2edd1e6e5"
+    },
+    "m2:9258": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin çocuğa cinsel istismar cezasını açıkça belirtmiyor.",
+      "kaynak_izi": "fe46fd2992bea1e4"
+    },
+    "m2:9392": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, şikayet yapılmaması durumunda ne olacağına dair bilgi içermiyor.",
+      "kaynak_izi": "e5a23766b89db053"
+    },
+    "m2:9430": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin savunma yapmanın ceza alınıp alınmayacağına dair doğrudan bir cevap içermiyor",
+      "kaynak_izi": "0eb58478d99665c5"
+    },
+    "m2:9454": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, özel mesajların izinsiz dinlenmesi hakkında doğrudan bilgi vermiyor.",
+      "kaynak_izi": "0c986e60fa1be06d"
+    },
+    "m2:9539": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin tehdit ederek mal vermeye zorlama suçunu doğrudan ele almıyor.",
+      "kaynak_izi": "e5a23766b89db053"
+    },
+    "m2:9558": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin kirletme eylemi hakkında bilgi içermiyor",
+      "kaynak_izi": "5cbafa1e488bea08"
+    },
+    "m2:9571": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin zarar verme cezasını değil, hırsızlık cezasını açıklıyor",
+      "kaynak_izi": "4e4ff350649b4c96"
+    },
+    "m2:9678": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin atom enerjisini serbest bırakmakla ilgili suçun cezasını doğrudan belirtmiyor.",
+      "kaynak_izi": "f33dde6e8ea6d0c2"
+    },
+    "m2:9702": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin inşaatta tedbir alınmaması durumunda uygulanacak ceza miktarını belirtmiyor.",
+      "kaynak_izi": "4fc162ccdcd21b7f"
+    },
+    "m2:9718": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, belirli bir eylemin cezalandırılabilirliğini genel bir hüküm olarak açıklıyor, ancak kişinin bu maddeye göre ceza alıp almayacağını belirlemek için yeterli bilgi sağlamıyor.",
+      "kaynak_izi": "0e2cbc77b0dda03e"
+    },
+    "m2:9753": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, suçun resmi izne dayalı meslek icrasında işlenmesi halinde cezanın artırılacağını belirtiyor.",
+      "kaynak_izi": "0bb929b2320abf16"
+    },
+    "m2:9793": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, uyuşturucu madde bulundurmanın cezasını açıklıyor ancak gizleme durumunu özel olarak ele almıyor.",
+      "kaynak_izi": "eb0a1fd058ef3f88"
+    },
+    "m2:9849": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin sahte damga kabulü hakkında bilgi vermiyor.",
+      "kaynak_izi": "63b1021bbb5ab661"
+    },
+    "m2:9885": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hangi tür eşyalar için geçerli olduğunu belirtmiyor.",
+      "kaynak_izi": "7266f5051a769862"
+    },
+    "m2:9902": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, sahte belge düzenleyen sağlık çalışanlarına özgü bir durumu ele almıyor.",
+      "kaynak_izi": "da25c281b662b2a3"
+    },
+    "m2:9956": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, dini sıfatın dikkate alınması durumunda cezanın artırılıp artırılmayacağını doğrudan belirtmiyor.",
+      "kaynak_izi": "0c68eed9d1ff3c90"
+    },
+    "m2:9984": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, suçların işlenmesi durumunda hürriyetin kısıtlanıp kısıtlanmayacağını doğrudan belirtmiyor.",
+      "kaynak_izi": "c20045b470eaa8c5"
+    },
+    "m2:10082": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ödünç para verme konusunu ele almıyor.",
+      "kaynak_izi": "35b44c0f1b207659"
+    },
+    "m2:10162": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, nüfuz ticareti aracılığı yapan kişinin cezasını belirtmiyor.",
+      "kaynak_izi": "5c75746337b0d16d"
+    },
+    "m2:10170": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hangi tür belgelerin kapsandığını belirtmiyor.",
+      "kaynak_izi": "ffccae5c5a98b19b"
+    },
+    "m2:10197": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, suçu birden fazla kişi ile birlikte işlemenin cezanın artmasına neden olduğunu belirtmektedir.",
+      "kaynak_izi": "ce8e349a51da517d"
+    },
+    "m2:10200": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, belirli bir suç işlenmesi durumunda cezanın nasıl öğrenileceğini açıklamıyor.",
+      "kaynak_izi": "ce8e349a51da517d"
+    },
+    "m2:10294": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, hapis cezası almanın genel durumlarını değil, belirli bir suçun bildirilmemesi durumunu ele alıyor.",
+      "kaynak_izi": "72d7f6aa62c0bf81"
+    },
+    "m2:10343": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, bilirkişiye yanlış bilgi vermenin cezası hakkında doğrudan bilgi sağlamıyor.",
+      "kaynak_izi": "7e778891ddea0b61"
+    },
+    "m2:10349": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, teslim edilen eşyanın başka bir amaçla kullanılıp kullanılamayacağına dair bilgi içermiyor.",
+      "kaynak_izi": "7ea27404c5b733d2"
+    },
+    "m2:10401": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin hükümlülerin toplu ayaklanması hakkında bilgi vermiyor",
+      "kaynak_izi": "2974fcb50adea75c"
+    },
+    "m2:10447": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, savaş halindeki bir devlete karşı silahlı mücadeleye katılmanın sonucunu belirtmiyor.",
+      "kaynak_izi": "f9c93028e392b0a7"
+    },
+    "m2:10505": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hükümete karşı şiddet kullanmanın sonuçlarını doğrudan belirtmiyor.",
+      "kaynak_izi": "6b69029f83196719"
+    },
+    "m2:10541": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, komutanlık emrine uyma zorunluluğuna dair doğrudan bir bilgi içermiyor.",
+      "kaynak_izi": "7357b76788eea16d"
+    },
+    "m2:10586": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin düşmanla anlaşarak yanlış bilgi yaymanın sonuçlarını açıklamıyor",
+      "kaynak_izi": "26e1246d0fed0ce6"
+    },
+    "m2:10614": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, gizli bilgileri açıklamanın cezalarını açıkça belirtmektedir.",
+      "kaynak_izi": "0b09e168a4464750"
+    },
+    "m2:10616": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak hangi bilgilerin gizli kalması gerektiğini belirtmiyor",
+      "kaynak_izi": "0b09e168a4464750"
+    },
+    "m2:10638": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, devletin gizli alanlarına girmenin cezasını değil, gizli bilgileri elde etmenin cezasını açıklıyor.",
+      "kaynak_izi": "33e5cece05bfca2c"
+    },
+    "m2:10642": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, savaş zamanı dışında hapis cezasının ne kadar olduğunu belirtmiyor.",
+      "kaynak_izi": "33e5cece05bfca2c"
+    },
+    "m2:10672": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, gizli bilgilerin açıklanması için gereken amacı belirtmiyor.",
+      "kaynak_izi": "639b2938b2103718"
+    },
+    "m2:10683": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, suçun işlenmesi için niyet gerekip gerekmediğini belirtmiyor.",
+      "kaynak_izi": "98f5e9625931116c"
+    },
+    "m2:10718": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, işçilerin kanundan nasıl etkilendiğini doğrudan açıklamıyor.",
+      "kaynak_izi": "0f3208d758f79ce4"
+    },
+    "m2:10775": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin iş sözleşmesinin süresinin nasıl belirleneceğini açıklamıyor.",
+      "kaynak_izi": "8d116dbec89e2efe"
+    },
+    "m2:10835": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin işçinin işten ayrılma bildirim süresi hakkında bilgi vermiyor.",
+      "kaynak_izi": "9ab0d4076bf46017"
+    },
+    "m2:10935": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin iş sözleşmesinin belirli süreli olup olmamasının maddeyi geçerli kılıp kılmadığını açıklamıyor.",
+      "kaynak_izi": "8d38145b39b0e214"
+    },
+    "m2:10996": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, acelesi olan bir kişinin fazla çalışmak zorunda olup olmadığını cevaplamıyor.",
+      "kaynak_izi": "089ef7d650d26a37"
+    },
+    "m2:11092": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, iş sözleşmesi sona erdiğinde yıllık izin ücretinin ne zaman ödeneceğini belirtmiyor.",
+      "kaynak_izi": "f4cb48f2e08a13a1"
+    },
+    "m2:11128": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, işverenle anlaşarak çalışma süresinin değiştirilmesi konusunu doğrudan ele almıyor.",
+      "kaynak_izi": "4265b6d7e25492de"
+    },
+    "m2:11129": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin denkleştirme süresini tanımlamıyor",
+      "kaynak_izi": "4265b6d7e25492de"
+    },
+    "m2:11163": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, belirli çalışma saatleri dışında çalışan işçiler için hangi kuralların uygulanmadığını belirtmiyor.",
+      "kaynak_izi": "b964feea02c66883"
+    },
+    "m2:11246": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, iş müfettişlerinin resmi işlemleri nasıl yürütmesi gerektiğini açıkça belirtmiyor.",
+      "kaynak_izi": "2d84203eec3f141c"
+    },
+    "m2:11261": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, cezanın uygulanabileceği durumları detaylandırmıyor.",
+      "kaynak_izi": "09b99a61fe989852"
+    },
+    "m2:11266": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin alt işverenin işyeri bildiriminde yanlışlık yapmasının sonuçlarını belirtmiyor.",
+      "kaynak_izi": "14b716021c52ed14"
+    },
+    "m2:11301": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin işçi özlük dosyalarının düzenlenmemesi durumunda uygulanacak cezayı belirtmiyor.",
+      "kaynak_izi": "14b716021c52ed14"
+    },
+    "m2:11304": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin ara dinlenmelere uymayan işverenler için bir yaptırım belirtmiyor.",
+      "kaynak_izi": "14b716021c52ed14"
+    },
+    "m2:11308": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, idari para cezalarının hangi tutara göre belirlendiğini açıklamıyor.",
+      "kaynak_izi": "14b716021c52ed14"
+    },
+    "m2:11411": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kanunun her durumda uygulanıp uygulanmadığına dair bilgi içermiyor.",
+      "kaynak_izi": "879bd1e3c1106f71"
+    },
+    "m2:11429": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin değişen maddelerle ilgili önemli tarihlerden bahsetmiyor.",
+      "kaynak_izi": "0f3208d758f79ce4"
+    },
+    "m2:11451": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin hısımlar arasındaki akrabalık türlerini detaylandırmıyor.",
+      "kaynak_izi": "af4a3442dceb8927"
+    },
+    "m2:11536": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin sicil kayıtlarıyla ilgili görevlerin kimlere ait olduğunu belirtmiyor.",
+      "kaynak_izi": "02b6cda6417738b1"
+    },
+    "m2:11799": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin vakıf tescil edilmeden önce yapılması gerekenleri açıkça belirtmiyor",
+      "kaynak_izi": "70e0d5f02c174cbe"
+    },
+    "m2:11802": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak, vakıf malvarlığının sağlanması konusunu doğrudan ele almıyor",
+      "kaynak_izi": "899c005de4d3a7e5"
+    },
+    "m2:11940": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, evlenirken resmi bir belgenin gerekip gerekmediğini belirtmiyor.",
+      "kaynak_izi": "66eee13e60450962"
+    },
+    "m2:12000": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin zina nedeniyle dava açma hakkını açıkça belirtmiyor.",
+      "kaynak_izi": "f401007a1baa0431"
+    },
+    "m2:12003": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, onur kırıcı davranışın boşanma sebebi olup olmadığını açıkça belirtmiyor.",
+      "kaynak_izi": "eebc5ae5f1dc7077"
+    },
+    "m2:12006": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, boşanma davası açmak için bir sebebin yeterli olup olmadığını doğrudan cevaplamıyor.",
+      "kaynak_izi": "eebc5ae5f1dc7077"
+    },
+    "m2:12008": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin boşanma için bekleme süresi hakkında bilgi vermiyor.",
+      "kaynak_izi": "eebc5ae5f1dc7077"
+    },
+    "m2:12166": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin eşlerden birinin başka bir yere taşınması durumunda ne olacağına dair bilgi içermiyor.",
+      "kaynak_izi": "42cacbb0547b57d9"
+    },
+    "m2:12185": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin mal rejimi değişikliği için mahkemeye gitmenin şart olup olmadığını belirtmiyor",
+      "kaynak_izi": "245e1abd5f89fe41"
+    },
+    "m2:12189": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, mal ayrılığına karar verilmesini kimin isteyebileceğini belirtmiyor.",
+      "kaynak_izi": "42cacbb0547b57d9"
+    },
+    "m2:12257": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kişisel mallar üzerinde tasarruf hakkını açıkça belirtmektedir.",
+      "kaynak_izi": "30674554c53af92f"
+    },
+    "m2:12390": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, karşılıksız hediye verme durumunun mahkemeye götürülüp götürülemeyeceği hakkında doğrudan bilgi sağlamıyor.",
+      "kaynak_izi": "2eb8c11f1d766205"
+    },
+    "m2:12447": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, miras yoluyla elde edilen malların kişisel mal olduğunu belirtiyor.",
+      "kaynak_izi": "88d8950ef0bb83b8"
+    },
+    "m2:12491": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, tazminatın peşin değerinin nasıl belirleneceğini açıklamıyor.",
+      "kaynak_izi": "e7f7ef31f619a69a"
+    },
+    "m2:12515": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ortak mal ile kişisel mal arasındaki ilişkiyi doğrudan açıklamıyor.",
+      "kaynak_izi": "76a4488c4579d2f9"
+    },
+    "m2:12525": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, sağ kalan eşin oturma hakkı talep edebileceğini açıkça belirtmektedir.",
+      "kaynak_izi": "23078007f0a8fcbc"
+    },
+    "m2:12527": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, eşin ölümünde evin tapusunu almanın koşullarını açıklıyor.",
+      "kaynak_izi": "23078007f0a8fcbc"
+    },
+    "m2:12585": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, baba olmadığını kimin ispatlamak zorunda olduğunu açıkça belirtmiyor.",
+      "kaynak_izi": "61538d87cb32dc4d"
+    },
+    "m2:12623": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, gecikmeli dava açma konusunu doğrudan ele almıyor.",
+      "kaynak_izi": "e78eade3a0ed8bae"
+    },
+    "m2:12732": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin çocukla kişisel ilişki kurmak için bir şart olup olmadığını belirtmiyor.",
+      "kaynak_izi": "0aaebca119af3db1"
+    },
+    "m2:12739": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ana ve babanın çocukla ilişkisini nasıl etkileyebileceği hakkında bilgi vermiyor.",
+      "kaynak_izi": "a420a827439672ec"
+    },
+    "m2:12848": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, yeniden evlenmenin çocuğun velayetini etkileyip etkilemeyeceği konusunda doğrudan bilgi vermiyor.",
+      "kaynak_izi": "f0e17b01a6892a24"
+    },
+    "m2:12863": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, ana ve babanın velayetleri sona erince çocuğun mallarını hesabıyla birlikte devretmeleri gerektiğini belirtiyor.",
+      "kaynak_izi": "1d5516b1dd263a10"
+    },
+    "m2:12870": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin çocuk mallarının gelirinden harcama yapılabilir mi sorusunu doğrudan cevaplamıyor",
+      "kaynak_izi": "3aef448cd0a08146"
+    },
+    "m2:12895": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ana ve babanın çocuğa kazandırma yaparken dikkat etmesi gereken hususları içermiyor.",
+      "kaynak_izi": "1d5516b1dd263a10"
+    },
+    "m2:13029": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, bir ortağın ayrılmak istemesi durumunda ne olacağına dair doğrudan bilgi sağlamıyor.",
+      "kaynak_izi": "85667ac78bb31421"
+    },
+    "m2:13195": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin vesayet makamının devreye girdiği durumları açıkça belirtmiyor.",
+      "kaynak_izi": "f0e17b01a6892a24"
+    },
+    "m2:13266": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, özgürlüğün neden kısıtlanabileceğini doğrudan açıklamıyor.",
+      "kaynak_izi": "ad0e35f3bad3c9a1"
+    },
+    "m2:13310": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, vesayet altındaki kişinin hangi durumlarda işlem yapabileceğini açıklamıyor.",
+      "kaynak_izi": "1577f39d638af7e4"
+    },
+    "m2:13631": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin miras sözleşmesinin malvarlığında değişiklik yapıp yapmayacağını açıklamıyor.",
+      "kaynak_izi": "9ff9dfd3e1add158"
+    },
+    "m2:13635": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, mirasbırakanın miras sözleşmesi yaparken kime bırakmayı seçebileceği hakkında bilgi vermiyor.",
+      "kaynak_izi": "9ff9dfd3e1add158"
+    },
+    "m2:13643": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, mirasın geçişinde tasarruf yapılıp yapılamayacağını doğrudan cevaplamıyor.",
+      "kaynak_izi": "6f8e71d398f48236"
+    },
+    "m2:13728": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin miras sözleşmesinin geçerlilik şartlarını açıklamıyor.",
+      "kaynak_izi": "ff7a67b2ec1f2dd6"
+    },
+    "m2:13758": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin vasiyetname ile bırakılan malların sorun yaratıp yaratmayacağını doğrudan cevaplamıyor.",
+      "kaynak_izi": "4f041f98f7d46af8"
+    },
+    "m2:13843": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin saklı payı aşan kısmın nasıl dağıtılacağını açıklamıyor.",
+      "kaynak_izi": "8ec2a1f6ce497c7a"
+    },
+    "m2:13938": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin vasiyetle miras alan birinin mirasçı sayılıp sayılmadığını doğrudan cevaplamıyor.",
+      "kaynak_izi": "7575527fa74da7d4"
+    },
+    "m2:13977": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, gaibin miras payının ne olacağına dair doğrudan bir bilgi sağlamıyor.",
+      "kaynak_izi": "24817e1c41fd6278"
+    },
+    "m2:13984": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, mirasçıların gaiplik kararı alabileceklerini ve bunun için belirli sürelere ve usule uymaları gerektiğini belirtmektedir.",
+      "kaynak_izi": "32f374acc124553d"
+    },
+    "m2:13985": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, gaip olan kişinin miras payının kime kalacağını doğrudan belirtmiyor.",
+      "kaynak_izi": "32f374acc124553d"
+    },
+    "m2:14203": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin mirasçının kendi mallarıyla alacaklıya karşı sorumlu olup olmadığını belirtmiyor.",
+      "kaynak_izi": "5303c65b8109e3ff"
+    },
+    "m2:14204": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, alacaklının mirasçıdan ne zaman sorumlu tutulabileceğini açıklamıyor.",
+      "kaynak_izi": "5303c65b8109e3ff"
+    },
+    "m2:14268": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, mirasçı olduğunda ne yapılması gerektiği hakkında bilgi vermiyor.",
+      "kaynak_izi": "8697ab9cae303d05"
+    },
+    "m2:14465": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, eşya ile birleştirilen şeylerin eklenti olup olmadığını doğrudan cevaplamıyor.",
+      "kaynak_izi": "ccf84fd9f24d73e2"
+    },
+    "m2:14472": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, paydaşların kendi aralarında farklı bir düzenleme yapıp yapamayacağını doğrudan cevaplamıyor.",
+      "kaynak_izi": "a2a57b3aca56adc3"
+    },
+    "m2:14499": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, paylı malda bir paydaşın tek başına karar verip veremeyeceği konusunu doğrudan ele almıyor.",
+      "kaynak_izi": "f09debdddc0adc5a"
+    },
+    "m2:14560": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, ortakların paylarını isteyemeyeceklerini ve tasarruf edemeyeceklerini belirtiyor.",
+      "kaynak_izi": "348255d776771159"
+    },
+    "m2:14561": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin, bir ortağın toplulukta yer alan hakları koruyup koruyamayacağını doğrudan cevaplamıyor",
+      "kaynak_izi": "348255d776771159"
+    },
+    "m2:14726": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin önalım hakkının geçerliliği hakkında bilgi vermiyor.",
+      "kaynak_izi": "8679459c2c4c19eb"
+    },
+    "m2:14738": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin komşudan gelen kokuya karşı ne yapılabileceğini doğrudan açıklamıyor",
+      "kaynak_izi": "b8afebe422bb8eae"
+    },
+    "m2:14750": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin komşunun su akışını değiştirmesi durumunda ne yapılabileceğini doğrudan cevaplamıyor.",
+      "kaynak_izi": "c2014cfc4b189e18"
+    },
+    "m2:14853": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, kuyu veya su kaynağını kirletme durumunda ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "bd251fe367b3f9e3"
+    },
+    "m2:14882": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, başkasına devredilen bir malın mülkiyetinin nasıl saklı tutulacağına dair bilgi vermiyor.",
+      "kaynak_izi": "b32a8bca985c79a4"
+    },
+    "m2:15006": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, irtifak hakkından yararlanan kişinin neler yapabileceğini açıklamıyor.",
+      "kaynak_izi": "e87e8b0bae59e7b5"
+    },
+    "m2:15008": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin irtifak hakkının kapsamını belirleyen unsurlardan bahsetmiyor.",
+      "kaynak_izi": "02614314bc04e30c"
+    },
+    "m2:15014": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin irtifak hakkının kapsamını belirleyen kişi veya kurum hakkında bilgi vermiyor.",
+      "kaynak_izi": "02614314bc04e30c"
+    },
+    "m2:15023": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, bakım masraflarının yararlanma oranına göre paylaşılacağını belirtiyor.",
+      "kaynak_izi": "5db5199d2e713464"
+    },
+    "m2:15027": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, irtifak hakkı olan bir taşınmazın kullanımı sırasında masrafların nasıl karşılanacağına dair bilgi içermiyor.",
+      "kaynak_izi": "5db5199d2e713464"
+    },
+    "m2:15240": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin üst hakkı ipotek ettirme konusunu ele almıyor.",
+      "kaynak_izi": "7926d57522b15c26"
+    },
+    "m2:15267": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, üst hakkının yenilenmesiyle ilgili bilgi içermiyor.",
+      "kaynak_izi": "2682fdfc37222844"
+    },
+    "m2:15320": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin taşınmaz yükünün alacaklıya hangi hakları verdiğini açıklamıyor.",
+      "kaynak_izi": "66afc3d682d620e5"
+    },
+    "m2:15456": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, rehinli alacakların güvencesinin ne anlama geldiğini doğrudan açıklamıyor.",
+      "kaynak_izi": "a62d10f7c896d24c"
+    },
+    "m2:15610": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, eski alacaklıya ödeme yapma zorunluluğundan bahsetmiyor.",
+      "kaynak_izi": "47fe9552df3a0c6d"
+    },
+    "m2:15624": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, borç senedinin devredilip devredilemeyeceği hakkında bilgi vermiyor.",
+      "kaynak_izi": "def250393b3203c5"
+    },
+    "m2:15672": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin senetlerin geri ödenmesi için bir şarttan bahsetmiyor.",
+      "kaynak_izi": "47fe9552df3a0c6d"
+    },
+    "m2:15729": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hapis hakkının hangi durumlarda önemli olduğunu değil, hangi durumlarda kullanılabileceğini açıklıyor.",
+      "kaynak_izi": "fe810fd9ac679f95"
+    },
+    "m2:15842": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin taşınır eşya hırsızlığı durumunda ne yapılması gerektiğini açıklamıyor",
+      "kaynak_izi": "aab2f698728f16ce"
+    },
+    "m2:15858": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin taşınır çalındığında ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "bd6d83ad44c111db"
+    },
+    "m2:15862": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, kaybedilen eşyanın nasıl geri alınacağına dair bilgi içermiyor.",
+      "kaynak_izi": "bd6d83ad44c111db"
+    },
+    "m2:15879": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, zilyedin geri verme yükümlülüğüyle ilgili sorun yaşayıp yaşamayacağını doğrudan cevaplamıyor.",
+      "kaynak_izi": "dc717952ca01400e"
+    },
+    "m2:15904": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin taşınmazlar üzerindeki hakların nerede gösterildiğini belirtmiyor.",
+      "kaynak_izi": "a22dd9db733aede3"
+    },
+    "m2:16055": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ortak yerlerin korunması hakkında bilgi vermiyor.",
+      "kaynak_izi": "79204474352d130d"
+    },
+    "m2:16087": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin kat mülkiyeti sorunlarında hangi yasaya başvurulacağını belirtmiyor.",
+      "kaynak_izi": "135e98845a85a064"
+    },
+    "m2:16109": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin tapu memurunun hangi belgeleri kontrol ettiğini belirtmiyor",
+      "kaynak_izi": "50ca3cca87111d54"
+    },
+    "m2:16111": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, anagayrimenkulün mülkiyetinin nasıl çevrileceğini açıklamıyor.",
+      "kaynak_izi": "50ca3cca87111d54"
+    },
+    "m2:16119": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kat mülkiyeti için tapu müdürlüğüne gönderilmesi gereken belgeleri açıkça belirtmiyor.",
+      "kaynak_izi": "50ca3cca87111d54"
+    },
+    "m2:16143": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kat irtifakı sahiplerinin borçlarını açıkça tanımlıyor.",
+      "kaynak_izi": "52991e35abf1c265"
+    },
+    "m2:16163": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kat maliklerinin giderleri ödemekten kaçınıp kaçınamayacağına dair doğrudan bir cevap içermiyor.",
+      "kaynak_izi": "85ef992eec5335eb"
+    },
+    "m2:16183": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, kat maliklerinin ortak alanlarla ilgili sorumluluklarını ve izin gerekliliklerini açıklıyor, ancak bireysel bir dairenin harabe olması durumunda diğer kat maliklerinden yardım alınıp alınamayacağına dair doğrudan bir cevap vermiyor.",
+      "kaynak_izi": "e55795dbee604324"
+    },
+    "m2:16197": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin, kat maliklerinin dava açma sürecine dair bilgi içermiyor",
+      "kaynak_izi": "52991e35abf1c265"
+    },
+    "m2:16393": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, kat mülkiyetine geçiş süresinin başlangıcını belirtmiyor.",
+      "kaynak_izi": "affbfcc7e15f57e1"
+    },
+    "m2:16416": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin devre mülk hakkının hangi yapılar için geçerli olduğunu belirtmiyor.",
+      "kaynak_izi": "cdff4c38d79548dd"
+    },
+    "m2:16538": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, maddenin yürürlüğe giriş tarihini belirtmiyor.",
+      "kaynak_izi": "50ca3cca87111d54"
+    },
+    "m2:16556": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, tamamlanmamış bir yapı için kat irtifakının nasıl elde edileceğini açıklıyor.",
+      "kaynak_izi": "50ca3cca87111d54"
+    },
+    "m2:16573": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, kat mülkiyetine sahip olanların haklarını açıkça belirtmiyor.",
+      "kaynak_izi": "79204474352d130d"
+    },
+    "m2:16585": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin icra dairesi başkanlarının atanma sürecini açıklamıyor.",
+      "kaynak_izi": "ba9a5dca4077ab51"
+    },
+    "m2:16650": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin ret talebi reddedildiğinde ne yapılması gerektiğini doğrudan açıklamıyor.",
+      "kaynak_izi": "9e81ddf83c037874"
+    },
+    "m2:16671": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, icra dairelerinin denetimi altında çalıştığı kişileri açıkça belirtmiyor.",
+      "kaynak_izi": "63575d2d16d12853"
+    },
+    "m2:16739": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak borç ödenmezse ne olacağına dair doğrudan bir cevap içermiyor",
+      "kaynak_izi": "672d59179ec562a3"
+    },
+    "m2:16764": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, borçlunun işin yapılması için verilen süreye uymaması durumunu değil, taşınır teslimine dair icra sürecini açıklıyor.",
+      "kaynak_izi": "4644149b16991877"
+    },
+    "m2:16842": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin iflas takibi için gerekli şartları açıkça belirtmiyor.",
+      "kaynak_izi": "3395434650905638"
+    },
+    "m2:16863": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, kanunun hangi durumlarda uygulanacağına dair bilgi vermiyor.",
+      "kaynak_izi": "d5536dbfde28ff6f"
+    },
+    "m2:16864": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, diğer borçlar için kanunun geçerli olup olmadığını açıkça belirtmiyor.",
+      "kaynak_izi": "d5536dbfde28ff6f"
+    },
+    "m2:16902": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, haciz yapılması için mümessil tayin edilip edilmemesi gerektiği konusunda bilgi vermiyor.",
+      "kaynak_izi": "eb89d66d1c8388a6"
+    },
+    "m2:16905": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin temsilci tayin etmemenin sonuçlarını açıklamıyor.",
+      "kaynak_izi": "eb89d66d1c8388a6"
+    },
+    "m2:16931": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin takip masraflarıyla ilgili ne yapılması gerektiğini doğrudan cevaplamıyor.",
+      "kaynak_izi": "e93f1fca9c348bde"
+    },
+    "m2:16944": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin itirazın ne zaman bildirilmesi gerektiğini açıkça belirtmiyor",
+      "kaynak_izi": "40ec684cf22d6191"
+    },
+    "m2:17038": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, hapis cezası almamak için ne yapılması gerektiğini doğrudan açıklamıyor.",
+      "kaynak_izi": "7ac128faff8a82df"
+    },
+    "m2:17197": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, üçüncü şahıs olarak istihkak iddiasında bulunmanın sonuçlarını doğrudan açıklamıyor.",
+      "kaynak_izi": "963b311d2df84547"
+    },
+    "m2:17234": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, alacaklıların hakları hakkında bilgi vermiyor.",
+      "kaynak_izi": "c996dce47ffd2fed"
+    },
+    "m2:17235": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, haciz işlemine katılmak için genel bir prosedür sunmuyor.",
+      "kaynak_izi": "c996dce47ffd2fed"
+    },
+    "m2:17336": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ihale alıcısının satış bedelini yedi günden önce ödeyip ödeyemeyeceğini belirtmiyor.",
+      "kaynak_izi": "3977d7d1cef31a77"
+    },
+    "m2:17397": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, taşınmazın açık artırma ilanında neler yer alması gerektiğini doğrudan belirtmiyor.",
+      "kaynak_izi": "39666f2d9674711c"
+    },
+    "m2:17469": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin alacaklılar arasındaki önceliğin nasıl belirlendiğini açıklamıyor.",
+      "kaynak_izi": "9c15a3623a1f0df2"
+    },
+    "m2:17488": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, ilamın icrası sırasında yapılabilecek genel adımları açıklamıyor.",
+      "kaynak_izi": "383ca7f31b9c6272"
+    },
+    "m2:17489": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, taşınmazın icra edilmesi durumunda ne olacağına dair bilgi vermiyor.",
+      "kaynak_izi": "383ca7f31b9c6272"
+    },
+    "m2:17528": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin adres gösterme zorunluluğundan bahsetmiyor",
+      "kaynak_izi": "82396d6d4a2fdc1b"
+    },
+    "m2:17535": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, borç ödenmezse ne olacağına dair genel bir açıklama yapmıyor.",
+      "kaynak_izi": "743f6486264678b6"
+    },
+    "m2:17562": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin itiraz süresi hakkında bilgi vermiyor.",
+      "kaynak_izi": "82396d6d4a2fdc1b"
+    },
+    "m2:17723": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin borçlu olmadığını kanıtlama yöntemlerini açıklamıyor",
+      "kaynak_izi": "94e3ad642da65f5d"
+    },
+    "m2:17842": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin sorunun cevabını içermiyor",
+      "kaynak_izi": "b4f539b164311412"
+    },
+    "m2:17896": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin para olmayan alacakların durumunu açıklamıyor.",
+      "kaynak_izi": "2c86da1e03ab6849"
+    },
+    "m2:17917": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, alacaklının alacağının hangi durumda takasa tabi olmadığını açıkça belirtmiyor.",
+      "kaynak_izi": "aef7ab06e8ce8412"
+    },
+    "m2:18088": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin iflas idaresinin görevlerini tam olarak açıklamıyor",
+      "kaynak_izi": "797cc872c5dcfa93"
+    },
+    "m2:18093": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin, davanın nasıl görüleceğini açıkça belirtmiyor",
+      "kaynak_izi": "3ebc874f18999b3e"
+    },
+    "m2:18189": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, teminatı alacaklıdan istenebileceğini belirtmektedir.",
+      "kaynak_izi": "a9c94ae1104ef9b9"
+    },
+    "m2:18209": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin haczedilen malların bırakılması için gereken teminatları değil, ihtiyati haczin kaldırılması için gereken teminatları açıklıyor.",
+      "kaynak_izi": "5d0285f8e6da3207"
+    },
+    "m2:18239": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, ihtiyati haczin kaldırılması için sunulması gereken belgeler hakkında bilgi vermiyor.",
+      "kaynak_izi": "fb70bdcd4ff8cf8a"
+    },
+    "m2:18244": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin iflas kararı için gereken şartları açıkça belirtmiyor",
+      "kaynak_izi": "083c3b783088f49a"
+    },
+    "m2:18315": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak, itirazın hangi maddelere dayanarak yapılabileceğini belirtmiyor",
+      "kaynak_izi": "71a4e93e1f178596"
+    },
+    "m2:18433": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, borçlunun konkordato talebinde bulunması durumunda ne olacağına dair doğrudan bir cevap içermiyor.",
+      "kaynak_izi": "24e1bb510d557a9c"
+    },
+    "m2:18464": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, borçlunun aşırı külfetli borç ilişkilerini nasıl sona erdirebileceğini açıklamıyor.",
+      "kaynak_izi": "76c571afa6ef7a97"
+    },
+    "m2:18745": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, yeniden yapılandırma projesi için hangi hükümlerin geçerli olmadığını belirtmiyor.",
+      "kaynak_izi": "900749d8a404f783"
+    },
+    "m2:18806": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, cezalandırılmak için hangi hileli işlemlerin yapılması gerektiğini açıkça listeliyor.",
+      "kaynak_izi": "0c13e7dd2ed3b49c"
+    },
+    "m2:18918": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin borçlunun talih oyunu oynamasının sonuçlarını açıklamıyor.",
+      "kaynak_izi": "e286d06942ea1ad5"
+    },
+    "m2:18998": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak cezalandırma şartlarını belirtmiyor",
+      "kaynak_izi": "2986ce65272b3c86"
+    },
+    "m2:19001": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, nafaka borcunu ödeyen kişinin hapsinin sona ereceğini belirtmektedir.",
+      "kaynak_izi": "48d73225f4b62c1f"
+    },
+    "m2:19004": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin nafaka ödememenin neden hapse sebep olduğunu açıklamıyor.",
+      "kaynak_izi": "48d73225f4b62c1f"
+    },
+    "m2:19019": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, tazyik hapsi kararlarını hangi mahkemenin verdiğini açıkça belirtmiyor.",
+      "kaynak_izi": "1f1999a87f6f4975"
+    },
+    "m2:19194": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "metin yeni değişikliklerin ne zaman uygulanmaya başlanacağını belirtmiyor",
+      "kaynak_izi": "8ac8427084cef0b6"
+    },
+    "m2b:424": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin Reklam Konseyi'nin amacını açıklamıyor.",
+      "kaynak_izi": "68c536d7522bb9bd"
+    },
+    "m2b:606": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, değişikliklerin uygulanmasına ilişkin süreyi belirleyen tarihi içermiyor.",
+      "kaynak_izi": "4cc6c61fdce7d026"
+    },
+    "m2b:635": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, şiddet uygulayan kişinin silah taşıması durumunda ne yapılması gerektiğini doğrudan cevaplamıyor.",
+      "kaynak_izi": "c6a26e7ff1c316da"
+    },
+    "m2b:834": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin görevsizlik kararı verildiğinde ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "113cd4df0fc6cc8e"
+    },
+    "m2b:862": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak 1, hâkimin tarafların açıklamalarını dikkate alarak değerlendirme yapabileceğini belirtmektedir.",
+      "kaynak_izi": "0564d327842de751"
+    },
+    "m2b:882": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin mahkemeye bilgi verilip verilemeyeceği konusunda doğrudan bir cevap içermiyor.",
+      "kaynak_izi": "06e9f067dafad9c9"
+    },
+    "m2b:1140": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin vekilin istifası durumunda müvekkilin ne yapması gerektiğini açıklamıyor.",
+      "kaynak_izi": "e4c41d5929dac92e"
+    },
+    "m2b:1145": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin istifa dilekçesinin nasıl iletileceği hakkında bilgi içermiyor.",
+      "kaynak_izi": "89d7336d3523a437"
+    },
+    "m2b:1291": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin seçimlik borçta alacaklının hangi hakkı kullanabileceği hakkında bilgi içermiyor.",
+      "kaynak_izi": "e92e4f077d305358"
+    },
+    "m2b:1903": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, yabancı belgenin onaylanması hakkında bilgi içermiyor.",
+      "kaynak_izi": "fc83c44cf24fa85f"
+    },
+    "m2b:2319": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin başkanın imzasının yeterli olup olmadığını belirtmiyor",
+      "kaynak_izi": "546deac6561770c2"
+    },
+    "m2b:2802": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, resmi makamların çekişmesiz yargı işlerinde hangi kurallara uyacağına dair bilgi içermiyor.",
+      "kaynak_izi": "90b4905236c01242"
+    },
+    "m2b:3210": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, e-posta ile yapılan teklifin kabul edilmemesi durumunda ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "d1a8fd23ed917d6e"
+    },
+    "m2b:3291": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, sözleşmede aleyhe olan koşulların geçerliliği hakkında doğrudan bir cevap vermiyor.",
+      "kaynak_izi": "1767dc9b839ef774"
+    },
+    "m2b:3351": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin aldatma sonucu oluşan sözleşme şartları hakkında doğrudan bilgi vermiyor.",
+      "kaynak_izi": "ca74cf934d90bef9"
+    },
+    "m2b:3385": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin temsilci ve temsil olunanın karşılıklı haklarının nasıl korunacağını doğrudan açıklamıyor.",
+      "kaynak_izi": "e43eafce6657202f"
+    },
+    "m2b:3485": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin zarar tazmininin hangi durumlarda talep edilebileceğini doğrudan açıklamıyor.",
+      "kaynak_izi": "e4bf6aadee80b2ae"
+    },
+    "m2b:3696": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, borcun tamamen ödenmesi sonrası yapılması gerekenleri açıklamıyor.",
+      "kaynak_izi": "7e32c00d94bd9db0"
+    },
+    "m2b:3853": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, başka birinin eylemini üstlenirken dikkat edilmesi gereken hususları doğrudan ele almıyor.",
+      "kaynak_izi": "6da34077577861ea"
+    },
+    "m2b:4319": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin zarar talebi için genel bir prosedür sunmuyor.",
+      "kaynak_izi": "59807dadc2f0c543"
+    },
+    "m2b:4462": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, önalım hakkının hangi durumlarda kullanılamayacağını belirtmiyor.",
+      "kaynak_izi": "67b1919e073bfd99"
+    },
+    "m2b:5193": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, hayvanların kirasında özel bir anlaşma yapılması durumunda ne olacağına dair bilgi içermiyor.",
+      "kaynak_izi": "49246c85831336c3"
+    },
+    "m2b:5201": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin kiracının tarım giderleri dışında tazminat talep edebileceği durumları açıkça belirtmiyor.",
+      "kaynak_izi": "ada9abc9eff90db8"
+    },
+    "m2b:5300": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin işçinin fazla çalışma yapması durumunda ne kazanacağına dair bilgi içermiyor.",
+      "kaynak_izi": "de7b4d7dafc96a6d"
+    },
+    "m2b:5620": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin pazarlamacının yetkisinin nasıl genişleyebileceğini açıklamıyor.",
+      "kaynak_izi": "4056c5f431948ffc"
+    },
+    "m2b:6095": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin malın borsada kayıtlı olması durumunu açıklamıyor.",
+      "kaynak_izi": "8afebad37f8b52dc"
+    },
+    "m2b:6254": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak 2'de saklatanın masrafları ödemekle yükümlü olduğu belirtiliyor.",
+      "kaynak_izi": "7d3765c2aa988990"
+    },
+    "m2b:6364": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin borçlunun iflası durumunda ne olacağına dair bilgi içermiyor.",
+      "kaynak_izi": "a956f9a008616592"
+    },
+    "m2b:6412": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak, kefilin asıl borçlunun ödeme güçsüzlüğü ile ilgili def'ileri ne yapabileceğini açıkça belirtmiyor",
+      "kaynak_izi": "2a04358e40961eca"
+    },
+    "m2b:6640": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin ortaklığın işleyişi hakkında bilgi almanın yolunu açıklamıyor.",
+      "kaynak_izi": "6340b5898920c4eb"
+    },
+    "m2b:7782": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin mahkemenin duruşmada kimleri çağırabileceğini belirtmiyor.",
+      "kaynak_izi": "dd9d5688ef1f38a5"
+    },
+    "m2b:8150": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, sanığın duruşmaya gelmesi için nasıl bir güvence verileceğini açıklamıyor.",
+      "kaynak_izi": "8ad876d77e91dde8"
+    },
+    "m2b:9127": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, suçun bir örgüt çerçevesinde işlenmesi durumunda verilecek cezayı doğrudan belirtmiyor.",
+      "kaynak_izi": "3bb4d338f5b57994"
+    },
+    "m2b:9258": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin çocuğa cinsel istismar cezasını değil, cinsel taciz cezasını açıklıyor.",
+      "kaynak_izi": "88e5db0c035bdea8"
+    },
+    "m2b:9386": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, sürekli takip edilme durumunda ne yapılması gerektiğine dair bilgi içermiyor.",
+      "kaynak_izi": "86d6d399093227f5"
+    },
+    "m2b:9491": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin kişisel verilerin kaydedilmesi durumunda verilecek cezayı belirtmiyor.",
+      "kaynak_izi": "812e687580f18065"
+    },
+    "m2b:9875": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, resmi belgenin nasıl bozulacağına dair bilgi içermiyor.",
+      "kaynak_izi": "ec3fd4715d5aa462"
+    },
+    "m2b:9885": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, hangi tür eşyalar için geçerli olduğunu belirtmiyor.",
+      "kaynak_izi": "f916968bec134566"
+    },
+    "m2b:10282": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin tanığı etkilemeye çalışmanın sonuçlarını açıklamıyor.",
+      "kaynak_izi": "e654cee8be14f914"
+    },
+    "m2b:10494": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, Cumhurbaşkanına suikast girişiminin cezasını doğrudan belirtmiyor.",
+      "kaynak_izi": "fb1b0aeb74c16e35"
+    },
+    "m2b:10672": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin gizli bilgilerin açıklanması için gereken amacı belirtmiyor.",
+      "kaynak_izi": "e01e38f8c2af40f6"
+    },
+    "m2b:10718": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin işçilerin kanundan nasıl etkileneceğini açıklamıyor.",
+      "kaynak_izi": "e1ed2876804d1000"
+    },
+    "m2b:11246": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, iş müfettişlerinin resmi işlemleri nasıl yürütmesi gerektiğini açıkça belirtmiyor.",
+      "kaynak_izi": "e1b5554a667dcfdc"
+    },
+    "m2b:11292": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin işverenin uyması gereken yasakları belirtmiyor.",
+      "kaynak_izi": "0547eda1d05fd2d8"
+    },
+    "m2b:11308": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin idari para cezaları için hangi tutarın esas alındığını belirtmiyor.",
+      "kaynak_izi": "81d948d1405615f2"
+    },
+    "m2b:11588": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin dernek kurulumunda hangi belgelerin gerektiğini açıkça belirtmiyor.",
+      "kaynak_izi": "4683e128c8888af0"
+    },
+    "m2b:11940": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin evlenirken resmi bir belgenin gerekip gerekmediğini doğrudan belirtmiyor.",
+      "kaynak_izi": "794935f8d0085b85"
+    },
+    "m2b:12006": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin boşanma sebeplerini sıralıyor ancak bir sebebin yeterli olup olmadığını doğrudan belirtmiyor.",
+      "kaynak_izi": "4f54f2b366fa84bd"
+    },
+    "m2b:12288": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, edinilmiş malların değerinin nasıl hesaplanacağına dair doğrudan bir bilgi içermiyor.",
+      "kaynak_izi": "9a776b31f4b6292f"
+    },
+    "m2b:12317": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin mal tasfiyesi sırasında dikkate alınacak malları belirtmiyor.",
+      "kaynak_izi": "899a0d9200d118e3"
+    },
+    "m2b:12358": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin ölen eşin yasal mirasçılarının hak talep edip edemeyeceğini doğrudan cevaplamıyor.",
+      "kaynak_izi": "0cf116defcc2f9ac"
+    },
+    "m2b:12472": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin boşanmanın mal rejimini nasıl etkilediğini doğrudan açıklamıyor",
+      "kaynak_izi": "1b4af6c88287cee3"
+    },
+    "m2b:12566": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, kocanın çocuğun babası olmadığını öğrendiğinde bir yıl geçmişse ne olacağına dair bilgi içermiyor.",
+      "kaynak_izi": "92252c305a3c56f1"
+    },
+    "m2b:12746": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin evlat edinme aracılığı için kanuni bir düzenleme hakkında bilgi vermiyor.",
+      "kaynak_izi": "0abe6afeb215230e"
+    },
+    "m2b:12848": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, yeniden evlenmenin çocuğun velayetini etkileyip etkilemeyeceği konusunda doğrudan bir bilgi sağlamıyor.",
+      "kaynak_izi": "ff6a5a27f51658a0"
+    },
+    "m2b:12862": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, ana ve babanın çocuğun mallarını yönetirken ne yapmaları gerektiğini açıkça belirtmiyor.",
+      "kaynak_izi": "cf60b10ceab8fa51"
+    },
+    "m2b:13279": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, değerli şeylerin vesayet altındaki kişinin eşyaları arasında olup olmadığını belirtmiyor.",
+      "kaynak_izi": "c6f402948c555999"
+    },
+    "m2b:13796": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, hâkimin karar verirken nelere dikkat ettiğini açıklamıyor.",
+      "kaynak_izi": "efc3ad366c06d1b2"
+    },
+    "m2b:13875": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin hayat sigortasının miras üzerindeki etkisinden bahsetmiyor.",
+      "kaynak_izi": "330f935f57bd60c3"
+    },
+    "m2b:13965": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, gaiplik kararı olan birinin mirasında hak sahibi olanların ne yapması gerektiğini doğrudan açıklamıyor.",
+      "kaynak_izi": "6050deef4eed2775"
+    },
+    "m2b:14197": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, mirasçının miras bırakanın borçlarından hangi mal varlığı ile sorumlu olduğunu açıklıyor.",
+      "kaynak_izi": "62190d91911f5b5a"
+    },
+    "m2b:14232": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin alacaklılar ve borçluların ne yapması gerektiğini doğrudan cevaplamıyor.",
+      "kaynak_izi": "7a57f6cdab71e777"
+    },
+    "m2b:14238": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin alacaklar için güvence alma yöntemlerini açıklamıyor.",
+      "kaynak_izi": "3fa5fb4020e7ec04"
+    },
+    "m2b:14243": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin alacaklıların haklarını açıkça belirtmiyor.",
+      "kaynak_izi": "7bc801a9111e1040"
+    },
+    "m2b:14304": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin miras paylaşımı için nereye başvurulması gerektiğini belirtmiyor.",
+      "kaynak_izi": "1d9665e31b99bf6d"
+    },
+    "m2b:14500": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, paylı maldan nasıl yararlanılacağına dair doğrudan bir bilgi içermiyor.",
+      "kaynak_izi": "5c115598009513d4"
+    },
+    "m2b:14585": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin elbirliği mülkiyetinde ortakların payları olup olmadığını doğrudan cevaplamıyor.",
+      "kaynak_izi": "152c8bf26600fd27"
+    },
+    "m2b:14815": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, arazi malikinin zarar durumunda ne yapabileceğini doğrudan açıklamıyor.",
+      "kaynak_izi": "4bd4c7c5d45aaac2"
+    },
+    "m2b:14860": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, su kaynağı kesildiğinde ne yapılması gerektiğini doğrudan açıklamıyor.",
+      "kaynak_izi": "fe74943f61bc792f"
+    },
+    "m2b:15006": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metinler irtifak hakkından yararlanan kişinin neler yapabileceğini açıkça belirtmiyor.",
+      "kaynak_izi": "69612db494990c03"
+    },
+    "m2b:15320": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin taşınmaz yükü alacaklıya hangi hakları verir sorusunu doğrudan cevaplamıyor.",
+      "kaynak_izi": "23df6ba9b57d3454"
+    },
+    "m2b:15490": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin alacağın kesin olmadığı durumda ipotek yapılıp yapılamayacağını açıklamıyor.",
+      "kaynak_izi": "1b8d90ef27aa3ca1"
+    },
+    "m2b:15624": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin borç senedinin devredilip devredilemeyeceği hakkında bilgi vermiyor.",
+      "kaynak_izi": "bca605c77dc32b49"
+    },
+    "m2b:15644": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin tahvillerin nasıl güvence altına alınabileceğini açıklamıyor.",
+      "kaynak_izi": "9982b6368dc35668"
+    },
+    "m2b:15659": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin taşınmaz rehinli olduğunda ne olacağına dair bilgi içermiyor.",
+      "kaynak_izi": "526b947584068edc"
+    },
+    "m2b:15709": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin rehinli eşyanın devri hakkında doğrudan bilgi vermiyor.",
+      "kaynak_izi": "8b1efe7716d3ebf1"
+    },
+    "m2b:15791": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metinler rehinli taşınırın nasıl geri alınacağına dair doğrudan bir bilgi içermiyor.",
+      "kaynak_izi": "568bfe1da6112f73"
+    },
+    "m2b:15942": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin tasarruf yetkisinin kısıtlanabileceği durumları açıkça belirtmiyor.",
+      "kaynak_izi": "f7579c7c0384e9b6"
+    },
+    "m2b:16075": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin kat malikinin haklarını doğrudan açıklamıyor",
+      "kaynak_izi": "961edde9c1b743cc"
+    },
+    "m2b:16119": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak, kat mülkiyeti için gerekli belgeleri belirtmiyor",
+      "kaynak_izi": "127745111cdfb4f8"
+    },
+    "m2b:16251": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, daha önce verilmiş bir karar varsa yeni anlaşmazlığın nasıl çözüleceğine dair bilgi içermiyor.",
+      "kaynak_izi": "21ebc9f034ba55a7"
+    },
+    "m2b:16573": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak, kat mülkiyetine sahip olanların haklarını belirtmiyor",
+      "kaynak_izi": "ec1fae9a500eefe0"
+    },
+    "m2b:16838": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, alacaklının iflas takibi için haciz, rehnin paraya çevrilmesi veya iflas yollarını seçebileceğini belirtmektedir.",
+      "kaynak_izi": "4b6e505b9e62e551"
+    },
+    "m2b:16842": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin iflas takibi için gerekli şartları belirtmiyor.",
+      "kaynak_izi": "4b6e505b9e62e551"
+    },
+    "m2b:16962": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, itiraz süresi geçen bir borç için ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "0ef6c6f37f62370d"
+    },
+    "m2b:16998": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, borçlunun hangi mahkemeye başvurması gerektiğini belirtmiyor.",
+      "kaynak_izi": "b67b97e617ba488f"
+    },
+    "m2b:17235": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin haciz işlemine katılmak için ne yapılması gerektiğini açıklamıyor.",
+      "kaynak_izi": "2608d2b4b9853a57"
+    },
+    "m2b:17248": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin haczi kabil mallar yeterli değilse ne olacağına dair bilgi içermiyor.",
+      "kaynak_izi": "383795616e2daf57"
+    },
+    "m2b:17272": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, borçlunun bir malın satışını nasıl talep edebileceği hakkında bilgi vermiyor.",
+      "kaynak_izi": "4c2fc8ade898608b"
+    },
+    "m2b:17397": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin, taşınmazın açık artırma ilanında neler yer alması gerektiğini belirtmiyor.",
+      "kaynak_izi": "b245aa7a0ed8b550"
+    },
+    "m2b:17488": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin ilamın icrası sırasında yapılabilecekler hakkında bilgi vermiyor.",
+      "kaynak_izi": "4494c112dac31041"
+    },
+    "m2b:17525": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin takip talebinde bulunma prosedürünü açıklamıyor",
+      "kaynak_izi": "b9efef9a87118767"
+    },
+    "m2b:17609": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, rehin için hangi maddelerin hükümlerinin geçerli olduğunu doğrudan belirtmiyor.",
+      "kaynak_izi": "895c8c0884f111e2"
+    },
+    "m2b:17610": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin rehin satışı kurallarını doğrudan açıklamıyor.",
+      "kaynak_izi": "01593f6556f83897"
+    },
+    "m2b:17903": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin iflas durumunda alacaklının ne yapması gerektiğini doğrudan açıklamıyor.",
+      "kaynak_izi": "d72506d4f5ca971e"
+    },
+    "m2b:17938": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin sorunun cevabını içermiyor",
+      "kaynak_izi": "a70ce05230f3cd62"
+    },
+    "m2b:18088": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak iflas idaresinin görevlerini açıklamıyor",
+      "kaynak_izi": "625232bd06f99ba7"
+    },
+    "m2b:18242": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "kaynak metin borçlunun ödeme emrine itiraz etmesi durumunda ne olacağını açıklamıyor",
+      "kaynak_izi": "5c0a973503d97c45"
+    },
+    "m2b:18315": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin, itirazın hangi maddelere dayanarak yapılabileceğini belirtmiyor.",
+      "kaynak_izi": "5e294318ac67a284"
+    },
+    "m2b:18359": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin iptal davasında hangi taraflar arasında bir durum olduğunu belirtmiyor.",
+      "kaynak_izi": "dab6922c5971ba37"
+    },
+    "m2b:18610": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Metin rehinli alacaklıların haklarını açıklamıyor.",
+      "kaynak_izi": "d70e640fef7de516"
+    },
+    "m2b:18806": {
+      "gecerli": false,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, cezalandırılmak için hangi hileli işlemlerin yapılması gerektiğini açıkça listeliyor.",
+      "kaynak_izi": "5b3d00bbbd527f58"
+    },
+    "m2b:18892": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin icra mahkemesi kararının nasıl ilan edileceğini açıklamıyor.",
+      "kaynak_izi": "c77cf0a2135c39a8"
+    },
+    "m2b:19004": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak metin nafaka ödememekle ilgili bilgi içermiyor.",
+      "kaynak_izi": "dd442b38b30883c5"
+    },
+    "m2b:19119": {
+      "gecerli": true,
+      "kaynak": "openai/gpt-4o",
+      "reason": "Kaynak, istinaf dilekçesi reddedilirse ne olacağına dair bilgi vermiyor.",
+      "kaynak_izi": "7cb973c064286b16"
+    }
+  }
+}

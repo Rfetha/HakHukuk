@@ -1,0 +1,52 @@
+{
+  "data": "data/train/raft/train.jsonl",
+  "model": "Qwen/Qwen3.5-4B",
+  "n": 17323,
+  "max_seq_len": 2048,
+  "dropped": 0,
+  "dropped_pct": 0.0,
+  "truncated": 10,
+  "truncated_pct": 0.06,
+  "affected_pct": 0.06,
+  "tokens_total": {
+    "median": 1191,
+    "p90": 1624,
+    "p99": 1906,
+    "max": 2496
+  },
+  "tokens_prompt": {
+    "median": 999,
+    "p90": 1410,
+    "p99": 1669,
+    "max": 1828
+  },
+  "tokens_user_msg": {
+    "median": 832,
+    "p90": 1243,
+    "p99": 1502,
+    "max": 1661
+  },
+  "tokens_answer": {
+    "median": 195,
+    "p90": 251,
+    "p99": 692,
+    "max": 1191
+  },
+  "by_slice": {
+    "abstain": {
+      "n": 3455,
+      "dropped": 0,
+      "truncated": 0
+    },
+    "grounded": {
+      "n": 13350,
+      "dropped": 0,
+      "truncated": 10
+    },
+    "replay": {
+      "n": 518,
+      "dropped": 0,
+      "truncated": 0
+    }
+  }
+}

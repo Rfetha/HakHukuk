@@ -1,0 +1,10 @@
+{
+  "n_supheli": 5,
+  "n_duzelt": 3,
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "judge_cost_usd": 0.0009
+}

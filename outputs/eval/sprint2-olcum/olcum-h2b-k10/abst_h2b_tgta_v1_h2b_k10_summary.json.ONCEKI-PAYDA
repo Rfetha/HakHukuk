@@ -1,0 +1,17 @@
+{
+  "label": "h2b_tgta_v1_h2b_k10",
+  "n": 80,
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "valid_traps": 51,
+  "invalid_traps": 29,
+  "rejection_rate": 0.784,
+  "rejection_exact": 0.706,
+  "fabrication_rate": 0.216,
+  "parametric_leak": 0.235,
+  "judge_cost_usd": 0.0216,
+  "note": "RGB negative-rejection. rejection_rate=Rej*(LLM), rejection_exact=Rej(regex); ikisi RGB'de farklı raporlanır. ↑ iyi (tavan yok). invalid=kaynak cevaplıyor→tuzak geçersiz."
+}

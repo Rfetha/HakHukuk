@@ -1,0 +1,12 @@
+{
+  "label": "h1_tgta_v1_bi_k10",
+  "n_total": 80,
+  "n_answered": 66,
+  "n_abstain": 14,
+  "over_refusal_rate": 0.175,
+  "A1_faithfulness_macro_answered": 0.8288,
+  "faithfulness_macro_ALL(çekinme dahil)": 0.8137,
+  "cit_precision_micro_answered": 0.8788,
+  "wrong_ref_rate_macro_answered": 0.1077,
+  "note": "A1=cevaplanan (exact_reject mod-duyarlı, ADR-0011 + ADR-0044). Aynı kural tüm modellere."
+}

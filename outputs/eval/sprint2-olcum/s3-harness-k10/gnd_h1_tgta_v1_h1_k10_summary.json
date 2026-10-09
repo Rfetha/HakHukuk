@@ -1,0 +1,21 @@
+{
+  "label": "h1_tgta_v1_h1_k10",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "openai/gpt-4o-mini",
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "runs": 1,
+  "total_claims": 273,
+  "faithfulness_micro": 0.7436,
+  "hallucination_micro": 0.2564,
+  "unsupported_micro": 0.2564,
+  "cit_precision_micro": 0.8889,
+  "wrong_ref_rate_micro": 0.1111,
+  "cit_recall_macro": 0.825,
+  "faithfulness_macro": 0.7541,
+  "judge_cost_usd": 0.0403,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

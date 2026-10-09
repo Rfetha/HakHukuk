@@ -1,0 +1,15 @@
+{
+  "yontem": "intfloat_multilingual-e5-base",
+  "n": 80,
+  "korpus": 40496,
+  "cihaz": "cuda",
+  "recall": {
+    "recall@1": 0.3875,
+    "recall@5": 0.6375,
+    "recall@10": 0.7,
+    "recall@20": 0.75
+  },
+  "hic_bulunmayan": 20,
+  "gecen_sure_s": 212.4,
+  "esik_karari": "HIBRIT GEREKIR"
+}

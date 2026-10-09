@@ -1,0 +1,60 @@
+{
+  "kaynak": "outputs/eval/g16-kabul-testi/h1_tgta_v1_g16_test_nb_detail.jsonl",
+  "n": 40,
+  "harness_k": 10,
+  "erisim": {
+    "recall@1": 0.375,
+    "recall@3": 0.575,
+    "recall@5": 0.675,
+    "recall@10": 0.75
+  },
+  "kutle_ekseni": {
+    "coverage": 0.775,
+    "A1_cevaplanan": 0.7489,
+    "faith_macro_tum_cekinme_dahil": 0.7338,
+    "A1_tum": 0.7489,
+    "A1_altin_getirilen_alt_kume": 0.7927,
+    "kutle_tum": 0.5804
+  },
+  "kapi": {
+    "kati": {
+      "gecen": 40,
+      "reddedilen": 0,
+      "atifsiz_gecen": 10,
+      "kapi_sonrasi_coverage": 0.775
+    },
+    "cogunluk": {
+      "gecen": 40,
+      "reddedilen": 0,
+      "atifsiz_gecen": 10,
+      "kapi_sonrasi_coverage": 0.775
+    },
+    "cerrahi": {
+      "gecen": 40,
+      "reddedilen": 0,
+      "atifsiz_gecen": 10,
+      "kapi_sonrasi_coverage": 0.775
+    }
+  },
+  "atif_dagilimi": {
+    "DOGRULANDI": 52,
+    "MADDE_YOK": 0,
+    "KANUN_YOK": 0,
+    "AYRISTIRILAMADI": 0,
+    "MULGA": 0
+  },
+  "erisim_davranis_caprazi": {
+    "altin_geldi_cevapladi": 25,
+    "altin_geldi_cekindi": 5,
+    "altin_gelmedi_cevapladi": 6,
+    "altin_gelmedi_cekindi": 4
+  },
+  "k2_bedeli": {
+    "ALTIN_GELMEDI": 10,
+    "TAM": 5,
+    "KIRPILDI": 22,
+    "KIRPILDI_CEVAP_DISI": 3
+  },
+  "ayirt_edicilik_alt_kumeleri": null,
+  "not": "A1 tek-altın yer-gerçeğine göre; harness AÇIK'ta model BAŞKA bir maddeden doğru cevaplasa da sadakatsiz sayılır → ON/OFF kıyası için A1_altin_getirilen_alt_kume kullanılır."
+}

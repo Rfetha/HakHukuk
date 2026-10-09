@@ -1,0 +1,19 @@
+{
+ "n": 80,
+ "http_200": 80,
+ "http_503_bos_cevap": [],
+ "http_diger": [],
+ "tamamen_bos_metin_200_icinde": [],
+ "kesik": [
+  11,
+  30,
+  50,
+  61
+ ],
+ "durum_dagilimi": {
+  "cevap": 71,
+  "cekinceli": 1,
+  "suskunluk": 4,
+  "kesik": 4
+ }
+}

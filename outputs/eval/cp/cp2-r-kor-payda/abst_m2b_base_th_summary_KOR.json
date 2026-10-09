@@ -1,0 +1,28 @@
+{
+  "label": "m2b_base_th",
+  "mode": "m2b",
+  "tag": "base_th",
+  "payda": "cevaba KÖR valid_trap, kalem düzeyinde önbellek (ADR-0048)",
+  "payda_hakemi": "gpt-4o",
+  "verdict_hakemi": "gpt-4o-mini",
+  "verdict_yeniden_hesaplanmadi": true,
+  "YENI": {
+    "rejection_rate": 0.949,
+    "fabrication_rate": 0.051,
+    "rejection_exact": 0.924,
+    "parametric_leak": 0.013,
+    "valid_traps": 79,
+    "invalid_traps": 1,
+    "n": 80
+  },
+  "ESKI_ozneye_bagli_payda": {
+    "rejection_rate": 0.986,
+    "fabrication_rate": 0.014,
+    "rejection_exact": 0.986,
+    "parametric_leak": 0.014,
+    "valid_traps": 72,
+    "invalid_traps": 8,
+    "n": 80
+  },
+  "hakem_maliyeti_usd": 0.0
+}

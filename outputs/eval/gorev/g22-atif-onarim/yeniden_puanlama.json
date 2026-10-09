@@ -1,0 +1,89 @@
+{
+  "kumeler": [
+    {
+      "kume": "DEV cipa (f02-biz-onsozsuz)",
+      "dosya": "outputs/eval/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl",
+      "sha256": "e0536489d876d9aec5da33c32f692f252ce7c6c239aee4daa5d22075a08a0aad",
+      "n_cevap": 80,
+      "n_atif": 114,
+      "once": {
+        "DOGRULANDI": 114,
+        "MULGA": 0,
+        "MADDE_YOK": 0,
+        "KANUN_YOK": 0,
+        "AYRISTIRILAMADI": 0
+      },
+      "sonra": {
+        "DOGRULANDI": 114,
+        "MULGA": 0,
+        "MADDE_YOK": 0,
+        "KANUN_YOK": 0,
+        "AYRISTIRILAMADI": 0
+      },
+      "hukmu_degisen_atif": 0
+    },
+    {
+      "kume": "donmus TEST (g16-kabul-testi)",
+      "dosya": "outputs/eval/g16-kabul-testi/h1_tgta_v1_g16_test_nb_detail.jsonl",
+      "sha256": "5af9287a106673fd93b7aa9e590d4c5822737f4836f80690e9128392d629df06",
+      "n_cevap": 40,
+      "n_atif": 52,
+      "once": {
+        "DOGRULANDI": 52,
+        "MULGA": 0,
+        "MADDE_YOK": 0,
+        "KANUN_YOK": 0,
+        "AYRISTIRILAMADI": 0
+      },
+      "sonra": {
+        "DOGRULANDI": 52,
+        "MULGA": 0,
+        "MADDE_YOK": 0,
+        "KANUN_YOK": 0,
+        "AYRISTIRILAMADI": 0
+      },
+      "hukmu_degisen_atif": 0
+    },
+    {
+      "kume": "fp16 kosusu (g22-kv-fp16)",
+      "dosya": "outputs/eval/g22-kv-fp16/h1_tgta_v1_g22_fp16_detail.jsonl",
+      "sha256": "8e5b89aa5f21e3da08770dda7de4d0001831e8f6b4281dfed515a3603583c455",
+      "n_cevap": 80,
+      "n_atif": 152,
+      "once": {
+        "DOGRULANDI": 149,
+        "MULGA": 0,
+        "MADDE_YOK": 1,
+        "KANUN_YOK": 0,
+        "AYRISTIRILAMADI": 2
+      },
+      "sonra": {
+        "DOGRULANDI": 150,
+        "MULGA": 0,
+        "MADDE_YOK": 0,
+        "KANUN_YOK": 0,
+        "AYRISTIRILAMADI": 2
+      },
+      "hukmu_degisen_atif": 1
+    }
+  ],
+  "degisen": [
+    {
+      "kume": "fp16 kosusu (g22-kv-fp16)",
+      "soru_id": 25,
+      "atif": "Gelir Vergisi Kanunu Madde 73",
+      "atif_kanun_adi": "Gelir Vergisi Kanunu",
+      "atif_madde": "73",
+      "atif_tip": "NORMAL",
+      "eski_hukum": "MADDE_YOK",
+      "eski_kanun_no": "1319",
+      "eski_kanun_adi": "EMLAK VERGİSİ KANUNU",
+      "yeni_hukum": "DOGRULANDI",
+      "yeni_kanun_no": "193",
+      "yeni_kanun_adi": "GELİR VERGİSİ KANUNU (G.V.K.)",
+      "altin_kanun_no": "6098",
+      "altin_kanun_adi": "TÜRK BORÇLAR KANUNU",
+      "altin_madde_no": "MADDE 344"
+    }
+  ]
+}

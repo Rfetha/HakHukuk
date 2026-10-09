@@ -1,0 +1,16 @@
+{
+  "yontem": "hibrit_bm25+yogun_rrf",
+  "rrf_k": 60,
+  "model": "BAAI/bge-m3",
+  "max_seq_length": 512,
+  "chunk": "tam madde (ADR-0054/K2)",
+  "gomulen_metin": "kanun_adi + madde_no + text",
+  "n": 40496,
+  "boyut": 1024,
+  "korpus": {
+    "yol": "/home/ersoy/code/Hukuk-SLM/data/corpus/mevzuat_maddeler.jsonl",
+    "bayt": 37903062,
+    "mtime": 1785318693
+  },
+  "secim_gerekcesi": "S3a ön-probu, research_log #49 — recall@10 0,875"
+}
