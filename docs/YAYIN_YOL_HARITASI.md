@@ -23,7 +23,7 @@
 | çıktı | Makale 1 gönderime hazır · uygulama kazananla güncel · tez malzemesi tamam | Makale 2 gönderime hazır · tez savunması |
 | GPU (tahmin) | ~$130-155, Modal aylık kredisinden | ~$120-130 |
 | nakit (tahmin) | ~$68-76 (hakem API) | ~$30-50 (rakipler + hakem) |
-| kullanıcı saati (tahmin) | ~80-115 | ~60-85 |
+| kullanıcı saati (tahmin) | ~81-116 | ~60-85 |
 
 Checkpoint 2 hiç gerçekleşmese bile Checkpoint 1 mezuniyete yeterli tez malzemesi üretir (§2.9).
 Çalışan uygulama hiçbir aşamada bozulmaz; `v1.0` her zaman yedek olarak durur.
@@ -115,7 +115,7 @@ Reasoning).
 ham model ── SFT (data/train/raft_scrubbed) ──────────► τ_g ┐
 ham model ── ORPO (data/train/orpo_abstain_cp2c) ─────► τ_a ┴─► ham TIES ─► birleştirme kolu
 ham model ── tek eğitim: aynı SFT verisi + aynı ORPO çiftleri ──────────────► birlikte-eğitim kolu
-ham model ── SFT ──► τ_g ── üstüne ORPO ─────────────────────────────────────► ardışık kol
+ham model ── SFT ──► τ_g ── tabana gömülür ── taze adaptörle ORPO ──────────► ardışık kol
 ```
 
 Birlikte eğitim, birleştirmenin kullandığı bilginin tamamını (ORPO'nun reddedilen tarafı dahil)
@@ -128,11 +128,18 @@ künyede kayıtlı olmadığı, davranışsal kanıtın `raft_scrubbed`'ı göst
 yeniden üretilemezse 3407 seed'i de yeniden eğitilir ve `v1` yalnız ürün olarak kalır.
 
 **Tarif.** τ_g ve τ_a tarifi iki temel modelde aynıdır (`v1` tarifi). Birlikte eğitim ve ardışık
-eğitim, her temel modelde DEV'de ikişer yapılandırmayla ayarlanır. Birleştirme ailesinin DEV
+eğitim, her temel modelde DEV'de ikişer yapılandırmayla ve **aynı düğmede** ayarlanır: tercih teriminin
+gücü 0,1 ve 0,3. Birlikte eğitim tam ORPO kaybını (τ_a ile aynı biçim) SFT tarifinin öğrenme hızıyla
+kullanır; çiftler eşit maruziyetle 5 epoch görünür. Ardışık kolda τ_g tabana gömülür ve ORPO τ_a'nın
+tarifiyle taze adaptörle eğitilir; birleştirme koluyla tek fark başlangıç noktasıdır. Reddedilen cevap
+havuzu ham modelden toplandığı için ardışık kol için kendi çıktısı değildir
+([ADR-0042](adr/kararlar-0027-0044.md#adr-0042)); bu, ardışık kolun aleyhine bir sınırlılık olarak
+yazılır. **DEV seçimi:** iki ayardan DEV kütlesi yüksek olan seçilir, ama düşünce koruma kapısını
+(§2.5.4) DEV'de geçmesi şarttır; fark DEV'in gürültü tabanından küçükse 0,1 seçilir. Birleştirme ailesinin DEV
 iterasyonu Qwen'de yapılmıştır (ham, norm-min, norm-ortalama, modül-başına;
 [ADR-0052](adr/kararlar-0045-0063.md#adr-0052), [ADR-0053](adr/kararlar-0045-0063.md#adr-0053));
 Gemma'da birleştirme ham TIES ve norm-min ile denenir. Denenen bütün yapılandırmaların DEV sonuçları
-eke girer.
+eke girer; Qwen'de birleştirmeye 4, diğer yöntemlere 2 ayar düşmesi sınırlılık olarak yazılır.
 
 **Dondurma.** DEV iterasyonu bitince, test açılmadan önce bir ADR yazılır: seçilen yapılandırmalar ·
 düşünce koruma eşiği · istatistik planı · birincil metrik ve birincil karşılaştırma · kazanan seçim
@@ -145,7 +152,10 @@ kuralı. Testten sonra gelen yeni fikir yeni bir hipotezdir ve aynı testte dene
 3. Q4_K_M'de 4.096 bağlamda **≤8 GB VRAM** ([ADR-0018](adr/gemma4-12b-dersler.md#adr-0018));
 4. lisansı açık ve ürünün Apache-2.0 dağıtımıyla uyumludur.
 
-İki aday güven aralıkları içinde berabereyse mevcut ürün (`tgta_v1`) kalır. Kazanan, testte seçildiği
+Ürün yalnız kazananın kütlesi (seed ortalaması) `tgta_v1`'i soru düzeyinde eşleştirilmiş bootstrap'ta
+%95 güvenle geçerse (aralık 0'ı içermezse) kazanana geçer; aksi hâlde `tgta_v1` kalır, makale sıralamayı
+yine raporlar. Ürüne kazananın **seed 3407** ağırlıkları gider (önceden seçilmiş; 3407 bir kapıda kalırsa
+3408) ve model kartına o dosyanın kendi test sayısı yazılır, ortalama değil. Kazanan, testte seçildiği
 için Makale 2'nin son sınavı ayrı ve mühürlü parçadır (§2.5.1).
 
 ### 2.4 İkinci temel model kapısı
@@ -191,9 +201,14 @@ bilinen notlar:
   sayı/süre) · ~50 sorunun hukuk terimi kullanmayan vatandaş dilinde yeniden ifadesi (ikincil eksen) ·
   "eğitimde görülmüş / görülmemiş" kırılımı (ikincil, betimsel). Zorluk modelden bağımsız
   özelliklerle kurulur; sorular hiçbir modelin çıktısına göre süzülmez.
-- **Üretim:** LLM üretir. Üretici, eğitim verisini üreten modelden farklıdır ve ne özne ne Makale 2
-  rakibi olan bir ailedendir; modeli, sürümü ve istemi künyeye yazılır. Kullanıcı her soruyu netlik
-  için okur. Küme bir kez dondurulur, bir kez açılır.
+- **Üretim:** LLM üretir. Yasak aileler: OpenAI (eğitim verisinin öğretmeni) · Qwen ve Gemma
+  (özneler) · Gemini ve Claude (Makale 2 rakipleri) · DeepSeek (bağlayıcı hakem; kendi yazdığı
+  soruların cevaplarını puanlamaz). Üretici kör okumayla seçilir: GLM 5 ve Kimi K2.6 aynı 10 maddeden
+  soru üretir, kullanıcı 20 soruyu kimin yazdığını bilmeden okur; net olan seçilir, beraberlikte GLM
+  (MIT lisansı). Modeli, sürümü ve istemi künyeye yazılır. Kullanıcı her soruyu netlik için okur. Küme
+  bir kez dondurulur, bir kez açılır. Eski CANON soruları eğitim verisiyle aynı soru havuzundan
+  (`grounded_qa` test bölümü) geldiği için eski ↔ yeni parça ayrımı "eğitimde görülmüş üretici
+  şablonu" kırılımını da verir.
 - **Çözünürlük:** %10'luk bir oran için güven aralığı genişliği n=80'de 13,4 puan
   ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) EK-2), n=200'de ~8 puan (hesap).
 
@@ -230,7 +245,7 @@ Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-ger
 
 - **Protokol** cevaplar okunmadan yazılır: cevap ↔ çekinme · altın bağlamdayken susma · isabetsiz
   atıf · sadakat (iddia düzeyinde; doğrulanabilir iddia ↔ yorum) · düşünce izi ↔ cevap tutarlılığı ·
-  "belirsiz". Protokol F1'de ~40-60 DEV cevabında kullanıcının okumasıyla denenir; hakemin insanla
+  "belirsiz". Protokol F1'de ~80 DEV cevabında kullanıcının okumasıyla denenir; hakemin insanla
   uyumu test açılmadan bilinir.
 - **Kör okuma:** okuyucu kolu görmez, sıra karışıktır.
 - **Örneklem:** kollara ve iki temel modele yayılmış ~300 cevap; zorunlu tabakalar bütün isabetsiz
@@ -250,10 +265,13 @@ Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-ger
 | döngü oranı | kuyruk-tekrarı dedektörü ([ADR-0073](adr/kararlar-0064-0085.md#adr-0073)) |
 | düşünce izi ↔ cevap tutarlılığı | hakem; insan örnekleminde doğrulanır |
 | iz dili | deterministik |
-| genel akıl yürütme kaybı | açık lisanslı küçük iki genel küme (Türkçe, İngilizce), düşünce açık, yerelde |
+| genel akıl yürütme kaybı | Global-MMLU Türkçe 100 + GSM8K 100; hakemsiz (deterministik doğru/yanlış), düşünce açık, yerelde; bütün kollar, bütün seed'ler ve iki ham model |
 
-Çıpa her temel modelin kendi ham hâlidir ([ADR-0039](adr/kararlar-0027-0044.md#adr-0039)). Eşik
-dondurma ADR'sinde yazılır. Risk kayıtta görünür: τ_a düşüncesini hiç kendi kapatmıyor (230/230 zorla,
+Çıpa her temel modelin kendi ham hâlidir ([ADR-0039](adr/kararlar-0027-0044.md#adr-0039)). **Kapı:**
+kol, iki genel kümenin ortalamasında ham modelinden en çok 5 puan düşüktür (seed ortalaması, nokta
+tahmini) ve döngü oranı ham modelden en çok 2 puan fazladır. Kendi kapatma oranı kapı olamaz, çünkü
+ham model M1'de düşüncesini hiç kendi kapatmıyor; kendi kapatma, iz dili ve iz ↔ cevap tutarlılığı
+raporlanır (Makale 2'nin hizalama hedefleri). Risk kayıtta görünür: τ_a düşüncesini hiç kendi kapatmıyor (230/230 zorla,
 [#48](record/kronoloji-39-52.md#48)); birleştirme bunu kısmen geri kazanıyor (M1'de 25/80 zorla, ham
 model 80/80, [`kollar.md`](record/kollar.md) satır 334-335).
 
@@ -275,7 +293,7 @@ bayraklarıyla koşar ([ADR-0078](adr/kararlar-0064-0085.md#adr-0078)); bilgisay
 | aşama | zaman | iş | kullanıcı saati (tahmin) |
 | :--- | :--- | :--- | :--- |
 | **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin kayda geçmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü, testi ve eski ortamla eşdeğerlik kontrolü · hakem geçişi ve kayma çıpası · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
-| **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · insan↔hakem pilotu · hakem önyargı sondası · test sorularının üretimi ve okuma protokolü · **dondurma ADR'si** | ~6-8 |
+| **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · insan↔hakem pilotu (~80 cevap) · hakem önyargı sondası · soru üreticisinin kör seçimi · test sorularının üretimi ve okuma protokolü · **dondurma ADR'si** | ~7-9 |
 | **F2 — test ve seed'ler** | Şubat–Nisan 2027 | test sorularının okunması (vatandaş dili dilimi dahil) ve dondurulması (Şubat ara tatili) · bütün kolların bütün seed'leri | ~8-12 |
 | **F3 — son ölçüm** | Mayıs–Haziran | test bir kez açılır · ~30 kolun dizüstünde ölçümü (~200 saat, geceleri) · Tablo 2 (üretim tarafındaki eski hâl için ~25-30 saat ek) · ikinci hakem · kazanan seçimi | ~3-4 |
 | **F3b — uygulama** | Haziran–Temmuz | kazanan → GGUF → konteyner kilidi → model kartı; kazanan `tgta_v1` ise değişiklik yok | ~2-4 |
@@ -470,7 +488,8 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | DeepSeek V4.1 Flash: tarihli sürüm kimliği · sabit sağlayıcının fiyatı · düşünme modunda sıcaklık desteği | OpenRouter model sayfası | F0 |
 | OpenAI kullanım şartlarının güncel metni (çıktıyla rakip model geliştirme maddesi) | openai.com/policies | F0 |
 | OSF ön-kayıt: ambargo ve isimsiz görüntüleme bağlantısı | osf.io | F1 |
-| genel yetenek kümesinin lisansı | küme deposu | F0 |
+| Global-MMLU ve GSM8K lisansları | küme depoları | F1 |
+| GLM 5 ve Kimi K2.6'nın OpenRouter kimliği ve fiyatı | OpenRouter | F1 |
 | Vast'ta A100 fiyatı ve sürücü sürümü | Vast konsolu | gerektiğinde |
 | vLLM'in kazanan modeli desteklemesi | GRPO pilotu | Ekim 2027 |
 | COLM 2028 çağrısı | COLM sitesi | Ekim 2027 |

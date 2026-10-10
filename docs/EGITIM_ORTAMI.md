@@ -35,6 +35,8 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 | LoRA | r=16 · α=32 · dropout 0,05 · `use_rslora=False` · hedef modüller: `q_proj k_proj v_proj o_proj in_proj_qkv in_proj_z in_proj_a in_proj_b gate_proj up_proj down_proj` (11) | `outputs/tg_v1` ve `outputs/ta_v1` `adapter_config.json` dosyalarında birebir doğrulandı |
 | SFT tarifi | veri `data/train/raft_scrubbed/` (17.323 satır) · 2048 token · cihaz başı batch 2 × biriktirme 8 · gradient checkpointing **kapalı** · lr 1e-4 cosine · `adamw_8bit` · 1 epoch = 1.083 adım · packing **yok** | [ADR-0033](adr/kararlar-0027-0044.md#adr-0033), [#40](record/kronoloji-39-52.md#40) |
 | ORPO tarifi | veri `data/train/orpo_abstain_cp2c/` (845 satır = 726 çift + 145 tekrar; 26 doğrulama) · lr 1e-5 · beta 0,1 · biriktirme 64 · 5 epoch = 70 adım · **taze adaptör** (`--fresh-adapter`) | [#48](record/kronoloji-39-52.md#48), [`kollar.md`](record/kollar.md) |
+| birlikte-eğitim tarifi | SFT tarifi (lr 1e-4) + ORPO çiftleri aynı koşuda; çiftlerde tam ORPO kaybı, λ 0,1 / 0,3; çiftler 5 epoch (örneklerin ~%20'si) | F0/F1 sorgulaması, 2026-10-10; kod F0.8'de |
+| ardışık tarif | τ_g tabana bf16'da gömülür; ORPO tarifi taze adaptörle, β 0,1 / 0,3 | aynı |
 | seed | **3407 · 3408 · 3409**, iki temel modelde (Qwen3.5-4B, Gemma 4 E4B) aynı liste. Qwen'de 3407'nin τ_g ve τ_a kolları `v1` adaptörleridir | sonuç görülmeden seçildi; yaml'a yazılınca kesinleşir |
 | GPU üzerinde yalnız eğitim | ölçüm, hakem ve API anahtarları **eğitim makinesine gitmez** | Vast için zorunlu |
 

@@ -13,7 +13,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F0.5 Payda kapısı · eski aletlere erişim (RQ2)
 - [ ] F0.6 Hakem geçişi (DeepSeek V4.1 Flash) · kayma çıpası · gürültü tabanı
 - [ ] F0.7 τ_g / τ_a seyreklik tablosu
-- [ ] F0.8 Birlikte-eğitim kodu, iki yapılandırma, eşit maruziyet, Modal pilotu
+- [ ] F0.8 Birlikte-eğitim kodu (tam ORPO, λ parametre), eşit maruziyet, Modal pilotu
 - [ ] F0.9 Gemma teknik kapısı geçti (kalırsa yedek o gün seçilir)
 - [ ] F0.10 Mevcut kollar güncel DEV'de ölçüldü
 - [ ] F0.11 Literatür taraması ve özgünlük notu
@@ -23,16 +23,16 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 
 **F1 · DEV iterasyonu** *(Aralık 2026–Ocak 2027)*
 
-- [ ] F1.1 Birlikte eğitim: iki yapılandırma × iki temel model
-- [ ] F1.2 Ardışık eğitim: iki yapılandırma × iki temel model
+- [ ] F1.1 Birlikte eğitim: tam ORPO, λ 0,1 / 0,3 × iki temel model
+- [ ] F1.2 Ardışık eğitim: τ_g gömülü + taze adaptör, β 0,1 / 0,3 × iki temel model
 - [ ] F1.3 Gemma'nın τ_g, τ_a ve birleştirmeleri
-- [ ] F1.4 İnsan↔hakem pilotu (~40-60 cevap) · hakemin düşünme modu seçildi
+- [ ] F1.4 İnsan↔hakem pilotu (~80 cevap) · hakemin düşünme modu seçildi
 - [ ] F1.5 Hakem önyargı sondası ve kontrol kalemleri
 - [ ] F1.6 Kör, katmanlı okuma aracı
 - [ ] F1.7 İz↔cevap hakemi
-- [ ] F1.8 Test soruları üretildi (yeni + mühürlü)
+- [ ] F1.8 Soru üreticisi kör okumayla seçildi · test soruları üretildi (yeni + mühürlü)
 - [ ] F1.9 İnsan okuma protokolü
-- [ ] F1.10 Genel yetenek kümeleri (Türkçe + İngilizce)
+- [ ] F1.10 Genel yetenek kümeleri (Global-MMLU TR + GSM8K)
 - [ ] F1.11 **Dondurma ADR'si** · OSF'de mühürlendi
 
 **F2 · Test ve seed'ler** *(Şubat–Nisan 2027)*
@@ -133,7 +133,7 @@ Aşağıdaki yedi madde doğrulanınca (hedef Eylül 2027):
 | F0.5 | **Ölçüm aleti kapıları:** (a) "puanlanan cevaplanan kalem = cevaplanan kalem" kapısı; özete `n_hakem_hata` ve `n_sifir_iddia` [hakem]; geçmiş koşularda kaç kalemin bu yoldan düştüğü sayılır · (b) eski aletlere bundle'dan erişim (RQ2): puanlama tarafındaki düzeltmeler (çekinme dedektörü · hakeme giden kaynak kırpması · kapı çıpası · hakem) tek tek açılıp kapatılabilir; üretim tarafındaki eski hâl (`RRF_K` 60 + yeterlilik önsözü) üretilebilir → (a) eksik kalemde puanlama durur; (b) eski aletle eski bir koşu yeniden puanlanınca kayıttaki sayı birebir çıkar |
 | F0.6 | **Hakem geçişi ve kayma çıpası:** bağlayıcı hakem DeepSeek V4.1 Flash (`deepseek-v4.1-flash-20260910`; OpenRouter'da sağlayıcı sabit, yedek sağlayıcıya düşme kapalı). `tgta_v1`'in 80 DEV cevabı DeepSeek ile iki kez (düşünme açık ve kapalı) ve `gpt-4o-mini` ile puanlanır [hakem] → hakem değişikliğinin etkisi ve DeepSeek'in gürültü tabanı kronolojide; künyede tarihli model kimliği ve sağlayıcı |
 | F0.7 | **Seyreklik ölçümü:** `tg_v1` ve `ta_v1` ağırlık değişimlerinin büyüklük ve seyreklik istatistikleri ($0) — τ_a'nın birleştirmede zayıflamasının (B4) olası mekanizması [RL] → tablo kronolojide; L1'li yeniden eğitim yalnız ölçüm desteklerse ve yalnız DEV'de |
-| F0.8 | **Birlikte-eğitim kodu:** SFT verisi + ORPO çiftleri tek koşuda; iki yapılandırma desteği: (I) tam ORPO, iç NLL dahil · (II) yalnız odds-oran terimi + SFT (ORPO'nun kaybı NLL'yi zaten içerdiği için çift sayım önlenir) [RL]; SFT ve tercih kayıpları ayrı günlüğe [IT]; `rewards/accuracies` yerine seçilen cevabın log-olasılığı ve odds-oran marjı izlenir [RL]; **eşit maruziyet:** SFT 1 epoch + çiftler 5 epoch aynı koşuda (çiftler örneklerin ~%20'si), ayrı kolların gördüğü veri ve gösterim sayısıyla aynı → Modal'da 50 adımlık künyeli pilot; iki kayıp eğrisi ayrı görünür; birim maliyet ölçüldü |
+| F0.8 | **Birlikte-eğitim kodu:** SFT verisi + ORPO çiftleri tek koşuda; çiftlerde tam ORPO kaybı (τ_a ile aynı biçim, iç NLL dahil), λ parametre [RL]; SFT ve tercih kayıpları ayrı günlüğe [IT]; `rewards/accuracies` yerine seçilen cevabın log-olasılığı ve odds-oran marjı izlenir [RL]; **eşit maruziyet:** SFT 1 epoch + çiftler 5 epoch aynı koşuda (çiftler örneklerin ~%20'si), ayrı kolların gördüğü veri ve gösterim sayısıyla aynı → Modal'da 50 adımlık künyeli pilot; iki kayıp eğrisi ayrı görünür; birim maliyet ölçüldü |
 | F0.9 | **Gemma kapısı (yalnız teknik):** kalma sebepleri — llama.cpp çalıştıramıyor · şablon ve tur işareti gözle doğrulanamıyor · A100'de eğitim ya da Q4_K_M kurulamıyor · lisans açık değil · 1024+512 zorla kapatma uygulanamıyor · DEV cevaplarının %90'ından azı Türkçe. Yalnız kaydedilenler: Türkçe M1 tabanı · düşüncenin kendi kapanması · döngü · 8 GB üstü VRAM. LoRA hedefleri yalnız metin kulesi. Gemma başka paket sürümü isterse Qwen'in kilidine dokunulmaz → kapı tablosu kronolojide; kalırsa yedek model o gün aynı kapıyla seçilir (adaylar: Phi ailesi, Ministral 3 3B Reasoning), Makale 1 sonuçlarına bakılmadan |
 | F0.10 | **Mevcut kolların güncel DEV ölçümü:** `tg_v1`, `ta_v1`, `tgta_v1` ve birleştirme varyantları (adaptörlerden $0 yeniden üretilir) güncel DEV biriminde → `recall@10` 0,9500 çıpası tutar; her koşunun künyesi var |
 | F0.11 | **Literatür taraması:** `knowledge/` özetleri + kilit 3-5 birincil makale (birleştirme ↔ birlikte eğitim; RLVR ve çekinme; atıflı hukuki cevap) → "özgünlük notu" kronolojide; örtüşme varsa çerçeve F1 dondurmasından önce düzeltilir |
@@ -155,17 +155,17 @@ açılmadan önce bilmek.
 
 | # | iş → doğrulama |
 | :-- | :--- |
-| F1.1 | **Birlikte eğitim:** her temel modelde iki yapılandırma (F0.8'deki I ve II; λ ekseni), seed 3407 → DEV sonuçları ve künyeler; iki kayıp ayrı izlendi |
-| F1.2 | **Ardışık eğitim:** her temel modelde iki yapılandırma (τ_g üstüne ORPO; öğrenme hızı ya da epoch), seed 3407 → aynı |
+| F1.1 | **Birlikte eğitim:** her temel modelde tam ORPO, λ 0,1 ve 0,3, SFT öğrenme hızıyla (1e-4), seed 3407 → DEV sonuçları ve künyeler; iki kayıp ayrı izlendi |
+| F1.2 | **Ardışık eğitim:** τ_g tabana gömülür (CPU, $0), ORPO τ_a'nın tarifiyle taze adaptörle; β 0,1 ve 0,3, seed 3407. Reddedilen havuz ham modelden ([ADR-0042](adr/kararlar-0027-0044.md#adr-0042)), ardışık kolun aleyhine sınırlılık → aynı |
 | F1.3 | **Gemma'nın tek kolları ve birleştirmesi:** τ_g, τ_a, ham TIES ve norm-min → aynı; ‖τ‖ koşulsuz raporlandı |
-| F1.4 | **İnsan↔hakem pilotu:** ~40-60 DEV cevabı, kör, kullanıcı okur; DeepSeek iki modda (düşünme açık/kapalı) puanlar. Kural pilottan önce yazılır: açık mod insanla uyumda güven aralığının dışında üstünse açık, değilse kapalı mod bağlayıcı olur [hakem] → uyum (yüzde, κ, sınıf başına P/R) ve mod kararı; uyum düşükse hakem istemi dondurmadan önce düzeltilir |
+| F1.4 | **İnsan↔hakem pilotu:** ~80 DEV cevabı, kollara ve iki temel modele yayılmış, kör, kullanıcı okur (~4 saat); DeepSeek iki modda (düşünme açık/kapalı) puanlar. Kural pilottan önce yazılır: açık mod insanla uyumda güven aralığının dışında üstünse açık, değilse kapalı mod bağlayıcı olur [hakem] → uyum (yüzde, κ, sınıf başına P/R) ve mod kararı; uyum düşükse hakem istemi dondurmadan önce düzeltilir |
 | F1.5 | **Hakem önyargı sondası ve kontrol kalemleri:** ~40 DEV cevabına tek değişkenli bozmalar — uzatma · gerçek ama soruya ait olmayan madde atfı ekleme · şerh/kesinlik cümlesi ekleme-çıkarma · "Düşünce süreci:" açılışı · kaynak sırasını ters çevirme; etiketi bilinen bozuk cevaplar hakem partisine kör karışır [hakem][benchmark] → her hakem ve çekinme dedektörü için karar değişim oranı; Tablo 2'ye ek satır |
 | F1.6 | **Okuma aracı:** `judge_agreement.py` kör (hakem kararı okuyucuya gösterilmez) ve katmanlı örnekleme yapar; metrikler: yüzde uyum, Cohen κ, sınıf başına precision/recall, Krippendorff α (insan↔insan), "belirsiz" kategorisi [hakem] → testli |
 | F1.7 | **İz↔cevap hakemi:** önce izdeki `KAYNAK n` seçimi ile cevaptaki atıf deterministik eşlenir; kalan kalemlere katı JSON yargı, kaynak sırası iki yönde verilerek [hakem][halüsinasyon] → F1.4 pilotunda insanla uyumu ölçüldü |
-| F1.8 | **Test sorusu üretimi:** yeni ~200-225 + ~100 mühürlü; kurallar aşağıda (§3.1) → taslak küme ve künyesi; kullanıcı okumasına hazır |
+| F1.8 | **Test sorusu üretimi:** önce üretici seçilir: GLM 5 ve Kimi K2.6 aynı 10 maddeden soru üretir, kullanıcı 20 soruyu kimin yazdığını bilmeden okur (~30 dk), net olan kazanır, beraberlikte GLM (kural okumadan önce yazılır). Sonra yeni ~200-225 + ~100 mühürlü; kurallar aşağıda (§3.1) → seçim kaydı, taslak küme ve künyesi; kullanıcı okumasına hazır |
 | F1.9 | **İnsan okuma protokolü:** etiket tanımları — cevap ↔ çekinme · altın bağlamdayken susma · isabetsiz atıf · sadakat (iddia düzeyinde; doğrulanabilir iddia ↔ yorum ayrımı) [benchmark] · iz ↔ cevap tutarlılığı · "belirsiz" → protokol F1.4 pilotunda denendi |
-| F1.10 | **Genel yetenek kümeleri:** biri Türkçe biri İngilizce, küçük, açık lisanslı, düşünce açık, yerelde [benchmark] → lisanslar okundu, ham modellerle çıpa koşuldu |
-| F1.11 | **DONDURMA ADR'si:** seçilen yapılandırmalar · düşünce koruma eşiği · istatistik planı (birincil ve önceden listelenmiş ikincil kırılımlar) · kazanan kuralı · hakem sürümleri ve modu · kesme sırası → ADR yazıldı ve OSF'de mühürlendi; bundan sonra yapılandırma değişmez |
+| F1.10 | **Genel yetenek kümeleri:** Global-MMLU Türkçe 100 + GSM8K 100; hakemsiz, düşünce açık, yerelde. F1 ayarlarında da koşulur (DEV seçimi koruma kapısına bakar, ~5 saat dizüstü); F3'te bütün kollar ve seed'ler (~19 saat) [benchmark] → lisanslar dosyadan okundu, iki ham modelle çıpa koşuldu |
+| F1.11 | **DONDURMA ADR'si:** seçilen yapılandırmalar (kural: DEV kütlesi yüksek olan, koruma kapısını DEV'de geçmesi şart; fark gürültü tabanından küçükse 0,1) · düşünce koruma eşiği (genel kayıp ≤5 puan, döngü artışı ≤2 puan; yol haritası §2.5.4) · istatistik planı (birincil ve önceden listelenmiş ikincil kırılımlar) · kazanan kuralı (ürün yalnız %95 eşleştirilmiş bootstrap'ta `tgta_v1`'i geçerse değişir; ürüne seed 3407) · hakem sürümleri ve modu · kesme sırası → ADR yazıldı ve OSF'de mühürlendi; bundan sonra yapılandırma değişmez |
 
 ### 3.1 Test sorularının kuralları
 
@@ -174,9 +174,9 @@ açılmadan önce bilmek.
 - **Örtüşme denetimi üç düzeyde:** soru yakın-kopyası · altın maddenin eğitim verisinde altın olarak
   geçip geçmediği · üretici şablonu; "eğitimde görülmüş / görülmemiş" kırılımı ikincil, betimsel
   [benchmark][damıtma].
-- **Üretici:** eğitim verisini üreten modelden farklı model ve istem; üretici modeli, sürümü, istemi ve
-  ailesi künyeye yazılır. Üretici ne özne (Qwen, Gemma) ne Makale 2 rakibi (Gemini, Claude) olan bir
-  aileden seçilir [benchmark].
+- **Üretici:** yasak aileler OpenAI (eğitim verisinin öğretmeni) · Qwen, Gemma (özneler) · Gemini,
+  Claude (Makale 2 rakipleri) · DeepSeek (bağlayıcı hakem). Seçim F1.8'deki kör okumayla; üretici
+  modeli, sürümü, istemi ve ailesi künyeye yazılır [benchmark].
 - **Görev tipi etiketi** (madde ne diyor · koşul/istisna · vaka uygulaması · sayı/süre); katman değil,
   etiket [benchmark].
 - **Vatandaş dili dilimi:** ~50 sorunun hukuk terimi kullanmayan birer yeniden ifadesi; ikincil eksen
@@ -189,7 +189,7 @@ açılmadan önce bilmek.
   türü · göstergeler · miktar · katmanlar · üretici [benchmark].
 
 **Kullanıcı kararları:** F1.4 okuması · F1.11 dondurma.
-**Tahmin:** kullanıcı ~6-8 saat · Modal ~$14 (Qwen) + ~$21-28 (Gemma) · hakem ~$10.
+**Tahmin:** kullanıcı ~7-9 saat · Modal ~$14 (Qwen) + ~$21-28 (Gemma) · hakem ~$10.
 
 ---
 
@@ -216,7 +216,7 @@ açılmadan önce bilmek.
 | F3.3 | **Puanlama:** DeepSeek V4.1 Flash bütün kollar · `claude-sonnet-5` iki temel modelde birincil karşılaştırma, 1 seed · iz↔cevap hakemi · düşünce koruma ölçüleri · genel yetenek kümeleri · kol başına cevap uzunluğu ve atıf yoğunluğu [hakem][IT] → F0.5 kapısı geçti; her koşunun künyesi var |
 | F3.4 | **RQ2:** puanlama tarafındaki düzeltmeler bütün kollarda tek tek; üretim tarafındaki eski hâl (`RRF_K` 60 + önsöz) birincil karşılaştırmada, iki temel model × 1 seed (dizüstünde ~25-30 saat ek) → Tablo 2 |
 | F3.5 | **İstatistik:** soru × seed eşleştirilmiş bootstrap · Wilson aralıkları · dondurma ADR'sinde listelenen ikincil kırılımlar, betimsel → Tablo 1 |
-| F3.6 | **Kazanan seçimi:** dört kapı → ADR; berabere ise `tgta_v1` kalır |
+| F3.6 | **Kazanan seçimi:** dört kapı; ürün yalnız kazananın kütlesi (seed ortalaması) `tgta_v1`'i eşleştirilmiş bootstrap'ta %95 güvenle geçerse değişir; ürüne kazananın seed 3407 ağırlıkları gider (3407 bir kapıda kalırsa 3408) → ADR |
 
 **Kullanıcı kararları:** testi açma (F3.2) · kazanan (F3.6).
 **Tahmin:** kullanıcı ~3-4 saat · hakem ~$53-61.
@@ -269,12 +269,12 @@ açılmadan önce bilmek.
 | aşama | zaman | kullanıcı saati | Modal | nakit (hakem) |
 | :--- | :--- | ---: | ---: | ---: |
 | F0 | Ekim sonu–Kasım 2026 | ~10-14 | ~$6 | ~$5 |
-| F1 | Aralık 2026–Ocak 2027 | ~6-8 | ~$35-42 | ~$10 |
+| F1 | Aralık 2026–Ocak 2027 | ~7-9 | ~$35-42 | ~$10 |
 | F2 | Şubat–Nisan 2027 | ~8-12 | ~$90-110 | — |
 | F3 + F3b | Mayıs–Temmuz 2027 | ~5-8 | — | ~$53-61 |
 | F4 | Temmuz 2027 | ~12-15 | — | — |
 | F5 | Ağustos–Eylül 2027 | ~40-60 | — | — |
-| **toplam** | | **~80-115** | **~$130-155** | **~$68-76** + OpenRouter kredi ücreti |
+| **toplam** | | **~81-116** | **~$130-155** | **~$68-76** + OpenRouter kredi ücreti |
 
 Pilotta hakemin düşünme açık modu seçilirse nakit ~$25-45 artar. Modal giderleri aylık $30 krediye
 göre Kasım 2026–Nisan 2027'ye yayılır. Riskler ve kesme sırası:
