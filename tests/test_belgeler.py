@@ -12,7 +12,7 @@ KOK = pathlib.Path(__file__).resolve().parent.parent
 # Canlı belgeler — tarihsel kayıt (docs/record, docs/adr) ve planlar hariç.
 CANLI = ["CLAUDE.md", "README.md", "docs/README.tr.md", "MODEL_CARD.md",
          "docs/README.md", "docs/PRODUCT.md", "docs/ROADMAP_v1.md", "docs/MIMARI.md",
-         "docs/YENIDEN_URETIM.md"]
+         "docs/YENIDEN_URETIM.md", "docs/YAYIN_YOL_HARITASI.md", "docs/EGITIM_ORTAMI.md"]
 # Markdown bağlantısı; http(s), mailto ve saf çapa (#…) atlanır.
 _LINK = re.compile(r"\[[^\]]*\]\((?!https?://|mailto:|#)([^)\s]+)\)")
 
