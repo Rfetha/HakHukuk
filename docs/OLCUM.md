@@ -23,18 +23,18 @@ elenen alternatifler [`docs/adr/`](adr/), kronolojik ölçüm kaydı
 | **Yöntem** | 2 × LoRA (r=16, α=32) → eşzamanlı 2-yollu ham TIES | [`KUNYE_tgta_v1.json`](../outputs/eval/cp/cp3d-merge/KUNYE_tgta_v1.json) |
 | **Taşıyıcı** | GGUF **Q4_K_M** · 2,59 GiB (2.783.446.720 bayt) | [ADR-0071](adr/kararlar-0064-0085.md#adr-0071) |
 | **Ağırlıklar** | [`Rfetha/HakHukuk-4B-GGUF`](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) — herkese açık | ADIM 9, 2026-09-13 |
-| **Ürün / iddia sürümü** | **`v1.0`** (2026-09-13) | [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) |
+| **Ürün / iddia sürümü** | **`v0.5`** (2026-09-13; 2026-10-10'a kadar `v1.0` adıyla) | [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) |
 | **Dil** | Türkçe | — |
 | **Lisans** | Apache-2.0 — ağırlık, kod, veri ve araştırma kaydı | [`LICENSE`](../LICENSE) |
 
-**Üç ayrı sürüm numarası vardır ve birbirinin yerine geçmez**
-([ADR-0065](adr/kararlar-0064-0085.md#adr-0065), bölünmüş sürümleme):
+**Sürüm numaraları** ([ADR-0065](adr/kararlar-0064-0085.md#adr-0065), bölünmüş sürümleme; 2026-10-10'dan
+beri dosya adı ürün sürümünü taşır):
 
 | numara | bugünkü değer | neyi adlandırır |
 | :--- | :--- | :--- |
 | artefakt kimliği | `HakHukuk-4B-v0.1` / `tgta_v1` | ağırlıkların kendisi; **kalıcıdır**, değişmez |
-| dosya adı | `HakHukuk-4B-v0.3-Q4_K_M.gguf` | yayımlanan GGUF; içerik değişmediği için **adı da değişmez** |
-| ürün / iddia sürümü | `v1.0` | ölçüm aygıtının ulaştığı doğrulama düzeyi (§3.1) |
+| dosya adı | `HakHukuk-4B-v0.5-Q4_K_M.gguf` | yayımlanan GGUF; 2026-10-10'a kadar `HakHukuk-4B-v0.3-Q4_K_M.gguf` adıyla yayımlandı, bayt ve `sha256` değişmedi |
+| ürün / iddia sürümü | `v0.5` (2026-10-10'a kadar `v1.0`) | ölçüm aygıtının ulaştığı doğrulama düzeyi (§3.1) |
 
 ---
 
@@ -92,7 +92,7 @@ belgelendirme ayrıntısı değil, **bağlayıcı bir karardır**: farklı yapı
 ürettiği kontrollü deneyle ölçülmüştür.
 
 ```bash
-llama-server -m HakHukuk-4B-v0.3-Q4_K_M.gguf \
+llama-server -m HakHukuk-4B-v0.5-Q4_K_M.gguf \
   -ngl 99 -fa on --no-context-shift \
   --cache-type-k q8_0 --cache-type-v q8_0 \
   -c 8192 --host 127.0.0.1 --port 8080
@@ -224,9 +224,9 @@ yürürlükte). Eğitim hedefi doğruluk ve çekinmedir; sadeleştirme istem kat
 
 ## 3. Başarım, sürüm ve karşılaştırma
 
-### 3.1 `v1.0` nedir
+### 3.1 `v0.5` nedir
 
-**`v1.0` bir ölçüm sürümüdür.** Modelin ne kadar iyi olduğunu değil, o iyiliğin **ne kadar
+**`v0.5` bir ölçüm sürümüdür** (2026-10-10'a kadar `v1.0` adını taşıdı). Modelin ne kadar iyi olduğunu değil, o iyiliğin **ne kadar
 sağlam ölçüldüğünü** anlatır.
 
 **Neler başarıldı:**
@@ -245,9 +245,11 @@ sağlam ölçüldüğünü** anlatır.
 3. **Manşet tek sayı değil, aralık:** `%69,4-80,1` — hangi hakemin puanladığına göre değişiyor.
 
 **Ağırlıklar bu turda hiç değişmedi.** Yayımlanan dosyanın `sha256`'sı `v0.3` etiketiyle
-yayımlanan dosyayla birebir aynıdır. Dosya adı da bu yüzden `HakHukuk-4B-v0.3-Q4_K_M.gguf`
-olarak **kalmıştır**: içeriği değişmemiş bir dosyaya yeni sürüm adı vermek yanıltıcı olurdu.
-Sürümü **kart anlatır**, dosya adı değil.
+yayımlanan dosyayla birebir aynıdır. Dosya 2026-10-10'a kadar `HakHukuk-4B-v0.3-Q4_K_M.gguf` adıyla
+yayımlandı; o gün ürün sürümüyle aynı adı taşısın diye `HakHukuk-4B-v0.5-Q4_K_M.gguf` olarak yeniden
+adlandırıldı. Bu, eski "içeriği değişmemiş dosyanın adı da değişmez" kuralının
+([ADR-0065](adr/kararlar-0064-0085.md#adr-0065)) bilinçli olarak tersine çevrilmesidir; bayt ve `sha256`
+aynı kaldığı için kimlik kapısı etkilenmez.
 
 Ayrıntı: [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) ·
 [#70](record/kronoloji-63-71.md#70).
@@ -536,7 +538,7 @@ Kaynak: `outputs/eval/gorev/g24-urun-yolu-kutle-6.3b/` · üretim `outputs/eval/
 2. **"Üç aileli tam bir hakem panelinden geçmiş bir hüküm."** İki aile aynı yönde hükmetmektedir,
    ama κ zayıftır ve değişmemiştir (0,534/0,409 < 0,6); üçüncü aile eklenmemiştir; öz-tercih
    genel olarak ölçülmemiştir (§4.3).
-3. **"`v1.0` modelin iyileştiği anlamına gelir."** `v1.0` bir **ölçüm sürümüdür**; ağırlıklar
+3. **"`v0.5` modelin iyileştiği anlamına gelir."** `v0.5` bir **ölçüm sürümüdür**; ağırlıklar
    değişmemiştir (§3.1).
 4. **"3.1 Flash-Lite için kesikliğe duyarlı hüküm."** O kolun kesikliği **%6,2**'dir, yani
    bizim kolumuzu tam eşikte tutan sınırın **üstünde**; ADR-0040 simetrik uygulanmalıdır.
@@ -731,7 +733,7 @@ GGUF. **Kuantizasyon en sondadır.**
 
 | | |
 | :--- | :--- |
-| Dosya | `HakHukuk-4B-v0.3-Q4_K_M.gguf` |
+| Dosya | `HakHukuk-4B-v0.5-Q4_K_M.gguf` |
 | `sha256` | `755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc` |
 | Boyut | 2.783.446.720 bayt (2,592 GiB) |
 | İç ad (izlenebilirlik) | `tgta_v1-q4_k_m.gguf` |
