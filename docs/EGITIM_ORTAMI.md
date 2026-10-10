@@ -31,7 +31,7 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 | `einops` · `fla-core` · `flash-linear-attention` | **sürümleri F0'da sabitlenecek** | bugün **sürümsüz** kuruluyor (`modal_train.py:81`) → imaj farklı günlerde kurulursa farklı sürüm gelir, hata vermez |
 | `fla-core` | **zorunlu**; ölçüt `import fla` değil `from fla.modules import FusedRMSNormGated` | eksikliği fla'nın hiç olmamasından kötü ([ADR-0033](adr/kararlar-0027-0044.md#adr-0033)) |
 | `causal-conv1d` | **yok** | tavanı 1,254× ölçüldü, ≥2× kapısından kaldı ([#44](record/kronoloji-39-52.md#44)) |
-| hassasiyet | **açıkça verilir, varsayılan YOK.** Değer τ_g v1'in rejimine göre F0'da seçilir; bütün kollar aynı rejimde | bugün betikler bayraksız çağrılınca **sessizce 4-bit NF4**'e düşüyor (§3) |
+| hassasiyet | **açıkça verilir, varsayılan YOK.** Değer **bf16 taban + LoRA**: τ_g v1 için belge kanıtı bu (eski geçmişte koşu komutu `9f4b43d`, rejim eşleşmesi `b995182`; künye yok), τ_a künyeli. Bütün kollar aynı rejimde | bugün betikler bayraksız çağrılınca **sessizce 4-bit NF4**'e düşüyor (§3) |
 | LoRA | r=16 · α=32 · dropout 0,05 · `use_rslora=False` · hedef modüller: `q_proj k_proj v_proj o_proj in_proj_qkv in_proj_z in_proj_a in_proj_b gate_proj up_proj down_proj` (11) | `outputs/tg_v1` ve `outputs/ta_v1` `adapter_config.json` dosyalarında birebir doğrulandı |
 | SFT tarifi | veri `data/train/raft_scrubbed/` (17.323 satır) · 2048 token · cihaz başı batch 2 × biriktirme 8 · gradient checkpointing **kapalı** · lr 1e-4 cosine · `adamw_8bit` · 1 epoch = 1.083 adım · packing **yok** | [ADR-0033](adr/kararlar-0027-0044.md#adr-0033), [#40](record/kronoloji-39-52.md#40) |
 | ORPO tarifi | veri `data/train/orpo_abstain_cp2c/` (845 satır = 726 çift + 145 tekrar; 26 doğrulama) · lr 1e-5 · beta 0,1 · biriktirme 64 · 5 epoch = 70 adım · **taze adaptör** (`--fresh-adapter`) | [#48](record/kronoloji-39-52.md#48), [`kollar.md`](record/kollar.md) |
@@ -77,10 +77,15 @@ olmaktan çıkarır (tuzak 1.12, [#66](record/kronoloji-63-71.md#66)).
 
 ## 6 · F0'da doldurulacak açık maddeler
 
-1. τ_g v1'in hassasiyeti (bundle'daki commit geçmişi + Modal günlükleri) → §2 hassasiyet satırı.
+1. ~~τ_g v1'in hassasiyeti~~ → belge kanıtı bulundu (2026-10-10, §2). Ölçüm kanıtı: yeni kilitte τ_g seed
+   3407 ile 50 adım ([#40](record/kronoloji-39-52.md#40)'taki 0,7987 / 0,3537'den en çok ~0,02 sapma) ve
+   ORPO ile 10 adım (`ta_v1/trainer_state-checkpoint70.json`); geçmezse Qwen'in 3407 kolları yeniden
+   eğitilir.
 2. `einops` · `fla-core` · `flash-linear-attention` sürümleri.
 3. Docker imajı ve özeti; imajın CUDA sürümünün istediği en düşük sürücü.
 4. `configs/egitim_ortami.yaml` + betik başı kontrolü + test.
 5. Gürültü tabanı ölçümü (§4.4).
 6. Gemma 4 E4B için ayrı bir bölüm: hedef modüller (yalnız metin kulesi), düşünce kapanış işareti,
    bf16 bellek ihtiyacı ve A100-40GB'da batch ayarı (Gemma 3 seed'le, Qwen'le eşit tasarımda eğitilir).
+   Kilitteki `transformers` 5.10.2 ve `unsloth` 2026.6.1 Gemma 4'ün çıkışından sonra; Gemma başka sürüm
+   isterse Qwen'in kilidine dokunulmaz, Gemma'nın kilidi ayrı yazılır.
