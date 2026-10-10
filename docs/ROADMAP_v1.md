@@ -69,7 +69,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F5.4 Dış okuyucuların yorumları işlendi
 - [ ] F5.5 arXiv
 - [ ] F5.6 **ARR gönderimi**
-- [ ] F5.7 Kapanış: kronoloji, ADR'ler, tez malzeme listesi
+- [ ] F5.7 Kapanış: kronoloji, ADR'ler, tez malzeme listesi · `master`'a birleştirme · **`v1` etiketi**
 
 ---
 
@@ -108,7 +108,7 @@ Aşağıdaki yedi madde doğrulanınca (hedef Eylül 2027):
 
 ## 1 · Başlangıç zemini (eldeki)
 
-- `v1.0` etiketli ve çalışıyor (2026-09-13); ağırlıklar ve indeks HF'te public; konteyner rejim kilidi
+- `v0.5` etiketli ve çalışıyor (2026-09-13'te `v1.0` adıyla etiketlendi, 2026-10-10'da yeniden adlandırıldı; `v1` Checkpoint 1'in sonundaki sürümdür); ağırlıklar ve indeks HF'te public; konteyner rejim kilidi
   ([ADR-0078](adr/kararlar-0064-0085.md#adr-0078)).
 - Ölçüm zinciri onarılmış: kütle %68,4 → %80,1, ağırlıklar değişmeden
   ([#62](record/kronoloji-53-62.md#62)); iki aileli hakem paneli
@@ -128,7 +128,7 @@ Aşağıdaki yedi madde doğrulanınca (hedef Eylül 2027):
 | # | iş → doğrulama |
 | :-- | :--- |
 | F0.1 | **Yedekler:** `~/yedek/HakHukuk-2026-10-10.bundle` (140 MB), `outputs/tg_v1` (115 MB), `outputs/ta_v1` (134 MB) özel HF deposuna; yerel kopya kalır → depodan indirilen kopyanın `sha256`'sı kaynakla birebir |
-| F0.2 | **Kararları deftere işle:** yol haritasının kararları ADR-0089 ve sonrası olarak (yayın yolu · ikinci temel model ve teknik kapı kuralı · yedekleme, ADR-0034'ü değiştirir · eğitim ortamı kilidi · bağlayıcı hakem değişikliği · korpus turunun ertelenmesi · `00-IS-SIRASI.md`'nin silinmesi · Makale 2 ödül ilkesi) · `ROADMAP.md` → `ROADMAP_v1.md` yeniden adlandırmasının kırdığı bağlantılar düzeltilir (CLAUDE.md, README.md, docs/README.md, docs/README.tr.md, docs/MIMARI.md, `tests/test_belgeler.py`) → `tests/test_belgeler.py` yeşil, çapalar çözülüyor |
+| F0.2 | **Kararları deftere işle:** yol haritasının kararları ADR-0089 ve sonrası olarak (yayın yolu · ikinci temel model ve teknik kapı kuralı · yedekleme, ADR-0034'ü değiştirir · eğitim ortamı kilidi · bağlayıcı hakem değişikliği · korpus turunun ertelenmesi · `00-IS-SIRASI.md`'nin silinmesi · sürüm adı `v1.0` → `v0.5` (`v1` = Checkpoint 1 sonu) · Makale 2 ödül ilkesi) · `ROADMAP.md` → `ROADMAP_v1.md` yeniden adlandırmasının kırdığı bağlantılar düzeltilir (CLAUDE.md, README.md, docs/README.md, docs/README.tr.md, docs/MIMARI.md, `tests/test_belgeler.py`) → `tests/test_belgeler.py` yeşil, çapalar çözülüyor |
 | F0.3 | **τ_g v1'in hassasiyeti:** eski geçmişte belge kanıtı bulundu (2026-10-10): τ_g için hazırlanan koşu komutu `--bf16-base` taşıyor (`9f4b43d`), ORPO kolu τ_g'ye bf16 olarak eşlendi (`b995182`); `requirements.lock.txt` 2026-06-07'den beri değişmedi; `fla-core` sürümü bilinmiyor → hüküm `kollar.md`'de ve [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §2'de "belge kanıtı, künye değil" damgasıyla; ölçüm kanıtı F0.4'teki eşdeğerlik kontrolünden gelir |
 | F0.4 | **Eğitim ortamı kilidi:** `configs/egitim_ortami.yaml` + `train_sft.py`/`train_orpo.py` başında kontrol + test; `fla-core`, `flash-linear-attention`, `einops` sürümleri sabitlenir; hassasiyet zorunlu argüman olur · **eski ortamla eşdeğerlik:** yeni kilitte τ_g seed 3407 ile 50 adım, ORPO ile 10 adım (~$1) → yanlış GPU, yanlış paket sürümü ya da bayraksız çağrıda koşu model yüklenmeden durur (test kırmızı→yeşil); τ_g'nin 10. ve 50. adım kaybı [#40](record/kronoloji-39-52.md#40)'taki 0,7987 / 0,3537'den en çok ~0,02 sapar, ORPO kaybı `ta_v1/trainer_state-checkpoint70.json` ile örtüşür; geçmezse Qwen'in 3407 kolları yeni kilitte yeniden eğitilir (~$6) |
 | F0.5 | **Ölçüm aleti kapıları:** (a) "puanlanan cevaplanan kalem = cevaplanan kalem" kapısı; özete `n_hakem_hata` ve `n_sifir_iddia` [hakem]; geçmiş koşularda kaç kalemin bu yoldan düştüğü sayılır · (b) eski aletlere bundle'dan erişim (RQ2): puanlama tarafındaki düzeltmeler (çekinme dedektörü · hakeme giden kaynak kırpması · kapı çıpası · hakem) tek tek açılıp kapatılabilir; üretim tarafındaki eski hâl (`RRF_K` 60 + yeterlilik önsözü) üretilebilir → (a) eksik kalemde puanlama durur; (b) eski aletle eski bir koşu yeniden puanlanınca kayıttaki sayı birebir çıkar |
@@ -233,7 +233,7 @@ açılmadan önce bilmek.
 | VRAM tablosu | 4.096 · 32.768 · 131.072 bağlamda ölçüldü; 4.096'da ≤8 GB |
 | model kartı | `MODEL_CARD.md` güncel; HF sürümü `scripts/hf_kart.py` ile üretildi |
 
-`v1.0` yedek olarak durur. Kazanan `tgta_v1` ise bu adımda iş yoktur.
+`v0.5` yedek olarak durur. Kazanan `tgta_v1` ise bu adımda iş yoktur.
 
 ---
 
@@ -260,7 +260,7 @@ açılmadan önce bilmek.
 | F5.4 | **Dış okuyucular:** 1-2 kişi → yorumlar işlendi |
 | F5.5 | **arXiv:** ARR'nin ön baskı kuralına uygun zamanda (F0.14) → yükleme kaydı |
 | F5.6 | **ARR gönderimi:** ilk uygun döngü; OpenReview profili ve karşılıklı hakemlik şartı (F0.14) → gönderim kaydı |
-| F5.7 | **Kapanış:** kronoloji girdisi, ADR'ler, tez 2-4. bölüm malzeme listesi → Checkpoint 1 tamam (§0) |
+| F5.7 | **Kapanış:** kronoloji girdisi, ADR'ler, tez 2-4. bölüm malzeme listesi · `talk-think` → `master` birleştirmesi; `master`'daki belgelerde, model kartında ve HF kartında eski "`v1.0`" yazıları `v0.5` olarak düzeltilir · birleştirme commit'i **`v1`** olarak etiketlenir → Checkpoint 1 tamam (§0) |
 
 **Tahmin:** kullanıcı ~40-60 saat.
 

@@ -26,7 +26,13 @@
 | kullanıcı saati (tahmin) | ~81-116 | ~60-85 |
 
 Checkpoint 2 hiç gerçekleşmese bile Checkpoint 1 mezuniyete yeterli tez malzemesi üretir (§2.9).
-Çalışan uygulama hiçbir aşamada bozulmaz; `v1.0` her zaman yedek olarak durur.
+Çalışan uygulama hiçbir aşamada bozulmaz; `v0.5` her zaman yedek olarak durur.
+
+**Sürüm adları.** Bugünkü yayın `v0.5`'tir: 2026-09-13'te `v1.0` diye etiketlenmişti, etiket
+2026-10-10'da aynı commit'te `v0.5` olarak yeniden adlandırıldı (içerik ve ağırlıklar değişmedi).
+`v1`, Checkpoint 1'in sonunda çıkan sürümün adıdır; `v2`, Checkpoint 2'ninki. `master`'daki belgeler,
+model kartı ve HF kartı hâlâ "`v1.0`" der; bu metinler Checkpoint 1 birleştirilirken `v0.5` olarak
+düzeltilir. Kayıttaki eski "`v1.0`" anışları (ADR'ler, kronoloji) o günün adıdır ve değişmez.
 
 ---
 
@@ -225,7 +231,7 @@ bilinen notlar:
   OpenRouter'da sağlayıcı sabit, yedek sağlayıcıya düşme kapalı) ve bütün kolları puanlar.
   `gpt-4o-mini`'den geçişin üç gerekçesi: küçük hakemin cevaba çapalanması (22,3 puan; `gpt-4o`
   8,4, [#45](record/kronoloji-39-52.md#45)) · eğitim verisini `gpt-4o-mini`'nin üretmiş olması
-  (öğretmen ile hakemin aynı model olması) · emeklilik riski. `v1.0` sayıları `gpt-4o-mini`
+  (öğretmen ile hakemin aynı model olması) · emeklilik riski. `v0.5` (eski adıyla `v1.0`) sayıları `gpt-4o-mini`
   damgasıyla olduğu gibi kalır.
 - **Hakemin düşünme modu** F1.4 pilotunda seçilir. Kural pilottan önce yazılır: düşünme açık mod
   insanla uyumda güven aralığının dışında üstünse açık, değilse kapalı mod bağlayıcı olur.
@@ -525,6 +531,7 @@ damgalanır.
 | :--- | :--- | :--- |
 | [`MODEL_CARD.md`](../MODEL_CARD.md) §2 | iki kol "QLoRA (NF4)" | [ADR-0031](adr/kararlar-0027-0044.md#adr-0031) "bf16 taban + LoRA"; τ_a `--bf16-base` ile eğitildi ([#48](record/kronoloji-39-52.md#48)); τ_g için belge kanıtı da bf16 (eski geçmişte koşu komutu `9f4b43d`, rejim eşleşmesi `b995182`), künye yok; betiklerin varsayılanı NF4 → model kartı F0'da ADR ile düzeltilir |
 | [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) | bağlayıcı hakem `gpt-4o-mini` | Checkpoint 1'den itibaren DeepSeek V4.1 Flash (§2.5.2); `v1.0` sayıları eski damgasıyla kalır |
+| [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) · `MODEL_CARD.md` · README | ürün sürümü `v1.0` | sürüm `v0.5` olarak yeniden adlandırıldı (git etiketi 2026-10-10); `v1` Checkpoint 1'in sonundaki sürümdür; metinler Checkpoint 1 birleştirilirken düzeltilir |
 | [ADR-0028](adr/kararlar-0027-0044.md#adr-0028) | tek boyut noktası | ikinci bir temel model (aynı boy, başka aile) eklenir |
 | [ADR-0034](adr/kararlar-0027-0044.md#adr-0034) | adaptörler yedeklenmez | `v1` ve yeni seed adaptörleri yedeklenir |
 | [ADR-0037](adr/kararlar-0027-0044.md#adr-0037) | Kapı 5 "ayar: norm-dengeli" | ana sonuç ham TIES ([ADR-0052](adr/kararlar-0045-0063.md#adr-0052)); Kapı 5 ham TIES için türetilir |
