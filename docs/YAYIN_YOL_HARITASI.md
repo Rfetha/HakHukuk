@@ -5,15 +5,16 @@
 > kilitli değerleri:
 > [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Her aşama başlarken kendi uygulama planı yazılır
 > (en çok bir canlı plan, [ADR-0056](adr/kararlar-0045-0063.md#adr-0056)); bu belgedeki kararlar
-> F0'da karar defterine ADR-0089 ve sonrası olarak işlenir.
+> karar defterine [ADR-0089](adr/kararlar-0064-0085.md#adr-0089)–[0096](adr/kararlar-0064-0085.md#adr-0096)
+> olarak işlendi.
 >
 > "Tahmin" yazan sayılar kayıttaki koşu sürelerinden ve 2026-10-10 tarihli web fiyatlarından
 > hesaplanmıştır; her bloğun ilk işi birim maliyeti küçük bir pilotla ölçmektir.
 >
 > 2026-10-10 fizibilite turu bu sürüme işlendi: iki Modal hesabı ve kredi kuralı · τ_g/τ_a
 > seed'lerinin dondurmayı beklememesi · tek kolların testte tek seed'le ölçülmesi ve kazananın üç
-> yoldan seçilmesi · dizüstü yükünün ve takvimin öne çekilmesi · GRPO'nun 2027 yazında başlaması.
-> ADR'leri F0.2'de yazılır.
+> yoldan seçilmesi · dizüstü yükünün ve takvimin öne çekilmesi · GRPO'nun 2027 yazında başlaması
+> ([ADR-0096](adr/kararlar-0064-0085.md#adr-0096)).
 
 ---
 
@@ -555,8 +556,8 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 
 ## 7 · Mevcut kayıtla ilişki
 
-Bu plan aşağıdaki kayıtlarla çelişir ya da onları günceller; karşı tarafları F0'da ADR ile
-damgalanır.
+Bu plan aşağıdaki kayıtlarla çelişir ya da onları günceller; karşı tarafları ADR-0089–0096 ile
+damgalandı (model kartındaki hassasiyet düzeltmesi F0.3'te).
 
 | kayıt | kayıttaki ifade | bu plan |
 | :--- | :--- | :--- |

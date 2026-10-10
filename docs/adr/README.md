@@ -14,14 +14,14 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 | :--- | :--- |
 | [`kararlar-0027-0044.md`](kararlar-0027-0044.md) | tasarım kilitleri · base seçimi · precision · merge/norm · Kapı 6 · düşünce modu |
 | [`kararlar-0045-0063.md`](kararlar-0045-0063.md) | ara kapı · CP2 hasat · hakem · harness · eşit sınav · faz 0 ölçüm zinciri |
-| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart |
+| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0096) |
 | [`gemma4-12b-dersler.md`](gemma4-12b-dersler.md) | emekli 12B hattı: **(A) dersler** (base-bağımsız — *yeni hatta başlayan burayı okur*) · **(B) 26 ADR'nin karar kaydı** · (C) ham kayda giriş |
 
 **Atıf uyumu.** Repo genelinde ~2.100 `ADR-00NN` göndermesi var ve hepsi **çapayla** çözülür:
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0089**'dan devam. ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara, **0097**'den devam. ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
@@ -33,16 +33,16 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | # | | konu |
 | :-- | :-: | :--- |
 | [0027](kararlar-0027-0044.md#adr-0027) | 🟢 | ⭐⭐ Tasarım kilitleri: paralel kol + task-vector merge · iki matris · DEV/TEST ayrımı · dört katmanlı hakem savunması |
-| [0028](kararlar-0027-0044.md#adr-0028) | 🟢 | Tek boyut noktası *(tez kısıtı 2026-08-03'te kalktı; bedelin üç maddesi limitations'ta)* |
+| [0028](kararlar-0027-0044.md#adr-0028) | 🟡 | Tek boyut noktası *(tez kısıtı 2026-08-03'te kalktı; bedelin üç maddesi limitations'ta)* · *aynı boyda ikinci aile → 0090* |
 | [0029](kararlar-0027-0044.md#adr-0029) | 🟢 | Tek model erişim kapısı + 🔒 maliyet muhasebesi (**liste fiyatı**, kapıya ödenen değil) |
 | [0030](kararlar-0027-0044.md#adr-0030) | 🟡 | ⭐ **Base = `Qwen/Qwen3.5-4B`**, kapı 6/6 · *madde 2 (düşünce KAPALI) → 0043 ile düştü* |
 | [0031](kararlar-0027-0044.md#adr-0031) | 🟢 | Precision: dağıtım **Q4_K_M** · eğitim **bf16 taban + LoRA** (QLoRA değil) |
 | [0032](kararlar-0027-0044.md#adr-0032) | 🟡 | Hakem paneli üç aile + aile-dışlama *(pratikte iki aile — 0074/0084)* |
 | [0033](kararlar-0027-0044.md#adr-0033) | 🟢 | Eğitim hızı: **`fla-core` zorunlu** (36 → 5,4 s/it) · checkpointing kapalı · batch 2×8 |
-| [0034](kararlar-0027-0044.md#adr-0034) | 🟢 | Emekli hattın artefaktları repo'dan çıkarıldı · 🔴 12B adaptörleri **kalıcı kayıp** |
+| [0034](kararlar-0027-0044.md#adr-0034) | 🟡 | Emekli hattın artefaktları repo'dan çıkarıldı · 🔴 12B adaptörleri **kalıcı kayıp** · *yeni hattın adaptörleri yedeklenir → 0091* |
 | [0035](kararlar-0027-0044.md#adr-0035) | 🟢 | `τ_reasoning` / RS-FT kapsam dışı — istenen davranış **zaten eğitiliyor** |
 | [0036](kararlar-0027-0044.md#adr-0036) | 🔴 | ΔW norm asimetrisi → norm-dengeli merge · **hükmü 0052 ile tersine döndü** |
-| [0037](kararlar-0027-0044.md#adr-0037) | 🟡 | İç iddianın karar kuralı: **Kapı 5** · *madde (d) → 0039* |
+| [0037](kararlar-0027-0044.md#adr-0037) | 🟡 | İç iddianın karar kuralı: **Kapı 5** · *madde (d) → 0039* · *ayar ham TIES, eşikler yeniden türetilir → 0090* |
 | [0038](kararlar-0027-0044.md#adr-0038) | 🟢 | Red kapısı: **katı** — tek doğrulanamayan atıf tüm cevabı reddettirir |
 | [0039](kararlar-0027-0044.md#adr-0039) | 🟢 | **Kapı 6** — parametrik sızıntı kendi kapısına ayrıldı, çıpa **base** (rakip değil) |
 | [0040](kararlar-0027-0044.md#adr-0040) | 🟡 | Düşünce modu **ölçülecek**: ön-kayıtlı 🟢🟡🔴 kuralı · geçerlilik kapısı **%5 kesiklik** |
@@ -70,7 +70,7 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0062](kararlar-0045-0063.md#adr-0062) | 🟢 | ⭐ B10 turu kapatıldı: hedef **eğitimsiz** karşılandı — *kaybın %43'ü aletin kendisiydi* |
 | [0063](kararlar-0045-0063.md#adr-0063) | 🟢 | **Yeterlilik önsözü KALDIRILDI** — bağlayıcı metrik **kütle**: cevaplanmayan soru vatandaş için değersizdir |
 | [0064](kararlar-0064-0085.md#adr-0064) | 🟢 | ⭐⭐ **`v1.0` kapısı: üç madde, δ = 2,0 p** — ön-kayıtlı formül, mekanik sayı, bağlayıcı okuma **GÖZ-katı** |
-| [0065](kararlar-0064-0085.md#adr-0065) | 🟢 | Bölünmüş sürümleme: **ürün sürümü ↔ iddia sürümü** |
+| [0065](kararlar-0064-0085.md#adr-0065) | 🟡 | Bölünmüş sürümleme: **ürün sürümü ↔ iddia sürümü** · *dosya adı kuralı → 0094 ile tersine döndü* |
 | [0066](kararlar-0064-0085.md#adr-0066) | 🟢 | B1 yöntemi: **reddetme-örneklemesi** · GRPO bütçe kapısıyla ertelendi · ⛔ otomatik vekil metrik **YOK** |
 | [0067](kararlar-0064-0085.md#adr-0067) | 🟢 | DEV/TEST soru onarımı v1 → v2 · `recall@10` 0,8750 → 0,9375 · ⚠️ **#39-#61 arası her DEV sayısı v1 birimindedir** |
 | [0068](kararlar-0064-0085.md#adr-0068) | 🟢 | `RRF_K` **60 → 10** — kusur BM25'te değil **füzyonda**; seçim gerekçesi **plato** · TEST'te bağımsız doğrulandı |
@@ -80,7 +80,7 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0072](kararlar-0064-0085.md#adr-0072) | 🟡 | Rakip havuzu genişler · ⛔ **kapı eşiği oynamaz** · GPT sınıfı **usul gereği** dışarıda |
 | [0073](kararlar-0064-0085.md#adr-0073) | 🟢 | M5 rejimine **DRY** eklendi (kapsam yalnız M5) · 🚨 *DRY modeli DOĞRU yapmadı, AKICI yaptı* |
 | [0074](kararlar-0064-0085.md#adr-0074) | 🟢 | ⭐ **Hakem paneli kuruldu (iki aile)** · κ **0,534/0,409** (eşik 0,6) · bağlayıcı hakem = eşit sınavın hakemi |
-| [0075](kararlar-0064-0085.md#adr-0075) | 🟢 | `v1` **SFT ile kapanır**; `v2` = `tgta_v1` üstüne **sequential RL** · 🚨 task-vector hattı `v1`'de **dondurulur** |
+| [0075](kararlar-0064-0085.md#adr-0075) | 🟡 | `v1` **SFT ile kapanır**; `v2` = `tgta_v1` üstüne **sequential RL** · 🚨 task-vector hattı `v1`'de **dondurulur** · *başlangıç noktası → 0089; m.3 yalnız ürün için → 0090; ödüle isabet terimi → 0095* |
 | [0076](kararlar-0064-0085.md#adr-0076) | 🟢 | **KAPI ↔ KALDIRAÇ** ayrımı + araç katmanı · 🚨 **KAPI'lar TOOL YAPILAMAZ** |
 | [0077](kararlar-0064-0085.md#adr-0077) | 🔴 | Kabul testi koştu; `v1.0` **VERİLMEDİ**, `v0.3` *(→ 0084 ile aşıldı)* · ham kütle TEST **0,5804** |
 | [0078](kararlar-0064-0085.md#adr-0078) | 🟢 | Konteyner dağıtımı bir **REJİM KİLİDİDİR** — KV bayrağı cevabı değiştiriyordu |
@@ -89,11 +89,19 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0081](kararlar-0064-0085.md#adr-0081) | 🟢 | Altıncı `Durum`: **`BOS_SORGU`** — kapalı küme, yeni hâl ölçülünce **ad ister** |
 | [0082](kararlar-0064-0085.md#adr-0082) | 🟢 | `app` kutusu da `--host 0.0.0.0` — *kilit ancak kapsamadığı şeyi görünür kıldığı sürece kilittir* |
 | [0083](kararlar-0064-0085.md#adr-0083) | 🟢 | ⭐⭐ **Kusur sicili** (33 kusur, **4 açık**: 5a·23·27·31) + devir tablosu + kapsam/tazelik tasarımının özü + **9 grill maddesi** |
-| [0084](kararlar-0064-0085.md#adr-0084) | 🟢 | ⭐ **κ borcu kapandı; kapının üç maddesi yeni birimde GEÇTİ** — κ'nın kendisi **değişmedi** |
+| [0084](kararlar-0064-0085.md#adr-0084) | 🟡 | ⭐ **κ borcu kapandı; kapının üç maddesi yeni birimde GEÇTİ** — κ'nın kendisi **değişmedi** · *sürüm adı `v0.5` → 0094; bağlayıcı hakem → 0093* |
 | [0085](kararlar-0064-0085.md#adr-0085) | 🟢 | Tek model kartı · ürün tonu · iki yeniden adlandırma · **aşırı-red ekseni tek birime çivilendi** (yayımlanan sayı aleyhimize değişti) |
 | [0086](kararlar-0064-0085.md#adr-0086) | 🟢 | **Kayıt katmanı kompaktlandı** — 103 dosya → 12; ADR-0024'ten **ikinci bilinçli sapma** |
 | [0087](kararlar-0064-0085.md#adr-0087) | 🟢 | **`outputs/eval/` döneme göre gruplandı** — 64 koşu klasörü `<grup>/<koşu>/` altına; ADR-0083 §(D) emsalinden bilinçli sapma |
 | [0088](kararlar-0064-0085.md#adr-0088) | 🟢 | **Git geçmişi sıfırlandı** — tek commit'ten yeniden başlangıç; eski geçmiş yerel bundle'da, kayıttaki commit atıfları oradan çözülür |
+| [0089](kararlar-0064-0085.md#adr-0089) | 🟢 | **Yayın yolu ve iş sırası** — Checkpoint 1 → Checkpoint 2 → mevzuat turu; `00-IS-SIRASI.md` silindi; `v2` Checkpoint 1'in kazananı üstüne |
+| [0090](kararlar-0064-0085.md#adr-0090) | 🟢 | **Makale 1'in tasarımı** — iki temel model (Gemma kapısı yalnız teknik), dört yol, üç seed, kazanan kuralı |
+| [0091](kararlar-0064-0085.md#adr-0091) | 🟢 | `v1` adaptörleri ve eski git geçmişi **yedeklenir** — ADR-0034'ün "yedeklenmez" notu değişti |
+| [0092](kararlar-0064-0085.md#adr-0092) | 🟢 | **Eğitim ortamı kilidi** — yaml + betik başı kontrolü + test; hassasiyet açıkça verilir |
+| [0093](kararlar-0064-0085.md#adr-0093) | 🟢 | Bağlayıcı hakem **`gpt-4o-mini` → DeepSeek V4.1 Flash** (Checkpoint 1'den itibaren) |
+| [0094](kararlar-0064-0085.md#adr-0094) | 🟢 | Sürüm adları: **`v1.0` → `v0.5`**, GGUF adı `v0.5`; `v1` = Checkpoint 1'in sonu |
+| [0095](kararlar-0064-0085.md#adr-0095) | 🟢 | Makale 2'nin ödül ilkesi: **altın madde bilindiği için hakemsiz ödül**, isabet terimi |
+| [0096](kararlar-0064-0085.md#adr-0096) | 🟢 | **Fizibilite turu** — çıktıdan kısmadan para ve zaman; kazanan yalnız üç yoldan; GRPO 2027 yazında |
 
 ---
 
