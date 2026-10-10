@@ -48,8 +48,7 @@ hakemli makale (ACL ailesi / COLM düzeyi) ve bunların üzerine kurulan yüksek
 (DEÜ Fen Bilimleri Enstitüsü, mezuniyet ~2028 yazı).
 
 **Çalışma koşulları.** Tek yazar · dönem içinde haftada 5 saatten az kullanıcı zamanı, yoğun okuma ve
-yazma tatillerde · toplam bütçe $100-500 · eğitim iki Modal hesabında (aylık $30'ar kredi; ikinci
-hesap dış destekli, destek makalede beyan edilir), ölçüm kullanıcının
+yazma tatillerde · toplam bütçe $100-500 · eğitim iki Modal hesabında (aylık $30'ar kredi), ölçüm kullanıcının
 dizüstünde · icrayı ajan yürütür, kararları kullanıcı verir.
 
 **İlkeler.**
@@ -369,8 +368,7 @@ Pilotta hakemin düşünme açık modu seçilirse hakem kalemleri ~2-3 kat artar
 bütün kolları ve seed'leri puanlaması (~$85-135; Tablo 1'in her hücresi iki aileli aralıkla) ·
 insan doğrulamasında ücretli okuyucular (gönüllü bulunamazsa).
 
-GPU giderleri iki Modal hesabının (kişisel ve dış destekli ikinci hesap; destek makalede beyan
-edilir) aylık $30'ar kredisiyle Kasım 2026–Mart 2027'ye bölünür. τ_g ve τ_a'nın yeni seed'leri
+GPU giderleri iki Modal hesabının aylık $30'ar kredisiyle Kasım 2026–Mart 2027'ye bölünür. τ_g ve τ_a'nın yeni seed'leri
 dondurmayı beklemez ve Kasım–Ocak'ın boştaki kredisiyle eğitilir; dondurmadan sonra yalnız birlikte
 ve ardışık seed'ler kalır. Kredi yetmezse kural [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'tedir:
 dizüstünde sıra varsa yeni ay beklenir, yoksa Modal'da ödenir; Vast yalnız Modal kesintisinde.
@@ -486,7 +484,7 @@ konferans) · *"Pause or Fabricate? Training Language Models for Grounded Reason
 ### 4.1 Eğitim ortamı
 
 Bütün eğitimler A100'de, kilitli paket sürümleri ve tarifle yapılır:
-[`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Ana platform Modal'dır: kişisel ve dış destekli iki hesap, aynı
+[`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Ana platform Modal'dır: iki hesap, aynı
 imajla, aynı platform sayılır. Kredi yetmezse dizüstünde sıra varsa yeni ay beklenir, yoksa Modal'da
 ödenir; Vast yalnız Modal kesintisinde, aynı Docker imajıyla, eşdeğerlik kontrolünden sonra ve bütün
 bir seed bloğuyla kullanılır (platform yöntemle değil seed'le değişir). Makalenin ekinde hangi kolun
