@@ -19,7 +19,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F0.11 Literatür taraması ve özgünlük notu
 - [ ] F0.12 Veri lisansı ADR'si (Apache-2.0 + açık not)
 - [ ] F0.13 Ön-kayıt taslağı v0 (mühür F1.11'de, OSF)
-- [ ] F0.14 Dış bilgiler doğrulandı (ARR, DEÜ FBE, Modal kredisi)
+- [ ] F0.14 Dış bilgiler doğrulandı (ARR, DEÜ FBE ve etik kurul, Modal kredisi)
 
 **F1 · DEV iterasyonu** *(Aralık 2026–Ocak 2027)*
 
@@ -30,23 +30,23 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F1.5 Hakem önyargı sondası ve kontrol kalemleri
 - [ ] F1.6 Kör, katmanlı okuma aracı
 - [ ] F1.7 İz↔cevap hakemi
-- [ ] F1.8 Soru üreticisi kör okumayla seçildi · test soruları üretildi (yeni + mühürlü)
+- [ ] F1.8 Test soruları üretildi (GLM 5.3 Flash; yeni + mühürlü)
 - [ ] F1.9 İnsan okuma protokolü
 - [ ] F1.10 Genel yetenek kümeleri (Global-MMLU TR + GSM8K)
 - [ ] F1.11 **Dondurma ADR'si** · OSF'de mühürlendi
 
 **F2 · Test ve seed'ler** *(Şubat–Nisan 2027)*
 
-- [ ] F2.1 Sorular okundu (vatandaş dili dilimi dahil)
-- [ ] F2.2 Test ve mühürlü parça mühürlendi
-- [ ] F2.3 Bütün seed'ler eğitildi (Qwen 3408 · 3409; Gemma 3407 · 3408 · 3409)
+- [ ] F2.1 Sorular okundu, yalnız ret (vatandaş dili dilimi dahil)
+- [ ] F2.2 Test ve mühürlü parça şifrelendi ve mühürlendi
+- [ ] F2.3 Bütün seed'ler eğitildi (Qwen 3408 · 3409; Gemma 3408 · 3409) · hazır kolların test cevapları şifreli
 - [ ] F2.4 Birleştirmeler ve GGUF'lar; her biri `kollar.md`'de
 - [ ] F2.5 Yeni adaptörler yedeklendi
 
 **F3 · Son ölçüm** *(Mayıs–Haziran 2027)*
 
 - [ ] F3.1 Kayma çıpasının tekrarı
-- [ ] F3.2 Test açıldı; bütün cevaplar üretildi
+- [ ] F3.2 Bütün test cevapları hazır; puanlama başladı (= test açıldı)
 - [ ] F3.3 Puanlama: iki hakem · iz hakemi · düşünce koruma · genel yetenek · uzunluk
 - [ ] F3.4 Tablo 2 (RQ2)
 - [ ] F3.5 Tablo 1 (istatistik)
@@ -56,7 +56,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 **F4 · İnsan doğrulaması** *(Temmuz 2027)*
 
 - [ ] F4.1 ~300 cevaplık örneklem
-- [ ] F4.2 Okumalar: kullanıcı · öğrenciler · hukukçu
+- [ ] F4.2 Okumalar (onamlı): kullanıcı · öğrenciler · hukukçu
 - [ ] F4.3 Uyum tabloları
 
 **F5 · Yazım ve gönderim** *(Ağustos–Eylül 2027)*
@@ -139,7 +139,7 @@ Aşağıdaki yedi madde doğrulanınca (hedef Eylül 2027):
 | F0.11 | **Literatür taraması:** `knowledge/` özetleri + kilit 3-5 birincil makale (birleştirme ↔ birlikte eğitim; RLVR ve çekinme; atıflı hukuki cevap) → "özgünlük notu" kronolojide; örtüşme varsa çerçeve F1 dondurmasından önce düzeltilir |
 | F0.12 | **Lisans ADR'si:** veri Apache-2.0 kalır; veri kartına ve makalenin etik bölümüne not: asistan cevapları `gpt-4o-mini` ile üretildi (`gen_v2b_answers.py`), OpenAI'ın "çıktıyla rakip model geliştirme" maddesi kullanıcıya da uygulanabilir. ADR şartların okunuşunu ve riski kaydeder; veri ileride yeniden üretilirse bağlayıcı hakemin ailesiyle (DeepSeek) üretilmez [damıtma] → ADR |
 | F0.13 | **Ön-kayıt taslağı v0:** RQ1/RQ2, birincil metrik (kütle) ve birincil karşılaştırma (birleştirme ↔ birlikte eğitim), kazanan kuralı → taslak F1.11'de dondurulur ve OSF'de ön-kayıt olarak mühürlenir (ambargo; ARR için isimsiz görüntüleme bağlantısı) |
-| F0.14 | **Dış bilgiler** ([yol haritası](YAYIN_YOL_HARITASI.md) §6'nın F0 satırları): ARR 2027 döngü tarihleri ve ön baskı kuralı · ARR'nin YZ yardımı politikası, gönderim kontrol listesi ve karşılıklı hakemlik şartı · DEÜ FBE kuralları · Modal kredisinin aylık yenilenmesi · DeepSeek V4.1 Flash'ın tarihli kimliği, sabit sağlayıcı fiyatı ve düşünme modunda sıcaklık desteği · OpenAI kullanım şartlarının güncel metni → her birinin kaynağı ve erişim tarihi kronolojide |
+| F0.14 | **Dış bilgiler** ([yol haritası](YAYIN_YOL_HARITASI.md) §6'nın F0 satırları): ARR 2027 döngü tarihleri ve ön baskı kuralı · ARR'nin YZ yardımı politikası, gönderim kontrol listesi ve karşılıklı hakemlik şartı · DEÜ FBE kuralları · Modal kredisinin aylık yenilenmesi · gönüllü okuyucular için etik kurul onayının gerekip gerekmediği (DEÜ FBE) · DeepSeek V4.1 Flash'ın tarihli kimliği, sabit sağlayıcı fiyatı ve düşünme modunda sıcaklık desteği · OpenAI kullanım şartlarının güncel metni → her birinin kaynağı ve erişim tarihi kronolojide |
 
 **Kullanıcı kararları:** eşdeğerlik sonucu (F0.4) · Gemma kapı sonucu (F0.9). Tasarım kararları
 2026-10-10 sorgulamasında verildi: yedek yeri · eşdeğerlik kontrolü · bağlayıcı hakem ve modunun seçim
@@ -162,7 +162,7 @@ açılmadan önce bilmek.
 | F1.5 | **Hakem önyargı sondası ve kontrol kalemleri:** ~40 DEV cevabına tek değişkenli bozmalar — uzatma · gerçek ama soruya ait olmayan madde atfı ekleme · şerh/kesinlik cümlesi ekleme-çıkarma · "Düşünce süreci:" açılışı · kaynak sırasını ters çevirme; etiketi bilinen bozuk cevaplar hakem partisine kör karışır [hakem][benchmark] → her hakem ve çekinme dedektörü için karar değişim oranı; Tablo 2'ye ek satır |
 | F1.6 | **Okuma aracı:** `judge_agreement.py` kör (hakem kararı okuyucuya gösterilmez) ve katmanlı örnekleme yapar; metrikler: yüzde uyum, Cohen κ, sınıf başına precision/recall, Krippendorff α (insan↔insan), "belirsiz" kategorisi [hakem] → testli |
 | F1.7 | **İz↔cevap hakemi:** önce izdeki `KAYNAK n` seçimi ile cevaptaki atıf deterministik eşlenir; kalan kalemlere katı JSON yargı, kaynak sırası iki yönde verilerek [hakem][halüsinasyon] → F1.4 pilotunda insanla uyumu ölçüldü |
-| F1.8 | **Test sorusu üretimi:** önce üretici seçilir: GLM 5 ve Kimi K2.6 aynı 10 maddeden soru üretir, kullanıcı 20 soruyu kimin yazdığını bilmeden okur (~30 dk), net olan kazanır, beraberlikte GLM (kural okumadan önce yazılır). Sonra yeni ~200-225 + ~100 mühürlü; kurallar aşağıda (§3.1) → seçim kaydı, taslak küme ve künyesi; kullanıcı okumasına hazır |
+| F1.8 | **Test sorusu üretimi:** üretici GLM 5.3 Flash (MIT). İlk 20 soru Türkçe kalitesi için okunur (~30 dk); kötüyse üretici o gün yeniden seçilir. Sonra yeni ~200-225 + ~100 mühürlü, %20 fazlasıyla; kurallar aşağıda (§3.1) → taslak küme ve künyesi; kullanıcı okumasına hazır |
 | F1.9 | **İnsan okuma protokolü:** etiket tanımları — cevap ↔ çekinme · altın bağlamdayken susma · isabetsiz atıf · sadakat (iddia düzeyinde; doğrulanabilir iddia ↔ yorum ayrımı) [benchmark] · iz ↔ cevap tutarlılığı · "belirsiz" → protokol F1.4 pilotunda denendi |
 | F1.10 | **Genel yetenek kümeleri:** Global-MMLU Türkçe 100 + GSM8K 100; hakemsiz, düşünce açık, yerelde. F1 ayarlarında da koşulur (DEV seçimi koruma kapısına bakar, ~5 saat dizüstü); F3'te bütün kollar ve seed'ler (~19 saat) [benchmark] → lisanslar dosyadan okundu, iki ham modelle çıpa koşuldu |
 | F1.11 | **DONDURMA ADR'si:** seçilen yapılandırmalar (kural: DEV kütlesi yüksek olan, koruma kapısını DEV'de geçmesi şart; fark gürültü tabanından küçükse 0,1) · düşünce koruma eşiği (genel kayıp ≤5 puan, döngü artışı ≤2 puan; yol haritası §2.5.4) · istatistik planı (birincil ve önceden listelenmiş ikincil kırılımlar) · kazanan kuralı (ürün yalnız %95 eşleştirilmiş bootstrap'ta `tgta_v1`'i geçerse değişir; ürüne seed 3407) · hakem sürümleri ve modu · kesme sırası → ADR yazıldı ve OSF'de mühürlendi; bundan sonra yapılandırma değişmez |
@@ -175,8 +175,8 @@ açılmadan önce bilmek.
   geçip geçmediği · üretici şablonu; "eğitimde görülmüş / görülmemiş" kırılımı ikincil, betimsel
   [benchmark][damıtma].
 - **Üretici:** yasak aileler OpenAI (eğitim verisinin öğretmeni) · Qwen, Gemma (özneler) · Gemini,
-  Claude (Makale 2 rakipleri) · DeepSeek (bağlayıcı hakem). Seçim F1.8'deki kör okumayla; üretici
-  modeli, sürümü, istemi ve ailesi künyeye yazılır [benchmark].
+  Claude (Makale 2 rakipleri) · DeepSeek (bağlayıcı hakem). Üretici GLM 5.3 Flash (F1.8); modeli,
+  sürümü, istemi ve ailesi künyeye yazılır [benchmark].
 - **Görev tipi etiketi** (madde ne diyor · koşul/istisna · vaka uygulaması · sayı/süre); katman değil,
   etiket [benchmark].
 - **Vatandaş dili dilimi:** ~50 sorunun hukuk terimi kullanmayan birer yeniden ifadesi; ikincil eksen
@@ -197,13 +197,13 @@ açılmadan önce bilmek.
 
 | # | iş → doğrulama |
 | :-- | :--- |
-| F2.1 | **Soru okuması:** kullanıcı yeni ve mühürlü soruları netlik için okur (Şubat ara tatili; vatandaş dili dilimi dahil) → reddedilen ve düzeltilen sorular künyede |
-| F2.2 | **Test dondurma:** son küme ve mühürlü parça `sha256` ile mühürlenir → kapı testi yeşil; mühürlü dosya izlenmiyor |
-| F2.3 | **Seed'ler:** Qwen 3408 ve 3409 (τ_g, τ_a, birlikte, ardışık; 3407'nin birlikte ve ardışık kolları F1'den) · Gemma 3407, 3408, 3409 (dört kol); hepsi A100'de, kilitli ortamda → her koşunun künyesi ortam kilidini geçti; Modal kredisi ay içinde biterse [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4 |
+| F2.1 | **Soru okuması (yalnız ret):** kullanıcı yeni ve mühürlü soruları okur (Şubat ara tatili; vatandaş dili dilimi dahil); düzeltmez, yalnız reddeder. Ret ölçütleri önceden yazılı: soru altın maddeyi tek başına belirlemiyor · cevap altın maddenin dışında bilgi istiyor · Türkçesi bozuk ya da anlaşılmaz · tuzak maddesi soruyu aslında cevaplıyor. Hedef boya katman korunarak rastgele inilir → her ret gerekçesiyle künyede |
+| F2.2 | **Test dondurma:** asıl test ve mühürlü parça ayrı, parolalı şifreli arşiv; özel HF deposunda ve yerelde → depoda yalnız düz metnin `sha256`'sı ve satır sayısı; kapı testi yeşil; düz metin git tarafından izlenmiyor |
+| F2.3 | **Seed'ler:** sırayla Qwen 3408 → Qwen 3409 → Gemma 3408 → Gemma 3409 (her biri τ_g, τ_a, birlikte, ardışık; 3407 kolları Qwen'de `v1` ve F1'den, Gemma'da F1'den). Gemma 3409 kesme sırasında ilk olduğu için sonda. Hepsi A100'de, kilitli ortamda. Her kol eğitilince test cevapları dizüstünde şifreli üretilir, okunmaz ve puanlanmaz → her koşunun künyesi ortam kilidini geçti; Modal kredisi ay içinde biterse [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4 |
 | F2.4 | **Birleştirmeler ve GGUF:** her seed için ham TIES (CPU, $0) ve Q4_K_M → her artefaktın `kollar.md`'de satırı var |
 | F2.5 | **Yeni adaptörlerin yedeği** → kopya `sha256` eşleşmesi |
 
-**Tahmin:** kullanıcı ~8-12 saat · Modal ~$90-110 (Şubat–Nisan kredisi).
+**Tahmin:** kullanıcı ~8-12 saat · Modal ~$70-83 (Şubat–Nisan kredisi).
 
 ---
 
@@ -212,10 +212,10 @@ açılmadan önce bilmek.
 | # | iş → doğrulama |
 | :-- | :--- |
 | F3.1 | **Kayma çıpasının tekrarı:** F0.6'daki 80 DEV cevabı aynı hakemlerle → fark gürültü tabanını aşarsa puanlama durur ve kayda geçer |
-| F3.2 | **Test bir kez açılır** (kullanıcı kararı); ~30 kolun bütün cevapları dizüstünde, kilitli llama.cpp bayraklarıyla, şarjda üretilir (~200 saat GPU, geceleri) → kesik oranı ≤%5; `recall@10` künyede |
-| F3.3 | **Puanlama:** DeepSeek V4.1 Flash bütün kollar · `claude-sonnet-5` iki temel modelde birincil karşılaştırma, 1 seed · iz↔cevap hakemi · düşünce koruma ölçüleri · genel yetenek kümeleri · kol başına cevap uzunluğu ve atıf yoğunluğu [hakem][IT] → F0.5 kapısı geçti; her koşunun künyesi var |
+| F3.2 | **Test bir kez açılır** (kullanıcı kararı; "açıldı" anı puanlamanın başladığı andır). Kalan kolların cevapları dizüstünde, kilitli llama.cpp bayraklarıyla, şarjda üretilir; toplam dizüstü yükü ~245-250 saat, Şubat–Haziran'a yayılmış → kesik oranı ≤%5; `recall@10` künyede |
+| F3.3 | **Puanlama:** DeepSeek V4.1 Flash bütün kollar · `claude-sonnet-5` iki temel modelde birincil karşılaştırma, seed 3407 · iz↔cevap hakemi · düşünce koruma ölçüleri · genel yetenek kümeleri · kol başına cevap uzunluğu ve atıf yoğunluğu [hakem][IT] → F0.5 kapısı geçti; her koşunun künyesi var |
 | F3.4 | **RQ2:** puanlama tarafındaki düzeltmeler bütün kollarda tek tek; üretim tarafındaki eski hâl (`RRF_K` 60 + önsöz) birincil karşılaştırmada, iki temel model × 1 seed (dizüstünde ~25-30 saat ek) → Tablo 2 |
-| F3.5 | **İstatistik:** soru × seed eşleştirilmiş bootstrap · Wilson aralıkları · dondurma ADR'sinde listelenen ikincil kırılımlar, betimsel → Tablo 1 |
+| F3.5 | **İstatistik:** soru × seed eşleştirilmiş bootstrap · Wilson aralıkları · iki birincil karşılaştırmaya Holm düzeltmesi · "temel modele bağlı" hükmü yalnız farkların farkı %95 güvenle 0'dan ayrılırsa, yoksa "bağımlılığa kanıt yok" · dondurma ADR'sinde listelenen ikincil kırılımlar, betimsel → Tablo 1 |
 | F3.6 | **Kazanan seçimi:** dört kapı; ürün yalnız kazananın kütlesi (seed ortalaması) `tgta_v1`'i eşleştirilmiş bootstrap'ta %95 güvenle geçerse değişir; ürüne kazananın seed 3407 ağırlıkları gider (3407 bir kapıda kalırsa 3408) → ADR |
 
 **Kullanıcı kararları:** testi açma (F3.2) · kazanan (F3.6).
@@ -241,7 +241,7 @@ açılmadan önce bilmek.
 | # | iş → doğrulama |
 | :-- | :--- |
 | F4.1 | **Örneklem:** ~300 cevap; kollara ve iki temel modele yayılmış; zorunlu tabakalar: bütün isabetsiz atıf kalemleri · hakemlerin ayrıştığı kalemler · ajanın eski okuduğu kalemler [hakem] → örneklem dosyası ve künyesi |
-| F4.2 | **Okuma:** kullanıcı hepsini kör okur · gönüllü öğrenciler yaklaşık üçte birini bağımsız ikinci kez okur · hukukçu yalnız isabetsiz atıf anlaşmazlıklarını karara bağlar → etiket dosyaları |
+| F4.2 | **Okuma:** kullanıcı hepsini kör okur · gönüllü öğrenciler (ücretsiz; yazılı bilgilendirme ve onam, makalede teşekkür, kişisel veri yok) yaklaşık üçte birini bağımsız ikinci kez okur · hukukçu yalnız isabetsiz atıf anlaşmazlıklarını karara bağlar → etiket dosyaları ve onam formları |
 | F4.3 | **Uyum tabloları:** insan↔insan (κ, Krippendorff α) · insan↔hakem, dedektör ve ajan (yüzde uyum, κ, sınıf başına P/R), "belirsiz" ayrı → tablo; isabetsiz atıf ekseninde ajan-okuyucunun insanla uyumu raporlandı |
 
 **Tahmin:** kullanıcı ~12-15 saat · $0.
@@ -270,11 +270,11 @@ açılmadan önce bilmek.
 | :--- | :--- | ---: | ---: | ---: |
 | F0 | Ekim sonu–Kasım 2026 | ~10-14 | ~$6 | ~$5 |
 | F1 | Aralık 2026–Ocak 2027 | ~7-9 | ~$35-42 | ~$10 |
-| F2 | Şubat–Nisan 2027 | ~8-12 | ~$90-110 | — |
+| F2 | Şubat–Nisan 2027 | ~8-12 | ~$70-83 | — |
 | F3 + F3b | Mayıs–Temmuz 2027 | ~5-8 | — | ~$53-61 |
 | F4 | Temmuz 2027 | ~12-15 | — | — |
 | F5 | Ağustos–Eylül 2027 | ~40-60 | — | — |
-| **toplam** | | **~81-116** | **~$130-155** | **~$68-76** + OpenRouter kredi ücreti |
+| **toplam** | | **~81-116** | **~$111-131** | **~$68-76** + OpenRouter kredi ücreti |
 
 Pilotta hakemin düşünme açık modu seçilirse nakit ~$25-45 artar. Modal giderleri aylık $30 krediye
 göre Kasım 2026–Nisan 2027'ye yayılır. Riskler ve kesme sırası:
