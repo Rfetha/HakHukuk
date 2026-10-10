@@ -72,7 +72,11 @@ değiştirir? Kayıttaki dört vaka Tablo 2'nin ilk satırlarıdır: önsözün 
 ([ADR-0058](adr/kararlar-0045-0063.md#adr-0058)) · `k=10` kapı hükmü ret → kabul
 ([#54](record/kronoloji-53-62.md#54)) · ara kapının ikinci gözlemi geçti → düştü
 ([ADR-0045](adr/kararlar-0045-0063.md#adr-0045)) · birleştirmenin M2 katkısı +0,020 → +0,000
-([`kollar.md`](record/kollar.md) satır 319-332).
+([`kollar.md`](record/kollar.md) satır 319-332). Kapsam: puanlama tarafındaki düzeltmeler (çekinme
+dedektörü · hakeme giden kaynak kırpması · kapı çıpası · hakem değişikliği) bütün kollarda tek tek açılıp
+kapatılır; üretim tarafındaki eski hâl (`RRF_K` 60 + yeterlilik önsözü) yalnız birincil karşılaştırmada,
+iki temel model × 1 seed için üretilir. Soru kümesi ve bileşim kusurları yeni testte baştan düzeltildiği
+için eski hâlleri üretilmez.
 
 ### 2.2 Çıktılar
 
@@ -101,8 +105,9 @@ uygulama · tezin 4. bölümünün malzemesi.
 ### 2.3 Deney tasarımı
 
 **Temel modeller.** Qwen3.5-4B (bugünkü ürün) ve Gemma 4 E4B (Google; ~4,5B etkin, gömme
-tablolarıyla 8B). İkisi de 3 seed alır. Gemma, F0'daki kapıyı (§2.4) geçemezse yerini **Ministral 3
-3B Reasoning** alır, aynı tasarımla.
+tablolarıyla 8B). İkisi de 3 seed alır. Gemma, F0'daki teknik kapıyı (§2.4) geçemezse yedek model o gün
+aynı kapıyla ve Makale 1 sonuçlarına bakılmadan seçilir (adaylar: Phi ailesi, Ministral 3 3B
+Reasoning).
 
 **Kollar** (her temel model ve her seed için):
 
@@ -145,7 +150,12 @@ için Makale 2'nin son sınavı ayrı ve mühürlü parçadır (§2.5.1).
 
 ### 2.4 İkinci temel model kapısı
 
-CLAUDE.md'nin altı maddelik base kapısı, artı üç madde. Gemma için bilinen notlar:
+CLAUDE.md'nin altı maddelik base kapısı, artı üç madde. Kapı **yalnız teknik maddelere** bakar;
+model şu durumlarda kalır: llama.cpp çalıştıramıyor · şablon ve tur işareti gözle doğrulanamıyor ·
+A100'de eğitim ya da Q4_K_M kurulamıyor · lisans açık değil · 1024+512 zorla kapatma uygulanamıyor ·
+DEV cevaplarının %90'ından azı Türkçe. Türkçe M1 başarısı, düşüncenin kendi kapanması, döngü ve 8 GB
+üstü VRAM yalnız kaydedilir: zayıf bir temel model RQ1 için bulgudur, eleme sebebi değil. Gemma için
+bilinen notlar:
 
 | madde | not |
 | :--- | :--- |
@@ -157,9 +167,10 @@ CLAUDE.md'nin altı maddelik base kapısı, artı üç madde. Gemma için biline
 | lisans | HF duyurusu "Apache 2" diyor, kayıt "Apache-2.0'ın üstüne Prohibited Use Policy" diyor ([#39](record/kronoloji-39-52.md#39)); lisans dosyası okunarak çözülür (kazanan kapısı 4) |
 | düşünce davranışı | ham modelin kendi kapatma ve döngü oranı eğitimden önce ölçülür; zorunlu kapatma Gemma'nın kapanış işaretine göre parametrelenir |
 | LoRA hedefleri | yalnız metin kulesi; görüntü ve ses kuleleri dışarıda ([ADR-0030](adr/kararlar-0027-0044.md#adr-0030)'daki `all-linear` tuzağının eşi) |
-| Türkçe taban | ham modelle DEV'de tek M1 koşusu; tabana yapışıksa yedek modele geçilir |
+| Türkçe taban | ham modelle DEV'de tek M1 koşusu; kaydedilir. Kapı maddesi yalnız cevap dilidir (≥%90 Türkçe) |
+| paket kilidi | `transformers` 5.10.2 ve `unsloth` 2026.6.1 Gemma 4'ün çıkışından (2026-03-31) sonra; aynı kilidin iki modeli taşıdığı A100 pilotunda doğrulanır. Gemma başka sürüm isterse Qwen'in kilidine dokunulmaz, Gemma'nın kilidi ayrı yazılır |
 
-Özneler Qwen ve Gemma, hakemler OpenAI ve Anthropic: aile dışlaması sağlanır.
+Özneler Qwen ve Gemma, hakemler DeepSeek ve Anthropic: aile dışlaması sağlanır.
 
 ### 2.5 Ölçüm
 
@@ -188,13 +199,22 @@ CLAUDE.md'nin altı maddelik base kapısı, artı üç madde. Gemma için biline
 
 #### 2.5.2 Hakemler
 
-- `gpt-4o-mini` bütün kolları puanlar ve bağlayıcı hakemdir.
+- **Bağlayıcı hakem DeepSeek V4.1 Flash'tır** (tarihli sürüm `deepseek-v4.1-flash-20260910`;
+  OpenRouter'da sağlayıcı sabit, yedek sağlayıcıya düşme kapalı) ve bütün kolları puanlar.
+  `gpt-4o-mini`'den geçişin üç gerekçesi: küçük hakemin cevaba çapalanması (22,3 puan; `gpt-4o`
+  8,4, [#45](record/kronoloji-39-52.md#45)) · eğitim verisini `gpt-4o-mini`'nin üretmiş olması
+  (öğretmen ile hakemin aynı model olması) · emeklilik riski. `v1.0` sayıları `gpt-4o-mini`
+  damgasıyla olduğu gibi kalır.
+- **Hakemin düşünme modu** F1.4 pilotunda seçilir. Kural pilottan önce yazılır: düşünme açık mod
+  insanla uyumda güven aralığının dışında üstünse açık, değilse kapalı mod bağlayıcı olur.
 - `claude-sonnet-5` iki temel modelde birincil karşılaştırmayı (birleştirme ↔ birlikte eğitim)
   1 seed'de puanlar; iki aile arasındaki uyum (κ) raporlanır.
 - Hiçbir özne kendi ailesinin hakemiyle puanlanmaz.
 - Ajan-okuyucu (Claude ailesi) yalnız Qwen ve Gemma cevaplarını okur.
 - **Sürüm ve kayma:** hakemlerin tarihli model kimliği ve sağlayıcısı künyeye yazılır. `tgta_v1`'in
-  80 DEV cevabı F0'da ve F3'te aynı hakemlerle puanlanır; fark gürültü tabanını aşarsa puanlama durur.
+  80 DEV cevabı F0'da DeepSeek (iki kez, gürültü tabanı için) ve `gpt-4o-mini` ile puanlanır; böylece
+  hakem değişikliğinin etkisi bir kez ölçülür. F3'te DeepSeek ile tekrarlanır; fark gürültü tabanını
+  aşarsa puanlama durur.
 - **Payda kapısı:** puanlanan cevaplanan kalem sayısı cevaplanan kalem sayısına eşit olmalıdır; hakem
   hatası ve sıfır iddialı cevap ayrı sayılır.
 - **Önyargı sondası (F1):** DEV cevaplarına tek değişkenli bozmalar (uzatma · soruya ait olmayan
@@ -254,10 +274,10 @@ bayraklarıyla koşar ([ADR-0078](adr/kararlar-0064-0085.md#adr-0078)); bilgisay
 
 | aşama | zaman | iş | kullanıcı saati (tahmin) |
 | :--- | :--- | :--- | :--- |
-| **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin bundle geçmişi ve Modal günlüklerinden çözülmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü ve testi · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
+| **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin kayda geçmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü, testi ve eski ortamla eşdeğerlik kontrolü · hakem geçişi ve kayma çıpası · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
 | **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · insan↔hakem pilotu · hakem önyargı sondası · test sorularının üretimi ve okuma protokolü · **dondurma ADR'si** | ~6-8 |
 | **F2 — test ve seed'ler** | Şubat–Nisan 2027 | test sorularının okunması (vatandaş dili dilimi dahil) ve dondurulması (Şubat ara tatili) · bütün kolların bütün seed'leri | ~8-12 |
-| **F3 — son ölçüm** | Mayıs–Haziran | test bir kez açılır · ~30 kolun dizüstünde ölçümü (~200 saat, geceleri) · Tablo 2 · ikinci hakem · kazanan seçimi | ~3-4 |
+| **F3 — son ölçüm** | Mayıs–Haziran | test bir kez açılır · ~30 kolun dizüstünde ölçümü (~200 saat, geceleri) · Tablo 2 (üretim tarafındaki eski hâl için ~25-30 saat ek) · ikinci hakem · kazanan seçimi | ~3-4 |
 | **F3b — uygulama** | Haziran–Temmuz | kazanan → GGUF → konteyner kilidi → model kartı; kazanan `tgta_v1` ise değişiklik yok | ~2-4 |
 | **F4 — insan doğrulaması** | Temmuz | ~300 cevap kör okuma · öğrenciler · hukukçu · uyum istatistikleri | ~12-15 |
 | **F5 — yazım** | Ağustos–Eylül | yazım · 1-2 dış okuyucu · arXiv (ARR kuralına göre) · ilk uygun ARR döngüsüne gönderim | ~40-60 |
@@ -272,13 +292,15 @@ Her aşamanın iş adımları ve doğrulamaları: [`ROADMAP_v1.md`](ROADMAP_v1.m
 | DEV iterasyonu: Qwen / Gemma | ~$14 / ~$21-28 |
 | seed'ler: Qwen (3407'nin τ_g ve τ_a'sı hariç) / Gemma | ~$32 / ~$57-76 |
 | **GPU toplamı** | **~$130-155** |
-| hakem `gpt-4o-mini`, bütün kollar (kayıttaki ×1,6 fatura payı dahil) | ~$20-28 |
+| bağlayıcı hakem DeepSeek V4.1 Flash, bütün kollar (sabit sağlayıcıda birim fiyat `gpt-4o-mini` ile aynı; kayıttaki ×1,6 fatura payı dahil) | ~$20-28 |
 | ikinci hakem, iki temel modelde birincil karşılaştırma | ~$19 |
 | düşünce izi ↔ cevap tutarlılığı hakemi | ~$8 |
 | test üretimi, kör payda, RQ2 yeniden puanlaması | ~$5 |
 | F0: hakem kayma çıpası ve mevcut kolların DEV ölçümü · F3: kayma çıpasının tekrarı | ~$8 |
 | F1: DEV iterasyonunun puanlanması · önyargı sondası · insan pilotunun hakem tarafı | ~$8 |
 | **nakit toplamı** | **~$68-76** + OpenRouter kredi ücreti |
+
+Pilotta hakemin düşünme açık modu seçilirse hakem kalemleri ~2-3 kat artar (+$25-45).
 
 GPU giderleri Modal'ın aylık $30 kredisine göre Kasım 2026–Nisan 2027'ye bölünür; bir ay yetmezse
 eğitim aynı ay Vast'ta A100 ile, [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'teki kurala göre sürer.
@@ -421,8 +443,9 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 
 | risk | tetik | karşılık |
 | :--- | :--- | :--- |
-| τ_g v1'in hassasiyeti yeniden üretilemiyor | F0 | Qwen'de 3407 seed'i de yeniden eğitilir (~$6) |
-| Gemma kapıdan kalıyor | F0 | Ministral 3 3B Reasoning aynı tasarımla girer; o da kalırsa Makale 1 tek temel modelle yazılır ve hedef Findings ya da dergi olur |
+| yeni kilit eski ortamla eşdeğer çıkmıyor (τ_g'nin hassasiyeti için yalnız belge kanıtı var) | F0.4 | Qwen'de 3407 seed'i de yeni kilitte yeniden eğitilir (~$6) |
+| Gemma teknik kapıdan kalıyor | F0 | yedek model o gün aynı kapıyla seçilir (Phi ailesi, Ministral 3 3B Reasoning); o da kalırsa Makale 1 tek temel modelle yazılır ve hedef Findings ya da dergi olur |
+| bağlayıcı hakemin sürümü ya da sağlayıcısı değişiyor | F0.6 / F3.1 kayma çıpası | puanlama durur; değişiklik kayda geçer, çıpa yeni koşulla yeniden ölçülür |
 | birlikte-eğitim kodu çalışmıyor | F1 sonu | karışık SFT tabanı son çare olarak girer, zayıflığı makalede yazılır |
 | birim maliyet tahminin 1,5 katı | herhangi bir pilot | bütçe yeniden hesaplanır; eğitim Vast A100-80GB'a geçer |
 | gönüllü öğrenci bulunamıyor | Mayıs 2027 | okuma kullanıcı ve hukukçuyla yapılır; insan↔insan uyumu sınırlılık olarak yazılır |
@@ -444,6 +467,9 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | DEÜ FBE: tez dili · mezuniyet için yayın şartı · yayımlanmış makalenin tezde kullanımı · tezden üretilen yayında danışman adı · programa başlamadan önceki işin teze sayılması · üretken YZ kuralı | enstitü yönetmeliği ve tez yazım kılavuzu | F0 |
 | Modal $30 kredisinin hesapta aylık yenilenmesi · akademik kredi başvurusu | Modal faturalama sayfası | F0 |
 | Gemma 4 E4B lisans dosyası | HF model deposu | F0 |
+| DeepSeek V4.1 Flash: tarihli sürüm kimliği · sabit sağlayıcının fiyatı · düşünme modunda sıcaklık desteği | OpenRouter model sayfası | F0 |
+| OpenAI kullanım şartlarının güncel metni (çıktıyla rakip model geliştirme maddesi) | openai.com/policies | F0 |
+| OSF ön-kayıt: ambargo ve isimsiz görüntüleme bağlantısı | osf.io | F1 |
 | genel yetenek kümesinin lisansı | küme deposu | F0 |
 | Vast'ta A100 fiyatı ve sürücü sürümü | Vast konsolu | gerektiğinde |
 | vLLM'in kazanan modeli desteklemesi | GRPO pilotu | Ekim 2027 |
@@ -458,7 +484,8 @@ damgalanır.
 
 | kayıt | kayıttaki ifade | bu plan |
 | :--- | :--- | :--- |
-| [`MODEL_CARD.md`](../MODEL_CARD.md) §2 | iki kol "QLoRA (NF4)" | [ADR-0031](adr/kararlar-0027-0044.md#adr-0031) "bf16 taban + LoRA"; τ_a `--bf16-base` ile eğitildi ([#48](record/kronoloji-39-52.md#48)); τ_g bilinmiyor; betiklerin varsayılanı NF4 → F0'da çözülür |
+| [`MODEL_CARD.md`](../MODEL_CARD.md) §2 | iki kol "QLoRA (NF4)" | [ADR-0031](adr/kararlar-0027-0044.md#adr-0031) "bf16 taban + LoRA"; τ_a `--bf16-base` ile eğitildi ([#48](record/kronoloji-39-52.md#48)); τ_g için belge kanıtı da bf16 (eski geçmişte koşu komutu `9f4b43d`, rejim eşleşmesi `b995182`), künye yok; betiklerin varsayılanı NF4 → model kartı F0'da ADR ile düzeltilir |
+| [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) | bağlayıcı hakem `gpt-4o-mini` | Checkpoint 1'den itibaren DeepSeek V4.1 Flash (§2.5.2); `v1.0` sayıları eski damgasıyla kalır |
 | [ADR-0028](adr/kararlar-0027-0044.md#adr-0028) | tek boyut noktası | ikinci bir temel model (aynı boy, başka aile) eklenir |
 | [ADR-0034](adr/kararlar-0027-0044.md#adr-0034) | adaptörler yedeklenmez | `v1` ve yeni seed adaptörleri yedeklenir |
 | [ADR-0037](adr/kararlar-0027-0044.md#adr-0037) | Kapı 5 "ayar: norm-dengeli" | ana sonuç ham TIES ([ADR-0052](adr/kararlar-0045-0063.md#adr-0052)); Kapı 5 ham TIES için türetilir |
