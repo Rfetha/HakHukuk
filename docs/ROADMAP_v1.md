@@ -19,7 +19,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F0.11 Literatür taraması ve özgünlük notu
 - [ ] F0.12 Veri lisansı ADR'si (Apache-2.0 + açık not)
 - [ ] F0.13 Ön-kayıt taslağı v0 (mühür F1.11'de, OSF)
-- [ ] F0.14 Dış bilgiler doğrulandı (ARR, DEÜ FBE ve etik kurul, Modal kredisi)
+- [ ] F0.14 Dış bilgiler doğrulandı (ARR, Modal kredisi, hakem kimliği, OpenAI şartları)
 
 **F1 · DEV iterasyonu** *(Aralık 2026–Ocak 2027)*
 
@@ -61,6 +61,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 
 **F5 · Yazım ve gönderim** *(Ağustos–Eylül 2027)*
 
+- [ ] F5.0 DEÜ FBE kuralları okundu (tez dili, yayın şartı, danışman adı)
 - [ ] F5.1 Makale taslağı
 - [ ] F5.2 Ekler ve beyanlar: tekrar üretim · sorumlu araştırma kontrol listesi · sınırlılıklar · etik ·
   YZ yardımı
@@ -127,7 +128,7 @@ Aşağıdaki yedi madde doğrulanınca (hedef Eylül 2027):
 | # | iş → doğrulama |
 | :-- | :--- |
 | F0.1 | **Yedekler:** `~/yedek/HakHukuk-2026-10-10.bundle` (140 MB), `outputs/tg_v1` (115 MB), `outputs/ta_v1` (134 MB) özel HF deposuna; yerel kopya kalır → depodan indirilen kopyanın `sha256`'sı kaynakla birebir |
-| F0.2 | **Kararları deftere işle:** yol haritasının kararları ADR-0089 ve sonrası olarak (yayın yolu · ikinci temel model ve teknik kapı kuralı · yedekleme, ADR-0034'ü değiştirir · eğitim ortamı kilidi · bağlayıcı hakem değişikliği · korpus turunun ertelenmesi · Makale 2 ödül ilkesi) → `tests/test_belgeler.py` yeşil, çapalar çözülüyor |
+| F0.2 | **Kararları deftere işle:** yol haritasının kararları ADR-0089 ve sonrası olarak (yayın yolu · ikinci temel model ve teknik kapı kuralı · yedekleme, ADR-0034'ü değiştirir · eğitim ortamı kilidi · bağlayıcı hakem değişikliği · korpus turunun ertelenmesi · Makale 2 ödül ilkesi) · `ROADMAP.md` → `ROADMAP_v1.md` yeniden adlandırmasının kırdığı bağlantılar düzeltilir (CLAUDE.md, README.md, docs/README.md, docs/README.tr.md, docs/MIMARI.md, `tests/test_belgeler.py`) → `tests/test_belgeler.py` yeşil, çapalar çözülüyor |
 | F0.3 | **τ_g v1'in hassasiyeti:** eski geçmişte belge kanıtı bulundu (2026-10-10): τ_g için hazırlanan koşu komutu `--bf16-base` taşıyor (`9f4b43d`), ORPO kolu τ_g'ye bf16 olarak eşlendi (`b995182`); `requirements.lock.txt` 2026-06-07'den beri değişmedi; `fla-core` sürümü bilinmiyor → hüküm `kollar.md`'de ve [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §2'de "belge kanıtı, künye değil" damgasıyla; ölçüm kanıtı F0.4'teki eşdeğerlik kontrolünden gelir |
 | F0.4 | **Eğitim ortamı kilidi:** `configs/egitim_ortami.yaml` + `train_sft.py`/`train_orpo.py` başında kontrol + test; `fla-core`, `flash-linear-attention`, `einops` sürümleri sabitlenir; hassasiyet zorunlu argüman olur · **eski ortamla eşdeğerlik:** yeni kilitte τ_g seed 3407 ile 50 adım, ORPO ile 10 adım (~$1) → yanlış GPU, yanlış paket sürümü ya da bayraksız çağrıda koşu model yüklenmeden durur (test kırmızı→yeşil); τ_g'nin 10. ve 50. adım kaybı [#40](record/kronoloji-39-52.md#40)'taki 0,7987 / 0,3537'den en çok ~0,02 sapar, ORPO kaybı `ta_v1/trainer_state-checkpoint70.json` ile örtüşür; geçmezse Qwen'in 3407 kolları yeni kilitte yeniden eğitilir (~$6) |
 | F0.5 | **Ölçüm aleti kapıları:** (a) "puanlanan cevaplanan kalem = cevaplanan kalem" kapısı; özete `n_hakem_hata` ve `n_sifir_iddia` [hakem]; geçmiş koşularda kaç kalemin bu yoldan düştüğü sayılır · (b) eski aletlere bundle'dan erişim (RQ2): puanlama tarafındaki düzeltmeler (çekinme dedektörü · hakeme giden kaynak kırpması · kapı çıpası · hakem) tek tek açılıp kapatılabilir; üretim tarafındaki eski hâl (`RRF_K` 60 + yeterlilik önsözü) üretilebilir → (a) eksik kalemde puanlama durur; (b) eski aletle eski bir koşu yeniden puanlanınca kayıttaki sayı birebir çıkar |
@@ -139,7 +140,7 @@ Aşağıdaki yedi madde doğrulanınca (hedef Eylül 2027):
 | F0.11 | **Literatür taraması:** `knowledge/` özetleri + kilit 3-5 birincil makale (birleştirme ↔ birlikte eğitim; RLVR ve çekinme; atıflı hukuki cevap) → "özgünlük notu" kronolojide; örtüşme varsa çerçeve F1 dondurmasından önce düzeltilir |
 | F0.12 | **Lisans ADR'si:** veri Apache-2.0 kalır; veri kartına ve makalenin etik bölümüne not: asistan cevapları `gpt-4o-mini` ile üretildi (`gen_v2b_answers.py`), OpenAI'ın "çıktıyla rakip model geliştirme" maddesi kullanıcıya da uygulanabilir. ADR şartların okunuşunu ve riski kaydeder; veri ileride yeniden üretilirse bağlayıcı hakemin ailesiyle (DeepSeek) üretilmez [damıtma] → ADR |
 | F0.13 | **Ön-kayıt taslağı v0:** RQ1/RQ2, birincil metrik (kütle) ve birincil karşılaştırma (birleştirme ↔ birlikte eğitim), kazanan kuralı → taslak F1.11'de dondurulur ve OSF'de ön-kayıt olarak mühürlenir (ambargo; ARR için isimsiz görüntüleme bağlantısı) |
-| F0.14 | **Dış bilgiler** ([yol haritası](YAYIN_YOL_HARITASI.md) §6'nın F0 satırları): ARR 2027 döngü tarihleri ve ön baskı kuralı · ARR'nin YZ yardımı politikası, gönderim kontrol listesi ve karşılıklı hakemlik şartı · DEÜ FBE kuralları · Modal kredisinin aylık yenilenmesi · gönüllü okuyucular için etik kurul onayının gerekip gerekmediği (DEÜ FBE) · DeepSeek V4.1 Flash'ın tarihli kimliği, sabit sağlayıcı fiyatı ve düşünme modunda sıcaklık desteği · OpenAI kullanım şartlarının güncel metni → her birinin kaynağı ve erişim tarihi kronolojide |
+| F0.14 | **Dış bilgiler** ([yol haritası](YAYIN_YOL_HARITASI.md) §6'nın F0 satırları): ARR 2027 döngü tarihleri ve ön baskı kuralı · ARR'nin YZ yardımı politikası, gönderim kontrol listesi ve karşılıklı hakemlik şartı · Modal kredisinin aylık yenilenmesi · DeepSeek V4.1 Flash'ın tarihli kimliği, sabit sağlayıcı fiyatı ve düşünme modunda sıcaklık desteği · OpenAI kullanım şartlarının güncel metni → her birinin kaynağı ve erişim tarihi kronolojide |
 
 **Kullanıcı kararları:** eşdeğerlik sonucu (F0.4) · Gemma kapı sonucu (F0.9). Tasarım kararları
 2026-10-10 sorgulamasında verildi: yedek yeri · eşdeğerlik kontrolü · bağlayıcı hakem ve modunun seçim
@@ -161,7 +162,7 @@ açılmadan önce bilmek.
 | F1.4 | **İnsan↔hakem pilotu:** ~80 DEV cevabı, kollara ve iki temel modele yayılmış, kör, kullanıcı okur (~4 saat); DeepSeek iki modda (düşünme açık/kapalı) puanlar. Kural pilottan önce yazılır: açık mod insanla uyumda güven aralığının dışında üstünse açık, değilse kapalı mod bağlayıcı olur [hakem] → uyum (yüzde, κ, sınıf başına P/R) ve mod kararı; uyum düşükse hakem istemi dondurmadan önce düzeltilir |
 | F1.5 | **Hakem önyargı sondası ve kontrol kalemleri:** ~40 DEV cevabına tek değişkenli bozmalar — uzatma · gerçek ama soruya ait olmayan madde atfı ekleme · şerh/kesinlik cümlesi ekleme-çıkarma · "Düşünce süreci:" açılışı · kaynak sırasını ters çevirme; etiketi bilinen bozuk cevaplar hakem partisine kör karışır [hakem][benchmark] → her hakem ve çekinme dedektörü için karar değişim oranı; Tablo 2'ye ek satır |
 | F1.6 | **Okuma aracı:** `judge_agreement.py` kör (hakem kararı okuyucuya gösterilmez) ve katmanlı örnekleme yapar; metrikler: yüzde uyum, Cohen κ, sınıf başına precision/recall, Krippendorff α (insan↔insan), "belirsiz" kategorisi [hakem] → testli |
-| F1.7 | **İz↔cevap hakemi:** önce izdeki `KAYNAK n` seçimi ile cevaptaki atıf deterministik eşlenir; kalan kalemlere katı JSON yargı, kaynak sırası iki yönde verilerek [hakem][halüsinasyon] → F1.4 pilotunda insanla uyumu ölçüldü |
+| F1.7 | **İz↔cevap hakemi:** önce izdeki `KAYNAK n` seçimi ile cevaptaki atıf deterministik eşlenir; kalan kalemlere katı JSON yargı, kaynak sırası iki yönde verilerek ; hakem DeepSeek V4.1 Flash, bağlayıcı hakemle aynı [hakem][halüsinasyon] → F1.4 pilotunda insanla uyumu ölçüldü |
 | F1.8 | **Test sorusu üretimi:** üretici GLM 5.3 Flash (MIT). İlk 20 soru Türkçe kalitesi için okunur (~30 dk); kötüyse üretici o gün yeniden seçilir. Sonra yeni ~200-225 + ~100 mühürlü, %20 fazlasıyla; kurallar aşağıda (§3.1) → taslak küme ve künyesi; kullanıcı okumasına hazır |
 | F1.9 | **İnsan okuma protokolü:** etiket tanımları — cevap ↔ çekinme · altın bağlamdayken susma · isabetsiz atıf · sadakat (iddia düzeyinde; doğrulanabilir iddia ↔ yorum ayrımı) [benchmark] · iz ↔ cevap tutarlılığı · "belirsiz" → protokol F1.4 pilotunda denendi |
 | F1.10 | **Genel yetenek kümeleri:** Global-MMLU Türkçe 100 + GSM8K 100; hakemsiz, düşünce açık, yerelde. F1 ayarlarında da koşulur (DEV seçimi koruma kapısına bakar, ~5 saat dizüstü); F3'te bütün kollar ve seed'ler (~19 saat) [benchmark] → lisanslar dosyadan okundu, iki ham modelle çıpa koşuldu |
@@ -241,7 +242,7 @@ açılmadan önce bilmek.
 | # | iş → doğrulama |
 | :-- | :--- |
 | F4.1 | **Örneklem:** ~300 cevap; kollara ve iki temel modele yayılmış; zorunlu tabakalar: bütün isabetsiz atıf kalemleri · hakemlerin ayrıştığı kalemler · ajanın eski okuduğu kalemler [hakem] → örneklem dosyası ve künyesi |
-| F4.2 | **Okuma:** kullanıcı hepsini kör okur · gönüllü öğrenciler (ücretsiz; yazılı bilgilendirme ve onam, makalede teşekkür, kişisel veri yok) yaklaşık üçte birini bağımsız ikinci kez okur · hukukçu yalnız isabetsiz atıf anlaşmazlıklarını karara bağlar → etiket dosyaları ve onam formları |
+| F4.2 | **Okuma:** okumadan önce etik kurul onayı gerekip gerekmediği DEÜ'ye sorulur (gerekiyorsa onay okumadan önce alınır) · kullanıcı hepsini kör okur · gönüllü öğrenciler (ücretsiz; yazılı bilgilendirme ve onam, makalede teşekkür, kişisel veri yok) yaklaşık üçte birini bağımsız ikinci kez okur · hukukçu yalnız isabetsiz atıf anlaşmazlıklarını karara bağlar → etiket dosyaları ve onam formları |
 | F4.3 | **Uyum tabloları:** insan↔insan (κ, Krippendorff α) · insan↔hakem, dedektör ve ajan (yüzde uyum, κ, sınıf başına P/R), "belirsiz" ayrı → tablo; isabetsiz atıf ekseninde ajan-okuyucunun insanla uyumu raporlandı |
 
 **Tahmin:** kullanıcı ~12-15 saat · $0.
@@ -252,6 +253,7 @@ açılmadan önce bilmek.
 
 | # | iş → doğrulama |
 | :-- | :--- |
+| F5.0 | **DEÜ FBE kuralları** (yazıma geçerken): tez dili · mezuniyet için yayın şartı · yayımlanmış makalenin tezde kullanımı · tezden üretilen yayında danışman adı (zorunluysa "tek yazar" planı değişir) · programa başlamadan önceki işin teze sayılması · üretken YZ kuralı → kaynak ve erişim tarihi kronolojide |
 | F5.1 | **Makale taslağı:** yöntem, Tablo 1-2, insan doğrulaması, sınırlılıklar (tek dil, LLM üretimi sorular, ikinci hakemin kapsamı, τ_g'nin künyesizliği, ardışık tabanın negatif kaynağı) → tam metin |
 | F5.2 | **Ekler ve beyanlar:** tekrar üretim eki (ortam kilidi, künyeler, hangi kolun nerede eğitildiği) · ARR'nin sorumlu araştırma kontrol listesi · sınırlılıklar ve etik bölümü · YZ yardımı beyanı → kontrol listesinin her maddesi cevaplı |
 | F5.3 | **Anonim sürüm:** proje adı, depo ve HF bağlantıları anonimleştirilir; kod ve veri anonim bir kopyadan sunulur → metinde, PDF üst verisinde ve eklerde kimlik yok; anonim kopya dışarıdan açılıyor |
