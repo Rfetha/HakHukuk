@@ -71,7 +71,7 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | direction and why | [`docs/YAYIN_YOL_HARITASI.md`](docs/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/EGITIM_ORTAMI.md`](docs/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/MIMARI.md`](docs/MIMARI.md) |
 | every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#71 in three chronology files, per-entry anchors; **new findings continue at #72** |
-| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0096**, next is **0097**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`) |
+| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0097**, next is **0098**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`) |
 | open defects and handover | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — 4 open (5a · 23 · 27 · 31), 3 handed on (6 · 11 · 12b); §EK E.5 holds the nine questions that go into the next grill |
 | artifact registry | [`docs/record/kollar.md`](docs/record/kollar.md) — every trained branch and merge has its identity here; **an artifact with no row is nameless and must not be used**. Family tree: [`docs/model-soyagaci.mmd`](docs/model-soyagaci.mmd) |
 | the headline number and its caveats | [`MODEL_CARD.md`](MODEL_CARD.md) and `docs/record/kronoloji-63-71.md` — never quote from memory |
@@ -160,7 +160,10 @@ remembers. The research record is the most valuable thing here, more than the we
 - **Dev machine: RTX 5070 Laptop, ~12 GB VRAM, Blackwell (sm_120), CUDA 13.x** — bleeding edge; PyTorch,
   `bitsandbytes`, `flash-attn`, Unsloth need Blackwell-compatible builds. The 8 GB figure in older docs is
   the end-user target, not our rig.
-- **Local = prototyping; real training runs go to the cloud (Modal).** Validate on tiny models locally first.
+- **Local = prototyping only; real training and all measurement runs go to rented GPUs** — training on
+  Modal, measurement on one GPU type chosen by the F0 pilot
+  ([ADR-0097](docs/adr/kararlar-0064-0085.md#adr-0097)). The laptop is never counted as GPU capacity.
+  Validate on tiny models locally first.
 - **Currency lives in the library, not the model's brain.** Laws change, weights don't; keep legal currency
   in the RAG layer.
 - **Expert register is the training target; citizen plain language is an app-layer prompt mode** (ADR-0010).

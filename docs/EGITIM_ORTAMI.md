@@ -56,8 +56,9 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 1. **İki Modal hesabı** (2026-10-10) aynı imajla aynı `A100-40GB`'ı kullanır; **aynı platform** sayılır, aralarında
    eşdeğerlik kontrolü gerekmez. Künyeye hangi hesap olduğu yazılır; adaptör, koşu biter bitmez özel
    HF deposuna kopyalanır — hiçbir artefakt yalnız bir hesabın depolama alanında kalmaz.
-2. **Kredi yetmezse:** dizüstünde ölçüm sırası varsa yeni ayın kredisi beklenir ($0, takvim kaybı
-   yok); dizüstü boşta kalacaksa Modal'da ödenir. **Vast yalnız Modal kesintisinde** kullanılır.
+2. **Kredi yetmezse:** iş takvimi geciktirmeden bekleyebiliyorsa yeni ayın kredisi beklenir ($0);
+   geciktirecekse Modal'da ödenir. **Vast yalnız Modal kesintisinde** kullanılır. Ölçüm kartının
+   kuralı ayrıdır: [ADR-0097](adr/kararlar-0064-0085.md#adr-0097).
 3. **Aynı imaj:** Modal hesaplarına ve Vast'a aynı Docker imajı, aynı özetle (digest) verilir; imaj F0'da
    `requirements.lock.txt` + sabitlenmiş `fla-core` sürümüyle bir kez kurulur.
 4. **Yalnız A100**, **blok sınırında:** bir koşu asla iki platforma bölünmez ve platform **yöntemle
