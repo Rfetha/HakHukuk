@@ -15,7 +15,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F0.7 τ_g / τ_a seyreklik tablosu
 - [ ] F0.8 Birlikte-eğitim kodu (tam ORPO, λ parametre), eşit maruziyet, Modal pilotu
 - [ ] F0.9 Gemma teknik kapısı geçti (kalırsa yedek o gün seçilir)
-- [ ] F0.10 Mevcut kollar güncel DEV'de ölçüldü
+- [ ] F0.10 Mevcut kollar güncel DEV'de ölçüldü · kol başına mod kümesi belirlendi
 - [ ] F0.11 Literatür taraması ve özgünlük notu
 - [ ] F0.12 Veri lisansı ADR'si (Apache-2.0 + açık not)
 - [ ] F0.13 Ön-kayıt taslağı v0 (mühür F1.11'de, OSF)
@@ -139,7 +139,7 @@ Aşağıdaki yedi madde doğrulanınca (hedef Eylül 2027):
 | F0.7 | **Seyreklik ölçümü:** `tg_v1` ve `ta_v1` ağırlık değişimlerinin büyüklük ve seyreklik istatistikleri ($0) — τ_a'nın birleştirmede zayıflamasının (B4) olası mekanizması [RL] → tablo kronolojide; L1'li yeniden eğitim yalnız ölçüm desteklerse ve yalnız DEV'de |
 | F0.8 | **Birlikte-eğitim kodu:** SFT verisi + ORPO çiftleri tek koşuda; çiftlerde tam ORPO kaybı (τ_a ile aynı biçim, iç NLL dahil), λ parametre [RL]; SFT ve tercih kayıpları ayrı günlüğe [IT]; `rewards/accuracies` yerine seçilen cevabın log-olasılığı ve odds-oran marjı izlenir [RL]; **eşit maruziyet:** SFT 1 epoch + çiftler 5 epoch aynı koşuda (çiftler örneklerin ~%20'si), ayrı kolların gördüğü veri ve gösterim sayısıyla aynı → Modal'da 50 adımlık künyeli pilot; iki kayıp eğrisi ayrı görünür; birim maliyet ölçüldü |
 | F0.9 | **Gemma kapısı (yalnız teknik):** kalma sebepleri — llama.cpp çalıştıramıyor · şablon ve tur işareti gözle doğrulanamıyor · A100'de eğitim ya da Q4_K_M kurulamıyor · lisans açık değil · 1024+512 zorla kapatma uygulanamıyor · DEV cevaplarının %90'ından azı Türkçe. Yalnız kaydedilenler: Türkçe M1 tabanı · düşüncenin kendi kapanması · döngü · 8 GB üstü VRAM. LoRA hedefleri yalnız metin kulesi. Gemma başka paket sürümü isterse Qwen'in kilidine dokunulmaz → kapı tablosu kronolojide; kalırsa yedek model o gün aynı kapıyla seçilir (adaylar: Phi ailesi, Ministral 3 3B Reasoning), Makale 1 sonuçlarına bakılmadan |
-| F0.10 | **Mevcut kolların güncel DEV ölçümü:** `tg_v1`, `ta_v1`, `tgta_v1` ve birleştirme varyantları (adaptörlerden $0 yeniden üretilir) güncel DEV biriminde → `recall@10` 0,9500 çıpası tutar; her koşunun künyesi var |
+| F0.10 | **Mevcut kolların güncel DEV ölçümü:** `tg_v1`, `ta_v1`, `tgta_v1` ve birleştirme varyantları (adaptörlerden $0 yeniden üretilir) güncel DEV biriminde · **kol başına mod kümesi:** kodda her kol için hangi modların üretildiği kontrol edilir; Tablo 1'de raporlanmayan mod yalnız 3407'de üretilir → `recall@10` 0,9500 çıpası tutar; her koşunun künyesi var; kol başına mod listesi künyede |
 | F0.11 | **Literatür taraması:** `knowledge/` özetleri + kilit 3-5 birincil makale (birleştirme ↔ birlikte eğitim; RLVR ve çekinme; atıflı hukuki cevap) → "özgünlük notu" kronolojide; örtüşme varsa çerçeve F1 dondurmasından önce düzeltilir |
 | F0.12 | **Lisans ADR'si:** veri Apache-2.0 kalır; veri kartına ve makalenin etik bölümüne not: asistan cevapları `gpt-4o-mini` ile üretildi (`gen_v2b_answers.py`), OpenAI'ın "çıktıyla rakip model geliştirme" maddesi kullanıcıya da uygulanabilir. ADR şartların okunuşunu ve riski kaydeder; veri ileride yeniden üretilirse bağlayıcı hakemin ailesiyle (DeepSeek) üretilmez [damıtma] → ADR |
 | F0.13 | **Ön-kayıt taslağı v0:** RQ1/RQ2, birincil metrik (kütle) ve birincil karşılaştırma (birleştirme ↔ birlikte eğitim), kazanan kuralı → taslak F1.11'de dondurulur ve OSF'de ön-kayıt olarak mühürlenir (ambargo; ARR için isimsiz görüntüleme bağlantısı) |

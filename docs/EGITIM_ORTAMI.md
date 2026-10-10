@@ -53,8 +53,7 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 
 ## 4 · Hesaplar ve platform değişimi
 
-1. **İki Modal hesabı** (2026-10-10): kişisel hesap ve dış destekli ikinci hesap (destek makalede
-   beyan edilir) aynı imajla aynı `A100-40GB`'ı kullanır; **aynı platform** sayılır, aralarında
+1. **İki Modal hesabı** (2026-10-10) aynı imajla aynı `A100-40GB`'ı kullanır; **aynı platform** sayılır, aralarında
    eşdeğerlik kontrolü gerekmez. Künyeye hangi hesap olduğu yazılır; adaptör, koşu biter bitmez özel
    HF deposuna kopyalanır — hiçbir artefakt yalnız bir hesabın depolama alanında kalmaz.
 2. **Kredi yetmezse:** dizüstünde ölçüm sırası varsa yeni ayın kredisi beklenir ($0, takvim kaybı
