@@ -2,7 +2,7 @@
 
 A 4B Turkish legal assistant that runs on a laptop GPU and answers only from the statutes it is given.
 
-[Model card](MODEL_CARD.md) · [Türkçe](docs/README.tr.md) · [Roadmap](docs/ROADMAP.md) · [Weights](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [Index](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) · [License](LICENSE)
+[Model card](MODEL_CARD.md) · [Türkçe](docs/README.tr.md) · [Roadmap](docs/ROADMAP_v1.md) · [Weights](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [Index](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) · [License](LICENSE)
 
 ## What it does
 

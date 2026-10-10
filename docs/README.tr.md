@@ -2,7 +2,7 @@
 
 Dizüstü GPU'sunda çalışan ve yalnız kendisine verilen mevzuattan cevap veren 4B'lik bir Türkçe hukuk asistanı.
 
-[Model kartı](../MODEL_CARD.md) · [English](../README.md) · [Yol haritası](ROADMAP.md) · [Ağırlıklar](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [İndeks](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) · [Lisans](../LICENSE)
+[Model kartı](../MODEL_CARD.md) · [English](../README.md) · [Yol haritası](ROADMAP_v1.md) · [Ağırlıklar](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [İndeks](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) · [Lisans](../LICENSE)
 
 ## Ne yapar
 

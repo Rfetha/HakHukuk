@@ -6,7 +6,7 @@ Tek giriş noktası. Kökte yalnız GitHub/HF'nin kökten okuduğu dosyalar kal�
 | ne | nerede |
 | :--- | :--- |
 | Ürün ne, neyi **vaat etmez** | [`PRODUCT.md`](PRODUCT.md) |
-| Yön — her adım ölçülmüş bir boşluğa bağlı | [`ROADMAP.md`](ROADMAP.md) |
+| Yön — her adım ölçülmüş bir boşluğa bağlı | [`ROADMAP_v1.md`](ROADMAP_v1.md) |
 | Sıradaki iş (tek durum kaynağı) | [`superpowers/00-IS-SIRASI.md`](superpowers/00-IS-SIRASI.md) |
 | `v1` zinciri, ürün modülleri | [`MIMARI.md`](MIMARI.md) |
 | Ayrıntılı ölçüm tabloları (kartın uzun hâli) | [`OLCUM.md`](OLCUM.md) |
