@@ -9,6 +9,11 @@
 >
 > "Tahmin" yazan sayılar kayıttaki koşu sürelerinden ve 2026-10-10 tarihli web fiyatlarından
 > hesaplanmıştır; her bloğun ilk işi birim maliyeti küçük bir pilotla ölçmektir.
+>
+> 2026-10-10 fizibilite turu bu sürüme işlendi: iki Modal hesabı ve kredi kuralı · τ_g/τ_a
+> seed'lerinin dondurmayı beklememesi · tek kolların testte tek seed'le ölçülmesi ve kazananın üç
+> yoldan seçilmesi · dizüstü yükünün ve takvimin öne çekilmesi · GRPO'nun 2027 yazında başlaması.
+> ADR'leri F0.2'de yazılır.
 
 ---
 
@@ -21,9 +26,9 @@
 | yöntem | SFT + ORPO; ayrı kollar + ham TIES ↔ birlikte eğitim ↔ ardışık eğitim | GRPO, isabet terimli doğrulanabilir ödül |
 | temel model | **Qwen3.5-4B ve Gemma 4 E4B, her biri 3 seed** | Checkpoint 1'in **kazananı** |
 | çıktı | Makale 1 gönderime hazır · uygulama kazananla güncel · tez malzemesi tamam | Makale 2 gönderime hazır · tez savunması |
-| GPU (tahmin) | ~$111-131, Modal aylık kredisinden | ~$120-130 |
-| nakit (tahmin) | ~$68-76 (hakem API) | ~$30-50 (rakipler + hakem) |
-| kullanıcı saati (tahmin) | ~81-116 | ~60-85 |
+| GPU (tahmin) | ~$111-131, iki Modal hesabının aylık kredisinden (Mart 2027'de biter) | ~$120-130, aynı kredilerden (Temmuz–Ekim 2027) |
+| nakit (tahmin) | ~$61-67 (hakem API) | ~$30-50 (rakipler + hakem) |
+| kullanıcı saati (tahmin) | ~82-117 | ~60-85 |
 
 Checkpoint 2 hiç gerçekleşmese bile Checkpoint 1 mezuniyete yeterli tez malzemesi üretir (§2.9).
 Çalışan uygulama hiçbir aşamada bozulmaz; `v0.5` her zaman yedek olarak durur.
@@ -43,7 +48,8 @@ hakemli makale (ACL ailesi / COLM düzeyi) ve bunların üzerine kurulan yüksek
 (DEÜ Fen Bilimleri Enstitüsü, mezuniyet ~2028 yazı).
 
 **Çalışma koşulları.** Tek yazar · dönem içinde haftada 5 saatten az kullanıcı zamanı, yoğun okuma ve
-yazma tatillerde · toplam bütçe $100-500 · eğitim Modal'da (aylık $30 kredi), ölçüm kullanıcının
+yazma tatillerde · toplam bütçe $100-500 · eğitim iki Modal hesabında (aylık $30'ar kredi; ikinci
+hesap dış destekli, destek makalede beyan edilir), ölçüm kullanıcının
 dizüstünde · icrayı ajan yürütür, kararları kullanıcı verir.
 
 **İlkeler.**
@@ -88,7 +94,8 @@ için eski hâlleri üretilmez.
 
 ```
 TABLO 1 — tek modelde iki beceri: hangi yol, hangi temel model?
-(yeni test · her hücre 3 seed ortalaması ve aralığı)
+(yeni test · iki beceriyi toplayan üç yolda — ayrı kollar + ham TIES · birlikte · ardışık — her hücre
+3 seed ortalaması ve aralığı; tek kollar seed 3407)
 
                                       Qwen3.5-4B                    Gemma 4 E4B
 yol                                   kütle  M2/M2b  red  madde  M5   kütle  M2/M2b  red  madde  M5   düşünce
@@ -131,7 +138,11 @@ kullanır; bu yüzden adil bir rakiptir. Bunun için yeni eğitim kodu yazılır
 ve τ_a kolları eldeki `tg_v1` ve `ta_v1` adaptörleridir, yeniden eğitilmez; τ_g'nin veri klasörü
 künyede kayıtlı olmadığı, davranışsal kanıtın `raft_scrubbed`'ı gösterdiği
 ([`kollar.md`](record/kollar.md) satır 109-120) makalede yazılır. F0'da τ_g v1'in hassasiyet rejimi
-yeniden üretilemezse 3407 seed'i de yeniden eğitilir ve `v1` yalnız ürün olarak kalır.
+yeniden üretilemezse 3407 seed'i de yeniden eğitilir ve `v1` yalnız ürün olarak kalır. τ_g ve τ_a her
+seed'de eğitilir, çünkü birleştirme kolu onlardan yapılır; ama testte tek kol olarak yalnız 3407 ile
+ölçülür: zaafları seed gürültüsünün çok üstündedir (τ_g tek başına M2b'de 0,506, τ_a kütlede %41,2)
+ve satırları referanstır. Tarifleri `v1` tarifi olduğu için yeni seed'leri DEV dondurmasını beklemez;
+Kasım 2026–Ocak 2027'de eğitilir (§2.7).
 
 **Tarif.** τ_g ve τ_a tarifi iki temel modelde aynıdır (`v1` tarifi). Birlikte eğitim ve ardışık
 eğitim, her temel modelde DEV'de ikişer yapılandırmayla ve **aynı düğmede** ayarlanır: tercih teriminin
@@ -151,8 +162,10 @@ eke girer; Qwen'de birleştirmeye 4, diğer yöntemlere 2 ayar düşmesi sınır
 düşünce koruma eşiği · istatistik planı · birincil metrik ve birincil karşılaştırma · kazanan seçim
 kuralı. Testten sonra gelen yeni fikir yeni bir hipotezdir ve aynı testte denenmez.
 
-**Kazanan seçimi.** Kazanan, testte **kütlesi en yüksek** (temel model, yöntem) çiftidir; ancak
-şu dört kapıyı geçmesi şarttır:
+**Kazanan seçimi.** Kazanan, iki beceriyi toplayan üç yoldan (ayrı kollar + ham TIES · birlikte ·
+ardışık) testte **kütlesi en yüksek** (temel model, yol) çiftidir. Tek kollar aday değildir: kütle
+çekinmeyi cezalandırmaz, az reddeden bir tek kol kütlede öne geçebilir. Ayrıca şu dört kapıyı geçmesi
+şarttır:
 1. düşünce koruma eşiğini kendi ham modeline göre geçer (§2.5.4);
 2. yanlış maddeye dayanma, `tgta_v1`'in aynı testteki değerinden kötü değildir;
 3. Q4_K_M'de 4.096 bağlamda **≤8 GB VRAM** ([ADR-0018](adr/gemma4-12b-dersler.md#adr-0018));
@@ -208,7 +221,8 @@ bilinen notlar:
   [#53](record/kronoloji-53-62.md#53)) · eğitim verisiyle örtüşme denetimi üç düzeyde: soru
   yakın-kopyası, altın maddenin eğitim verisinde altın olarak geçmesi, üretici şablonu.
 - **Etiketler ve dilimler:** görev tipi (madde ne diyor · koşul/istisna · vaka uygulaması ·
-  sayı/süre) · ~50 sorunun hukuk terimi kullanmayan vatandaş dilinde yeniden ifadesi (ikincil eksen) ·
+  sayı/süre) · ~50 sorunun hukuk terimi kullanmayan vatandaş dilinde yeniden ifadesi (ikincil eksen;
+  yalnız kazanan ve `tgta_v1` cevaplar) ·
   "eğitimde görülmüş / görülmemiş" kırılımı (ikincil, betimsel). Zorluk modelden bağımsız
   özelliklerle kurulur; sorular hiçbir modelin çıktısına göre süzülmez.
 - **Üretim:** LLM üretir. Yasak aileler: OpenAI (eğitim verisinin öğretmeni) · Qwen ve Gemma
@@ -243,6 +257,9 @@ bilinen notlar:
   80 DEV cevabı F0'da DeepSeek (iki kez, gürültü tabanı için) ve `gpt-4o-mini` ile puanlanır; böylece
   hakem değişikliğinin etkisi bir kez ölçülür. F3'te DeepSeek ile tekrarlanır; fark gürültü tabanını
   aşarsa puanlama durur.
+- **İstem sırası:** talimat, soru ve kaynaklar başta, cevap sonda; aynı sorunun bütün kollarda ortak
+  kısmı sağlayıcının önbelleğinden okunur ve ucuza faturalanır. Hakemin gürültü tabanı gerçek çağrı
+  koşullarında, önbellek dahil, ölçülür.
 - **Payda kapısı:** puanlanan cevaplanan kalem sayısı cevaplanan kalem sayısına eşit olmalıdır; hakem
   hatası ve sıfır iddialı cevap ayrı sayılır.
 - **Önyargı sondası (F1):** DEV cevaplarına tek değişkenli bozmalar (uzatma · soruya ait olmayan
@@ -264,8 +281,9 @@ Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-ger
   uyumu test açılmadan bilinir.
 - **Kör okuma:** okuyucu kolu görmez, sıra karışıktır.
 - **Okuyucular:** gönüllü ve ücretsiz; yazılı bilgilendirme ve onam, makalede teşekkür, kişisel veri
-  toplanmaz. Etik kurul onayının gerekip gerekmediği F4'ten önce sorulur (gerekiyorsa onay okumadan
-  önce alınmalıdır, sonradan alınamaz).
+  toplanmaz. Etik kurul onayının gerekip gerekmediği F0'da sorulur; başvuru gerekiyorsa iki
+  checkpoint'in okumalarını kapsar (onay okumadan önce alınmalıdır, sonradan alınamaz). Gönüllü
+  arayışı da F0'da başlar.
 - **Örneklem:** kollara ve iki temel modele yayılmış ~300 cevap; zorunlu tabakalar bütün isabetsiz
   atıf kalemleri, hakemlerin ayrıştığı kalemler ve ajanın eski okuduğu kalemlerdir. Kullanıcı hepsini okur; gönüllü hukuk öğrencileri yaklaşık üçte birini bağımsız ikinci kez
   okur; bir hukukçu yalnız isabetsiz atıf anlaşmazlıklarını karara bağlar.
@@ -283,7 +301,7 @@ Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-ger
 | döngü oranı | kuyruk-tekrarı dedektörü ([ADR-0073](adr/kararlar-0064-0085.md#adr-0073)) |
 | düşünce izi ↔ cevap tutarlılığı | hakem; insan örnekleminde doğrulanır |
 | iz dili | deterministik |
-| genel akıl yürütme kaybı | Global-MMLU Türkçe 100 + GSM8K 100; hakemsiz (deterministik doğru/yanlış), düşünce açık, yerelde; bütün kollar, bütün seed'ler ve iki ham model |
+| genel akıl yürütme kaybı | Global-MMLU Türkçe 100 + GSM8K 100; hakemsiz (deterministik doğru/yanlış), düşünce açık, yerelde; üç yolda bütün seed'ler, tek kollarda 3407, iki ham model |
 
 Çıpa her temel modelin kendi ham hâlidir ([ADR-0039](adr/kararlar-0027-0044.md#adr-0039)). **Kapı:**
 kol, iki genel kümenin ortalamasında ham modelinden en çok 5 puan düşüktür (seed ortalaması, nokta
@@ -308,24 +326,26 @@ Bütün üretimler aynı dizüstünde (RTX 5070 Laptop), aynı llama.cpp sürüm
 bayraklarıyla koşar ([ADR-0078](adr/kararlar-0064-0085.md#adr-0078)); bilgisayar şarja takılıdır
 (pilde hız 17 kat düşer, [#39](record/kronoloji-39-52.md#39)). KV önbelleği ayarı bile cevapların
 %81'ini değiştirdiği için ([#66](record/kronoloji-63-71.md#66)) ölçüm başka donanıma taşınmaz.
-Toplam yük ~245-250 saattir (test cevapları ~200 · RQ2'nin üretim tarafı ~25-30 · genel kümeler ~19).
-Bu yüzden test cevapları, dondurmadan sonra her kol eğitilir eğitilmez üretilir (Şubat–Haziran) ve şifreli
-saklanır; kimse okumaz, puanlamaz. **"Test açıldı" anı puanlamanın başladığı andır** ve kayıtta böyle
+Toplam yük ~185-190 saattir (test cevapları ~147 · RQ2'nin üretim tarafı ~25-30 · genel kümeler ~14;
+tahmin). Bu yüzden test cevapları, test dondurulunca hazır kollardan başlayarak sırayla üretilir
+(Şubat–Nisan, haftada ~15 saat, geceleri) ve şifreli saklanır; kimse okumaz, puanlamaz. **"Test açıldı" anı puanlamanın başladığı andır** ve kayıtta böyle
 tanımlanır.
 
 ### 2.6 Takvim
 
 | aşama | zaman | iş | kullanıcı saati (tahmin) |
 | :--- | :--- | :--- | :--- |
-| **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin kayda geçmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü, testi ve eski ortamla eşdeğerlik kontrolü · hakem geçişi ve kayma çıpası · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
-| **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · insan↔hakem pilotu (~80 cevap) · hakem önyargı sondası · soru üreticisinin kör seçimi · test sorularının üretimi ve okuma protokolü · **dondurma ADR'si** | ~7-9 |
-| **F2 — test ve seed'ler** | Şubat–Nisan 2027 | test sorularının okunması (yalnız ret; vatandaş dili dilimi dahil) ve şifreli dondurulması (Şubat ara tatili) · seed'ler: Qwen 3408 → 3409 → Gemma 3408 → 3409 · hazır kolların test cevapları şifreli üretilir | ~8-12 |
-| **F3 — son ölçüm** | Mayıs–Haziran | test bir kez açılır (puanlama başlar) · kalan kolların dizüstünde üretimi · Tablo 2 (üretim tarafındaki eski hâl için ~25-30 saat ek) · ikinci hakem · kazanan seçimi | ~3-4 |
-| **F3b — uygulama** | Haziran–Temmuz | kazanan → GGUF → konteyner kilidi → model kartı; kazanan `tgta_v1` ise değişiklik yok | ~2-4 |
-| **F4 — insan doğrulaması** | Temmuz | ~300 cevap kör okuma · öğrenciler · hukukçu · uyum istatistikleri | ~12-15 |
-| **F5 — yazım** | Ağustos–Eylül | yazım · 1-2 dış okuyucu · arXiv (ARR kuralına göre) · ilk uygun ARR döngüsüne gönderim | ~40-60 |
+| **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin kayda geçmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü, testi ve eski ortamla eşdeğerlik kontrolü · hakem geçişi ve kayma çıpası · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · etik kurul sorusu ve gönüllü arayışının başlaması · Qwen'de τ_g/τ_a seed'leri (3408 · 3409) · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
+| **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · Gemma'da τ_g/τ_a seed'leri · insan↔hakem pilotu (~80 cevap) · hakem önyargı sondası · soru üreticisinin kör seçimi · test sorularının üretimi ve okuma protokolü · **dondurma ADR'si** ve aynı gün makalenin yöntem bölümü | ~10-13 |
+| **F2 — test ve seed'ler** | Şubat–Nisan 2027 | test sorularının okunması (yalnız ret; mühürlü parça ve vatandaş dili dilimi dahil; dondurmadan hemen sonra, Ocak sonu–Şubat) ve şifreli dondurulması · birlikte ve ardışık seed'ler (Şubat–Mart): Qwen 3408 → 3409 → Gemma 3408 → 3409 · test cevaplarının dizüstünde şifreli üretimi, RQ2'nin üretim tarafı dahil (Şubat–Nisan) · makalenin giriş ve ilgili çalışmalar bölümleri | ~15-22 |
+| **F3 — son ölçüm** | Mayıs 2027 | test bir kez açılır (puanlama başlar) · Tablo 1 ve 2 · ikinci hakem · kazanan seçimi | ~3-4 |
+| **F3b — uygulama** | Haziran 2027 | kazanan → GGUF → konteyner kilidi → model kartı; kazanan `tgta_v1` ise değişiklik yok | ~2-4 |
+| **F4 — insan doğrulaması** | Mayıs–Haziran 2027 | ~300 cevap kör okuma · öğrenciler · hukukçu · uyum istatistikleri | ~12-15 |
+| **F5 — yazım** | Haziran–Eylül 2027 | sonuçlar, tartışma ve sınırlılıklar · 1-2 dış okuyucu · arXiv (ARR kuralına göre) · ilk uygun ARR döngüsüne gönderim | ~30-45 |
 
-Her aşamanın iş adımları ve doğrulamaları: [`ROADMAP_v1.md`](ROADMAP_v1.md) §2-§7.
+Eylül 2027 hedefi korunur; takvimin öne gelmesiyle kazanılan ~1-2 ay tampondur, her şey yolunda
+giderse bir önceki ARR döngüsüne gönderilir. Her aşamanın iş adımları ve doğrulamaları:
+[`ROADMAP_v1.md`](ROADMAP_v1.md) §2-§7.
 
 ### 2.7 Bütçe
 
@@ -335,18 +355,25 @@ Her aşamanın iş adımları ve doğrulamaları: [`ROADMAP_v1.md`](ROADMAP_v1.m
 | DEV iterasyonu: Qwen / Gemma | ~$14 / ~$21-28 |
 | seed'ler: Qwen 3408 · 3409 / Gemma 3408 · 3409 (3407 kolları F1'den) | ~$32 / ~$38-51 |
 | **GPU toplamı** | **~$111-131** |
-| bağlayıcı hakem DeepSeek V4.1 Flash, bütün kollar (sabit sağlayıcıda birim fiyat `gpt-4o-mini` ile aynı; kayıttaki ×1,6 fatura payı dahil) | ~$20-28 |
+| bağlayıcı hakem DeepSeek V4.1 Flash, bütün kollar (tek kollar yalnız 3407; sabit sağlayıcıda birim fiyat `gpt-4o-mini` ile aynı; kayıttaki ×1,6 fatura payı dahil) | ~$15-21 |
 | ikinci hakem, iki temel modelde birincil karşılaştırma | ~$19 |
-| düşünce izi ↔ cevap tutarlılığı hakemi | ~$8 |
+| düşünce izi ↔ cevap tutarlılığı hakemi | ~$6 |
 | test üretimi, kör payda, RQ2 yeniden puanlaması | ~$5 |
 | F0: hakem kayma çıpası ve mevcut kolların DEV ölçümü · F3: kayma çıpasının tekrarı | ~$8 |
 | F1: DEV iterasyonunun puanlanması · önyargı sondası · insan pilotunun hakem tarafı | ~$8 |
-| **nakit toplamı** | **~$68-76** + OpenRouter kredi ücreti |
+| **nakit toplamı** | **~$61-67** + OpenRouter kredi ücreti |
 
 Pilotta hakemin düşünme açık modu seçilirse hakem kalemleri ~2-3 kat artar (+$25-45).
 
-GPU giderleri Modal'ın aylık $30 kredisine göre Kasım 2026–Nisan 2027'ye bölünür; bir ay yetmezse
-eğitim aynı ay Vast'ta A100 ile, [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'teki kurala göre sürer.
+**Açılabilir seçenekler** (varsayılan kapalı; yalnız kullanıcı kararıyla açılır): ikinci hakemin
+bütün kolları ve seed'leri puanlaması (~$85-135; Tablo 1'in her hücresi iki aileli aralıkla) ·
+insan doğrulamasında ücretli okuyucular (gönüllü bulunamazsa).
+
+GPU giderleri iki Modal hesabının (kişisel ve dış destekli ikinci hesap; destek makalede beyan
+edilir) aylık $30'ar kredisiyle Kasım 2026–Mart 2027'ye bölünür. τ_g ve τ_a'nın yeni seed'leri
+dondurmayı beklemez ve Kasım–Ocak'ın boştaki kredisiyle eğitilir; dondurmadan sonra yalnız birlikte
+ve ardışık seed'ler kalır. Kredi yetmezse kural [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'tedir:
+dizüstünde sıra varsa yeni ay beklenir, yoksa Modal'da ödenir; Vast yalnız Modal kesintisinde.
 Birim fiyatlar: Modal A100-40GB $2,10/saat; SFT A100'de ~2,1 saat
 ([ADR-0033](adr/kararlar-0027-0044.md#adr-0033)), ORPO 36,5 dakika ([#48](record/kronoloji-39-52.md#48));
 Gemma koşuları Qwen'in 1,5-2 katı varsayıldı. Gerçek API faturasının hesaplanan tutarın 1,596 katı
@@ -402,8 +429,9 @@ karara bağlanır.
 
 İlk iş ~$2-5'lik bir pilottur: kazanan model için vLLM üretiminin çalıştığını ve adım süresini ölçer.
 Ardından **pilot + ana GRPO 3 seed + 2 ablasyon** (isabet terimsiz ödül · çekinme terimsiz ödül)
-koşulur; tahmini ~$120-130. Pilotta birim maliyet orta senaryonun 1,5 katını aşarsa plan **2 seed +
-1 ablasyon** (isabet terimsiz) olur, ~$75-80. GRPO paketi bugünden seçilmez; pilottan sonra seçilir.
+koşulur; tahmini ~$120-130. Pilotta birim maliyet orta senaryonun 1,5 katını aşarsa önce takvim
+uzar (Kasım 2027–Mart 2028 kredisi tampondur); plan **2 seed + 1 ablasyon** (isabet terimsiz, ~$75-80)
+olur yalnız tampon da yetmezse. GRPO paketi bugünden seçilmez; pilottan sonra seçilir.
 
 | senaryo (koşu başına, tahmin) | adım | süre | Modal |
 | :--- | ---: | ---: | ---: |
@@ -412,8 +440,10 @@ koşulur; tahmini ~$120-130. Pilotta birim maliyet orta senaryonun 1,5 katını 
 | uzun, ürün biçimli istem | 500 | ~19-24 sa | ~$40-50 |
 
 Dayanak: eğitim verimi A100'de 2.619 token/sn ([ADR-0033](adr/kararlar-0027-0044.md#adr-0033)) · cevap
-~800 token · soru başına 8 cevap · LoRA'lı GRPO. Koşular Modal kredisiyle ayda kabaca bir tane olmak
-üzere Kasım 2027–Mart 2028'e yayılır.
+~800 token · soru başına 8 cevap · LoRA'lı GRPO. Pilot ve ödül ADR'si Haziran 2027'de, kazanan belli
+olur olmaz yapılır; koşular iki Modal hesabının kredisiyle (ayda ~$60) Temmuz 2027'de başlar ve
+~Ekim 2027'de biter. Böylece Checkpoint 1'in GPU işi Mart'ta bittikten sonra Mayıs–Ekim 2027'de boşta
+kalacak kredi kullanılır.
 
 **İzleme ve ödül tasarımı ilkeleri** (ön-kayıt ADR'sine girer;
 [`knowledge/summary_rl_posttraining_survey.md`](../knowledge/summary_rl_posttraining_survey.md) §C):
@@ -434,7 +464,7 @@ aile dışlaması ([ADR-0072](adr/kararlar-0064-0085.md#adr-0072)). Tahmini mali
 testte Flash-Lite ~$2, Flash ~$11, Sonnet ~$16 + hakem ([`MODEL_CARD.md`](../MODEL_CARD.md) §5.1).
 Son sınav mühürlü ~100 soruluk parçadır.
 
-Konumlanmanın dayanacağı iki önceki çalışma Ekim 2027'de okunur (ACL 2026): *"Mitigating Lost in
+Konumlanmanın dayanacağı iki önceki çalışma Mart–Nisan 2027'de, ödül ADR'sinden önce okunur (ACL 2026): *"Mitigating Lost in
 Multi-turn Conversation via Curriculum RL with Verifiable Accuracy and Abstention Rewards"* (ana
 konferans) · *"Pause or Fabricate? Training Language Models for Grounded Reasoning"* (Findings).
 
@@ -442,10 +472,11 @@ konferans) · *"Pause or Fabricate? Training Language Models for Grounded Reason
 
 | zaman | iş | kullanıcı saati (tahmin) |
 | :--- | :--- | :--- |
-| Ekim–Aralık 2027 | iki önceki çalışmanın okunması · ödül ve ön-kayıt ADR'si · GRPO pilotu · Makale 1 hakem yorumlarına göre yeniden gönderim | ~10-15 |
-| Kasım 2027–Mart 2028 | GRPO koşuları | ~5 |
-| Mart–Nisan 2028 | mühürlü parçada son ölçüm · rakipler | ~5 |
-| Nisan–Haziran 2028 | tez yazımı (makale metinleri yeniden kullanılır) · Makale 2 yazımı | ~40-60 |
+| Mart–Nisan 2027 | iki önceki çalışmanın okunması | ~4-6 |
+| Haziran 2027 | GRPO pilotu · ödül ve ön-kayıt ADR'si (korunacak tabanlar kazananın Makale 1 değerleri) | ~5-8 |
+| Temmuz–Ekim 2027 | GRPO koşuları | ~5 |
+| Ekim–Aralık 2027 | Makale 1 hakem yorumlarına göre yeniden gönderim · mühürlü parçada son ölçüm · rakipler | ~5-8 |
+| Ocak–Haziran 2028 | tez yazımı (makale metinleri yeniden kullanılır) · Makale 2 yazımı | ~40-60 |
 | yaz 2028 | tez savunması | — |
 
 ---
@@ -455,9 +486,11 @@ konferans) · *"Pause or Fabricate? Training Language Models for Grounded Reason
 ### 4.1 Eğitim ortamı
 
 Bütün eğitimler A100'de, kilitli paket sürümleri ve tarifle yapılır:
-[`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Ana platform Modal'dır; kredi bir ay içinde biterse ya yeni ay
-beklenir ya da eğitim aynı Docker imajıyla Vast'ta A100'e, blok sınırında ve eşdeğerlik kontrolünden
-sonra taşınır. Makalenin ekinde hangi kolun nerede eğitildiği yazılır.
+[`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Ana platform Modal'dır: kişisel ve dış destekli iki hesap, aynı
+imajla, aynı platform sayılır. Kredi yetmezse dizüstünde sıra varsa yeni ay beklenir, yoksa Modal'da
+ödenir; Vast yalnız Modal kesintisinde, aynı Docker imajıyla, eşdeğerlik kontrolünden sonra ve bütün
+bir seed bloğuyla kullanılır (platform yöntemle değil seed'le değişir). Makalenin ekinde hangi kolun
+nerede eğitildiği yazılır.
 
 ### 4.2 Yedekler
 
@@ -490,14 +523,14 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | Gemma teknik kapıdan kalıyor | F0 | yedek model o gün aynı kapıyla seçilir (Phi ailesi, Ministral 3 3B Reasoning); o da kalırsa Makale 1 tek temel modelle yazılır ve hedef Findings ya da dergi olur |
 | bağlayıcı hakemin sürümü ya da sağlayıcısı değişiyor | F0.6 / F3.1 kayma çıpası | puanlama durur; değişiklik kayda geçer, çıpa yeni koşulla yeniden ölçülür |
 | birlikte-eğitim kodu çalışmıyor | F1 sonu | karışık SFT tabanı son çare olarak girer, zayıflığı makalede yazılır |
-| birim maliyet tahminin 1,5 katı | herhangi bir pilot | bütçe yeniden hesaplanır; eğitim Vast A100-80GB'a geçer |
-| gönüllü öğrenci bulunamıyor | Mayıs 2027 | okuma kullanıcı ve hukukçuyla yapılır; insan↔insan uyumu sınırlılık olarak yazılır |
+| birim maliyet tahminin 1,5 katı | herhangi bir pilot | bütçe yeniden hesaplanır; kredi yetmezse [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'teki kural (beklenir ya da Modal'da ödenir) |
+| gönüllü öğrenci bulunamıyor | Mart 2027 (arayış F0'da başlar) | okuma kullanıcı ve hukukçuyla yapılır; insan↔insan uyumu sınırlılık olarak yazılır |
 | kazanan dört kapıdan birinden kalıyor | F3 | kapıları geçen en iyi çift kazanır; hiçbiri geçmezse ürün `tgta_v1`'de kalır |
-| takvim bir aydan fazla geride | F3 sonu | kesme sırası: ikinci hakem → Gemma'da üçüncü seed. Kesilmeyenler: birlikte eğitim · Qwen'de 3 seed · insan doğrulaması · test kümesi |
+| takvim bir aydan fazla geride | F3 sonu | kesme sırası: RQ2'nin Gemma'daki üretim tarafı → Gemma'da üç yolun üçüncü seed'i → insan doğrulaması ~200 cevaba → ikinci hakem (en son: kullanıcı saatine maliyeti yok). Kesilmeyenler: birlikte eğitim · Qwen'de 3 seed · insan doğrulaması (en az ~200 cevap) · test kümesi |
 | yazım yetişmiyor | F5 | gönderim bir ARR döngüsü kayar; tez etkilenmez |
 | makale reddediliyor | hakem kararı | sonraki ARR döngüsü → dergi |
 | özgünlük örtüşmesi | F0 literatür taraması | çerçeve dondurmadan önce düzeltilir |
-| dizüstünün ~245-250 saatlik ölçüm yükü | F2–F3 | üretim, kollar hazır oldukça Şubat–Haziran'a yayılır; başka donanıma taşınmaz |
+| dizüstünün ~185-190 saatlik ölçüm yükü | F2 | üretim Şubat–Nisan'a yayılır (haftada ~15 saat, geceleri, şarjda); başka donanıma taşınmaz |
 
 ---
 
@@ -508,16 +541,16 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | ARR 2027 döngü tarihleri ve ön baskı (arXiv) kuralı | aclrollingreview.org | F0 |
 | ACL/ARR yapay zekâ yardımı politikası · gönderim kontrol listesi · karşılıklı hakemlik şartı | ACL / ARR | F0 |
 | DEÜ FBE: tez dili · mezuniyet için yayın şartı · yayımlanmış makalenin tezde kullanımı · tezden üretilen yayında danışman adı (zorunluysa "tek yazar" planı değişir) · programa başlamadan önceki işin teze sayılması · üretken YZ kuralı | enstitü yönetmeliği ve tez yazım kılavuzu | F5 başında, yazıma geçerken |
-| gönüllü okuyucular için etik kurul onayı gerekiyor mu | DEÜ | F4'ten önce |
-| Modal $30 kredisinin hesapta aylık yenilenmesi · akademik kredi başvurusu | Modal faturalama sayfası | F0 |
+| gönüllü okuyucular için etik kurul onayı gerekiyor mu (gerekiyorsa başvuru iki checkpoint'i kapsar) | DEÜ | F0 |
+| Modal $30 kredisinin iki hesapta aylık yenilenmesi · akademik kredi başvurusu | Modal faturalama sayfası | F0 |
 | Gemma 4 E4B lisans dosyası | HF model deposu | F0 |
-| DeepSeek V4.1 Flash: tarihli sürüm kimliği · sabit sağlayıcının fiyatı · düşünme modunda sıcaklık desteği | OpenRouter model sayfası | F0 |
+| DeepSeek V4.1 Flash: tarihli sürüm kimliği · sabit sağlayıcının fiyatı ve önbellekli girdi fiyatı · düşünme modunda sıcaklık desteği | OpenRouter model sayfası | F0 |
 | OpenAI kullanım şartlarının güncel metni (çıktıyla rakip model geliştirme maddesi) | openai.com/policies | F0 |
 | OSF ön-kayıt: ambargo ve isimsiz görüntüleme bağlantısı | osf.io | F1 |
 | Global-MMLU ve GSM8K lisansları | küme depoları | F1 |
 | GLM 5.3 Flash'ın OpenRouter kimliği, fiyatı ve lisans dosyası | OpenRouter · HF | F1 |
 | Vast'ta A100 fiyatı ve sürücü sürümü | Vast konsolu | gerektiğinde |
-| vLLM'in kazanan modeli desteklemesi | GRPO pilotu | Ekim 2027 |
+| vLLM'in kazanan modeli desteklemesi | GRPO pilotu | Haziran 2027 |
 | COLM 2028 çağrısı | COLM sitesi | Ekim 2027 |
 
 ---

@@ -51,29 +51,37 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 | `lora_dropout=0.0` Python'da falsy, bayrak sessizce yok sayılıyor | [ADR-0033](adr/kararlar-0027-0044.md#adr-0033) | değer yaml'dan, eşitlikle kontrol |
 | `causal-conv1d` yokken "fast path not available" uyarısı | [ADR-0033](adr/kararlar-0027-0044.md#adr-0033) | uyarı ölçüt değildir; ölçüt `s/adım` |
 
-## 4 · Platform değişimi (Modal → Vast)
+## 4 · Hesaplar ve platform değişimi
 
-1. **Önce bekle:** Modal kredisi aylık yenileniyorsa yeni ayı beklemek $0'dır.
-2. **Aynı imaj:** Modal ile Vast'a aynı Docker imajı, aynı özetle (digest) verilir; imaj F0'da
+1. **İki Modal hesabı** (2026-10-10): kişisel hesap ve dış destekli ikinci hesap (destek makalede
+   beyan edilir) aynı imajla aynı `A100-40GB`'ı kullanır; **aynı platform** sayılır, aralarında
+   eşdeğerlik kontrolü gerekmez. Künyeye hangi hesap olduğu yazılır; adaptör, koşu biter bitmez özel
+   HF deposuna kopyalanır — hiçbir artefakt yalnız bir hesabın depolama alanında kalmaz.
+2. **Kredi yetmezse:** dizüstünde ölçüm sırası varsa yeni ayın kredisi beklenir ($0, takvim kaybı
+   yok); dizüstü boşta kalacaksa Modal'da ödenir. **Vast yalnız Modal kesintisinde** kullanılır.
+3. **Aynı imaj:** Modal hesaplarına ve Vast'a aynı Docker imajı, aynı özetle (digest) verilir; imaj F0'da
    `requirements.lock.txt` + sabitlenmiş `fla-core` sürümüyle bir kez kurulur.
-3. **Yalnız A100**, **blok sınırında** (bir koşu asla iki platforma bölünmez; en doğal sınır Gemma
-   bloğunun tamamı).
-4. **Eşdeğerlik kontrolü** (~$1): Modal'da koşulmuş bir yapılandırmanın ilk 50 adımı Vast'ta aynı
+4. **Yalnız A100**, **blok sınırında:** bir koşu asla iki platforma bölünmez ve platform **yöntemle
+   değil seed'le** değişir — bir temel modelin bir seed'ine ait bütün kollar (τ_g, τ_a, birlikte,
+   ardışık) aynı platformdadır; aksi hâlde birincil karşılaştırmada yöntem farkı platform farkından
+   ayrılamaz. τ_g ve τ_a seed'leri dondurmadan önce Modal'da eğitildiği için Checkpoint 1'de Vast'a
+   ancak yepyeni bir seed bloğu geçebilir.
+5. **Eşdeğerlik kontrolü** (~$1): Modal'da koşulmuş bir yapılandırmanın ilk 50 adımı Vast'ta aynı
    seed'le tekrarlanır, kayıp eğrileri kıyaslanır. **Tolerans sayısı uydurulmaz:** F0'da aynı
    platformda aynı seed'le iki kısa koşu yapılır (~$1-2), aradaki fark **gürültü tabanıdır**;
    platformlar arası fark bu tabanın içinde kalmalı. Kalmazsa o blok tamamen tek platformda
    yeniden koşulur. (Emsal: batch değişince adım-10 kaybı 0,788 ↔ 0,7987 ölçülmüştü,
    [ADR-0033](adr/kararlar-0027-0044.md#adr-0033).)
-5. **Vast kuralları:** API anahtarı kiralık makineye gitmez · koşu bitince makine **silinir**
+6. **Vast kuralları:** API anahtarı kiralık makineye gitmez · koşu bitince makine **silinir**
    (depolama, makine silinene kadar faturalanır) · kesilebilir kiralamada `save_steps` + otomatik
    devam ([ADR-0008](adr/gemma4-12b-dersler.md#adr-0008)).
-6. Makalenin ekine **donanım tablosu**: hangi kol nerede eğitildi.
+7. Makalenin ekine **donanım tablosu**: hangi kol nerede (platform ve hesap) eğitildi.
 
 ## 5 · Her koşunun künyesine yazılacaklar
 
 gerçek GPU adı ve belleği (`nvidia-smi`) · sürücü ve CUDA sürümü · imaj özeti · bütün paket
 sürümleri (`importlib.metadata`) · `requirements.lock.txt` özeti · hassasiyet · LoRA ayarları ve
-hedef modüller · veri yolu, satır sayısı ve `sha256` · seed · adım sayısı · etkin batch · platform.
+hedef modüller · veri yolu, satır sayısı ve `sha256` · seed · adım sayısı · etkin batch · platform ve hesap.
 Künyedeki her alan **ya bir değişkenden ya bir ölçümden** gelir; elle yazılmış alan künyeyi kanıt
 olmaktan çıkarır (tuzak 1.12, [#66](record/kronoloji-63-71.md#66)).
 
@@ -86,7 +94,7 @@ olmaktan çıkarır (tuzak 1.12, [#66](record/kronoloji-63-71.md#66)).
 2. `einops` · `fla-core` · `flash-linear-attention` sürümleri.
 3. Docker imajı ve özeti; imajın CUDA sürümünün istediği en düşük sürücü.
 4. `configs/egitim_ortami.yaml` + betik başı kontrolü + test.
-5. Gürültü tabanı ölçümü (§4.4).
+5. Gürültü tabanı ölçümü (§4.5).
 6. Gemma 4 E4B için ayrı bir bölüm: hedef modüller (yalnız metin kulesi), düşünce kapanış işareti,
    bf16 bellek ihtiyacı ve A100-40GB'da batch ayarı (Gemma 3 seed'le, Qwen'le eşit tasarımda eğitilir).
    Kilitteki `transformers` 5.10.2 ve `unsloth` 2026.6.1 Gemma 4'ün çıkışından sonra; Gemma başka sürüm
