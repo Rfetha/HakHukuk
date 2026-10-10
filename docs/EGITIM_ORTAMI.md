@@ -3,7 +3,7 @@
 > **Bu belge ne:** Makale 1 ve Makale 2 için yapılacak **her** eğitim koşusunun (Modal ya da Vast)
 > uymak zorunda olduğu donanım, yazılım ve tarif değerleri. Amaç: platform değişse bile kolların
 > aynı ortamda eğitilmiş olması — aksi hâlde kollar arası fark "yöntem mi, ortam mı" diye
-> ayrıştırılamaz. Yol haritası: [`YAYIN_YOL_HARITASI.md`](YAYIN_YOL_HARITASI.md) (K6, K13).
+> ayrıştırılamaz. Yol haritası: [`YAYIN_YOL_HARITASI.md`](YAYIN_YOL_HARITASI.md) §4.1.
 >
 > **DURUM (2026-10-10): bu belge henüz bir kilit DEĞİLDİR.** Depo bunu iki kez öğrendi: kapıyı
 > belgeye değil koda koy ([ADR-0030](adr/kararlar-0027-0044.md#adr-0030) m.3); `llama-server`
@@ -35,7 +35,7 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 | LoRA | r=16 · α=32 · dropout 0,05 · `use_rslora=False` · hedef modüller: `q_proj k_proj v_proj o_proj in_proj_qkv in_proj_z in_proj_a in_proj_b gate_proj up_proj down_proj` (11) | `outputs/tg_v1` ve `outputs/ta_v1` `adapter_config.json` dosyalarında birebir doğrulandı |
 | SFT tarifi | veri `data/train/raft_scrubbed/` (17.323 satır) · 2048 token · cihaz başı batch 2 × biriktirme 8 · gradient checkpointing **kapalı** · lr 1e-4 cosine · `adamw_8bit` · 1 epoch = 1.083 adım · packing **yok** | [ADR-0033](adr/kararlar-0027-0044.md#adr-0033), [#40](record/kronoloji-39-52.md#40) |
 | ORPO tarifi | veri `data/train/orpo_abstain_cp2c/` (845 satır = 726 çift + 145 tekrar; 26 doğrulama) · lr 1e-5 · beta 0,1 · biriktirme 64 · 5 epoch = 70 adım · **taze adaptör** (`--fresh-adapter`) | [#48](record/kronoloji-39-52.md#48), [`kollar.md`](record/kollar.md) |
-| seed | 1. seed **3407** (`v1`) · 2. seed **3408** · 3. seed **3409** | 2-3 bu belgeyle, sonuç görülmeden önerildi; yaml'a yazılınca kesinleşir |
+| seed | **3407 · 3408 · 3409**, iki temel modelde (Qwen3.5-4B, Gemma 4 E4B) aynı liste. Qwen'de 3407'nin τ_g ve τ_a kolları `v1` adaptörleridir | sonuç görülmeden seçildi; yaml'a yazılınca kesinleşir |
 | GPU üzerinde yalnız eğitim | ölçüm, hakem ve API anahtarları **eğitim makinesine gitmez** | Vast için zorunlu |
 
 ## 3 · Bilinen sessiz tehlikeler
@@ -82,4 +82,5 @@ olmaktan çıkarır (tuzak 1.12, [#66](record/kronoloji-63-71.md#66)).
 3. Docker imajı ve özeti; imajın CUDA sürümünün istediği en düşük sürücü.
 4. `configs/egitim_ortami.yaml` + betik başı kontrolü + test.
 5. Gürültü tabanı ölçümü (§4.4).
-6. Gemma 4 E4B için ayrı bir bölüm: hedef modüller (yalnız metin kulesi) ve düşünce kapanış işareti.
+6. Gemma 4 E4B için ayrı bir bölüm: hedef modüller (yalnız metin kulesi), düşünce kapanış işareti,
+   bf16 bellek ihtiyacı ve A100-40GB'da batch ayarı (Gemma 3 seed'le, Qwen'le eşit tasarımda eğitilir).
