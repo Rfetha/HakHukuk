@@ -1,7 +1,8 @@
 # Yayın yol haritası
 
-> HakHukuk'tan iki hakemli makaleye ve yüksek lisans tezine giden proje planı. Ürün yol haritası
-> ayrı belgedir: [`ROADMAP_v1.md`](ROADMAP_v1.md). Eğitim ortamının kilitli değerleri:
+> HakHukuk'tan iki hakemli makaleye ve yüksek lisans tezine giden proje planı. Checkpoint 1'in iş
+> adımları, doğrulamaları ve kontrol listesi: [`ROADMAP_v1.md`](ROADMAP_v1.md). Eğitim ortamının
+> kilitli değerleri:
 > [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Her aşama başlarken kendi uygulama planı yazılır
 > (en çok bir canlı plan, [ADR-0056](adr/kararlar-0045-0063.md#adr-0056)); bu belgedeki kararlar
 > F0'da karar defterine ADR-0089 ve sonrası olarak işlenir.
@@ -21,8 +22,8 @@
 | temel model | **Qwen3.5-4B ve Gemma 4 E4B, her biri 3 seed** | Checkpoint 1'in **kazananı** |
 | çıktı | Makale 1 gönderime hazır · uygulama kazananla güncel · tez malzemesi tamam | Makale 2 gönderime hazır · tez savunması |
 | GPU (tahmin) | ~$130-155, Modal aylık kredisinden | ~$120-130 |
-| nakit (tahmin) | ~$50-60 (hakem API) | ~$30-50 (rakipler + hakem) |
-| kullanıcı saati (tahmin) | ~75-110 | ~60-85 |
+| nakit (tahmin) | ~$68-76 (hakem API) | ~$30-50 (rakipler + hakem) |
+| kullanıcı saati (tahmin) | ~80-115 | ~60-85 |
 
 Checkpoint 2 hiç gerçekleşmese bile Checkpoint 1 mezuniyete yeterli tez malzemesi üretir (§2.9).
 Çalışan uygulama hiçbir aşamada bozulmaz; `v1.0` her zaman yedek olarak durur.
@@ -167,13 +168,21 @@ CLAUDE.md'nin altı maddelik base kapısı, artı üç madde. Gemma için biline
 - **Bileşim:** eski donmuş TEST (40 temel + 35 tuzak; yalnız `tgta_v1` için bir kez açıldı,
   [ADR-0077](adr/kararlar-0064-0085.md#adr-0077), üzerinde hiçbir seçim yapılmadı) + ~200-225 yeni
   soru; toplam ~200 temel + ~100 tuzak. Sonuçlar iki parça için ayrıca da raporlanır.
-- **Mühürlü parça:** ~100 soru, Checkpoint 2'nin sonuna kadar açılmaz.
-- **Yeni soruların kuralları:** kanun ve madde uzunluğuna göre katmanlı (DEV↔TEST farkının %81'i
-  katmanlama eksikliğindendi, [ADR-0069](adr/kararlar-0064-0085.md#adr-0069)) · tek başına
-  anlaşılır (eski soruların ~%22'si belirsizdi, [#53](record/kronoloji-53-62.md#53)) · eğitim
-  verisiyle örtüşme denetimi.
-- **Üretim:** LLM üretir; kullanıcı her soruyu netlik için okur. Küme bir kez dondurulur, bir kez
-  açılır.
+- **Mühürlü parça:** ~100 soru, Checkpoint 2'nin sonuna kadar açılmaz. Açık depoya girmez; depoda
+  yalnız `sha256` özeti ve satır sayısı durur, bir test dosyanın git tarafından izlenmediğini sınar.
+- **Yeni soruların kuralları:** kanun ve madde uzunluğuna göre katmanlı (DEV↔TEST arama tavanı
+  farkının %81'i madde uzunluğu bileşiminden geliyordu, [ADR-0069](adr/kararlar-0064-0085.md#adr-0069);
+  kabul testinde kütle düşüşünün %76'sı bu tavanla açıklandı, [`MODEL_CARD.md`](../MODEL_CARD.md)
+  §5.4) · tek başına anlaşılır (eski soruların ~%22'si belirsizdi,
+  [#53](record/kronoloji-53-62.md#53)) · eğitim verisiyle örtüşme denetimi üç düzeyde: soru
+  yakın-kopyası, altın maddenin eğitim verisinde altın olarak geçmesi, üretici şablonu.
+- **Etiketler ve dilimler:** görev tipi (madde ne diyor · koşul/istisna · vaka uygulaması ·
+  sayı/süre) · ~50 sorunun hukuk terimi kullanmayan vatandaş dilinde yeniden ifadesi (ikincil eksen) ·
+  "eğitimde görülmüş / görülmemiş" kırılımı (ikincil, betimsel). Zorluk modelden bağımsız
+  özelliklerle kurulur; sorular hiçbir modelin çıktısına göre süzülmez.
+- **Üretim:** LLM üretir. Üretici, eğitim verisini üreten modelden farklıdır ve ne özne ne Makale 2
+  rakibi olan bir ailedendir; modeli, sürümü ve istemi künyeye yazılır. Kullanıcı her soruyu netlik
+  için okur. Küme bir kez dondurulur, bir kez açılır.
 - **Çözünürlük:** %10'luk bir oran için güven aralığı genişliği n=80'de 13,4 puan
   ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) EK-2), n=200'de ~8 puan (hesap).
 
@@ -184,18 +193,31 @@ CLAUDE.md'nin altı maddelik base kapısı, artı üç madde. Gemma için biline
   1 seed'de puanlar; iki aile arasındaki uyum (κ) raporlanır.
 - Hiçbir özne kendi ailesinin hakemiyle puanlanmaz.
 - Ajan-okuyucu (Claude ailesi) yalnız Qwen ve Gemma cevaplarını okur.
+- **Sürüm ve kayma:** hakemlerin tarihli model kimliği ve sağlayıcısı künyeye yazılır. `tgta_v1`'in
+  80 DEV cevabı F0'da ve F3'te aynı hakemlerle puanlanır; fark gürültü tabanını aşarsa puanlama durur.
+- **Payda kapısı:** puanlanan cevaplanan kalem sayısı cevaplanan kalem sayısına eşit olmalıdır; hakem
+  hatası ve sıfır iddialı cevap ayrı sayılır.
+- **Önyargı sondası (F1):** DEV cevaplarına tek değişkenli bozmalar (uzatma · soruya ait olmayan
+  gerçek madde atfı · şerh cümlesi · "Düşünce süreci:" açılışı · kaynak sırası) ve etiketi bilinen
+  kontrol kalemleri; her hakemin ve çekinme dedektörünün karar değişim oranı Tablo 2'nin ekidir.
+- **İz ↔ cevap tutarlılığı:** önce izdeki kaynak seçimi ile cevaptaki atıf deterministik eşlenir;
+  hakem yalnız kalan kalemlere katı JSON ile ve kaynaklar iki sırada verilerek bakar.
+- Kol başına cevap uzunluğu ve atıf yoğunluğu raporlanır.
 
 #### 2.5.3 İnsan doğrulaması
 
 Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-gerçeği insandır.
 
 - **Protokol** cevaplar okunmadan yazılır: cevap ↔ çekinme · altın bağlamdayken susma · isabetsiz
-  atıf · düşünce izi ↔ cevap tutarlılığı.
+  atıf · sadakat (iddia düzeyinde; doğrulanabilir iddia ↔ yorum) · düşünce izi ↔ cevap tutarlılığı ·
+  "belirsiz". Protokol F1'de ~40-60 DEV cevabında kullanıcının okumasıyla denenir; hakemin insanla
+  uyumu test açılmadan bilinir.
 - **Kör okuma:** okuyucu kolu görmez, sıra karışıktır.
-- **Örneklem:** kollara ve iki temel modele yayılmış ~300 cevap; ajanın eski okuduğu kalemleri de
-  içerir. Kullanıcı hepsini okur; gönüllü hukuk öğrencileri yaklaşık üçte birini bağımsız ikinci kez
+- **Örneklem:** kollara ve iki temel modele yayılmış ~300 cevap; zorunlu tabakalar bütün isabetsiz
+  atıf kalemleri, hakemlerin ayrıştığı kalemler ve ajanın eski okuduğu kalemlerdir. Kullanıcı hepsini okur; gönüllü hukuk öğrencileri yaklaşık üçte birini bağımsız ikinci kez
   okur; bir hukukçu yalnız isabetsiz atıf anlaşmazlıklarını karara bağlar.
-- **Rapor:** insan↔insan · insan↔hakem · insan↔çekinme dedektörü · insan↔ajan uyumu. Kalan cevapları
+- **Rapor:** insan↔insan (κ, Krippendorff α) · insan↔hakem · insan↔çekinme dedektörü · insan↔ajan
+  uyumu (yüzde uyum, κ, sınıf başına precision/recall). Kalan cevapları
   bu aletler puanlar. İsabetsiz atıfın otomatik vekili olmadığı ölçülmüştür
   ([ADR-0066](adr/kararlar-0064-0085.md#adr-0066)); bu eksende ajan-okuyucu kullanılır ve insanla
   uyumu raporlanır.
@@ -208,7 +230,7 @@ Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-ger
 | döngü oranı | kuyruk-tekrarı dedektörü ([ADR-0073](adr/kararlar-0064-0085.md#adr-0073)) |
 | düşünce izi ↔ cevap tutarlılığı | hakem; insan örnekleminde doğrulanır |
 | iz dili | deterministik |
-| genel akıl yürütme kaybı | açık lisanslı küçük bir genel küme, düşünce açık, yerelde |
+| genel akıl yürütme kaybı | açık lisanslı küçük iki genel küme (Türkçe, İngilizce), düşünce açık, yerelde |
 
 Çıpa her temel modelin kendi ham hâlidir ([ADR-0039](adr/kararlar-0027-0044.md#adr-0039)). Eşik
 dondurma ADR'sinde yazılır. Risk kayıtta görünür: τ_a düşüncesini hiç kendi kapatmıyor (230/230 zorla,
@@ -233,12 +255,14 @@ bayraklarıyla koşar ([ADR-0078](adr/kararlar-0064-0085.md#adr-0078)); bilgisay
 | aşama | zaman | iş | kullanıcı saati (tahmin) |
 | :--- | :--- | :--- | :--- |
 | **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin bundle geçmişi ve Modal günlüklerinden çözülmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü ve testi · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
-| **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · test sorularının üretimi ve okuma protokolünün taslağı · **dondurma ADR'si** | ~4-5 |
-| **F2 — test ve seed'ler** | Şubat–Nisan 2027 | test sorularının okunması ve dondurulması (Şubat ara tatili) · bütün kolların bütün seed'leri | ~7-10 |
+| **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · insan↔hakem pilotu · hakem önyargı sondası · test sorularının üretimi ve okuma protokolü · **dondurma ADR'si** | ~6-8 |
+| **F2 — test ve seed'ler** | Şubat–Nisan 2027 | test sorularının okunması (vatandaş dili dilimi dahil) ve dondurulması (Şubat ara tatili) · bütün kolların bütün seed'leri | ~8-12 |
 | **F3 — son ölçüm** | Mayıs–Haziran | test bir kez açılır · ~30 kolun dizüstünde ölçümü (~200 saat, geceleri) · Tablo 2 · ikinci hakem · kazanan seçimi | ~3-4 |
 | **F3b — uygulama** | Haziran–Temmuz | kazanan → GGUF → konteyner kilidi → model kartı; kazanan `tgta_v1` ise değişiklik yok | ~2-4 |
 | **F4 — insan doğrulaması** | Temmuz | ~300 cevap kör okuma · öğrenciler · hukukçu · uyum istatistikleri | ~12-15 |
 | **F5 — yazım** | Ağustos–Eylül | yazım · 1-2 dış okuyucu · arXiv (ARR kuralına göre) · ilk uygun ARR döngüsüne gönderim | ~40-60 |
+
+Her aşamanın iş adımları ve doğrulamaları: [`ROADMAP_v1.md`](ROADMAP_v1.md) §2-§7.
 
 ### 2.7 Bütçe
 
@@ -252,7 +276,9 @@ bayraklarıyla koşar ([ADR-0078](adr/kararlar-0064-0085.md#adr-0078)); bilgisay
 | ikinci hakem, iki temel modelde birincil karşılaştırma | ~$19 |
 | düşünce izi ↔ cevap tutarlılığı hakemi | ~$8 |
 | test üretimi, kör payda, RQ2 yeniden puanlaması | ~$5 |
-| **nakit toplamı** | **~$50-60** + OpenRouter kredi ücreti |
+| F0: hakem kayma çıpası ve mevcut kolların DEV ölçümü · F3: kayma çıpasının tekrarı | ~$8 |
+| F1: DEV iterasyonunun puanlanması · önyargı sondası · insan pilotunun hakem tarafı | ~$8 |
+| **nakit toplamı** | **~$68-76** + OpenRouter kredi ücreti |
 
 GPU giderleri Modal'ın aylık $30 kredisine göre Kasım 2026–Nisan 2027'ye bölünür; bir ay yetmezse
 eğitim aynı ay Vast'ta A100 ile, [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'teki kurala göre sürer.
@@ -323,6 +349,16 @@ koşulur; tahmini ~$120-130. Pilotta birim maliyet orta senaryonun 1,5 katını 
 Dayanak: eğitim verimi A100'de 2.619 token/sn ([ADR-0033](adr/kararlar-0027-0044.md#adr-0033)) · cevap
 ~800 token · soru başına 8 cevap · LoRA'lı GRPO. Koşular Modal kredisiyle ayda kabaca bir tane olmak
 üzere Kasım 2027–Mart 2028'e yayılır.
+
+**İzleme ve ödül tasarımı ilkeleri** (ön-kayıt ADR'sine girer;
+[`knowledge/summary_rl_posttraining_survey.md`](../knowledge/summary_rl_posttraining_survey.md) §C):
+ödül bileşenleri (isabet · uydurma cezası · çekinme) ayrı fonksiyonlar olarak hesaplanır ve GDPO
+biçiminde ayrı ayrı normalize edilir · bütün cevapları aynı ödülü alan grupların oranı adım başına
+günlüğe yazılır, dinamik örnekleme eşiği ön-kayıttadır · referans modele KL çıpası korunur; KL ve
+entropi izlenir · eğitim ödülü ile DEV'deki hakemli ölçüm (kütle, isabetsiz atıf, aşırı red) yan yana
+çizilir, ayrışma durma kuralının girdisidir · birden çok madde sayarak altını tutturma ödülde
+kapatılır · düşünce uzunluğu ödüllendirilmez · SFT ile RL'yi karıştıran geçit (HPT) yalnız pilot
+çekinmede gradyan boşluğu gösterirse denenir.
 
 ### 3.5 Rakip karşılaştırması ve son sınav
 
@@ -404,7 +440,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | ne | nerede | ne zaman |
 | :--- | :--- | :--- |
 | ARR 2027 döngü tarihleri ve ön baskı (arXiv) kuralı | aclrollingreview.org | F0 |
-| ACL/ARR yapay zekâ yardımı politikası ve gönderim kontrol listesi | ACL / ARR | F0 |
+| ACL/ARR yapay zekâ yardımı politikası · gönderim kontrol listesi · karşılıklı hakemlik şartı | ACL / ARR | F0 |
 | DEÜ FBE: tez dili · mezuniyet için yayın şartı · yayımlanmış makalenin tezde kullanımı · tezden üretilen yayında danışman adı · programa başlamadan önceki işin teze sayılması · üretken YZ kuralı | enstitü yönetmeliği ve tez yazım kılavuzu | F0 |
 | Modal $30 kredisinin hesapta aylık yenilenmesi · akademik kredi başvurusu | Modal faturalama sayfası | F0 |
 | Gemma 4 E4B lisans dosyası | HF model deposu | F0 |
@@ -445,3 +481,10 @@ damgalanır.
   [Findings](https://2026.aclweb.org/program/findings/)
 - GRPO ve vLLM: [Qwen3.5 — LMCache](https://docs.lmcache.ai/recipes/qwen3_5.html) ·
   [RLVR low-rank dynamics](https://arxiv.org/pdf/2605.06523)
+- Literatür özetleri (`knowledge/`): [LLM-as-judge](../knowledge/summary_llm_as_judge_survey.md) ·
+  [benchmark](../knowledge/summary_llm_benchmark_survey.md) ·
+  [LLM değerlendirmesi](../knowledge/summary_llm_eval_survey_chang.md) ·
+  [halüsinasyon](../knowledge/summary_hallucination_survey.md) ·
+  [instruction tuning](../knowledge/summary_instruction_tuning_survey.md) ·
+  [bilgi damıtma](../knowledge/summary_kd_llm_survey.md) ·
+  [RL post-training](../knowledge/summary_rl_posttraining_survey.md)
