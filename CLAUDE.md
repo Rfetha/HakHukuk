@@ -16,13 +16,15 @@ legal language legible to the citizen. Apache-2.0: weights, code, data and the w
 are public. Began as a master's thesis; since 2026-08-03 it is a **product**: the goal is the model
 (beat Gemini 3.1 Flash-Lite, then reach Flash and Pro). An arxiv paper is a by-product.
 
-- `v1` = model layer (fine-tuned model + retriever + harness, shipped end to end). **Tagged `v1.0`,
-  2026-09-13.** `v2` = app layer / RL (`v2-RL-GRPO`, parked).
+- `v1` = model layer (fine-tuned model + retriever + harness, shipped end to end). **Tagged `v0.5`**
+  (tagged `v1.0` on 2026-09-13, renamed 2026-10-10; the name `v1` is reserved for the release at the end
+  of the next training round). `v2` = app layer / RL (`v2-RL-GRPO`, parked).
 - Artifact: **`HakHukuk-4B-v0.1`** (internal id `tgta_v1`) — two LoRA branches trained independently
   from the raw base, merged as task vectors with **raw TIES**. Weights `Rfetha/HakHukuk-4B-GGUF`, public.
-  Product/claim version (`v1.0`) and artifact version (`v0.1`) are deliberately split
+  Product/claim version (`v0.5`) and artifact version (`v0.1`) are deliberately split; since 2026-10-10
+  the GGUF file name carries the product version (`HakHukuk-4B-v0.5-Q4_K_M.gguf`, same bytes)
   ([ADR-0065](docs/adr/kararlar-0064-0085.md#adr-0065)).
-- `v1.0` was granted by re-reading the gate under a **second judge family** — the instrument changed,
+- `v0.5` (then named `v1.0`) was granted by re-reading the gate under a **second judge family** — the instrument changed,
   the weights did not ([ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)). κ stayed below the tool's
   0.6 threshold; the judge panel is two families, not three.
 

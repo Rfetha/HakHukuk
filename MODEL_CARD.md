@@ -62,7 +62,7 @@ sadeleştirme istem katmanında yapılır.
 | :--- | :--- |
 | Temel model | `Qwen/Qwen3.5-4B`, commit `851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a`, Apache-2.0 |
 | Yöntem | 2 × LoRA (SFT + ORPO), eşzamanlı ham TIES birleştirmesi |
-| Dosya | `HakHukuk-4B-v0.3-Q4_K_M.gguf`, 2.783.446.720 bayt (2,59 GiB) |
+| Dosya | `HakHukuk-4B-v0.5-Q4_K_M.gguf`, 2.783.446.720 bayt (2,59 GiB) |
 | `sha256` | `755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc` |
 | Ağırlıklar | [`Rfetha/HakHukuk-4B-GGUF`](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) |
 | Arama indeksi | [`Rfetha/HakHukuk-mevzuat-bge-m3-s2`](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) |
@@ -70,16 +70,16 @@ sadeleştirme istem katmanında yapılır.
 | Dil | Türkçe |
 | Lisans | Apache-2.0 |
 
-**Üç sürüm numarası vardır ve birbirinin yerine geçmez**
-([ADR-0065](docs/adr/kararlar-0064-0085.md#adr-0065)):
+**Sürüm numaraları** ([ADR-0065](docs/adr/kararlar-0064-0085.md#adr-0065); 2026-10-10'dan beri dosya
+adı ürün sürümünü taşır):
 
 | numara | değer | neyi adlandırır |
 | :--- | :--- | :--- |
 | artefakt | `HakHukuk-4B-v0.1` (iç ad `tgta_v1`) | ağırlıkların kendisi; kalıcıdır |
-| dosya adı | `HakHukuk-4B-v0.3-Q4_K_M.gguf` | yayımlanan GGUF; içerik değişmediği için ad da değişmez |
-| ürün sürümü | `v1.0` (2026-09-13) | ölçüm düzeneğinin ulaştığı doğrulama düzeyi (§4.1) |
+| dosya adı | `HakHukuk-4B-v0.5-Q4_K_M.gguf` | yayımlanan GGUF; 2026-10-10'a kadar `HakHukuk-4B-v0.3-Q4_K_M.gguf` adıyla yayımlandı, bayt ve `sha256` değişmedi |
+| ürün sürümü | `v0.5` (2026-09-13; 2026-10-10'a kadar `v1.0` adıyla) | ölçüm düzeneğinin ulaştığı doğrulama düzeyi (§4.1) |
 
-`v1.0` modelin iyileştiği anlamına gelmez. Ağırlıklar `v0.3`'ten beri bayt bayt aynıdır;
+`v1` adı bir sonraki eğitim turunun sonundaki sürüme ayrıldı. `v0.5` modelin iyileştiği anlamına gelmez. Ağırlıklar `v0.3`'ten beri bayt bayt aynıdır;
 değişen, sürüm kapısının ikinci ve bağımsız bir hakem ailesi altında da geçmiş olmasıdır.
 
 **Kapsam.** Yalnız yürürlükteki Türkiye Cumhuriyeti kanunları: 892 kanun, 40.496 madde,
@@ -186,7 +186,7 @@ ailesinin hakemiyle puanlanmamıştır. Her sayım adımında kalemler ayrıca g
 
 ### 4.1 Ölçüm kapıları
 
-**Sürüm kapısı (`v1.0`).** Üç madde, hiçbir rakip sayısı görülmeden 2026-09-06'da ön-kayıtlanmıştır
+**Sürüm kapısı (`v0.5`; ön-kayıttaki adı `v1.0`).** Üç madde, hiçbir rakip sayısı görülmeden 2026-09-06'da ön-kayıtlanmıştır
 ([ADR-0064](docs/adr/kararlar-0064-0085.md#adr-0064)):
 
 1. Kütle, çıpanın (`gemini-3.5-flash`) kütlesinin en fazla 2 puan altında olabilir.
@@ -400,7 +400,7 @@ kapasite büyüdükçe nasıl değiştiği açık sorudur.
 
 1. "TEST'te de aynı başarım." Ölçüm DEV'dedir; TEST'te kütle 0,5804'tür (§5.4).
 2. "Üç aileli bir hakem panelinden geçmiş hüküm." Panel iki ailelidir ve κ eşiğin altındadır.
-3. "`v1.0` modelin iyileştiği anlamına gelir." Ağırlıklar değişmemiştir.
+3. "`v0.5` modelin iyileştiği anlamına gelir." Ağırlıklar değişmemiştir.
 4. "Maliyete göre normalize edilmiş eşdeğerlik." Maliyet ölçülmüştür, ama eşdeğerlik bir maliyet
    satırından değil, bir başarım-maliyet eğrisinden kurulur.
 5. "Kaynaksız da iyi çalışır." Tersi ölçülmüştür (§5.6).
@@ -437,7 +437,7 @@ karar S9).
 Bildirilen değerler şu yapılandırmayla üretilmiştir:
 
 ```bash
-llama-server -m HakHukuk-4B-v0.3-Q4_K_M.gguf \
+llama-server -m HakHukuk-4B-v0.5-Q4_K_M.gguf \
   -ngl 99 -fa on --no-context-shift \
   --cache-type-k q8_0 --cache-type-v q8_0 \
   -c 8192 --host 127.0.0.1 --port 8080

@@ -34,7 +34,7 @@ hakhukuk "Askerlik nedeniyle iş sözleşmesi ne olur?"
 Weights only:
 
 ```bash
-hf download Rfetha/HakHukuk-4B-GGUF HakHukuk-4B-v0.3-Q4_K_M.gguf --local-dir models/gguf
+hf download Rfetha/HakHukuk-4B-GGUF HakHukuk-4B-v0.5-Q4_K_M.gguf --local-dir models/gguf
 ```
 
 The model alone does not reproduce the reported numbers; they were measured with the retrieval
@@ -65,8 +65,9 @@ The two ends of the range are the same 80 answers scored by `gpt-4o-mini` (0.801
   Regulations, bylaws, decrees and communiqués are not covered.
 - No parity claim with the competitor models.
 
-`v1.0` is a measurement release: the weights have not changed since `v0.3`. The three version
-numbers (artifact, file, product) are explained in [MODEL_CARD §1](MODEL_CARD.md#1-model-nedir).
+`v0.5` is a measurement release: the weights have not changed since `v0.3`. It was tagged `v1.0`
+until 2026-10-10; the name `v1` is reserved for the release at the end of the next training round.
+The version numbers (artifact, file, product) are explained in [MODEL_CARD §1](MODEL_CARD.md#1-model-nedir).
 
 ## Repository map
 
