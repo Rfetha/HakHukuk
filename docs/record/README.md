@@ -1,6 +1,6 @@
 # `docs/record/` — araştırma kaydı
 
-Bu klasör **ne olduğunu** tutar; kararların *neden*i [`../adr/`](../adr/)'de, yapılacaklar ve yön [`../ROADMAP.md`](../ROADMAP.md)'de.
+Bu klasör **ne olduğunu** tutar; kararların *neden*i [`../adr/`](../adr/)'de, yapılacaklar ve yön [`../ROADMAP_v1.md`](../ROADMAP_v1.md)'de.
 *(`TASARIM.md` 2026-09-06'da silindi — ölçüm protokolü `adr/` + bu klasörde yaşıyor.)*
 
 | ne | nerede |

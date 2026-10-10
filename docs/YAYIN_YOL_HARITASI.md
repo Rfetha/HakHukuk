@@ -242,6 +242,8 @@ bilinen notlar:
 - **Önyargı sondası (F1):** DEV cevaplarına tek değişkenli bozmalar (uzatma · soruya ait olmayan
   gerçek madde atfı · şerh cümlesi · "Düşünce süreci:" açılışı · kaynak sırası) ve etiketi bilinen
   kontrol kalemleri; her hakemin ve çekinme dedektörünün karar değişim oranı Tablo 2'nin ekidir.
+  Tek bir bozma bir hakemin kararlarının %20'sinden fazlasını çevirirse hakem istemi dondurmadan önce
+  düzeltilir ve sonda yeniden koşulur; altındaki oranlar yalnız raporlanır.
 - **İz ↔ cevap tutarlılığı:** önce izdeki kaynak seçimi ile cevaptaki atıf deterministik eşlenir;
   hakem yalnız kalan kalemlere katı JSON ile ve kaynaklar iki sırada verilerek bakar.
 - Kol başına cevap uzunluğu ve atıf yoğunluğu raporlanır.
@@ -466,7 +468,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 
 ### 4.4 Ürün yol haritasıyla ilişki
 
-| ürün işi (`superpowers/00-IS-SIRASI.md`) | yeri |
+| ürün işi (eski `superpowers/00-IS-SIRASI.md`; dosya 2026-10-10'da silindi) | yeri |
 | :--- | :--- |
 | `v2-RL-GRPO` | Checkpoint 2 (Makale 2) |
 | korpus turu (40.496 → ~288 bin madde) | Checkpoint 2'den sonra; korpus değişince eşit sınav ve yayımlanan sayılar askıya alınır ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) §E.6) ve mühürlü test aynı korpusa bağlıdır |
@@ -527,7 +529,7 @@ damgalanır.
 | [ADR-0034](adr/kararlar-0027-0044.md#adr-0034) | adaptörler yedeklenmez | `v1` ve yeni seed adaptörleri yedeklenir |
 | [ADR-0037](adr/kararlar-0027-0044.md#adr-0037) | Kapı 5 "ayar: norm-dengeli" | ana sonuç ham TIES ([ADR-0052](adr/kararlar-0045-0063.md#adr-0052)); Kapı 5 ham TIES için türetilir |
 | [ADR-0075](adr/kararlar-0064-0085.md#adr-0075) m.3 | task-vector hattı `v1`'de donduruldu | ürün için geçerli; Makale 1 araştırma için aynı tarifle yeni seed üretir |
-| `superpowers/00-IS-SIRASI.md` | iki aday, sıra insan kararı · "yeni ADR 0087'den" | sıra §4.4'te verildi · sıradaki ADR 0089 |
+| `superpowers/00-IS-SIRASI.md` | iki aday, sıra insan kararı · "yeni ADR 0087'den" | sıra §4.4'te verildi · sıradaki ADR 0089 · dosya 2026-10-10'da silindi: "şimdi ne" [`ROADMAP_v1.md`](ROADMAP_v1.md)'nin kontrol listesinde, sıra ve gerekçesi bu belgede, `v2`'ye devredilen borçlar [ADR-0083](adr/kararlar-0064-0085.md#adr-0083) sicilinde |
 
 ---
 

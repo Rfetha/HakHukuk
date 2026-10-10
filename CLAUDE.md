@@ -45,11 +45,11 @@ scripts/             MEASUREMENT line, grouped by function (see "Working notes")
 tests/               pytest; unit (fake/stub) + real-DB integration (`@pytest.mark.slow`)
 docker/              Dockerfile · Dockerfile.dockerignore · compose.yaml  (build context = repo root)
 docs/                every document except the three root ones (index: docs/README.md)
-  PRODUCT.md ROADMAP_v1.md MIMARI.md OLCUM.md README.tr.md BEDESTEN_API.md YENIDEN_URETIM.md
-  HF_KARTI_INDEKS.md model-soyagaci.mmd
+  PRODUCT.md ROADMAP_v1.md YAYIN_YOL_HARITASI.md EGITIM_ORTAMI.md MIMARI.md OLCUM.md README.tr.md
+  BEDESTEN_API.md YENIDEN_URETIM.md HF_KARTI_INDEKS.md model-soyagaci.mmd
   adr/                 decision ledger   (kararlar-*.md + gemma4-12b-dersler.md)
   record/              research record   (kronoloji-*.md · kollar.md · yurutme-tuzaklari.md)
-  superpowers/00-IS-SIRASI.md   the work order; the folder's only file
+  superpowers/plans/   at most one live plan (ADR-0056); exists only while a phase plan is open
 data/                corpus/ (ground truth) · eval/ (frozen) · train/ · index/ · _ham_ve_ara/
 outputs/             eval/<group>/<run>/ (+ _artefakt/) · tg_v1/ · ta_v1/ (adapters, deliberately not backed up)
 models/              merged/ · gguf/   (28 GB, gitignored)
@@ -65,8 +65,8 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 
 | you want | read |
 | :--- | :--- |
-| what to do next | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — two parked candidates (`v2-RL-GRPO`, legislation-scope/freshness round); **which comes first is a human decision** |
-| direction, tied to measured gaps | [`docs/ROADMAP_v1.md`](docs/ROADMAP_v1.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
+| what to do next | [`docs/ROADMAP_v1.md`](docs/ROADMAP_v1.md) — Checkpoint 1 checklist at the top, then phases F0–F5, each task with its check. Order decided 2026-10-10: Checkpoint 1 (Makale 1) → Checkpoint 2 (GRPO on the Checkpoint 1 winner, Makale 2, thesis) → legislation-scope/freshness round. `00-IS-SIRASI.md` was deleted that day |
+| direction and why | [`docs/YAYIN_YOL_HARITASI.md`](docs/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/EGITIM_ORTAMI.md`](docs/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/MIMARI.md`](docs/MIMARI.md) |
 | every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#71 in three chronology files, per-entry anchors; **new findings continue at #72** |
 | why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0088**, next is **0089**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`) |
