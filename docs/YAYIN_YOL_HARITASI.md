@@ -164,8 +164,8 @@ kuralı. Testten sonra gelen yeni fikir yeni bir hipotezdir ve aynı testte dene
 
 **Kazanan seçimi.** Kazanan, iki beceriyi toplayan üç yoldan (ayrı kollar + ham TIES · birlikte ·
 ardışık) testte **kütlesi en yüksek** (temel model, yol) çiftidir. Tek kollar aday değildir: kütle
-çekinmeyi cezalandırmaz, az reddeden bir tek kol kütlede öne geçebilir. Ayrıca şu dört kapıyı geçmesi
-şarttır:
+yalnız cevabı olan sorularda ölçülür ve gerektiği yerde reddetmemeyi görmez; az reddeden bir tek kol
+kütlede öne geçebilir. Ayrıca şu dört kapıyı geçmesi şarttır:
 1. düşünce koruma eşiğini kendi ham modeline göre geçer (§2.5.4);
 2. yanlış maddeye dayanma, `tgta_v1`'in aynı testteki değerinden kötü değildir;
 3. Q4_K_M'de 4.096 bağlamda **≤8 GB VRAM** ([ADR-0018](adr/gemma4-12b-dersler.md#adr-0018));
@@ -530,6 +530,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | makale reddediliyor | hakem kararı | sonraki ARR döngüsü → dergi |
 | özgünlük örtüşmesi | F0 literatür taraması | çerçeve dondurmadan önce düzeltilir |
 | dizüstünün ~185-190 saatlik ölçüm yükü | F2 | üretim Şubat–Nisan'a yayılır (haftada ~15 saat, geceleri, şarjda); başka donanıma taşınmaz |
+| Mayıs–Haziran 2027'de kullanıcı yükü haftada ~3,5-5 saat (F3 · F4 · F3b · GRPO pilotu · F5'in başı), dönem sonuyla çakışıyor | Haziran'da haftalık 5 saat aşılıyor | önce GRPO pilotu ve ödül ADR'si Temmuz'a kayar (Temmuz–Ekim kredisi koşulara yeter, Kasım–Mart tampon), sonra F3b ve F5'in başlangıcı; F3 ve F4'ün sırası değişmez |
 
 ---
 
