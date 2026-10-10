@@ -7,7 +7,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 **F0 · Zemin** *(Ekim sonu–Kasım 2026)*
 
 - [ ] F0.1 Bundle ve `tg_v1` / `ta_v1` adaptörleri özel HF deposunda, `sha256` eşleşiyor
-- [ ] F0.2 Yol haritası kararları ADR-0089 ve sonrası olarak defterde (2026-10-10 fizibilite kararları dahil)
+- [x] F0.2 Yol haritası kararları ADR-0089–0096 olarak defterde (2026-10-10 fizibilite kararları dahil)
 - [ ] F0.3 τ_g v1'in hassasiyeti kayda geçti (bf16, belge kanıtı)
 - [ ] F0.4 Eğitim ortamı kilidi: yaml + betik kontrolü + test + eski ortamla eşdeğerlik
 - [ ] F0.5 Payda kapısı · eski aletlere erişim (RQ2)
