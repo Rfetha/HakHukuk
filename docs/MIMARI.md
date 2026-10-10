@@ -1,7 +1,7 @@
 # Mimari — `v1` zinciri
 
 > `referans-design-doc.md`'nin işlevini devralır. **Her kutu ya var olan bir dosyaya ya da
-> bir [`ROADMAP.md`](ROADMAP.md) adımına işaret eder** — döngüyle sınanır, gözle değil
+> bir [`ROADMAP_v1.md`](ROADMAP_v1.md) adımına işaret eder** — döngüyle sınanır, gözle değil
 > (`tests/test_mimari.py`).
 
 ## Bir bakışta
@@ -39,7 +39,7 @@
 | [`cli.py`](../hakhukuk/arayuz/cli.py) | `hakhukuk "soru"` — ince kabuk. `SORUMLULUK_IBARESI`'nin **tek kaynağı** |
 | [`tui.py`](../hakhukuk/arayuz/tui.py) | `hakhukuk-tui` — `textual` tek ekran, ince kabuk (mantık sızıntısı **testle yasak**) |
 | `araclar.py` | **YOK** — 5 deterministik KALDIRAÇ; [ADR-0076](adr/kararlar-0064-0085.md#adr-0076) |
-| `kurulum.py` | **YOK** — indeks indirme; [ROADMAP · Görev 8](ROADMAP.md) |
+| `kurulum.py` | **YOK** — indeks indirme; [ROADMAP · Görev 8](ROADMAP_v1.md) |
 
 **KAPI ↔ KALDIRAÇ:** `terazi.py`'nin kontrolleri (atıf doğrulama · durum sınıflandırma) ve
 `retriever`'ın mülga süzgeci **KAPI**'dır — tool döngüsünün **dışında**, koşulsuz çalışır.

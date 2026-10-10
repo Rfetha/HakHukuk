@@ -45,7 +45,7 @@ scripts/             MEASUREMENT line, grouped by function (see "Working notes")
 tests/               pytest; unit (fake/stub) + real-DB integration (`@pytest.mark.slow`)
 docker/              Dockerfile · Dockerfile.dockerignore · compose.yaml  (build context = repo root)
 docs/                every document except the three root ones (index: docs/README.md)
-  PRODUCT.md ROADMAP.md MIMARI.md OLCUM.md README.tr.md BEDESTEN_API.md YENIDEN_URETIM.md
+  PRODUCT.md ROADMAP_v1.md MIMARI.md OLCUM.md README.tr.md BEDESTEN_API.md YENIDEN_URETIM.md
   HF_KARTI_INDEKS.md model-soyagaci.mmd
   adr/                 decision ledger   (kararlar-*.md + gemma4-12b-dersler.md)
   record/              research record   (kronoloji-*.md · kollar.md · yurutme-tuzaklari.md)
@@ -66,7 +66,7 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | you want | read |
 | :--- | :--- |
 | what to do next | [`docs/superpowers/00-IS-SIRASI.md`](docs/superpowers/00-IS-SIRASI.md) — two parked candidates (`v2-RL-GRPO`, legislation-scope/freshness round); **which comes first is a human decision** |
-| direction, tied to measured gaps | [`docs/ROADMAP.md`](docs/ROADMAP.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
+| direction, tied to measured gaps | [`docs/ROADMAP_v1.md`](docs/ROADMAP_v1.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/MIMARI.md`](docs/MIMARI.md) |
 | every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#71 in three chronology files, per-entry anchors; **new findings continue at #72** |
 | why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0088**, next is **0089**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`) |

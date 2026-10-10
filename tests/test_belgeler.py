@@ -11,7 +11,7 @@ import re
 KOK = pathlib.Path(__file__).resolve().parent.parent
 # Canlı belgeler — tarihsel kayıt (docs/record, docs/adr) ve planlar hariç.
 CANLI = ["CLAUDE.md", "README.md", "docs/README.tr.md", "MODEL_CARD.md",
-         "docs/README.md", "docs/PRODUCT.md", "docs/ROADMAP.md", "docs/MIMARI.md",
+         "docs/README.md", "docs/PRODUCT.md", "docs/ROADMAP_v1.md", "docs/MIMARI.md",
          "docs/YENIDEN_URETIM.md"]
 # Markdown bağlantısı; http(s), mailto ve saf çapa (#…) atlanır.
 _LINK = re.compile(r"\[[^\]]*\]\((?!https?://|mailto:|#)([^)\s]+)\)")
@@ -41,7 +41,7 @@ def test_canli_belgelerde_kirik_baglanti_yok():
 
 def test_uc_belge_de_var():
     """Faz 3'ün varlık sebebi: bu üçü 2026-09-06'da silinmişti ve yerine hiçbir şey yoktu."""
-    for ad in ("docs/PRODUCT.md", "docs/ROADMAP.md", "docs/MIMARI.md"):
+    for ad in ("docs/PRODUCT.md", "docs/ROADMAP_v1.md", "docs/MIMARI.md"):
         assert (KOK / ad).exists(), f"{ad} yok"
 
 
