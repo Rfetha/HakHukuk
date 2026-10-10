@@ -34,7 +34,7 @@ hakhukuk "Askerlik nedeniyle iş sözleşmesi ne olur?"
 Yalnız ağırlıklar:
 
 ```bash
-hf download Rfetha/HakHukuk-4B-GGUF HakHukuk-4B-v0.3-Q4_K_M.gguf --local-dir models/gguf
+hf download Rfetha/HakHukuk-4B-GGUF HakHukuk-4B-v0.5-Q4_K_M.gguf --local-dir models/gguf
 ```
 
 Model tek başına bildirilen sayıları üretmez; sayılar arama katmanı açıkken ölçülmüştür.
@@ -64,7 +64,8 @@ tarafından puanlanmasıdır. Rakip karşılaştırması, donmuş test sonucu ve
   2026-08-06 anlık görüntüsü. Yönetmelik, tüzük, KHK ve tebliğ kapsam dışıdır.
 - Rakip modellerle eşdeğerlik iddiası yoktur.
 
-`v1.0` bir ölçüm sürümüdür: ağırlıklar `v0.3`'ten beri değişmemiştir. Üç sürüm numarası
+`v0.5` bir ölçüm sürümüdür: ağırlıklar `v0.3`'ten beri değişmemiştir. 2026-10-10'a kadar `v1.0`
+adını taşıyordu; `v1` adı bir sonraki eğitim turunun sonundaki sürüme ayrıldı. Sürüm numaraları
 (artefakt, dosya, ürün) [MODEL_CARD §1](../MODEL_CARD.md#1-model-nedir)'de açıklanır.
 
 ## Depo haritası

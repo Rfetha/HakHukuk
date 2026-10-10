@@ -89,7 +89,7 @@ def kunye_topla() -> dict:
         "llama_sureci_gercek_cmdline": llama_komut,
         "app_sureci_gercek_cmdline": app_komut,
         "artefakt_sha256": {
-            "gguf": _dosya_sha256("hakhukuk-llama-1", "/artefakt/HakHukuk-4B-v0.3-Q4_K_M.gguf"),
+            "gguf": _dosya_sha256("hakhukuk-llama-1", "/artefakt/HakHukuk-4B-v0.5-Q4_K_M.gguf"),
             "korpus_volume": _dosya_sha256("hakhukuk-app-1", "/artefakt/corpus/mevzuat_maddeler.jsonl"),
             "korpus_imaj": _dosya_sha256("hakhukuk-app-1", "/app/data/corpus/mevzuat_maddeler.jsonl"),
             "indeks_gomme": _dosya_sha256("hakhukuk-app-1", "/artefakt/index/mevzuat_bge_m3_s2/gomme.npy"),

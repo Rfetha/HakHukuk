@@ -20,8 +20,8 @@ import sys
 import tempfile
 
 GGUF_DEPO = "Rfetha/HakHukuk-4B-GGUF"
-GGUF_DOSYA = "HakHukuk-4B-v0.3-Q4_K_M.gguf"
-GGUF_REVIZYON = "902ace67259b3fac18c56907070485f5cace272b"   # ⛔ `latest` YASAK (ADR-0078 m.3)
+GGUF_DOSYA = "HakHukuk-4B-v0.5-Q4_K_M.gguf"
+GGUF_REVIZYON = "c93994625501ca4140457f248ba0f35a8cdc5589"   # ⛔ `latest` YASAK (ADR-0078 m.3)
 GGUF_SHA256 = "755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc"
 GGUF_BAYT = 2_783_446_720                                     # = 2,592 GiB
 
