@@ -94,7 +94,11 @@ doğrulaması deterministik) ⇒ reward model gerekmiyor.
 | **ürün** | `v0.2` | uçtan uca çalışan CLI/TUI + yeniden üretim yolu |
 | **iddia** | `v0.1` | **donmuş TEST kabul koşusu** — henüz koşulmadı |
 
-## `v1.0` kapısı — üç madde
+## `v0.5` kapısı (ön-kayıttaki adı `v1.0`) — üç madde
+
+*2026-10-10 notu: kapı 2026-09-13'te geçildi ve sürüm `v1.0` adıyla verildi
+([ADR-0084](adr/kararlar-0064-0085.md#adr-0084)); ad 2026-10-10'da `v0.5` olarak değiştirildi. Aşağıdaki
+metin kapının verilmeden önceki hâlini anlatır.*
 
 Ön-kayıtlı, [ADR-0064](adr/). DEV'de üçü de **geçti**; `v1.0` yine de **verilmedi**, çünkü
 donmuş TEST kabul koşusu koşulmadı.
