@@ -77,7 +77,8 @@ birlikte öğretme · ardışık eğitim — ve bu karşılaştırma **iki temel
 tekrarlanır. Alt soru: yöntemlerin sıralaması temel modele göre değişiyor mu?
 Karar kuralı ön-kayıtlıdır: Kapı 5, `min(temellendirme, çekinme)` bileşiği
 ([ADR-0037](adr/kararlar-0027-0044.md#adr-0037)); formül korunur, eşikler yeni birimde yeniden
-türetilir.
+türetilir; tek kollar yalnız 3407'de ölçüldüğü için Kapı 5 her yolda seed 3407'de, aynı seed'in tek
+kollarına göre uygulanır.
 
 **RQ2 — ölçüm.** RQ1'in hükümlerinden hangileri eski alet ile düzeltilmiş alet arasında yön
 değiştirir? Kayıttaki dört vaka Tablo 2'nin ilk satırlarıdır: önsözün etkisi +1,5 → −4,6 puan
