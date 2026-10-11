@@ -31,7 +31,24 @@ PatchDPOTrainer()
 import torch
 from datasets import load_dataset
 from transformers.trainer_utils import get_last_checkpoint
+from transformers import TrainerCallback
 from trl import ORPOTrainer, ORPOConfig
+
+from ortam_kilidi import kilidi_uygula, kunye_tamamla  # F0.4 — eğitim ortamı kilidi (aynı dizin)
+
+
+class _AdimdaDur(TrainerCallback):
+    """`--durdur-adim N`: N. adımda durur; takvim (warmup + cosine) tam koşuya göre kurulu kalır.
+    Why `max_steps` değil: max_steps takvimi N adıma sıkıştırır ve kayıp ta_v1'inkiyle
+    (70 adımlık takvim) adım adım kıyaslanamaz olur."""
+
+    def __init__(self, adim):
+        self.adim = adim
+
+    def on_step_end(self, args, state, control, **kwargs):
+        if state.global_step >= self.adim:
+            control.should_training_stop = True
+        return control
 
 
 class MaskedORPOTrainer(ORPOTrainer):
@@ -127,8 +144,13 @@ def parse_args():
     # τ_g ve τ_a merge edilecekse ikisi de AYNI θ_base'den ve aynı LoRA rejiminden türemeli
     # (task-vector tanımı ortak base şart koşar). Eskiden ikisi de burada sabit kodluydu ve
     # sessizce `train_sft.py`'den ayrışıyordu — sayı üretir, sayı kıyaslanamaz olurdu.
-    p.add_argument("--bf16-base", action="store_true",
-                   help="ADR-0031: bf16 donuk taban + bf16 LoRA (QLoRA değil). Bayrak yoksa NF4 4-bit taban.")
+    p.add_argument("--hassasiyet", required=True, choices=["bf16-taban", "nf4"],
+                   help="bf16-taban = donuk bf16 taban + LoRA (ADR-0031) · nf4 = QLoRA. VARSAYILAN YOK (F0.4)")
+    p.add_argument("--ortam-kilidi", required=True,
+                   help="eğitim ortamı kilidi (configs/egitim_ortami.yaml); model yüklenmeden önce denetlenir")
+    p.add_argument("--durdur-adim", type=int, default=None,
+                   help="eğitimi bu adımda kes ama öğrenme oranı takvimini TAM koşuya göre kur "
+                        "(eşdeğerlik koşusu: ta_v1'in 70 adımlık takviminin ilk N adımı)")
     p.add_argument("--lora-dropout", type=float, default=0.05,
                    help="ADR-0033 `dropout=0`'ı REDDETTİ (yan-hasar ölçümünde atfedilebilirliği bozar). "
                         "train_sft.py ile aynı tutulur.")
@@ -161,15 +183,17 @@ def main():
             f"🚫 --data bir DİZİN olmalı (train.jsonl + validation.jsonl içeren).\n"
             f"   verilen: {args.data}\n   bulunamayan: {missing}")
 
-    # ADR-0031: --bf16-base → donuk bf16 taban (QLoRA değil); yoksa NF4 4-bit (12B hattı fallback).
-    load_in_4bit = not args.bf16_base
-    print(f"[orpo] precision = {'bf16 taban + LoRA (ADR-0031 birincil)' if args.bf16_base else 'QLoRA NF4 4-bit (fallback)'}"
+    # 🚫 EĞİTİM ORTAMI KİLİDİ (F0.4) — model YÜKLENMEDEN: argüman · veri · GPU · paket sürümü.
+    kilidi_uygula(args, "orpo", out)
+
+    bf16_taban = args.hassasiyet == "bf16-taban"
+    print(f"[orpo] precision = {'bf16 taban + LoRA (ADR-0031 birincil)' if bf16_taban else 'QLoRA NF4 4-bit'}"
           f" | lora_dropout = {args.lora_dropout}", flush=True)
 
     model, tokenizer = FastModel.from_pretrained(
         model_name=args.model, max_seq_length=args.max_length,
-        load_in_4bit=load_in_4bit,
-        dtype=torch.bfloat16 if args.bf16_base else None,
+        load_in_4bit=not bf16_taban,
+        dtype=torch.bfloat16 if bf16_taban else None,
         full_finetuning=False,
     )
 
@@ -222,6 +246,7 @@ def main():
         train_dataset=ds["train"],
         eval_dataset=ds["validation"],
         processing_class=tokenizer,
+        callbacks=[_AdimdaDur(args.durdur_adim)] if args.durdur_adim else None,
     )
 
     ckpt = get_last_checkpoint(out) if os.path.isdir(out) else None
@@ -230,6 +255,8 @@ def main():
     print(f"[orpo] GPU={torch.cuda.get_device_name(0)} | beta={args.beta} lr={args.lr} "
           f"grad_accum={args.grad_accum} | data={args.data} | out={out}", flush=True)
     trainer.train(resume_from_checkpoint=ckpt)
+    trainer.save_state()            # Why: kayıp geçmişi (eşdeğerlik kıyası) çıktı dizininde kalsın
+    kunye_tamamla(out, trainer.state.global_step)
 
     model.save_pretrained(out)
     tokenizer.save_pretrained(out)

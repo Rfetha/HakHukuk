@@ -42,6 +42,7 @@ sys.path[:0] = [_K, *(os.path.join(_K, _d) for _d in sorted(os.listdir(_K))
 # ─────────────────────────────────────────────────────────────────────────────
 
 from hakhukuk.cekirdek.istem import SISTEM_KOR as SYSTEM_PROMPT
+from ortam_kilidi import kilidi_uygula, kunye_tamamla  # F0.4 — eğitim ortamı kilidi
 
 def parse_args():
     p = argparse.ArgumentParser()
@@ -85,10 +86,13 @@ def parse_args():
                    help="lr≥3e-4 kilidini aç (NORMALDE KULLANMA — v1 abstention çöküşü rejimi, §5.1-C)")
     # ⚠️ ADR-0031: BİRİNCİL precision = bf16 taban (donuk) + bf16 LoRA — QLoRA DEĞİL.
     # Merge iddiasının aleti (TIES/DARE ΔW üzerinde eleman-bazlı budama) NF4 kuantizasyon
-    # gürültüsünden arınır. Bayrak yoksa 12B hattının QLoRA'sı (load_in_4bit=True) korunur —
-    # bf16 ortam sorunu (causal-conv1d/OOM) smoke'u bloke ederse ADR-0031 QLoRA fallback'ini yetkiler.
-    p.add_argument("--bf16-base", action="store_true",
-                   help="ADR-0031: bf16 donuk taban + bf16 LoRA (QLoRA değil). Bayrak yoksa NF4 4-bit taban.")
+    # gürültüsünden arınır. VARSAYILAN YOK (F0.4): eski `--bf16-base` bayrağı verilmeyince
+    # koşu SESSİZCE NF4'e düşüyordu (EGITIM_ORTAMI §3).
+    p.add_argument("--hassasiyet", required=True, choices=["bf16-taban", "nf4"],
+                   help="bf16-taban = donuk bf16 taban + LoRA (ADR-0031 birincil) · nf4 = QLoRA")
+    p.add_argument("--ortam-kilidi", required=True,
+                   help="eğitim ortamı kilidi (configs/egitim_ortami.yaml); model yüklenmeden "
+                        "önce argümanlar, veri ve ortam buna karşı denetlenir")
     # ⚠️ ADR-0033 (hız kaldıracı, YALNIZ geniş VRAM'de): gradient checkpointing aktivasyonları
     # yeniden hesaplayarak bellek kazanır — bedeli hesap gücü. Aşağıdaki varsayılan `"unsloth"`
     # YEREL 12 GB kart için konmuştu; A100-40GB'de bf16 4.57B ağırlık ~9.1 GB + LoRA gradyanı
@@ -169,15 +173,17 @@ def main():
             f"     yani volume'deki /<set> konteynerde **/data/<set>** olur.\n"
             f"  {parent!r} içeriği: {komsu}")
 
+    # 🚫 EĞİTİM ORTAMI KİLİDİ (F0.4) — model YÜKLENMEDEN: argüman · veri · GPU · paket sürümü.
+    kilidi_uygula(args, "sft", out)
+
     # --- Model + tokenizer ---
-    # ADR-0031: --bf16-base → donuk bf16 taban (QLoRA değil); yoksa NF4 4-bit (12B hattı).
-    load_in_4bit = not args.bf16_base
-    print(f"[train] precision = {'bf16 taban + LoRA (ADR-0031 birincil)' if args.bf16_base else 'QLoRA NF4 4-bit (fallback)'}")
+    bf16_taban = args.hassasiyet == "bf16-taban"
+    print(f"[train] precision = {'bf16 taban + LoRA (ADR-0031 birincil)' if bf16_taban else 'QLoRA NF4 4-bit'}")
     model, tokenizer = FastModel.from_pretrained(
         model_name=args.model,
         max_seq_length=args.max_seq_len,
-        load_in_4bit=load_in_4bit,
-        dtype=torch.bfloat16 if args.bf16_base else None,
+        load_in_4bit=not bf16_taban,
+        dtype=torch.bfloat16 if bf16_taban else None,
         full_finetuning=False,
     )
 
@@ -277,6 +283,8 @@ def main():
     print(f"[train] GPU: {torch.cuda.get_device_name(0)} | "
           f"adapter r={args.lora_r} | data={args.data} | out={out} | resume={bool(ckpt)}")
     trainer.train(resume_from_checkpoint=ckpt)
+    trainer.save_state()            # Why: kayıp geçmişi (eşdeğerlik kıyası) çıktı dizininde kalsın
+    kunye_tamamla(out, trainer.state.global_step)
 
     # --- Adapter kaydet ---
     model.save_pretrained(out)
