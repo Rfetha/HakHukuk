@@ -31,6 +31,9 @@ Hakem yanlılığı (flu #2): üreten ile AYNI aile hakem self-preference yapar 
 summary'ye yazılır (şeffaflık). İnsan-κ kalibrasyonu (flu #3) = Aşama C (paper), kod kapatamaz.
 
 Çıktı: outputs/eval/gnd_{label}.jsonl + gnd_{label}_summary.json
+  Her girdi kalemi bir satır alır; `durum` ∈ puanli · sifir_iddia · hakem_hata · bos_girdi
+  (F0.5 a — eskiden hakem hatası ve boş girdi kalemi sessizce düşürüyordu). Dosya iş bitene kadar
+  `.part` adını taşır (F0.5 c); bütçe biterse koşu `.part` bırakıp durur, puanlanamaz.
 Kullanım:
   python scripts/puanlama/groundedness.py --details outputs/eval/gnd_gpt_detail.jsonl --label gnd_gpt
   python scripts/puanlama/groundedness.py --details outputs/eval/gnd_gpt_detail.jsonl --label gnd_gpt \
@@ -40,6 +43,8 @@ import argparse
 import json
 import os
 import statistics
+
+import openai
 
 # Fiyat + kapı + JSON-modu tek yerde: llm_client (ADR-0029). Script başına kopya fiyat YOK —
 # maliyet-normalize parite iddiası (ADR-0017) tek ve denetlenebilir bir tabloya dayanmalı.
@@ -56,11 +61,17 @@ sys.path[:0] = [_K, *(os.path.join(_K, _d) for _d in sorted(os.listdir(_K))
                 os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
 
-from llm_client import (make_client, resolve, price, request_kwargs,  # noqa: E402
+from llm_client import (make_client, resolve, price, Dusunme, HakemKimligi,  # noqa: E402
                         note_provider, seen_providers, loads_tolerant)
 import runlock  # noqa: E402  — aynı label'a paralel yazım = sessiz bozulma (bkz. runlock.py)
+from part_dosya import part_ile_yaz, tamamlanmis_jsonl  # noqa: E402
+import olcum_aleti  # noqa: E402  — RQ2 anahtarları (F0.5 b): altın madde kırpması
 
-MAX_SOURCE_CHARS = 3500
+# Why bu liste: SDK yeniden denemeleri tükendikten sonraki API hatası (openai.APIError) ve
+# hakemin bozuk/eksik JSON'u (loads_tolerant → ValueError; beklenmeyen biçim → TypeError,
+# AttributeError, KeyError). Kalem `hakem_hata` satırı alır ve kütle o kalemde durur (kutle.py).
+# KeyboardInterrupt ve öteki BaseException'lar yutulmaz; dosya `.part` kalır.
+_HAKEM_HATALARI = (openai.APIError, ValueError, TypeError, AttributeError, KeyError)
 
 # --- Aşama 1: atomik iddia çıkarımı (sıkı granülerlik → count kayması azalır) ---
 EXTRACT_SYSTEM = (
@@ -131,23 +142,24 @@ def parse_args():
                    help="data=tek-madde grounded veri (sıkı); model=avukat-ref eval (gevşek)")
     p.add_argument("--judge-model", default=os.environ.get("GND_JUDGE", "gpt-4o-mini"),
                    help="paper için üreticiden FARKLI/güçlü model (ör. gpt-4o)")
+    p.add_argument("--hakem-saglayici", default=None,
+                   help="OpenRouter'da sabitlenen sağlayıcı (yedeğe düşme kapalı). Verilmezse "
+                        "LLM_PROVIDER_ORDER; DeepSeek ailesinde ZORUNLU (F0.6)")
+    p.add_argument("--hakem-dusunme", choices=[d.value for d in Dusunme], default=None,
+                   help="hakemin KENDİ düşünme modu; düşünme modu olan ailede ZORUNLU, varsayılansız")
     p.add_argument("--runs", type=int, default=1, help="N kez koş-havuzla (count gürültüsü ↓)")
     p.add_argument("--n", type=int, default=-1)
+    olcum_aleti.argparse_ekle(p)
     return p.parse_args()
-
-
-def load_jsonl(p):
-    with open(p, encoding="utf-8") as f:
-        return [json.loads(l) for l in f if l.strip()]
 
 
 def _price(model):
     return price(model)
 
 
-def extract_claims(client, model, cevap):
+def extract_claims(client, hakem, cevap):
     r = client.chat.completions.create(
-        model=model, temperature=0, **request_kwargs(model),
+        model=hakem.model, temperature=0, **hakem.istek_ekleri(),
         messages=[{"role": "system", "content": EXTRACT_SYSTEM},
                   {"role": "user", "content": f"CEVAP:\n{cevap}"}])
     note_provider(r)
@@ -156,13 +168,19 @@ def extract_claims(client, model, cevap):
     return [c for c in (d.get("claims") or []) if c and c.strip()], u.prompt_tokens, u.completion_tokens
 
 
-def verify_claims(client, model, soru, source, gold, cevap, claims):
+def dogrulama_istemi(soru, source, gold, cevap, claims, altin_kirpma):
+    """Doğrulama çağrısının kullanıcı mesajı. Sıra önbelleğe uygun (F0.6): kalemin her kolda
+    ortak kısmı (soru · altın madde · altın atıf) başta, kola özgü cevap ve iddialar sonda."""
     claims_txt = "\n".join(f"- {c}" for c in claims)
-    user = (f"SORU:\n{soru}\n\nKAYNAK METİN (yer-gerçeği):\n{source[:MAX_SOURCE_CHARS]}\n\n"
+    return (f"SORU:\n{soru}\n\nKAYNAK METİN (yer-gerçeği):\n{altin_kirpma.kirp(source)}\n\n"
             f"GOLD ATIF: {gold or '(bilinmiyor)'}\n\n"
             f"CEVAP (tam):\n{cevap}\n\nİDDİA LİSTESİ:\n{claims_txt}")
+
+
+def verify_claims(client, hakem, soru, source, gold, cevap, claims, altin_kirpma):
+    user = dogrulama_istemi(soru, source, gold, cevap, claims, altin_kirpma)
     r = client.chat.completions.create(
-        model=model, temperature=0, **request_kwargs(model),
+        model=hakem.model, temperature=0, **hakem.istek_ekleri(),
         messages=[{"role": "system", "content": VERIFY_SYSTEM},
                   {"role": "user", "content": user}])
     note_provider(r)
@@ -171,17 +189,21 @@ def verify_claims(client, model, soru, source, gold, cevap, claims):
     return d, u.prompt_tokens, u.completion_tokens
 
 
-def score_record(client, model, soru, source, gold, cevap, mode):
+def score_record(client, hakem, soru, source, gold, cevap, mode, altin_kirpma):
     """Tek (kayıt × tek koşu): iki aşama → ham sayaçlar (havuzlama için)."""
-    claims, i1, o1 = extract_claims(client, model, cevap)
+    model = hakem.model
+    claims, i1, o1 = extract_claims(client, hakem, cevap)
     cost = i1 * _price(model)[0] + o1 * _price(model)[1]
     if not claims:
         return {"n_claims": 0, "sup": 0, "con": 0, "nis": 0, "nis_unsup": 0,
                 "n_cit": 0, "cit_ok": 0, "cit_wrong": 0, "source_cited": False,
                 "labels": [], "citations": []}, cost
-    d, i2, o2 = verify_claims(client, model, soru, source, gold, cevap, claims)
+    d, i2, o2 = verify_claims(client, hakem, soru, source, gold, cevap, claims, altin_kirpma)
     cost += i2 * _price(model)[0] + o2 * _price(model)[1]
     labels = d.get("labels") or []
+    if not labels:
+        # Why: iddia çıkarıldı ama doğrulama boş döndü — sıfır iddia değil, hakem arızası.
+        raise ValueError(f"doğrulama {len(claims)} iddia için boş etiket döndü")
     sup = sum(1 for c in labels if c.get("label") == "SUPPORTED")
     con = sum(1 for c in labels if c.get("label") == "CONTRADICTED")
     nis_items = [c for c in labels if c.get("label") == "NOT_IN_SOURCE"]
@@ -214,14 +236,31 @@ def ratios(acc):
     }
 
 
+def _bos_satir(rid, soru, gold, runs, durum, hata=""):
+    rec = {"id": rid, "soru": soru, "gold": gold, "runs": runs, "durum": durum,
+           **ratios({k: 0 for k in ("n_claims", "sup", "con", "nis", "nis_unsup", "n_cit",
+                                    "cit_ok", "cit_wrong")} | {"source_cited": False}),
+           "labels": [], "citations": [], "source_cited": False}
+    if hata:
+        rec["hata"] = hata[:300]
+    return rec
+
+
 def main():
     a = parse_args()
-    rows = load_jsonl(a.details)
+    alet = olcum_aleti.argumanlardan(a)
+    rows = tamamlanmis_jsonl(a.details)
     if a.n and a.n >= 0:
         rows = rows[:a.n]
 
     client, gateway = make_client()
     a.judge_model = resolve(a.judge_model, gateway)
+    try:
+        hakem = HakemKimligi(a.judge_model, a.hakem_saglayici,
+                             Dusunme(a.hakem_dusunme) if a.hakem_dusunme else None)
+    except ValueError as e:
+        raise SystemExit(f"[gnd] 🚫 {e}")
+    price(a.judge_model)   # Why: fiyatı kayıtsız hakem ilk çağrıdan (paradan) ÖNCE reddedilir
     budget = float(os.environ.get("OPENAI_BUDGET_USD", "5") or "5")
 
     os.makedirs(a.out_dir, exist_ok=True)
@@ -231,47 +270,54 @@ def main():
     spent, out = 0.0, []
     print(f"[gnd] {a.label}: {len(rows)} cevap | mod={a.mode} | hakem={a.judge_model} "
           f"| runs={a.runs} | kaynak={a.source_field}")
-    with open(op, "w", encoding="utf-8") as f:
+    with part_ile_yaz(op) as f:
         for i, r in enumerate(rows):
             soru = r.get("soru", "")
             source = (r.get(a.source_field) or "").strip()
             cevap = (r.get(a.answer_field) or "").strip()
             rid = r.get("id", i)
-            if not source or not cevap:
-                print(f"  id={rid} kaynak/cevap boş → atla")
-                continue
             ka, mn, kn = r.get("kanun_adi") or "", r.get("madde_no"), r.get("kanun_no")
             gold = ((f"{ka}" + (f" (kanun no {kn})" if kn else "")
                      + (f", madde {mn}" if mn not in (None, "") else "")).strip()
                     if ka else "")
+            if not source or not cevap:
+                print(f"  id={rid} kaynak/cevap boş → bos_girdi")
+                rec = _bos_satir(rid, soru, gold, a.runs, "bos_girdi")
+                out.append(rec)
+                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                continue
             # N koşuyu HAVUZLA (claim havuzu birleşir → oran stabilize; flu #1)
             acc = {k: 0 for k in ("n_claims", "sup", "con", "nis", "nis_unsup", "n_cit",
                                   "cit_ok", "cit_wrong")}
             acc["source_cited"] = False
-            last = None
-            stop = False
+            last, hata = None, ""
             for _ in range(max(1, a.runs)):
                 if spent >= budget:
-                    stop = True
-                    break
+                    # Why: kalan kalemler puanlanmadan dosya tamamlanmış sayılamaz → `.part` kalır.
+                    raise SystemExit(f"[gnd] 🚫 BÜTÇE doldu (${spent:.4f} ≥ ${budget}) — "
+                                     f"{op}.part tamamlanmadı, puanlanmaz; bütçeyi artırıp yeniden koş.")
                 try:
-                    s, c = score_record(client, a.judge_model, soru, source, gold, cevap, a.mode)
-                except Exception as e:
-                    print(f"  id={rid} hakem hata: {e}")
-                    continue
+                    s, c = score_record(client, hakem, soru, source, gold, cevap, a.mode,
+                                        alet.altin_kirpma)
+                except _HAKEM_HATALARI as e:
+                    # Why: koşulardan biri bile düşerse kalem eksik sayıyla havuzlanmaz.
+                    hata = f"{type(e).__name__}: {e}"
+                    print(f"  id={rid} hakem hata: {hata}")
+                    break
                 spent += c
                 for k in ("n_claims", "sup", "con", "nis", "nis_unsup", "n_cit",
                           "cit_ok", "cit_wrong"):
                     acc[k] += s[k]
                 acc["source_cited"] = acc["source_cited"] or s["source_cited"]
                 last = s
-            if last is None:
-                if stop:
-                    print(f"[gnd] BÜTÇE doldu (${spent:.4f}) → kalanlar atlanıyor.")
-                    break
+            if hata:
+                rec = _bos_satir(rid, soru, gold, a.runs, "hakem_hata", hata)
+                out.append(rec)
+                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 continue
             m = ratios(acc)
-            rec = {"id": rid, "soru": soru, "gold": gold, "runs": a.runs, **m,
+            rec = {"id": rid, "soru": soru, "gold": gold, "runs": a.runs,
+                   "durum": "puanli" if m["n_claims"] else "sifir_iddia", **m,
                    "labels": last["labels"], "citations": last["citations"],
                    "source_cited": acc["source_cited"]}
             out.append(rec)
@@ -280,11 +326,20 @@ def main():
                   f"unsup={m['unsupported_rate']} claims={m['n_claims']} "
                   f"citP={m['cit_precision']} wrongRef={m['wrong_ref_rate']} citR={m['cit_recall']}")
 
+    sayac = {d: sum(1 for r in out if r["durum"] == d)
+             for d in ("puanli", "sifir_iddia", "hakem_hata", "bos_girdi")}
+    # Why: oranlar eskiden olduğu gibi hakemin gerçekten puanladığı kalemler üzerinden (puanlı +
+    # sıfır iddialı); hakem hatası ve boş girdi yalnız sayaçta görünür.
+    out = [r for r in out if r["durum"] in ("puanli", "sifir_iddia")]
+
     def s(k):
         return sum(r[k] for r in out if r.get(k) is not None)
     tot_claims, tot_cit = s("n_claims"), s("n_citations")
     summary = {
         "label": a.label, "n": len(out), "mode": a.mode, "judge_model": a.judge_model,
+        "n_girdi": len(rows), **{f"n_{d}": v for d, v in sayac.items()},
+        "olcum_aleti": alet.kunye(),
+        "hakem": hakem.kunye(),
         # ⚠️ len(judge_providers) > 1 → yönlendirme pinlenmemiş, sayı tek bir servis
         # yığınına ait değil (ADR-0029). Koşuyu tekrarla, LLM_PROVIDER_ORDER ile pinle.
         "judge_gateway": gateway, "judge_providers": seen_providers(),
@@ -304,7 +359,7 @@ def main():
         "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama.",
     }
     sp = os.path.join(a.out_dir, f"gnd_{a.label}_summary.json")
-    with open(sp, "w", encoding="utf-8") as f:
+    with part_ile_yaz(sp) as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
     print(f"\n[gnd] ÖZET {a.label}: {json.dumps(summary, ensure_ascii=False)}")
     print(f"[gnd] detay → {op}\n[gnd] özet → {sp}")

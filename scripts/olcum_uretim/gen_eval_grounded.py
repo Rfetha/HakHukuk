@@ -68,6 +68,7 @@ from build_sft_v2b import clip_sources_block
 from madde_anahtar import madde_anahtari  # harness izi: altın getirildi mi, kaçıncı sırada
 
 import runlock  # aynı label'a paralel yazım = sessiz bozulma (bkz. runlock.py)
+from part_dosya import part_ile_yaz  # yarım üretim `.part` kalır, puanlanmaz (F0.5 c)
 
 
 def altin_ablasyonu(parcalar, altin_anahtar, k):
@@ -119,6 +120,10 @@ def parse_args():
                    help="HARNESS AÇIK (sprint3 Adım 4): bağlamı distractor kurgusu değil "
                         "RETRIEVER belirler. Kaynak bloğu, kırpma, sistem promptu ve üretim "
                         "rejimi M1 ile AYNI kalır — tek değişen bağlamın NEREDEN geldiği.")
+    p.add_argument("--rrf-k", type=int, default=None, metavar="N",
+                   help="HARNESS AÇIK: BM25 + bge-m3 füzyon sabiti. Verilmezse retriever.RRF_K "
+                        "(10, ADR-0068); 60 = RQ2'nin üretim tarafındaki eski hâli. Değer her "
+                        "satırın harness izine yazılır.")
     p.add_argument("--harness-k", type=int, default=5, metavar="N",
                    help="retriever'dan alınacak parça sayısı (S3a eğrisi: recall@5 0,750 · "
                         "@10 0,875 · @20 0,925). 900 char kırpma her parçaya ayrı uygulanır.")
@@ -473,9 +478,12 @@ def main():
     _retriever = None
     if a.harness_indeks:
         # Veri kapısı model yüklenmeden ÖNCE (tuzak 6.2) — bayat/eksik indeks burada patlar.
-        from retriever import Retriever
+        from retriever import RRF_K, Retriever
         _retriever = Retriever.yukle(a.harness_indeks)
+        if a.rrf_k is None:
+            a.rrf_k = RRF_K
         print(f"[gen-eval] HARNESS AÇIK · indeks={a.harness_indeks} · k={a.harness_k} · "
+              f"rrf_k={a.rrf_k} · "
               f"model={_retriever._kunye['model']} · korpus n={_retriever._kunye['n']:,}",
               flush=True)
 
@@ -537,7 +545,7 @@ def main():
     n_truncated = n_forced = 0
     tok_sum = tok_n = rt_sum = rt_n = 0
     detail = os.path.join(a.out_dir, f"{a.label}_detail.jsonl")
-    with open(detail, "w", encoding="utf-8") as f:
+    with part_ile_yaz(detail) as f:
         for i, (rec, soru, src) in enumerate(sample):
             # RAG-modu: kaynağı ETİKETLE (Kanun adı + Madde no) → model atıf no'sunu
             # uydurmasın, verilen etiketten kopyalasın (Faz 2 RAG: chunk atıf taşır).
@@ -550,9 +558,9 @@ def main():
                 altin = madde_anahtari(rec.get("kanun_no"), rec.get("madde_no"))
                 if a.harness_no_gold:                   # ADR-0056: m2b'nin AÇIK karşılığı
                     parcalar = altin_ablasyonu(
-                        _retriever.getir(soru, a.harness_k + 1), altin, a.harness_k)
+                        _retriever.getir(soru, a.harness_k + 1, rrf_k=a.rrf_k), altin, a.harness_k)
                 else:
-                    parcalar = _retriever.getir(soru, a.harness_k)
+                    parcalar = _retriever.getir(soru, a.harness_k, rrf_k=a.rrf_k)
                 sources_block = raft_pack.format_sources_block(
                     [f"{p.get('kanun_adi','')} {p.get('madde_no','')}\n{p.get('text','')}"
                      for p in parcalar])
@@ -571,6 +579,7 @@ def main():
                 # 900-char kırpmasının ötesindeydi (ADR-0054/K2'nin kabul edilen bedeli).
                 harness_izi = {
                     "k": a.harness_k,
+                    "rrf_k": a.rrf_k,
                     "altin_dusuruldu": bool(a.harness_no_gold),
                     "altin_sirasi": next(
                         (p["sira"] for p in parcalar

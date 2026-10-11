@@ -5,8 +5,9 @@ Harness AÇIK bir koşunun `*_detail.jsonl`'ini okur ve şunları çıkarır:
 
   1. **Erişim** — altın madde getirildi mi, kaçıncı sırada (`recall@k`, modelden bağımsız)
   2. **Kütle** — coverage × A1. ⚠️ Tek eksenle okuma yasağı (Sprint 2'nin en pahalı dersi):
-     A1 cevaplanan-only, çekinerek kazanmayı ödüllendirir. A1 hakem ister; bu betik
-     coverage'ı **regexle** verir, A1 varsa `--gnd` ile birleştirilir.
+     A1 cevaplanan-only, çekinerek kazanmayı ödüllendirir. Hesap `kutle.py`'dedir (F0.5 a·c):
+     payda `--kume`'nin boyutu; eksik/tutarsız girdide ya da hakem puanı olmayan cevaplanmış
+     kalemde puanlama durur.
   3. **Kapı** — ADR-0038 katı + `cogunluk`/`cerrahi` ablasyonları, aynı küme üzerinde post-hoc
   4. **Atıf** — doğrulandı / madde yok / kanun yok / ayrıştırılamadı
   5. **K2'nin bedeli** — altın getirildi AMA cevap 900 char kırpmasının ötesinde kalmış olabilir
@@ -19,7 +20,7 @@ kıyaslanabilir olandır.
 
 Kullanım:
   python scripts/puanlama/harness_tablo.py --details outputs/eval/sprint2-olcum/s3-harness-acik/h1_<etiket>_detail.jsonl \\
-      [--gnd outputs/eval/sprint2-olcum/s3-harness-acik/gnd_h1_<etiket>.jsonl]
+      --gnd outputs/eval/sprint2-olcum/s3-harness-acik/gnd_h1_<etiket>.jsonl --kume data/eval/dev/core_hard.jsonl
 """
 import argparse
 import json
@@ -43,7 +44,9 @@ from atif_dogrula import (Dogrulayici, DOGRULANDI, MADDE_YOK, KANUN_YOK,  # noqa
                           AYRISTIRILAMADI, MULGA)
 from red_kapisi import kapi, POLITIKALAR  # noqa: E402
 from madde_anahtar import madde_anahtari, korpus_indeksi  # noqa: E402
-from score_abstention import exact_reject  # noqa: E402
+from kutle import DondurulmusKume, kutle_hesapla  # noqa: E402
+import olcum_aleti  # noqa: E402
+from part_dosya import tamamlanmis_jsonl  # noqa: E402
 
 
 def _oran(pay, payda):
@@ -97,15 +100,19 @@ def k2_bedeli(kayit, korpus_idx):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--details", required=True)
-    p.add_argument("--gnd", default="", help="groundedness çıktısı (A1 için); yoksa A1 boş kalır")
+    p.add_argument("--gnd", required=True, help="groundedness çıktısı (A1 için)")
+    p.add_argument("--kume", required=True,
+                   help="dondurulmuş soru kümesi (ör. data/eval/dev/core_hard.jsonl) — payda buradan")
     p.add_argument("--etiketler", default="",
                    help="ayirt_edicilik_etiketle.py çıktısı; verilirse sayılar iki alt kümede "
                         "AYRI raporlanır (ADR-0054/K4, borç B2)")
     p.add_argument("--korpus", default="data/corpus/mevzuat_maddeler.jsonl")
     p.add_argument("--out", default="")
+    olcum_aleti.argparse_ekle(p)
     a = p.parse_args()
+    alet = olcum_aleti.argumanlardan(a)
 
-    kayitlar = [json.loads(l) for l in open(a.details, encoding="utf-8") if l.strip()]
+    kayitlar = tamamlanmis_jsonl(a.details)
     if not kayitlar or "harness" not in kayitlar[0]:
         raise SystemExit("[tablo] 🚫 bu dosyada harness izi yok — harness AÇIK koşusu mu?")
     n = len(kayitlar)
@@ -118,48 +125,38 @@ def main():
     erisim = {f"recall@{j}": _oran(sum(1 for s in siralar if s is not None and s < j), n)
               for j in sorted({1, 3, 5, k}) if j <= k}
 
-    # 2) Kütle (coverage regexle; A1 hakemden)
-    cevaplandi = [not exact_reject(r.get("cevap", ""), "data") for r in kayitlar]
-    coverage = _oran(sum(cevaplandi), n)
-
-    puanli = []
-    if a.gnd:
-        gnd = {g.get("id"): g for g in
-               (json.loads(l) for l in open(a.gnd, encoding="utf-8") if l.strip())}
-        puanli = [(i, g) for i, g in gnd.items() if g.get("faithfulness") is not None]
+    # 2) Kütle — tamlık ve payda kapıları dahil tek kaynaktan (kutle.py, F0.5 a·c).
     # 🚨 A1 = CEVAPLANAN-ONLY (ADR-0011 · tuzak 2.3). Çekinmeler de hakemden puan alıyor
     # (iddia üretiyorlar) ve makroyu kaydırıyorlar — üstelik SABİT YÖNDE DEĞİL: k=5'te
     # çekinenler 0,9091 alıp ALL'ı yukarı, k=10'da 0,6819 alıp aşağı çekti. Bu ayrım
     # yapılmazsa k kıyası TERSİNE döner (research_log #54).
-    puanli_cev = [(i, g) for i, g in puanli if cevaplandi[i]]
-    a1 = a1_getirilen = None
-    if puanli_cev:
-        a1 = _oran(sum(g["faithfulness"] for _, g in puanli_cev), len(puanli_cev))
-        alt = [(i, g) for i, g in puanli_cev if getirildi[i]]
-        a1_getirilen = _oran(sum(g["faithfulness"] for _, g in alt), len(alt)) if alt else None
+    kume = DondurulmusKume.yukle(a.kume)
+    gnd_satirlari = tamamlanmis_jsonl(a.gnd)
+    ks = kutle_hesapla(kayitlar, gnd_satirlari, kume, alet)
+    cevaplandi = {kl.id: kl.cevaplandi for kl in ks.kalemler}
+    coverage, a1 = ks.kapsama, ks.A1
+    a1_getirilen = ks.alt_kume([r["id"] for r, g in zip(kayitlar, getirildi) if g]).A1
+    puanli = [g for g in gnd_satirlari if g.get("faithfulness") is not None]
     # Çekinmeler DAHİL makro — silinmiyor, doğru adıyla yanına yazılıyor (ADR-0050 kuralı:
     # sonucu gördükten sonra ölçüt değil ALET düzeltilir, eski alan kıyaslanabilirlik için kalır).
-    faith_macro_tum = _oran(sum(g["faithfulness"] for _, g in puanli), len(puanli)) if puanli else None
+    faith_macro_tum = _oran(sum(g["faithfulness"] for g in puanli), len(puanli)) if puanli else None
+    sira = {r["id"]: s for r, s in zip(kayitlar, siralar)}
 
     def eksenler(idler):
         """Aynı eksenler, bir id alt kümesi üzerinde — alt küme sayıları tüm kümeyle
         aynı tanımdan üretilsin diye tek yerden."""
         s = set(idler)
         m = len(s)
-        p = [(i, g) for i, g in puanli_cev if i in s]      # A1 cevaplanan-only (tuzak 2.3)
-        sub_a1 = _oran(sum(g["faithfulness"] for _, g in p), len(p)) if p else None
-        cov = _oran(sum(1 for i in s if cevaplandi[i]), m)
-        pg = [(i, g) for i, g in p if getirildi[i]]
+        alt = ks.alt_kume(s)
         return {
             "n": m,
-            "erisim": {f"recall@{j}": _oran(sum(1 for i in s if siralar[i] is not None
-                                                and siralar[i] < j), m)
+            "erisim": {f"recall@{j}": _oran(sum(1 for i in s if sira[i] is not None
+                                                and sira[i] < j), m)
                        for j in sorted({1, 3, 5, k}) if j <= k},
-            "coverage": cov,
-            "A1_tum": sub_a1,
-            "A1_altin_getirilen_alt_kume": (
-                _oran(sum(g["faithfulness"] for _, g in pg), len(pg)) if pg else None),
-            "kutle_tum": round(cov * sub_a1, 4) if (cov is not None and sub_a1) else None,
+            "coverage": alt.kapsama,
+            "A1_tum": alt.A1,
+            "A1_altin_getirilen_alt_kume": alt.alt_kume([i for i in s if sira[i] is not None]).A1,
+            "kutle_tum": alt.kutle,
         }
 
     # 3) Kapı (üç politika, post-hoc aynı küme — ADR-0038)
@@ -174,7 +171,7 @@ def main():
             "gecen": gecen, "reddedilen": n - gecen,
             "atifsiz_gecen": sum(1 for x in kararlar if x.gecti and x.n_atif == 0),
             "kapi_sonrasi_coverage": _oran(
-                sum(1 for x, c in zip(kararlar, cevaplandi) if x.gecti and c), n),
+                sum(1 for x, r in zip(kararlar, kayitlar) if x.gecti and cevaplandi[r["id"]]), n),
         }
 
     # 4) Atıf dağılımı
@@ -184,11 +181,12 @@ def main():
             dagilim[h.hukum] += 1
 
     # 5) Erişim ↔ davranış çapraz tablosu — harness'ın asıl sınavı
+    cev = [cevaplandi[r["id"]] for r in kayitlar]
     capraz = {
-        "altin_geldi_cevapladi": sum(1 for g, c in zip(getirildi, cevaplandi) if g and c),
-        "altin_geldi_cekindi": sum(1 for g, c in zip(getirildi, cevaplandi) if g and not c),
-        "altin_gelmedi_cevapladi": sum(1 for g, c in zip(getirildi, cevaplandi) if not g and c),
-        "altin_gelmedi_cekindi": sum(1 for g, c in zip(getirildi, cevaplandi) if not g and not c),
+        "altin_geldi_cevapladi": sum(1 for g, c in zip(getirildi, cev) if g and c),
+        "altin_geldi_cekindi": sum(1 for g, c in zip(getirildi, cev) if g and not c),
+        "altin_gelmedi_cevapladi": sum(1 for g, c in zip(getirildi, cev) if not g and c),
+        "altin_gelmedi_cekindi": sum(1 for g, c in zip(getirildi, cev) if not g and not c),
     }
 
     # 6) Ayırt-edicilik alt kümeleri (borç B2). `recall@k` bu kümenin tavanı olabilir —
@@ -211,13 +209,17 @@ def main():
 
     sonuc = {
         "kaynak": a.details, "n": n, "harness_k": k,
+        "kume": kume.kunye(), "olcum_aleti": alet.kunye(),
         "erisim": erisim,
         "kutle_ekseni": {"coverage": coverage,
                          "A1_cevaplanan": a1,
                          "faith_macro_tum_cekinme_dahil": faith_macro_tum,
                          "A1_tum": a1,      # geriye dönük ad; artık CEVAPLANAN-only (bkz. #54)
                          "A1_altin_getirilen_alt_kume": a1_getirilen,
-                         "kutle_tum": round(coverage * a1, 4) if a1 else None},
+                         "kutle_tum": ks.kutle,
+                         "n_cevaplanan": ks.n_cevaplanan,
+                         "n_puanli_cevaplanan": ks.n_puanli_cevaplanan,
+                         "n_sifir_iddia": ks.n_sifir_iddia},
         "kapi": kapilar,
         "atif_dagilimi": dagilim,
         "erisim_davranis_caprazi": capraz,

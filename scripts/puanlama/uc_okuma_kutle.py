@@ -17,11 +17,15 @@ kalemi çıkarmaz (bu round'da göz her zaman aleti genişletiyor, daraltmıyor)
 ⚠️ MİRAS ALINAN KÜME ÜYELİĞİDİR, PUAN DEĞİL: eklenen kalemlerin `faithfulness`'ı yeniden
 puanlanan hakemin gnd dosyasından okunur — 1,0 varsayılmaz.
 
+Hesap `kutle.py`'dedir (F0.5 a·c): payda dondurulmuş kümenin boyutu, eksik ya da tutarsız
+girdide puanlama durur. Sıfır iddialı cevaplanmış kalem 0 puan alır — bu betiğin formülü
+zaten buydu; `harness_tablo.py` ile ayrışma (tuzak 2.22) artık mümkün değil.
+
 Kullanım:
   python scripts/puanlama/uc_okuma_kutle.py \\
       --details outputs/eval/faz0/f04-rakip-onsozsuz/h1_3_5_flash_nb_detail.jsonl \\
       --gnd outputs/eval/faz0/f04-rakip-onsozsuz/gnd_h1_3_5_flash_nb.jsonl \\
-      --goz-orta-ekle 28 --goz-kati-ekle 15,24,27
+      --kume data/eval/dev/core_hard.jsonl --goz-orta-ekle 28 --goz-kati-ekle 15,24,27
 """
 import argparse
 import json
@@ -34,11 +38,9 @@ sys.path[:0] = [_K, *(os.path.join(_K, _d) for _d in sorted(os.listdir(_K))
                       if os.path.isdir(os.path.join(_K, _d)) and _d[0] not in "_."),
                 os.path.dirname(_K)]
 
-from score_abstention import exact_reject  # noqa: E402
-
-
-def _load_jsonl(p):
-    return [json.loads(l) for l in open(p, encoding="utf-8") if l.strip()]
+from kutle import DondurulmusKume, kutle_hesapla  # noqa: E402
+from olcum_aleti import GUNCEL  # noqa: E402
+from part_dosya import tamamlanmis_jsonl  # noqa: E402
 
 
 def _id_set(s):
@@ -48,44 +50,24 @@ def _id_set(s):
     return {int(x) for x in str(s).split(",") if x.strip() != ""}
 
 
-def alet_cevaplanan_kumesi(detay_satirlari):
-    """ALET okumasının 'cevap sayılan' kümesi — dedektör (`exact_reject`, mod 'data')."""
-    return {r.get("id", i) for i, r in enumerate(detay_satirlari)
-            if not exact_reject(r.get("cevap", ""), "data")}
-
-
-def kutle(id_kumesi, gnd_map, n_toplam):
-    """kütle(okuma) = Σ faithfulness(id_kumesi'ndeki, puanı olan kalemler) / n_toplam.
-
-    Puanı olmayan (`faithfulness` None — sıfır iddia çıkarılmış) bir kalem kümede olsa
-    bile toplama 0 katkı yapar; bu, aletin kendi `coverage × A1` tanımıyla denktir
-    (bu round'da hiçbir kalem bu farkı göstermedi — doğrulama testinde sınanır)."""
-    s = sum(gnd_map[i]["faithfulness"] for i in id_kumesi
-            if i in gnd_map and gnd_map[i].get("faithfulness") is not None)
-    return round(s, 4), round(s / n_toplam, 4) if n_toplam else None
-
-
-def uc_okuma(detay_satirlari, gnd_satirlari, goz_orta_ekle=(), goz_kati_ekle=()):
+def uc_okuma(detay_satirlari, gnd_satirlari, kume, goz_orta_ekle=(), goz_kati_ekle=()):
     """Üç okumayı da hesaplar. `goz_kati_ekle`, `goz_orta_ekle`'nin ÜSTÜNE eklenir
     (kümülatif — GÖZ-katı her zaman GÖZ-orta'yı içerir)."""
-    n = len(detay_satirlari)
-    gnd_map = {g["id"]: g for g in gnd_satirlari}
-
-    alet = alet_cevaplanan_kumesi(detay_satirlari)
-    orta = alet | set(goz_orta_ekle)
+    orta = set(goz_orta_ekle)
     kati = orta | set(goz_kati_ekle)
 
-    sum_a, k_a = kutle(alet, gnd_map, n)
-    sum_o, k_o = kutle(orta, gnd_map, n)
-    sum_k, k_k = kutle(kati, gnd_map, n)
+    def okuma(ekle):
+        s = kutle_hesapla(detay_satirlari, gnd_satirlari, kume, GUNCEL, goz_ekle=frozenset(ekle))
+        toplam = sum(k.puan for k in s.kalemler if k.cevaplandi and k.puan is not None)
+        return {"n_cevaplanan": s.n_cevaplanan, "toplam": round(toplam, 4), "kutle": s.kutle}
 
     return {
-        "n": n,
-        "ALET": {"n_cevaplanan": len(alet), "toplam": sum_a, "kutle": k_a},
-        "GOZ_ORTA": {"n_cevaplanan": len(orta), "toplam": sum_o, "kutle": k_o,
-                     "eklenen": sorted(goz_orta_ekle)},
-        "GOZ_KATI": {"n_cevaplanan": len(kati), "toplam": sum_k, "kutle": k_k,
-                     "eklenen": sorted(set(goz_orta_ekle) | set(goz_kati_ekle))},
+        "n": kume.boyut,
+        "kume": kume.kunye(),
+        "olcum_aleti": GUNCEL.kunye(),
+        "ALET": okuma(set()),
+        "GOZ_ORTA": {**okuma(orta), "eklenen": sorted(orta)},
+        "GOZ_KATI": {**okuma(kati), "eklenen": sorted(kati)},
     }
 
 
@@ -93,6 +75,8 @@ def parse_args():
     p = argparse.ArgumentParser()
     p.add_argument("--details", required=True, help="h1_..._detail.jsonl (cevap metni + id)")
     p.add_argument("--gnd", required=True, help="gnd_..._.jsonl (groundedness.py çıktısı)")
+    p.add_argument("--kume", required=True,
+                   help="dondurulmuş soru kümesi (ör. data/eval/dev/core_hard.jsonl) — payda buradan")
     p.add_argument("--goz-orta-ekle", default="", help="GÖZ-orta'nın ALET'e eklediği id'ler, virgüllü")
     p.add_argument("--goz-kati-ekle", default="", help="GÖZ-katı'nın GÖZ-orta'ya eklediği id'ler, virgüllü")
     p.add_argument("--out", default="")
@@ -101,9 +85,10 @@ def parse_args():
 
 def main():
     a = parse_args()
-    detay = _load_jsonl(a.details)
-    gnd = _load_jsonl(a.gnd)
-    sonuc = uc_okuma(detay, gnd, _id_set(a.goz_orta_ekle), _id_set(a.goz_kati_ekle))
+    detay = tamamlanmis_jsonl(a.details)
+    gnd = tamamlanmis_jsonl(a.gnd)
+    sonuc = uc_okuma(detay, gnd, DondurulmusKume.yukle(a.kume),
+                     _id_set(a.goz_orta_ekle), _id_set(a.goz_kati_ekle))
     print(json.dumps(sonuc, ensure_ascii=False, indent=2))
     if a.out:
         os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)

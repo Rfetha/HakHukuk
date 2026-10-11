@@ -7,11 +7,15 @@ verisinden (yeniden puanlamadan, sıfır API çağrısıyla) birebir ürettiğin
 import json
 import os
 
+import pytest
+
+from kutle import DondurulmusKume, OlcumKapisiHatasi  # noqa: E402
 from uc_okuma_kutle import uc_okuma  # noqa: E402
 
 _KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _DETAILS = os.path.join(_KOK, "outputs/eval/faz0/f04-rakip-onsozsuz/h1_3_5_flash_nb_detail.jsonl")
 _GND = os.path.join(_KOK, "outputs/eval/faz0/f04-rakip-onsozsuz/gnd_h1_3_5_flash_nb.jsonl")
+_KUME = DondurulmusKume.yukle(os.path.join(_KOK, "data/eval/dev/core_hard.jsonl"))
 
 
 def _load_jsonl(p):
@@ -22,7 +26,7 @@ def test_uc_okuma_gpt4o_mini_kalibrasyon_birebir():
     """GÖZ listesi kesin: id 28 (GÖZ-orta) + id 15,24,27 (GÖZ-katı, orta'nın üstüne)."""
     detay = _load_jsonl(_DETAILS)
     gnd = _load_jsonl(_GND)
-    sonuc = uc_okuma(detay, gnd, goz_orta_ekle={28}, goz_kati_ekle={15, 24, 27})
+    sonuc = uc_okuma(detay, gnd, _KUME, goz_orta_ekle={28}, goz_kati_ekle={15, 24, 27})
 
     assert sonuc["n"] == 80
     assert sonuc["ALET"]["n_cevaplanan"] == 67
@@ -42,8 +46,8 @@ def test_besinci_kalem_id79_disarida_kalirsa_cipa_yukselmez():
     gnd_map = {g["id"]: g for g in gnd}
     assert gnd_map[79]["faithfulness"] == 0.5  # kalem puanlı ama göz onu geri ALMIYOR
 
-    dogru = uc_okuma(detay, gnd, goz_orta_ekle={28}, goz_kati_ekle={15, 24, 27})
-    yanlis = uc_okuma(detay, gnd, goz_orta_ekle={28}, goz_kati_ekle={15, 24, 27, 79})
+    dogru = uc_okuma(detay, gnd, _KUME, goz_orta_ekle={28}, goz_kati_ekle={15, 24, 27})
+    yanlis = uc_okuma(detay, gnd, _KUME, goz_orta_ekle={28}, goz_kati_ekle={15, 24, 27, 79})
 
     assert dogru["GOZ_KATI"]["kutle"] == 0.7425
     assert yanlis["GOZ_KATI"]["kutle"] > dogru["GOZ_KATI"]["kutle"]
@@ -54,5 +58,13 @@ def test_kutle_formulu_toplam_bolu_seksen():
     cevaplanan alt kümesinin büyüklüğü değil."""
     detay = _load_jsonl(_DETAILS)
     gnd = _load_jsonl(_GND)
-    sonuc = uc_okuma(detay, gnd)
+    sonuc = uc_okuma(detay, gnd, _KUME)
     assert sonuc["ALET"]["kutle"] == round(sonuc["ALET"]["toplam"] / 80, 4)
+
+
+def test_eksik_cevap_dosyasinda_uc_okuma_durur():
+    """F0.5 (c): payda dosyanın satır sayısından değil kümeden gelir; eksik dosya puanlanmaz."""
+    detay = _load_jsonl(_DETAILS)
+    gnd = _load_jsonl(_GND)
+    with pytest.raises(OlcumKapisiHatasi):
+        uc_okuma(detay[:79], gnd, _KUME)
