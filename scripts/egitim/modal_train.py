@@ -8,9 +8,9 @@ subprocess ile koşar. Yerel kart sadece prototip/eval; gerçek eğitim burada.
 ⚠️ **Model adı bu dosyada YOK.** `--model` zorunlu parametre; verilmezse hata verir.
 Sessizce yanlış base'e düşmek, saatler süren bir koşuyu çöpe çevirir.
 
-⚠️ GPU da parametre: `HUKUK_GPU` env (varsayılan `A100`). Küçük base'de `L4`/`A10G` yeter,
-büyükte `A100-80GB`/`H100`. Modal'da GPU dekoratör-zamanlı → env ile seçilir:
-    HUKUK_GPU=L4 modal run scripts/egitim/modal_train.py::spawn_sft --model <repo> --data /data/<set>
+⚠️ GPU varsayılanı eğitim ortamı kilidinden gelir (`configs/egitim_ortami.yaml`, `A100-40GB`);
+`HUKUK_GPU` env ile ezilebilir ama Makale 1 kollarında konteynerdeki kilit kontrolü A100 dışını
+model yüklenmeden durdurur (F0.4). Modal'da GPU dekoratör-zamanlıdır.
 
 ⚠️ **`--data` KONTEYNER İÇİ YOLDUR, volume yolu DEĞİL.** `hukuk-data` volume'ü `/data`'ya
 bağlanır (aşağıdaki VOLUMES), yani volume'deki `/<set>` konteynerde `/data/<set>` olur.
@@ -36,11 +36,21 @@ Kullanım:
 import os
 
 import modal
+import yaml
+
+# Eğitim ortamı kilidi (F0.4). Why göreli yol: yerelde repo kökünden koşulur (CLAUDE.md), konteynerde
+# /root'tan; configs/ ikisinde de aynı göreli yerde (aşağıdaki add_local_dir).
+_KILIT_YOLU = next(y for y in ("configs/egitim_ortami.yaml", "/root/configs/egitim_ortami.yaml")
+                   if os.path.exists(y))
+with open(_KILIT_YOLU, encoding="utf-8") as _f:
+    _KILIT = yaml.safe_load(_f)
+KILIT_KONTEYNER = "/root/configs/egitim_ortami.yaml"
 
 app = modal.App("hukuk-sft")
 
-# GPU seçimi — base'e göre değişir, bu yüzden env'den. Dekoratör import-zamanı okur.
-GPU = os.environ.get("HUKUK_GPU", "A100")
+# GPU seçimi — kilitten; env ile ezilebilir. Dekoratör import-zamanı okur.
+# Why "A100-40GB" açıkça: yalnız "A100" 40 ya da 80 GB verebilir (tuzak 6.7).
+GPU = os.environ.get("HUKUK_GPU") or _KILIT["gpu"]["modal_dizesi"]
 
 # --- Ortam: requirements.lock.txt'teki pinli sürümler ---
 # ⚠️ --no-deps ZORUNLU: lock zaten tam-çözülmüş düz liste (tüm transitive pinli). Resolver'ı
@@ -78,8 +88,12 @@ image = (
     # Yokluğunda yalnız depthwise conv torch'a düşer; PAHALI çekirdek (`chunk_gated_delta_rule`)
     # fla'dan gelir. ⚠️ Bu yüzden "fast path is not available" UYARISI YİNE BASILIR — uyarıyı
     # başarısızlık sanma, ölçüt **s/it**.
-    .pip_install("einops", "fla-core", "flash-linear-attention", extra_options="--no-deps")
+    # Sürümler kilitten (F0.4): einops 0.8.2 · fla-core 0.5.1 · flash-linear-attention 0.5.1 —
+    # 2026-07-25'te kurulan ve τ_g/τ_a'nın eğitildiği önbellekli katmandan okundu (2026-10-11).
+    .pip_install(*[f"{p}=={v}" for p, v in _KILIT["paketler"]["ek"].items()], extra_options="--no-deps")
     .add_local_dir("scripts", remote_path="/root/scripts")
+    .add_local_dir("configs", remote_path="/root/configs")      # eğitim ortamı kilidi
+    .add_local_dir("hakhukuk", remote_path="/root/hakhukuk")    # train_sft.py: hakhukuk.cekirdek.istem
 )
 
 data_vol = modal.Volume.from_name("hukuk-data")
@@ -104,12 +118,17 @@ def _run_with_commits(cmd, vols, every_s: int):
     resume edilir (train_sft/train_orpo `get_last_checkpoint` ile otomatik).
     Tek-seferlik son commit YETMEZ — kesinti commit'ten önce olursa checkpoint uçar."""
     import subprocess
-    import time
 
     print("[modal] çalıştırılıyor:", " ".join(cmd), flush=True)
     proc = subprocess.Popen(cmd)
-    while proc.poll() is None:
-        time.sleep(every_s)
+    while True:
+        # Why wait(timeout) uyku değil: `time.sleep(every_s)` alt süreç bittikten sonra da aralık
+        # dolana kadar uyuyordu → kısa koşuda 15 dk'ya kadar boşta GPU faturası (2026-10-11).
+        try:
+            proc.wait(timeout=every_s)
+            break
+        except subprocess.TimeoutExpired:
+            pass
         for v in vols:
             try:
                 v.commit()
@@ -126,6 +145,7 @@ def _run_with_commits(cmd, vols, every_s: int):
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=6 * 60 * 60)
 def train(model: str, data_path: str, run_name: str, user_part: str, assistant_part: str,
+          hassasiyet: str, seed: int,
           epochs: float = 1.0, max_steps: int = -1, extra_args: list[str] | None = None):
     import sys
     cmd = [
@@ -135,6 +155,9 @@ def train(model: str, data_path: str, run_name: str, user_part: str, assistant_p
         "--run-name", run_name,
         "--output-dir", f"/outputs/{run_name}",
         "--epochs", str(epochs),
+        "--hassasiyet", hassasiyet,
+        "--seed", str(seed),
+        "--ortam-kilidi", KILIT_KONTEYNER,
         # Maskeleme sınırları — train_sft.py bunları render'a karşı ASSERT eder;
         # yanlışsa eğitim başlamadan patlar (sessizce bozuk eğitmekten iyidir).
         "--user-part", user_part,
@@ -151,11 +174,11 @@ def train(model: str, data_path: str, run_name: str, user_part: str, assistant_p
 # ── ORPO (tercih öğrenmesi; adapter-continuation veya taze) ───────────────────
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=6 * 60 * 60)
-def train_orpo(model: str, data_path: str, run_name: str, adapter: str | None = None,
+def train_orpo(model: str, data_path: str, run_name: str, hassasiyet: str, seed: int,
+               adapter: str | None = None,
                epochs: float = 1.0, max_steps: int = -1, beta: float = 0.1,
                lr: float = 1e-5, grad_accum: int = 64, save_steps: int = 100,
-               bf16_base: bool = False, lora_dropout: float = -1.0,
-               target_modules: str = ""):
+               lora_dropout: float = -1.0, target_modules: str = "", durdur_adim: int = 0):
     import sys
     cmd = [
         sys.executable, "/root/scripts/egitim/train_orpo.py",
@@ -165,11 +188,14 @@ def train_orpo(model: str, data_path: str, run_name: str, adapter: str | None = 
         "--output-dir", f"/outputs/{run_name}",
         "--epochs", str(epochs), "--beta", str(beta), "--lr", str(lr),
         "--grad-accum", str(grad_accum), "--save-steps", str(save_steps),
+        # ⚠️ REJİM EŞLEŞMESİ (τ_g ile merge edilebilirlik şartı) — sessizce ayrışırsa iki task-vector
+        # farklı θ_base'den türer ve kıyaslanamaz olur. Hassasiyet zorunlu, varsayılansız (F0.4).
+        "--hassasiyet", hassasiyet,
+        "--seed", str(seed),
+        "--ortam-kilidi", KILIT_KONTEYNER,
     ]
-    # ⚠️ REJİM EŞLEŞMESİ (τ_g ile merge edilebilirlik şartı) — sessizce ayrışırsa iki task-vector
-    # farklı θ_base'den türer ve kıyaslanamaz olur. Bkz. docs/open_questions.md #13.
-    if bf16_base:
-        cmd += ["--bf16-base"]
+    if durdur_adim and durdur_adim > 0:
+        cmd += ["--durdur-adim", str(durdur_adim)]
     if lora_dropout >= 0:            # 0.0 geçerli DEĞER → `if lora_dropout:` yazılamaz (falsy tuzağı)
         cmd += ["--lora-dropout", str(lora_dropout)]
     if target_modules:               # varsayılan liste `in_proj_*` içermez → 24 katman LoRA'sız kalır
@@ -437,9 +463,9 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
               epochs: float = 1.0, smoke: bool = False,
               lr: float = 0.0, lora_r: int = 0, lora_alpha: int = 0,
               warmup_ratio: float = 0.0, no_system: bool = False,
-              bf16_base: bool = False, target_modules: str = "",
+              hassasiyet: str = "", target_modules: str = "",
               lora_dropout: float = -1.0, no_grad_checkpoint: bool = False,
-              batch: int = 0, grad_accum: int = 0):
+              batch: int = 0, grad_accum: int = 0, seed: int = 0, max_steps: int = -1):
     """QLoRA SFT — fire-and-forget. Önce --smoke (para-kapısı), sonra tam koşu.
 
     --user-part / --assistant-part: base'in chat şablonundaki turn işaretleri.
@@ -449,6 +475,7 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
     """
     _require("model", model); _require("data", data)
     _require("user-part", user_part); _require("assistant-part", assistant_part)
+    _require("hassasiyet", hassasiyet); _require("seed", seed)   # F0.4: varsayılan yok
     extra = []
     if no_system:            # veri system prompt'unu zaten taşıyorsa çift-system'i önle
         extra += ["--no-system"]
@@ -460,8 +487,6 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
         extra += ["--lora-alpha", str(lora_alpha)]
     if warmup_ratio:
         extra += ["--warmup-ratio", str(warmup_ratio)]
-    if bf16_base:            # ⚠️ ADR-0031 birincil: bf16 donuk taban + LoRA (QLoRA değil)
-        extra += ["--bf16-base"]
     if target_modules:       # ⚠️ Qwen3.5 VLM: all-linear görüntü kulesine takar (#39) → metin kulesi listesi
         extra += ["--target-modules", *target_modules.split()]
     # ⚠️ ADR-0033 hız kaldıraçları. `lora_dropout` varsayılanı -1.0 = "dokunma" (script'in 0.05'i
@@ -482,16 +507,18 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
         raise SystemExit("[modal] 🚫 --batch ve --grad-accum BİRLİKTE verilir "
                          "(etkin batch = çarpımları; tek başına vermek onu sessizce kaydırır).")
 
-    parts = dict(user_part=user_part, assistant_part=assistant_part)
+    parts = dict(user_part=user_part, assistant_part=assistant_part,
+                 hassasiyet=hassasiyet, seed=seed)
     if smoke:
         print(f"[modal] SMOKE: 50 step (config+loss doğrulama) · gpu={GPU}", flush=True)
         call = train.spawn(model=model, data_path=data, run_name=f"{run_name}-smoke",
                            epochs=1.0, max_steps=50, extra_args=extra, **parts)
     else:
         call = train.spawn(model=model, data_path=data, run_name=run_name,
-                           epochs=epochs, extra_args=extra, **parts)
+                           epochs=epochs, max_steps=max_steps, extra_args=extra, **parts)
     print(f"[modal] SPAWNED ✓ {call.object_id} | model={model} data={data} "
-          f"run={run_name} epochs={epochs} gpu={GPU} smoke={smoke}", flush=True)
+          f"run={run_name} epochs={epochs} max_steps={max_steps} seed={seed} gpu={GPU} "
+          f"smoke={smoke}", flush=True)
     print(f"[modal] Bağımsız koşuyor. İzle: modal app logs hukuk-sft | "
           f"Bitince: modal volume get hukuk-outputs /{run_name} ./outputs/{run_name}", flush=True)
 
@@ -500,15 +527,17 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
 def spawn_orpo(model: str = "", data: str = "", run_name: str = "orpo1",
                adapter: str = "", epochs: float = 3.0, smoke: bool = False,
                beta: float = 0.1, lr: float = 1e-5, grad_accum: int = 64,
-               save_steps: int = 100, bf16_base: bool = False,
-               lora_dropout: float = -1.0, target_modules: str = ""):
+               save_steps: int = 100, hassasiyet: str = "",
+               lora_dropout: float = -1.0, target_modules: str = "",
+               seed: int = 0, durdur_adim: int = 0):
     """ORPO tercih öğrenmesi — fire-and-forget.
 
     --adapter verilirse o turun kazanımı taşınır (continuation); boşsa base'e taze adapter.
     İzlenecek metrik: nll_loss trendi = forget-vekili (tırmanırsa grounding riski).
 
     ⚠️ τ_abstention KOLU olarak koşarken: `--adapter` VERİLMEZ (taze = ham base'den) ve
-    `--bf16-base --lora-dropout 0.05 --target-modules '<τ_g ile aynı liste>'` verilir.
+    `--hassasiyet bf16-taban --lora-dropout 0.05 --target-modules '<τ_g ile aynı liste>'` verilir.
+    `--durdur-adim N`: takvim tam koşuya göre kurulur, eğitim N. adımda kesilir (eşdeğerlik koşusu).
     Aksi hâlde τ_g ile merge edilemez — bkz. docs/open_questions.md #13.
 
     ⚠️ `epochs` varsayılanı 1.0 DEĞİL 3.0 (2026-07-28 kararı). Why: 1.741 çift ÷ etkin batch 64
@@ -517,7 +546,8 @@ def spawn_orpo(model: str = "", data: str = "", run_name: str = "orpo1",
     adım. Kıyas: τ_grounding 1.083 adım koşuyor.
     """
     _require("model", model); _require("data", data)
-    common = dict(bf16_base=bf16_base, lora_dropout=lora_dropout,
+    _require("hassasiyet", hassasiyet); _require("seed", seed)   # F0.4: varsayılan yok
+    common = dict(hassasiyet=hassasiyet, seed=seed, lora_dropout=lora_dropout,
                   target_modules=target_modules)
     if smoke:
         print(f"[modal] ORPO SMOKE: 50 step (format+loss+OOM doğrulama) · gpu={GPU}", flush=True)
@@ -527,9 +557,11 @@ def spawn_orpo(model: str = "", data: str = "", run_name: str = "orpo1",
     else:
         call = train_orpo.spawn(model=model, data_path=data, run_name=run_name,
                                 adapter=adapter or None, epochs=epochs, beta=beta,
-                                lr=lr, grad_accum=grad_accum, save_steps=save_steps, **common)
+                                lr=lr, grad_accum=grad_accum, save_steps=save_steps,
+                                durdur_adim=durdur_adim, **common)
     print(f"[modal] ORPO SPAWNED ✓ {call.object_id} | model={model} "
-          f"adapter={adapter or '(taze)'} beta={beta} lr={lr} ga={grad_accum} gpu={GPU}", flush=True)
+          f"adapter={adapter or '(taze)'} beta={beta} lr={lr} ga={grad_accum} seed={seed} "
+          f"durdur_adim={durdur_adim or '-'} gpu={GPU}", flush=True)
 
 
 @app.local_entrypoint()

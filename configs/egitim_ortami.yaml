@@ -1,0 +1,82 @@
+# Eğitim ortamı kilidi — makine okunur TEK kaynak (docs/EGITIM_ORTAMI.md §1).
+# Bu dosya ile belge çelişirse bu dosya bağlayıcıdır; belge düzeltilir.
+# train_sft.py / train_orpo.py model yüklemeden önce bunu okur (scripts/egitim/ortam_kilidi.py);
+# uymayan alan varsa koşu para harcamadan durur. Qwen3.5-4B'nin kilidi; Gemma'nınki ayrı yazılır
+# (EGITIM_ORTAMI §6 m.6).
+
+model: Qwen/Qwen3.5-4B
+tur_isaretleri:                       # train_on_responses_only; render'a karşı ayrıca assert edilir
+  user_part: "<|im_start|>user\n"
+  assistant_part: "<|im_start|>assistant\n"
+
+gpu:
+  modal_dizesi: A100-40GB            # yalnız "A100" 40 ya da 80 GB verebilir (tuzak 6.7)
+  ad_oneki: NVIDIA A100              # torch.cuda.get_device_name(0) bununla başlar
+  hesaplama_surumu: [8, 0]
+
+python: "3.11"
+
+paketler:
+  kilit_dosyasi: requirements.lock.txt
+  kilit_sha256: 6b5209e6a293f3c72f5d6c1dfa64591128f48dd8e3c0e07cdc3141c733c6ebb0
+  surumler:                          # importlib.metadata; yerel ek (+cu130 gibi) karşılaştırmada soyulur
+    torch: 2.10.0
+    triton: 3.6.0
+    transformers: 5.10.2
+    peft: 0.19.1
+    trl: 0.24.0
+    unsloth: 2026.6.1
+    unsloth_zoo: 2026.6.1
+    accelerate: 1.13.0
+    bitsandbytes: 0.49.2
+    datasets: 4.3.0
+  ek:                                # kilit dosyasında yok; imaja ayrıca, --no-deps ile kurulur
+    einops: 0.8.2                    # 2026-10-11: Modal'daki önbellekli katmandan okundu (kurulum
+    fla-core: 0.5.1                  # 2026-07-25 06:03 UTC) — τ_g ve τ_a bu katmanla eğitildi
+    flash-linear-attention: 0.5.1
+  yasak: [causal-conv1d]             # tavan 1,254×, ≥2× kapısından kaldı (#44)
+
+hassasiyet: bf16-taban               # varsayılan YOK; betikler --hassasiyet ister (ADR-0031)
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  use_rslora: false
+  hedef_moduller: [q_proj, k_proj, v_proj, o_proj, in_proj_qkv, in_proj_z, in_proj_a, in_proj_b,
+                   gate_proj, up_proj, down_proj]
+
+tarifler:
+  sft:                               # τ_g; komut: 9f4b43d:docs/record/sprint1/NEXT-SESSION.md:59-64
+    veri: raft_scrubbed              # data/train/raft_scrubbed/ (Modal: /data/raft_scrubbed)
+    satir: 17323                     # train.jsonl
+    max_seq_len: 2048
+    batch: 2
+    grad_accum: 8
+    grad_checkpoint: false           # ADR-0033
+    lr: 1.0e-4
+    zamanlayici: cosine
+    optim: adamw_8bit
+    warmup_ratio: 0.05
+    epochs: 1
+    adim: 1083
+    packing: false
+    sistem_istemi: false             # --no-system: veri sistem istemini zaten taşımıyor
+  orpo:                              # τ_a; koşu satırı: kronoloji-39-52.md #48
+    veri: orpo_abstain_cp2c          # data/train/orpo_abstain_cp2c/ (Modal: /data/orpo_abstain_cp2c)
+    satir: 845                       # train.jsonl (726 çift + 145 tekrar ve replay; 26 doğrulama)
+    max_length: 2048
+    max_prompt_length: 1536
+    batch: 1
+    grad_accum: 64
+    grad_checkpoint: true            # train_orpo.py'de koda gömülü ("unsloth")
+    lr: 1.0e-5
+    beta: 0.1
+    zamanlayici: cosine
+    optim: adamw_8bit
+    warmup_ratio: 0.05
+    epochs: 5
+    adim: 70
+    taze_adaptor: true               # --fresh-adapter; --adapter verilmez
+
+seedler: [3407, 3408, 3409]          # iki temel modelde aynı liste; sonuç görülmeden seçildi
