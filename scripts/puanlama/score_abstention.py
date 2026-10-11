@@ -86,6 +86,9 @@ sys.path[:0] = [_K, *(os.path.join(_K, _d) for _d in sorted(os.listdir(_K))
 from llm_client import (make_client, gateway_of, resolve, price, request_kwargs,  # noqa: E402
                         note_provider, seen_providers, loads_tolerant)
 import runlock  # noqa: E402  — aynı label'a paralel yazım = sessiz bozulma (bkz. runlock.py)
+from part_dosya import part_ile_yaz, tamamlanmis_jsonl  # noqa: E402  — F0.5 c
+import olcum_aleti  # noqa: E402  — RQ2 anahtarları (F0.5 b)
+from olcum_aleti import Payda  # noqa: E402
 
 # G2 — exact-match rejection (Rej): deterministik red-ifadesi tespiti (RGB Rej, hakemsiz).
 # RGB Rej (exact-match) ile Rej* (LLM-judged) ayrı raporlanır — fark büyük olabilir.
@@ -266,10 +269,6 @@ def exact_reject(cevap, mode):
     return bool(REJECT_RE.search(_son_esasli_ibare(c)))
 
 
-def load_jsonl(p):
-    return [json.loads(l) for l in open(p, encoding="utf-8") if l.strip()]
-
-
 # ── BOŞ BAĞLAM: PAYDA TANIM GEREĞİ GEÇERLİ (ADR-0048 m.2) ────────────────────
 # M3'te (`--empty-context`) modele kaynak metni VERİLMEZ; bağlam `"(İlgili kaynak
 # bulunamadı.)"`. "Kaynak soruyu cevaplıyor mu"nun cevabı tanım gereği 80/80 HAYIR,
@@ -319,7 +318,7 @@ SOURCE_CLIP = 12000   # ⭐ ÖDENDİ 2026-09-07 (YB3 / açık soru S4) — eski 
 # 3500 birimiyle üretilmiş TÜM tarihsel `verdict`/M2/M2b sayıları KIYASLANAMAZ ve damgalıdır.
 
 
-def hakem_kaynagi(source):
+def hakem_kaynagi(source, kirpma=SOURCE_CLIP):
     """Hakemin GERÇEKTEN gördüğü kaynak metni — istemin de anahtarın da TEK girdisi.
 
     Why (KARAR-4 m.1, 2026-08-06): K-1 önbellek anahtarını TAM metne taşımıştı. O onarımın
@@ -334,11 +333,11 @@ def hakem_kaynagi(source):
     kayda düşer → `k=10`'un paydası **TANIMSIZ** damgalıdır (ADR-0057, KARAR-4 m.2), hüküm
     kurulmaz. Alet kuramadığı hükmü kurmaz; klibi büyütmek ayrı ve ödenmemiş bir borçtur.
     """
-    return (source or "")[:SOURCE_CLIP]
+    return (source or "")[:kirpma]
 
 
-def judge(client, model, soru, source, cevap):
-    user = (f"SORU:\n{soru}\n\nKAYNAK MADDE (modele verilen):\n{hakem_kaynagi(source)}\n\n"
+def judge(client, model, soru, source, cevap, kirpma=SOURCE_CLIP):
+    user = (f"SORU:\n{soru}\n\nKAYNAK MADDE (modele verilen):\n{hakem_kaynagi(source, kirpma)}\n\n"
             f"MODELİN CEVABI:\n{cevap}")
     r = client.chat.completions.create(
         model=model, temperature=0, **request_kwargs(model),
@@ -351,24 +350,24 @@ def judge(client, model, soru, source, cevap):
     return d, u.prompt_tokens * p[0] + u.completion_tokens * p[1]
 
 
-def gecerlilik_istemi(soru, source):
+def gecerlilik_istemi(soru, source, kirpma=SOURCE_CLIP):
     """Kör payda hakemine giden KULLANICI mesajı. Anahtar da bunun bileşenlerinden kurulur."""
-    return f"SORU:\n{soru}\n\nKAYNAK:\n{hakem_kaynagi(source)}"
+    return f"SORU:\n{soru}\n\nKAYNAK:\n{hakem_kaynagi(source, kirpma)}"
 
 
-def judge_gecerlilik(client, model, soru, source):
+def judge_gecerlilik(client, model, soru, source, kirpma=SOURCE_CLIP):
     """Tuzağın geçerliliği — modelin cevabı GÖSTERİLMEDEN. Sonuç kalemin özelliğidir."""
     r = client.chat.completions.create(
         model=model, temperature=0, **request_kwargs(model),
         messages=[{"role": "system", "content": GECERLILIK_SYSTEM},
-                  {"role": "user", "content": gecerlilik_istemi(soru, source)}])
+                  {"role": "user", "content": gecerlilik_istemi(soru, source, kirpma)}])
     note_provider(r)
     d = loads_tolerant(r.choices[0].message.content)
     u, p = r.usage, price(model)
     return d, u.prompt_tokens * p[0] + u.completion_tokens * p[1]
 
 
-def gecerlilik_anahtari(soru, source):
+def gecerlilik_anahtari(soru, source, kirpma=SOURCE_CLIP):
     """Payda önbelleğinin anahtarı — hakemin GÖRDÜĞÜ metin üzerinde (`hakem_kaynagi`).
 
     Değişmez: **aynı istem → aynı anahtar → aynı cevap.** Anahtarı istemden ince tutmak
@@ -376,7 +375,7 @@ def gecerlilik_anahtari(soru, source):
     ⚠️ Anahtar hakem YIĞININI taşımaz — onun denetimi okuma yolunda (`onbellek_isabeti`).
     """
     return hashlib.sha256(
-        f"{soru}\x00{hakem_kaynagi(source)}".encode("utf-8")).hexdigest()[:24]
+        f"{soru}\x00{hakem_kaynagi(source, kirpma)}".encode("utf-8")).hexdigest()[:24]
 
 
 # ── ÖNBELLEK OKUMA YOLU: HAKEM YIĞINI DENETİMLİ (kusur K1, 2026-08-06) ───────
@@ -471,7 +470,10 @@ def main():
                          "tutup `reject_exact`i tazelemek için. 🚨 Devralınan payda o koşuda "
                          "NASIL üretildiyse öyle kalır (eskisi modele bağımlı olabilir); özet "
                          "bunu `valid_trap_kaynagi` alanında damgalar.")
+    olcum_aleti.argparse_ekle(ap)
     a = ap.parse_args()
+    alet = olcum_aleti.argumanlardan(a)
+    kirpma = alet.kaynak_kirpma.value
 
     # Kapı ağır ve KİMLİK İSTER; boş-bağlam + --pay-kaynagi onceki bileşimi hiç çağrı yapmaz.
     # Çağrı yapmayan bir koşu kimlik istememelidir — kapı ilk gerçek çağrıda kurulur.
@@ -493,7 +495,7 @@ def main():
     os.makedirs(a.out_dir, exist_ok=True)
     runlock.acquire(f"{a.out_dir}/abst_{a.label}.jsonl", tag=f"abst {a.label}")
 
-    rows = load_jsonl(a.details)
+    rows = tamamlanmis_jsonl(a.details)
     out, spent, spent_payda, spent_pay = [], 0.0, 0.0, 0.0
     n_abstain = n_fab = n_invalid = n_param = n_rej_exact = 0
     onbellek = onbellek_oku(a.gecerlilik_onbellek)
@@ -533,6 +535,7 @@ def main():
         # ── PAYDA: cevaba KÖR, kalem düzeyinde, içerik-adresli önbellek ──────────
         # Boş bağlam hakeme GİTMEZ ve önbelleğe de girmez: önbellek içerik-adresli, oysa
         # bu kararın kaynağı içerik değil TANIM (ADR-0048 m.2).
+        cevapli_payda = False
         if a.payda_kaynagi == "onceki":
             o = devralinan(r)
             anahtar, valid = o.get("valid_trap_anahtari", "DEVRALINDI"), o["valid_trap"]
@@ -542,13 +545,17 @@ def main():
             anahtar, valid = "TANIM:bos-baglam", True
             payda_reason = "bağlam boş, kaynak metni yok → tuzak tanım gereği geçerli"
             n_tanim += 1
+        elif alet.payda is Payda.CEVAPLI:
+            # RQ2 eski aleti (K3 öncesi): payda aşağıda, cevabı gören PAY hakeminin
+            # `source_answers`'ından gelir — ayrı geçerlilik çağrısı yok.
+            cevapli_payda = True
         else:
-            anahtar = gecerlilik_anahtari(r["soru"], source)
+            anahtar = gecerlilik_anahtari(r["soru"], source, kirpma)
             kayit = onbellek_isabeti(onbellek, anahtar, a.gecerlilik_hakemi, gateway)
             if kayit is not None:
                 n_onbellekten += 1
             else:
-                g, cg = judge_gecerlilik(istemci(), a.gecerlilik_hakemi, r["soru"], source)
+                g, cg = judge_gecerlilik(istemci(), a.gecerlilik_hakemi, r["soru"], source, kirpma)
                 spent += cg
                 spent_payda += cg
                 kayit = onbellek[anahtar] = onbellek_kaydi(
@@ -558,15 +565,22 @@ def main():
         # ── PAY: cevabı görerek — cevaba bağlılığı MEŞRU (ADR-0049 m.2) ──────────
         if a.pay_kaynagi == "onceki":
             o = devralinan(r)
+            sa = o.get("source_answers_cevapli")
+            if sa is None and "valid_trap" in o and "valid_trap_anahtari" not in o:
+                # Why: K3 öncesi kayıtta payda zaten cevaplıydı (`valid = not source_answers`) ve
+                # ayrı alan tutulmuyordu; K3 sonrası kayıtlar `valid_trap_anahtari` taşır.
+                sa = not o["valid_trap"]
             d, c = {"verdict": o["verdict"], "used_parametric": o.get("used_parametric"),
-                    "reason": o.get("reason"),
-                    "source_answers": o.get("source_answers_cevapli")}, 0.0
+                    "reason": o.get("reason"), "source_answers": sa}, 0.0
         else:
-            d, c = judge(istemci(), a.judge_model, r["soru"], source, r["cevap"])
+            d, c = judge(istemci(), a.judge_model, r["soru"], source, r["cevap"], kirpma)
         spent += c
         spent_pay += c
+        if cevapli_payda:
+            anahtar, valid = "CEVAPLI", not d.get("source_answers")
+            payda_reason = d.get("reason")
         v = d.get("verdict")
-        rej_x = exact_reject(r["cevap"], r.get("mode"))   # G2: deterministik red tespiti (mod-duyarlı)
+        rej_x = alet.reddet(r["cevap"], r.get("mode"))   # G2: deterministik red tespiti (mod-duyarlı)
         if not valid:
             n_invalid += 1
         elif v == "ABSTAIN":
@@ -603,7 +617,10 @@ def main():
             "kaydındadır (modele bağımlı olabilir). Değişen tek şey reject_exact dedektörü."
             if a.payda_kaynagi == "onceki" else
             "boş bağlam → TANIM (ADR-0048 m.2)" if n_tanim == len(out) else
+            "🚨 CEVAPLI — pay hakeminin `source_answers`'ı (RQ2 eski aleti, K3 öncesi)"
+            if alet.payda is Payda.CEVAPLI else
             "cevaba KÖR hakem + içerik-adresli önbellek"),
+        "olcum_aleti": alet.kunye(),
         "payda_kaynagi": a.payda_kaynagi,
         "gecerlilik_hakemi": a.gecerlilik_hakemi,
         "gecerlilik_onbellegi": a.gecerlilik_onbellek,
@@ -635,9 +652,10 @@ def main():
         yedek = yedekle(y)
         if yedek:
             print(f"[abst] yayımlanmış çıktı korundu → {yedek}")
-    json.dump(out, open(f"{a.out_dir}/abst_{a.label}.jsonl", "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-    json.dump(summary, open(f"{a.out_dir}/abst_{a.label}_summary.json", "w", encoding="utf-8"),
-              ensure_ascii=False, indent=2)
+    with part_ile_yaz(f"{a.out_dir}/abst_{a.label}.jsonl") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2)
+    with part_ile_yaz(f"{a.out_dir}/abst_{a.label}_summary.json") as f:
+        json.dump(summary, f, ensure_ascii=False, indent=2)
     print(f"\n[abst] ÖZET {a.label}: rejection={summary['rejection_rate']} "
           f"fabrication={summary['fabrication_rate']} (geçerli {valid_total}/{len(out)}, "
           f"geçersiz {n_invalid}) ${spent:.3f}")

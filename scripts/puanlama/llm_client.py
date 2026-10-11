@@ -35,6 +35,8 @@ ORTAM
 import json
 import os
 import re
+from dataclasses import dataclass
+from enum import Enum
 
 OPENROUTER_BASE = "https://openrouter.ai/api/v1"
 
@@ -146,17 +148,64 @@ def make_client():
     return OpenAI(api_key=oa_key, max_retries=_MAX_RETRIES, timeout=_TIMEOUT_S), "openai"
 
 
-def request_kwargs(model, seed=3407):
-    """Modele göre JSON modu + sağlayıcı pinleme. `create(**request_kwargs(m))` diye geçir."""
+def request_kwargs(model, seed=3407, saglayici=None):
+    """Modele göre JSON modu + sağlayıcı pinleme. `create(**request_kwargs(m))` diye geçir.
+    `saglayici` verilirse o sabitlenir; verilmezse LLM_PROVIDER_ORDER (eski komutlar)."""
     kw = {}
     if family(model) in JSON_MODE_FAMILIES:
         kw["response_format"] = {"type": "json_object"}
     if seed is not None:
         kw["seed"] = seed
-    order = [p.strip() for p in (os.environ.get("LLM_PROVIDER_ORDER") or "").split(",") if p.strip()]
+    order = [p.strip() for p in (saglayici or os.environ.get("LLM_PROVIDER_ORDER") or "").split(",")
+             if p.strip()]
     if order:
         kw["extra_body"] = {"provider": {"order": order, "allow_fallbacks": False}}
     return kw
+
+
+class Dusunme(Enum):
+    """Hakemin KENDİ düşünme modu (öznenin değil). Bağlayıcı mod F1.4'te seçilir (F0.6)."""
+    ACIK = "acik"
+    KAPALI = "kapali"
+
+
+# Hakemin kendi düşünme modu olan aileler: modun AÇIKÇA verilmesi zorunlu, varsayılan yok.
+# Sabit sağlayıcısı zorunlu aileler: yedek sağlayıcıya düşme kapalı, ortam değişkenine düşülmez.
+# ⚠️ DeepSeek V4.1 Flash'ın düşünme parametresi ve sabit sağlayıcısı F0.14'te birincil kaynaktan
+# doğrulanır; liste o gün gözden geçirilir.
+DUSUNME_AILELERI = {"deepseek"}
+SAGLAYICI_ZORUNLU_AILELER = {"deepseek"}
+
+
+@dataclass(frozen=True)
+class HakemKimligi:
+    """Hakem = model + sağlayıcı + hakemin düşünme modu. RQ2'nin hakem anahtarı ve F0.6'nın
+    DeepSeek geçişi bu nesnedir (ADR-0099 m.1). Geçersiz bileşim nesne kurulurken reddedilir —
+    yani ilk hakem çağrısından, dolayısıyla paradan önce."""
+    model: str
+    saglayici: str | None      # OpenRouter upstream; None → LLM_PROVIDER_ORDER (eski komutlar)
+    dusunme: Dusunme | None    # None yalnız düşünme modu olmayan ailede
+
+    def __post_init__(self):
+        aile = family(self.model)
+        if aile in DUSUNME_AILELERI and self.dusunme is None:
+            raise ValueError(f"{self.model}: hakemin düşünme modu açıkça verilmeli "
+                             f"(--hakem-dusunme acik|kapali; varsayılan yok, F0.6)")
+        if aile not in DUSUNME_AILELERI and self.dusunme is not None:
+            raise ValueError(f"{self.model}: bu ailenin düşünme modu yok; --hakem-dusunme verilmez")
+        if aile in SAGLAYICI_ZORUNLU_AILELER and not self.saglayici:
+            raise ValueError(f"{self.model}: sağlayıcı açıkça sabitlenmeli (--hakem-saglayici); "
+                             f"yedek sağlayıcıya düşme kapalı (tuzak 2.7)")
+
+    def istek_ekleri(self, seed=3407) -> dict:
+        kw = request_kwargs(self.model, seed=seed, saglayici=self.saglayici)
+        if self.dusunme is not None:
+            kw.setdefault("extra_body", {})["reasoning"] = {"enabled": self.dusunme is Dusunme.ACIK}
+        return kw
+
+    def kunye(self) -> dict:
+        return {"model": self.model, "saglayici": self.saglayici,
+                "dusunme": self.dusunme.value if self.dusunme else None}
 
 
 def note_provider(resp):

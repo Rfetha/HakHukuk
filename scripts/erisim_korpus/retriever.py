@@ -272,7 +272,7 @@ class Retriever:
         return Retriever(kayitlar, gomme, kunye, gomucu, cihaz)
 
     def getir(self, soru: str, k: int = 10,
-              yururluk: Yururluk = Yururluk.YALNIZ_YURURLUKTE) -> list[dict]:
+              yururluk: Yururluk = Yururluk.YALNIZ_YURURLUKTE, rrf_k: int = RRF_K) -> list[dict]:
         """Soruya en uygun k maddeyi sırayla döndür. Metin **kırpılmadan** gelir (K2).
 
         ⚠️ Varsayılan olarak YÜRÜRLÜKTEN KALKMIŞ maddeler elenir. Ölçüldü 2026-09-07:
@@ -285,7 +285,9 @@ class Retriever:
             raise SystemExit(f"[retriever] 🚫 gömme boyutu uyuşmuyor: sorgu {q.shape[0]}, "
                              f"indeks {self._gomme.shape[1]} — indeks {self._kunye['model']} "
                              f"ile kuruldu, başka bir modelle sorgulanıyor")
-        skor = rrf_birlestir([self._bm25.get_scores(soru.lower().split()), q @ self._gomme.T])
+        # `rrf_k`: ürün yolu RRF_K'yı (10) kullanır; ölçüm hattı RQ2'nin eski hâli (60) için verir.
+        skor = rrf_birlestir([self._bm25.get_scores(soru.lower().split()), q @ self._gomme.T],
+                             rrf_k=rrf_k)
         sirali = np.argsort(skor)[::-1]
         if yururluk is Yururluk.YALNIZ_YURURLUKTE:
             # ⚠️ Skoru -inf yapmak YETMEZ: yürürlükteki kayıt sayısı k'dan azsa mülga

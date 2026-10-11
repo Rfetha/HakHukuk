@@ -7,7 +7,8 @@
 #
 # Kullanım:
 #   bash scripts/yeniden_uret.sh                       # tam koşu (80 kalem)
-#   N_OVERRIDE=10 bash scripts/yeniden_uret.sh         # hızlı duman koşusu
+#   N_OVERRIDE=10 bash scripts/yeniden_uret.sh         # hızlı duman koşusu (4/5'te bilerek durur:
+#                                                      # 10 satır ≠ küme boyutu 80, F0.5 c — kütle üretilmez)
 #   ETIKET=deneme bash scripts/yeniden_uret.sh
 #
 # ⛔ Bu script REJİMİ SABİTLER. Buradaki hiçbir sayıyı komut satırından değiştirme —
@@ -83,6 +84,7 @@ python scripts/puanlama/groundedness.py \
 echo "=== 4/5 · manşet tablo ==="
 python scripts/puanlama/harness_tablo.py \
   --details "$DETAY" --gnd "$OUT_DIR/gnd_h1_${ETIKET}.jsonl" \
+  --kume data/eval/dev/core_hard.jsonl \
   --out "$OUT_DIR/harness_tablo.json"
 
 echo "=== 5/5 · sonuç ==="
