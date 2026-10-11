@@ -1,0 +1,79 @@
+{
+  "best_global_step": null,
+  "best_metric": null,
+  "best_model_checkpoint": null,
+  "epoch": 0.757396449704142,
+  "eval_steps": 100,
+  "global_step": 10,
+  "is_hyper_param_search": false,
+  "is_local_process_zero": true,
+  "is_world_process_zero": true,
+  "log_history": [
+    {
+      "epoch": 0.378698224852071,
+      "grad_norm": 2.700270175933838,
+      "learning_rate": 1e-05,
+      "log_odds_chosen": -1.5741164684295654,
+      "log_odds_ratio": -2.0710740089416504,
+      "logits/chosen": -1.9491233825683594,
+      "logits/rejected": -1.844224214553833,
+      "logps/chosen": -2.072227954864502,
+      "logps/rejected": -1.0365127325057983,
+      "loss": 2.639897918701172,
+      "nll_loss": 2.434553623199463,
+      "rewards/accuracies": 0.17499999701976776,
+      "rewards/chosen": -0.20722278952598572,
+      "rewards/margins": -0.10357153415679932,
+      "rewards/rejected": -0.1036512702703476,
+      "step": 5
+    },
+    {
+      "epoch": 0.757396449704142,
+      "grad_norm": 2.0280017852783203,
+      "learning_rate": 9.859057841617709e-06,
+      "log_odds_chosen": -1.5190215110778809,
+      "log_odds_ratio": -1.9872987270355225,
+      "logits/chosen": -1.9411489963531494,
+      "logits/rejected": -1.8133008480072021,
+      "logps/chosen": -1.9516998529434204,
+      "logps/rejected": -0.9853663444519043,
+      "loss": 2.489527130126953,
+      "nll_loss": 2.2925899028778076,
+      "rewards/accuracies": 0.16249999403953552,
+      "rewards/chosen": -0.19516998529434204,
+      "rewards/margins": -0.09663335978984833,
+      "rewards/rejected": -0.09853663295507431,
+      "step": 10
+    },
+    {
+      "epoch": 0.757396449704142,
+      "step": 10,
+      "total_flos": 0.0,
+      "train_loss": 2.5647125244140625,
+      "train_runtime": 487.6143,
+      "train_samples_per_second": 8.665,
+      "train_steps_per_second": 0.144
+    }
+  ],
+  "logging_steps": 5,
+  "max_steps": 70,
+  "num_input_tokens_seen": 0,
+  "num_train_epochs": 5,
+  "save_steps": 100,
+  "stateful_callbacks": {
+    "TrainerControl": {
+      "args": {
+        "should_epoch_stop": false,
+        "should_evaluate": false,
+        "should_log": false,
+        "should_save": false,
+        "should_training_stop": false
+      },
+      "attributes": {}
+    }
+  },
+  "total_flos": 0.0,
+  "train_batch_size": 1,
+  "trial_name": null,
+  "trial_params": null
+}

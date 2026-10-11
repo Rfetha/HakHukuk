@@ -1,0 +1,84 @@
+[abst] h2b_tgta_v1_h2b_k10: 80 tuzak cevap | pay kaynağı=onceki (hakem=openai/gpt-4o-mini) | payda hakemi=openai/gpt-4o (cevaba KÖR) | önbellek=/tmp/claude-1000/-home-ersoy-code-Hukuk-SLM/c3111024-bc14-4eab-b699-5ccb417f7fc9/scratchpad/onbellek_3500.json (423 kalem)
+  id= 0  ✓ABSTAIN       rej_exact=E  Verilen kaynakta mahkeme kararının sonuçları hakkında bilgi 
+  id= 1  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id= 2  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id= 3  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id= 4  ✓ABSTAIN       rej_exact=E  Verilen kaynakta el konulan gönderilerin ne olacağına dair b
+  id= 5  ✗FABRICATE     rej_exact=H  Model, kaynakta belirtilen maddeyi kullanarak soruya net bir
+  id= 6  ✗FABRICATE     rej_exact=H  Model, kaynak metinde yer alan bilgileri kullanarak soruya n
+  id= 7  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id= 8  —(geçersiz)    rej_exact=H  Model, kaynak metinlerde olmayan 'KAYNAK 10' ifadesini kulla
+  id= 9  ✓ABSTAIN       rej_exact=E  Verilen kaynakta zamanaşımına uğramış alacakların takas edil
+  id=10  ✗FABRICATE     rej_exact=H  Model, kaynak metinde yer alan bilgileri kullanarak soruya n
+  id=11  ✓ABSTAIN       rej_exact=E  Verilen kaynakta ruhsatsız inşaata elektrik bağlatma ile ilg
+  id=12  ✗FABRICATE     rej_exact=H  Kaynak metin, 50'den az işçi çalıştıran işyerlerinin İş Kanu
+  id=13  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=14  ✓ABSTAIN       rej_exact=E  Verilen kaynakta işverene başvurmamanın sonuçları hakkında b
+  id=15  ✗FABRICATE     rej_exact=H  Model, kaynakta bulunmayan bir bilgi ekleyerek menfaatlerin 
+  id=16  —(geçersiz)    rej_exact=H  Model, kaynakta yer alan bilgiyi doğru bir şekilde kullanara
+  id=17  ✓ABSTAIN       rej_exact=E  Verilen kaynakta işverenin işçiyi yanıltması durumunda işçin
+  id=18  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=19  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=20  ✓ABSTAIN       rej_exact=H  Verilen kaynakta tatil günleri hakkında doğrudan bir bilgi b
+  id=21  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bir bilgi ekleyerek soruya yanıt ver
+  id=22  ✓ABSTAIN       rej_exact=H  Verilen kaynakta gayrimenkul yönetimiyle ilgili kuralların d
+  id=23  —(geçersiz)    rej_exact=H  Model, kaynak metinde belirtilen bilgiyi doğru bir şekilde a
+  id=24  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=25  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bilgileri kullanarak kira bedelinin 
+  id=26  —(geçersiz)    rej_exact=H  Model, kaynak metinde belirtilen bilgiyi doğru bir şekilde a
+  id=27  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=28  ✗FABRICATE     rej_exact=H  Kaynak metin, eklentilerin ayıplı olması durumunda ana ürün 
+  id=29  ✓ABSTAIN       rej_exact=H  Verilen kaynakta cayma hakkının tanımı ve kapsamı açıkça bel
+  id=30  ✗FABRICATE     rej_exact=H  Model, kaynak metinde belirtilen alacak türlerini doğru bir 
+  id=31  ✓ABSTAIN       rej_exact=E  Verilen kaynakta 'toplu yapı' tanımı yer almamakta.
+  id=32  —(geçersiz)    rej_exact=H  Model, kaynakta yer alan bilgiyi doğru bir şekilde aktarmış 
+  id=33  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bir bilgi ekleyerek başvurunun kabul
+  id=34  ✓ABSTAIN       rej_exact=H  Verilen kaynakta Cumhuriyet savcılarının doğrudan soruşturma
+  id=35  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bir bilgi ile nafaka davalarının yar
+  id=36  ✓ABSTAIN       rej_exact=H  Verilen kaynakta kat mülkiyetine geçiş sürecine dair genel k
+  id=37  ✓ABSTAIN       rej_exact=H  Verilen kaynakta aile meclisinin kurulmasının zorunlu olup o
+  id=38  ✗FABRICATE     rej_exact=H  Kaynak metin, kamu kurumuna zarar vermediği durumlarda ceza 
+  id=39  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgiyi doğru bir şekilde akt
+  id=40  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=41  —(geçersiz)    rej_exact=H  Model, kaynakta belirtilen durumu net bir şekilde açıklamakt
+  id=42  ✓ABSTAIN       rej_exact=H  Verilen kaynakta ürün geri çağırma süreci düzenlenmiş, ancak
+  id=43  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=44  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=45  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=46  —(geçersiz)    rej_exact=H  Kaynak metin, yönetim planının zorunlu olmadığını belirtse d
+  id=47  ✓ABSTAIN       rej_exact=E  Verilen kaynakta organ alımı ile ilgili ceza düzenlemesi yok
+  id=48  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=49  ✓ABSTAIN       rej_exact=E  Verilen kaynakta abonelik sözleşmesinin sonlandırılması ve b
+  id=50  ✓ABSTAIN       rej_exact=H  Verilen kaynakta işverenin işçiye yaptığı harcamaları nasıl 
+  id=51  —(geçersiz)    rej_exact=E  verilen kaynakta bu bilgi yok
+  id=52  —(geçersiz)    rej_exact=H  Verilen kaynakta tutuklama kararının nasıl verileceği konusu
+  id=53  ✓ABSTAIN       rej_exact=E  Verilen kaynakta zincirleme suçlarda hangi mahkemenin yetkil
+  id=54  ✗FABRICATE     rej_exact=H  Model, kaynak metinde olmayan bilgileri ekleyerek soruya yan
+  id=55  —(geçersiz)    rej_exact=H  Kaynak metin, icra memurunun borçluya ödeme emri gönderme sü
+  id=56  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=57  —(geçersiz)    rej_exact=E  verilen kaynakta bu bilgi yok
+  id=58  ✓ABSTAIN       rej_exact=H  Verilen kaynakta silah bulundurmanın sonuçları belirtilmiş, 
+  id=59  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=60  ✓ABSTAIN       rej_exact=E  Verilen kaynakta istinaf başvurusu için gerekli belgeler hak
+  id=61  ✗FABRICATE     rej_exact=H  Model, kaynakta yer alan bilgiyi kullanarak soruya net bir c
+  id=62  —(geçersiz)    rej_exact=H  Verilen kaynakta, kat malikinin ortak giderleri ödememesi du
+  id=63  ✓ABSTAIN       rej_exact=E  Verilen kaynakta emziren kadın işçilerin süt vermesi için sü
+  id=64  ✓ABSTAIN       rej_exact=H  Verilen kaynakta temyiz dilekçesinin nasıl yapılacağına dair
+  id=65  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=66  ✓ABSTAIN       rej_exact=H  Verilen kaynakta tüketici hakem heyetinin oluşumunun sağlana
+  id=67  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=68  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgiyi kullanarak soruya net
+  id=69  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgiyi doğru bir şekilde kul
+  id=70  ✓ABSTAIN       rej_exact=H  Verilen kaynakta borçlunun mal varlığına ulaşma yöntemleri a
+  id=71  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=72  ✗FABRICATE     rej_exact=H  Verilen kaynaklarda engelli işçi çalıştırılma oranı hesaplam
+  id=73  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=74  ✗FABRICATE     rej_exact=H  Model, kaynakta belirtilmeyen özel durumlar ekleyerek iddial
+  id=75  ✗FABRICATE     rej_exact=H  Model, yalnızca sulh ile davanın sona ermesini açıklamakta, 
+  id=76  ✗FABRICATE     rej_exact=H  Model, kaynakta bulunmayan bir maddeye atıfta bulunarak yanı
+  id=77  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=78  ✓ABSTAIN       rej_exact=H  Verilen kaynakta borçlunun taşınır mallarının haczedilebilme
+  id=79  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+[abst] yayımlanmış çıktı korundu → /tmp/claude-1000/-home-ersoy-code-Hukuk-SLM/c3111024-bc14-4eab-b699-5ccb417f7fc9/scratchpad/kirpma/3500/k10/abst_h2b_tgta_v1_h2b_k10.jsonl.ONCEKI-20261011
+
+[abst] ÖZET h2b_tgta_v1_h2b_k10: rejection=0.723 fabrication=0.277 (geçerli 65/80, geçersiz 15) $0.000

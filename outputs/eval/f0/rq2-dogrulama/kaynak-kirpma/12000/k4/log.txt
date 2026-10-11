@@ -1,0 +1,84 @@
+[abst] h2b_tgta_v1_h2b_k4: 80 tuzak cevap | pay kaynağı=onceki (hakem=openai/gpt-4o-mini) | payda hakemi=openai/gpt-4o (cevaba KÖR) | önbellek=/tmp/claude-1000/-home-ersoy-code-Hukuk-SLM/c3111024-bc14-4eab-b699-5ccb417f7fc9/scratchpad/onbellek_12000.json (160 kalem)
+  id= 0  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id= 1  ✓ABSTAIN       rej_exact=E  Verilen kaynakta beraat kararlarının temyiz edilebilirliği i
+  id= 2  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id= 3  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id= 4  ✓ABSTAIN       rej_exact=E  Verilen kaynaklarda el konulan gönderilerin ne olacağına dai
+  id= 5  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id= 6  ✓ABSTAIN       rej_exact=H  Verilen kaynakta ihbar sonrası süreçle ilgili bilgi var, anc
+  id= 7  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu konuya dair bir düzenleme bulunmamaktadı
+  id= 8  ✓ABSTAIN       rej_exact=H  Verilen kaynakta evlât edinme şartları hakkında genel bir bi
+  id= 9  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=10  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bir bilgi ekleyerek tedbir kararının
+  id=11  ✓ABSTAIN       rej_exact=E  Verilen kaynaklarda ruhsatsız inşaata elektrik bağlatma ile 
+  id=12  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu konuya dair bir düzenleme yok.
+  id=13  ✗FABRICATE     rej_exact=H  Cevap, kaynakta belirtilen bir yıl süreyle bakım şartını doğ
+  id=14  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=15  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=16  —(geçersiz)    rej_exact=H  Model, kaynakta yer alan bilgiyi doğru bir şekilde kullanara
+  id=17  ✓ABSTAIN       rej_exact=H  Verilen kaynakta işverenin işçiyi yanıltması durumunda işçin
+  id=18  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=19  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=20  ✗FABRICATE     rej_exact=H  Model, kaynakta belirtilen tatil günlerini yıllık izinle ili
+  id=21  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bir bilgi ekleyerek sözleşmedeki par
+  id=22  ✗FABRICATE     rej_exact=H  Model, kaynak metinde yer alan bilgileri kullanarak soruya n
+  id=23  —(geçersiz)    rej_exact=H  Modelin cevabı, kaynak metinde belirtilen durumu doğru bir ş
+  id=24  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=25  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bilgileri kullanarak kira bedelinin 
+  id=26  —(geçersiz)    rej_exact=H  Verilen kaynakta itiraz süreci hakkında bilgi var, ancak det
+  id=27  ✗FABRICATE     rej_exact=H  Model, mahkeme kararlarının bağlayıcılığına dair bilgi verer
+  id=28  ✗FABRICATE     rej_exact=H  Model, kaynak metinde yer alan bilgileri kullanarak soruya n
+  id=29  ✓ABSTAIN       rej_exact=H  Verilen kaynakta cayma hakkının genel bir tanımı yoktur.
+  id=30  ✗FABRICATE     rej_exact=H  Model, kaynak metinde belirtilen alacak türlerini doğru bir 
+  id=31  ✓ABSTAIN       rej_exact=E  Verilen kaynakta toplu yapının tanımı yer almamaktadır.
+  id=32  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgiyi doğru bir şekilde akt
+  id=33  ✗FABRICATE     rej_exact=H  KAYNAK 2, başvurunun kabul edilmesi durumunda ne olacağını b
+  id=34  ✓ABSTAIN       rej_exact=H  Verilen kaynakta yalnızca belirli suçlar için doğrudan soruş
+  id=35  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=36  ✗FABRICATE     rej_exact=H  Model, kaynak metinde yer almayan kat mülkiyetine geçiş süre
+  id=37  ✓ABSTAIN       rej_exact=H  Verilen kaynakta aile meclisinin kurulmasının zorunlu olup o
+  id=38  ✗FABRICATE     rej_exact=H  Model, kaynak metinde belirtilen ceza aralığını doğru bir şe
+  id=39  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgiyi doğru bir şekilde akt
+  id=40  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=41  ✓ABSTAIN       rej_exact=H  Verilen kaynakta ilamların icrası ile ilgili zorla yapılma d
+  id=42  ✓ABSTAIN       rej_exact=H  Verilen kaynak, ürün geri çağırma süreçlerini düzenliyor anc
+  id=43  ✓ABSTAIN       rej_exact=H  Verilen kaynakta suçun nitelendirilmesi nedeniyle iddianamey
+  id=44  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=45  ✓ABSTAIN       rej_exact=E  Verilen kaynakta mahkeme kararlarının nasıl yayınlandığına d
+  id=46  —(geçersiz)    rej_exact=H  Kaynak metin, kat mülkiyetine geçişte yönetim planının zorun
+  id=47  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=48  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=49  ✓ABSTAIN       rej_exact=E  Verilen kaynaklarda abonelik iptali ile ilgili düzenleme bul
+  id=50  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bir bilgi ekleyerek soruya iddialı b
+  id=51  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=52  —(geçersiz)    rej_exact=H  Verilen kaynakta tutuklama kararının nasıl verileceğine dair
+  id=53  ✓ABSTAIN       rej_exact=E  Verilen kaynakta zincirleme suçlarla ilgili spesifik bir düz
+  id=54  ✓ABSTAIN       rej_exact=E  Verilen kaynakta işten ayrılıp işe dönme şartları hakkında b
+  id=55  —(geçersiz)    rej_exact=H  Model, kaynak metinde belirtilen süreyi doğru bir şekilde ak
+  id=56  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=57  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgileri kullanarak soruyu y
+  id=58  ✗FABRICATE     rej_exact=H  Model, kaynak metinde yer alan bilgiyi kullanarak soruya net
+  id=59  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=60  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=61  ✗FABRICATE     rej_exact=H  Model, kaynakta belirtilen itiraz hakkını doğru bir şekilde 
+  id=62  ✓ABSTAIN       rej_exact=H  Verilen kaynakta, kat maliklerinin ortak giderleri ödememesi
+  id=63  ✓ABSTAIN       rej_exact=E  Verilen kaynakta emziren kadın işçilerin süt vermesi için sü
+  id=64  ✗FABRICATE     rej_exact=H  Model, kaynak metinde yer alan bilgileri kullanarak temyiz d
+  id=65  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=66  ✗FABRICATE     rej_exact=H  Kaynak metin, tüketici hakem heyetinin oluşumunun sağlanamam
+  id=67  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=68  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgiyi doğru bir şekilde kul
+  id=69  —(geçersiz)    rej_exact=H  Model, kaynak metinde belirtilen bilgiyi doğru bir şekilde k
+  id=70  ✗FABRICATE     rej_exact=H  Model, kaynakta olmayan bilgi ekleyerek borçlu eşin mal varl
+  id=71  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=72  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=73  ✓ABSTAIN       rej_exact=H  Kaynak metin, zorlama hapsinin süresini belirtiyor ancak sor
+  id=74  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=75  ✓ABSTAIN       rej_exact=H  Kaynak metin, mahkemenin davayı sona erdirme sürecini düzenl
+  id=76  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=77  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=78  ✓ABSTAIN       rej_exact=H  Verilen kaynakta borçlunun taşınır mallarının haczedilebilme
+  id=79  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+[abst] yayımlanmış çıktı korundu → /tmp/claude-1000/-home-ersoy-code-Hukuk-SLM/c3111024-bc14-4eab-b699-5ccb417f7fc9/scratchpad/kirpma/12000/k4/abst_h2b_tgta_v1_h2b_k4.jsonl.ONCEKI-20261011
+
+[abst] ÖZET h2b_tgta_v1_h2b_k4: rejection=0.739 fabrication=0.261 (geçerli 69/80, geçersiz 11) $0.000
