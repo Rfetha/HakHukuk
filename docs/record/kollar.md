@@ -32,6 +32,10 @@ Diskte tutulan: `tgta_v1` (yayımlanacak) · `tg_v1` (aktif kol).
 
 **Asıl artefakt adaptördür** (`outputs/<kol>/`, ~114 MB) — o silinmez.
 
+**Yedek (2026-10-11, F0.1, [ADR-0091](../adr/kararlar-0064-0085.md#adr-0091)):** `tg_v1`, `ta_v1` ve eski
+git geçmişinin bundle'ı özel `Rfetha/HakHukuk-yedek` deposunda (commit `2e751e75`); depodan indirilen 12
+dosyanın `sha256`'sı kaynakla birebir (`SHA256SUMS` depoda).
+
 ### 2026-09-13 — depo temizliği, 85 GB → 28 GB (~57 GB silindi)
 
 Gerekçe [ADR-0075](../adr/kararlar-0064-0085.md#adr-0075) m.3'tür: ADR-0027'nin
