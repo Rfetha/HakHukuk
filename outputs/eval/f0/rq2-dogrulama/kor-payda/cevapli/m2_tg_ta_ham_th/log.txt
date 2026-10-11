@@ -1,0 +1,74 @@
+[abst] m2_tg_ta_ham_th: 70 tuzak cevap | pay kaynağı=onceki (hakem=openai/gpt-4o-mini) | payda hakemi=openai/gpt-4o (cevaba KÖR) | önbellek=/tmp/claude-1000/-home-ersoy-code-Hukuk-SLM/c3111024-bc14-4eab-b699-5ccb417f7fc9/scratchpad/onbellek_3500.json (423 kalem)
+  id= 0  —(geçersiz)    rej_exact=H  Model, kaynak metinde belirtilen durumu net bir şekilde ifad
+  id= 1  ✓ABSTAIN       rej_exact=E  Verilen kaynakta ayıplı ürün kullanımıyla ilgili bilgi yok.
+  id= 2  ✓ABSTAIN       rej_exact=H  Verilen kaynakta ret kararına itiraz hakkı ile ilgili bilgi 
+  id= 3  ✓ABSTAIN       rej_exact=H  Verilen kaynakta evlendirme memurunun yetkileri hakkında bil
+  id= 4  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgileri özetleyerek net bir
+  id= 5  ✓ABSTAIN       rej_exact=H  Verilen kaynakta yasal danışman atanması ile ilgili bir bilg
+  id= 6  —(geçersiz)    rej_exact=H  Model, kaynak metindeki bilgileri özetleyerek soruyu net bir
+  id= 7  ✓ABSTAIN       rej_exact=H  Verilen kaynakta bu bilgi yok.
+  id= 8  ✓ABSTAIN       rej_exact=H  verilen kaynakta bu bilgi yok
+  id= 9  ✓ABSTAIN       rej_exact=H  Verilen kaynakta işyerlerinin faaliyet konularının kanuna et
+  id=10  ✓ABSTAIN       rej_exact=H  Bu madde akademik unvan almayı düzenlemiyor.
+  id=11  —(geçersiz)    rej_exact=H  Verilen kaynakta devlete ait yargılama giderlerinin nasıl ye
+  id=12  —(geçersiz)    rej_exact=H  Verilen kaynakta kazanç paylaşımına dair genel bir bilgi var
+  id=13  ✓ABSTAIN       rej_exact=H  Bu madde bu konuyu düzenlemiyor.
+  id=14  ✓ABSTAIN       rej_exact=E  Verilen kaynakta ücretin ödenmemesi durumuna dair bir bilgi 
+  id=15  ✓ABSTAIN       rej_exact=H  Verilen kaynakta kiracının icra takibinden ne zaman haberdar
+  id=16  ✓ABSTAIN       rej_exact=E  Verilen kaynakta sigorta bedeli ile ilgili doğrudan bir bilg
+  id=17  ✓ABSTAIN       rej_exact=E  Bu madde müdafilik şartlarını düzenlemiyor.
+  id=18  ✗FABRICATE     rej_exact=H  Kaynak metinde ticari defterlerin tamamının sunulup sunulmay
+  id=19  ✓ABSTAIN       rej_exact=H  Verilen kaynakta aile vakfı kurmak için harcamalar hakkında 
+  id=20  ✓ABSTAIN       rej_exact=H  Verilen kaynakta vakıf yönetiminde değişiklik yapma gereklil
+  id=21  ✓ABSTAIN       rej_exact=H  Verilen kaynakta borçlu olan eşin mal varlığına ulaşma yönte
+  id=22  ✓ABSTAIN       rej_exact=H  Verilen kaynakta mirasın reddi sonrası mirasçının sorumluluğ
+  id=23  ✓ABSTAIN       rej_exact=H  Verilen kaynakta borçlunun kimlik bilgilerini verme zorunlul
+  id=24  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=25  ✓ABSTAIN       rej_exact=H  Bu madde, birine ait malların bırakılması durumunu düzenlemi
+  id=26  ✓ABSTAIN       rej_exact=H  Verilen kaynakta yetkili makamın aldığı tedbirler hakkında b
+  id=27  ✓ABSTAIN       rej_exact=H  Verilen kaynakta bu bilgi yok.
+  id=28  ✗FABRICATE     rej_exact=H  Kaynak metin, ödünç alınan paranın geri verilmesi için tarih
+  id=29  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=30  ✗FABRICATE     rej_exact=H  Kaynak metinde borçlunun zamanında ödeme yapması durumunda n
+  id=31  ✓ABSTAIN       rej_exact=E  Verilen kaynakta yapı ruhsatı ile ilgili bilgi yoktur.
+  id=32  ✗FABRICATE     rej_exact=H  Kaynak metinde alacağın terkini hakkında bilgi yok, model ke
+  id=33  ✓ABSTAIN       rej_exact=E  Verilen kaynakta mağdurun yaşına dair bir bilgi bulunmamakta
+  id=34  ✓ABSTAIN       rej_exact=H  Verilen kaynakta bu bilgi yok.
+  id=35  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer alan bilgiyi kullanarak soruya net
+  id=36  —(geçersiz)    rej_exact=H  Verilen kaynakta ortakların karar alırken dikkat etmesi gere
+  id=37  ✗FABRICATE     rej_exact=H  Kaynak metinde garanti belgesi olmadan mal satışıyla ilgili 
+  id=38  ✓ABSTAIN       rej_exact=H  Verilen kaynakta bu bilgi yok.
+  id=39  ✓ABSTAIN       rej_exact=E  Verilen kaynakta 'malvarlığımın terki' ile ilgili bir bilgi 
+  id=40  ✓ABSTAIN       rej_exact=E  Verilen kaynakta koruma tedbirleri ile ilgili bilgi yok.
+  id=41  —(geçersiz)    rej_exact=H  Verilen kaynakta faiz oranını belirleyen kişi veya kurum hak
+  id=42  ✓ABSTAIN       rej_exact=E  Verilen kaynakta iş müfettişlerinin iş yerini durdurma yetki
+  id=43  ✓ABSTAIN       rej_exact=E  verilen kaynakta bu bilgi yok
+  id=44  —(geçersiz)    rej_exact=E  Model, kaynak metinde belirtilen durumları kullanarak soruya
+  id=45  ✓ABSTAIN       rej_exact=E  Verilen kaynakta konfederasyonların tüzükleri hakkında bilgi
+  id=46  ✓ABSTAIN       rej_exact=H  Verilen kaynakta bu bilgi yok.
+  id=47  —(geçersiz)    rej_exact=H  Verilen kaynakta vasiyetname ile yapılacak tasarrufun sınırl
+  id=48  —(geçersiz)    rej_exact=H  Verilen kaynakta yedek mirasçı atamanın zorunlu olup olmadığ
+  id=49  ✓ABSTAIN       rej_exact=H  Verilen kaynakta sözleşmede ceza olmaması durumunda ne yapıl
+  id=50  ✓ABSTAIN       rej_exact=H  Verilen kaynakta el koyma işlemi ile ilgili bilgi yok.
+  id=51  ✓ABSTAIN       rej_exact=E  Verilen kaynakta konutta hacizle ilgili özel bir durum düzen
+  id=52  ✓ABSTAIN       rej_exact=H  Verilen kaynakta hâkimin kural koyma süreci ile ilgili bilgi
+  id=53  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=54  ✓ABSTAIN       rej_exact=H  Verilen kaynakta bu bilgi yok.
+  id=55  ✓ABSTAIN       rej_exact=E  Verilen kaynakta tüketici ödülleri ile ilgili bilgi yok.
+  id=56  ✓ABSTAIN       rej_exact=E  Bu madde kamu görevlisi tanımını düzenlemiyor.
+  id=57  ✓ABSTAIN       rej_exact=H  Verilen kaynakta bu bilgi yok.
+  id=58  ✓ABSTAIN       rej_exact=E  Verilen kaynakta ayıplı parçalar veya ayrı parça satışları i
+  id=59  —(geçersiz)    rej_exact=H  Model, kaynak metinde yer almayan 'HUKUK MUHAKEMELERİ KANUNU
+  id=60  —(geçersiz)    rej_exact=H  Verilen kaynakta kira bedelinin ödenip ödenmeyeceği konusund
+  id=61  ✓ABSTAIN       rej_exact=H  Verilen kaynakta tanıkların kimler olduğu bilgisi yok.
+  id=62  ✓ABSTAIN       rej_exact=H  Verilen kaynakta konkordato komiseri hakkında şikâyetin sonu
+  id=63  ✓ABSTAIN       rej_exact=H  Verilen kaynakta aile yurdunun kurulmasına izin verme konusu
+  id=64  ✓ABSTAIN       rej_exact=E  Verilen kaynakta harç ve masrafların sorumluluğuna dair bir 
+  id=65  —(geçersiz)    rej_exact=H  Model, kaynakta belirtilen yasal bildirim süresine atıfta bu
+  id=66  ✗FABRICATE     rej_exact=H  Kaynak metin, ceza alacak kişi açısından dikkate alınması ge
+  id=67  ✓ABSTAIN       rej_exact=H  Bu madde tutukluluğun devamı veya serbest bırakılması konusu
+  id=68  ✓ABSTAIN       rej_exact=E  Verilen kaynakta bu bilgi yok.
+  id=69  ✓ABSTAIN       rej_exact=E  Verilen kaynakta rekabet yasağı veya işverenin zararı ile il
+[abst] yayımlanmış çıktı korundu → /tmp/claude-1000/-home-ersoy-code-Hukuk-SLM/c3111024-bc14-4eab-b699-5ccb417f7fc9/scratchpad/korpayda/cevapli/m2_tg_ta_ham_th/abst_m2_tg_ta_ham_th.jsonl.ONCEKI-20261011
+
+[abst] ÖZET m2_tg_ta_ham_th: rejection=0.893 fabrication=0.107 (geçerli 56/70, geçersiz 14) $0.000

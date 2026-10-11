@@ -34,6 +34,7 @@
 | `faz0/` | Faz 0 ölçüm zinciri — `f01…f11`, `a1-*` |
 | `gorev/` | Görev turları — `g1…g24` |
 | `hp/` | `hp` hattı — hakem paneli, rakip havuzu |
+| `f0/` | Checkpoint 1 · F0 (2026-10) — `rq2-dogrulama` (RQ2 anahtarlarının yeniden puanlaması, #76). `faz0/` ile karışmasın: o Eylül 2026'nın Faz 0'ı |
 | `_artefakt/` | ölçüm dışı artefaktlar (düz kaldı) |
 
 Bir koşunun grubu adının önekinden bellidir (`g22-…` → `gorev/`, `cp3d-…` → `cp/`, `hp-…` → `hp/`).

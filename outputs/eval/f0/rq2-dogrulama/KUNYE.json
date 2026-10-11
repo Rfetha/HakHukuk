@@ -1,0 +1,140 @@
+{
+  "olcum": "F0.5 (b) — RQ2'nin hakeme giden anahtarlarının doğrulaması (eski alet ↔ düzeltilmiş alet)",
+  "tarih": "2026-10-11",
+  "git_dal": "talk-think",
+  "git_sha_taban": "ae9138d",
+  "not_kod": "commit edilmemiş çalışma ağacı (F0 P2); anahtarlar scripts/puanlama/olcum_aleti.py",
+  "kor_payda": {
+    "komut": "score_abstention.py --pay-kaynagi onceki --payda {cevapli|kor} --kaynak-kirpma 3500 --source-field referans --gecerlilik-onbellek <valid_trap_kor_onbellek.json kopyası>; girdi abst = *.ONCEKI-M2PAYDA",
+    "api_anahtari": "verilmedi — hakem çağrısı imkânsızdı",
+    "sonuc": {
+      "cevapli/m2_tg_v1_th": {
+        "valid_traps": 55,
+        "rejection_rate": 0.873,
+        "judge_cost_usd": 0.0,
+        "gecerlilik_onbellekten": 0
+      },
+      "cevapli/m2_tg_ta_ham_th": {
+        "valid_traps": 56,
+        "rejection_rate": 0.893,
+        "judge_cost_usd": 0.0,
+        "gecerlilik_onbellekten": 0
+      },
+      "kor/m2_tg_v1_th": {
+        "valid_traps": 66,
+        "rejection_rate": 0.833,
+        "judge_cost_usd": 0.0,
+        "gecerlilik_onbellekten": 70
+      },
+      "kor/m2_tg_ta_ham_th": {
+        "valid_traps": 66,
+        "rejection_rate": 0.833,
+        "judge_cost_usd": 0.0,
+        "gecerlilik_onbellekten": 70
+      }
+    },
+    "cipa": "sprint2-olcum/karar3-m2-payda/m2_payda_2026-08-06.json: τ_g 55/0,873 · tgta 56/0,893 (eski) ↔ 66/0,833 · 66/0,833"
+  },
+  "kaynak_kirpma": {
+    "komut": "score_abstention.py --pay-kaynagi onceki --kaynak-kirpma {3500|12000} --source-field context_shown --gecerlilik-onbellek <valid_trap_kor_onbellek(.json|_clip12000.json) kopyası>",
+    "api_anahtari": "verilmedi — hakem çağrısı imkânsızdı",
+    "sonuc": {
+      "3500/k4": {
+        "valid_traps": 68,
+        "invalid_traps": 12,
+        "rejection_rate": 0.735,
+        "judge_cost_usd": 0.0,
+        "gecerlilik_onbellekten": 80
+      },
+      "3500/k10": {
+        "valid_traps": 65,
+        "invalid_traps": 15,
+        "rejection_rate": 0.723,
+        "judge_cost_usd": 0.0,
+        "gecerlilik_onbellekten": 80
+      },
+      "12000/k4": {
+        "valid_traps": 69,
+        "invalid_traps": 11,
+        "rejection_rate": 0.739,
+        "judge_cost_usd": 0.0,
+        "gecerlilik_onbellekten": 80
+      },
+      "12000/k10": {
+        "valid_traps": 62,
+        "invalid_traps": 18,
+        "rejection_rate": 0.726,
+        "judge_cost_usd": 0.0,
+        "gecerlilik_onbellekten": 80
+      }
+    },
+    "cipa": "faz0/f05-source-clip/SONUC.md: 3500 → k4 68/12 0,735 · k10 65/15 0,723 ; 12000 → k4 69/11 0,739 · k10 62/18 0,726"
+  },
+  "hakem_ve_altin_kirpma": {
+    "komut": "groundedness.py --details outputs/eval/faz0/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl --mode data --judge-model openai/gpt-4o-mini --hakem-saglayici OpenAI --altin-kirpma {3500|kirpmasiz}; LLM_GATEWAY=openrouter; OPENAI_BUDGET_USD=0.10",
+    "detay_sha256": "e0536489d876d9aec5da33c32f692f252ce7c6c239aee4daa5d22075a08a0aad",
+    "sonuc": {
+      "tekrar": {
+        "n": 80,
+        "n_puanli": 76,
+        "n_sifir_iddia": 4,
+        "n_hakem_hata": 0,
+        "faithfulness_macro": 0.8314,
+        "faithfulness_micro": 0.8226,
+        "total_claims": 265,
+        "judge_cost_usd": 0.0412,
+        "judge_providers": [
+          "OpenAI"
+        ],
+        "olcum_aleti": {
+          "dedektor": "adr0061",
+          "sifir_iddia": "sifir-puan",
+          "a1_tanimi": "cevaplanan",
+          "kaynak_kirpma": 12000,
+          "payda": "kor",
+          "altin_kirpma": "3500"
+        },
+        "hakem": {
+          "model": "openai/gpt-4o-mini",
+          "saglayici": "OpenAI",
+          "dusunme": null
+        }
+      },
+      "kirpmasiz": {
+        "n": 80,
+        "n_puanli": 76,
+        "n_sifir_iddia": 4,
+        "n_hakem_hata": 0,
+        "faithfulness_macro": 0.838,
+        "faithfulness_micro": 0.8284,
+        "total_claims": 268,
+        "judge_cost_usd": 0.0414,
+        "judge_providers": [
+          "OpenAI"
+        ],
+        "olcum_aleti": {
+          "dedektor": "adr0061",
+          "sifir_iddia": "sifir-puan",
+          "a1_tanimi": "cevaplanan",
+          "kaynak_kirpma": 12000,
+          "payda": "kor",
+          "altin_kirpma": "kirpmasiz"
+        },
+        "hakem": {
+          "model": "openai/gpt-4o-mini",
+          "saglayici": "OpenAI",
+          "dusunme": null
+        }
+      }
+    },
+    "kutle_kume": "data/eval/dev/core_hard.jsonl (kutle.py, GUNCEL alet)",
+    "kutle": {
+      "kayit_2026-09-06": 0.8011,
+      "tekrar": 0.7836,
+      "kirpmasiz": 0.7898
+    },
+    "istek_govdesi": "HEAD'deki groundedness.py ile bugünkü kodun 80 kalemdeki hakem isteği bayt bayt aynı (2026-10-11'de sınandı)"
+  },
+  "hakem_maliyeti_usd_ozetlerden": 0.0826,
+  "gpu_usd": 0.0
+}

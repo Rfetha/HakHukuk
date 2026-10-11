@@ -1,0 +1,60 @@
+{
+    "kilit_yolu": "/root/configs/egitim_ortami.yaml",
+    "cwd": "/root",
+    "surum": {
+        "torch": "2.10.0",
+        "triton": "3.6.0",
+        "transformers": "5.10.2",
+        "peft": "0.19.1",
+        "trl": "0.24.0",
+        "unsloth": "2026.6.1",
+        "unsloth_zoo": "2026.6.1",
+        "accelerate": "1.13.0",
+        "bitsandbytes": "0.49.2",
+        "datasets": "4.3.0",
+        "einops": "0.8.2",
+        "fla-core": "0.5.1",
+        "flash-linear-attention": "0.5.1"
+    },
+    "ihlal": [],
+    "fla": "\u00e7al\u0131\u015ft\u0131",
+    "hakhukuk": "\u00e7al\u0131\u015ft\u0131",
+    "veri": {
+        "sft": {
+            "dizin": "/data/raft_scrubbed",
+            "train": {
+                "satir": 17323,
+                "sha256": "9afaa0811c99fe56a73dee392ad3a36ede5ef0fc57a3022edc73f7559df70de3"
+            },
+            "validation": {
+                "satir": 962,
+                "sha256": "418cc50ad62aafe8f1c7e4846415a899d218a93d7621e097cd82b9cca23b92f6"
+            },
+            "ihlal": []
+        },
+        "orpo": {
+            "dizin": "/data/orpo_abstain_cp2c",
+            "train": {
+                "satir": 845,
+                "sha256": "e341d6d80cf7775168f40c8c154e46a2a5db175aa6e077d614cc2407965bbac3"
+            },
+            "validation": {
+                "satir": 26,
+                "sha256": "f9c818f939867e4af93bec045bb2b79446d9907e02bf201f2422ff27e80d43f7"
+            },
+            "ihlal": []
+        }
+    },
+    "modal_ortam_degiskenleri": [
+        "MODAL_CLOUD_PROVIDER",
+        "MODAL_CONTAINER_ARGUMENTS_PATH",
+        "MODAL_ENVIRONMENT",
+        "MODAL_IDENTITY_TOKEN",
+        "MODAL_IMAGE_ID",
+        "MODAL_IS_REMOTE",
+        "MODAL_REGION",
+        "MODAL_SERVER_URL",
+        "MODAL_TASK_ID"
+    ],
+    "MODAL_IMAGE_ID": "im-7797E4ChjR4yWddVxxnJfW"
+}
