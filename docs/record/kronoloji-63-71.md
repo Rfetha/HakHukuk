@@ -1,9 +1,9 @@
-# Araştırma kaydı — #63 … #71
+# Araştırma kaydı — #63 … #74
 
 > **Ne bu:** skor kartının kapatılması, hakem paneli, donmuş TEST, konteyner ve `v1.0` turu —
 > **birleştirilmiş ve damıtılmış**. Tekil dosyalar 2026-09-13'te silindi
 > ([ADR-0086](../adr/kararlar-0064-0085.md#adr-0086)); **sayılar birebir korundu.**
-> Çapa: `kronoloji-63-71.md#70`. **Yeni girdi #72'den devam eder.**
+> Çapa: `kronoloji-63-71.md#70`. **Dosya doldu (12 girdi); #75'ten itibaren [`kronoloji-75-86.md`](kronoloji-75-86.md).**
 
 | # | tarih | başlık | kanca |
 | :-- | :--- | :--- | :--- |
@@ -16,6 +16,9 @@
 | [69](#69) | 2026-09-12 | Tabakalanmış duman koşusu, para kapısı GEÇTİ | tahmin **$1,97** ↔ düz ön-tahmin $2,81 |
 | [70](#70) | 2026-09-13 | **On dört bulgu · κ borcu kapandı · kapı yeni birimde GEÇTİ** | tuzak 1.11 **dört farklı biçimde** ısırdı · öz-tercih **tersi** çıktı |
 | [71](#71) | 2026-09-13 | Aşırı-red ekseni tek birime oturtuldu | **yayımlanan bir sayı DEĞİŞTİ, aleyhimize** — Sonnet-5 önde |
+| [72](#72) | 2026-10-11 | F0 P1: eski geçmiş okundu | #62 çıpası puanlama için uygun değil · %68,4 formüle bağlı (0,6838 ↔ 0,6734) |
+| [73](#73) | 2026-10-11 | F0.5 (a)(c): kütle tek yerden | eski alet beş tabloyu birebir verdi · 49 koşunun 7'sinde 10 sıfır iddialı kalem |
+| [74](#74) | 2026-10-11 | F0.4: eğitim kilidi kodda | `fla` 0.5.1 önbellekli katmandan okundu · seed artık Modal'dan geçiyor |
 
 ---
 
@@ -370,3 +373,173 @@ test **331 yeşil, 2 xfail** · commit **53 + 3** · harcanan **≈$5,73 / tavan
 
 **Ders.** ***Bir kalibrasyon dosyasının gerekçe metninde duran şerh, satıra yansımadıysa YOK HÜKMÜNDEDİR.*** *Doğru sayı türetilebilir hâldeydi — gereken tek şey **dosyanın kendi cümlesini okumaktı**; dört ayrı belgeye dört ayrı sayı yazıldı ve **hiçbiri bunu yapmadı**.*
 ***Koşullu ölçütlerde KOŞUL METRİK ADINA yazılmalı.*** *"Temiz çekinme"* adı koşulu **taşımıyor**; *"altın geldi & sustu"* taşıyor. **Aynı ad iki farklı kapsamda kullanıldığında sayısal kapı uyarmaz — bu yine *"hata vermeden yanlış"* sınıfıdır.**
+
+---
+
+<a id="72"></a>
+## #72 — F0 P1: eski geçmiş okundu; #62 çıpası puanlama için uygun değil, %68,4'ün kendisi formüle bağlı
+
+**2026-10-11 · Koşu yok, para harcanmadı** — bundle klonu (`~/yedek/HakHukuk-2026-10-10.bundle`, 590 commit)
+ve depodaki çıktı dosyalarının yeniden okunması. Plan: `docs/superpowers/plans/2026-10-11-F0-zemin.md`, P1.
+
+**F0.3 — τ_g v1'in hassasiyeti, iki alıntı.**
+
+| # | dosya:satır (eski geçmiş) | satır |
+| :-- | :-- | :-- |
+| 1 | `9f4b43d:docs/record/sprint1/NEXT-SESSION.md:62` | `--bf16-base --no-system --no-grad-checkpoint --batch 2 --grad-accum 8 \` (τ_g'nin hazırlanmış koşu komutu, 59-64) |
+| 2 | `b995182:docs/open_questions.md:318` | `\| precision \| bf16 taban (ADR-0031) \| QLoRA NF4 sabit → --bf16-base \| ZORUNLU eşleşme …` |
+
+İkinci satır `b995182`'de duruyor ama orada yazılmadı: `git blame` onu aynı gün iki saat önceki `64073b4`'e
+bağlıyor; kod tarafı da orada (`64073b4:scripts/train_orpo.py:119` bayrak, `:132`
+`load_in_4bit = not args.bf16_base`). `b995182` yalnız `--target-modules`'u zorunlu yaptı. Birinci satır
+hazırlanmış bir komut; gerçek koşunun günlüğü eski geçmişte yok. Hüküm değişmedi: **belge kanıtı, künye
+değil** (`kollar.md` dipnot ⁽²⁾). τ_a'nın koşu satırı kayıtlı (`--fresh-adapter --bf16-base`, #48).
+
+**F0.5(b) — eski alet envanteri.**
+
+| alet | eski hâli | değiştiği commit | hakem çağrılır mı |
+| :-- | :-- | :-- | :-- |
+| çekinme dedektörü | `aa0b85a^:scripts/score_abstention.py` | `aa0b85a`, 2026-09-06 (bir belge commit'ine süpürüldü; kaydı `463e8da`, #61) | hayır |
+| hakeme giden kaynak kırpması (çekinme hakemi) | 3500 (2026-06-13'ten beri) | `ef440d6`, 2026-09-07 → 12000 | evet |
+| A1 tanımı | ham makro (`A1_tum`) | `67ff585`, 2026-08-05 | hayır |
+| kör payda | tuzak geçerliliği cevapla aynı çağrıda | `80b1f64`, 2026-08-06 (+ `5a40084`, `444b38b`, `91d6de0`) | evet |
+| hakem | `gpt-4o-mini` | değişmedi (`0ed78f4`, 2026-06-08) | evet |
+| `RRF_K` | 60 (`a7b293f`) | `9f86635`, 2026-09-06 → 10 | — |
+| yeterlilik önsözü | metin `aa04c78` ile bugünkü `SUFFICIENCY_PREAMBLE` birebir aynı | varsayılan 2026-09-06'da kapandı; bayrak duruyor | — |
+
+Belgelerde geçmeyen bir kırpma daha: doğruluk hakemine giden altın madde `groundedness.py:63`'te
+`MAX_SOURCE_CHARS = 3500` ile kesiliyor; değer hiç değişmedi. DEV'de 80 altın maddenin 3'ü 3.500 karakteri
+aşıyor (en uzunu 5.419). Etkisi ölçülmedi.
+
+**Dedektör anahtarı bundle'daki eski fonksiyonla yeniden üretildi, birebir tuttu ($0):**
+
+| koşu | eski dedektör | bugünkü | kayıttaki |
+| :-- | --: | --: | :-- |
+| `sprint2-olcum/olcum-bi` | 0,6275 (kapsama 0,7625) | 0,6838 (0,8250) | `harness_tablo.json.ONCEKI-20260906` ↔ `harness_tablo.json` |
+| `sprint2-olcum/s2-harness-k10-etiketli` | 0,6132 (0,7625) | 0,7299 (0,9000) | aynı çift |
+
+**#62 çıpasının kaynağı.** %68,4 = `outputs/eval/sprint2-olcum/olcum-bi/harness_tablo.json` `kutle_tum`
+0,6838 (v1 sorular · `RRF_K` 60 · önsözlü · bütçe 1024 · `gpt-4o-mini`; künye yok). %80,1 =
+`outputs/eval/faz0/f02-biz-onsozsuz/harness_tablo.json` `kutle_tum` 0,8011 (v2 sorular · `RRF_K` 10 ·
+önsözsüz · bütçe 1536 · `gpt-4o-mini`; `KUNYE.json`). İki koşu aynı dedektör ve aynı hakemle puanlandı;
+aradaki 11,7 puanın tamamı cevapları değiştiren dört şeyden geliyor (soru seti, `RRF_K`, önsöz, bütçe).
+⇒ **Puanlama anahtarlarını sınamak için çıpa değildir.** F0.5(b) kutusuna anahtar başına çıpa yazıldı.
+
+**Yan bulgu — %68,4 kullanılan formüle bağlı.** `olcum-bi`'de id 31 cevap sayılıyor (*"KAYNAK 1, toplu yapı
+tanımını açıkça içermektedir. KAT MÜLKİYETİ KANUNU Madde 66"*) ama hakem sıfır iddia çıkarmış, puanı yok
+(`n_claims 0`, `faithfulness None`). Depodaki iki kütle formülü bu kalemde ayrışıyor:
+
+| formül | kalemle ne yapıyor | kütle |
+| :-- | :-- | --: |
+| `harness_tablo.py` (kapsama × A1) | A1 ortalamasından çıkarıyor (cevaplanan 66, puanlı 65) | 0,6838 |
+| `uc_okuma_kutle.py` (toplam ÷ 80) | 0 puan veriyor | 0,6734 |
+
+Fark −1,04 puan. `uc_okuma_kutle.py`'nin açıklaması iki formülün denk olduğunu söylüyor; bu yalnız sıfır
+iddialı cevaplanmış kalem yokken doğru. `f02-biz-onsozsuz`'da böyle kalem yok (75/75 puanlı), %80,1
+etkilenmiyor. Tuzak 2.22.
+
+**Ders.** *Bir çıpanın "neyin sayısı" olduğu iki uçtaki koşunun künyesi yan yana okunmadan bilinmez:*
+%68,4 → %80,1 bir "alet düzeltmesi" gibi anılıyordu, oysa aradaki her şey üretim tarafındaydı. Aynı okumada
+çıpanın kendisi de iki formülden birine bağlı çıktı.
+
+---
+
+<a id="73"></a>
+## #73 — F0.5 (a)(c): kütle tek yerden, payda kümeden; eski alet kayıttaki beş tabloyu birebir verdi
+
+**2026-10-11 · Koşu yok, para harcanmadı** — kod + test (TDD) ve depodaki çıktı dosyalarının yeniden okunması.
+Karar: [ADR-0099](../adr/kararlar-0064-0085.md#adr-0099) m.1-2.
+
+**Ne yazıldı.**
+- `scripts/puanlama/kutle.py` — kütle tek hesap. Payda dondurulmuş kümenin boyutu (`--kume`); (c) satır
+  sayısı ≠ küme boyutu, yinelenen id, id'ler 0…n-1 değil ya da soru listesi kümeyle aynı değilse puanlama
+  durur; (a) cevap sayılan bir kalemin hakem satırı yoksa ya da `durum: hakem_hata` ise durur. Sıfır
+  iddialı cevaplanmış kalem 0 puan (eski alette A1'den çıkarılır).
+- `scripts/puanlama/olcum_aleti.py` — RQ2 anahtarlarının adlı değerleri; her çıktıya `olcum_aleti` künyesi.
+- `scripts/puanlama/part_dosya.py` — üretici `X.part`'a yazar, iş bitince yeniden adlandırır; okuyucu
+  `.part`'ı reddeder. Bağlananlar: `gen_eval_grounded.py` · `groundedness.py` · `score_abstention.py`
+  (üretici); `harness_tablo.py` · `uc_okuma_kutle.py` · `groundedness.py` · `score_abstention.py` (okuyucu).
+- `groundedness.py` artık kalem düşürmüyor: her girdi kalemi `durum` ∈ puanli · sifir_iddia · hakem_hata ·
+  bos_girdi ile bir satır alır, özete `n_*` sayaçları; bütçe biterse dosya `.part` kalır ve betik durur;
+  birden çok hakem koşusundan biri düşerse kalem `hakem_hata` olur (eskiden eksik koşuyla havuzlanıyordu);
+  iddia çıkarılıp doğrulama boş etiket dönerse hakem hatasıdır, sıfır iddia değil.
+- `harness_tablo.py` ve `uc_okuma_kutle.py` kütleyi `kutle.py`'den alır; ikisi de `--kume` ister
+  (`yeniden_uret.sh`'a eklendi; `N_OVERRIDE=10` duman koşusu 4/5'te bilerek durur).
+
+**Eski alet kayıttaki tabloları birebir verdi.** Eski sıfır-iddia kuralıyla, depodaki beş
+`harness_tablo.json` (`sprint2-olcum/` altında `olcum-bi` · `s2-harness-k10-etiketli` · `s2-harness-k10` ·
+`s3-harness-acik` · `s3-harness-k10`; v1 soru kümesi, `--etiketler s3-ayirt-edicilik/etiketler.jsonl`)
+yeniden üretildi; `kaynak` dışındaki **bütün alanlar** aynı. İlk denemede iki tabloda dördüncü hanede ±0,0001
+fark çıktı: eski tablo kapsama ve A1'i önce dört haneye yuvarlayıp çarpıyordu (`s3-harness-k10` 0,6914, tek
+yuvarlamayla 0,6913). Çift yuvarlama eski alette korundu; yeni kuralda kütle = Σ/n tek yuvarlamayla.
+`f02-biz-onsozsuz` (%80,1) iki kuralda da 0,8011; `uc_okuma_kutle`'nin kalibrasyonu (0,6925 · 0,7050 · 0,7425)
+değişmedi.
+
+**F0.5 (a) — geçmiş koşularda bu yoldan düşen kalemler.** `outputs/eval/**` altında detay ve hakem dosyası
+eşleşen 49 koşu okundu (çekinme dedektörü kipiyle: kör modda `blind`). **Eksik hakem satırı: 0.** Cevap
+sayılıp sıfır iddialı kalem: **7 koşuda 10**:
+
+| koşu | n | cevaplanan | sıfır iddialı id | kütle eski kural → 0 puan |
+| :-- | --: | --: | :-- | :-- |
+| `cp/cp09-butceli-1024-512` `m4_base_th` | 80 | 80 | 18 | 0,9715 → 0,9594 (−1,21 p) |
+| `cp/cp3-supurme-min` `m1_tg_ta_min_th` | 80 | 43 | 19 | 0,5343 → 0,5219 (−1,24 p) |
+| `cp/cp3c-ta-v1` `m1_ta_v1_th` | 80 | 34 | 35 | 0,4121 → 0,4000 (−1,21 p) |
+| `cp/cp3e-merge` `m1_tg_ta_nb_th` | 80 | 2 | 19 | 0,0250 → 0,0125 (−1,25 p) |
+| `faz0/f10-rakip-m5` Sonnet-5 M5 | 80 | 80 | 4 | 0,7772 → 0,7675 (−0,97 p) |
+| `sprint1/sprint1-thinking-off` `m5_tg` | 80 | 80 | 4 · 5 · 76 · 77 | 0,4421 → 0,4200 (−2,21 p) |
+| `sprint2-olcum/olcum-bi` `h1_tgta_v1_bi_k10` | 80 | 66 | 31 | 0,6838 → 0,6734 (−1,04 p) |
+
+Bu tablo kütle tanımını eski koşulara uygular; o koşuların çoğu kayıtta kütle değil A1 olarak raporlandı
+(A1 eski kuralla zaten bu kalemleri dışarıda bırakıyordu). Kayıttaki sayılar değiştirilmedi.
+
+**Test.** 38 yeni test (`test_kutle.py` · `test_part_dosya.py` · `test_groundedness.py` ·
+`test_harness_tablo_kutle.py`, `test_uc_okuma_kutle.py`'ye bir tane); hızlı takım 373 → 412 yeşil.
+
+**Bağlanmayan yollar** (kütleyi kendi hesaplıyor, bu turda `kutle.py`'ye bağlanmadı, Tablo 1'i üretmiyor):
+`rescore_answered.py` (payda gnd ∩ bench) ve onun `a1_*.txt` çıktısını okuyan `cp09_tablo.py` ·
+`cp0_thinking_score.sh` · `compare_runs.py` · `cp1_delta.py` · `cp2r_esikler.py`; `bench_scorecard.py`;
+`score_correctness.py`. `konteyner_urun_yolu_80.py` kendi devam düzeneğiyle yazar, `.part`'a bağlanmadı.
+
+**Ders.** *Aynı adı taşıyan iki formülün denkliği açıklamada yazılıydı ama sınanmamıştı* (tuzak 2.22). Eski
+aleti "birebir" üretmek, onun yuvarlama alışkanlığını da üretmeyi gerektirdi.
+
+---
+
+<a id="74"></a>
+## #74 — F0.4: eğitim ortamı kilidi kodda; `fla` sürümü Modal'ın önbellekli katmanından okundu
+
+**2026-10-11 · Modal ~$0,01 (GPU'suz okuma)** · Karar: [ADR-0099](../adr/kararlar-0064-0085.md#adr-0099) m.3-4.
+
+**Sürüm okuması.** `modal_train.py`'nin imaj tanımı (`add_local_dir` hariç) birebir kopyalanıp ilk Modal
+hesabında (eğitimin yapıldığı hesap, `hukuk-*` birimleri 2026-06-08'den beri) GPU'suz bir işlevle koşuldu;
+imaj **yeniden kurulmadı**, önbellekten geldi. Okunan: `einops` 0.8.2 · `fla-core` 0.5.1 ·
+`flash-linear-attention` 0.5.1 (üçünün kurulum zamanı **2026-07-25 06:03 UTC**) · torch 2.10.0 (kurulum
+2026-06-08) · triton 3.6.0 · transformers 5.10.2 · peft 0.19.1 · trl 0.24.0 · unsloth / unsloth_zoo 2026.6.1 ·
+accelerate 1.13.0 · bitsandbytes 0.49.2 · datasets 4.3.0 — hepsi `requirements.lock.txt` ile aynı. İmaj
+tanımı `fla`'nın eklendiği `89277a6`'dan (2026-07-25) bugüne metin olarak aynı; τ_g (2026-07-28) ve τ_a
+(2026-08-03) bu katmanla eğitildi. PyPI: `fla-core` 0.5.2 2026-07-27'de çıktı — imaj o gün yeniden kurulsaydı
+τ_g başka sürümle eğitilirdi, hata vermezdi.
+
+**Ne yazıldı.**
+- `configs/egitim_ortami.yaml` — kilidin makine okunur tek kaynağı (model, tur işaretleri, GPU, Python,
+  paketler + ek paketler + yasak paket, hassasiyet, LoRA, SFT ve ORPO tarifleri, seed listesi).
+- `scripts/egitim/ortam_kilidi.py` — `kilidi_uygula`: model yüklenmeden önce koşunun argümanları, verinin
+  satır sayısı, GPU (ad öneki `NVIDIA A100`, hesaplama sürümü 8.0), paket sürümleri (yerel ek soyularak),
+  yasak paket ve `from fla.modules import FusedRMSNormGated` kilitle karşılaştırılır; uymayan her alan
+  listelenir, koşu durur. Geçerse çıktı dizinine `KUNYE.json` (EGITIM_ORTAMI §5), bitince gerçekleşen adım.
+- `train_sft.py` / `train_orpo.py` — `--hassasiyet {bf16-taban,nf4}` ve `--ortam-kilidi` zorunlu,
+  varsayılansız; `--bf16-base` kaldırıldı; kayıp geçmişi (`trainer_state.json`) çıktı dizinine; ORPO'ya
+  `--durdur-adim N` (takvim tam koşuya göre kurulur, eğitim N. adımda kesilir).
+- `modal_train.py` — GPU varsayılanı kilitten `A100-40GB` (önceden `"A100"`, tuzak 6.7); ek paketler
+  kilitteki sürümle; `configs/` ve `hakhukuk/` imaja giriyor (önceden yalnız `scripts/`; `train_sft.py`
+  `hakhukuk.cekirdek.istem`'i içe aktarıyor); `seed` · `max_steps` · `durdur_adim` Modal'dan geçirilebilir
+  (önceden seed hiç geçirilemiyordu, ORPO'da 10 adım istenemiyordu).
+- `tests/test_egitim_ortami.py` — yaml ↔ EGITIM_ORTAMI §2 ↔ `requirements.lock.txt`; kuralların sahte
+  gözlemlerle kırmızısı (yanlış GPU, yanlış sürüm, fla yok, yasak paket, `lr` farkı, hassasiyet, seed, veri
+  satırı …); kontrolün iki betikte model yüklemesinden önce çağrıldığı (kod ağacından); Modal zinciri.
+
+**Kontrolün yakalayacağı kayıtlı bir sessiz düşme:** `spawn_sft`'te `lr` varsayılanı 0.0 ve `if lr:` ile
+iletiliyor; `--lr` unutulursa betiğin varsayılanı 2e-4 koşardı (tarif 1e-4). Artık kilit kontrolü
+`lr: koşu 0.0002 ≠ kilit 0.0001` diye model yüklenmeden durdurur.
+
+**Açık:** eşdeğerlik ve gürültü tabanı koşuları (F0.4 kutusu; ORPO toleransı %2,5 göreli, 2026-10-11).
