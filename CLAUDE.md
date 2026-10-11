@@ -53,7 +53,7 @@ docs/                every document except the three root ones (index: docs/READ
   record/              research record   (kronoloji-*.md · kollar.md · yurutme-tuzaklari.md)
   superpowers/plans/   at most one live plan (ADR-0056); exists only while a phase plan is open
 data/                corpus/ (ground truth) · eval/ (frozen) · train/ · index/ · _ham_ve_ara/
-outputs/             eval/<group>/<run>/ (+ _artefakt/) · tg_v1/ · ta_v1/ (adapters; private HF backup per ADR-0091, F0.1)
+outputs/             eval/<group>/<run>/ (+ _artefakt/) · egitim/<task>/ (training-side evidence) · tg_v1/ · ta_v1/ (adapters; private HF backup per ADR-0091, F0.1)
 models/              merged/ · gguf/   (28 GB, gitignored)
 configs/  knowledge/ (literature summaries, thesis era)
 ```
@@ -70,8 +70,8 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | what to do next | [`docs/ROADMAP_v1.md`](docs/ROADMAP_v1.md) — Checkpoint 1 checklist at the top, then phases F0–F5, each task with its check. Order decided 2026-10-10: Checkpoint 1 (Makale 1) → Checkpoint 2 (GRPO on the Checkpoint 1 winner, Makale 2, thesis) → legislation-scope/freshness round. `00-IS-SIRASI.md` was deleted that day · live plan: [`docs/superpowers/plans/2026-10-11-F0-zemin.md`](docs/superpowers/plans/2026-10-11-F0-zemin.md) (F0, opened 2026-10-11) |
 | direction and why | [`docs/YAYIN_YOL_HARITASI.md`](docs/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/EGITIM_ORTAMI.md`](docs/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/MIMARI.md`](docs/MIMARI.md) |
-| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#71 in three chronology files, per-entry anchors; **new findings continue at #72** |
-| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0098**, next is **0099**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`) |
+| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#77 in four chronology files, per-entry anchors; **new findings continue at #78** |
+| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0099**, next is **0100**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`) |
 | open defects and handover | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — 4 open (5a · 23 · 27 · 31), 3 handed on (6 · 11 · 12b); §EK E.5 holds the nine questions that go into the next grill |
 | artifact registry | [`docs/record/kollar.md`](docs/record/kollar.md) — every trained branch and merge has its identity here; **an artifact with no row is nameless and must not be used**. Family tree: [`docs/model-soyagaci.mmd`](docs/model-soyagaci.mmd) |
 | the headline number and its caveats | [`MODEL_CARD.md`](MODEL_CARD.md) and `docs/record/kronoloji-63-71.md` — never quote from memory |

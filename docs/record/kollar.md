@@ -106,7 +106,7 @@ açılmaz — aynı artefakttır.
 
 | kol | ver | tarih | durum | rejim | `‖τ‖_F` | eval etiketi | kayıt |
 | :--- | :-- | :--- | :--- | :--- | ---: | :--- | :--- |
-| `τ_grounding` | **v1** | 2026-07-28 | 🟢 aktif | 1.083 adım · lr 1e-4 · r=16/α=32 · dropout 0.05 · 224 LoRA çifti · seed 3407 · veri `train/raft_scrubbed/` ⁽¹⁾ | **10.4589** | `*_tg` *(Sprint 1; v1 demektir)* | [#41](kronoloji-39-52.md#41) |
+| `τ_grounding` | **v1** | 2026-07-28 | 🟢 aktif | 1.083 adım · lr 1e-4 · r=16/α=32 · dropout 0.05 · 224 LoRA çifti · seed 3407 · veri `train/raft_scrubbed/` ⁽¹⁾ · bf16 taban + LoRA ⁽²⁾ | **10.4589** | `*_tg` *(Sprint 1; v1 demektir)* | [#41](kronoloji-39-52.md#41) |
 | `τ_abstention` | **v1** | 2026-08-03 | 🟢 aktif | **70 adım (5 epoch)** · lr 1e-5 · beta 0.1 · etkin batch 64 · r=16/α=32 · dropout 0.05 · 224 LoRA çifti · `--fresh-adapter` · seed 3407 · veri `data/train/orpo_abstain_cp2c/` (726 çift + 145 replay) | **1.1806** | `*_ta_v1_th` | [#48 §16](kronoloji-39-52.md#48) |
 | **`τ_g+τ_a` merge**<br>`HakHukuk-4B-v0.1` | **v1** | 2026-08-03 | 🟢 **ANA SONUÇ** | `tg_v1` + `ta_v1` · **ham TIES** (norm dengeleme **KAPALI**, [ADR-0052](../adr/kararlar-0045-0063.md#adr-0052)) · trim_k 0,2 · λ 1,0 · eşzamanlı 2-yollu · 224/224 tensör | — *(merge, kol değil)* | `*_tg_ta_ham_th` ⚠️ | [#48 §24](kronoloji-39-52.md#48) |
 
@@ -122,6 +122,15 @@ açılmaz — aynı artefakttır.
 > ⚠️ **Kesin değil, en iyi desteklenen okuma:** `tg_v1`'in eğitim koşusu KUNYE disiplininden
 > önce (2026-07-28) koştu, `--data` argümanını **birebir gösteren bir künye yok**. Ham `raft/`
 > silinmedi; iki dizin de duruyor.
+>
+> ⁽²⁾ **Hassasiyet — belge kanıtı, künye değil** (F0.3, 2026-10-11, [#72](kronoloji-63-71.md#72)).
+> τ_g için hazırlanan koşu komutu `--bf16-base` taşıyor: `9f4b43d:docs/record/sprint1/NEXT-SESSION.md:62`.
+> ORPO kolunun bf16 eşlemesi `64073b4`'te yazıldı (`64073b4:scripts/train_orpo.py:119,132`); satır
+> `b995182:docs/open_questions.md:318`'de de duruyor. Gerçek koşunun günlüğü eski geçmişte yok.
+> τ_a'nın koşu satırı kayıtlı: `--fresh-adapter --bf16-base` ([#48](kronoloji-39-52.md#48)).
+> Ölçüm kanıtı F0.4'ün eşdeğerlik koşusundan gelir. → **Geldi (2026-10-11, [#75](kronoloji-75-86.md#75)):**
+> yeni kilitte (bf16 taban, `--hassasiyet bf16-taban`) τ_g'nin 50 adımı #40'taki kaybı 0,0013 içinde,
+> ORPO'nun 10 adımı `ta_v1`'inkini 0,0032 içinde üretti; yeni koşunun `adapter_config.json`'u `tg_v1`'inkiyle aynı.
 
 ### `τ_grounding` v1 — açık kalemler *(2026-07-29 gecesi, bütçeli kipte YENİDEN YAZILDI)*
 
