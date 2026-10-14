@@ -2,7 +2,7 @@
 
 > **Ne bu:** Checkpoint 1'in F0 aşaması (2026-10-11'den). Önceki dosya
 > [`kronoloji-63-71.md`](kronoloji-63-71.md) 12 girdiye ulaştı (#63-#74); kural
-> [`README.md`](README.md)'de. Çapa: `kronoloji-75-86.md#75`. **Yeni girdi #79'dan devam eder.**
+> [`README.md`](README.md)'de. Çapa: `kronoloji-75-86.md#75`. **Yeni girdi #80'den devam eder.**
 
 | # | tarih | başlık | kanca |
 | :-- | :--- | :--- | :--- |
@@ -10,6 +10,7 @@
 | [76](#76) | 2026-10-11 | F0.5 (b) ve F0.6'nın kodu: RQ2 anahtarları | hakemsiz çıpaların hepsi birebir · `gpt-4o-mini` aynı istekte bir ayda −1,75 p kütle |
 | [77](#77) | 2026-10-11 | F0.7: ham TIES'te τ_a'nın %32'si taşınıyor | τ_a'yı ezen seyreklik değil, normların 9 kat farkı |
 | [78](#78) | 2026-10-14 | F0.9 ön kontrol: maske doğru, Gemma kilitle yüklenmiyor | iki modelde ihlal yok · `unsloth_zoo` 2026.6.1'in Gemma 4 yaması ayarı bozuyor, yükleyici yanlış teşhis veriyor |
+| [79](#79) | 2026-10-14 | Gemma'nın kilidi, deposu ve LoRA hedefleri | `unsloth` 2026.10.1 yüklüyor · Unsloth `google/` → `unsloth/` sessiz değişim (ağırlık aynı, bitiş işareti farklı) · düz liste görüntü/ses kulesine 148 modül taşıyor |
 
 ---
 
@@ -212,3 +213,45 @@ python -c "from transformers import AutoConfig; print(type(AutoConfig.from_pretr
 kilidiyle eğitilemiyor. Kural gereği Qwen'in kilidine dokunulmaz, Gemma'nın kilidi ayrı yazılır; bu da iki
 modelin farklı paket sürümleriyle eğitilmesi demek ve makalede sınırlılık olarak yazılır. Hangi sürümün
 seçileceği kullanıcı kararı (F0.9).
+
+---
+
+<a id="79"></a>
+## #79 — Gemma'nın kilidi: `unsloth` 2026.10.1 yüklüyor; Unsloth depoyu sessizce değiştiriyor; düz hedef listesi kulelere taşıyor
+
+**2026-10-14 · yerel, $0** · ağırlık inmedi (yükleme, ağırlık adımında kesildi) · aday paketler ayrı klasöre
+`--no-deps` kuruldu, kilidin geri kalanı aynı · kullanıcı kararı: Gemma ve Qwen ayrı kilit, ayrı imaj
+
+**1 · Sürüm.** PyPI'daki bağımlılık bildirimleri: `unsloth` 2026.6.1 … 2026.9.14'ün hepsi
+`transformers<=5.5.0` istiyor; Qwen'in kilidi 2026.6.1'i `transformers` 5.10.2 ile `--no-deps` kurarak bu
+aralığın **dışında** çalıştırıyor (F0.4 eşdeğerliği geçtiği için Qwen için işlem yok; not). 5.10.2'yi
+resmen kapsayan ilk sürüm `unsloth`/`unsloth_zoo` **2026.10.1** (`transformers<=5.17.0`); kilidin geri
+kalanı (torch 2.10.0 · trl 0.24.0 · peft 0.19.1 · datasets 4.3.0 · accelerate 1.13.0 · bitsandbytes 0.49.2)
+onun bildirdiği aralıklara giriyor. 2026.10.1 ile `import unsloth` sonrası `AutoConfig` geçiyor ve
+`FastModel.from_pretrained` ağırlık yükleme adımına ulaşıyor (#78'deki hata yok). **Gemma'nın kilit adayı:
+Qwen'in kilidi + `unsloth`/`unsloth_zoo` 2026.10.1.**
+
+**2 · Sessiz depo değişimi.** Unsloth `google/gemma-4-E4B-it` istenince ağırlıkları kendi kopyasından,
+`unsloth/gemma-4-E4B-it`'ten yüklüyor (`unsloth/models/mapper.py`; `use_exact_model_name=False`
+varsayılanı); künye ise `google/…` yazardı. Qwen3.5 bu listede yok, τ_g/τ_a `Qwen/Qwen3.5-4B`'den eğitildi.
+İki deponun dosya özetleri: `model.safetensors` (15.992.595.884 bayt), `tokenizer.json`,
+`processor_config.json`, `generation_config.json` **aynı**; `config.json`, `tokenizer_config.json`,
+`chat_template.jinja` **farklı** — Unsloth'un kopyasında bitiş işareti `<eos>` (1) yerine `<turn|>` (106),
+`pad_token_id` 0 ekli. `raft_scrubbed`'ın ilk 500 satırında iki şablonun render'ı ve token'ları birebir
+aynı. Fark yalnız TRL bitiş işareti eklerse eğitime girer (TRL `add_eos`; Unsloth veri hazırlığını kendi
+fonksiyonuyla değiştiriyor) — eğitimdeki maske dökümünde görülecek. Karar: kullanıcının seçtiği depo
+(`google/…`) `use_exact_model_name=True` ile yüklenir.
+
+**3 · LoRA hedefleri.** Ağırlıksız iskelet: Gemma `Gemma4ForConditionalGeneration`, 593 doğrusal katman —
+dil kulesi 343, görüntü 113, ses 134. PEFT'in eşleştirme kuralıyla düz 7 adlık liste (`q_proj k_proj v_proj
+o_proj gate_proj up_proj down_proj`) dil kulesinde 258 modüle ek olarak **görüntü kulesinde 112, ses
+kulesinde 36** `Gemma4ClippableLinear`'a takılıyor ([ADR-0030](../adr/kararlar-0027-0044.md#adr-0030)'un
+`all-linear` tuzağının eşi). Desen
+`model\.language_model\.layers\.\d+\.(self_attn\.(q_proj|k_proj|v_proj|o_proj)|mlp\.(gate_proj|up_proj|down_proj))`
+yalnız 258 dil modülü seçiyor (q 42 · k 24 · v 24 · o 42 · gate/up/down 42'şer; k/v'nin 24 olması KV paylaşan
+katmanlardan). Dışarıda kalanlar: Gemma'ya özgü `per_layer_input_gate` / `per_layer_projection` (42'şer).
+Qwen'in 11 adı görüntü kulesine takılmıyor (Qwen görüntü kulesinin adları `qkv`, `proj`, `linear_fc*`).
+`unsloth` 2026.10.1 düz listeyi `finetune_*` bayraklarıyla bir desene çeviriyor (`vision.py` ~4296-4318);
+hangi modüllere takıldığı LoRA kule kapısıyla smoke'ta görülecek.
+
+**Okuma:** Gemma'nın kilidi, deposu ve hedefleri belli; kalan iş koddur (F0.9 kutuları).
