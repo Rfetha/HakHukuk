@@ -185,6 +185,42 @@ def test_veri_satir_sayisi_kilitten_sapinca_ihlal(kilit, tmp_path):
     assert any("satir" in i for i in ok.veri_ihlalleri(kilit, "sft", ozet))
 
 
+def _kunye_yaz(dizin):
+    (dizin / "KUNYE.json").write_text('{"durum": "basladi"}', encoding="utf-8")
+
+
+def test_kunye_tamamla_tepe_vram_ve_adim_suresini_yazar(tmp_path, monkeypatch):
+    import json
+    import torch
+    monkeypatch.setattr(torch.cuda, "max_memory_allocated", lambda: 30_000_000_000)
+    monkeypatch.setattr(torch.cuda, "max_memory_reserved", lambda: 32_000_000_000)
+    _kunye_yaz(tmp_path)
+    ok.kunye_tamamla(str(tmp_path), 50, 100.0, 0)
+    k = json.loads((tmp_path / "KUNYE.json").read_text(encoding="utf-8"))
+    assert k["durum"] == "bitti" and k["adim_gerceklesen"] == 50
+    o = k["olcum"]
+    assert o["tepe_vram_ayrilan_bayt"] == 30_000_000_000 and o["tepe_vram_rezerve_bayt"] == 32_000_000_000
+    assert o["oturum_adim"] == 50 and o["s_adim"] == 2.0
+
+
+def test_kunye_tamamla_devam_eden_koshuda_yalniz_bu_oturumun_adimlarina_boler(tmp_path, monkeypatch):
+    import json
+    import torch
+    monkeypatch.setattr(torch.cuda, "max_memory_allocated", lambda: 1)
+    monkeypatch.setattr(torch.cuda, "max_memory_reserved", lambda: 1)
+    _kunye_yaz(tmp_path)
+    ok.kunye_tamamla(str(tmp_path), 250, 100.0, 200)
+    o = json.loads((tmp_path / "KUNYE.json").read_text(encoding="utf-8"))["olcum"]
+    assert o["oturum_adim"] == 50 and o["s_adim"] == 2.0
+
+
+@pytest.mark.parametrize("yol", ["scripts/egitim/train_sft.py", "scripts/egitim/train_orpo.py"])
+def test_egitim_betikleri_kunyeye_sure_ve_ilk_adimi_gecirir(yol):
+    cagri = next(n for n in ast.walk(_main_govdesi(yol)) if isinstance(n, ast.Call)
+                 and getattr(n.func, "id", None) == "kunye_tamamla")
+    assert len(cagri.args) == 4
+
+
 # ── (c) iki eğitim betiğinde kontrol model yüklenmeden ÖNCE ───────────────────
 
 def _main_govdesi(yol):
@@ -251,12 +287,30 @@ def test_modal_gpu_dizesi_yamldan(kilit):
 @pytest.mark.parametrize("fn,param", [("spawn_sft", "seed"), ("spawn_sft", "max_steps"),
                                       ("spawn_sft", "hassasiyet"), ("spawn_orpo", "seed"),
                                       ("spawn_orpo", "hassasiyet"), ("spawn_orpo", "durdur_adim"),
-                                      ("train", "seed"), ("train_orpo", "durdur_adim")])
+                                      ("train", "seed"), ("train_orpo", "durdur_adim"),
+                                      ("train", "hesap"), ("train_orpo", "hesap")])
 def test_modal_giris_noktalari_parametreyi_tasir(fn, param):
     agac = ast.parse(open(MODAL, encoding="utf-8").read())
     f = next(n for n in ast.walk(agac) if isinstance(n, ast.FunctionDef) and n.name == fn)
     assert param in [a.arg for a in f.args.args]
     assert "bf16_base" not in [a.arg for a in f.args.args]
+
+
+def test_modal_hesabi_aktif_profilin_workspace_adini_dondurur():
+    import modal_train
+    profiller = [{"name": "a", "workspace": "hesap-a", "active": False},
+                 {"name": "b", "workspace": "hesap-b", "active": True}]
+    assert modal_train._modal_hesabi(profiller) == "hesap-b"
+
+
+@pytest.mark.parametrize("profiller", [
+    [{"name": "a", "workspace": "hesap-a", "active": False}],
+    [{"name": "a", "workspace": "Unknown (authentication failure)", "active": True}],
+])
+def test_modal_hesabi_okunamazsa_durur(profiller):
+    import modal_train
+    with pytest.raises(SystemExit):
+        modal_train._modal_hesabi(profiller)
 
 
 def test_alt_surec_bitince_beklemeden_doner():

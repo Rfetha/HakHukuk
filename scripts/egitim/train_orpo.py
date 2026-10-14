@@ -23,6 +23,7 @@ Kullanım (Modal):
 """
 import argparse
 import os
+import time
 
 # Unsloth ÖNCE (patch'ler). PatchDPOTrainer → TRL DPO/ORPO trainer'larını Unsloth'a uyarlar.
 from unsloth import FastModel, PatchDPOTrainer
@@ -254,9 +255,12 @@ def main():
         print(f"[orpo] RESUME → {ckpt}", flush=True)
     print(f"[orpo] GPU={torch.cuda.get_device_name(0)} | beta={args.beta} lr={args.lr} "
           f"grad_accum={args.grad_accum} | data={args.data} | out={out}", flush=True)
+    ilk_adim = int(ckpt.rsplit("-", 1)[-1]) if ckpt else 0   # checkpoint-<adım>
+    t0 = time.perf_counter()
     trainer.train(resume_from_checkpoint=ckpt)
+    sure_s = time.perf_counter() - t0
     trainer.save_state()            # Why: kayıp geçmişi (eşdeğerlik kıyası) çıktı dizininde kalsın
-    kunye_tamamla(out, trainer.state.global_step)
+    kunye_tamamla(out, trainer.state.global_step, sure_s, ilk_adim)
 
     model.save_pretrained(out)
     tokenizer.save_pretrained(out)

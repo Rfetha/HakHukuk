@@ -33,7 +33,10 @@ Kullanım:
   # 3) Bitince adapter'ı yerele çek
   modal volume get hukuk-outputs /r1 ./outputs/r1
 """
+import json
 import os
+import subprocess
+import sys
 
 import modal
 import yaml
@@ -113,6 +116,26 @@ def _require(name: str, value):
     return value
 
 
+def _modal_hesabi(profiller: list) -> str:
+    """`modal profile list --json` çıktısından koşuyu başlatan hesap (workspace). Künyeye girer
+    (ADR-0101 m.4); elle yazılan hesap künyeyi kanıt olmaktan çıkarır (tuzak 1.12)."""
+    aktif = [p for p in profiller if p.get("active")]
+    if len(aktif) != 1 or aktif[0]["workspace"].startswith("Unknown"):
+        raise SystemExit(f"[modal] 🚫 aktif Modal hesabı okunamadı: {profiller}")
+    return aktif[0]["workspace"]
+
+
+def _baslatan_hesap() -> str:
+    # Why: ortamda token varsa Modal profili değil o token'ı kullanır; profil listesi o zaman
+    # başka bir hesabı gösterebilir ve künyeye yanlış hesap yazılır.
+    if "MODAL_TOKEN_ID" in os.environ:
+        raise SystemExit("[modal] 🚫 MODAL_TOKEN_ID ortamda: koşunun hesabı profilden okunamaz. "
+                         "Token'ı ortamdan kaldırıp `modal profile activate <ad>` kullan.")
+    cikti = subprocess.run([sys.executable, "-m", "modal", "profile", "list", "--json"],
+                           capture_output=True, text=True, check=True).stdout
+    return _modal_hesabi(json.loads(cikti))
+
+
 def _run_with_commits(cmd, vols, every_s: int):
     """Alt süreci koştur + periyodik commit. Kesinti olursa son commit'li checkpoint'ten
     resume edilir (train_sft/train_orpo `get_last_checkpoint` ile otomatik).
@@ -145,9 +168,9 @@ def _run_with_commits(cmd, vols, every_s: int):
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=6 * 60 * 60)
 def train(model: str, data_path: str, run_name: str, user_part: str, assistant_part: str,
-          hassasiyet: str, seed: int,
+          hassasiyet: str, seed: int, hesap: str,
           epochs: float = 1.0, max_steps: int = -1, extra_args: list[str] | None = None):
-    import sys
+    os.environ["MODAL_HESAP"] = hesap   # künyenin platform alanı MODAL_* değişkenlerini yazar
     cmd = [
         sys.executable, "/root/scripts/egitim/train_sft.py",
         "--model", model,
@@ -174,12 +197,12 @@ def train(model: str, data_path: str, run_name: str, user_part: str, assistant_p
 # ── ORPO (tercih öğrenmesi; adapter-continuation veya taze) ───────────────────
 @app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
               timeout=6 * 60 * 60)
-def train_orpo(model: str, data_path: str, run_name: str, hassasiyet: str, seed: int,
+def train_orpo(model: str, data_path: str, run_name: str, hassasiyet: str, seed: int, hesap: str,
                adapter: str | None = None,
                epochs: float = 1.0, max_steps: int = -1, beta: float = 0.1,
                lr: float = 1e-5, grad_accum: int = 64, save_steps: int = 100,
                lora_dropout: float = -1.0, target_modules: str = "", durdur_adim: int = 0):
-    import sys
+    os.environ["MODAL_HESAP"] = hesap   # künyenin platform alanı MODAL_* değişkenlerini yazar
     cmd = [
         sys.executable, "/root/scripts/egitim/train_orpo.py",
         "--model", model,
@@ -508,7 +531,7 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
                          "(etkin batch = çarpımları; tek başına vermek onu sessizce kaydırır).")
 
     parts = dict(user_part=user_part, assistant_part=assistant_part,
-                 hassasiyet=hassasiyet, seed=seed)
+                 hassasiyet=hassasiyet, seed=seed, hesap=_baslatan_hesap())
     if smoke:
         print(f"[modal] SMOKE: 50 step (config+loss doğrulama) · gpu={GPU}", flush=True)
         call = train.spawn(model=model, data_path=data, run_name=f"{run_name}-smoke",
@@ -548,7 +571,7 @@ def spawn_orpo(model: str = "", data: str = "", run_name: str = "orpo1",
     _require("model", model); _require("data", data)
     _require("hassasiyet", hassasiyet); _require("seed", seed)   # F0.4: varsayılan yok
     common = dict(hassasiyet=hassasiyet, seed=seed, lora_dropout=lora_dropout,
-                  target_modules=target_modules)
+                  target_modules=target_modules, hesap=_baslatan_hesap())
     if smoke:
         print(f"[modal] ORPO SMOKE: 50 step (format+loss+OOM doğrulama) · gpu={GPU}", flush=True)
         call = train_orpo.spawn(model=model, data_path=data, run_name=f"{run_name}-smoke",
