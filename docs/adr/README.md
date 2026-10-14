@@ -14,14 +14,14 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 | :--- | :--- |
 | [`kararlar-0027-0044.md`](kararlar-0027-0044.md) | tasarım kilitleri · base seçimi · precision · merge/norm · Kapı 6 · düşünce modu |
 | [`kararlar-0045-0063.md`](kararlar-0045-0063.md) | ara kapı · CP2 hasat · hakem · harness · eşit sınav · faz 0 ölçüm zinciri |
-| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) |
+| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) |
 | [`gemma4-12b-dersler.md`](gemma4-12b-dersler.md) | emekli 12B hattı: **(A) dersler** (base-bağımsız — *yeni hatta başlayan burayı okur*) · **(B) 26 ADR'nin karar kaydı** · (C) ham kayda giriş |
 
 **Atıf uyumu.** Repo genelinde ~2.100 `ADR-00NN` göndermesi var ve hepsi **çapayla** çözülür:
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0100**'den devam. ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara, **0102**'den devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
@@ -101,10 +101,12 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0093](kararlar-0064-0085.md#adr-0093) | 🟢 | Bağlayıcı hakem **`gpt-4o-mini` → DeepSeek V4.1 Flash** (Checkpoint 1'den itibaren) |
 | [0094](kararlar-0064-0085.md#adr-0094) | 🟢 | Sürüm adları: **`v1.0` → `v0.5`**, GGUF adı `v0.5`; `v1` = Checkpoint 1'in sonu |
 | [0095](kararlar-0064-0085.md#adr-0095) | 🟢 | Makale 2'nin ödül ilkesi: **altın madde bilindiği için hakemsiz ödül**, isabet terimi |
-| [0096](kararlar-0064-0085.md#adr-0096) | 🟡 | **Fizibilite turu** — çıktıdan kısmadan para ve zaman; kazanan yalnız üç yoldan; GRPO 2027 yazında *(ölçüm ortamı → 0097)* |
+| [0096](kararlar-0064-0085.md#adr-0096) | 🟡 | **Fizibilite turu** — çıktıdan kısmadan para ve zaman; kazanan yalnız üç yoldan; GRPO 2027 yazında *(ölçüm ortamı → 0097 · kredi aşımı ve yedek platform → 0101)* |
 | [0097](kararlar-0064-0085.md#adr-0097) | 🟡 | **Ölçüm dizüstünden tek tip kiralık karta** — DEV ve test kendi içinde tek kart tipi; pilot platformu seçer; nakit tavanı $75 *(makine geçişi → 0098)* |
 | [0098](kararlar-0064-0085.md#adr-0098) | 🟢 | **Üç sessiz-hata kapısı** — tamlık (payda = dondurulmuş küme) · `tgta_v1`'in kimliği (`sha256`) · makine geçişi (80 referans cevap); kayma çıpası kiralık karttan |
 | [0099](kararlar-0064-0085.md#adr-0099) | 🟢 | **F0 ölçüm ve eğitim aleti** — RQ2'nin yedi puanlama anahtarı · sıfır iddialı cevaplanmış kalem 0 puan · eğitim imajı Modal'ın kendi imajı (EGITIM_ORTAMI §4 m.3 ertelendi) · fla 0.5.1 sabit |
+| 0100 | ⏳ | *ayrıldı: F0.12'nin veri lisansı ADR'si (ADR-0099)* |
+| [0101](kararlar-0064-0085.md#adr-0101) | 🟢 | **Kredi aşımında ve Modal kesintisinde RunPod** — Vast eğitimden çıktı · bir koşu başladığı Modal hesabında biter · hesap künyeye kendiliğinden yazılır |
 
 ---
 

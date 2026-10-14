@@ -378,8 +378,9 @@ insan doğrulamasında ücretli okuyucular (gönüllü bulunamazsa) · tek kolla
 GPU giderleri iki Modal hesabının aylık $30'ar kredisiyle Kasım 2026–Mart 2027'ye bölünür. τ_g ve τ_a'nın yeni seed'leri
 dondurmayı beklemez ve Kasım–Ocak'ın boştaki kredisiyle eğitilir; dondurmadan sonra yalnız birlikte
 ve ardışık seed'ler kalır. Kredi yetmezse kural [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'tedir:
-iş takvimi geciktirmeden bekleyebiliyorsa yeni ayın kredisi beklenir, geciktirecekse ödenir; Vast
-eğitimde yalnız Modal kesintisinde.
+iş takvimi geciktirmeden bekleyebiliyorsa yeni ayın kredisi beklenir, geciktirecekse ~~ödenir; Vast
+eğitimde yalnız Modal kesintisinde~~ RunPod'da koşulur, Modal kesintisinde de yedek RunPod'dur (2026-10-14,
+[ADR-0101](adr/kararlar-0064-0085.md#adr-0101)).
 Birim fiyatlar: Modal A100-40GB $2,10/saat; SFT A100'de ~2,1 saat
 ([ADR-0033](adr/kararlar-0027-0044.md#adr-0033)), ORPO 36,5 dakika ([#48](record/kronoloji-39-52.md#48));
 Gemma koşuları Qwen'in 1,5-2 katı varsayıldı. Gerçek API faturasının hesaplanan tutarın 1,596 katı
@@ -494,7 +495,8 @@ konferans) · *"Pause or Fabricate? Training Language Models for Grounded Reason
 Bütün eğitimler A100'de, kilitli paket sürümleri ve tarifle yapılır:
 [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Ana platform Modal'dır: iki hesap, aynı
 imajla, aynı platform sayılır. Kredi yetmezse iş takvimi geciktirmeden bekleyebiliyorsa yeni ay beklenir,
-geciktirecekse Modal'da ödenir; Vast yalnız Modal kesintisinde, aynı Docker imajıyla, eşdeğerlik kontrolünden sonra ve bütün
+geciktirecekse ~~Modal'da ödenir; Vast yalnız Modal kesintisinde~~ RunPod'da koşulur, Modal kesintisinde de
+RunPod kullanılır (2026-10-14, [ADR-0101](adr/kararlar-0064-0085.md#adr-0101)); aynı Docker imajıyla, eşdeğerlik kontrolünden sonra ve bütün
 bir seed bloğuyla kullanılır (platform yöntemle değil seed'le değişir). Makalenin ekinde hangi kolun
 nerede eğitildiği yazılır.
 
@@ -557,7 +559,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | OSF ön-kayıt: ambargo ve isimsiz görüntüleme bağlantısı | osf.io | F1 |
 | Global-MMLU ve GSM8K lisansları | küme depoları | F1 |
 | GLM 5.3 Flash'ın OpenRouter kimliği, fiyatı ve lisans dosyası | OpenRouter · HF | F1 |
-| Vast'ta A100 fiyatı ve sürücü sürümü | Vast konsolu | gerektiğinde |
+| ~~Vast'ta~~ RunPod'da A100 fiyatı, sürücü sürümü ve network volume ücreti ([ADR-0101](adr/kararlar-0064-0085.md#adr-0101)) | ~~Vast~~ RunPod konsolu | gerektiğinde |
 | vLLM'in kazanan modeli desteklemesi | GRPO pilotu | Haziran 2027 |
 | COLM 2028 çağrısı | COLM sitesi | Ekim 2027 |
 

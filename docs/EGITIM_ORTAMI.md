@@ -1,6 +1,6 @@
 # Eğitim ortamı kilidi
 
-> **Bu belge ne:** Makale 1 ve Makale 2 için yapılacak **her** eğitim koşusunun (Modal ya da Vast)
+> **Bu belge ne:** Makale 1 ve Makale 2 için yapılacak **her** eğitim koşusunun (Modal ya da ~~Vast~~ RunPod, [ADR-0101](adr/kararlar-0064-0085.md#adr-0101))
 > uymak zorunda olduğu donanım, yazılım ve tarif değerleri. Amaç: platform değişse bile kolların
 > aynı ortamda eğitilmiş olması — aksi hâlde kollar arası fark "yöntem mi, ortam mı" diye
 > ayrıştırılamaz. Yol haritası: [`YAYIN_YOL_HARITASI.md`](YAYIN_YOL_HARITASI.md) §4.1.
@@ -42,7 +42,7 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 | birlikte-eğitim tarifi | SFT tarifi (lr 1e-4) + ORPO çiftleri aynı koşuda; çiftlerde tam ORPO kaybı, λ 0,1 / 0,3; çiftler 5 epoch (örneklerin ~%20'si) | F0/F1 sorgulaması, 2026-10-10; kod F0.8'de |
 | ardışık tarif | τ_g tabana bf16'da gömülür; ORPO tarifi taze adaptörle, β 0,1 / 0,3 | aynı |
 | seed | **3407 · 3408 · 3409**, iki temel modelde (Qwen3.5-4B, Gemma 4 E4B) aynı liste. Qwen'de 3407'nin τ_g ve τ_a kolları `v1` adaptörleridir | sonuç görülmeden seçildi; yaml'a yazılınca kesinleşir |
-| GPU üzerinde yalnız eğitim | ölçüm, hakem ve API anahtarları **eğitim makinesine gitmez** | Vast için zorunlu |
+| GPU üzerinde yalnız eğitim | ölçüm, hakem ve API anahtarları **eğitim makinesine gitmez** | ~~Vast için zorunlu~~ Modal dışı platformda (RunPod) zorunlu, [ADR-0101](adr/kararlar-0064-0085.md#adr-0101) |
 
 ## 3 · Bilinen sessiz tehlikeler
 
@@ -60,29 +60,35 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 1. **İki Modal hesabı** (2026-10-10) aynı imajla aynı `A100-40GB`'ı kullanır; **aynı platform** sayılır, aralarında
    eşdeğerlik kontrolü gerekmez. Künyeye hangi hesap olduğu yazılır; adaptör, koşu biter bitmez özel
    HF deposuna kopyalanır — hiçbir artefakt yalnız bir hesabın depolama alanında kalmaz.
+   **2026-10-14 ([ADR-0101](adr/kararlar-0064-0085.md#adr-0101) m.4):** bir koşu başladığı hesapta biter (checkpoint'ler o hesabın volume'ünde
+   durur, öbür hesap göremez); hesap yalnız iki koşu arasında değişir. Hesap künyeye başlatıcıdan
+   kendiliğinden yazılır (`MODAL_HESAP`); o güne kadar künyeye hiç yazılmıyordu.
 2. **Kredi yetmezse:** iş takvimi geciktirmeden bekleyebiliyorsa yeni ayın kredisi beklenir ($0);
-   geciktirecekse Modal'da ödenir. **Vast yalnız Modal kesintisinde** kullanılır. Ölçüm kartının
-   kuralı ayrıdır: [ADR-0097](adr/kararlar-0064-0085.md#adr-0097).
+   ~~geciktirecekse Modal'da ödenir. **Vast yalnız Modal kesintisinde** kullanılır.~~ **2026-10-14'te
+   değişti ([ADR-0101](adr/kararlar-0064-0085.md#adr-0101)):** geciktirecekse iş **RunPod**'da koşulur; Modal kesintisinde de yedek RunPod'dur,
+   Vast eğitimden çıktı. Ölçüm kartının kuralı ayrıdır: [ADR-0097](adr/kararlar-0064-0085.md#adr-0097).
 3. **Aynı imaj:** ~~Modal hesaplarına ve Vast'a aynı Docker imajı, aynı özetle (digest) verilir; imaj F0'da
    `requirements.lock.txt` + sabitlenmiş `fla-core` sürümüyle bir kez kurulur.~~ **2026-10-11'de değişti
    ([ADR-0099](adr/kararlar-0064-0085.md#adr-0099)):** Modal hesapları Modal'ın kendi imajını kullanır
    (`modal_train.py`, sürümlerin tamamı kilitten); her koşunun künyesine imaj kimliği ve kurulu bütün paket
-   sürümleri yazılır. İmajın bir kayıt deposuna (registry) itilmesi, Vast gerçekten gerektiğinde (yalnız
-   Modal kesintisinde, m.2) o gün yapılır.
+   sürümleri yazılır. İmajın bir kayıt deposuna (registry) itilmesi, ~~Vast gerçekten gerektiğinde (yalnız
+   Modal kesintisinde, m.2)~~ RunPod gerçekten gerektiğinde (m.2, [ADR-0101](adr/kararlar-0064-0085.md#adr-0101)) o gün yapılır.
 4. **Yalnız A100**, **blok sınırında:** bir koşu asla iki platforma bölünmez ve platform **yöntemle
    değil seed'le** değişir — bir temel modelin bir seed'ine ait bütün kollar (τ_g, τ_a, birlikte,
    ardışık) aynı platformdadır; aksi hâlde birincil karşılaştırmada yöntem farkı platform farkından
-   ayrılamaz. τ_g ve τ_a seed'leri dondurmadan önce Modal'da eğitildiği için Checkpoint 1'de Vast'a
-   ancak yepyeni bir seed bloğu geçebilir.
-5. **Eşdeğerlik kontrolü** (~$1): Modal'da koşulmuş bir yapılandırmanın ilk 50 adımı Vast'ta aynı
-   seed'le tekrarlanır, kayıp eğrileri kıyaslanır. **Tolerans sayısı uydurulmaz:** F0'da aynı
+   ayrılamaz. τ_g ve τ_a seed'leri dondurmadan önce Modal'da eğitildiği için Checkpoint 1'de ~~Vast'a~~
+   RunPod'a ([ADR-0101](adr/kararlar-0064-0085.md#adr-0101)) ancak yepyeni bir seed bloğu geçebilir.
+5. **Eşdeğerlik kontrolü** (~$1): Modal'da koşulmuş bir yapılandırmanın ilk 50 adımı ~~Vast'ta~~
+   RunPod'da ([ADR-0101](adr/kararlar-0064-0085.md#adr-0101)) aynı seed'le tekrarlanır, kayıp eğrileri kıyaslanır. **Tolerans sayısı uydurulmaz:** F0'da aynı
    platformda aynı seed'le iki kısa koşu yapılır (~$1-2), aradaki fark **gürültü tabanıdır**;
    platformlar arası fark bu tabanın içinde kalmalı. Kalmazsa o blok tamamen tek platformda
    yeniden koşulur. (Emsal: batch değişince adım-10 kaybı 0,788 ↔ 0,7987 ölçülmüştü,
    [ADR-0033](adr/kararlar-0027-0044.md#adr-0033).)
-6. **Vast kuralları:** API anahtarı kiralık makineye gitmez · koşu bitince makine **silinir**
-   (depolama, makine silinene kadar faturalanır) · kesilebilir kiralamada `save_steps` + otomatik
-   devam ([ADR-0008](adr/gemma4-12b-dersler.md#adr-0008)).
+6. **~~Vast~~ RunPod kuralları ([ADR-0101](adr/kararlar-0064-0085.md#adr-0101)):** API anahtarı kiralık makineye gitmez (yalnız yedek deposuna
+   yazabilen HF token) · koşu bitince pod **silinir** (depolama, pod silinene kadar faturalanır) ·
+   network volume durdurulmuş pod'da da faturalanır, adaptör yedek deposuna kopyalanınca silinir ·
+   kesilebilir kiralamada `save_steps` + otomatik devam ([ADR-0008](adr/gemma4-12b-dersler.md#adr-0008)) ·
+   künyenin platform alanı `RUNPOD_*` değişkenlerinden yazılır (kod geçiş günü eklenir).
 7. Makalenin ekine **donanım tablosu**: hangi kol nerede (platform ve hesap) eğitildi.
 
 ## 5 · Her koşunun künyesine yazılacaklar
