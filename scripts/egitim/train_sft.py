@@ -17,6 +17,7 @@ Not: dar VRAM → batch=1 + gradient_checkpointing ZORUNLU.
 """
 import argparse
 import os
+import time
 
 # Unsloth, torch'tan ÖNCE import edilmeli (patch'leri uygular).
 from unsloth import FastModel
@@ -282,9 +283,12 @@ def main():
         print(f"[train] RESUME → {ckpt} (kaldığı yerden devam)")
     print(f"[train] GPU: {torch.cuda.get_device_name(0)} | "
           f"adapter r={args.lora_r} | data={args.data} | out={out} | resume={bool(ckpt)}")
+    ilk_adim = int(ckpt.rsplit("-", 1)[-1]) if ckpt else 0   # checkpoint-<adım>
+    t0 = time.perf_counter()
     trainer.train(resume_from_checkpoint=ckpt)
+    sure_s = time.perf_counter() - t0
     trainer.save_state()            # Why: kayıp geçmişi (eşdeğerlik kıyası) çıktı dizininde kalsın
-    kunye_tamamla(out, trainer.state.global_step)
+    kunye_tamamla(out, trainer.state.global_step, sure_s, ilk_adim)
 
     # --- Adapter kaydet ---
     model.save_pretrained(out)

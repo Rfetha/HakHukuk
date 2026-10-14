@@ -187,11 +187,23 @@ def kilidi_uygula(args, tarif_adi: str, cikti_dizini: str) -> dict:
     return kunye
 
 
-def kunye_tamamla(cikti_dizini: str, global_step: int) -> None:
-    """Koşu bitince gerçekleşen adım sayısını künyeye ekler."""
+def kunye_tamamla(cikti_dizini: str, global_step: int, sure_s: float, ilk_adim: int) -> None:
+    """Koşu bitince gerçekleşen adım sayısını, tepe VRAM'i ve adım süresini künyeye ekler.
+
+    Why `ilk_adim`: kaldığı yerden devam eden koşuda süre yalnız bu oturumundur; adım başına süre
+    de yalnız bu oturumun adımlarına bölünür, yoksa önceki oturumların adımları onu küçültürdü."""
+    import torch
     yol = os.path.join(cikti_dizini, "KUNYE.json")
     kunye = json.load(open(yol, encoding="utf-8"))
+    adim = global_step - ilk_adim
     kunye.update(durum="bitti", adim_gerceklesen=global_step,
-                 bitis=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"))
+                 bitis=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+                 olcum={"tepe_vram_ayrilan_bayt": torch.cuda.max_memory_allocated(),
+                        "tepe_vram_rezerve_bayt": torch.cuda.max_memory_reserved(),
+                        "oturum_sure_s": round(sure_s, 1),
+                        "oturum_adim": adim,
+                        "s_adim": round(sure_s / adim, 3) if adim else None,
+                        "kapsam": "tepe VRAM süreç başından (model yükleme dahil); süre yalnız bu "
+                                  "oturumun trainer.train() çağrısı (ara değerlendirme dahil)"})
     with open(yol, "w", encoding="utf-8") as f:
         json.dump(kunye, f, ensure_ascii=False, indent=2, default=str)
