@@ -43,7 +43,7 @@ sys.path[:0] = [_K, *(os.path.join(_K, _d) for _d in sorted(os.listdir(_K))
 # ─────────────────────────────────────────────────────────────────────────────
 
 from hakhukuk.cekirdek.istem import SISTEM_KOR as SYSTEM_PROMPT
-from ortam_kilidi import kilidi_uygula, kunye_tamamla  # F0.4 — eğitim ortamı kilidi
+from ortam_kilidi import kilidi_uygula, kunye_tamamla, maske_kapisi  # F0.4 — eğitim ortamı kilidi
 
 def parse_args():
     p = argparse.ArgumentParser()
@@ -276,6 +276,7 @@ def main():
         instruction_part=args.user_part,
         response_part=args.assistant_part,
     )
+    maske_kapisi(trainer.train_dataset, tokenizer, args, out)
 
     # Otomatik resume: out'ta checkpoint varsa kaldığı yerden, yoksa baştan (idempotent).
     ckpt = get_last_checkpoint(out) if os.path.isdir(out) else None
