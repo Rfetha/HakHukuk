@@ -207,3 +207,60 @@ def kunye_tamamla(cikti_dizini: str, global_step: int, sure_s: float, ilk_adim: 
                                   "oturumun trainer.train() çağrısı (ara değerlendirme dahil)"})
     with open(yol, "w", encoding="utf-8") as f:
         json.dump(kunye, f, ensure_ascii=False, indent=2, default=str)
+
+
+# ── Kayıp maskesi kapısı (F0.9) ──────────────────────────────────────────────
+# Why eğitimin içinde, ayrı bir testte değil: döküm Unsloth'un `train_on_responses_only`ının
+# gerçekten ürettiği `labels`tan okunur; ayrı bir test o işi taklit eder ve başka bir şeyi sınar.
+
+def maske_bloklari(input_ids, labels, tokenizer) -> list:
+    """Örneği ardışık (kayıp alıyor mu, metin) bloklarına böler."""
+    bloklar, ids, kayipli = [], [], None
+    for t, l in zip(input_ids, labels):
+        if (l != -100) != kayipli and ids:
+            bloklar.append((kayipli, tokenizer.decode(ids)))
+            ids = []
+        kayipli = l != -100
+        ids.append(t)
+    if ids:
+        bloklar.append((kayipli, tokenizer.decode(ids)))
+    return bloklar
+
+
+def maske_ihlalleri(bloklar: list, user_part: str, assistant_part: str) -> list:
+    kayipli = [i for i, (k, _) in enumerate(bloklar) if k]
+    if not kayipli:
+        return ["kayıp alan token yok: maskeleme örneğin tamamını örttü"]
+    ihlal = []
+    if len(bloklar) == 1:
+        ihlal.append("bütün tokenlar kayıp alıyor: maskeleme hiç çalışmadı")
+    for i in kayipli:
+        if user_part in bloklar[i][1]:
+            ihlal.append(f"kayıp alan blok {i} kullanıcı turu işaretini içeriyor")
+        if i == 0 or not bloklar[i - 1][1].endswith(assistant_part):
+            ihlal.append(f"kayıp alan blok {i} asistan işaretinden hemen sonra başlamıyor")
+    return ihlal
+
+
+def maske_kapisi(veri, tokenizer, args, cikti_dizini: str) -> None:
+    """Maskeleme uygulanmış ilk örneği `maske_ornegi.txt`ye dökümler, sayıları künyeye yazar;
+    maske bozuksa eğitim başlamadan durur. Kayıp alan kısımlar ⟦…⟧ içindedir."""
+    ornek = veri[0]
+    bloklar = maske_bloklari(ornek["input_ids"], ornek["labels"], tokenizer)
+    kayipli = sum(1 for l in ornek["labels"] if l != -100)
+    dokum = "".join(f"⟦{m}⟧" if k else m for k, m in bloklar)
+    with open(os.path.join(cikti_dizini, "maske_ornegi.txt"), "w", encoding="utf-8") as f:
+        f.write(dokum)
+    print(f"[maske] ilk örnek: {len(ornek['labels'])} token, {kayipli} tanesi kayıp alıyor; "
+          f"kayıp alan kısımlar ⟦…⟧ içinde:\n{dokum}", flush=True)
+    yol = os.path.join(cikti_dizini, "KUNYE.json")
+    kunye = json.load(open(yol, encoding="utf-8"))
+    # Why satır sayısı: Unsloth tamamen maskelenen örnekleri yalnız uyarıyla atar.
+    kunye["maske"] = {"ornek_token": len(ornek["labels"]), "ornek_kayipli_token": kayipli,
+                      "satir_maske_sonrasi": len(veri)}
+    with open(yol, "w", encoding="utf-8") as f:
+        json.dump(kunye, f, ensure_ascii=False, indent=2, default=str)
+    ihlal = maske_ihlalleri(bloklar, args.user_part, args.assistant_part)
+    if ihlal:
+        raise SystemExit(f"[maske] 🚫 kayıp maskesi bozuk ({cikti_dizini}/maske_ornegi.txt) — "
+                         f"eğitim başlamadı:\n  · " + "\n  · ".join(ihlal))
