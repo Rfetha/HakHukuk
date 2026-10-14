@@ -2,13 +2,14 @@
 
 > **Ne bu:** Checkpoint 1'in F0 aşaması (2026-10-11'den). Önceki dosya
 > [`kronoloji-63-71.md`](kronoloji-63-71.md) 12 girdiye ulaştı (#63-#74); kural
-> [`README.md`](README.md)'de. Çapa: `kronoloji-75-86.md#75`. **Yeni girdi #78'den devam eder.**
+> [`README.md`](README.md)'de. Çapa: `kronoloji-75-86.md#75`. **Yeni girdi #79'dan devam eder.**
 
 | # | tarih | başlık | kanca |
 | :-- | :--- | :--- | :--- |
 | [75](#75) | 2026-10-11 | F0.4: yeni eğitim kilidi eski ortamla eşdeğer | en büyük sapma 0,0032 · gürültü ≤ 0,0021 · 15 dk boşta A100 sızıntısı kapandı |
 | [76](#76) | 2026-10-11 | F0.5 (b) ve F0.6'nın kodu: RQ2 anahtarları | hakemsiz çıpaların hepsi birebir · `gpt-4o-mini` aynı istekte bir ayda −1,75 p kütle |
 | [77](#77) | 2026-10-11 | F0.7: ham TIES'te τ_a'nın %32'si taşınıyor | τ_a'yı ezen seyreklik değil, normların 9 kat farkı |
+| [78](#78) | 2026-10-14 | F0.9 ön kontrol: maske doğru, Gemma kilitle yüklenmiyor | iki modelde ihlal yok · `unsloth_zoo` 2026.6.1'in Gemma 4 yaması ayarı bozuyor, yükleyici yanlış teşhis veriyor |
 
 ---
 
@@ -150,3 +151,64 @@ vermiyor. Norm payları iki kolda benzer: en büyük pay `gate_proj` (0,345 / 0,
 seçiminde (−7,7 p) ve iki kolun ortalandığı yerlerde 9 kat büyük τ_g'nin baskınlığında. L1'li yeniden
 eğitim kırpma kaybını hedefler, asıl kaybı değil ⇒ plandaki kurala göre ("yalnız ölçüm desteklerse") L1
 turu önerilmedi; karar kullanıcıda.
+
+---
+
+<a id="78"></a>
+## #78 — F0.9 ön kontrol: kayıp maskesi iki modelde doğru; Gemma 4 kilitteki Unsloth'la yüklenmiyor
+
+**2026-10-14 · yerel, $0** · ağırlık inmedi; yalnız tokenizer ve ayar dosyası · kilitteki sürümler
+(`transformers` 5.10.2 · `unsloth` 2026.6.1 · `unsloth_zoo` 2026.6.1; yerel venv aynı sürümler, Python
+3.12 — Modal'da 3.11) · tokenizer revizyonları `Qwen/Qwen3.5-4B@851bf6e806ef` ·
+`google/gemma-4-E4B-it@ee0ef6023621` · kapının kodu `778fc33` · Kanıt: bu girdi (komutlar aşağıda)
+
+**1 · Şablon, gözle.** Aynı üç mesaj (sistem · kullanıcı · asistan) iki modelde eğitim render'ı:
+
+```
+Qwen   <|im_start|>system\nSİSTEM<|im_end|>\n<|im_start|>user\nSORU<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nCEVAP<|im_end|>\n
+Gemma  <bos><|turn>system\nSİSTEM<turn|>\n<|turn>user\nSORU<turn|>\n<|turn>model\nCEVAP<turn|>\n
+```
+
+Gemma'nın tur işaretleri `<|turn>user\n` / `<|turn>model\n` (`train_sft.py`'deki örnekle aynı), tur sonu
+`<turn|>`. **Fark:** Qwen'in şablonu izsiz asistan cevabının önüne boş düşünce bloğu koyuyor (kayıtta
+biliniyordu, [#39](kronoloji-39-52.md#39)); Gemma'nınki koymuyor. İki modelin SFT sinyali bu noktada
+farklıdır: Qwen "boş düşünce + cevap", Gemma "doğrudan cevap" görür. Düşünce koruma kapısı (§2.5.4) ve
+1024+512 zorla kapatma için not; ölçülmedi.
+
+**2 · Kayıp maskesi.** `data/train/raft_scrubbed/train.jsonl`'ın ilk satırı, Unsloth'un kendi
+`train_on_responses_only` fonksiyonu (`return_function=True`), kapının kuralları (`maske_ihlalleri`):
+
+| model | token | kayıp alan | blok | ihlal |
+| :-- | --: | --: | --: | :-- |
+| Qwen3.5-4B | 1.102 | 53 | 2 | yok |
+| Gemma 4 E4B-it | 1.058 | 46 | 2 | yok |
+
+İki modelde de kayıp asistan işaretinin hemen ardından başlıyor ve tur sonu işaretini (`<|im_end|>\n` /
+`<turn|>\n`) kapsıyor; kullanıcı tarafı tamamen maskeli. Aradaki 7 token Qwen'in boş düşünce bloğu.
+
+**3 · Gemma kilitteki sürümlerle yüklenmiyor.** `import unsloth`'tan sonra
+`AutoConfig.from_pretrained("google/gemma-4-E4B-it")` şu hatayı veriyor: `AttributeError: num_kv_shared_layers is 0 (no KV
+sharing) -- hidden from the cache constructor …`. Unsloth içe aktarılmadan aynı çağrı geçiyor. Zincir:
+`transformers` 5.10.2'nin `configuration_utils.py:859` satırı (`logger.info(f"Model config {config}")`)
+günlük düzeyinden bağımsız olarak `repr`'i çağırıyor; `repr` varsayılan bir `Gemma4TextConfig` kuruyor;
+`unsloth_zoo/temporary_patches/gemma4.py`'nin `_Gemma4KVSharedSafeProxy`'si onda patlıyor. Unsloth'un
+yükleyicisi (`unsloth/models/loader.py:1085-1110`) hatayı yutup `RuntimeError: Unsloth: No config file
+found` diye **yanlış teşhisle** duruyor (`FastModel.from_pretrained`, çevrimdışı kipte; ağırlık aranmadan).
+Yani kilitteki sürümlerle Gemma `train_sft.py`'de model yüklemesinde durur — Modal'da ilk dakikada, sessiz
+değil ama yanıltıcı mesajla. PyPI'da daha yeni sürümler var (`unsloth`/`unsloth_zoo` 2026.10.5,
+`transformers` 5.19.0); hangisinin düzelttiği denenmedi.
+
+```
+# 3'ü tekrarlamak için (yerel, $0):
+python -c "import unsloth; from transformers import AutoConfig; AutoConfig.from_pretrained('google/gemma-4-E4B-it')"
+python -c "from transformers import AutoConfig; print(type(AutoConfig.from_pretrained('google/gemma-4-E4B-it')))"
+# 2'yi tekrarlamak için: tokenizer'ı unsloth'tan ÖNCE yükle (3 yüzünden), sonra
+# train_on_responses_only(None, instruction_part=U, response_part=A, tokenizer=t, return_function=True)
+# ({"input_ids": [ids]}) ve ortam_kilidi.maske_bloklari / maske_ihlalleri
+```
+
+**Okuma:** [`YAYIN_YOL_HARITASI.md`](../YAYIN_YOL_HARITASI.md) §2.4'ün "paket kilidi" maddesi ve
+[`EGITIM_ORTAMI.md`](../EGITIM_ORTAMI.md) §6 m.6'nın öngördüğü durum gerçekleşti: Gemma, Qwen'in
+kilidiyle eğitilemiyor. Kural gereği Qwen'in kilidine dokunulmaz, Gemma'nın kilidi ayrı yazılır; bu da iki
+modelin farklı paket sürümleriyle eğitilmesi demek ve makalede sınırlılık olarak yazılır. Hangi sürümün
+seçileceği kullanıcı kararı (F0.9).
