@@ -113,7 +113,7 @@ def ortam_ihlalleri(kilit: OrtamKilidi, g: OrtamGozlemi) -> list:
     for p in paket["yasak"]:
         if g.surumler.get(p) is not None:
             ihlal.append(f"{p}: kurulu ({g.surumler[p]}) ama kilitte yasak")
-    if g.fla_hatasi:
+    if "fla-core" in paket["ek"] and g.fla_hatasi:   # Gemma'nın kilidinde fla yok → denetlenmez
         ihlal.append(f"fla: `from fla.modules import FusedRMSNormGated` çalışmadı ({g.fla_hatasi}) — "
                      f"eksik fla-core, fla'nın hiç olmamasından kötü (ADR-0033)")
     return ihlal
@@ -131,11 +131,12 @@ def gozlemle(kilit: OrtamKilidi) -> OrtamGozlemi:
     transformers'ı çeker ve unsloth'tan önce gelirse yamaları uygulanmayabilir."""
     import torch
     paket = kilit.veri["paketler"]
-    try:
-        from fla.modules import FusedRMSNormGated  # noqa: F401
-        fla_hatasi = ""
-    except ImportError as e:
-        fla_hatasi = f"{type(e).__name__}: {e}"
+    fla_hatasi = ""
+    if "fla-core" in paket["ek"]:
+        try:
+            from fla.modules import FusedRMSNormGated  # noqa: F401
+        except ImportError as e:
+            fla_hatasi = f"{type(e).__name__}: {e}"
     return OrtamGozlemi(
         gpu_adi=torch.cuda.get_device_name(0),
         hesaplama_surumu=tuple(torch.cuda.get_device_capability(0)),
@@ -173,7 +174,7 @@ def kilidi_uygula(args, tarif_adi: str, cikti_dizini: str) -> dict:
                 "nvidia_smi": _nvidia_smi(), "cuda": torch.version.cuda},
         "paketler": {d.metadata["Name"]: d.version for d in md.distributions()},
         "kilit_dosyasi_sha256_kilitte": kilit.veri["paketler"]["kilit_sha256"],
-        "fla_ice_aktarma": "çalıştı",
+        "fla_ice_aktarma": "çalıştı" if "fla-core" in kilit.veri["paketler"]["ek"] else "kilitte yok",
         "argumanlar": {k: v for k, v in vars(args).items()},
         "etkin_batch": args.batch * args.grad_accum,
         "veri": ozet,
@@ -264,3 +265,51 @@ def maske_kapisi(veri, tokenizer, args, cikti_dizini: str) -> None:
     if ihlal:
         raise SystemExit(f"[maske] 🚫 kayıp maskesi bozuk ({cikti_dizini}/maske_ornegi.txt) — "
                          f"eğitim başlamadı:\n  · " + "\n  · ".join(ihlal))
+
+
+# ── LoRA yerleşimi (Gemma) ───────────────────────────────────────────────────
+
+def lora_hedefi(target_modules):
+    """`--target-modules` değerini `get_peft_model`e verilecek biçime çevirir: tek elemanlı ve düz
+    ad olmayan değer regex'tir ve str geçilir (PEFT listeyi ad eşleşmesi, str'yi regex sayar)."""
+    if len(target_modules) == 1 and not target_modules[0].isidentifier():
+        return target_modules[0]
+    return target_modules
+
+
+def yerlesim_ihlalleri(adlar: list, yerlesim: dict) -> list:
+    """LoRA takılan modül adları (`base_model.model.` öneksiz) ↔ kilidin `lora.yerlesim`i."""
+    disarida = [a for a in adlar if not a.startswith(yerlesim["yol_oneki"])]
+    ihlal = []
+    if disarida:
+        ihlal.append(f"{len(disarida)} LoRA modülü {yerlesim['yol_oneki']!r} dışında (ilk: {disarida[0]})")
+    if len(adlar) != yerlesim["modul_sayisi"]:
+        ihlal.append(f"takılan LoRA modülü {len(adlar)} ≠ kilit {yerlesim['modul_sayisi']}")
+    return ihlal
+
+
+def lora_yerlesim_kapisi(model, args, cikti_dizini: str) -> None:
+    """Kilitte `lora.yerlesim` varsa takılan LoRA modüllerini denetler ve sayıyı künyeye yazar;
+    tutmazsa eğitim başlamadan durur. Why: görüntü/ses kulesine takılan LoRA hata vermez, yalnız
+    eğitimi ve adaptörü şişirir (#79)."""
+    yerlesim = OrtamKilidi.yukle(args.ortam_kilidi).veri["lora"].get("yerlesim")
+    if not yerlesim:
+        return
+    adlar = [n.removeprefix("base_model.model.") for n, m in model.named_modules() if hasattr(m, "lora_A")]
+    yol = os.path.join(cikti_dizini, "KUNYE.json")
+    kunye = json.load(open(yol, encoding="utf-8"))
+    kunye["lora_yerlesim"] = {"takilan_modul": len(adlar),
+                              "kule_disi": sum(1 for a in adlar if not a.startswith(yerlesim["yol_oneki"]))}
+    with open(yol, "w", encoding="utf-8") as f:
+        json.dump(kunye, f, ensure_ascii=False, indent=2, default=str)
+    ihlal = yerlesim_ihlalleri(adlar, yerlesim)
+    if ihlal:
+        raise SystemExit("[lora] 🚫 LoRA yerleşimi kilide uymuyor — eğitim başlamadı:\n  · " + "\n  · ".join(ihlal))
+    print(f"[lora] ✓ {len(adlar)} modül, hepsi {yerlesim['yol_oneki']}* altında", flush=True)
+
+
+def yukleme_secenekleri(args) -> dict:
+    """Kilidin `yukleme` bölümü: `FastModel.from_pretrained`e eklenen anahtarlar. Qwen'in kilidinde
+    yok (yükleme değişmez); Gemma'da `use_exact_model_name`: Unsloth istenen depo yerine kendi
+    `unsloth/` aynasını yüklerdi ve o aynanın şablonu/eos'u farklı (#79)."""
+    return OrtamKilidi.yukle(args.ortam_kilidi).veri.get("yukleme", {})

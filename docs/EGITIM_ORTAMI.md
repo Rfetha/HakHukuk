@@ -114,7 +114,22 @@ olmaktan çıkarır (tuzak 1.12, [#66](record/kronoloji-63-71.md#66)).
 5. ~~Gürültü tabanı ölçümü (§4.5).~~ → 2026-10-11: aynı seed'le iki koşu arasındaki kayıp farkı en çok
    0,0021 (τ_g 50. adım 0,0020 · ORPO 10. adım 0,0021); koşular dört ayrı veri merkezine ve iki sürücü
    sürümüne düştü ([#75](record/kronoloji-75-86.md#75)).
-6. Gemma 4 E4B için ayrı bir bölüm: hedef modüller (yalnız metin kulesi), düşünce kapanış işareti,
-   bf16 bellek ihtiyacı ve A100-40GB'da batch ayarı (Gemma 3 seed'le, Qwen'le eşit tasarımda eğitilir).
-   Kilitteki `transformers` 5.10.2 ve `unsloth` 2026.6.1 Gemma 4'ün çıkışından sonra; Gemma başka sürüm
-   isterse Qwen'in kilidine dokunulmaz, Gemma'nın kilidi ayrı yazılır.
+6. Gemma 4 E4B için ayrı bir bölüm. **Kilit ve kod yazıldı (2026-10-15); gerçek eğitim denenmedi** (F0.9
+   smoke'u bunun için). Bulgular: [#78](record/kronoloji-75-86.md#78) ve [#79](record/kronoloji-75-86.md#79).
+   - **Ayrı kilit, ayrı imaj:** `configs/egitim_ortami_gemma.yaml` + `requirements.gemma4.lock.txt` (Qwen'inkinden
+     yalnız `unsloth` ve `unsloth_zoo` 2026.10.1 farklı; kilitteki 2026.6.1 Gemma 4 yapılandırmasını yüklemiyor).
+     Qwen'in kilidine dokunulmadı. Tarifler, seedler, GPU ve hassasiyet iki yaml'da aynıdır; bir test bunu sınar.
+     Gemma imajında `fla-core` ve `flash-linear-attention` yok (Gemma'da doğrusal-dikkat katmanı yok); yalnız `einops`.
+   - **Modal:** `spawn_sft` / `spawn_orpo` `--ortam-kilidi configs/<kilit>.yaml` ister (varsayılansız); kilidin
+     modeli `--model`le uyuşmazsa hiçbir şey başlamadan durur. Kilit hangi imajı çalıştıracağını seçer.
+   - **Model kimliği:** `use_exact_model_name: true`. Yoksa Unsloth `google/gemma-4-E4B-it` yerine
+     `unsloth/gemma-4-E4B-it`'i yükler; ağırlık aynı, ama `config.json`, `tokenizer_config.json` ve sohbet
+     şablonu farklı (eos `<turn|>` yerine `<eos>`).
+   - **LoRA hedefi:** yalnız dil kulesi. Düz 7 adlık liste görüntü (112) ve ses (36) kulesindeki
+     `Gemma4ClippableLinear`lere de takılıyor; kilitteki desen 258 modül seçer. `get_peft_model` sonrası takılan
+     modül sayısı ve kule dışı sayısı denetlenir, tutmazsa koşu başlamadan durur; sayılar künyeye yazılır.
+     Gemma'ya özgü `per_layer_input_gate` ve `per_layer_projection` bilerek dışarıda (Qwen'le eşit tasarım).
+   - **Tur işaretleri:** `<|turn>user\n` ve `<|turn>model\n`. Qwen'in şablonu cevabın önüne boş düşünce bloğu
+     koyuyor, Gemma'nınki koymuyor; iki modelde de kayıp asistan işaretinden hemen sonra başlıyor (#78).
+   - **Hâlâ açık (smoke ölçecek):** bf16 tepe VRAM'i ve adım süresi, `grad_checkpoint: false` tarifinin A100-40GB'a
+     sığıp sığmadığı. Sığmazsa tarif değişikliği ayrı bir ADR ve iki modelde birden olur.
