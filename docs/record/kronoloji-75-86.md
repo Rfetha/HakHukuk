@@ -320,3 +320,67 @@ yakalıyor (hata vermeden yanlış hiperparametre); koşu komutunun bayrakları 
 **Okuma:** F0.9'un kod kapısı iki modelde de geçti: kilit, maske ve (Gemma'da) LoRA kule kapısı gerçek
 GPU'da çalıştı, Gemma A100-40GB'a sığıyor, adım süreleri iki modelde ~10,5-10,7 s. Gemma'nın teknik
 kapısının kalan kutuları (llama.cpp, Q4_K_M, DEV Türkçe oranı, düşünce kapanışı) bu girdiyle kapanmadı.
+
+<a id="84"></a>
+## #84 — Ajan uygulaması hattı: Mike taraması, ADR-0104 ve aynı gün denetimi (ADR-0105); ölçüm yok
+
+**2026-10-15 · ölçüm yok, GPU yok, $0 · kullanıcı kararları
+([ADR-0104](../adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](../adr/kararlar-0064-0085.md#adr-0105))** · kanıt:
+[`knowledge/mike-tarama/`](../../knowledge/mike-tarama/README.md) (sekiz dosya + sentez, 2.351 satır) · commit'ler
+`e314613` … `aa5fd19` (`talk-think`)
+
+**1 · Mike taraması.** `Open-Legal-Products/mike` (TypeScript, AGPL-3.0), `main` dalının tarball'ı; yalnız tasarım
+okundu, kod kopyalanmadı. Sekiz alan alt ajanlara bölündü: ajan döngüsü · sağlayıcı ve yerel model · atıf ve bağlam ·
+tablo biçimli inceleme · belge ve redline · veri modeli ve kuyruk · workflow, MCP, güvenlik · arayüz ve test. Hiçbir
+davranış gerçek bir modelle çalıştırılmadı; satır numaralarının bir kısmı yaklaşık.
+
+- Ajan döngüsü Mike'ın kendisinin değil, Vercel AI SDK'nın `streamText` döngüsü: sert sınır 16 tur, prompt modele
+  "10" diyor. 14+ araç, ~12 bin karakterlik sistem prompt'u; belgenin tamamı bağlama giriyor (parçalama, embedding,
+  OCR, token sayımı ve kısıtlı çözüm yok).
+- Taşınan iskelet: değişmez belge sürümü, `generation_id` ile korunan hücre yazması, `dedupe_key` ve çit belirteçli
+  kuyruk, sıra numaralı SSE, sunucu üretimli onay kartı.
+- 4B için yeniden tasarlanan orta katman: araç yüzeyi küçülür, retrieval sunucunun ön adımı olur, araç çağrısı şemaya
+  zorlanır, model yalnız madde kimliği seçer ve alıntıyı sunucu çeker, tablo incelemesi hücre başına küçük çağrıdır.
+- Mike'ın kendi sessiz-yanlışlık tuzakları [`yurutme-tuzaklari.md`](yurutme-tuzaklari.md) ile aynı sınıftan:
+  doğrulama bayrağı boş atıf "doğrulandı" görünüyor; bozuk JSON'da ham metnin ilk 500 karakteri `done` hücre olarak
+  yazılıyor; bozuk araç argümanı sessizce `{}` oluyor.
+- Türkçe kusurları: `toLowerCase` ile `İ` iki karakter olup konum haritasını kaydırıyor; `İ`/`ı` eşleşmiyor;
+  noktalama silme "1.500" ile "15,00"ı aynı yapıyor; ön yüz vurgulayıcı ç ğ ı ö ş ü harflerini siliyor. Biri Node ile
+  doğrulandı, kalanı koddan çıkarım.
+
+**2 · ADR-0104 ve aynı gün düzeltmeleri.** Kararın çekirdeği: uygulama iki makalenin de çıktısı değil, ürün hattı;
+çakışmada kağıt hattı kazanır · llama.cpp + OpenAI-uyumlu tek uç nokta · `apps/api` + `apps/web` +
+`packages/contracts`, Turborepo yok · içtihat Dilim D'ye ertelendi · model Checkpoint 1'in kazananı. İlk taslak üç
+kusurla yazıldı ve aynı gün düzeltildi:
+
+- [ADR-0076](../adr/kararlar-0064-0085.md#adr-0076)'yı ve `hakhukuk/cekirdek/araclar.py`'deki beş aracı yok saydı:
+  İngilizce araç adları, tek `article_id`, araç kullanımının eğitimi "açık soru" (`cd158c1`).
+- `YAYIN_YOL_HARITASI.md`'yi güncellemedi; kullanıcı sordu (`6452276`).
+- Numara çakışması: karar ayrı çalışma kopyasında 0103 diye yazıldı; ana çalışma kopyasında başka bir oturum 0102 ve
+  0103'ü commit'lemeden almıştı. Birleştirmede 0104 oldu (`b6919fc`, `886fd6c`); diğer oturumun dosyaları ve karar
+  metni bayt bayt korundu.
+
+**3 · Denetim (ADR-0105).** Kullanıcı kararları aynı gün denetime açtı. Bulunanlar:
+
+| bulgu | nerede |
+| :--- | :--- |
+| araç kullanımının eğitimi için üç belge üç ayrı yer gösteriyor: GRPO ödülü · hiçbir yer · "Checkpoint 2'den sonra" | `PRODUCT.md` v2 · `YAYIN_YOL_HARITASI.md` §3.2 · `ROADMAP_uygulama.md` |
+| `ROADMAP_uygulama.md`'nin göndermesi var olmayan bir satıra çıkıyor: `ROADMAP_v1.md` §9'da araç eğitimi satırı yoktu | bağlantı testi yakalamaz; dosya vardı, satır yoktu |
+| omurganın takvim gerekçesi ("GRPO koşarken kullanıcı saati görece boş") yol haritasının kendi tablosuyla çelişiyor: Ağustos–Eylül 2027 F5'tir, Makale 1'in yazımı (~30-45 saat) | ADR-0104 Gerekçe ↔ `YAYIN_YOL_HARITASI.md` §2.6 |
+| F1.12'nin "F1.11'den önce" şartının gerekçesi yok; planın en yoğun dönemine düşüyor ve F1'in saat tahminine girmemiş | `ROADMAP_v1.md` F1.12 |
+| uygulama hattının hiçbir yerde kullanıcı saati tahmini yok | `ROADMAP_uygulama.md` |
+
+Kararlar: araç kullanımının eğitimi Makale 2'ye girmez, Checkpoint 2'den sonra ayrı ürün turu (yalnız ölçüm boşluk
+gösterirse) · omurga Ekim–Aralık 2027 · dilimler sıralı, tez yazımında durur · F1.12 `ROADMAP_v1`'den çıktı,
+omurganın ilk işi oldu (U1.0, kazananla) · uygulamanın tezdeki yeri Ocak 2028'de. Yol haritalarına işlendi
+(`aa5fd19`); `YAYIN_YOL_HARITASI.md` §5–§7 tabloları aynı gün açılır kapanır yapıldı (`80ad755`).
+
+**Okuma:** bu turda hiçbir sayı ölçülmedi; tasarımın 4B'de çalıştığına dair kanıt yok, Mike'tan çıkan her şey
+öneridir. Karar kaydının kendisi de "hata vermeden yanlış" üretebiliyor: üç belge aynı soruya üç cevap verdi ve
+bağlantı testi geçti, çünkü test bağlantının varlığına bakar, ne dediğine bakmaz. Bir ADR'nin gerekçe cümlesi, yol
+haritasının saat tablosuyla yan yana okunmadan yazılmıştı. İki ders: yeni ADR'den önce konuyla ilgili eski ADR'ler
+taranır (ADR-0076 kaçırıldı); paralel oturumlarda numara commit'li hâlden değil ana çalışma kopyasından alınır. ADR
+numarası gibi kronoloji numarası da commit'lenmeden alınıyor; bu girdi bu yüzden #84 (#81–#83 diğer oturumun,
+2026-10-15'te henüz commit'lenmemişti). Taramanın sentezindeki araç listesi (`mevzuat_ara` … `madde_id`) ve
+"araç çağırma dalı F1.11 dondurmasını etkiler" maddesi ADR-0104 ve ADR-0105 ile aşıldı;
+`knowledge/mike-tarama/` o günün hâliyle kalır.
