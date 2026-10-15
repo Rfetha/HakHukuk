@@ -71,3 +71,15 @@ def test_vllm_pilotu_bf16_klasorunu_manifestle_dogrular():
     k = _kaynak()
     assert "bf16_manifest.json" in k and "bf16_yukle" in k
     assert _sabit("ES_ZAMANLI") == 32
+
+
+def test_pilot_hata_verse_de_kunye_yazar():
+    """Ücretli koşu yarıda kalırsa neden ve biten koşular kaybolmasın: künye `finally` içinde yazılır,
+    hata nedeni `hata_sonu` alanına girer (inceleme bulgusu, 2026-10-16)."""
+    kaynak = _kaynak()
+    agac = ast.parse(kaynak)
+    pilot = next(n for n in agac.body if isinstance(n, ast.FunctionDef) and n.name == "pilot")
+    denemeler = [n for n in ast.walk(pilot) if isinstance(n, ast.Try)]
+    assert any(isinstance(c, ast.Call) and getattr(c.func, "id", None) == "_yaz"
+               for t in denemeler for s in t.finalbody for c in ast.walk(s))
+    assert "hata_sonu" in ast.get_source_segment(kaynak, pilot)
