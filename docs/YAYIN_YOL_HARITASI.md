@@ -34,7 +34,7 @@
 | kullanıcı saati (tahmin) | ~82-117 | ~60-85 |
 
 Checkpoint 2 hiç gerçekleşmese bile Checkpoint 1 mezuniyete yeterli tez malzemesi üretir (§2.9).
-Çalışan uygulama hiçbir aşamada bozulmaz; `v0.5` her zaman yedek olarak durur.
+Çalışan uygulama (CLI/TUI) hiçbir aşamada bozulmaz; `v0.5` her zaman yedek olarak durur.
 
 **Sürüm adları.** Bugünkü yayın `v0.5`'tir: 2026-09-13'te `v1.0` diye etiketlenmişti; 2026-10-10'da
 her yerde `v0.5` oldu: git etiketi (`master`'daki `db6259c`), belgeler, model kartı, HF kartı ve GGUF
@@ -520,6 +520,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | `v2-RL-GRPO` | Checkpoint 2 (Makale 2) |
 | korpus turu (40.496 → ~288 bin madde) | Checkpoint 2'den sonra; korpus değişince eşit sınav ve yayımlanan sayılar askıya alınır ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) §E.6) ve mühürlü test aynı korpusa bağlıdır |
 | açık kusurlar 5a · 23 · 27 · 31 | ürün iş listesinde |
+| ajan uygulaması (omurga, belgeler, üretim) | paralel hat, Ağustos–Eylül 2027'den; [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0103](adr/kararlar-0064-0085.md#adr-0103); çakışmada kağıt hattı kazanır. Ölçüm hattına yalnız araç çağırma ölçüm modu (F1.12) girer |
 
 ---
 
@@ -539,7 +540,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | makale reddediliyor | hakem kararı | sonraki ARR döngüsü → dergi |
 | özgünlük örtüşmesi | F0 literatür taraması | çerçeve dondurmadan önce düzeltilir |
 | ölçüm kartının maliyeti tavanı aşıyor ya da kart tipi bulunamıyor | F0.16 pilotu · üretim sırasında | tavan ($75) aşılacak gibiyse durulur ve kullanıcıya dönülür; kart tipi bir sağlayıcıda yoksa aynı tip başka sağlayıcıdan alınır; tip yalnız DEV'den teste geçerken değişir |
-| Mayıs–Haziran 2027'de kullanıcı yükü haftada ~3,5-5 saat (F3 · F4 · F3b · GRPO pilotu · F5'in başı), dönem sonuyla çakışıyor | Haziran'da haftalık 5 saat aşılıyor | önce GRPO pilotu ve ödül ADR'si Temmuz'a kayar (Temmuz–Ekim kredisi koşulara yeter, Kasım–Mart tampon), sonra F3b ve F5'in başlangıcı; F3 ve F4'ün sırası değişmez |
+| Mayıs–Haziran 2027'de kullanıcı yükü haftada ~3,5-5 saat (F3 · F4 · F3b · GRPO pilotu · F5'in başı), dönem sonuyla çakışıyor | Haziran'da haftalık 5 saat aşılıyor | önce GRPO pilotu ve ödül ADR'si Temmuz'a kayar (Temmuz–Ekim kredisi koşulara yeter, Kasım–Mart tampon), sonra F3b ve F5'in başlangıcı; F3 ve F4'ün sırası değişmez. Ajan uygulaması hattı ([ADR-0103](adr/kararlar-0064-0085.md#adr-0103)) bu dönemde zaten başlamaz; takvim sıkışırsa ilk o kesilir |
 
 ---
 
