@@ -73,8 +73,8 @@ Bunlar eksiklik listesi değil, **ürünün sınırı**:
 | :--- | :--- | :--- |
 | eğitim | ham base → SFT (`τ_g`) + ORPO (`τ_a`) → ham TIES merge | `tgta_v1` **yeni başlangıç** → GRPO + düşünce ayarı |
 | ne | ağırlıklar + kod + veri + araştırma kaydı, **uçtan uca çalışır** | daha güçlü model + API/servis |
-| arayüz | `hakhukuk "soru"` (CLI) · `hakhukuk-tui` — **yeterli** (insan kararı) | HTTP API, web: omurga [ADR-0104](adr/kararlar-0064-0085.md#adr-0104) ile paralel hatta; barındırma (**S9 açık**) |
-| araçlar | 5 **deterministik** kaldıraç, istem katmanında ([ADR-0076](adr/kararlar-0064-0085.md#adr-0076)) | araç kullanımının **eğitimi** (GRPO ödülü) |
+| arayüz | `hakhukuk "soru"` (CLI) · `hakhukuk-tui` — **yeterli** (insan kararı) | HTTP API, web: omurga ayrı hatta, Ekim–Aralık 2027 ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](adr/kararlar-0064-0085.md#adr-0105)); barındırma (**S9 açık**) |
+| araçlar | 5 **deterministik** kaldıraç, istem katmanında ([ADR-0076](adr/kararlar-0064-0085.md#adr-0076)) | araç kullanımının **eğitimi**: GRPO ödülüne girmez; Checkpoint 2'den sonra ayrı tur, ölçüm boşluk gösterirse ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)) |
 | erişim | yerel indeks, anlık görüntü korpus | canlı `bedesten` (B6) · tam kapsam · tazelik |
 | durum | bu turda | sonra |
 

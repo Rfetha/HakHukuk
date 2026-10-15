@@ -28,7 +28,7 @@
 | soru | Çatışan iki beceriyi (temellendirme ↔ çekinme) tek modelde toplamanın en iyi yolu hangisi, sonuç temel modele göre değişiyor mu, ve hangi hükümler ölçüm düzeltmesine dayanıklı? | Doğrulanabilir ödülle RL, isabetsiz atıfı ve M2b'yi çekinmeyi ve düşünceyi bozmadan düzeltiyor ve düşünceyi hedefe hizalıyor mu? |
 | yöntem | SFT + ORPO; ayrı kollar + ham TIES ↔ birlikte eğitim ↔ ardışık eğitim | GRPO, isabet terimli doğrulanabilir ödül |
 | temel model | **Qwen3.5-4B ve Gemma 4 E4B, her biri 3 seed** | Checkpoint 1'in **kazananı** |
-| çıktı | Makale 1 gönderime hazır · uygulama kazananla güncel · tez malzemesi tamam | Makale 2 gönderime hazır · tez savunması |
+| çıktı | Makale 1 gönderime hazır · ürün (CLI/TUI) kazananla güncel · tez malzemesi tamam | Makale 2 gönderime hazır · tez savunması |
 | GPU (tahmin) | ~$111-131, iki Modal hesabının aylık kredisinden (Mart 2027'de biter) | ~$120-130, aynı kredilerden (Temmuz–Ekim 2027) |
 | nakit (tahmin) | ~$61-67 hakem API + ölçüm kartı (Modal kredisi ya da ≤$75) | ~$30-50 (rakipler + hakem) |
 | kullanıcı saati (tahmin) | ~82-117 | ~60-85 |
@@ -116,7 +116,7 @@ birleştirmenin M2'ye katkısı           +0,020          +0,000
 ```
 
 Ayrıca: insan doğrulama tablosu (§2.5.3) · kazanan (temel model, yöntem) çiftiyle güncellenmiş
-uygulama · tezin 4. bölümünün malzemesi.
+ürün (CLI/TUI) · tezin 4. bölümünün malzemesi.
 
 ### 2.3 Deney tasarımı
 
@@ -398,6 +398,9 @@ iç hakem eksiği, gönderimden önce 1-2 dış okuyucuyla kapatılır.
 Checkpoint 1 bittiğinde tezin dört bölümü yazılabilir durumdadır: 1 giriş ve ilgili çalışmalar ·
 2 sistem (HakHukuk; arama katmanı, düşünce bütçesi, konteyner — eldeki iş) · 3 ölçüm dersleri
 (eldeki kayıt) · 4 post-training karşılaştırması (Makale 1). Checkpoint 2, 5. bölümü ekler.
+Ajan uygulamasının ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104)) teze girip girmeyeceği tez yazımının
+başında (Ocak 2028), omurganın durumu ve DEÜ kuralları (§6) belliyken karara bağlanır
+([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)).
 
 ---
 
@@ -486,6 +489,9 @@ konferans) · *"Pause or Fabricate? Training Language Models for Grounded Reason
 | Ocak–Haziran 2028 | tez yazımı (makale metinleri yeniden kullanılır) · Makale 2 yazımı | ~40-60 |
 | yaz 2028 | tez savunması | — |
 
+Ekim–Aralık 2027'de ayrı hatta ajan uygulamasının omurgası yürür (kullanıcı ~8-12 saat, tahmin); Ocak
+2028'de tez yazımı başlayınca hat durur ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)).
+
 ---
 
 ## 4 · Altyapı ve kurallar
@@ -520,7 +526,8 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | `v2-RL-GRPO` | Checkpoint 2 (Makale 2) |
 | korpus turu (40.496 → ~288 bin madde) | Checkpoint 2'den sonra; korpus değişince eşit sınav ve yayımlanan sayılar askıya alınır ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) §E.6) ve mühürlü test aynı korpusa bağlıdır |
 | açık kusurlar 5a · 23 · 27 · 31 | ürün iş listesinde |
-| ajan uygulaması (omurga, belgeler, üretim) | paralel hat, Ağustos–Eylül 2027'den; [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0104](adr/kararlar-0064-0085.md#adr-0104); çakışmada kağıt hattı kazanır. Ölçüm hattına yalnız araç çağırma ölçüm modu (F1.12) girer |
+| ajan uygulaması (omurga, belgeler, üretim) | ayrı hat; omurga Ekim–Aralık 2027 (Makale 1 gönderildikten sonra), dilimler sıralı, tez yazımında durur ve savunmadan sonra devam eder; [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0104](adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](adr/kararlar-0064-0085.md#adr-0105); çakışmada kağıt hattı kazanır. Araç çağırma ölçümü de bu hattadır (omurganın ilk işi) |
+| araç kullanımının eğitimi (RL) | Checkpoint 2'den sonra, ayrı ürün turu; yalnız araç çağırma ölçümü açık bir boşluk gösterirse açılır; Makale 2'nin ödülüne girmez ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)) |
 
 ---
 

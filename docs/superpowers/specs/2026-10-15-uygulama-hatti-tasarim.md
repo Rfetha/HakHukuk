@@ -1,6 +1,6 @@
 # Uygulama hattı: tasarım taslağı
 
-> **Durum:** taslak, kod yok. Karar çerçevesi [ADR-0104](../../adr/kararlar-0064-0085.md#adr-0104).
+> **Durum:** taslak, kod yok. Karar çerçevesi [ADR-0104](../../adr/kararlar-0064-0085.md#adr-0104); takvim, araç çağırma ölçümünün yeri ve araç RL'i [ADR-0105](../../adr/kararlar-0064-0085.md#adr-0105).
 > Girdi: [`knowledge/mike-tarama/`](../../../knowledge/mike-tarama/README.md) (Mike taraması; AGPL-3.0, yalnız tasarım okundu, kod kopyalanmadı).
 > Bu belge öneri içerir; "öneri" etiketli yerler ölçülmeden bağlayıcı değildir.
 
@@ -158,13 +158,13 @@ Hash zincirli, yalnız-ekleme denetim kaydı; telemetri kapalı; SSRF koruması 
 
 ## 12. Ölçüm: araç çağırma modu
 
-Ölçüm hattına yeni mod (`scripts/olcum_uretim/`, KUNYE.json'lu, ayrı `outputs/eval/<grup>/<run>/`); mühürlü test kümesine ve puanlamaya dokunmaz. Mod F1.11 dondurmasından **önce** eklenir ki dondurulan kapsamı etkilemesin.
+Ölçüm hattına yeni mod (`scripts/olcum_uretim/`, KUNYE.json'lu, ayrı `outputs/eval/<grup>/<run>/`); mühürlü test kümesine ve puanlamaya dokunmaz. Mod omurganın ilk işidir (U1.0, Ekim 2027; [ADR-0105](../../adr/kararlar-0064-0085.md#adr-0105)).
 
 - Birim: araç çağırma görevi (soru + beklenen araç dizisi); deterministik puan: geçerli araç adı, şemaya uyum, doğru madde kimliği, tur sayısı, tekrar çağrı, atıf durumu. Hakem gerekmez (judge-free omurga).
 - Karşılaştırmalar: 5 ve 7 araç; kısıtlı çözüm açık ve kapalı.
-- Model: `tgta_v1` (Qwen) şimdi; Gemma yalnız F0.9 sonrası ve kapıyı geçerse.
+- Model: Checkpoint 1'in kazananı (F3.6), omurganın kesinleşen araç tanımlarıyla; bir kez ölçülür.
 - **Araçlı koşu kapı koşusuna girmez** (ADR-0076 Karar 4): eşit sınav kuralı, bizim kol araç kullanır, rakip kullanamaz. Bu mod ayrı bir `outputs/eval/<grup>/` altında koşar ve hiçbir yayımlanan sayıya karışmaz.
-- Çıktı: sonuç kayda (kronoloji) ve GRPO pilotu ile ödül ADR'sine girdi. Araç kullanımının eğitimi `v2`'dedir (ADR-0076, PRODUCT.md); karar bu belgede verilmez.
+- Çıktı: sonuç kayda (kronoloji); açık soruların (araç sayısı, araç turlarında düşünme, §14) ve ayrı araç RL turunun açılıp açılmayacağının kararına girdi. Araç kullanımının eğitimi Makale 2'ye girmez, Checkpoint 2'den sonra ayrı bir ürün turudur ([ADR-0105](../../adr/kararlar-0064-0085.md#adr-0105)); karar bu belgede verilmez.
 
 ## 13. Dilimler ve çıkış ölçütleri
 
@@ -175,7 +175,7 @@ Hash zincirli, yalnız-ekleme denetim kaydı; telemetri kapalı; SSRF koruması 
 | **C: üretim** | redline, dilekçe ve sözleşme taslağı, vatandaş özeti | eşleşmeyen `find` reddedilir; DOCX kabul/ret turu belgeyi bozmaz; taslak kalitesi ölçülmeden yayımlanmaz |
 | **D: içtihat + MCP** | kapsam ADR'si sonrası | ayrı ADR |
 
-Takvim ([ADR-0104](../../adr/kararlar-0064-0085.md#adr-0104)): tasarım ve §12 ölçüm modu şimdi; omurga kodu Ağustos-Eylül 2027, GRPO koşularıyla paralel; çakışmada kağıt hattı kazanır.
+Takvim ([ADR-0105](../../adr/kararlar-0064-0085.md#adr-0105)): tasarım şimdi; omurga kodu Ekim–Aralık 2027, Makale 1 gönderildikten sonra, ilk işi §12 ölçüm modu; dilimler sıralı (A → B → C), tez yazımı başlayınca (Ocak 2028) durur, savunmadan sonra devam eder; çakışmada kağıt hattı kazanır.
 
 ## 14. Açık sorular
 

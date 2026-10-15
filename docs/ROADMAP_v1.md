@@ -36,7 +36,6 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F1.9 İnsan okuma protokolü
 - [ ] F1.10 Genel yetenek kümeleri (Global-MMLU TR + GSM8K)
 - [ ] F1.11 **Dondurma ADR'si** · OSF'de mühürlendi · makalenin yöntem bölümü taslağı
-- [ ] F1.12 Araç çağırma ölçüm modu (ürün ölçümü; F1.11'den önce biter; mühürlü kümeye dokunmaz; [ADR-0104](adr/kararlar-0064-0085.md#adr-0104))
 
 **F2 · Test ve seed'ler** *(Şubat–Nisan 2027)*
 
@@ -92,7 +91,8 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 > [RL] · [IT].
 >
 > Ajan uygulaması ayrı bir hattır ve bu belgenin kapsamı dışındadır: [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md)
-> ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104)). Bu belgeye yalnız ölçüm hattına dokunan F1.12 girer.
+> ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104)). Araç çağırma ölçümü de o hattadır: 2026-10-15'te F1.12
+> olarak buraya girdi, aynı gün [ADR-0105](adr/kararlar-0064-0085.md#adr-0105) ile omurganın ilk işi oldu.
 
 ---
 
@@ -178,7 +178,6 @@ açılmadan önce bilmek.
 | F1.9 | **İnsan okuma protokolü:** etiket tanımları — cevap ↔ çekinme · altın bağlamdayken susma · isabetsiz atıf · sadakat (iddia düzeyinde; doğrulanabilir iddia ↔ yorum ayrımı) [benchmark] · iz ↔ cevap tutarlılığı · "belirsiz" → protokol F1.4 pilotunda denendi |
 | F1.10 | **Genel yetenek kümeleri:** Global-MMLU Türkçe 100 + GSM8K 100; hakemsiz, düşünce açık, ölçüm kartında. F1 ayarlarında da koşulur (DEV seçimi koruma kapısına bakar); F2'de, test üretiminin parçası olarak, üç yolda bütün seed'ler ve tek kollarda 3407 [benchmark] → lisanslar dosyadan okundu, iki ham modelle çıpa koşuldu |
 | F1.11 | **DONDURMA ADR'si:** seçilen yapılandırmalar (kural: DEV kütlesi yüksek olan, koruma kapısını DEV'de geçmesi şart; fark gürültü tabanından küçükse 0,1) · düşünce koruma eşiği (genel kayıp ≤5 puan, döngü artışı ≤2 puan; yol haritası §2.5.4) · istatistik planı (birincil ve önceden listelenmiş ikincil kırılımlar; tek kollarla ikincil karşılaştırmalar ve Kapı 5 yalnız seed 3407'de, aynı sorularda eşleştirilir) · kazanan kuralı (kazanan yalnız üç yoldan; ürün yalnız %95 eşleştirilmiş bootstrap'ta `tgta_v1`'i geçerse değişir; ürüne seed 3407) · hakem sürümleri ve modu · kesme sırası ([yol haritası](YAYIN_YOL_HARITASI.md) §5) → ADR yazıldı ve OSF'de mühürlendi; makalenin yöntem bölümü taslağı aynı gün yazıldı; bundan sonra yapılandırma değişmez |
-| F1.12 | **Araç çağırma ölçüm modu (ürün ölçümü, makale ölçümü değil):** `tgta_v1`'in (Qwen) uygulamanın araç şemasıyla araç çağırma doğruluğu; deterministik puan (geçerli araç adı · şemaya uyum · doğru `(kanun_no, madde_no)` · tur sayısı · tekrar çağrı · atıf durumu), hakem yok; 5 ve 7 araç, kısıtlı çözüm açık ve kapalı; Gemma yalnız F0.9'u geçerse. Mod ayrı bir `outputs/eval/<grup>/` altında koşar, mühürlü test kümesine ve puanlamaya dokunmaz, hiçbir yayımlanan sayıya karışmaz ([ADR-0076](adr/kararlar-0064-0085.md#adr-0076) Karar 4); sonuç Checkpoint 2'nin ödül ADR'sine girdidir, bu belgede karar verilmez → F1.11'den önce koştu, künye yazıldı, sonuç kayda geçti |
 
 ### 3.1 Test sorularının kuralları
 
@@ -306,7 +305,8 @@ $30'ar kredisiyle Kasım 2026–Mart 2027'ye yayılır; kredi yetmezse
 | `v2` — kazananın üstüne GRPO | Checkpoint 2 ([yol haritası](YAYIN_YOL_HARITASI.md) §3); pilot ve ödül ADR'si Haziran 2027'de, koşular Temmuz–Ekim 2027'de, Makale 1'in yazımıyla paralel |
 | mevzuat kapsam + tazelik (40.496 → ~288 bin madde) | Checkpoint 2'den sonra ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) §EK) |
 | canlı `bedesten` API (B6) · tazelik boru hattı · barındırma (S9) · tablo satırları (B9) | Checkpoint 2'den sonra |
-| ajan uygulaması (omurga, belgeler, üretim) ve web arayüzü | paralel hat, Ağustos–Eylül 2027'den ([`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0104](adr/kararlar-0064-0085.md#adr-0104)); barındırma (S9) ve canlı `bedesten` yine Checkpoint 2'den sonra |
+| ajan uygulaması (omurga, belgeler, üretim) ve web arayüzü | ayrı hat; omurga Ekim–Aralık 2027, dilimler sıralı, tez yazımında durur ([`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0104](adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](adr/kararlar-0064-0085.md#adr-0105)); barındırma (S9) ve canlı `bedesten` yine Checkpoint 2'den sonra |
+| araç kullanımının eğitimi (RL) | Checkpoint 2'den sonra, ayrı ürün turu; yalnız araç çağırma ölçümü açık bir boşluk gösterirse açılır; Makale 2'nin ödülüne girmez ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)) |
 | açık kusurlar 5a · 23 · 27 · 31 | ürün iş listesi ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083)) |
 | `recall_taban.json` · korpus bütünlüğü (`4857/Madde 111` yinelenmesi) · `terazi` yinelenen atıf · `models/` temizliği · TUI gözle doğrulama | ucuz işler; boş zamanda |
 | S10: sorumluluk ibaresinin nihai hukuki metni | hukukçu görüşü bekliyor |
