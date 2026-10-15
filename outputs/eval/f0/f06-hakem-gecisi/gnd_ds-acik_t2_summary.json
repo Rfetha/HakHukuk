@@ -1,0 +1,39 @@
+{
+  "label": "ds-acik_t2",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "deepseek/deepseek-v4.1-flash-20260910",
+  "n_girdi": 80,
+  "n_puanli": 77,
+  "n_sifir_iddia": 3,
+  "n_hakem_hata": 0,
+  "n_bos_girdi": 0,
+  "olcum_aleti": {
+    "dedektor": "adr0061",
+    "sifir_iddia": "sifir-puan",
+    "a1_tanimi": "cevaplanan",
+    "kaynak_kirpma": 12000,
+    "payda": "kor",
+    "altin_kirpma": "3500"
+  },
+  "hakem": {
+    "model": "deepseek/deepseek-v4.1-flash-20260910",
+    "saglayici": "deepinfra/fp8",
+    "dusunme": "acik"
+  },
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "DeepInfra"
+  ],
+  "runs": 1,
+  "total_claims": 328,
+  "faithfulness_micro": 0.814,
+  "hallucination_micro": 0.186,
+  "unsupported_micro": 0.186,
+  "cit_precision_micro": 0.7629,
+  "wrong_ref_rate_micro": 0.1649,
+  "cit_recall_macro": 0.725,
+  "faithfulness_macro": 0.7834,
+  "judge_cost_usd": 0.2532,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

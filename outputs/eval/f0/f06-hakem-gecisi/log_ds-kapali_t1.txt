@@ -1,0 +1,85 @@
+[gnd] ds-kapali_t1: 80 cevap | mod=data | hakem=deepseek/deepseek-v4.1-flash-20260910 | runs=1 | kaynak=referans
+  id= 0 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id= 1 faith=0.3333 hall=0.6667 unsup=0.6667 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id= 2 faith=1.0 hall=0.0 unsup=0.0 claims=10 citP=1.0 wrongRef=0.0 citR=1
+  id= 3 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id= 4 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id= 5 faith=1.0 hall=0.0 unsup=0.0 claims=10 citP=1.0 wrongRef=0.0 citR=1
+  id= 6 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id= 7 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id= 8 faith=0.8571 hall=0.1429 unsup=0.1429 claims=7 citP=1.0 wrongRef=0.0 citR=1
+  id= 9 faith=0.6667 hall=0.3333 unsup=0.3333 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=10 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=0.0 citR=0
+  id=11 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=12 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=13 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=14 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=15 faith=None hall=None unsup=None claims=0 citP=None wrongRef=None citR=0
+  id=16 faith=1.0 hall=0.0 unsup=0.0 claims=1 citP=1.0 wrongRef=0.0 citR=1
+  id=17 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=18 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=19 faith=0.6 hall=0.4 unsup=0.4 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=20 faith=0.3333 hall=0.6667 unsup=0.6667 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id=21 faith=0.0 hall=1.0 unsup=1.0 claims=5 citP=0.0 wrongRef=0.0 citR=0
+  id=22 faith=1.0 hall=0.0 unsup=0.0 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id=23 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=24 faith=0.75 hall=0.25 unsup=0.25 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id=25 faith=0.5 hall=0.5 unsup=0.5 claims=4 citP=0.3333 wrongRef=0.0 citR=1
+  id=26 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=0.0 wrongRef=0.0 citR=0
+  id=27 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=28 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=29 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=30 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=31 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=32 faith=0.6667 hall=0.3333 unsup=0.3333 claims=3 citP=0.0 wrongRef=1.0 citR=0
+  id=33 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id=34 faith=1.0 hall=0.0 unsup=0.0 claims=1 citP=0.0 wrongRef=0.0 citR=0
+  id=35 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=36 faith=0.0 hall=1.0 unsup=1.0 claims=5 citP=0.0 wrongRef=1.0 citR=0
+  id=37 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=38 faith=0.4 hall=0.6 unsup=0.6 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=39 faith=0.0 hall=1.0 unsup=1.0 claims=1 citP=0.0 wrongRef=1.0 citR=0
+  id=40 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=41 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=42 faith=1.0 hall=0.0 unsup=0.0 claims=7 citP=1.0 wrongRef=0.0 citR=1
+  id=43 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=44 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=45 faith=None hall=None unsup=None claims=0 citP=None wrongRef=None citR=0
+  id=46 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=47 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=48 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=49 faith=0.8333 hall=0.1667 unsup=0.1667 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id=50 faith=1.0 hall=0.0 unsup=0.0 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id=51 faith=None hall=None unsup=None claims=0 citP=None wrongRef=None citR=0
+  id=52 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=53 faith=1.0 hall=0.0 unsup=0.0 claims=1 citP=1.0 wrongRef=0.0 citR=1
+  id=54 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=55 faith=0.0 hall=1.0 unsup=1.0 claims=3 citP=0.0 wrongRef=1.0 citR=0
+  id=56 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id=57 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=58 faith=1.0 hall=0.0 unsup=0.0 claims=16 citP=1.0 wrongRef=0.0 citR=1
+  id=59 faith=0.6667 hall=0.3333 unsup=0.3333 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=60 faith=1.0 hall=0.0 unsup=0.0 claims=11 citP=1.0 wrongRef=0.0 citR=1
+  id=61 faith=0.3333 hall=0.6667 unsup=0.6667 claims=3 citP=0.0 wrongRef=0.0 citR=0
+  id=62 faith=0.0 hall=1.0 unsup=1.0 claims=3 citP=0.0 wrongRef=0.0 citR=0
+  id=63 faith=1.0 hall=0.0 unsup=0.0 claims=1 citP=1.0 wrongRef=0.0 citR=1
+  id=64 faith=0.9375 hall=0.0625 unsup=0.0625 claims=16 citP=1.0 wrongRef=0.0 citR=1
+  id=65 faith=1.0 hall=0.0 unsup=0.0 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id=66 faith=None hall=None unsup=None claims=0 citP=None wrongRef=None citR=0
+  id=67 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=68 faith=0.25 hall=0.75 unsup=0.75 claims=4 citP=0.0 wrongRef=1.0 citR=0
+  id=69 faith=0.0 hall=1.0 unsup=1.0 claims=7 citP=0.0 wrongRef=1.0 citR=0
+  id=70 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=71 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id=72 faith=1.0 hall=0.0 unsup=0.0 claims=7 citP=1.0 wrongRef=0.0 citR=1
+  id=73 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=74 faith=0.8889 hall=0.1111 unsup=0.1111 claims=9 citP=1.0 wrongRef=0.0 citR=1
+  id=75 faith=1.0 hall=0.0 unsup=0.0 claims=9 citP=1.0 wrongRef=0.0 citR=1
+  id=76 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=77 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=78 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=79 faith=0.0 hall=1.0 unsup=1.0 claims=3 citP=None wrongRef=None citR=0
+
+[gnd] ÖZET ds-kapali_t1: {"label": "ds-kapali_t1", "n": 80, "mode": "data", "judge_model": "deepseek/deepseek-v4.1-flash-20260910", "n_girdi": 80, "n_puanli": 76, "n_sifir_iddia": 4, "n_hakem_hata": 0, "n_bos_girdi": 0, "olcum_aleti": {"dedektor": "adr0061", "sifir_iddia": "sifir-puan", "a1_tanimi": "cevaplanan", "kaynak_kirpma": 12000, "payda": "kor", "altin_kirpma": "3500"}, "hakem": {"model": "deepseek/deepseek-v4.1-flash-20260910", "saglayici": "deepinfra/fp8", "dusunme": "kapali"}, "judge_gateway": "openrouter", "judge_providers": ["DeepInfra"], "runs": 1, "total_claims": 313, "faithfulness_micro": 0.7891, "hallucination_micro": 0.2109, "unsupported_micro": 0.2109, "cit_precision_micro": 0.7386, "wrong_ref_rate_micro": 0.1705, "cit_recall_macro": 0.725, "faithfulness_macro": 0.7436, "judge_cost_usd": 0.0506, "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."}
+[gnd] detay → outputs/eval/f0/f06-hakem-gecisi/gnd_ds-kapali_t1.jsonl
+[gnd] özet → outputs/eval/f0/f06-hakem-gecisi/gnd_ds-kapali_t1_summary.json

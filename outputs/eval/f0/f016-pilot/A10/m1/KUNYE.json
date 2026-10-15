@@ -1,0 +1,104 @@
+{
+  "is": "F0.16 ölçüm kartı pilotu (ADR-0097 m.3, ADR-0102)",
+  "platform": {
+    "ad": "Modal",
+    "hesap": "rfetha",
+    "tip": "A10",
+    "saatlik_usd": 1.1,
+    "ortam": {
+      "MODAL_CLOUD_PROVIDER": "CLOUD_PROVIDER_OCI",
+      "MODAL_CONTAINER_ARGUMENTS_PATH": "/__modal/.container-arguments/data.bin",
+      "MODAL_SERVER_URL": "unix:/run/modal.sock",
+      "MODAL_ENVIRONMENT": "main",
+      "MODAL_IS_REMOTE": "1",
+      "MODAL_REGION": "us-east",
+      "MODAL_IMAGE_ID": "im-s0rcPjyNJuYGDeZlu9tTtu",
+      "MODAL_TASK_ID": "ta-01M5020HTBM2750DC6RMDF9CAR"
+    }
+  },
+  "makine": {
+    "ad": "m1",
+    "nvidia_smi": "NVIDIA A10, 610.57.04, GPU-b929d6c1-1464-08fc-5f51-9a2cd1ca20cd, 23028 MiB"
+  },
+  "sunucu": {
+    "imaj": "ghcr.io/ggml-org/llama.cpp:server-cuda-b10902",
+    "surum_satiri": "version: 0.4.0-dev (build 10902, commit df03399b8)",
+    "build": 10902,
+    "commit": "df03399b8",
+    "n_slots": 4,
+    "kv_unified": true,
+    "kosan_komut": [
+      "/app/llama-server",
+      "-m",
+      "/tmp/model/HakHukuk-4B-v0.5-Q4_K_M.gguf",
+      "-ngl",
+      "99",
+      "-fa",
+      "on",
+      "--no-context-shift",
+      "--cache-type-k",
+      "q8_0",
+      "--cache-type-v",
+      "q8_0",
+      "-c",
+      "8192",
+      "--reasoning-format",
+      "deepseek",
+      "--host",
+      "127.0.0.1",
+      "--port",
+      "8080"
+    ],
+    "v1_models": "/tmp/model/HakHukuk-4B-v0.5-Q4_K_M.gguf"
+  },
+  "model": {
+    "gguf": "HakHukuk-4B-v0.5-Q4_K_M.gguf",
+    "sha256": "755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc"
+  },
+  "baglam": {
+    "dosya": "data/eval/dev/baglam/h1-k10.json",
+    "sha256": "026668000583d6e3d3988b97d1cb3c3a85d740594686901aa0e8da3f213e6135"
+  },
+  "rejim": {
+    "--thinking": "on",
+    "--think-budget": "1024",
+    "--max-new-tokens": "512",
+    "--max-chunk-chars": "900",
+    "--seed": "3407",
+    "--harness-k": "10",
+    "--rrf-k": "10",
+    "--n": "80"
+  },
+  "kosular": [
+    {
+      "etiket": "h1_tgta_v1_A10_m1_t1",
+      "sure_s": 640.6,
+      "s_cevap": 8.01,
+      "ort_completion_tokens": 747.3,
+      "gecerlilik": {
+        "n": 80,
+        "kesik": 0,
+        "kesik_orani": 0.0,
+        "dusunen": 80,
+        "zorla_kapatilan": 4,
+        "gecerli": true
+      },
+      "usd_cevap": 0.00245
+    },
+    {
+      "etiket": "h1_tgta_v1_A10_m1_t2",
+      "sure_s": 640.2,
+      "s_cevap": 8.0,
+      "ort_completion_tokens": 747.3,
+      "gecerlilik": {
+        "n": 80,
+        "kesik": 0,
+        "kesik_orani": 0.0,
+        "dusunen": 80,
+        "zorla_kapatilan": 4,
+        "gecerli": true
+      },
+      "usd_cevap": 0.00244
+    }
+  ]
+}
