@@ -255,3 +255,68 @@ Qwen'in 11 adı görüntü kulesine takılmıyor (Qwen görüntü kulesinin adla
 hangi modüllere takıldığı LoRA kule kapısıyla smoke'ta görülecek.
 
 **Okuma:** Gemma'nın kilidi, deposu ve hedefleri belli; kalan iş koddur (F0.9 kutuları).
+
+<a id="80"></a>
+## #80 — F0.9 smoke: iki model A100-40GB'da 50 adım koştu; Gemma bf16'da `grad_checkpoint: false` ile sığdı (tepe 34,4 GB / 42,4 GB); ilk Qwen denemesini kilit kapısı durdurdu
+
+**2026-10-15 · Modal, hesap `rfetha`, `A100-40GB` (NVIDIA A100-SXM4-40GB, 42.405.855.232 bayt), bölge us-east** ·
+50 adım SFT, seed 3407, `--hassasiyet bf16-taban`, `raft_scrubbed` (17.323 satır), batch 2 × grad_accum 8 =
+etkin 16, `--no-grad-checkpoint`, lr 1e-4, warmup 0,05, r=16 α=32 dropout 0,05 · kullanıcı onayı: "başlat"
+(2026-10-15) · kanıt: `outputs/egitim/f09/f09-qwen-smoke/` ve `outputs/egitim/f09/f09-gemma-smoke/`
+(`KUNYE.json` · `maske_ornegi.txt` · `trainer_state.json` · `adapter_config.json` · `modal_log.txt`;
+ağırlıklar ve `checkpoint-50` Modal'daki `hukuk-outputs` biriminde kaldı, repoya girmedi)
+
+**1 · Ölçümler** (hepsi `KUNYE.json` ve `trainer_state.json`'dan; VRAM süreç başından, model yükleme dahil;
+süre yalnız `trainer.train()`):
+
+| | Qwen3.5-4B | Gemma 4 E4B |
+| :--- | ---: | ---: |
+| kilit dosyası (sha256 öneki) | `egitim_ortami.yaml` `21c42d23` | `egitim_ortami_gemma.yaml` `5d68f638` |
+| künye `durum` · adım | bitti · 50/50 | bitti · 50/50 |
+| tepe VRAM, ayrılan | 21.846.276.096 B (21,85 GB) | 29.443.661.824 B (29,44 GB) |
+| tepe VRAM, rezerve | 22.309.502.976 B (22,31 GB) | 34.389.098.496 B (34,39 GB) |
+| kartın bellek payı (rezerve/42,41 GB) | %52,6 | %81,1 |
+| `trainer.train()` süresi · s/adım | 534,3 s · 10,686 | 527,5 s · 10,549 |
+| maske: örnek token · kayıplı token | 1102 · 53 | 1058 · 46 |
+| `lora_yerlesim` (takılan · kule dışı) | künyede yok (kilitte `yerlesim` tanımsız) | **258 · 0** |
+| kayıp, adım 10 · 20 · 30 · 40 · 50 | 0,799 · 0,483 · 0,349 · 0,350 · 0,353 | 1,275 · 0,582 · 0,401 · 0,367 · 0,357 |
+| `train_loss` (ortalama) | 0,467 | 0,596 |
+
+Gemma'da eğitilebilir parametre 34.881.536 / 7.975.982.368 (%0,44, `modal_log.txt`). Gemma'nın ilk adımı 38,4 s
+(ısınma), sonrakiler ~7 s; yukarıdaki 10,5 s/adım ortalaması ara değerlendirmeyi de içerir.
+
+**2 · Maske dökümü, gözle okundu.** Qwen: kayıplı bölge `<|im_start|>assistant\n`'dan sonra
+`<think>\n\n</think>\n\n` ile başlıyor (şablonun boş düşünce bloğu; #78'deki not doğrulandı), cevabı ve
+`<|im_end|>\n`'ı kapsıyor. Gemma: `<bos><|turn>system … <turn|>` ile başlıyor, kayıplı bölge `<|turn>model\n`'dan
+hemen sonra başlıyor (düşünce bloğu yok), cevap ve `<turn|>\n` ile bitiyor. İki modelde de sistem, kaynak ve
+soru kayıpsız; `satir_maske_sonrasi` 17.323 = hiçbir satır maskeyle elenmedi. Gemma cevabı sonunda **tek**
+`<turn|>` görünüyor; metin dökümü `<eos>` gibi ayrıca eklenen bir bitiş işaretini göstermez, #79 §2'deki
+"TRL ek bitiş işareti ekliyor mu" sorusu bu dökümden **kapanmıyor** (açık, aşağıya bkz.).
+
+**3 · Sığma sonucu.** Gemma bf16 taban ağırlıklarla, `grad_checkpoint: false` tarifiyle A100-40GB'a **sığdı**:
+tepe rezerve 34,39 GB ile kartın 42,41 GB'ının %81,1'i; 8,0 GB pay kaldı. Tarif değişikliği gerekmedi, ADR-0102
+açılmadı. Pay yalnız 50 adım ve bu veride ölçüldü: örnek uzunluğu `max_seq_len` 2048 tavanına yakın dizilerde
+tepe daha yüksek olabilir; 50 adımın en uzun örneği görmüş olması garanti değil.
+
+**4 · İlk Qwen denemesi kilit kapısına takıldı.** İlk komutu `--lr` ve `--warmup-ratio` vermeden yazdım;
+`train_sft.py`'nin varsayılanları (lr 2e-4, warmup 0,03) kilidin tarifiyle (lr 1e-4, warmup 0,05) uyuşmuyor.
+Kilit kapısı model yüklenmeden durdurdu (`[kilit] 2 alan … uymuyor`, çıkış kodu 1; uygulama
+`ap-PKr0ehCaxkJCpkWWgfMx6I`); GPU'da eğitim başlamadı. Komutu kilit değerleriyle yeniden verdim
+(`ap-KLyzlDID122EWAmWNqiw5K`), sonra Gemma'yı baştan o bayraklarla başlattım (`ap-s6GEejIsCbpaBsVwJaZEUn`).
+Kaynağı: `modal_train.py::spawn_sft`'in `--lr`/`--warmup-ratio` varsayılanı yok ("dokunma"), kararı betiğin
+varsayılanı veriyor; #79 sonundaki komut tarifi bu iki bayrağı anmıyordu. **Ders:** kilit kapısı tam bu sınıfı
+yakalıyor (hata vermeden yanlış hiperparametre); koşu komutunun bayrakları kilit tarifinden **tek tek**
+çıkarılmalı, hatırdan yazılmamalı.
+
+**5 · Doğrulanamayan veya açık kalan.**
+- 50 adımlık kayıp eğrisi bir sonuç değil, kapı denetimi: iki eğri de adım 30'dan sonra düzleşiyor; bu bir
+  yakınsama kanıtı sayılmaz.
+- Tepe VRAM, uzun örneklerle karşılaşmamış olabilir (yukarıda).
+- Gemma'nın hedef kodu tam eğitim sırasında TRL'nin ek `<eos>` ekleyip eklemediği (#79 §2) bu çıktılardan
+  okunamıyor; tokenizasyon sonrası ilk örneğin `input_ids`'inin dökümü gerekir (ayrı iş, F0.9 dışı).
+- Modal'ın fatura tutarı bu belgede **ölçülmedi** (panele bakılmadı); iki koşu 534 s ve 528 s eğitim +
+  yükleme süresi.
+
+**Okuma:** F0.9'un kod kapısı iki modelde de geçti: kilit, maske ve (Gemma'da) LoRA kule kapısı gerçek
+GPU'da çalıştı, Gemma A100-40GB'a sığıyor, adım süreleri iki modelde ~10,5-10,7 s. Gemma'nın teknik
+kapısının kalan kutuları (llama.cpp, Q4_K_M, DEV Türkçe oranı, düşünce kapanışı) bu girdiyle kapanmadı.
