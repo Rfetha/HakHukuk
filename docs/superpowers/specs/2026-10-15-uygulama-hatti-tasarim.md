@@ -56,26 +56,31 @@ Gemma profili yalnız F0.9 kapısını geçip DEV'de önde çıkarsa doldurulur.
 - Aynı argümanla aynı araç ikinci kez çağrılırsa sunucu keser ve kısa, yapılandırılmış bir durum döner (düzyazı açıklama değil).
 - Araç argümanı şemaya uymazsa `{}` yapılmaz: modele açık hata döner, en çok 2 düzeltme hakkı, sonra tur `hata` ile biter.
 - Retrieval modele sorulmaz: sunucu hibrit erişimi (BM25 + `bge-m3`, RRF; `getir()` yalnız yürürlükteki maddeler) ön adım olarak koşar, sonuç bağlama girer.
-- Belirsizlikte `ask_user`: araç sonucu üretilmeden tur biter, yanıt yeni istek olur (stateless).
+- Belirsizlikte `kullaniciya_sor`: araç sonucu üretilmeden tur biter, yanıt yeni istek olur (stateless).
 - Belge ve mevzuat metinleri nonce'lı etikette sarılır; içerideki sahte etiketler etkisizleştirilir.
 
-**Araç seti (öneri; Dilim A).** Adlar İngilizce (repo kuralı); Türkçe ad ölçülecek alternatif (açık soru 2).
+**KAPI ↔ KALDIRAÇ ([ADR-0076](../../adr/kararlar-0064-0085.md#adr-0076)) korunur.** Atıf doğrulama, mülga süzgeci ve durum sınıflandırma KAPI'dır: koşulsuz çalışır, araç yapılmaz (model çağırmayı unutursa garanti kaybolur). Modelin çağırdığı araçlar deterministik KALDIRAÇ'tır ve hiçbiri LLM çağırmaz. Araç döngüsü sınırlıdır; sınıra dayanmak görünür kalır (`ARAMA_TUKENDI`). Madde kimliği `(kanun_no, madde_no)`dur; adlar paketin kendi adlarıdır (Türkçe).
 
-| araç | parametre | döner |
-|---|---|---|
-| `search_legislation` (`mevzuat_ara`) | `query`, `scope` (enum: `in_force`, `all`) | en çok N madde kimliği + başlık + yürürlük durumu |
-| `get_article` (`madde_getir`) | `article_id` | madde metni, yürürlük, sürüm |
-| `search_document` (`belge_ara`) | `document_id`, `query` | eşleşen parçalar (parça kimliği + metin) |
-| `read_document` (`belge_oku`) | `document_id`, `page` | tek sayfa metin; tekrar okuma kesilir |
-| `ask_user` (`kullaniciya_sor`) | `question`, `options` (2-4) | kullanıcı yanıtı (yeni istek) |
-| `compute_deadline` (`sure_hesapla`) | `start_date`, `kind` (enum), `days` | tarih; model hesaplamaz |
+**Araç seti (öneri; Dilim A).** Başlangıç noktası `hakhukuk/cekirdek/araclar.py`'de **zaten bulunan** beş araçtır; yenisi yalnız belge, kullanıcı ve süre için eklenir.
 
-Şemalar düz (iç içe dizi yok). `compute_deadline` altıncı araçtır: araç çağırma ölçümünde 5 ve 6 araç karşılaştırılır. Atıf doğrulama bir araç değildir, sunucu işidir (§5).
+| araç | durum | parametre | döner |
+|---|---|---|---|
+| `ara` | var | `sorgu`, `k` | en çok `k` kaynak (kanun, madde, yürürlük) |
+| `madde_getir` | var | `kanun_no`, `madde_no` | madde metni ya da yok |
+| `madde_var_mi` | var | `kanun_no`, `madde_no` | evet/hayır |
+| `kanun_bul` | var | `ad` | `(kanun_no, ad)` adayları |
+| `yururlukte_mi` | var | `kanun_no`, `madde_no` | yürürlük durumu |
+| `belge_ara` | yeni (B) | `belge_id`, `sorgu` | eşleşen parçalar (parça kimliği + metin) |
+| `belge_oku` | yeni (B) | `belge_id`, `sayfa` | tek sayfa metin; tekrar okuma kesilir |
+| `kullaniciya_sor` | yeni (A) | `soru`, `secenekler` (2-4) | kullanıcı yanıtı (yeni istek) |
+| `sure_hesapla` | yeni (A) | `baslangic`, `tur` (enum), `gun` | tarih; model hesaplamaz |
+
+Şemalar düz (iç içe dizi yok). Dilim A'nın araç sayısı 7 (beş mevcut + `kullaniciya_sor` + `sure_hesapla`); araç çağırma ölçümünde 5 ve 7 araç karşılaştırılır. Retriever her zaman koşar (ön adım); `ara` yalnız recall kaybında modelin yeniden denemesi içindir.
 
 ## 5. Atıf akışı
 
-1. Model cevap metninde satır içi `[article_id]` işaretleri yazar; alıntı metnini **yazmaz**. Çıktı kısıtlı çözümle (kimlik kümesi) sınırlanır.
-2. Sunucu her kimliği korpusa karşı çözer, alıntıyı **kaynaktan çeker**.
+1. Model cevap metninde satır içi `[kanun_no/madde_no]` işaretleri yazar; alıntı metnini **yazmaz**. Çıktı kısıtlı çözümle (kimlik kümesi) sınırlanır.
+2. Sunucu her kimliği korpusa karşı çözer, alıntıyı **kaynaktan çeker**. Bu adım bir KAPI'dır (ADR-0076): araç değil, her cevapta koşulsuz çalışır.
 3. Üç durum, varsayılan kapalı (fail-closed): `verified` (kimlik var, yürürlükte, alıntı kaynakta bitişik) · `unverified` (kimlik yok ya da alıntı eşleşmedi) · `unchecked` (doğrulama koşmadı: iptal, hata, tablo). Bayrak boşsa `unchecked`; Mike'ın boş bayrağı "doğrulandı" sayması bizde hata sayılır ([03](../../../knowledge/mike-tarama/03-atif-baglam-hafiza.md), [08](../../../knowledge/mike-tarama/08-arayuz-test-kalite.md)).
 4. Gövdedeki "m. N" ve "N. madde" anmaları atıf kümesiyle karşılaştırılır; kümede olmayan anma `unverified` olarak işaretlenir.
 5. Arayüz `unverified` ve `unchecked` atıfı tıklanamaz ve vurgusuz gösterir.
@@ -125,7 +130,7 @@ Mike'ın `db_jobs` deseninden alınanlar ([06](../../../knowledge/mike-tarama/06
 
 **Çıkarım hattı (öneri).** DOCX ve PDF için metin çıkarımı sürüm özetiyle anahtarlı önbellek; sayfa/madde bölümlemesi; metin katmanı olmayan PDF'te modele sessiz boş metin değil açık uyarı. UDF çıkarımı ve taranmış PDF için ayrı OCR ön işlemcisi (CLAUDE.md: VLM OCR değil); ikisi de Mike'da yok, bu yüzden tasarım burada özgün ve ölçülecek (açık soru 4).
 
-**Belge sohbeti.** Belge tam metin olarak bağlama konmaz; token bütçesi altında `search_document` / `read_document` (sayfalı).
+**Belge sohbeti.** Belge tam metin olarak bağlama konmaz; token bütçesi altında `belge_ara` / `belge_oku` (sayfalı).
 
 **Sözleşme inceleme ve tablo biçimli toplu inceleme.** Hücre başına küçük çağrı: girdi hibrit erişimle seçilmiş madde/parça, çıktı `json_schema` ile `{status, value, evidence_id}`; sütun tanımı değişince `spec_hash` ile eski hücreler `stale`. Doğrulama kapısı: tür, parça kimliği, alıntının parçada alt dize olması, yürürlük. Mike'ın "satır başına NDJSON" ve "bozuk JSON'da ham metni `done` yaz" davranışları alınmaz ([04](../../../knowledge/mike-tarama/04-tablo-bicimli-inceleme.md)).
 
@@ -156,15 +161,16 @@ Hash zincirli, yalnız-ekleme denetim kaydı; telemetri kapalı; SSRF koruması 
 Ölçüm hattına yeni mod (`scripts/olcum_uretim/`, KUNYE.json'lu, ayrı `outputs/eval/<grup>/<run>/`); mühürlü test kümesine ve puanlamaya dokunmaz. Mod F1.11 dondurmasından **önce** eklenir ki dondurulan kapsamı etkilemesin.
 
 - Birim: araç çağırma görevi (soru + beklenen araç dizisi); deterministik puan: geçerli araç adı, şemaya uyum, doğru madde kimliği, tur sayısı, tekrar çağrı, atıf durumu. Hakem gerekmez (judge-free omurga).
-- Karşılaştırmalar: 5 ve 6 araç; İngilizce ve Türkçe araç adları; kısıtlı çözüm açık ve kapalı.
+- Karşılaştırmalar: 5 ve 7 araç; kısıtlı çözüm açık ve kapalı.
 - Model: `tgta_v1` (Qwen) şimdi; Gemma yalnız F0.9 sonrası ve kapıyı geçerse.
-- Çıktı: sonuç kayda (kronoloji) ve gerekirse eğitim tarifine araç dalı ekleme kararı için girdi; karar bu belgede değil, GRPO pilot ADR'sinde ve Checkpoint 2 planında.
+- **Araçlı koşu kapı koşusuna girmez** (ADR-0076 Karar 4): eşit sınav kuralı, bizim kol araç kullanır, rakip kullanamaz. Bu mod ayrı bir `outputs/eval/<grup>/` altında koşar ve hiçbir yayımlanan sayıya karışmaz.
+- Çıktı: sonuç kayda (kronoloji) ve GRPO pilotu ile ödül ADR'sine girdi. Araç kullanımının eğitimi `v2`'dedir (ADR-0076, PRODUCT.md); karar bu belgede verilmez.
 
 ## 13. Dilimler ve çıkış ölçütleri
 
 | dilim | içerik | çıkış ölçütü (verify) |
 |---|---|---|
-| **A: omurga** | `apps/api` + `apps/web` iskeleti, SQLite + Alembic, model profili ve uç nokta arayüzü, ajan döngüsü, altı araç, atıf akışı (§5), iş kuyruğu ve slot muhasebesi, proje yapısı, sohbet, yerel önbellek, süre hesabı | iki eşzamanlı iş + bir etkileşimli sohbet slot sınırı altında çökmeden biter; iptalde uçuştaki iş yazamaz; atıf durumları testle kilitli; `İSTANBUL ISPARTA` vektörleri geçer |
+| **A: omurga** | `apps/api` + `apps/web` iskeleti, SQLite + Alembic, model profili ve uç nokta arayüzü, ajan döngüsü, yedi araç (beş mevcut + `kullaniciya_sor` + `sure_hesapla`), atıf akışı (§5), iş kuyruğu ve slot muhasebesi, proje yapısı, sohbet, yerel önbellek, süre hesabı | iki eşzamanlı iş + bir etkileşimli sohbet slot sınırı altında çökmeden biter; iptalde uçuştaki iş yazamaz; atıf durumları testle kilitli; `İSTANBUL ISPARTA` vektörleri geçer |
 | **B: belgeler** | yükleme + sohbet, sözleşme inceleme, tablo biçimli toplu inceleme | `stale` / `not_found` / `unparseable` ayrı sayılır; taranmış PDF'te açık uyarı |
 | **C: üretim** | redline, dilekçe ve sözleşme taslağı, vatandaş özeti | eşleşmeyen `find` reddedilir; DOCX kabul/ret turu belgeyi bozmaz; taslak kalitesi ölçülmeden yayımlanmaz |
 | **D: içtihat + MCP** | kapsam ADR'si sonrası | ayrı ADR |
@@ -174,10 +180,9 @@ Takvim ([ADR-0103](../../adr/kararlar-0064-0085.md#adr-0103)): tasarım ve §12 
 ## 14. Açık sorular
 
 1. Ön yüz çerçevesi (Next.js mi, daha hafif bir şey mi); yerel tek kullanıcı için SSR gerekir mi?
-2. Araç adları İngilizce mi Türkçe mi (ölçülecek, §12)?
-3. Araç turlarında düşünme kanalı: `answer()` ikinci geçişte kanalı kapatıyor; araç turlarında nasıl kapatılacak ve araç çağrısı kaç token düşünmeyle koşacak?
-4. UDF çıkarımı ve OCR ön işlemcisi: hangi kütüphane, ölçüm nasıl?
-5. Araç çağırma dalının eğitim tarifine eklenmesi: Checkpoint 2'ye mi, ayrı bir dala mı, hiç mi?
-6. İzin verilen yazma yolu: model yalnız önerir, kullanıcı kabul eder; hangi eylemler bu kuralın dışında kalabilir?
-7. vLLM/SGLang'a geçiş ölçümünün tanımı: hangi tablo geçiş kararını verir?
-8. Mike'ın varsayılan workflow metinleri taranmadı (ayrı depo); Türk hukuku workflow katalogu nasıl başlayacak?
+2. Araç turlarında düşünme kanalı: `answer()` ikinci geçişte kanalı kapatıyor; araç turlarında nasıl kapatılacak ve araç çağrısı kaç token düşünmeyle koşacak?
+3. UDF çıkarımı ve OCR ön işlemcisi: hangi kütüphane, ölçüm nasıl?
+4. İzin verilen yazma yolu: model yalnız önerir, kullanıcı kabul eder; hangi eylemler bu kuralın dışında kalabilir?
+5. vLLM/SGLang'a geçiş ölçümünün tanımı: hangi tablo geçiş kararını verir?
+6. Mike'ın varsayılan workflow metinleri taranmadı (ayrı depo); Türk hukuku workflow katalogu nasıl başlayacak?
+7. `cekirdek.araclar`'ın döngüsü CLI/TUI için yazıldı; uygulamada eşzamanlı işlerde sınırlı döngü ve `ARAMA_TUKENDI` nasıl taşınacak?
