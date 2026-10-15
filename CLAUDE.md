@@ -51,7 +51,7 @@ docs/                every document except the three root ones (index: docs/READ
   BEDESTEN_API.md YENIDEN_URETIM.md HF_KARTI_INDEKS.md model-soyagaci.mmd
   adr/                 decision ledger   (kararlar-*.md + gemma4-12b-dersler.md)
   record/              research record   (kronoloji-*.md · kollar.md · yurutme-tuzaklari.md)
-  superpowers/plans/   at most one live plan (ADR-0056); exists only while a phase plan is open
+  superpowers/plans/   at most one live plan (ADR-0056; ADR-0106 lets the vLLM plan run beside F0 until it closes); exists only while a phase plan is open
 data/                corpus/ (ground truth) · eval/ (frozen) · train/ · index/ · _ham_ve_ara/
 outputs/             eval/<group>/<run>/ (+ _artefakt/) · egitim/<task>/ (training-side evidence) · tg_v1/ · ta_v1/ (adapters; private HF backup per ADR-0091, F0.1)
 models/              merged/ · gguf/   (28 GB, gitignored)
@@ -71,7 +71,7 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | direction and why | [`docs/YAYIN_YOL_HARITASI.md`](docs/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/EGITIM_ORTAMI.md`](docs/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/MIMARI.md`](docs/MIMARI.md) |
 | every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#85 in four chronology files, per-entry anchors; **new findings continue at #86** |
-| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0105**, next is **0106**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
+| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0106**, next is **0107**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
 | open defects and handover | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — 4 open (5a · 23 · 27 · 31), 3 handed on (6 · 11 · 12b); §EK E.5 holds the nine questions that go into the next grill |
 | artifact registry | [`docs/record/kollar.md`](docs/record/kollar.md) — every trained branch and merge has its identity here; **an artifact with no row is nameless and must not be used**. Family tree: [`docs/model-soyagaci.mmd`](docs/model-soyagaci.mmd) |
 | the headline number and its caveats | [`MODEL_CARD.md`](MODEL_CARD.md) and `docs/record/kronoloji-63-71.md` — never quote from memory |
@@ -138,7 +138,7 @@ remembers. The research record is the most valuable thing here, more than the we
   overwriting.
 - Doc types: **record** (what happened) · **decision** (why, which alternative was eliminated) · **spec**
   (`docs/superpowers/specs/`) · **plan** (`docs/superpowers/plans/`, `- [ ]` boxes, closing block when
-  executed; **at most one live plan**, ADR-0056) · **execution** (`sprint*.md` at root, only the open one).
+  executed; **at most one live plan**, ADR-0056; exception ADR-0106) · **execution** (`sprint*.md` at root, only the open one).
   Empty specs/plans folders do not exist (git tracks no empty folder). A closed plan is deleted the day it
   closes and becomes record (ADR-0083 precedent). A doc that says "what's next" is a plan and cannot sit
   under `record/`.
