@@ -1,0 +1,74 @@
+{
+  "is": "F0.14 DeepSeek V4.1 Flash satırı + F0.16 aday kart fiyatları — dış kaynakların o günkü anlık görüntüsü",
+  "tarih": "2026-10-15",
+  "kullanici_onayi": "AskUserQuestion 2026-10-15: dış okumalar 'Hepsine izin'",
+  "kronoloji": [
+    "docs/record/kronoloji-75-86.md#81",
+    "docs/record/kronoloji-75-86.md#82"
+  ],
+  "kaynaklar": [
+    {
+      "dosya": "openrouter_models_deepseek-v4.1-flash.json",
+      "url": "https://openrouter.ai/api/v1/models",
+      "erisim_utc": "2026-10-15T14:39:04Z",
+      "not": "770 KB'lık listeden yalnız deepseek-v4.1-flash ve :batch satırları"
+    },
+    {
+      "dosya": "openrouter_deepseek-v4.1-flash_endpoints.json",
+      "url": "https://openrouter.ai/api/v1/models/deepseek/deepseek-v4.1-flash/endpoints",
+      "erisim_utc": "2026-10-15T14:39:04Z",
+      "not": "ham yanıt, 33 sağlayıcı uç noktası"
+    },
+    {
+      "dosya": "deepseek_guides_thinking_mode.html",
+      "url": "https://api-docs.deepseek.com/guides/thinking_mode",
+      "erisim_utc": "2026-10-15T14:57:49Z",
+      "not": "ham sayfa"
+    },
+    {
+      "dosya": "deepseek_quick_start_pricing.html",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "erisim_utc": "2026-10-15T14:57:49Z",
+      "not": "ham sayfa"
+    },
+    {
+      "dosya": "modal_pricing_gpu.tsv",
+      "url": "https://modal.com/pricing",
+      "erisim_utc": "2026-10-15T14:57:49Z",
+      "not": "274 KB'lık ham sayfadan GPU satırları; ham sayfanın sha256'sı dosyanın ilk satırında"
+    },
+    {
+      "dosya": "vast_bundles_veri-merkezi_tek-kart.json",
+      "url": "https://console.vast.ai/api/v0/bundles/",
+      "erisim_utc": "2026-10-15T14:42:05Z",
+      "sorgu": {
+        "verified": {
+          "eq": true
+        },
+        "datacenter": {
+          "eq": true
+        },
+        "rentable": {
+          "eq": true
+        },
+        "rented": {
+          "eq": false
+        },
+        "num_gpus": {
+          "eq": 1
+        },
+        "type": "on-demand",
+        "limit": 1000
+      },
+      "not": "anahtarsız, herkese açık uç; 34 teklif döndü"
+    }
+  ],
+  "sha256": {
+    "deepseek_guides_thinking_mode.html": "35350389e59872d3733f7b7f99f5485c6cbc95f1bc2a71a47ba3ecf30bd7a060",
+    "deepseek_quick_start_pricing.html": "210f102275ccf1a6542f08a3bc9e4b4c7c83278cb74b35217bffa112df6363b2",
+    "modal_pricing_gpu.tsv": "12bfdbde04579a2b5aab774dda1147169ed0d7654fe75882f93ee438ce1d656b",
+    "openrouter_deepseek-v4.1-flash_endpoints.json": "aa8b1160ffd53ae4fdf22820760cd1ffba753e6fdc69b30c477c70b930ff0b37",
+    "openrouter_models_deepseek-v4.1-flash.json": "757f4656f1047d88e52b83cbd6e801700b90ce1f2a45a80a194f8b98de3a3cd4",
+    "vast_bundles_veri-merkezi_tek-kart.json": "05c0b26fbf1f3b6d8735b306e0fa979fae51ebea220a666a1242c611eb4d2cb5"
+  }
+}

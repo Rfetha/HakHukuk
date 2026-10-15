@@ -1,0 +1,39 @@
+{
+  "label": "mini_t3",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "openai/gpt-4o-mini",
+  "n_girdi": 80,
+  "n_puanli": 78,
+  "n_sifir_iddia": 2,
+  "n_hakem_hata": 0,
+  "n_bos_girdi": 0,
+  "olcum_aleti": {
+    "dedektor": "adr0061",
+    "sifir_iddia": "sifir-puan",
+    "a1_tanimi": "cevaplanan",
+    "kaynak_kirpma": 12000,
+    "payda": "kor",
+    "altin_kirpma": "3500"
+  },
+  "hakem": {
+    "model": "openai/gpt-4o-mini",
+    "saglayici": "OpenAI",
+    "dusunme": null
+  },
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "OpenAI"
+  ],
+  "runs": 1,
+  "total_claims": 261,
+  "faithfulness_micro": 0.8889,
+  "hallucination_micro": 0.1111,
+  "unsupported_micro": 0.1111,
+  "cit_precision_micro": 0.9024,
+  "wrong_ref_rate_micro": 0.0854,
+  "cit_recall_macro": 0.9375,
+  "faithfulness_macro": 0.8682,
+  "judge_cost_usd": 0.0404,
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

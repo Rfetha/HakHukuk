@@ -1,0 +1,76 @@
+{
+  "olcum": "F0.6 — hakem geçişi: DeepSeek V4.1 Flash (düşünme açık · kapalı) ↔ gpt-4o-mini, aynı 80 cevap, mod başına 5 tekrar",
+  "tarih": "2026-10-15",
+  "git_dal": "talk-think",
+  "git_sha_taban": "4000b1c",
+  "not_kod": "commit edilmemiş çalışma ağacı (F0.14 + F0.16). llm_client.py'deki tek değişiklik 17:57'de (ALIAS + PRICE + yorum); dosyanın saati 19:06, öbür oturumun git işlemleriyle aynı dakikalar, içerik aynı; süreçler modülü başlarken yükler",
+  "girdi": {
+    "cevaplar": "outputs/eval/f0/f016-pilot/A10/m1/h1_tgta_v1_A10_m1_t1_detail.jsonl",
+    "sha256": "c5035eb390ed1835b28ed004164a5cdc16a1252838124567692c1081bb7cd093",
+    "kume": "data/eval/dev/core_hard.jsonl",
+    "kume_sha256": "9c804217bb846bb63a3cf00b0548eae82abc1dd75e05fcc8c98c4135a1580538",
+    "n": 80,
+    "kaynak": "F0.16 pilotunun A10 referansı (ADR-0098 m.4, ADR-0103 m.1)"
+  },
+  "kod_sha256": {
+    "scripts/puanlama/groundedness.py": "77afdcb97f7e1d787b6cdffd088f7094edaf464a6a5d0c1ef824a1dd6128ce11",
+    "scripts/puanlama/llm_client.py": "7c4be52883dde2f5de45fadcb4c6d3f00c04ca93fe680d7f70722456462c9db0",
+    "scripts/puanlama/harness_tablo.py": "1c80d61ff334c144ceb7feb02011e1cda41b9bf4f75bae5b85b0a720dd33201b",
+    "outputs/eval/f0/f06-hakem-gecisi/ozetle.py": "24f790e543ea2e88cdaee190e3fbe23487dbf1eb4cb78fe4990eec01623db81a"
+  },
+  "hakemler": {
+    "ds-acik": {
+      "model": "deepseek/deepseek-v4.1-flash-20260910",
+      "saglayici": "deepinfra/fp8",
+      "dusunme": "acik"
+    },
+    "ds-kapali": {
+      "model": "deepseek/deepseek-v4.1-flash-20260910",
+      "saglayici": "deepinfra/fp8",
+      "dusunme": "kapali"
+    },
+    "mini": {
+      "model": "openai/gpt-4o-mini",
+      "saglayici": "OpenAI",
+      "dusunme": null
+    }
+  },
+  "olcum_aleti": {
+    "dedektor": "adr0061",
+    "sifir_iddia": "sifir-puan",
+    "a1_tanimi": "cevaplanan",
+    "kaynak_kirpma": 12000,
+    "payda": "kor",
+    "altin_kirpma": "3500"
+  },
+  "kapi": "openrouter; sağlayıcı sabit, yedeğe düşme kapalı (DeepSeek: deepinfra/fp8; mini: OpenAI)",
+  "komutlar": {
+    "t1-t2": "outputs/eval/f0/f06-hakem-gecisi/kos.sh",
+    "t3-t5": "outputs/eval/f0/f06-hakem-gecisi/kos2.sh",
+    "ozet": "python outputs/eval/f0/f06-hakem-gecisi/ozetle.py → outputs/eval/f0/f06-hakem-gecisi/OZET.json"
+  },
+  "baslangic_utc": {
+    "t1-t2": "2026-10-15T15:40:02Z",
+    "t3-t5": "2026-10-15T15:59:47Z"
+  },
+  "bitis_yerel": "2026-10-15 ~20:54 (+03:00); kapalı mod ve mini ~6 dk, açık mod ~1 sa 50 dk – 2 sa koşu başına",
+  "onaylar": {
+    "t1-t2": "kullanıcı, 2026-10-15: \"Başlat\"",
+    "t3-t5": "kullanıcı, 2026-10-15: \"Mod başına +3 tekrar\", maliyet sorusundan sonra \"Başlat\""
+  },
+  "maliyet_tahmini_usd": {
+    "ds-acik": 1.2914,
+    "ds-kapali": 0.2542,
+    "mini": 0.2023,
+    "toplam": 1.7479
+  },
+  "maliyet_notu": "judge_cost_usd = llm_client.PRICE liste fiyatı × token; DeepSeek'in önbellekli girdi indirimi tabloda yok (üstten tahmin), OpenRouter marjı dahil değil. Gerçek fatura panelden okunacak (tuzak 6.3)",
+  "sonuc": "OZET.json",
+  "fatura": {
+    "kaynak": "OpenRouter GET /api/v1/key (bu anahtarın kullanımı), okundu 2026-10-15T18:27:31Z",
+    "usage_daily_usd": 1.233745456,
+    "usage_weekly_usd": 1.233745456,
+    "usage_monthly_usd": 1.309019656,
+    "not": "günlük = UTC günü 2026-10-15; haftalık da aynı ⇒ bu hafta bu anahtarla başka harcama yok; 15 koşunun gerçek toplamı ≤ $1,2337 (tahmin $1,7479, önbelleksiz liste fiyatı)"
+  }
+}

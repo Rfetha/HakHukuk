@@ -1,0 +1,303 @@
+{
+  "kosular": {
+    "ds-acik_t1": {
+      "faithfulness_macro": 0.7792,
+      "A1": 0.7999,
+      "coverage": 0.9375,
+      "kutle": 0.7499,
+      "total_claims": 329,
+      "n_sifir_iddia": 3,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2677,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "acik"
+      }
+    },
+    "ds-acik_t2": {
+      "faithfulness_macro": 0.7834,
+      "A1": 0.8043,
+      "coverage": 0.9375,
+      "kutle": 0.754,
+      "total_claims": 328,
+      "n_sifir_iddia": 3,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2532,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "acik"
+      }
+    },
+    "ds-acik_t3": {
+      "faithfulness_macro": 0.7779,
+      "A1": 0.7987,
+      "coverage": 0.9375,
+      "kutle": 0.7487,
+      "total_claims": 318,
+      "n_sifir_iddia": 3,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2507,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "acik"
+      }
+    },
+    "ds-acik_t4": {
+      "faithfulness_macro": 0.7794,
+      "A1": 0.8002,
+      "coverage": 0.9375,
+      "kutle": 0.7502,
+      "total_claims": 342,
+      "n_sifir_iddia": 3,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2595,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "acik"
+      }
+    },
+    "ds-acik_t5": {
+      "faithfulness_macro": 0.7969,
+      "A1": 0.8048,
+      "coverage": 0.9375,
+      "kutle": 0.7545,
+      "total_claims": 348,
+      "n_sifir_iddia": 3,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2603,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "acik"
+      }
+    },
+    "ds-kapali_t1": {
+      "faithfulness_macro": 0.7436,
+      "A1": 0.7536,
+      "coverage": 0.9375,
+      "kutle": 0.7065,
+      "total_claims": 313,
+      "n_sifir_iddia": 4,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.0506,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "kapali"
+      }
+    },
+    "ds-kapali_t2": {
+      "faithfulness_macro": 0.7597,
+      "A1": 0.7698,
+      "coverage": 0.9375,
+      "kutle": 0.7217,
+      "total_claims": 320,
+      "n_sifir_iddia": 4,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.0512,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "kapali"
+      }
+    },
+    "ds-kapali_t3": {
+      "faithfulness_macro": 0.7604,
+      "A1": 0.7705,
+      "coverage": 0.9375,
+      "kutle": 0.7223,
+      "total_claims": 315,
+      "n_sifir_iddia": 4,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.0504,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "kapali"
+      }
+    },
+    "ds-kapali_t4": {
+      "faithfulness_macro": 0.7664,
+      "A1": 0.7735,
+      "coverage": 0.9375,
+      "kutle": 0.7251,
+      "total_claims": 321,
+      "n_sifir_iddia": 3,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.051,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "kapali"
+      }
+    },
+    "ds-kapali_t5": {
+      "faithfulness_macro": 0.7455,
+      "A1": 0.7555,
+      "coverage": 0.9375,
+      "kutle": 0.7082,
+      "total_claims": 325,
+      "n_sifir_iddia": 4,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.051,
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "kapali"
+      }
+    },
+    "mini_t1": {
+      "faithfulness_macro": 0.8724,
+      "A1": 0.8896,
+      "coverage": 0.9375,
+      "kutle": 0.834,
+      "total_claims": 261,
+      "n_sifir_iddia": 2,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "OpenAI"
+      ],
+      "judge_cost_usd": 0.0406,
+      "hakem": {
+        "model": "openai/gpt-4o-mini",
+        "saglayici": "OpenAI",
+        "dusunme": null
+      }
+    },
+    "mini_t2": {
+      "faithfulness_macro": 0.8532,
+      "A1": 0.8696,
+      "coverage": 0.9375,
+      "kutle": 0.8152,
+      "total_claims": 262,
+      "n_sifir_iddia": 2,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "OpenAI"
+      ],
+      "judge_cost_usd": 0.0404,
+      "hakem": {
+        "model": "openai/gpt-4o-mini",
+        "saglayici": "OpenAI",
+        "dusunme": null
+      }
+    },
+    "mini_t3": {
+      "faithfulness_macro": 0.8682,
+      "A1": 0.8851,
+      "coverage": 0.9375,
+      "kutle": 0.8298,
+      "total_claims": 261,
+      "n_sifir_iddia": 2,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "OpenAI"
+      ],
+      "judge_cost_usd": 0.0404,
+      "hakem": {
+        "model": "openai/gpt-4o-mini",
+        "saglayici": "OpenAI",
+        "dusunme": null
+      }
+    },
+    "mini_t4": {
+      "faithfulness_macro": 0.8767,
+      "A1": 0.894,
+      "coverage": 0.9375,
+      "kutle": 0.8381,
+      "total_claims": 261,
+      "n_sifir_iddia": 2,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "OpenAI"
+      ],
+      "judge_cost_usd": 0.0403,
+      "hakem": {
+        "model": "openai/gpt-4o-mini",
+        "saglayici": "OpenAI",
+        "dusunme": null
+      }
+    },
+    "mini_t5": {
+      "faithfulness_macro": 0.8816,
+      "A1": 0.8991,
+      "coverage": 0.9375,
+      "kutle": 0.8429,
+      "total_claims": 264,
+      "n_sifir_iddia": 2,
+      "n_hakem_hata": 0,
+      "judge_providers": [
+        "OpenAI"
+      ],
+      "judge_cost_usd": 0.0406,
+      "hakem": {
+        "model": "openai/gpt-4o-mini",
+        "saglayici": "OpenAI",
+        "dusunme": null
+      }
+    }
+  },
+  "modlar": {
+    "ds-acik": {
+      "n_tekrar": 5,
+      "kutle_ort": 0.75146,
+      "kutle_ss": 0.0026140007651108076,
+      "kutle_aralik": 0.005799999999999916,
+      "A1_ort": 0.80158,
+      "A1_ss": 0.002774346769962245,
+      "maliyet_ort": 0.25828
+    },
+    "ds-kapali": {
+      "n_tekrar": 5,
+      "kutle_ort": 0.7167600000000001,
+      "kutle_ss": 0.00870620468401701,
+      "kutle_aralik": 0.01859999999999995,
+      "A1_ort": 0.76458,
+      "A1_ss": 0.009285310980252617,
+      "maliyet_ort": 0.050839999999999996
+    },
+    "mini": {
+      "n_tekrar": 5,
+      "kutle_ort": 0.832,
+      "kutle_ss": 0.010572369649231882,
+      "kutle_aralik": 0.027699999999999947,
+      "A1_ort": 0.88748,
+      "A1_ss": 0.011262637346554302,
+      "maliyet_ort": 0.040459999999999996
+    }
+  }
+}
