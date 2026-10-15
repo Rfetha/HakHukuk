@@ -14,14 +14,14 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 | :--- | :--- |
 | [`kararlar-0027-0044.md`](kararlar-0027-0044.md) | tasarım kilitleri · base seçimi · precision · merge/norm · Kapı 6 · düşünce modu |
 | [`kararlar-0045-0063.md`](kararlar-0045-0063.md) | ara kapı · CP2 hasat · hakem · harness · eşit sınav · faz 0 ölçüm zinciri |
-| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · uygulama hattı (0103) |
+| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · uygulama hattı (0104) |
 | [`gemma4-12b-dersler.md`](gemma4-12b-dersler.md) | emekli 12B hattı: **(A) dersler** (base-bağımsız — *yeni hatta başlayan burayı okur*) · **(B) 26 ADR'nin karar kaydı** · (C) ham kayda giriş |
 
 **Atıf uyumu.** Repo genelinde ~2.100 `ADR-00NN` göndermesi var ve hepsi **çapayla** çözülür:
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0104**'ten devam (0102 ana çalışma kopyasında, birleşirken gelir); **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara, **0105**'ten devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
@@ -107,7 +107,7 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0099](kararlar-0064-0085.md#adr-0099) | 🟢 | **F0 ölçüm ve eğitim aleti** — RQ2'nin yedi puanlama anahtarı · sıfır iddialı cevaplanmış kalem 0 puan · eğitim imajı Modal'ın kendi imajı (EGITIM_ORTAMI §4 m.3 ertelendi) · fla 0.5.1 sabit |
 | 0100 | ⏳ | *ayrıldı: F0.12'nin veri lisansı ADR'si (ADR-0099)* |
 | [0101](kararlar-0064-0085.md#adr-0101) | 🟢 | **Kredi aşımında ve Modal kesintisinde RunPod** — Vast eğitimden çıktı · bir koşu başladığı Modal hesabında biter · hesap künyeye kendiliğinden yazılır |
-| [0103](kararlar-0064-0085.md#adr-0103) | 🟢 | **Uygulama hattı: ürün hattında paralel, kağıt hattının dışında** — araç çağırma ölçümü şimdi, omurga Ağustos–Eylül 2027 · llama.cpp + tek uç nokta · `apps/api` + `apps/web`, Turborepo yok · içtihat Dilim D'ye ertelendi · Türkçe normalizasyon kuralı |
+| [0104](kararlar-0064-0085.md#adr-0104) | 🟢 | **Uygulama hattı: ürün hattında paralel, kağıt hattının dışında** — araç çağırma ölçümü şimdi, omurga Ağustos–Eylül 2027 · llama.cpp + tek uç nokta · `apps/api` + `apps/web`, Turborepo yok · içtihat Dilim D'ye ertelendi · Türkçe normalizasyon kuralı |
 
 ---
 
