@@ -31,9 +31,9 @@ import time
 import urllib.request
 from typing import NamedTuple
 
-# Unsloth, torch'tan ÖNCE (train_sft.py/eval.py ile aynı kural).
-from unsloth import FastModel
-import torch
+# `unsloth` ve `torch` yalnız yerel model yükleme yolunda, `build_model` içinde içe aktarılır (unsloth
+# torch'tan ÖNCE — train_sft.py/eval.py ile aynı kural). Why: kiralık kartta üretim HTTP taşıyıcısıyla koşar
+# ve küçük sunucu imajında bu paketler yok (ADR-0102); en tepedeki içe aktarma orada betiği açılmadan düşürürdü.
 
 
 
@@ -84,6 +84,58 @@ def altin_ablasyonu(parcalar, altin_anahtar, k):
     kalan = [p for p in parcalar
              if madde_anahtari(p.get("kanun_no"), p.get("madde_no")) != altin_anahtar]
     return [dict(p, sira=yer) for yer, p in enumerate(kalan[:k])]
+
+
+def ornekle(rows, idx, seed, n):
+    """Madde metni JOIN olanlardan deterministik örneklem (kapsam=%100 garanti) → [(rec, soru, src)].
+    ⚠️ Küresel `random`'u tohumlar (önceki satır içi hâliyle aynı yan etki)."""
+    pool = []
+    for r in rows:
+        k = f"{norm(r.get('kanun_no'))}|{norm(r.get('madde_no'))}"
+        src = idx.get(k, "")
+        soru = extract(r)
+        if src and soru:
+            pool.append((r, soru, src))
+    random.seed(seed)
+    random.shuffle(pool)
+    return pool[:n], len(pool)
+
+
+def harness_baglami(rec, soru, retriever, ayar):
+    """HARNESS AÇIK: bağlamı retriever seçer → (sources_block, harness_izi).
+    `ayar`: `harness_k`, `rrf_k`, `harness_no_gold`, `max_chunk_chars` alanlarını taşıyan nesne
+    (komut satırı argümanları ya da `baglam_dondur.Ayar`) — dondurulmuş bağlam aynı fonksiyondan üretilir."""
+    altin = madde_anahtari(rec.get("kanun_no"), rec.get("madde_no"))
+    if ayar.harness_no_gold:                    # ADR-0056: m2b'nin AÇIK karşılığı
+        parcalar = altin_ablasyonu(
+            retriever.getir(soru, ayar.harness_k + 1, rrf_k=ayar.rrf_k), altin, ayar.harness_k)
+    else:
+        parcalar = retriever.getir(soru, ayar.harness_k, rrf_k=ayar.rrf_k)
+    sources_block = raft_pack.format_sources_block(
+        [f"{p.get('kanun_adi','')} {p.get('madde_no','')}\n{p.get('text','')}"
+         for p in parcalar])
+    if ayar.max_chunk_chars > 0:                # EVAL-MIRROR: M1 ile AYNI kırpma
+        gold_label = f"{rec.get('kanun_adi','')} {rec.get('madde_no','')}"
+        ref_msgs = rec.get("messages") or []
+        ref_answer = next(
+            (m.get("content", "") for m in ref_msgs
+             if m.get("role") in ("assistant", "model")), "")
+        sources_block = clip_sources_block(
+            sources_block, ref_answer, gold_label, ayar.max_chunk_chars)
+    # Why kayda geçiyor: harness-AÇIK tablosunun ayırt etmesi gereken üç hâl
+    # var — altın getirilmedi · getirildi ve cevaplandı · getirildi ama cevap
+    # 900-char kırpmasının ötesindeydi (ADR-0054/K2'nin kabul edilen bedeli).
+    harness_izi = {
+        "k": ayar.harness_k,
+        "rrf_k": ayar.rrf_k,
+        "altin_dusuruldu": bool(ayar.harness_no_gold),
+        "altin_sirasi": next(
+            (p["sira"] for p in parcalar
+             if madde_anahtari(p.get("kanun_no"), p.get("madde_no")) == altin), None),
+        "getirilen": [f"{p.get('kanun_adi','')}|{p.get('madde_no','')}"
+                      for p in parcalar],
+    }
+    return sources_block, harness_izi
 
 
 MADDE_PATH = "data/corpus/mevzuat_maddeler.jsonl"
@@ -169,6 +221,10 @@ def parse_args():
                         "DÖNDÜ ve ürünün varsayılanı BAYRAKSIZ (önsözsüz) oldu. Eski çıpa "
                         "kütle %%62,8 · A1 0,8229 — dedektör onarımı ÖNCESİ ve v1 soru seti "
                         "biriminde; bugünkü hiçbir sayıyla KIYASLANMAZ.")
+    p.add_argument("--donmus-baglam", default="", metavar="DOSYA",
+                   help="F0.16 / ADR-0097 m.6 — bağlamı retriever yerine `baglam_dondur.py`'nin "
+                        "dosyasından oku (kiralık kartta retriever koşmaz). Dosyanın rejimi bu "
+                        "koşununkiyle (soru dosyası, seed, n, k, rrf_k, kırpma) uyuşmazsa durur.")
     p.add_argument("--harness-no-gold", action="store_true",
                    help="ADR-0056 Karar 1 — `m2b`'nin harness-AÇIK karşılığı: retriever "
                         "k+1 getirir, ALTIN madde düşürülür, ilk k kalır. Bağlam uzunluğu "
@@ -205,6 +261,8 @@ def extract(rec):
 
 
 def build_model(args):
+    from unsloth import FastModel  # torch'tan ÖNCE
+    import torch
     # Foundation rakip (Mecellem): düz transformers bf16. Unsloth 4-bit, Mecellem'in
     # UNTIED embed_tokens/lm_head'ini bozuyor (garbage "!!!!" çıktı) → 4B bf16 (~8GB, 12GB'a sığar).
     if getattr(args, "completion_fewshot", False):
@@ -278,6 +336,7 @@ def generate_completion(model, tokenizer, soru, max_new_tokens, source=None, sou
         prompt = _FEWSHOT_RAG + ctx
     else:                               # M5 kör
         prompt = _FEWSHOT_BLIND + f"SORU: {soru}\nCEVAP:"
+    import torch
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     with torch.no_grad():
         out = model.generate(
@@ -457,6 +516,7 @@ def generate(model, tokenizer, soru, max_new_tokens, source=None, sources_block=
         msgs, tokenize=True, add_generation_prompt=True,
         return_tensors="pt",
     ).to(model.device)
+    import torch
     with torch.no_grad():
         out = model.generate(
             input_ids=inputs,
@@ -474,6 +534,24 @@ def main():
     os.makedirs(a.out_dir, exist_ok=True)
     # 🚨 YARIŞ KAPISI: aynı label'a yazan ikinci bir üretim süreci varsa modeli yüklemeden dur.
     runlock.acquire(os.path.join(a.out_dir, f"{a.label}_detail.jsonl"), tag=f"gen {a.label}")
+
+    donmus = None
+    if a.donmus_baglam:
+        if a.harness_indeks or a.distractors or a.with_source or a.empty_context or a.no_gold:
+            raise SystemExit(
+                "[gen-eval] 🚫 --donmus-baglam; --harness-indeks, --distractors, --with-source, "
+                "--empty-context ve --no-gold ile birlikte verilemez — bağlam ya dosyadan ya canlı "
+                "gelir, ikisi birden gelirse hangisinin kullanıldığı belirsizleşir")
+        from baglam_dondur import Ayar, oku, sha256_dosya
+        if a.rrf_k is None:
+            from retriever import RRF_K
+            a.rrf_k = RRF_K
+        donmus = oku(a.donmus_baglam,
+                     Ayar(seed=a.seed, n=a.n, harness_k=a.harness_k, rrf_k=a.rrf_k,
+                          max_chunk_chars=a.max_chunk_chars, harness_no_gold=a.harness_no_gold),
+                     veri_sha256=sha256_dosya(a.data))
+        print(f"[gen-eval] DONMUŞ BAĞLAM · {a.donmus_baglam} · {len(donmus)} kalem · k={a.harness_k} · "
+              f"rrf_k={a.rrf_k} · sha256 {donmus[0]['harness']['donmus_baglam']}", flush=True)
 
     _retriever = None
     if a.harness_indeks:
@@ -498,29 +576,23 @@ def main():
                          "--reasoning-budget (sunucu-taraflı bütçe) aynı koşuda kullanılmaz: "
                          "iki farklı mekanizma, bütçe iki kez sayılır.")
 
-    rows = [json.loads(l) for l in open(a.data, encoding="utf-8") if l.strip()]
-    idx = load_madde_index(a.madde_path)
-
-    # M1 distractor modu → ortak RAFT paketleyici (build_sft_v2b ile AYNI; ADR-0013).
     pool_recs = pool_by_kanun = None
-    if a.distractors > 0:
-        pool_recs, pool_by_kanun = raft_pack.load_madde_pool(a.madde_path)
-        print(f"[gen-eval] distractor havuzu: {len(pool_recs)} madde "
-              f"({len(pool_by_kanun)} kanun) | k={a.distractors} hard-negative")
+    if donmus is not None:                      # örneklem dosyada; madde dosyası yüklenmez
+        sample = [(k, k["soru"], k["referans"]) for k in donmus]
+        print(f"[gen-eval] {a.label}: örneklem={len(sample)} (dondurulmuş) | adapter={a.adapter or '—'}")
+    else:
+        rows = [json.loads(l) for l in open(a.data, encoding="utf-8") if l.strip()]
+        idx = load_madde_index(a.madde_path)
 
-    # Madde metni JOIN olanlardan deterministik örneklem (kapsam=%100 garanti).
-    pool = []
-    for r in rows:
-        k = f"{norm(r.get('kanun_no'))}|{norm(r.get('madde_no'))}"
-        src = idx.get(k, "")
-        soru = extract(r)
-        if src and soru:
-            pool.append((r, soru, src))
-    random.seed(a.seed)
-    random.shuffle(pool)
-    sample = pool[:a.n]
-    print(f"[gen-eval] {a.label}: havuz={len(pool)} (madde eşleşen) → örneklem={len(sample)} "
-          f"| adapter={a.adapter or '—'}")
+        # M1 distractor modu → ortak RAFT paketleyici (build_sft_v2b ile AYNI; ADR-0013).
+        if a.distractors > 0:
+            pool_recs, pool_by_kanun = raft_pack.load_madde_pool(a.madde_path)
+            print(f"[gen-eval] distractor havuzu: {len(pool_recs)} madde "
+                  f"({len(pool_by_kanun)} kanun) | k={a.distractors} hard-negative")
+
+        sample, n_havuz = ornekle(rows, idx, a.seed, a.n)
+        print(f"[gen-eval] {a.label}: havuz={n_havuz} (madde eşleşen) → örneklem={len(sample)} "
+              f"| adapter={a.adapter or '—'}")
 
     # ADR-0025: --server-url verilirse yerel yükleme YOK — HTTP taşıyıcı.
     http_client = None
@@ -554,39 +626,14 @@ def main():
             context_shown = ""
             mode = "blind"
             harness_izi = None
-            if a.harness_indeks:                        # HARNESS AÇIK: bağlamı retriever seçer
-                altin = madde_anahtari(rec.get("kanun_no"), rec.get("madde_no"))
-                if a.harness_no_gold:                   # ADR-0056: m2b'nin AÇIK karşılığı
-                    parcalar = altin_ablasyonu(
-                        _retriever.getir(soru, a.harness_k + 1, rrf_k=a.rrf_k), altin, a.harness_k)
-                else:
-                    parcalar = _retriever.getir(soru, a.harness_k, rrf_k=a.rrf_k)
-                sources_block = raft_pack.format_sources_block(
-                    [f"{p.get('kanun_adi','')} {p.get('madde_no','')}\n{p.get('text','')}"
-                     for p in parcalar])
-                if a.max_chunk_chars > 0:               # EVAL-MIRROR: M1 ile AYNI kırpma
-                    gold_label = f"{rec.get('kanun_adi','')} {rec.get('madde_no','')}"
-                    ref_msgs = rec.get("messages") or []
-                    ref_answer = next(
-                        (m.get("content", "") for m in ref_msgs
-                         if m.get("role") in ("assistant", "model")), "")
-                    sources_block = clip_sources_block(
-                        sources_block, ref_answer, gold_label, a.max_chunk_chars)
+            if donmus is not None:                      # HARNESS AÇIK, bağlam dondurulmuş dosyadan
+                sources_block, harness_izi = rec["sources_block"], rec["harness"]
                 context_shown = sources_block
                 mode = "harness"
-                # Why kayda geçiyor: harness-AÇIK tablosunun ayırt etmesi gereken üç hâl
-                # var — altın getirilmedi · getirildi ve cevaplandı · getirildi ama cevap
-                # 900-char kırpmasının ötesindeydi (ADR-0054/K2'nin kabul edilen bedeli).
-                harness_izi = {
-                    "k": a.harness_k,
-                    "rrf_k": a.rrf_k,
-                    "altin_dusuruldu": bool(a.harness_no_gold),
-                    "altin_sirasi": next(
-                        (p["sira"] for p in parcalar
-                         if madde_anahtari(p.get("kanun_no"), p.get("madde_no")) == altin), None),
-                    "getirilen": [f"{p.get('kanun_adi','')}|{p.get('madde_no','')}"
-                                  for p in parcalar],
-                }
+            elif a.harness_indeks:                      # HARNESS AÇIK: bağlamı retriever seçer
+                sources_block, harness_izi = harness_baglami(rec, soru, _retriever, a)
+                context_shown = sources_block
+                mode = "harness"
             elif a.empty_context:                       # M3 (E-set): hiç kaynak
                 sources_block = "(İlgili kaynak bulunamadı.)"
                 context_shown = ""
