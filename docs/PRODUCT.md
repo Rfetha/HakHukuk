@@ -73,7 +73,7 @@ Bunlar eksiklik listesi değil, **ürünün sınırı**:
 | :--- | :--- | :--- |
 | eğitim | ham base → SFT (`τ_g`) + ORPO (`τ_a`) → ham TIES merge | `tgta_v1` **yeni başlangıç** → GRPO + düşünce ayarı |
 | ne | ağırlıklar + kod + veri + araştırma kaydı, **uçtan uca çalışır** | daha güçlü model + API/servis |
-| arayüz | `hakhukuk "soru"` (CLI) · `hakhukuk-tui` — **yeterli** (insan kararı) | HTTP API, web: omurga [ADR-0103](adr/kararlar-0064-0085.md#adr-0103) ile paralel hatta; barındırma (**S9 açık**) |
+| arayüz | `hakhukuk "soru"` (CLI) · `hakhukuk-tui` — **yeterli** (insan kararı) | HTTP API, web: omurga [ADR-0104](adr/kararlar-0064-0085.md#adr-0104) ile paralel hatta; barındırma (**S9 açık**) |
 | araçlar | 5 **deterministik** kaldıraç, istem katmanında ([ADR-0076](adr/kararlar-0064-0085.md#adr-0076)) | araç kullanımının **eğitimi** (GRPO ödülü) |
 | erişim | yerel indeks, anlık görüntü korpus | canlı `bedesten` (B6) · tam kapsam · tazelik |
 | durum | bu turda | sonra |

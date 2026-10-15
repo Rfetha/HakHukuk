@@ -1,6 +1,6 @@
 # Uygulama hattı: tasarım taslağı
 
-> **Durum:** taslak, kod yok. Karar çerçevesi [ADR-0103](../../adr/kararlar-0064-0085.md#adr-0103).
+> **Durum:** taslak, kod yok. Karar çerçevesi [ADR-0104](../../adr/kararlar-0064-0085.md#adr-0104).
 > Girdi: [`knowledge/mike-tarama/`](../../../knowledge/mike-tarama/README.md) (Mike taraması; AGPL-3.0, yalnız tasarım okundu, kod kopyalanmadı).
 > Bu belge öneri içerir; "öneri" etiketli yerler ölçülmeden bağlayıcı değildir.
 
@@ -37,7 +37,7 @@ web ──HTTP/SSE──> apps/api ──> cekirdek (retriever, answer, terazi)
 
 ## 3. Model profili
 
-Temel model bir parametredir ([ADR-0026](../../adr/gemma4-12b-dersler.md#adr-0026)); uygulama kazananı bilmeden yazılır ([ADR-0103](../../adr/kararlar-0064-0085.md#adr-0103)). Modele özgü her şey bir profilde durur:
+Temel model bir parametredir ([ADR-0026](../../adr/gemma4-12b-dersler.md#adr-0026)); uygulama kazananı bilmeden yazılır ([ADR-0104](../../adr/kararlar-0064-0085.md#adr-0104)). Modele özgü her şey bir profilde durur:
 
 | alan | Qwen3.5-4B | Gemma 4 E4B |
 |---|---|---|
@@ -175,7 +175,7 @@ Hash zincirli, yalnız-ekleme denetim kaydı; telemetri kapalı; SSRF koruması 
 | **C: üretim** | redline, dilekçe ve sözleşme taslağı, vatandaş özeti | eşleşmeyen `find` reddedilir; DOCX kabul/ret turu belgeyi bozmaz; taslak kalitesi ölçülmeden yayımlanmaz |
 | **D: içtihat + MCP** | kapsam ADR'si sonrası | ayrı ADR |
 
-Takvim ([ADR-0103](../../adr/kararlar-0064-0085.md#adr-0103)): tasarım ve §12 ölçüm modu şimdi; omurga kodu Ağustos-Eylül 2027, GRPO koşularıyla paralel; çakışmada kağıt hattı kazanır.
+Takvim ([ADR-0104](../../adr/kararlar-0064-0085.md#adr-0104)): tasarım ve §12 ölçüm modu şimdi; omurga kodu Ağustos-Eylül 2027, GRPO koşularıyla paralel; çakışmada kağıt hattı kazanır.
 
 ## 14. Açık sorular
 
