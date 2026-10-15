@@ -628,6 +628,8 @@ def baslat(asama: str = "", agirlik: str = "", tip: str = "A10"):
           flush=True)
 ```
 
+> *Sapma (2026-10-16, kullanıcı kararı "Düzelt"): inceleme `pilot`'un hata verince künye yazmadığını buldu; `pilot` `try/except/finally` ile sarıldı, künye `finally` içinde yazılır (`acildi`, `hata_sonu`, o ana kadarki `kosular`). Commit `7f885e5`, test `test_pilot_hata_verse_de_kunye_yazar`.*
+
 - [ ] **Step 4: Testlerin yeşil olduğunu ve Modal dosyasının yüklendiğini doğrula**
 
 Run:
