@@ -60,8 +60,8 @@ def test_groundedness_fiyati_kayitsiz_hakemi_para_harcamadan_reddeder(monkeypatc
     monkeypatch.setattr(groundedness, "score_record", lambda *a: cagri.append(a))
     monkeypatch.setattr(sys, "argv", ["groundedness.py", "--details", str(_detay(tmp_path)),
                                       "--label", "x", "--out-dir", str(tmp_path),
-                                      "--judge-model", DS, "--hakem-saglayici", "DeepSeek",
-                                      "--hakem-dusunme", "kapali"])
+                                      "--judge-model", "deepseek/fiyati-kayitsiz-20990101",
+                                      "--hakem-saglayici", "DeepSeek", "--hakem-dusunme", "kapali"])
     with pytest.raises(SystemExit):
         groundedness.main()
     assert cagri == []
@@ -78,3 +78,11 @@ def test_groundedness_ozeti_hakem_kunyesini_tasir(monkeypatch, tmp_path):
                                       "--hakem-saglayici", "OpenAI"])
     ozet = groundedness.main()
     assert ozet["hakem"] == {"model": "openai/gpt-4o-mini", "saglayici": "OpenAI", "dusunme": None}
+
+
+def test_deepseek_kisa_ad_tarihli_kimlige_cozulur_ve_saglayici_fiyati_kayitli():
+    """F0.14 (2026-10-15): tarihli kimlik + sabit sağlayıcının (DeepInfra, fp8) fiyatı #81'de kaynaklı."""
+    from llm_client import family, price, resolve
+    assert resolve("deepseek-v4.1-flash", "openrouter") == DS
+    assert family("deepseek-v4.1-flash") == "deepseek"
+    assert price(DS) == (0.14 / 1e6, 0.42 / 1e6)

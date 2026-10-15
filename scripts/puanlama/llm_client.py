@@ -44,6 +44,9 @@ OPENROUTER_BASE = "https://openrouter.ai/api/v1"
 ALIAS = {
     "gpt-4o-mini": "openai/gpt-4o-mini",
     "gpt-4o": "openai/gpt-4o",
+    # F0.14 (2026-10-15, kronoloji #81): OpenRouter'ın `canonical_slug`'ı — sürümü tarihle sabitler.
+    # F0.6'da doğrulandı: 10 koşu, sağlayıcı DeepInfra, hakem hatası 0 (kronoloji #85).
+    "deepseek-v4.1-flash": "deepseek/deepseek-v4.1-flash-20260910",
 }
 
 # ⚠️ BİRİNCİL-KAYNAK liste fiyatı (USD / token), (girdi, çıktı). Kapı marjı DAHİL DEĞİL.
@@ -65,6 +68,13 @@ PRICE = {  # 2026-07-24 itibarıyla
     # OpenRouter üzerinden faturalanıyor, dolayısıyla liste fiyatı da oradan alınır.
     # Ölçüldü 2026-09-07 (plan Görev 1 Adım 1): girdi $2,00/M · çıktı $10,00/M.
     "anthropic/claude-sonnet-5": (2.00 / 1e6, 10.00 / 1e6),
+    # ── F0.6 hakemi · DeepSeek V4.1 Flash, sabit sağlayıcı DeepInfra (fp8) ────────────────
+    # Birincil kaynak: OpenRouter `GET /api/v1/models/deepseek/deepseek-v4.1-flash/endpoints`,
+    # okundu 2026-10-15 14:39 UTC (kronoloji #81). Fiyat MODELİN değil SAĞLAYICININ: aynı model
+    # 33 sağlayıcıda $0,02-0,60 girdi arası satılıyor; sağlayıcı sabit olduğu için fiyat da onun.
+    # Önbellekli girdi $0,0042/M bu tabloda yok (tahmin önbelleksiz ⇒ üstten).
+    # ⚠️ Uç noktada `discount: 0.3` işareti vardı — fiyat ileride değişebilir; koşu günü yeniden okunur.
+    "deepseek/deepseek-v4.1-flash-20260910": (0.14 / 1e6, 0.42 / 1e6),
     # ⛔ `anthropic/claude-sonnet-5:batch` (liste fiyatı tam yarısı) buradan KULLANILAMAZ —
     # ölçüldü 2026-09-07: senkron chat-completions çağrısı 404 döndürüyor,
     # "This model is only available through the Batch API. Use /api/beta/batches".
@@ -171,8 +181,8 @@ class Dusunme(Enum):
 
 # Hakemin kendi düşünme modu olan aileler: modun AÇIKÇA verilmesi zorunlu, varsayılan yok.
 # Sabit sağlayıcısı zorunlu aileler: yedek sağlayıcıya düşme kapalı, ortam değişkenine düşülmez.
-# ⚠️ DeepSeek V4.1 Flash'ın düşünme parametresi ve sabit sağlayıcısı F0.14'te birincil kaynaktan
-# doğrulanır; liste o gün gözden geçirilir.
+# F0.14 (2026-10-15, #81): sabit sağlayıcı `deepinfra/fp8`. DeepSeek'in kendi belgesine göre düşünme
+# modunda `temperature` YOK SAYILIR (hata vermez) — hakemin düşünmesi açıkken sıcaklık hiçbir şeyi sabitlemez.
 DUSUNME_AILELERI = {"deepseek"}
 SAGLAYICI_ZORUNLU_AILELER = {"deepseek"}
 
