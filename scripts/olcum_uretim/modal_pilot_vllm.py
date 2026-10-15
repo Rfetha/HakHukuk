@@ -1,23 +1,21 @@
-"""F0.16 vLLM pilotu, Modal A10 — vLLM ile toplu üretim ölçümü, yayımlanmış GGUF'un ağırlıklarıyla.
+"""F0.16 vLLM pilotu, Modal A10 — vLLM ile toplu üretim ölçümü, iki ağırlıkla (spec 2026-10-15).
 
-Soru: aynı ağırlıklarla (Q4_K_M) soruları aynı anda göndermek (a) kaç kat hızlı, (b) puanı kaydırıyor mu?
-vLLM'in GGUF eklentisi Qwen3.5'i tanımıyor (`Unknown gguf model_type: qwen3_5`, aşama A, 2026-10-15). Bu yüzden
-yayımlanmış GGUF konteynerde `gguf_hf_cevir.py` ile Hugging Face biçimine (bf16) çevrilir; aynı değerler, vLLM'in
-ana desteğiyle açılır. Çeviri, yerelde orijinal ağırlıkla doğrulanmış çevirinin tensör sha256'larıyla birebir
-aynı olmak zorundadır (`outputs/eval/f0/f016-vllm-pilot/cevirme/CEVIRI_KUNYE.json`).
-Bu dosya yalnız makineyi açar; üretim `toplu_uret.py`, rejim `olcum_karti.REJIM`'dendir.
+Ağırlıklar:
+  q4-acilmis    yayımlanmış Q4_K_M GGUF, konteynerde `gguf_hf_cevir.py` ile bf16 HF biçimine açılır (aynı sayılar)
+  bf16-orijinal eğitimin sıkıştırılmamış çıktısı (`models/merged/tgta_v1`), dizüstünden hacme yüklenmiştir
+vLLM'in GGUF eklentisi Qwen3.5'i tanımıyor (`Unknown gguf model_type: qwen3_5`, 2026-10-15); GGUF doğrudan okunmaz.
+Her iki klasör de içerik sha256'sıyla yerelde doğrulanmış kayda bağlıdır (CEVIRI_KUNYE.json, bf16_manifest.json).
 
-İki aşama (her biri ayrı onayla):
-  kontrol  çeviri tutuyor mu? vLLM açılıyor mu? Cevapta düşünce hangi alan adıyla geliyor?
-           8 soru tek tek ↔ 8 soru aynı anda: hız ve cevap eşitliği. (~$0,3-0,5)
-  pilot    80 soru: batch-invariant açık iki koşu + kapalı bir koşu. Cevaplar sonra DeepSeek (açık düşünme)
-           ile puanlanır ve A10 referansının 0,7515'iyle karşılaştırılır. (~$0,5-1)
+Aşamalar (her biri ayrı onayla):
+  kontrol  vLLM açılıyor mu? Düşünce hangi alan adıyla geliyor? 8 soru tek tek ↔ aynı anda: hız, cevap eşitliği (G1, G4)
+  pilot    80 soru, vLLM'de iki üretim koşusu (G1, G2 ve puanlama için cevaplar)
 
-Konteynere hiçbir anahtar gitmez (secret bağlanmaz; GGUF deposu herkese açık, tokenizer yerelden verilir).
+Konteynere hiçbir anahtar gitmez (secret bağlanmaz; GGUF deposu herkese açık).
 
 Kullanım (repo kökünden; para harcar, kullanıcı onayıyla):
-  modal run --detach scripts/olcum_uretim/modal_pilot_vllm.py::baslat --asama kontrol
-  modal volume get hukuk-outputs /f016-vllm-pilot outputs/eval/f0/f016-vllm-pilot
+  modal run --detach scripts/olcum_uretim/modal_pilot_vllm.py::baslat --asama kontrol --agirlik bf16-orijinal
+  modal run --detach scripts/olcum_uretim/modal_pilot_vllm.py::baslat --asama pilot --agirlik q4-acilmis
+  modal volume get hukuk-outputs /f016-vllm-pilot/A10 outputs/eval/f0/f016-vllm-pilot/A10
 """
 import hashlib
 import os
@@ -33,6 +31,8 @@ TOKENIZER = "models/merged/tgta_v1"
 TOKENIZER_DOSYALARI = ("tokenizer.json", "tokenizer_config.json", "vocab.json", "merges.txt",
                        "chat_template.jinja", "config.json")
 CEVIRI_KUNYE_YEREL = "outputs/eval/f0/f016-vllm-pilot/cevirme/CEVIRI_KUNYE.json"
+BF16_MANIFEST_YEREL = "outputs/eval/f0/f016-vllm-pilot/bf16_manifest.json"
+AGIRLIKLAR = ("q4-acilmis", "bf16-orijinal")
 CIKTI_KOK = "/outputs/f016-vllm-pilot"
 SAATLIK_USD = {"A10": 1.10}   # modal.com/pricing, okundu 2026-10-15 (#82)
 ES_ZAMANLI = 32               # aynı anda gönderilen istek; sunucuda --max-num-seqs ile aynı
@@ -51,6 +51,7 @@ image = (
     .add_local_file(VERI, remote_path=f"/root/{VERI}")
     .add_local_file(DONMUS, remote_path=f"/root/{DONMUS}")
     .add_local_file(CEVIRI_KUNYE_YEREL, remote_path="/root/cevirme_kunye.json")
+    .add_local_file(BF16_MANIFEST_YEREL, remote_path="/root/bf16_manifest.json")
 )
 for _dosya in TOKENIZER_DOSYALARI:
     image = image.add_local_file(f"{TOKENIZER}/{_dosya}", remote_path=f"/root/tok/{_dosya}")
@@ -73,8 +74,7 @@ def _paket_surumu(ad: str):
 
 
 def _hf_klasoru(gguf: str) -> str:
-    """GGUF → HF klasörü (hacimde önbellekli). Çevrilen her tensörün sha256'sı yerelde doğrulanmış çeviriyle
-    aynı olmalı; değilse DURUR (konteynerde orijinal ağırlık yok, doğrulama bu karşılaştırmadır)."""
+    """GGUF → HF klasörü (hacimde önbellekli). Her tensörün sha256'sı yerelde doğrulanmış çeviriyle aynı olmalı."""
     import json
     import subprocess
     import sys
@@ -93,7 +93,32 @@ def _hf_klasoru(gguf: str) -> str:
     return hedef
 
 
-def _sunucu_ac(model_dizini: str, ortam: dict, gunluk_yolu: str):
+def _bf16_klasoru() -> str:
+    """Hacimdeki orijinal bf16 klasörü; her dosyanın sha256'sı yerel manifestle aynı olmalı (bf16_yukle.py)."""
+    import json
+    import sys
+    sys.path[:0] = ["/root/scripts/olcum_uretim"]
+    import bf16_yukle
+    hedef = f"{CIKTI_KOK}/bf16"
+    beklenen = json.load(open("/root/bf16_manifest.json", encoding="utf-8"))
+    fark = bf16_yukle.farklar(beklenen, bf16_yukle.manifest(hedef, adlar=list(beklenen["dosyalar"])))
+    if fark:
+        raise RuntimeError("hacimdeki bf16 yerel manifestle aynı değil: " + "; ".join(fark[:5]))
+    return hedef
+
+
+def _model_klasoru(agirlik: str):
+    """→ (vLLM'in okuyacağı klasör, künyedeki model kaydı)."""
+    if agirlik == "q4-acilmis":
+        from hakhukuk.dagitim.indir import indir_model
+        gguf = str(indir_model("/tmp/model"))
+        return _hf_klasoru(gguf), {"gguf": os.path.basename(gguf), "gguf_sha256": _sha256(gguf)}
+    if agirlik == "bf16-orijinal":
+        return _bf16_klasoru(), {"bf16_manifest_sha256": _sha256("/root/bf16_manifest.json")}
+    raise ValueError(f"bilinmeyen ağırlık: {agirlik} (beklenen {AGIRLIKLAR})")
+
+
+def _sunucu_ac(model_dizini: str, gunluk_yolu: str):
     """vLLM sunucusunu açar, /health bekler → (süreç, koşan komut). Açılamazsa günlüğün sonuyla durur."""
     import subprocess
     import time
@@ -102,7 +127,7 @@ def _sunucu_ac(model_dizini: str, ortam: dict, gunluk_yolu: str):
              "--max-model-len", "8192", "--max-num-seqs", str(ES_ZAMANLI), "--reasoning-parser", "qwen3",
              "--seed", "3407", "--host", "127.0.0.1", "--port", str(PORT)]
     gunluk = open(gunluk_yolu, "w")
-    srv = subprocess.Popen(komut, stdout=gunluk, stderr=subprocess.STDOUT, env={**os.environ, **ortam})
+    srv = subprocess.Popen(komut, stdout=gunluk, stderr=subprocess.STDOUT)
     for _ in range(300):
         if srv.poll() is not None:
             raise RuntimeError(f"vllm öldü (kod {srv.returncode}): " + open(gunluk_yolu).read()[-3000:])
@@ -123,7 +148,7 @@ def _sunucu_kapat(srv):
         srv.kill()
 
 
-def _ortak_kunye(tip: str, hesap: str, gguf: str) -> dict:
+def _ortak_kunye(tip: str, hesap: str) -> dict:
     import subprocess
     kart = subprocess.run(["nvidia-smi", "--query-gpu=name,driver_version,uuid,memory.total",
                            "--format=csv,noheader"], capture_output=True, text=True).stdout.strip()
@@ -133,10 +158,8 @@ def _ortak_kunye(tip: str, hesap: str, gguf: str) -> dict:
                                and not any(y in k for y in ("TOKEN", "SECRET", "KEY"))}},
         "nvidia_smi": kart,
         "yazilim": {"vllm": VLLM_SURUMU, "taban_imaj": TABAN_IMAJ,
-                    # Sabitlenmeyen bağımlılıkların KURULAN sürümleri (vLLM kendi torch/transformers'ını getirir).
                     "kurulan": {p: _paket_surumu(p) for p in ("vllm", "torch", "transformers", "huggingface_hub",
                                                               "openai", "gguf", "safetensors")}},
-        "model": {"gguf": os.path.basename(gguf), "sha256": _sha256(gguf)},
         "baglam": {"dosya": DONMUS, "sha256": _sha256(f"/root/{DONMUS}")},
     }
 
@@ -150,22 +173,20 @@ def _yaz(kunye: dict, dizin: str) -> None:
 
 
 @app.function(image=image, gpu="A10", volumes={"/outputs": out_vol}, timeout=60 * 60, retries=0)
-def kontrol(tip: str, hesap: str) -> dict:
-    """Aşama A: çeviri tutuyor mu · vLLM açılıyor mu · ham cevap alanları · 8 soru tek tek ↔ aynı anda."""
+def kontrol(tip: str, hesap: str, agirlik: str) -> dict:
+    """Aşama A: vLLM açılıyor mu · ham cevap alanları · 8 soru tek tek ↔ aynı anda (G1, G4)."""
     import json
     import subprocess
     import sys
     import urllib.request
     sys.path[:0] = ["/root/scripts/olcum_uretim", "/root/scripts/puanlama", "/root"]
-    from hakhukuk.dagitim.indir import indir_model
-    dizin = f"{CIKTI_KOK}/kontrol"
+    dizin = f"{CIKTI_KOK}/kontrol-{agirlik}"
     os.makedirs(dizin, exist_ok=True)
-    gguf = str(indir_model("/tmp/model"))
-    kunye = {"is": "F0.16 vLLM pilotu · aşama A (kontrol)", **_ortak_kunye(tip, hesap, gguf)}
+    kunye = {"is": "F0.16 vLLM pilotu · aşama A (kontrol)", "agirlik": agirlik, **_ortak_kunye(tip, hesap)}
     try:
-        hf = _hf_klasoru(gguf)
-        kunye["hf_klasoru"] = hf
-        srv, komut = _sunucu_ac(hf, {}, f"{dizin}/vllm.log")
+        hf, kunye["model"] = _model_klasoru(agirlik)
+        kunye["model_klasoru"] = hf
+        srv, komut = _sunucu_ac(hf, f"{dizin}/vllm.log")
     except (RuntimeError, subprocess.CalledProcessError) as h:
         kunye["acildi"], kunye["hata_sonu"] = False, str(h)[-3000:]
         _yaz(kunye, dizin)
@@ -201,63 +222,60 @@ def kontrol(tip: str, hesap: str) -> dict:
 
 
 @app.function(image=image, gpu="A10", volumes={"/outputs": out_vol}, timeout=3 * 60 * 60, retries=0)
-def pilot(tip: str, hesap: str, baglam_sha: str) -> dict:
-    """Aşama B: 80 soru, batch-invariant açık ×2 ve kapalı ×1 (sunucu her mod için yeniden açılır)."""
+def pilot(tip: str, hesap: str, baglam_sha: str, agirlik: str) -> dict:
+    """Aşama B: 80 soru, vLLM'de iki üretim koşusu (aynı sunucuda arka arkaya)."""
     import subprocess
     import sys
     import time
     sys.path[:0] = ["/root/scripts/olcum_uretim", "/root/scripts/puanlama", "/root"]
-    from hakhukuk.dagitim.indir import indir_model
     from part_dosya import tamamlanmis_jsonl
     import olcum_karti as ok
     if _sha256(f"/root/{DONMUS}") != baglam_sha:
         raise SystemExit("[pilot-vllm] 🚫 dondurulmuş bağlam yerelde hesaplanan sha256'yla aynı değil")
-    dizin = f"{CIKTI_KOK}/{tip}"
+    dizin = f"{CIKTI_KOK}/{tip}/{agirlik}"
     os.makedirs(dizin, exist_ok=True)
-    gguf = str(indir_model("/tmp/model"))
-    hf = _hf_klasoru(gguf)
-    kunye = {"is": "F0.16 vLLM pilotu · aşama B", **_ortak_kunye(tip, hesap, gguf), "hf_klasoru": hf,
-             "es_zamanli": ES_ZAMANLI, "rejim": ok.REJIM, "kosular": []}
+    hf, model_kaydi = _model_klasoru(agirlik)
+    kunye = {"is": "F0.16 vLLM pilotu · aşama B", "agirlik": agirlik, **_ortak_kunye(tip, hesap),
+             "model": model_kaydi, "model_klasoru": hf, "es_zamanli": ES_ZAMANLI, "rejim": ok.REJIM, "kosular": []}
     saatlik = SAATLIK_USD.get(tip)
-    for mod, tekrar in (("bi-acik", 2), ("bi-kapali", 1)):
-        ortam = {"VLLM_BATCH_INVARIANT": "1"} if mod == "bi-acik" else {}
-        srv, komut = _sunucu_ac(hf, ortam, f"{dizin}/vllm_{mod}.log")
-        try:
-            kunye.setdefault("kosan_komutlar", {})[mod] = {"ortam": ortam, "komut": komut}
-            for t in range(1, tekrar + 1):
-                etiket = f"h1_tgta_v1_vllm_{mod}_t{t}"
-                t0 = time.time()
-                r = subprocess.run([sys.executable, "/root/scripts/olcum_uretim/toplu_uret.py",
-                                    "--server-url", f"http://127.0.0.1:{PORT}/v1", "--server-model", "local",
-                                    "--data", f"/root/{VERI}", "--donmus-baglam", f"/root/{DONMUS}",
-                                    "--tokenizer-dizini", hf, "--es-zamanli", str(ES_ZAMANLI),
-                                    "--etiket", etiket, "--cikti-dizini", dizin])
-                sure = time.time() - t0
-                if r.returncode != 0:
-                    raise SystemExit(f"[pilot-vllm] 🚫 {etiket} üretimi başarısız (kod {r.returncode})")
-                satirlar = tamamlanmis_jsonl(f"{dizin}/{etiket}_detail.jsonl")
-                kunye["kosular"].append({"etiket": etiket, "mod": mod, "sure_s": round(sure, 1),
-                                         "s_cevap": round(sure / len(satirlar), 2),
-                                         "usd_cevap": round(sure / len(satirlar) * saatlik / 3600, 5) if saatlik else None,
-                                         "gecerlilik": ok.gecerlilik(satirlar)})
-                out_vol.commit()
-        finally:
-            _sunucu_kapat(srv)
+    srv, kunye["kosan_komut"] = _sunucu_ac(hf, f"{dizin}/vllm.log")
+    try:
+        for t in (1, 2):
+            etiket = f"h1_tgta_v1_vllm_{agirlik}_t{t}"
+            t0 = time.time()
+            r = subprocess.run([sys.executable, "/root/scripts/olcum_uretim/toplu_uret.py",
+                                "--server-url", f"http://127.0.0.1:{PORT}/v1", "--server-model", "local",
+                                "--data", f"/root/{VERI}", "--donmus-baglam", f"/root/{DONMUS}",
+                                "--tokenizer-dizini", hf, "--es-zamanli", str(ES_ZAMANLI),
+                                "--etiket", etiket, "--cikti-dizini", dizin])
+            sure = time.time() - t0
+            if r.returncode != 0:
+                raise SystemExit(f"[pilot-vllm] 🚫 {etiket} üretimi başarısız (kod {r.returncode})")
+            satirlar = tamamlanmis_jsonl(f"{dizin}/{etiket}_detail.jsonl")
+            kunye["kosular"].append({"etiket": etiket, "sure_s": round(sure, 1), "s_cevap": round(sure / len(satirlar), 2),
+                                     "usd_cevap": round(sure / len(satirlar) * saatlik / 3600, 5) if saatlik else None,
+                                     "gecerlilik": ok.gecerlilik(satirlar)})
+            out_vol.commit()
+    finally:
+        _sunucu_kapat(srv)
     _yaz(kunye, dizin)
     return kunye
 
 
 @app.local_entrypoint()
-def baslat(asama: str = "", tip: str = "A10"):
+def baslat(asama: str = "", agirlik: str = "", tip: str = "A10"):
     if asama not in ("kontrol", "pilot"):
         raise SystemExit("[pilot-vllm] 🚫 --asama kontrol|pilot zorunlu")
+    if agirlik not in AGIRLIKLAR:
+        raise SystemExit(f"[pilot-vllm] 🚫 --agirlik {'|'.join(AGIRLIKLAR)} zorunlu")
     import sys
     sys.path.insert(0, "scripts/egitim")
     from modal_train import _baslatan_hesap   # ADR-0101 m.4: hesap profilden, elle yazılmaz
     hesap = _baslatan_hesap()
     if asama == "kontrol":
-        c = kontrol.with_options(gpu=tip).spawn(tip, hesap)
+        c = kontrol.with_options(gpu=tip).spawn(tip, hesap, agirlik)
     else:
-        c = pilot.with_options(gpu=tip).spawn(tip, hesap, _sha256(DONMUS))
-    print(f"[pilot-vllm] SPAWNED ✓ aşama={asama} tip={tip} hesap={hesap} · {c.object_id}\n  bitince: "
-          f"modal volume get hukuk-outputs /f016-vllm-pilot outputs/eval/f0/f016-vllm-pilot", flush=True)
+        c = pilot.with_options(gpu=tip).spawn(tip, hesap, _sha256(DONMUS), agirlik)
+    print(f"[pilot-vllm] SPAWNED ✓ aşama={asama} ağırlık={agirlik} tip={tip} hesap={hesap} · {c.object_id}\n  bitince: "
+          f"modal volume get hukuk-outputs /f016-vllm-pilot/<alt klasör> outputs/eval/f0/f016-vllm-pilot/<alt klasör>",
+          flush=True)

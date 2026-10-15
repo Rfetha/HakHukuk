@@ -58,3 +58,16 @@ def test_vllm_pilotu_gguf_eklentisi_kullanmaz_cevrilmis_klasoru_sha_kapisindan_g
     k = _kaynak()
     assert "vllm-gguf-plugin" not in k and "vllm_gguf_plugin" not in k
     assert "gguf_hf_cevir.py" in k and "CEVIRI_KUNYE" in k
+
+
+def test_vllm_pilotu_iki_agirlik_destekler_ve_batch_invariant_kullanmaz():
+    """GDN katmanlarında batch-invariant desteklenmiyor (LMCache belgesi); pilot G4 ile belirlenimciliği ölçer,
+    modu zorlamaz."""
+    assert _sabit("AGIRLIKLAR") == ("q4-acilmis", "bf16-orijinal")
+    assert "VLLM_BATCH_INVARIANT" not in _kaynak()
+
+
+def test_vllm_pilotu_bf16_klasorunu_manifestle_dogrular():
+    k = _kaynak()
+    assert "bf16_manifest.json" in k and "bf16_yukle" in k
+    assert _sabit("ES_ZAMANLI") == 32
