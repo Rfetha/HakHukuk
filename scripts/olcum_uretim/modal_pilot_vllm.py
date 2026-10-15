@@ -234,12 +234,15 @@ def pilot(tip: str, hesap: str, baglam_sha: str, agirlik: str) -> dict:
         raise SystemExit("[pilot-vllm] 🚫 dondurulmuş bağlam yerelde hesaplanan sha256'yla aynı değil")
     dizin = f"{CIKTI_KOK}/{tip}/{agirlik}"
     os.makedirs(dizin, exist_ok=True)
-    hf, model_kaydi = _model_klasoru(agirlik)
     kunye = {"is": "F0.16 vLLM pilotu · aşama B", "agirlik": agirlik, **_ortak_kunye(tip, hesap),
-             "model": model_kaydi, "model_klasoru": hf, "es_zamanli": ES_ZAMANLI, "rejim": ok.REJIM, "kosular": []}
+             "es_zamanli": ES_ZAMANLI, "rejim": ok.REJIM, "acildi": False, "kosular": []}
     saatlik = SAATLIK_USD.get(tip)
-    srv, kunye["kosan_komut"] = _sunucu_ac(hf, f"{dizin}/vllm.log")
+    srv = None
     try:
+        hf, kunye["model"] = _model_klasoru(agirlik)
+        kunye["model_klasoru"] = hf
+        srv, kunye["kosan_komut"] = _sunucu_ac(hf, f"{dizin}/vllm.log")
+        kunye["acildi"] = True
         for t in (1, 2):
             etiket = f"h1_tgta_v1_vllm_{agirlik}_t{t}"
             t0 = time.time()
@@ -256,9 +259,13 @@ def pilot(tip: str, hesap: str, baglam_sha: str, agirlik: str) -> dict:
                                      "usd_cevap": round(sure / len(satirlar) * saatlik / 3600, 5) if saatlik else None,
                                      "gecerlilik": ok.gecerlilik(satirlar)})
             out_vol.commit()
+    except (RuntimeError, subprocess.CalledProcessError, SystemExit) as h:
+        kunye["hata_sonu"] = str(h)[-3000:]
+        raise
     finally:
-        _sunucu_kapat(srv)
-    _yaz(kunye, dizin)
+        if srv is not None:
+            _sunucu_kapat(srv)
+        _yaz(kunye, dizin)
     return kunye
 
 
