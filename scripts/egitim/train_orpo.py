@@ -35,7 +35,7 @@ from transformers.trainer_utils import get_last_checkpoint
 from transformers import TrainerCallback
 from trl import ORPOTrainer, ORPOConfig
 
-from ortam_kilidi import kilidi_uygula, kunye_tamamla  # F0.4 — eğitim ortamı kilidi (aynı dizin)
+from ortam_kilidi import kilidi_uygula, kunye_tamamla, lora_hedefi, lora_yerlesim_kapisi, yukleme_secenekleri  # F0.4 — eğitim ortamı kilidi (aynı dizin)
 
 
 class _AdimdaDur(TrainerCallback):
@@ -196,15 +196,17 @@ def main():
         load_in_4bit=not bf16_taban,
         dtype=torch.bfloat16 if bf16_taban else None,
         full_finetuning=False,
+        **yukleme_secenekleri(args),
     )
 
     if args.fresh_adapter or not args.adapter:
         # Base'e yeni adapter — önceki turun kazanımı (grounding) TAŞINMAZ.
         model = FastModel.get_peft_model(
             model, r=args.lora_r, lora_alpha=args.lora_alpha, lora_dropout=args.lora_dropout,
-            target_modules=args.target_modules,
+            target_modules=lora_hedefi(args.target_modules),
             bias="none", use_gradient_checkpointing="unsloth", random_state=args.seed,
         )
+        lora_yerlesim_kapisi(model, args, out)
         print("[orpo] ⚠️ FRESH adapter (base'den) — önceki turun kazanımı taşınmadı", flush=True)
     else:
         # CONTINUATION: önceki turun LoRA'sını trainable yükle (kazanım taşınır).

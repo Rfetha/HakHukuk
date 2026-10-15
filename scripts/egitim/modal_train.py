@@ -23,7 +23,7 @@ Kullanım:
   modal volume put hukuk-data data/train/<set> /<set>
 
   # 1) Önce SMOKE (~50 step, config+loss doğrulama)   ← DİKKAT: /data/<set>
-  modal run --detach scripts/egitim/modal_train.py::spawn_sft --model <hf-repo> --data /data/<set> --smoke \
+  modal run --detach scripts/egitim/modal_train.py::spawn_sft --model <hf-repo> --ortam-kilidi configs/<kilit>.yaml --data /data/<set> --smoke \
       --user-part '<|turn>user\n' --assistant-part '<|turn>model\n'
 
   # 2) Loss düşüyorsa tam koşu (aynı --user-part/--assistant-part ile)
@@ -48,6 +48,10 @@ _KILIT_YOLU = next(y for y in ("configs/egitim_ortami.yaml", "/root/configs/egit
 with open(_KILIT_YOLU, encoding="utf-8") as _f:
     _KILIT = yaml.safe_load(_f)
 KILIT_KONTEYNER = "/root/configs/egitim_ortami.yaml"
+# Gemma 4 E4B'nin kilidi, kilit dosyası ve imajı ayrıdır (kronoloji #78-#79); Qwen'inkine dokunmaz.
+with open(_KILIT_YOLU.replace("egitim_ortami.yaml", "egitim_ortami_gemma.yaml"), encoding="utf-8") as _f:
+    _KILIT_GEMMA = yaml.safe_load(_f)
+KILIT_GEMMA_KONTEYNER = "/root/configs/egitim_ortami_gemma.yaml"
 
 app = modal.App("hukuk-sft")
 
@@ -99,6 +103,23 @@ image = (
     .add_local_dir("hakhukuk", remote_path="/root/hakhukuk")    # train_sft.py: hakhukuk.cekirdek.istem
 )
 
+# Gemma imajı: aynı taban ve ortam değişkenleri; paket kilidi requirements.gemma4.lock.txt (yalnız
+# unsloth/unsloth_zoo 2026.10.1 farklı) ve fla yok. `--no-deps` gerekçesi yukarıdaki imajla aynı.
+gemma_image = (
+    modal.Image.debian_slim(python_version="3.11")
+    .pip_install_from_requirements("requirements.gemma4.lock.txt", extra_options="--no-deps")
+    .env({
+        "HF_HUB_ENABLE_HF_TRANSFER": "1",
+        "HF_HOME": "/cache/hf",
+        "PYTHONUNBUFFERED": "1",
+        "UNSLOTH_DISABLE_STATISTICS": "1",
+    })
+    .pip_install(*[f"{p}=={v}" for p, v in _KILIT_GEMMA["paketler"]["ek"].items()], extra_options="--no-deps")
+    .add_local_dir("scripts", remote_path="/root/scripts")
+    .add_local_dir("configs", remote_path="/root/configs")
+    .add_local_dir("hakhukuk", remote_path="/root/hakhukuk")
+)
+
 data_vol = modal.Volume.from_name("hukuk-data")
 out_vol = modal.Volume.from_name("hukuk-outputs")
 hf_cache = modal.Volume.from_name("hukuk-hf-cache", create_if_missing=True)
@@ -136,6 +157,21 @@ def _baslatan_hesap() -> str:
     return _modal_hesabi(json.loads(cikti))
 
 
+def _kilit_secimi(ortam_kilidi: str, model: str) -> str:
+    """`--ortam-kilidi` (varsayılansız) hangi kilitse onun adı: "qwen" ya da "gemma". Kilidin modeli
+    `--model`le uyuşmazsa burada, bir şey başlamadan durur (konteyner de aynısını denetler)."""
+    _require("ortam-kilidi", ortam_kilidi)
+    secim = {"egitim_ortami.yaml": ("qwen", _KILIT),
+             "egitim_ortami_gemma.yaml": ("gemma", _KILIT_GEMMA)}.get(os.path.basename(ortam_kilidi))
+    if secim is None:
+        raise SystemExit(f"[modal] 🚫 bilinmeyen --ortam-kilidi {ortam_kilidi!r}: "
+                         f"configs/egitim_ortami.yaml ya da configs/egitim_ortami_gemma.yaml")
+    ad, kilit = secim
+    if model != kilit["model"]:
+        raise SystemExit(f"[modal] 🚫 --model {model!r} ≠ {ortam_kilidi} kilidinin modeli {kilit['model']!r}")
+    return ad
+
+
 def _run_with_commits(cmd, vols, every_s: int):
     """Alt süreci koştur + periyodik commit. Kesinti olursa son commit'li checkpoint'ten
     resume edilir (train_sft/train_orpo `get_last_checkpoint` ile otomatik).
@@ -165,11 +201,9 @@ def _run_with_commits(cmd, vols, every_s: int):
 
 
 # ── SFT (QLoRA) ───────────────────────────────────────────────────────────────
-@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
-              timeout=6 * 60 * 60)
-def train(model: str, data_path: str, run_name: str, user_part: str, assistant_part: str,
-          hassasiyet: str, seed: int, hesap: str,
-          epochs: float = 1.0, max_steps: int = -1, extra_args: list[str] | None = None):
+def _train_govde(kilit: str, model: str, data_path: str, run_name: str, user_part: str,
+                 assistant_part: str, hassasiyet: str, seed: int, hesap: str,
+                 epochs: float, max_steps: int, extra_args: list[str] | None):
     os.environ["MODAL_HESAP"] = hesap   # künyenin platform alanı MODAL_* değişkenlerini yazar
     cmd = [
         sys.executable, "/root/scripts/egitim/train_sft.py",
@@ -180,7 +214,7 @@ def train(model: str, data_path: str, run_name: str, user_part: str, assistant_p
         "--epochs", str(epochs),
         "--hassasiyet", hassasiyet,
         "--seed", str(seed),
-        "--ortam-kilidi", KILIT_KONTEYNER,
+        "--ortam-kilidi", kilit,
         # Maskeleme sınırları — train_sft.py bunları render'a karşı ASSERT eder;
         # yanlışsa eğitim başlamadan patlar (sessizce bozuk eğitmekten iyidir).
         "--user-part", user_part,
@@ -194,14 +228,27 @@ def train(model: str, data_path: str, run_name: str, user_part: str, assistant_p
     print(f"[modal] SFT bitti → adapter: hukuk-outputs:/{run_name}", flush=True)
 
 
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS, timeout=6 * 60 * 60)
+def train(model: str, data_path: str, run_name: str, user_part: str, assistant_part: str,
+          hassasiyet: str, seed: int, hesap: str,
+          epochs: float = 1.0, max_steps: int = -1, extra_args: list[str] | None = None):
+    _train_govde(KILIT_KONTEYNER, model, data_path, run_name, user_part, assistant_part,
+                 hassasiyet, seed, hesap, epochs, max_steps, extra_args)
+
+
+@app.function(image=gemma_image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS, timeout=6 * 60 * 60)
+def train_gemma(model: str, data_path: str, run_name: str, user_part: str, assistant_part: str,
+                hassasiyet: str, seed: int, hesap: str,
+                epochs: float = 1.0, max_steps: int = -1, extra_args: list[str] | None = None):
+    _train_govde(KILIT_GEMMA_KONTEYNER, model, data_path, run_name, user_part, assistant_part,
+                 hassasiyet, seed, hesap, epochs, max_steps, extra_args)
+
+
 # ── ORPO (tercih öğrenmesi; adapter-continuation veya taze) ───────────────────
-@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS,
-              timeout=6 * 60 * 60)
-def train_orpo(model: str, data_path: str, run_name: str, hassasiyet: str, seed: int, hesap: str,
-               adapter: str | None = None,
-               epochs: float = 1.0, max_steps: int = -1, beta: float = 0.1,
-               lr: float = 1e-5, grad_accum: int = 64, save_steps: int = 100,
-               lora_dropout: float = -1.0, target_modules: str = "", durdur_adim: int = 0):
+def _orpo_govde(kilit: str, model: str, data_path: str, run_name: str, hassasiyet: str, seed: int,
+                hesap: str, adapter: str | None, epochs: float, max_steps: int, beta: float,
+                lr: float, grad_accum: int, save_steps: int, lora_dropout: float,
+                target_modules: str, durdur_adim: int):
     os.environ["MODAL_HESAP"] = hesap   # künyenin platform alanı MODAL_* değişkenlerini yazar
     cmd = [
         sys.executable, "/root/scripts/egitim/train_orpo.py",
@@ -215,7 +262,7 @@ def train_orpo(model: str, data_path: str, run_name: str, hassasiyet: str, seed:
         # farklı θ_base'den türer ve kıyaslanamaz olur. Hassasiyet zorunlu, varsayılansız (F0.4).
         "--hassasiyet", hassasiyet,
         "--seed", str(seed),
-        "--ortam-kilidi", KILIT_KONTEYNER,
+        "--ortam-kilidi", kilit,
     ]
     if durdur_adim and durdur_adim > 0:
         cmd += ["--durdur-adim", str(durdur_adim)]
@@ -229,6 +276,27 @@ def train_orpo(model: str, data_path: str, run_name: str, hassasiyet: str, seed:
         cmd += ["--max-steps", str(max_steps)]
     _run_with_commits(cmd, [out_vol, hf_cache], every_s=900)
     print(f"[modal] ORPO bitti → adapter: hukuk-outputs:/{run_name}", flush=True)
+
+
+@app.function(image=image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS, timeout=6 * 60 * 60)
+def train_orpo(model: str, data_path: str, run_name: str, hassasiyet: str, seed: int, hesap: str,
+               adapter: str | None = None,
+               epochs: float = 1.0, max_steps: int = -1, beta: float = 0.1,
+               lr: float = 1e-5, grad_accum: int = 64, save_steps: int = 100,
+               lora_dropout: float = -1.0, target_modules: str = "", durdur_adim: int = 0):
+    _orpo_govde(KILIT_KONTEYNER, model, data_path, run_name, hassasiyet, seed, hesap, adapter, epochs,
+                max_steps, beta, lr, grad_accum, save_steps, lora_dropout, target_modules, durdur_adim)
+
+
+@app.function(image=gemma_image, gpu=GPU, volumes=VOLUMES, secrets=SECRETS, timeout=6 * 60 * 60)
+def train_orpo_gemma(model: str, data_path: str, run_name: str, hassasiyet: str, seed: int, hesap: str,
+                     adapter: str | None = None,
+                     epochs: float = 1.0, max_steps: int = -1, beta: float = 0.1,
+                     lr: float = 1e-5, grad_accum: int = 64, save_steps: int = 100,
+                     lora_dropout: float = -1.0, target_modules: str = "", durdur_adim: int = 0):
+    _orpo_govde(KILIT_GEMMA_KONTEYNER, model, data_path, run_name, hassasiyet, seed, hesap, adapter,
+                epochs, max_steps, beta, lr, grad_accum, save_steps, lora_dropout, target_modules,
+                durdur_adim)
 
 
 # ── CP2-c HASAT: llama.cpp taşıyıcısı (ADR-0047 m.2) ──────────────────────────
@@ -488,7 +556,8 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
               warmup_ratio: float = 0.0, no_system: bool = False,
               hassasiyet: str = "", target_modules: str = "",
               lora_dropout: float = -1.0, no_grad_checkpoint: bool = False,
-              batch: int = 0, grad_accum: int = 0, seed: int = 0, max_steps: int = -1):
+              batch: int = 0, grad_accum: int = 0, seed: int = 0, max_steps: int = -1,
+              ortam_kilidi: str = ""):
     """QLoRA SFT — fire-and-forget. Önce --smoke (para-kapısı), sonra tam koşu.
 
     --user-part / --assistant-part: base'in chat şablonundaki turn işaretleri.
@@ -499,6 +568,7 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
     _require("model", model); _require("data", data)
     _require("user-part", user_part); _require("assistant-part", assistant_part)
     _require("hassasiyet", hassasiyet); _require("seed", seed)   # F0.4: varsayılan yok
+    kilit_adi = _kilit_secimi(ortam_kilidi, model)
     extra = []
     if no_system:            # veri system prompt'unu zaten taşıyorsa çift-system'i önle
         extra += ["--no-system"]
@@ -530,15 +600,16 @@ def spawn_sft(model: str = "", data: str = "", run_name: str = "r1",
         raise SystemExit("[modal] 🚫 --batch ve --grad-accum BİRLİKTE verilir "
                          "(etkin batch = çarpımları; tek başına vermek onu sessizce kaydırır).")
 
+    train_fn = {"qwen": train, "gemma": train_gemma}[kilit_adi]
     parts = dict(user_part=user_part, assistant_part=assistant_part,
                  hassasiyet=hassasiyet, seed=seed, hesap=_baslatan_hesap())
     if smoke:
         print(f"[modal] SMOKE: 50 step (config+loss doğrulama) · gpu={GPU}", flush=True)
-        call = train.spawn(model=model, data_path=data, run_name=f"{run_name}-smoke",
-                           epochs=1.0, max_steps=50, extra_args=extra, **parts)
+        call = train_fn.spawn(model=model, data_path=data, run_name=f"{run_name}-smoke",
+                                 epochs=1.0, max_steps=50, extra_args=extra, **parts)
     else:
-        call = train.spawn(model=model, data_path=data, run_name=run_name,
-                           epochs=epochs, max_steps=max_steps, extra_args=extra, **parts)
+        call = train_fn.spawn(model=model, data_path=data, run_name=run_name,
+                              epochs=epochs, max_steps=max_steps, extra_args=extra, **parts)
     print(f"[modal] SPAWNED ✓ {call.object_id} | model={model} data={data} "
           f"run={run_name} epochs={epochs} max_steps={max_steps} seed={seed} gpu={GPU} "
           f"smoke={smoke}", flush=True)
@@ -552,7 +623,7 @@ def spawn_orpo(model: str = "", data: str = "", run_name: str = "orpo1",
                beta: float = 0.1, lr: float = 1e-5, grad_accum: int = 64,
                save_steps: int = 100, hassasiyet: str = "",
                lora_dropout: float = -1.0, target_modules: str = "",
-               seed: int = 0, durdur_adim: int = 0):
+               seed: int = 0, durdur_adim: int = 0, ortam_kilidi: str = ""):
     """ORPO tercih öğrenmesi — fire-and-forget.
 
     --adapter verilirse o turun kazanımı taşınır (continuation); boşsa base'e taze adapter.
@@ -570,18 +641,19 @@ def spawn_orpo(model: str = "", data: str = "", run_name: str = "orpo1",
     """
     _require("model", model); _require("data", data)
     _require("hassasiyet", hassasiyet); _require("seed", seed)   # F0.4: varsayılan yok
+    orpo_fn = {"qwen": train_orpo, "gemma": train_orpo_gemma}[_kilit_secimi(ortam_kilidi, model)]
     common = dict(hassasiyet=hassasiyet, seed=seed, lora_dropout=lora_dropout,
                   target_modules=target_modules, hesap=_baslatan_hesap())
     if smoke:
         print(f"[modal] ORPO SMOKE: 50 step (format+loss+OOM doğrulama) · gpu={GPU}", flush=True)
-        call = train_orpo.spawn(model=model, data_path=data, run_name=f"{run_name}-smoke",
-                                adapter=adapter or None, epochs=1.0, max_steps=50,
-                                beta=beta, lr=lr, grad_accum=grad_accum, **common)
+        call = orpo_fn.spawn(model=model, data_path=data, run_name=f"{run_name}-smoke",
+                             adapter=adapter or None, epochs=1.0, max_steps=50,
+                             beta=beta, lr=lr, grad_accum=grad_accum, **common)
     else:
-        call = train_orpo.spawn(model=model, data_path=data, run_name=run_name,
-                                adapter=adapter or None, epochs=epochs, beta=beta,
-                                lr=lr, grad_accum=grad_accum, save_steps=save_steps,
-                                durdur_adim=durdur_adim, **common)
+        call = orpo_fn.spawn(model=model, data_path=data, run_name=run_name,
+                             adapter=adapter or None, epochs=epochs, beta=beta,
+                             lr=lr, grad_accum=grad_accum, save_steps=save_steps,
+                             durdur_adim=durdur_adim, **common)
     print(f"[modal] ORPO SPAWNED ✓ {call.object_id} | model={model} "
           f"adapter={adapter or '(taze)'} beta={beta} lr={lr} ga={grad_accum} seed={seed} "
           f"durdur_adim={durdur_adim or '-'} gpu={GPU}", flush=True)

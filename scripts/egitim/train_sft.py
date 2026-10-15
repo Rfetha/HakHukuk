@@ -43,7 +43,7 @@ sys.path[:0] = [_K, *(os.path.join(_K, _d) for _d in sorted(os.listdir(_K))
 # ─────────────────────────────────────────────────────────────────────────────
 
 from hakhukuk.cekirdek.istem import SISTEM_KOR as SYSTEM_PROMPT
-from ortam_kilidi import kilidi_uygula, kunye_tamamla, maske_kapisi  # F0.4 — eğitim ortamı kilidi
+from ortam_kilidi import kilidi_uygula, kunye_tamamla, lora_hedefi, lora_yerlesim_kapisi, maske_kapisi, yukleme_secenekleri  # F0.4 — eğitim ortamı kilidi
 
 def parse_args():
     p = argparse.ArgumentParser()
@@ -186,6 +186,7 @@ def main():
         load_in_4bit=not bf16_taban,
         dtype=torch.bfloat16 if bf16_taban else None,
         full_finetuning=False,
+        **yukleme_secenekleri(args),
     )
 
     # --- LoRA adapter ---
@@ -196,13 +197,14 @@ def main():
         lora_dropout=args.lora_dropout,
         # ⚠️ Mimariye bağlı: bu isimler base'in lineer projeksiyonlarıyla eşleşmeli.
         # Farklı mimaride (MoE, linear-attention) tutmaz → "0 LoRA takıldı" veya exception.
-        target_modules=args.target_modules,
+        target_modules=lora_hedefi(args.target_modules),
         bias="none",
         # "unsloth" = 12 GB yerel kart için zorunlu; A100/H100'de --no-grad-checkpoint ile kapatılır
         # (ADR-0033). Kapatma kararı ÖLÇÜLÜR, varsayılmaz: smoke s/it çıpasıyla kıyasla.
         use_gradient_checkpointing=False if args.no_grad_checkpoint else "unsloth",
         random_state=args.seed,
     )
+    lora_yerlesim_kapisi(model, args, out)
     print(f"[train] gradient_checkpointing = "
           f"{'KAPALI (ADR-0033 hız kaldıracı — geniş VRAM)' if args.no_grad_checkpoint else 'unsloth (bellek tasarrufu)'}"
           f" | lora_dropout = {args.lora_dropout}"
