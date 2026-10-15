@@ -526,6 +526,9 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 
 ## 5 · Riskler ve karşılıkları
 
+<details>
+<summary>13 risk ve karşılığı (tabloyu aç)</summary>
+
 | risk | tetik | karşılık |
 | :--- | :--- | :--- |
 | yeni kilit eski ortamla eşdeğer çıkmıyor (τ_g'nin hassasiyeti için yalnız belge kanıtı var) | F0.4 | Qwen'de 3407 seed'i de yeni kilitte yeniden eğitilir (~$6) |
@@ -542,9 +545,14 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | ölçüm kartının maliyeti tavanı aşıyor ya da kart tipi bulunamıyor | F0.16 pilotu · üretim sırasında | tavan ($75) aşılacak gibiyse durulur ve kullanıcıya dönülür; kart tipi bir sağlayıcıda yoksa aynı tip başka sağlayıcıdan alınır; tip yalnız DEV'den teste geçerken değişir |
 | Mayıs–Haziran 2027'de kullanıcı yükü haftada ~3,5-5 saat (F3 · F4 · F3b · GRPO pilotu · F5'in başı), dönem sonuyla çakışıyor | Haziran'da haftalık 5 saat aşılıyor | önce GRPO pilotu ve ödül ADR'si Temmuz'a kayar (Temmuz–Ekim kredisi koşulara yeter, Kasım–Mart tampon), sonra F3b ve F5'in başlangıcı; F3 ve F4'ün sırası değişmez. Ajan uygulaması hattı ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104)) bu dönemde zaten başlamaz; takvim sıkışırsa ilk o kesilir |
 
+</details>
+
 ---
 
 ## 6 · Doğrulanacak dış bilgiler
+
+<details>
+<summary>15 dış bilgi: ne, nerede, ne zaman (tabloyu aç)</summary>
 
 | ne | nerede | ne zaman |
 | :--- | :--- | :--- |
@@ -564,12 +572,17 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | vLLM'in kazanan modeli desteklemesi | GRPO pilotu | Haziran 2027 |
 | COLM 2028 çağrısı | COLM sitesi | Ekim 2027 |
 
+</details>
+
 ---
 
 ## 7 · Mevcut kayıtla ilişki
 
 Bu plan aşağıdaki kayıtlarla çelişir ya da onları günceller; karşı tarafları ADR-0089–0096 ile
 damgalandı (model kartındaki hassasiyet düzeltmesi F0.3'te).
+
+<details>
+<summary>8 kayıt: kayıttaki ifade ↔ bu plan (tabloyu aç)</summary>
 
 | kayıt | kayıttaki ifade | bu plan |
 | :--- | :--- | :--- |
@@ -581,6 +594,8 @@ damgalandı (model kartındaki hassasiyet düzeltmesi F0.3'te).
 | [ADR-0037](adr/kararlar-0027-0044.md#adr-0037) | Kapı 5 "ayar: norm-dengeli" | ana sonuç ham TIES ([ADR-0052](adr/kararlar-0045-0063.md#adr-0052)); Kapı 5 ham TIES için türetilir |
 | [ADR-0075](adr/kararlar-0064-0085.md#adr-0075) m.3 | task-vector hattı `v1`'de donduruldu | ürün için geçerli; Makale 1 araştırma için aynı tarifle yeni seed üretir |
 | `superpowers/00-IS-SIRASI.md` | iki aday, sıra insan kararı · "yeni ADR 0087'den" | sıra §4.4'te verildi · sıradaki ADR 0089 · dosya 2026-10-10'da silindi: "şimdi ne" [`ROADMAP_v1.md`](ROADMAP_v1.md)'nin kontrol listesinde, sıra ve gerekçesi bu belgede, `v2`'ye devredilen borçlar [ADR-0083](adr/kararlar-0064-0085.md#adr-0083) sicilinde |
+
+</details>
 
 ---
 
