@@ -1,6 +1,6 @@
 # ROADMAP uygulama: ajan uygulaması hattı
 
-> **Bu belge ne:** [ADR-0103](adr/kararlar-0064-0085.md#adr-0103)'ün kararlarını iş adımlarına çevirir.
+> **Bu belge ne:** [ADR-0104](adr/kararlar-0064-0085.md#adr-0104)'ün kararlarını iş adımlarına çevirir.
 > *Neden* ADR'de ve [`tasarım taslağında`](superpowers/specs/2026-10-15-uygulama-hatti-tasarim.md), *ne zaman ve
 > hangi sırayla* burada. Girdi: [`knowledge/mike-tarama/`](../knowledge/mike-tarama/README.md).
 > Makale hattı ([`ROADMAP_v1.md`](ROADMAP_v1.md)) ayrıdır; bu hat onu bozmaz.
@@ -24,7 +24,7 @@
 **U0 · Zemin** *(Ekim 2026–Ocak 2027; makale hattına paralel, yalnız tasarım ve ölçüm)*
 
 - [x] U0.1 Mike taraması `knowledge/mike-tarama/` altında (sekiz alan + sentez)
-- [x] U0.2 ADR-0103 ve tasarım taslağı
+- [x] U0.2 ADR-0104 ve tasarım taslağı
 - [ ] U0.3 Araç çağırma ölçüm modu: [`ROADMAP_v1.md`](ROADMAP_v1.md) F1.12 (F1.11 dondurmasından önce biter)
 - [ ] U0.4 Ölçüm sonucu kayda geçti; taslağın açık soruları (düşünme kanalı, araç sayısı) ölçüme göre güncellendi
 

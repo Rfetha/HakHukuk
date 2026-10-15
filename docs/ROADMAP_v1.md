@@ -36,7 +36,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F1.9 İnsan okuma protokolü
 - [ ] F1.10 Genel yetenek kümeleri (Global-MMLU TR + GSM8K)
 - [ ] F1.11 **Dondurma ADR'si** · OSF'de mühürlendi · makalenin yöntem bölümü taslağı
-- [ ] F1.12 Araç çağırma ölçüm modu (ürün ölçümü; F1.11'den önce biter; mühürlü kümeye dokunmaz; [ADR-0103](adr/kararlar-0064-0085.md#adr-0103))
+- [ ] F1.12 Araç çağırma ölçüm modu (ürün ölçümü; F1.11'den önce biter; mühürlü kümeye dokunmaz; [ADR-0104](adr/kararlar-0064-0085.md#adr-0104))
 
 **F2 · Test ve seed'ler** *(Şubat–Nisan 2027)*
 
@@ -92,7 +92,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 > [RL] · [IT].
 >
 > Ajan uygulaması ayrı bir hattır ve bu belgenin kapsamı dışındadır: [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md)
-> ([ADR-0103](adr/kararlar-0064-0085.md#adr-0103)). Bu belgeye yalnız ölçüm hattına dokunan F1.12 girer.
+> ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104)). Bu belgeye yalnız ölçüm hattına dokunan F1.12 girer.
 
 ---
 
@@ -306,7 +306,7 @@ $30'ar kredisiyle Kasım 2026–Mart 2027'ye yayılır; kredi yetmezse
 | `v2` — kazananın üstüne GRPO | Checkpoint 2 ([yol haritası](YAYIN_YOL_HARITASI.md) §3); pilot ve ödül ADR'si Haziran 2027'de, koşular Temmuz–Ekim 2027'de, Makale 1'in yazımıyla paralel |
 | mevzuat kapsam + tazelik (40.496 → ~288 bin madde) | Checkpoint 2'den sonra ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) §EK) |
 | canlı `bedesten` API (B6) · tazelik boru hattı · barındırma (S9) · tablo satırları (B9) | Checkpoint 2'den sonra |
-| ajan uygulaması (omurga, belgeler, üretim) ve web arayüzü | paralel hat, Ağustos–Eylül 2027'den ([`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0103](adr/kararlar-0064-0085.md#adr-0103)); barındırma (S9) ve canlı `bedesten` yine Checkpoint 2'den sonra |
+| ajan uygulaması (omurga, belgeler, üretim) ve web arayüzü | paralel hat, Ağustos–Eylül 2027'den ([`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0104](adr/kararlar-0064-0085.md#adr-0104)); barındırma (S9) ve canlı `bedesten` yine Checkpoint 2'den sonra |
 | açık kusurlar 5a · 23 · 27 · 31 | ürün iş listesi ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083)) |
 | `recall_taban.json` · korpus bütünlüğü (`4857/Madde 111` yinelenmesi) · `terazi` yinelenen atıf · `models/` temizliği · TUI gözle doğrulama | ucuz işler; boş zamanda |
 | S10: sorumluluk ibaresinin nihai hukuki metni | hukukçu görüşü bekliyor |
