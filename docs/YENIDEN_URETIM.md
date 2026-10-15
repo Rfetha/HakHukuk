@@ -60,6 +60,8 @@ Script iki kapıyı otomatik koşar ve düşerse **çıkar**:
 
 Sonda üçüncü bir kontrol var: üretilen kütle çıpadan (0,8011) **0,30 puandan** fazla saparsa
 uyarı basılır. 0,30 hakemin yeniden-koşum gürültü tabanıdır ve **yalnız A1 için** ölçülmüştür.
+⚠️ *2026-10-15 ([#85](record/kronoloji-75-86.md#85)): aynı cevaplarda tek hakem koşusu ~1 puan oynuyor; bu
+uyarı hiçbir şey bozuk değilken de çıkabilir. Eşik F1.4'te yenilenir.*
 
 ## ⚠️ Bilinen sapma kaynakları — ölçüldü
 
@@ -71,6 +73,12 @@ uyarı basılır. 0,30 hakemin yeniden-koşum gürültü tabanıdır ve **yalnı
   **önceki** çıktılarla birebir metin karşılaştırması yapılamaz.
 - **Modal taşıyıcısı kullanılmaz.** Paralel slot (`-np`) çıktıyı değiştiriyor (S12/KARAR-6:
   Jaccard 0,5278, birebir metin 3/19). Manşet sayı **yerel** llama-server'da doğdu.
+- ⚠️ **2026-10-15 notu ([#83](record/kronoloji-75-86.md#83), [ADR-0103](adr/kararlar-0064-0085.md#adr-0103)).**
+  Yukarıdaki iki madde dizüstü ve `-np`'li hasat taşıyıcısı içindi. Checkpoint 1'in ölçümü artık Modal A10'da
+  koşuyor: `server-cuda-b10902`, compose bayrakları, istekler tek tek, bağlam dondurulmuş dosyadan
+  (`data/eval/dev/baglam/h1-k10.json`). Bu düzende aynı makinede ve iki ayrı makine arasında 80/80 cevap birebir
+  aynı çıktı. Dizüstünün cevaplarıyla ise yalnız 14/78 aynı: bu belgenin dizüstü komutları manşet sayıyı
+  yeniden üretmek içindir; yeni ölçümlerin cevaplarıyla kalem düzeyinde kıyaslanmaz.
 
 ## Bedel
 

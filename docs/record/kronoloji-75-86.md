@@ -117,6 +117,8 @@ hakem gürültüsü. Belgedeki gürültü tabanı (~0,3 A1, `faithfulness_macro`
 koşudan ölçülmüştü; bugün aynı gün 0,66 p, bir ay arayla 1,86 p. ⇒ `yeniden_uret.sh`'ın "0,30 puanı aşarsa
 DUR" kuralı bugünkü hakemle %80,1'i yeniden üretemez. Gürültü tabanı F0.6'da (DeepSeek ve `gpt-4o-mini`,
 gerçek çağrı koşullarında) yeniden ölçülür; eşik o ölçümle aynı formülden yeniden türetilir (ADR-0050).
+*2026-10-15: ölçüldü ([#85](#85)); bir ay arayla 1,86 p'lik fark, aynı gün aynı cevaplarda ölçülen oynamanın
+içinde. Eşik F1.4'te bağlayıcı hakem moduyla birlikte konur (kullanıcı kararı).*
 
 **Test.** Yeni: `test_rq2_anahtarlari.py` (+3 yavaş), `test_hakem_kimligi.py`, `test_kutle.py`'ye dört çıpa.
 Hızlı takım 434, yavaş 3 yeşil.
@@ -321,6 +323,192 @@ yakalıyor (hata vermeden yanlış hiperparametre); koşu komutunun bayrakları 
 GPU'da çalıştı, Gemma A100-40GB'a sığıyor, adım süreleri iki modelde ~10,5-10,7 s. Gemma'nın teknik
 kapısının kalan kutuları (llama.cpp, Q4_K_M, DEV Türkçe oranı, düşünce kapanışı) bu girdiyle kapanmadı.
 
+<a id="81"></a>
+## #81 — F0.14: DeepSeek V4.1 Flash'ın tarihli kimliği ve fiyatı; fiyat modelin değil sağlayıcının, düşünme modunda `temperature` yok sayılıyor
+
+**2026-10-15 · $0 (anahtarsız okumalar) · kullanıcı onayı: dış okumalar "Hepsine izin", sağlayıcı "DeepInfra"
+(2026-10-15, [ADR-0102](../adr/kararlar-0064-0085.md#adr-0102))** · kanıt:
+`outputs/eval/f0/f014-f016-dis-bilgiler/` (ham yanıtlar ve sayfalar; `KUNYE.json`'da URL, erişim saati, sha256)
+
+**1 · Kimlik.** OpenRouter `GET /api/v1/models` (14:39 UTC): `id` `deepseek/deepseek-v4.1-flash`,
+`canonical_slug` **`deepseek/deepseek-v4.1-flash-20260910`** (oluşturma 2026-09-10 06:21 UTC), bağlam
+1.048.576 token, girdi metin + görsel. Aynı slug'ı taşıyan bir `:batch` uç noktası da var; senkron istemciden
+kullanılmaz (Sonnet `:batch`'ının 404'ü, `llm_client.py`). DeepSeek'in kendi fiyat sayfası `deepseek-flash`
+adını "DeepSeek-V4.1-Flash"a bağlıyor; eski `deepseek-v4-flash` adı da V4.1 Flash'a gidiyor.
+
+**2 · Fiyat: tek bir "liste fiyatı" yok.** Aynı model 33 sağlayıcıda satılıyor (`/endpoints`): girdi
+$0,024-0,60/M, çıktı $0,18-2,40/M, önbellekli girdi $0,0029-0,03/M; hassasiyet fp8 15 · fp4 3 · fp32 2 ·
+belirtilmemiş 13; `seed` 19 uç noktada var. Modelin üst düzey `pricing` alanı bugün en ucuz uç noktayı
+(OpenInference, fp4) gösteriyor: $0,02376 / $0,72 / $0,0054. 2026-10-11'de aynı alan $0,30 / $1,20 / $0,006
+okunmuştu (sohbette, kayda geçmemişti). Alan sabit bir liste fiyatı değil; maliyet tahmini sabitlenen
+sağlayıcının fiyatıyla yapılır.
+
+| sağlayıcı | hassasiyet | girdi · çıktı · önbellekli girdi ($/M) | `seed` | son 1 gün çalışırlık |
+| :-- | :-- | :-- | :-: | --: |
+| **DeepInfra** (seçilen, `deepinfra/fp8`) | fp8 | 0,14 · 0,42 · 0,0042 | var | %100 |
+| DeepSeek (modelin sahibi) | belirtilmemiş | 0,15 · 0,60 · 0,003 (yoğun saatte ×2) | yok | %88,2 |
+| CoreWeave | fp8 | 0,15 · 0,65 · 0,006 | var | %99,8 |
+| Morph | fp8 | 0,033 · 0,60 · 0,009 | var | %100 |
+| OpenInference (en ucuz) | fp4 | 0,024 · 0,72 · 0,0054 | var | %97,8 |
+
+DeepSeek'in kendi sayfası: yoğun olmayan saatte $0,15 / $0,60 / $0,003; yoğun saatte (hafta içi UTC 01-04 ve
+06-10) iki katı. DeepInfra'nın uç noktasında `discount: 0.3` işareti var; listelenen fiyatın indirimli olup
+olmadığı yanıttan anlaşılmıyor, koşu günü yeniden okunur.
+
+**3 · Düşünme modunda `temperature`.** DeepSeek'in belgesi (`guides/thinking_mode`): *"Thinking mode does not
+support the temperature, presence_penalty, or frequency_penalty parameters … setting these parameters will
+not trigger an error but will also have no effect."* `top_p` düşünme modunda yalnız 0,95-1,0 aralığında etkili.
+Düşünme varsayılan olarak açık (effort `high`). OpenRouter'daki 33 uç noktanın hepsi `temperature`'ı
+desteklenen parametreler arasında sayıyor; bu yalnız parametrenin kabul edildiğini söyler, etkisini değil.
+`groundedness.py` hakemi `temperature=0` ile çağırıyor; hakemin düşünmesi açıkken bu sıfır, DeepSeek'in kendi
+sunucusunda kesin olarak, DeepInfra'da belki hiçbir şeyi sabitlemiyor. F0.6'nın mod başına iki tekrarı tam
+bu oynamayı ölçer.
+
+**4 · Koda giren.** `llm_client.py`: takma ad `deepseek-v4.1-flash` → `deepseek/deepseek-v4.1-flash-20260910`;
+fiyat (0,14, 0,42) $/M, kaynağı ve erişim saati satırında; önbellekli girdi fiyatı tabloda yok (tahmin
+önbelleksiz, yani üstten). Test: `tests/test_hakem_kimligi.py` (fiyatsız hakem testi artık kayıtsız bir
+kimlik kullanıyor; DeepSeek'in fiyatı kayıtlı).
+
+**5 · Doğrulanmamış.** Tarihli slug'la yapılan çağrının OpenRouter'da kabul edildiği (F0.6'nın ilk çağrısında
+görülür) · DeepInfra'nın düşünme modunda sıcaklığı uygulayıp uygulamadığı · indirim işaretinin anlamı.
+
+**Okuma:** sağlayıcı sabitlenmeden fiyat da sabitlenemez. "Liste fiyatı" diye okunan alan dört günde
+$0,30'dan $0,024'e indi; bugün en ucuz uç noktanın fiyatını gösteriyor.
+
+<a id="82"></a>
+## #82 — F0.16 ilk adımlar: DEV bağlamı donduruldu (recall@10 0,9500, iki üretim bayt bayt aynı); sunucu sürümleri farklı; manşet koşu 4 slotla koşmuştu; Modal'ın ölçüm yükü krediye sığmayabilir
+
+**2026-10-15 · CPU ve okumalar, $0 · kullanıcı kararları (2026-10-15, [ADR-0102](../adr/kararlar-0064-0085.md#adr-0102)):
+kiralık kartta `server-cuda-b10902` + compose bayrakları · pilot önce yalnız Modal'da, yalnız A10'da** · kanıt:
+`data/eval/dev/baglam/h1-k10.json` · `outputs/eval/f0/f014-f016-dis-bilgiler/`
+
+**1 · Bağlam dondurma (ADR-0097 m.6).** `scripts/olcum_uretim/baglam_dondur.py --data data/eval/dev/core_hard.jsonl
+--harness-indeks data/index/mevzuat_bge_m3_s2 --harness-k 10 --rrf-k 10 --seed 3407 --n 80 --max-chunk-chars 900`
+→ `data/eval/dev/baglam/h1-k10.json`, 80 kalem, 809.495 bayt, sha256
+`026668000583d6e3d3988b97d1cb3c3a85d740594686901aa0e8da3f213e6135`. İkinci üretim `cmp` ile bayt bayt aynı;
+recall@10 **0,9500** (`recall_kapisi.py`). Bağlam, canlı üretimin kullandığı fonksiyonla üretiliyor
+(`gen_eval_grounded.harness_baglami`, bu iş için davranışı değiştirmeden ayrıldı); `gen_eval_grounded.py
+--donmus-baglam DOSYA` bağlamı bu dosyadan okur. Dosyanın künyesindeki rejim (soru dosyasının sha256'sı, seed,
+n, k, `rrf_k`, kırpma) koşununkinden farklıysa ya da kalem eksik veya yineleniyorsa üretim durur. Her cevap
+satırının `harness` izine dosyanın sha256'sı yazılır (`tests/test_baglam_dondur.py`, 12 test).
+
+Dizüstündeki eski koşuların modele gösterdiği bağlamla kalem kalem karşılaştırma (`context_shown`):
+
+| koşu | tarih | aynı |
+| :-- | :-- | --: |
+| `hp/hp-rakip-havuzu` (Sonnet 5) | 2026-09-09 | 80/80 |
+| `gorev/g22-kv-fp16` | 2026-09-11 | 80/80 |
+| `sprint2-olcum/s17-kuantizasyon-egrisi` (q4 · q5 · q8) | 2026-09-12 | 80/80 |
+| `faz0/f02-biz-onsozsuz` (manşet) ve aynı günün `f04`, `f08`, `f11` koşuları | 2026-09-06/07 | 78/80 |
+
+f02'den ayrılan iki kalem id 7 ve 63: f02'nin bağlamında `İŞ KANUNU|Madde 111` ve `|Madde 87` vardı, ikisi de
+mülga. Yürürlük süzgeci 2026-09-07'de eklendi; indeksin künyesindeki "getirilen mülga 2 → 0" kaydıyla aynı
+iki kalem.
+
+**2 · Sunucu sürümleri.** Ölçüm hattının yerel derlemesi `~/code/llama.cpp/build-cuda`: `version: 1 (0cea362)`,
+commit 2026-07-24, GNU 13.3. Depo sığ klon olduğu için derleme numarası okunmuyor. Konteyner
+`ghcr.io/ggml-org/llama.cpp:server-cuda-b10902`: build 10902, commit `df03399b8`, GNU 14.2. İki sürüm
+**farklı**. İkisi de bayraksız açılınca **4 slot** açıyor (`n_slots = 4`, `kv_unified = 'true'`): konteynerde
+dizüstünde CPU'da (`-ngl 0`) kısa bir açılışla, yerelde f02'nin sunucu günlüğünden okundu. **Manşet sayı
+(f02, kütle 0,8011) 4 slotla üretildi**; istemci istekleri sırayla gönderdiği için aynı anda yalnız bir slot
+çalışıyordu. Planın "tek paralel slot" ifadesi bu yüzden "istekler tek tek" diye okunur (ADR-0102).
+Compose'un bayraklarında ölçüm betiğinde olmayan bir bayrak var: `--reasoning-format deepseek` (2026-09-11'de
+ölçüldü: `b10902`'de varsayılanla aynı davranış). Kullanıcı kararı: kiralık kartta `b10902`, compose
+bayraklarıyla. Dizüstüyle fark sürüm ve donanımı birlikte içerir; ikisi bu tasarımda ayrılmaz.
+
+**3 · Aday kartların o günkü fiyatı.** Modal (`modal.com/pricing`, saatlik): T4 $0,59 · L4 $0,80 · A10 $1,10 ·
+L40S $1,95 · A100-40GB $2,10 · A100-80GB $2,50 · H100 $3,95. Aylık ücretsiz kredi $30 (hesap başına). Vast,
+herkese açık teklif listesi (veri merkezi, doğrulanmış, boşta, tek kart, isteğe bağlı): yalnız **34 teklif**.
+En ucuzları RTX A5000 $0,23/sa (2 makine), RTX 3090 $0,32/sa (2), RTX 5060 Ti $0,16/sa (7, 16 GB).
+
+**4 · Toplam yük tahmini (pilottan önce, kaba).** Ölçüm yükü dizüstü cinsinden ~185-190 saat (ADR-0096'nın
+türetimi; kendi hesabı orada da doğrulanmamış). f02'de cevap başına ortalama 783 token üretildi; dizüstünde
+çözme hızı ~64 token/s (f02 sunucu günlüğü). Bu yük ~30-45 milyon token eder. Cevaplar sırayla üretilmek
+zorunda: paralel slot metni değiştiriyor (S12/KARAR-6, `docs/YENIDEN_URETIM.md`). Bu yüzden maliyeti
+belirleyen tek şey kartın tek akıştaki hızı. Kartların hızı ölçülmedi; bellek bant genişliğinden, dizüstünün
+oranıyla tahmin edildi.
+
+| yol | milyon token başına (tahmin) | toplam (tahmin) |
+| :-- | :-- | :-- |
+| Modal (A10 · A100-40GB · T4 · L40S · L4) | ~$2,9-4,4 | ~$90-200, Modal kredisinden |
+| Vast (RTX A5000 · RTX 3090) | ~$0,5-0,6 | ~$15-27, nakit |
+
+Nakit tavanı ($75, ADR-0097 m.5) iki yolda da aşılmıyor. Modal'ın aylık kredisi eğitimle paylaşılıyor
+(eğitim ortalama ~$22-26/ay, [ADR-0101](../adr/kararlar-0064-0085.md#adr-0101)). ~$100'ü aşan bir ölçüm
+yükünün Şubat–Nisan'a takvimi geciktirmeden sığıp sığmadığı belirsiz; m.4'ün kuralı Vast'ı seçebilir. Vast'ta
+veri merkezi teklifi az; aynı tipten iki makine bulmak bir risk. Sayılar pilottan sonra ölçülmüş hızla
+yeniden hesaplanır.
+
+**Okuma:** bağlam artık makineden bağımsız, birebir yeniden üretilebilir bir dosya. Plan "tek slot"
+derken manşet sayının gerçekte 4 slotla, istekler sırayla gönderilerek üretildiğini bilmiyordu. Fiyat tahmini
+Modal'ın krediye sığmayabileceğini gösteriyor; kararı pilotun ölçtüğü hız verecek.
+
+<a id="83"></a>
+## #83 — F0.16 pilotu: A10'da aynı makinede ve iki makine arasında 80/80 birebir aynı cevap; dizüstüyle yalnız 14/78; ölçüm kartı Modal A10
+
+**2026-10-15 · Modal, hesap `rfetha`, `A10` (NVIDIA A10, 23.028 MiB, sürücü 610.57.04), iki konteyner eş zamanlı ·
+kullanıcı onayı: pilot "Başlat", platform "Modal A10", F0.5 (b) ölçütü "aynı gün, aynı cevaplar" (2026-10-15,
+[ADR-0103](../adr/kararlar-0064-0085.md#adr-0103))** · kanıt: `outputs/eval/f0/f016-pilot/A10/{m1,m2}/`
+(`KUNYE.json` · cevap dosyaları; `llama_server.log` yerelde, `*.log` git dışı, okunan alanlar künyede) · kod: `scripts/olcum_uretim/modal_pilot.py`,
+`olcum_karti.py`, `makine_kapisi.py` (testler `tests/test_olcum_karti.py`, `test_makine_kapisi.py`,
+`test_modal_pilot.py`)
+
+**1 · Kurulum.** Sunucu `ghcr.io/ggml-org/llama.cpp:server-cuda-b10902`; bayraklar `docker/compose.yaml`'dan
+okundu, yalnız model yolu ve adres değişti (ADR-0102 m.1). Model yayımlanmış GGUF: `indir_model` ile sabit
+revizyondan indirildi, bayt ve sha256 kapısından geçti (`755e15e9…86e7bffc`). Bağlam dondurulmuş dosyadan
+(`02666800…f213e6135`, [#82](#82)). Rejim h1: düşünme açık, 1024 + 512, kırpma 900, seed 3407, n 80. m1 80 cevabı
+iki kez, m2 bir kez üretti. Bilgisayarda önce `b10902` konteyneriyle 6 kalemlik bir kod denemesi yapıldı; ölçüm
+değildi, yalnız dondurulmuş yolun uçtan uca çalıştığını gösterdi.
+
+**2 · Sunucu, koşan süreçten.** İki makinede de `version: 0.4.0-dev (build 10902, commit df03399b8)`,
+`n_slots = 4`, `kv_unified = true`. `/v1/models` doğru GGUF'u gösterdi. Koşan komut (`/proc/<pid>/cmdline`):
+`-ngl 99 -fa on --no-context-shift --cache-type-k q8_0 --cache-type-v q8_0 -c 8192 --reasoning-format deepseek`
+(+ model, adres, port).
+
+**3 · Sonuçlar.**
+
+| | m1 · 1. tekrar | m1 · 2. tekrar | m2 |
+| :-- | --: | --: | --: |
+| GPU (nvidia-smi `uuid`) | `GPU-b929d6c1…` | (aynı) | `GPU-3d352372…` |
+| bölge (`MODAL_REGION`) | us-east | (aynı) | us-west |
+| süre · cevap başına | 640,6 s · 8,01 s | 640,2 s · 8,00 s | 630,8 s · 7,88 s |
+| cevap başına maliyet (Modal liste fiyatı $1,10/sa) | $0,00245 | $0,00244 | $0,00241 |
+| ortalama üretilen token (düşünce dahil) | 747,3 | 747,3 | 747,3 |
+| kesik · zorla kapatılan · düşünen | 0 · 4 · 80 | 0 · 4 · 80 | 0 · 4 · 80 |
+
+- **Aynı makinede** (m1 1. ↔ 2. tekrar): **80/80 birebir aynı** (`makine_kapisi.py`).
+- **İki makine arasında** (m1 ↔ m2): **80/80 birebir aynı**. İki makine farklı GPU'larda ve farklı bölgelerde
+  koştu.
+- Üç cevap dosyası bayt bayt aynı: sha256 `c5035eb390ed1835b28ed004164a5cdc16a1252838124567692c1081bb7cd093`.
+  m1'in 1. tekrarı A10'un **referans cevaplarıdır** (makine geçiş kapısı; F0.6'nın girdisi).
+- Kesik oranı %0. Pilotun GPU maliyeti ~$0,6 (240 cevap; model indirme ve sunucu açılışı hariç), Modal
+  kredisinden. Fatura panelden okunmadı.
+
+**4 · Dizüstüyle fark (ADR-0097 m.3: yalnız kayda geçer).** f02'nin cevapları (dizüstü, yerel derleme `0cea362`,
+2026-09-06) ile pilotun referans cevapları, bağlamı aynı 78 kalemde karşılaştırıldı: **14/78 birebir aynı**.
+Metin benzerliğinin medyanı 0,723, en düşüğü 0,022 (`difflib`). Bugünkü bilgisayar denemesinde aynı konteyner
+sürümü ve aynı dondurulmuş bağlamla 6 kalemin **2'si** aynı; benzerlik 0,999 · 0,386 · 0,994 · 0,965. Fark sürümle
+açıklanamıyor: aynı sürüm, farklı donanım da farklı cevap veriyor. Kesik oranı f02'de 4/80, pilotta 0/80. Ortalama
+token f02'de 782,5, pilotta 747,3. Kütle düzeyindeki fark ölçülmedi; f02'nin puanı başka bir günün hakemiyle
+alındı ([#76](#76)).
+
+**5 · Yükün ölçülen hızla yeniden hesabı.** ~185-190 dizüstü saati ÷ dizüstünde ~18,75 s/cevap (80 cevap ~25 dk,
+`docs/YENIDEN_URETIM.md`) ≈ 36.500 cevap. A10'da 8,0 s/cevap ile ≈ 81 saat ≈ **$89**, Modal kredisinden. Beş aya
+yayılırsa ayda ~$18; testin payı (~147 dizüstü saati) Şubat–Nisan'da ayda ~$23. Eğitimin ortalaması ~$22-26/ay
+([ADR-0101](../adr/kararlar-0064-0085.md#adr-0101)); toplam iki hesabın aylık $60 kredisinin altında kalıyor.
+Bir ay krediyi aşarsa m.4'ün kuralı o ay için Vast'ı seçer. Doğrulanmamış: ~190 saatlik yükün kendi hesabı
+(ADR-0096) ve yerelde yalnız bir Modal hesabının (`rfetha`) tanımlı olması.
+
+**6 · Seçim (kullanıcı kararı, ADR-0103).** Ölçüm kartı **Modal A10**: DEV de test de bu tipte koşar
+(ADR-0097 m.1). Pilotta iki makine birebir aynı çıktığı için tip içinde makine ve bölge serbest; her yeni makine
+önce referansın 80 cevabını birebir yeniden üretir (ADR-0098 m.3, `makine_kapisi.py`). Üretim gerekirse birkaç
+makineye paralel bölünebilir. Tek sunucuda paralel slot yine yasak.
+
+**Okuma:** dondurulmuş bağlam ve sabit sunucuyla kiralık kartta üretim deterministik. "Aynı girdi farklı cevap
+veriyor" notu ([`YENIDEN_URETIM.md`](../YENIDEN_URETIM.md)) dizüstü için kaydedilmişti; A10'da üç koşuda bir kez
+bile görülmedi. Dizüstüyle fark büyük: kayıttaki dizüstü cevapları ile kiralık kart cevapları arasında kalem
+düzeyinde kıyas yapılamaz. ADR-0097 m.1'in "tek kart tipi" kuralının neden zorunlu olduğu bu tabloda görülüyor.
+
 <a id="84"></a>
 ## #84 — Ajan uygulaması hattı: Mike taraması, ADR-0104 ve aynı gün denetimi (ADR-0105); ölçüm yok
 
@@ -384,3 +572,71 @@ numarası gibi kronoloji numarası da commit'lenmeden alınıyor; bu girdi bu y�
 2026-10-15'te henüz commit'lenmemişti). Taramanın sentezindeki araç listesi (`mevzuat_ara` … `madde_id`) ve
 "araç çağırma dalı F1.11 dondurmasını etkiler" maddesi ADR-0104 ve ADR-0105 ile aşıldı;
 `knowledge/mike-tarama/` o günün hâliyle kalır.
+
+<a id="85"></a>
+## #85 — F0.6: hakem geçişi; DeepSeek V4.1 Flash `gpt-4o-mini`'den 8-11,5 p sert; aynı cevaplarda tek hakem koşusu ~1 p oynuyor, kayıttaki 0,3 tabanının 3-4 katı
+
+**2026-10-15 · OpenRouter · hakemler: `deepseek/deepseek-v4.1-flash-20260910` (sağlayıcı `deepinfra/fp8` sabit,
+yedeğe düşme kapalı; hakemin kendi düşünmesi açık ve kapalı) ve `openai/gpt-4o-mini` (sağlayıcı OpenAI) · kullanıcı
+onayı: puanlama "Başlat", mod başına +3 tekrar "Başlat"; gürültü kuralı "şimdi işaretle, F1.4'te karar"
+(2026-10-15)** · girdi: F0.16'nın A10 referansı
+`outputs/eval/f0/f016-pilot/A10/m1/h1_tgta_v1_A10_m1_t1_detail.jsonl` (sha256 `c5035eb3…bb7cd093`; `tgta_v1`, h1,
+80 DEV kalemi, [#83](#83)) · kanıt: `outputs/eval/f0/f06-hakem-gecisi/` (`KUNYE.json` · `OZET.json` · 15 `gnd_*`
+dosyası · `kos.sh`, `kos2.sh`, `ozetle.py`)
+
+**1 · Koşu.** Plan her modda iki koşu öngörüyordu. İlk iki çiftte aynı hakemin iki koşusu 1,5-1,9 p ayrışınca iki
+koşunun tabanı ölçmeye yetmeyeceği görüldü; kullanıcı mod başına üç tekrar daha onayladı. 15 koşu eş zamanlı,
+aynı 80 cevap üzerinde. Hepsi 80/80, hakem hatası 0, `judge_providers` her koşuda tek eleman (DeepInfra ya da
+OpenAI). Kapalı mod ve `gpt-4o-mini` koşu başına ~6 dk, açık mod ~1 sa 50 dk–2 sa.
+
+**2 · Sonuçlar** (mod başına 5 koşu; ss = tek koşunun standart sapması):
+
+| hakem | kütle ort. | ss | en uzak iki koşu | A1 ort. | ss | iddia / koşu | sıfır iddialı | $/koşu (tahmin) |
+| :-- | --: | --: | --: | --: | --: | :-- | :-- | --: |
+| `gpt-4o-mini` | 0,8320 | 1,06 p | 2,77 p | 0,8875 | 1,13 p | 261-264 | 2 | 0,040 |
+| DeepSeek, kapalı | 0,7168 | 0,87 p | 1,86 p | 0,7646 | 0,93 p | 313-325 | 3-4 | 0,051 |
+| DeepSeek, açık | 0,7515 | 0,26 p | 0,58 p | 0,8016 | 0,28 p | 318-348 | 3 | 0,258 |
+
+Kapsama 15 koşunun 15'inde 0,9375: onu hakemsiz çekinme dedektörü belirliyor. Oynamanın tamamı A1'den. 80 kalemden
+puanı en az bir koşuda değişen: `gpt-4o-mini` 10, kapalı 15, açık 18.
+
+**3 · Hakem değişikliğinin etkisi.** Kütlede DeepSeek açık −8,05 p, kapalı −11,52 p (`gpt-4o-mini`'ye göre). Farklı
+hakemle puanlanmış iki sayı aynı tabloya girmez.
+
+**4 · Gürültü tabanı.** Aynı gün, aynı cevaplarda, tek bir hakem koşusunun oynaması `gpt-4o-mini`'de ~1,1 p,
+kapalı DeepSeek'te ~0,9 p, açık DeepSeek'te ~0,3 p. Kütlede on koşu çiftinin farkları:
+
+- `gpt-4o-mini`: 0,41 · 0,42 · 0,48 · 0,83 · 0,89 · 1,31 · 1,46 · 1,88 · 2,29 · 2,77 p
+- kapalı: 0,06 · 0,17 · 0,28 · 0,34 · 1,35 · 1,41 · 1,52 · 1,58 · 1,69 · 1,86 p
+
+Yalnız iki koşuya bakan biri 0,06 p de görebilirdi, 2,77 p de. Kayıttaki taban (~0,3 A1:
+`CLAUDE.md`, `OLCUM.md`, `YENIDEN_URETIM.md`; `faith_macro` ±0,005: tuzak 2.8) iki koşudan ölçülmüştü; bugünkü
+ölçümle çelişiyor. Altı yerde işaretlendi (bu girdiyle aynı gün): `CLAUDE.md`, `docs/OLCUM.md` (iki yer),
+`docs/YENIDEN_URETIM.md`, `scripts/yeniden_uret.sh` (yalnız yorum, eşik ve davranış aynı) ve tuzak 2.8. Kural
+(kaç tekrar, hangi eşik) F1.4'te bağlayıcı hakem moduyla birlikte konur (kullanıcı kararı). `faithfulness_macro`
+çekinme kalemlerini de içerdiği için açık modda A1'den fazla oynuyor (ss 0,78 p ↔ 0,28 p); bağlayıcı eksenler
+A1 ve kütle.
+
+**5 · #76'nın "bir ay arayla" farkı.** f02'nin cevaplarında 2026-09-06 ↔ 2026-10-11: A1 −1,86 p,
+`faithfulness_macro` 0,8499 → 0,8314 ([#76](#76)). Bugün aynı gün, aynı cevaplarda `gpt-4o-mini`'nin aralığı A1'de
+2,95 p, `faithfulness_macro`'da 2,84 p. Bu yüzden o fark gürültüden ayırt edilemiyor. ADR-0103 m.2'nin "hakem
+kayması" adı desteklenmiyor; ADR'ye not düşüldü.
+
+**6 · Maliyet.** Tahmin $1,75 (açık $1,29 · kapalı $0,25 · `gpt-4o-mini` $0,20). Tahmin `llm_client.PRICE`'tan
+yapıldı; önbellekli girdi indirimi ve OpenRouter marjı hariç. **Fatura $1,23**: OpenRouter, bu anahtarın
+2026-10-15 (UTC) kullanımı, `GET /api/v1/key`, okundu 18:27 UTC. Haftalık kullanım da aynı, yani bu hafta bu
+anahtarla başka harcama yok. Açık modun ön tahmini (koşu başına $0,08-0,18, F0.6 maliyet kutusu) tutmadı:
+$0,26. Hakem varsayılandan çok düşünce token'ı harcıyor.
+
+**7 · Kod.** Yeni kod yok. `llm_client.py`'deki "F0.6'da doğrulanır" uyarısı "doğrulandı" oldu;
+`yeniden_uret.sh`'a yorum eklendi. Hızlı takım 523 geçti, 0 kaldı.
+
+**Okuma:** kiralık kartta üretim sabit ([#83](#83)) olduğundan bundan sonra koşudan koşuya oynamanın tek kaynağı
+hakem. Hakemsiz eksenler (kapsama, çekinme) hiç oynamadı. Hakemli eksen tek koşuda ~1 p oynuyor. Gürültüyü
+azaltmanın en ucuz yolu hakemi tekrarlamak: kapalı modda koşu başına $0,05, 80 cevabın üretimi ~$0,19
+([#83](#83)). Açık düşünmeli DeepSeek en az oynayan hakem; koşu başına 5 kat pahalı ve ~20 kat yavaş. Bağlayıcı
+modun seçimi (F1.4) için veri hazır.
+
+**Ders.** *Gürültü tabanı tek çiftle ölçülmez.* Bütün yorum eşiği (0,3) iki koşudan geliyordu. Aynı hakemin
+on çiftinden biri 0,06 p, biri 2,77 p gösterdi. #76'da "bir ay arayla" diye okunan fark da bu oynamanın
+içinde kalıyor.

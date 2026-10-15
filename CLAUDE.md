@@ -70,7 +70,7 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | what to do next | [`docs/ROADMAP_v1.md`](docs/ROADMAP_v1.md) — Checkpoint 1 checklist at the top, then phases F0–F5, each task with its check. Order decided 2026-10-10: Checkpoint 1 (Makale 1) → Checkpoint 2 (GRPO on the Checkpoint 1 winner, Makale 2, thesis) → legislation-scope/freshness round. `00-IS-SIRASI.md` was deleted that day · live plan: [`docs/superpowers/plans/2026-10-11-F0-zemin.md`](docs/superpowers/plans/2026-10-11-F0-zemin.md) (F0, opened 2026-10-11) · the agent app is a separate line outside the paper line: [`docs/ROADMAP_uygulama.md`](docs/ROADMAP_uygulama.md) ([ADR-0104](docs/adr/kararlar-0064-0085.md#adr-0104); calendar, tool-call measurement and tool-use RL placement: [ADR-0105](docs/adr/kararlar-0064-0085.md#adr-0105)) |
 | direction and why | [`docs/YAYIN_YOL_HARITASI.md`](docs/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/EGITIM_ORTAMI.md`](docs/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/MIMARI.md`](docs/MIMARI.md) |
-| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#80 in four chronology files, per-entry anchors; **new findings continue at #81** |
+| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#85 in four chronology files, per-entry anchors; **new findings continue at #86** |
 | why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0105**, next is **0106**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
 | open defects and handover | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — 4 open (5a · 23 · 27 · 31), 3 handed on (6 · 11 · 12b); §EK E.5 holds the nine questions that go into the next grill |
 | artifact registry | [`docs/record/kollar.md`](docs/record/kollar.md) — every trained branch and merge has its identity here; **an artifact with no row is nameless and must not be used**. Family tree: [`docs/model-soyagaci.mmd`](docs/model-soyagaci.mmd) |
@@ -203,7 +203,8 @@ remembers. The research record is the most valuable thing here, more than the we
   **Judge = four-layer defense:** judge-free backbone (regex abstention + deterministic citation
   verification) · panel only on judgment axes, κ via `judge_agreement.py` · **family exclusion** (no subject
   graded by its own family) · self-preference measured. Re-run noise floor ~0.3 A1 points — nothing smaller
-  is interpreted. **Calibrate the refusal regex on every competitor family first** or scores shift in our favor.
+  is interpreted. **Measured 2026-10-15 with 5 repeats on the same answers: a single judge run moves ~1 point
+  (chronology #85); the rule is re-set in F1.4.** **Calibrate the refusal regex on every competitor family first** or scores shift in our favor.
 - **Comparison fairness — "eşit sınav" (ADR-0057).** ON↔OFF verdicts only on matched axes: same questions ·
   same source count · same gold condition · same regime. Unmatched axes carry a CEILING/undefined stamp.
 

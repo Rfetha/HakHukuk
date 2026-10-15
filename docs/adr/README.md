@@ -14,7 +14,7 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 | :--- | :--- |
 | [`kararlar-0027-0044.md`](kararlar-0027-0044.md) | tasarım kilitleri · base seçimi · precision · merge/norm · Kapı 6 · düşünce modu |
 | [`kararlar-0045-0063.md`](kararlar-0045-0063.md) | ara kapı · CP2 hasat · hakem · harness · eşit sınav · faz 0 ölçüm zinciri |
-| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · uygulama hattı (0104-0105) |
+| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · ölçüm kartı pilotu ve seçimi (0102-0103) · uygulama hattı (0104-0105) |
 | [`gemma4-12b-dersler.md`](gemma4-12b-dersler.md) | emekli 12B hattı: **(A) dersler** (base-bağımsız — *yeni hatta başlayan burayı okur*) · **(B) 26 ADR'nin karar kaydı** · (C) ham kayda giriş |
 
 **Atıf uyumu.** Repo genelinde ~2.100 `ADR-00NN` göndermesi var ve hepsi **çapayla** çözülür:
@@ -102,11 +102,13 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0094](kararlar-0064-0085.md#adr-0094) | 🟢 | Sürüm adları: **`v1.0` → `v0.5`**, GGUF adı `v0.5`; `v1` = Checkpoint 1'in sonu |
 | [0095](kararlar-0064-0085.md#adr-0095) | 🟢 | Makale 2'nin ödül ilkesi: **altın madde bilindiği için hakemsiz ödül**, isabet terimi |
 | [0096](kararlar-0064-0085.md#adr-0096) | 🟡 | **Fizibilite turu** — çıktıdan kısmadan para ve zaman; kazanan yalnız üç yoldan; GRPO 2027 yazında *(ölçüm ortamı → 0097 · kredi aşımı ve yedek platform → 0101)* |
-| [0097](kararlar-0064-0085.md#adr-0097) | 🟡 | **Ölçüm dizüstünden tek tip kiralık karta** — DEV ve test kendi içinde tek kart tipi; pilot platformu seçer; nakit tavanı $75 *(makine geçişi → 0098)* |
+| [0097](kararlar-0064-0085.md#adr-0097) | 🟡 | **Ölçüm dizüstünden tek tip kiralık karta** — DEV ve test kendi içinde tek kart tipi; pilot platformu seçer; nakit tavanı $75 *(makine geçişi → 0098 · pilot sırası → 0102 · seçim: Modal A10 → 0103)* |
 | [0098](kararlar-0064-0085.md#adr-0098) | 🟢 | **Üç sessiz-hata kapısı** — tamlık (payda = dondurulmuş küme) · `tgta_v1`'in kimliği (`sha256`) · makine geçişi (80 referans cevap); kayma çıpası kiralık karttan |
 | [0099](kararlar-0064-0085.md#adr-0099) | 🟢 | **F0 ölçüm ve eğitim aleti** — RQ2'nin yedi puanlama anahtarı · sıfır iddialı cevaplanmış kalem 0 puan · eğitim imajı Modal'ın kendi imajı (EGITIM_ORTAMI §4 m.3 ertelendi) · fla 0.5.1 sabit |
 | 0100 | ⏳ | *ayrıldı: F0.12'nin veri lisansı ADR'si (ADR-0099)* |
 | [0101](kararlar-0064-0085.md#adr-0101) | 🟢 | **Kredi aşımında ve Modal kesintisinde RunPod** — Vast eğitimden çıktı · bir koşu başladığı Modal hesabında biter · hesap künyeye kendiliğinden yazılır |
+| [0102](kararlar-0064-0085.md#adr-0102) | 🟢 | **Ölçüm kartı pilotunun kuruluşu ve hakemin sağlayıcısı** — kiralık kartta `b10902` + compose bayrakları, istekler tek tek · pilot önce yalnız Modal A10'da, Vast koşula bağlı · DeepSeek V4.1 Flash `deepinfra/fp8`'de sabit |
+| [0103](kararlar-0064-0085.md#adr-0103) | 🟢 | **Ölçüm kartı Modal A10; hakem anahtarı aynı gün sınanır** — pilotta iki makine 80/80 aynı → tip içinde makine serbest, geçiş kapısıyla · RQ2'nin hakem çıpası 0,8499 yerine aynı gün iki `gpt-4o-mini` + DeepSeek |
 | [0104](kararlar-0064-0085.md#adr-0104) | 🟡 | **Uygulama hattı: ürün hattında paralel, kağıt hattının dışında** — araç çağırma ölçümü şimdi, omurga Ağustos–Eylül 2027 · llama.cpp + tek uç nokta · `apps/api` + `apps/web`, Turborepo yok · içtihat Dilim D'ye ertelendi · Türkçe normalizasyon kuralı *(takvim, araç ölçümünün yeri ve araç RL'i → 0105)* |
 | [0105](kararlar-0064-0085.md#adr-0105) | 🟢 | **Uygulama hattının denetimi** — araç kullanımının eğitimi Makale 2'ye girmez, Checkpoint 2'den sonra ayrı tur (ölçüm boşluk gösterirse) · omurga Ekim–Aralık 2027 · dilimler sıralı, tez yazımında durur · araç çağırma ölçümü (eski F1.12) omurganın ilk işi, kazananla · tez kararı Ocak 2028'de |
 
