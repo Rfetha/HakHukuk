@@ -1,0 +1,54 @@
+{
+  "is": "F0.16 vLLM pilotu · aşama A (kontrol)",
+  "platform": {
+    "ad": "Modal",
+    "hesap": "rfetha",
+    "tip": "A10",
+    "saatlik_usd": 1.1,
+    "ortam": {
+      "MODAL_IMAGE_ID": "im-vX1hF2rb0PHpsTzifcwL9H",
+      "MODAL_CLOUD_PROVIDER": "CLOUD_PROVIDER_OCI",
+      "MODAL_REGION": "eu-west",
+      "MODAL_IS_REMOTE": "1",
+      "MODAL_CONTAINER_ARGUMENTS_PATH": "/__modal/.container-arguments/data.bin",
+      "MODAL_SERVER_URL": "unix:/run/modal.sock",
+      "MODAL_ENVIRONMENT": "main",
+      "MODAL_TASK_ID": "ta-01M50HJSV2YJ83FAR4FSV54NDR"
+    }
+  },
+  "nvidia_smi": "NVIDIA A10, 610.57.04, GPU-7a0fddb6-9a6c-ef71-b822-818103444b47, 23028 MiB",
+  "yazilim": {
+    "vllm": "0.30.0",
+    "vllm_gguf_plugin": "0.0.5",
+    "taban_imaj": "nvidia/cuda:13.0.1-devel-ubuntu24.04",
+    "kurulan": {
+      "vllm": "0.30.0",
+      "torch": "2.13.0",
+      "transformers": "5.20.0",
+      "huggingface_hub": "1.33.0",
+      "openai": "2.41.0",
+      "vllm-gguf-plugin": "0.0.5",
+      "gguf": "0.19.0"
+    }
+  },
+  "model": {
+    "gguf": "HakHukuk-4B-v0.5-Q4_K_M.gguf",
+    "sha256": "755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc"
+  },
+  "baglam": {
+    "dosya": "data/eval/dev/baglam/h1-k10.json",
+    "sha256": "026668000583d6e3d3988b97d1cb3c3a85d740594686901aa0e8da3f213e6135"
+  },
+  "denemeler": [
+    {
+      "yapilandirma": "orijinal",
+      "acildi": false,
+      "hata_sonu": ", line 178, in sync_wrapper\n(APIServer pid=68)     return func(*args, **kwargs)\n(APIServer pid=68)            ^^^^^^^^^^^^^^^^^^^^^\n(APIServer pid=68)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 163, in make_async_mp_client\n(APIServer pid=68)     return AsyncMPClient(\n(APIServer pid=68)            ^^^^^^^^^^^^^^\n(APIServer pid=68)   File \"/usr/local/lib/python3.12/site-packages/vllm/tracing/otel.py\", line 178, in sync_wrapper\n(APIServer pid=68)     return func(*args, **kwargs)\n(APIServer pid=68)            ^^^^^^^^^^^^^^^^^^^^^\n(APIServer pid=68)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 1060, in __init__\n(APIServer pid=68)     super().__init__(\n(APIServer pid=68)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 656, in __init__\n(APIServer pid=68)     with launch_core_engines(\n(APIServer pid=68)   File \"/usr/local/lib/python3.12/contextlib.py\", line 144, in __exit__\n(APIServer pid=68)     next(self.gen)\n(APIServer pid=68)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/utils.py\", line 1240, in launch_core_engines\n(APIServer pid=68)     wait_for_engine_startup(\n(APIServer pid=68)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/utils.py\", line 1320, in wait_for_engine_startup\n(APIServer pid=68)     raise RuntimeError(\n(APIServer pid=68) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}\n"
+    },
+    {
+      "yapilandirma": "metin",
+      "acildi": false,
+      "hata_sonu": "_wrapper\n(APIServer pid=194)     return func(*args, **kwargs)\n(APIServer pid=194)            ^^^^^^^^^^^^^^^^^^^^^\n(APIServer pid=194)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 163, in make_async_mp_client\n(APIServer pid=194)     return AsyncMPClient(\n(APIServer pid=194)            ^^^^^^^^^^^^^^\n(APIServer pid=194)   File \"/usr/local/lib/python3.12/site-packages/vllm/tracing/otel.py\", line 178, in sync_wrapper\n(APIServer pid=194)     return func(*args, **kwargs)\n(APIServer pid=194)            ^^^^^^^^^^^^^^^^^^^^^\n(APIServer pid=194)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 1060, in __init__\n(APIServer pid=194)     super().__init__(\n(APIServer pid=194)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/core_client.py\", line 656, in __init__\n(APIServer pid=194)     with launch_core_engines(\n(APIServer pid=194)   File \"/usr/local/lib/python3.12/contextlib.py\", line 144, in __exit__\n(APIServer pid=194)     next(self.gen)\n(APIServer pid=194)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/utils.py\", line 1240, in launch_core_engines\n(APIServer pid=194)     wait_for_engine_startup(\n(APIServer pid=194)   File \"/usr/local/lib/python3.12/site-packages/vllm/v1/engine/utils.py\", line 1320, in wait_for_engine_startup\n(APIServer pid=194)     raise RuntimeError(\n(APIServer pid=194) RuntimeError: Engine core initialization failed. See root cause above. Failed core proc(s): {}\n"
+    }
+  ]
+}
