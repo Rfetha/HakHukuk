@@ -21,7 +21,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F0.13 Ön-kayıt taslağı v0 (mühür F1.11'de, OSF)
 - [ ] F0.14 Dış bilgiler doğrulandı (ARR, Modal kredisi, hakem kimliği ve önbellek fiyatı, OpenAI şartları) · etik kurul soruldu · gönüllü arayışı başladı
 - [ ] F0.15 Qwen'de τ_g/τ_a seed'leri (3408 · 3409) ve ham TIES birleştirmeleri
-- [x] F0.16 Ölçüm kartı pilotu: kart tipi, platform ve maliyet seçildi · makine geçiş kapısı (F0.6 ve F0.10'dan önce)
+- [x] F0.16 Ölçüm kartı pilotu: kart tipi, platform ve maliyet seçildi · makine geçiş kapısı (F0.6 ve F0.10'dan önce) · *açık not: Modal pilotunun gerçek faturası okunmadı ([#83](record/kronoloji-75-86.md#83)); kullanıcı panelden verecek*
 
 **F1 · DEV iterasyonu** *(Aralık 2026–Ocak 2027)*
 
