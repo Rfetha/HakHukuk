@@ -10,8 +10,8 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [x] F0.2 Yol haritası kararları ADR-0089–0096 olarak defterde (2026-10-10 fizibilite kararları dahil)
 - [x] F0.3 τ_g v1'in hassasiyeti kayda geçti (bf16, belge kanıtı)
 - [x] F0.4 Eğitim ortamı kilidi: yaml + betik kontrolü + test + eski ortamla eşdeğerlik
-- [ ] F0.5 Payda ve tamlık kapıları · eski aletlere erişim (RQ2)
-- [ ] F0.6 Hakem geçişi (DeepSeek V4.1 Flash) · kayma çıpası · gürültü tabanı
+- [x] F0.5 Payda ve tamlık kapıları · eski aletlere erişim (RQ2)
+- [x] F0.6 Hakem geçişi (DeepSeek V4.1 Flash) · kayma çıpası · gürültü tabanı
 - [x] F0.7 τ_g / τ_a seyreklik tablosu
 - [ ] F0.8 Birlikte-eğitim kodu (tam ORPO, λ parametre), eşit maruziyet, Modal pilotu
 - [ ] F0.9 Gemma teknik kapısı geçti (kalırsa yedek o gün seçilir)
@@ -21,7 +21,7 @@ Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince i
 - [ ] F0.13 Ön-kayıt taslağı v0 (mühür F1.11'de, OSF)
 - [ ] F0.14 Dış bilgiler doğrulandı (ARR, Modal kredisi, hakem kimliği ve önbellek fiyatı, OpenAI şartları) · etik kurul soruldu · gönüllü arayışı başladı
 - [ ] F0.15 Qwen'de τ_g/τ_a seed'leri (3408 · 3409) ve ham TIES birleştirmeleri
-- [ ] F0.16 Ölçüm kartı pilotu: kart tipi, platform ve maliyet seçildi · makine geçiş kapısı (F0.6 ve F0.10'dan önce)
+- [x] F0.16 Ölçüm kartı pilotu: kart tipi, platform ve maliyet seçildi · makine geçiş kapısı (F0.6 ve F0.10'dan önce)
 
 **F1 · DEV iterasyonu** *(Aralık 2026–Ocak 2027)*
 

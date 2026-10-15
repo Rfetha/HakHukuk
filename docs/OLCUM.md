@@ -108,7 +108,8 @@ Aynı soru, aynı kod, seed 3407, sıcaklık 0; değişen tek etken KV önbelle�
 Farkın 80 kalemlik kümedeki toplam etkisi de ölçülmüştür: fp16 ile 80 cevabın **65'i (%81,2)**
 bayt olarak değişmiş, ancak hiçbir sayaç birden fazla kalem oynamamıştır (kesik 4→3, tamamen
 boş 0→0, çekinme 5→5, uydurulmuş madde 0→0). Kütle **0,8011 → 0,7932** (−0,79 puan) — hakem
-gürültü tabanının 2,8 katı, **ama tek yönlü hükme yetmez**: o taban aynı cevaplara hakemi
+gürültü tabanının 2,8 katı (⚠️ *2026-10-15, [#85](record/kronoloji-75-86.md#85): tek hakem koşusu ~1 puan
+oynuyor; bu fark o ölçümle gürültünün içinde*), **ama tek yönlü hükme yetmez**: o taban aynı cevaplara hakemi
 yeniden koşmanın gürültüsüdür, burada ise cevaplar da değişmiştir ve bu koşu çiftinin kendi
 tabanı ölçülmemiştir. Tabanın açıkça üstündeki tek eksen atıf isabetidir ve **kötüleşmiştir**:
 yanlış kaynağa atıf oranı **0,0769 → 0,1553 (2,0 kat)**.
@@ -612,7 +613,9 @@ bağımsız hakem ailesiyle okunmuştur; **diğer satırlar tek hakemlidir**.
 - **Öz-tercih genel olarak ölçülmemiştir.** Tek hücrelik bir gösterge vardır ve **kayırma
   lehine değildir**: ilgili hakem kendi ailesinin cevaplarını daha sert puanlamıştır. Tek
   özne/tek koşu ⇒ gösterge, kanıt değil; bu kartın hiçbir sayısına girmez.
-- **Gürültü tabanı ~0,3 sadakat puanıdır**; bundan küçük hiçbir fark yorumlanmaz. Taban yalnız
+- **Gürültü tabanı ~0,3 sadakat puanıdır**; bundan küçük hiçbir fark yorumlanmaz. ⚠️ *2026-10-15: aynı
+  cevaplarda 5 tekrarla tek koşunun oynaması ~1 puan ölçüldü
+  ([#85](record/kronoloji-75-86.md#85)); kural F1.4'te yenilenir.* Taban yalnız
   sadakat için ölçülmüştür — kütle bir çarpım olduğundan `coverage`'ın varyansı o tabanda
   yoktur.
 

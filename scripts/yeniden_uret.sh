@@ -96,6 +96,8 @@ print(f"  A1            {t['A1_cevaplanan']:.4f}")
 print(f"  KÜTLE         {t['kutle_tum']:.4f}    ← manşet")
 print()
 print("  çıpa (2026-09-06, F0.2): kütle 0,8011")
+# ⚠️ 2026-10-15 (kronoloji #85): aynı cevaplarda tek hakem koşusu ~1 puan oynuyor; 0,30 eşiği bozuk olmayan
+# bir koşuda da DUR diyebilir. Eşik F1.4'te yenilenir; davranış değişmedi.
 sapma = abs(t["kutle_tum"] - 0.8011) * 100
 print(f"  sapma         {sapma:.2f} puan   (hakem gürültü tabanı 0,30 puan)")
 print("  ⛔ Sapma 0,30 puanı aşıyorsa DUR — fark KAYNAKLANMADAN yayımlanmaz."
