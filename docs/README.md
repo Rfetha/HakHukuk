@@ -8,7 +8,7 @@ Tek giriş noktası. Kökte yalnız GitHub/HF'nin kökten okuduğu dosyalar kal�
 | Ürün ne, neyi **vaat etmez** | [`PRODUCT.md`](PRODUCT.md) |
 | Yön — iki makale ve tez planı, sıra ve gerekçesi | [`YAYIN_YOL_HARITASI.md`](YAYIN_YOL_HARITASI.md) |
 | Sıradaki iş — Checkpoint 1 kontrol listesi ve iş adımları | [`ROADMAP_v1.md`](ROADMAP_v1.md) |
-| Ajan uygulaması hattı — paralel, kağıt hattının dışında | [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md) |
+| Ajan uygulaması hattı — kağıt hattının dışında, Ekim 2027'den sıralı | [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md) |
 | Eğitim ortamının kilitli değerleri | [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) |
 | `v1` zinciri, ürün modülleri | [`MIMARI.md`](MIMARI.md) |
 | Ayrıntılı ölçüm tabloları (kartın uzun hâli) | [`OLCUM.md`](OLCUM.md) |
