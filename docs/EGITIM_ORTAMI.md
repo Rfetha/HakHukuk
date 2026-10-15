@@ -131,5 +131,8 @@ olmaktan çıkarır (tuzak 1.12, [#66](record/kronoloji-63-71.md#66)).
      Gemma'ya özgü `per_layer_input_gate` ve `per_layer_projection` bilerek dışarıda (Qwen'le eşit tasarım).
    - **Tur işaretleri:** `<|turn>user\n` ve `<|turn>model\n`. Qwen'in şablonu cevabın önüne boş düşünce bloğu
      koyuyor, Gemma'nınki koymuyor; iki modelde de kayıp asistan işaretinden hemen sonra başlıyor (#78).
-   - **Hâlâ açık (smoke ölçecek):** bf16 tepe VRAM'i ve adım süresi, `grad_checkpoint: false` tarifinin A100-40GB'a
-     sığıp sığmadığı. Sığmazsa tarif değişikliği ayrı bir ADR ve iki modelde birden olur.
+   - **Smoke ölçtü (2026-10-15, 50 adım, A100-40GB, [#80](record/kronoloji-75-86.md#80)):** Gemma bf16'da
+     `grad_checkpoint: false` ile **sığdı**: tepe rezerve 34,39 GB / 42,41 GB (%81,1), 10,55 s/adım; LoRA 258 modül,
+     kule dışı 0. Qwen: tepe rezerve 22,31 GB, 10,69 s/adım. Tarif değişmedi. Hâlâ açık: 2048 token tavanına yakın
+     örneklerde tepenin ne olacağı (50 adım en uzun örneği görmemiş olabilir) ve Gemma'da TRL'nin ek bitiş işareti
+     ekleyip eklemediği.

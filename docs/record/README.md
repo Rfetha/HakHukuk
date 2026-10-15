@@ -15,7 +15,7 @@ Bu klasör **ne olduğunu** tutar; kararların *neden*i [`../adr/`](../adr/)'de,
 | Emekli hattın **damıtılmış dersleri** + ADR-0001…0026 | [`../adr/gemma4-12b-dersler.md`](../adr/gemma4-12b-dersler.md) |
 | Karar defteri, ADR-0027…0086 | [`../adr/README.md`](../adr/README.md) |
 
-**Yeni girdi #80'den devam eder** → `kronoloji-75-86.md`'nin sonuna yazılır; dosya 12 girdiyi
+**Yeni girdi #81'den devam eder** → `kronoloji-75-86.md`'nin sonuna yazılır; dosya 12 girdiyi
 aşarsa `kronoloji-72-….md` açılır. Her girdi bir `<a id="NN"></a>` çapası taşır, atıf biçimi
 `kronoloji-63-71.md#70`.
 

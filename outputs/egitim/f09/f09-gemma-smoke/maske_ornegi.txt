@@ -1,0 +1,28 @@
+<bos><|turn>system
+Sen HakHukuk'sun, uzman bir Türk hukuku asistanısın.
+Sana NUMARALI birden çok KAYNAK madde verilecek; bazıları soruyla İLGİSİZ olabilir.
+Soruyla ilgili kaynağı/kaynakları SEÇ, cevabını YALNIZCA onlara dayandır; ilgisiz kaynakları yok say.
+İlgili kaynak YOKSA cevap uydurma; 'Verilen kaynaklarda bu konuyu düzenleyen madde bulunmuyor' de.
+Dayandığın madde no'sunu kaynaktan birebir al (UYDURMA) ve (KANUN ADI, Madde X) biçiminde belirt.<turn|>
+<|turn>user
+KAYNAKLAR:
+[KAYNAK 1]
+HUKUK MUHAKEMELERİ KANUNU MADDE 338
+(1) Adli yardımdan yararlanan kişinin mali durumu hakkında kasten veya ağır kusuru sonucu yanlış bilgi verdiği ortaya çıkar veya sonradan mali durumunun yeteri derecede iyileştiği anlaşılırsa adli yardım kararı kaldırılır. Adli yardımla ertelenen yargılama giderlerinin tahsili
+
+[KAYNAK 2]
+HUKUK MUHAKEMELERİ KANUNU MADDE 340
+(1) Adli yardımdan yararlanan kişi için mahkemenin talebi üzerine baro tarafından görevlendirilen avukatın ücreti, yargılama gideri olarak Hazineden ödenir. SEKİZİNCİ KISIM Kanun Yolları BİRİNCİ BÖLÜM İstinaf İstinaf yoluna başvurulabilen kararlar [42]
+
+[KAYNAK 3]
+HUKUK MUHAKEMELERİ KANUNU MADDE 341
+(1) (Değişik:22/7/2020-7251/34 md.) İlk derece mahkemelerinin aşağıdaki kararlarına karşı istinaf yoluna başvurulabilir: a) Nihai kararlar. b) İhtiyati tedbir ve ihtiyati haciz taleplerinin reddi kararları, karşı tarafın yüzüne karşı verilen ihtiyati tedbir ve ihtiyati haciz kararları, karşı tarafın yokluğunda verilen ihtiyati tedbir ve ihtiyati haciz kararlarına karşı yapılan itiraz üzerine verilen kararlar. (2) Miktar veya değeri üç bin Türk Lirasını geçmeyen malvarlığı davalarına ilişkin kararlar kesindir. (Ek cümle: 24/11/2016-6763/41 md.) Ancak manevi tazminat davalarında verilen kararlara karşı, miktar veya değere bakılmaksızın istinaf yoluna başvurulabilir. [43] (3) Alacağın bir kısmının dava edilmiş olması durumunda üç bin Türk Liralık kesinlik sınırı alacağın tamamına göre belirlenir. (4) Alacağın tamamının dava edilmiş olması durumunda, kararda asıl talebinin kabul edilmeyen bö…
+
+[KAYNAK 4]
+HUKUK MUHAKEMELERİ KANUNU MADDE 337
+(1) Mahkeme, adli yardım talebi hakkında duruşma yapmaksızın karar verebilir. (Ek cümle : 11/4/2013-6459/ 23 md.) Ancak, talep hâlinde inceleme duruşmalı olarak yapılır. (Ek cümle : 11/4/2013-6459/ 23 md.) Adli yardım taleplerinin reddine ilişkin mahkeme kararlarında sunulan bilgi ve belgelerin kabul edilmeme sebebi açıkça belirtilir. (2) (Değişik : 11/4/2013-6459/ 23 md.) Adli yardım talebinin reddine ilişkin kararlara karşı, tebliğinden itibaren iki hafta içinde kararı veren mahkemeye dilekçe vermek suretiyle itiraz edilebilir. Kararına itiraz edilen mahkeme, itirazı incelemesi için dosyayı o yerde adli yardım talebi yapılan hukuk mahkemesinin birden fazla dairesinin bulunması hâlinde, numara olarak kendisini izleyen daireye, son numaralı daire için birinci daireye, o yerde adli yardım talebi yapılan hukuk mahkemesinin tek dairesi bulunması hâlinde ise aynı işlere bakmakla görevli en y…
+
+SORU: Devletçe ödenen yargılama giderleri nasıl tahsil ediliyor?<turn|>
+<|turn>model
+⟦Verilen kaynaklarda bu hususu düzenleyen bir hüküm bulunmamaktadır; sunulan maddeler soruyla doğrudan ilgili değildir. Güvenilir bir atıf için ilgili mevzuat hükmünün sağlanması gerekir.<turn|>
+⟧
