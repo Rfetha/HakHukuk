@@ -1486,3 +1486,35 @@ git commit -m "docs: vLLM geçişi planı kapandı; F0.10 yeni hatla"
 **Bilinçli boşluk:** hasat geçme çizgisi (Görev 7 Step 5) ölçümden önce kullanıcıdan alınır; bu bir "TBD" değil, spec bölüm 6'nın zorunlu karar adımıdır.
 
 **Tür tutarlılığı:** `AGIRLIKLAR = ("q4-acilmis", "bf16-orijinal")` hem `modal_pilot_vllm.py` hem `vllm_kapilari.py` içinde aynı; `degerlendir` girdi anahtarları alt çizgili (`q4_acilmis`), dosya adları tireli ve `vllm_ozetle.girdi_olustur` ikisini `ad.replace("-", "_")` ile bağlar.
+
+---
+
+## Kapanış (2026-10-16)
+
+**Sonuç:** vLLM ölçüme alınmadı ([ADR-0109](../../adr/kararlar-0064-0085.md#adr-0109)); ölçüm ve ürün llama.cpp + Q4_K_M'de, hasat
+llama.cpp'de. Kayıt: [#86](../../record/kronoloji-75-86.md#86) (pilot ve kapılar) · [#87](../../record/kronoloji-87-98.md#87)
+(üretim gürültüsü) · [ADR-0107](../../adr/kararlar-0064-0085.md#adr-0107) (m.1 ve m.3 geri alındı) · kanıt `outputs/eval/f0/f016-vllm-pilot/`.
+
+| görev | durum |
+| :-- | :-- |
+| 1 ADR-0106 | tamam (`7893a72`) |
+| 2 bf16 yükleme | tamam (`cfbf213`) |
+| 3 Modal pilotu | tamam (`324680a`, düzeltme `7f885e5`) |
+| 4 kapılar, özet, puanlama betiği | tamam (`217fc11`) |
+| 5 pilot | tamam: G1-G3 geçti (G3 tek koşuda 0,18 p), G5 bf16 −4,79 p (`c92efc7`, `85fc5a0`) |
+| 6 makine kapısı puan dalı | kod tamam (`4428604`); ADR-0109 ile kullanılmıyor |
+| 7 hasat kapısı | %69,2 < %70, geçmedi (`d354cf0`, `399909b`) |
+| 8 kayıt ve belgeler | tamam (`08643e8`, `8089138`, `05ad73d`) |
+| son inceleme + ek ölçüm | vLLM üretim gürültüsü: beş koşuda −3,59 p, ±2,25 p (`4527250`, `163a06a`) |
+| 9 kapanış | bu blok; plan dosyası silinir, kart #11 kapanır |
+
+**Sapmalar:** Görev 3'te `pilot` hata verince künye yazmıyordu (inceleme; düzeltildi) · puanlama 8 parçaya bölündü (kullanıcı
+kararı; parça başına bütçe başta varsayılan $5'tı, ek ölçümlerde $0,2) · seçim ölçümünün ağırlığı spec'teki bf16'dan Q4'ten
+açılmışa çevrildi, sonra vLLM tümden ölçümden çıktı · hasat kapısı bf16 yerine vLLM-Q4 ile karşılaştırıldı · `gen_eval_grounded.py`
+değişmedi, toplu yol `toplu_uret.py` oldu · MODEL_CARD değişmedi · "kollara genelleştir" kartı açılmadı (ADR-0109 ile gereksiz).
+
+**Harcama:** ~$4,1 tahmin (sınır $5): GGUF eklentisi denemesi ~$0,1 · aşama A ~$0,17 · aşama B ~$0,37 · puanlama $1,58 · t2
+$0,78 · t3-t5 üretimi ~$0,2 ve puanlaması $0,92. Fatura: OpenRouter sayacı gecikmeli, Modal panelden okunmadı.
+
+**Ders:** gürültülü bir motorda kapı tek üretim koşusuna bağlanırsa en şanslı çekiliş geçer (tuzak 1.13). Sıkıştırılmış model,
+sıkıştırılmamış atasının yaklaşığı değil (tuzak 5.8). Aynı ortalama puan aynı hatalar demek değil (hasat kapısı).
