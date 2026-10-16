@@ -14,14 +14,14 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 | :--- | :--- |
 | [`kararlar-0027-0044.md`](kararlar-0027-0044.md) | tasarım kilitleri · base seçimi · precision · merge/norm · Kapı 6 · düşünce modu |
 | [`kararlar-0045-0063.md`](kararlar-0045-0063.md) | ara kapı · CP2 hasat · hakem · harness · eşit sınav · faz 0 ölçüm zinciri |
-| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · ölçüm kartı pilotu ve seçimi (0102-0103) · uygulama hattı (0104-0105) · vLLM geçişi (0106-0107) · iş panosu (0108) |
+| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · ölçüm kartı pilotu ve seçimi (0102-0103) · uygulama hattı (0104-0105) · vLLM geçişi (0106-0107, 0109) · iş panosu (0108) |
 | [`gemma4-12b-dersler.md`](gemma4-12b-dersler.md) | emekli 12B hattı: **(A) dersler** (base-bağımsız — *yeni hatta başlayan burayı okur*) · **(B) 26 ADR'nin karar kaydı** · (C) ham kayda giriş |
 
 **Atıf uyumu.** Repo genelinde ~2.100 `ADR-00NN` göndermesi var ve hepsi **çapayla** çözülür:
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0109**'dan devam; **0107** vLLM planının kararına (Görev 8) ayrıldı; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara, **0110**'dan devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
@@ -61,7 +61,7 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0053](kararlar-0045-0063.md#adr-0053) | 🟢 | Modül-başına norm kapsamı **reddedildi** — gerekçe çürüdü, ölçüm de geçmedi |
 | [0054](kararlar-0045-0063.md#adr-0054) | 🟢 | Harness tasarımı **K2-K5**: tam madde indekslenir · statik korpus · ayırt-edicilik etiketi · katı kapı |
 | [0055](kararlar-0045-0063.md#adr-0055) | 🟢 | İsabet denetimi ekseni (borç **B1**): **kaynak-yeterliliği** sinyali — tek sinyal iki hatayı birden hedefler |
-| [0056](kararlar-0045-0063.md#adr-0056) | 🟢 | `m2b`'nin harness-AÇIK protokolü = **altın ablasyonu** · 📌 *en fazla **bir canlı plan*** *(istisna: [0106](kararlar-0064-0085.md#adr-0106), vLLM planı F0 planıyla birlikte canlı)* |
+| [0056](kararlar-0045-0063.md#adr-0056) | 🟢 | `m2b`'nin harness-AÇIK protokolü = **altın ablasyonu** · 📌 *en fazla **bir canlı plan*** *(istisna [0106](kararlar-0064-0085.md#adr-0106) 2026-10-16'da kapandı)* |
 | [0057](kararlar-0045-0063.md#adr-0057) | 🟢 | ⭐⭐ **Harness Rekabet Kapısı: eşit sınav** — üç kademe + 🔒 anti-gaming (KAPALI kolu dondurulur) |
 | [0058](kararlar-0045-0063.md#adr-0058) | 🔴 | Kaynak-yeterliliği önsözü benimsendi · **gerekçesi tersine döndü → 0063 ile kaldırıldı** |
 | **0059** | ⛔ | **REZERVE — kullanma** |
@@ -112,8 +112,9 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0104](kararlar-0064-0085.md#adr-0104) | 🟡 | **Uygulama hattı: ürün hattında paralel, kağıt hattının dışında** — araç çağırma ölçümü şimdi, omurga Ağustos–Eylül 2027 · llama.cpp + tek uç nokta · `apps/api` + `apps/web`, Turborepo yok · içtihat Dilim D'ye ertelendi · Türkçe normalizasyon kuralı *(takvim, araç ölçümünün yeri ve araç RL'i → 0105)* |
 | [0105](kararlar-0064-0085.md#adr-0105) | 🟢 | **Uygulama hattının denetimi** — araç kullanımının eğitimi Makale 2'ye girmez, Checkpoint 2'den sonra ayrı tur (ölçüm boşluk gösterirse) · omurga Ekim–Aralık 2027 · dilimler sıralı, tez yazımında durur · araç çağırma ölçümü (eski F1.12) omurganın ilk işi, kazananla · tez kararı Ocak 2028'de |
 | [0106](kararlar-0064-0085.md#adr-0106) | 🟢 | **vLLM geçişi: planı F0 planıyla birlikte canlı** — ADR-0056'nın "en fazla bir canlı plan" konvansiyonuna istisna (vLLM planı kapanınca biter) · araç seçimi iş başına: bir iş vLLM'e yalnız ilgili kapıyı geçerse taşınır |
-| [0107](kararlar-0064-0085.md#adr-0107) | 🟢 | **vLLM sunucu ölçümünde, Q4'ten açılmış ağırlıkla** — seçim ölçümleri vLLM'de (motor etkisi 0,18 p, 4-5 kat hız) · nihai sayı ve ürün llama.cpp Q4 · vLLM hattında makine kapısı puan düzeyi · hasat llama.cpp'de kalır (örtüşme %69,2 < %70) |
+| [0107](kararlar-0064-0085.md#adr-0107) | 🟢 | **vLLM sunucu ölçümünde, Q4'ten açılmış ağırlıkla** — seçim ölçümleri vLLM'de (motor etkisi 0,18 p, 4-5 kat hız) · nihai sayı ve ürün llama.cpp Q4 · vLLM hattında makine kapısı puan düzeyi · hasat llama.cpp'de kalır (örtüşme %69,2 < %70) · *m.1 ve m.3 geri alındı → [0109](kararlar-0064-0085.md#adr-0109)* |
 | [0108](kararlar-0064-0085.md#adr-0108) | 🟢 | **İşlerin durumu GitHub panosunda** — `law-slm-board`; ROADMAP kontrol listesi kalktı, "iş → doğrulama" tabloları kaldı · kart elle kapanır (`closes #N` yalnız `master`'da çalışır, iş `talk-think`'te) · commit'lerde `refs #N` · etiketler alanı tekrarlamaz |
+| [0109](kararlar-0064-0085.md#adr-0109) | 🟢 | **vLLM ölçüme alınmadı** — aynı Q4 ağırlığıyla −3,6 p ve ±2,25 p (5 koşu) · seçim ve nihai ölçüm llama.cpp + Q4 · vLLM yalnız GRPO üretimi (Haziran 2027) · 0107'nin m.1 ve m.3'ünü geri alır |
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **Ne bu:** Checkpoint 1'in F0 aşaması (2026-10-11'den). Önceki dosya
 > [`kronoloji-63-71.md`](kronoloji-63-71.md) 12 girdiye ulaştı (#63-#74); kural
-> [`README.md`](README.md)'de. Çapa: `kronoloji-75-86.md#75`. **Yeni girdi #80'den devam eder.**
+> [`README.md`](README.md)'de. Çapa: `kronoloji-75-86.md#75`. **Dosya doldu (#75-#86); devamı [`kronoloji-87-98.md`](kronoloji-87-98.md).**
 
 | # | tarih | başlık | kanca |
 | :-- | :--- | :--- | :--- |
@@ -720,3 +720,6 @@ görsel yapılandırmayla, Q4 metin-yalnız yapılandırmayla açıldı).
 
 **Ders.** *Sıkıştırılmış model, sıkıştırılmamış atasının bir yaklaşığı değil, kendine ait bir model.* bf16'da seçilen kol Q4'te
 kazanmayabilir; ölçüm gönderilen ağırlıkta yapılmalı. "Aynı ortalama puan" da "aynı hatalar" demek değil.
+
+**Not (2026-10-16, [#87](kronoloji-87-98.md#87)):** G3'ün 0,18 puanı tek üretim çekilişiydi. Beş koşuda aynı Q4 ağırlığı vLLM'de 3,59 puan düşük
+ve koşudan koşuya ±2,25 puan çıktı; vLLM ölçüme alınmadı ([ADR-0109](../adr/kararlar-0064-0085.md#adr-0109)).
