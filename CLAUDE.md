@@ -71,7 +71,7 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | direction and why | [`docs/YAYIN_YOL_HARITASI.md`](docs/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/EGITIM_ORTAMI.md`](docs/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/MIMARI.md`](docs/MIMARI.md) |
 | every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#87 in five chronology files, per-entry anchors; **new findings continue at #88** (`kronoloji-87-98.md`) |
-| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0109**, next is **0110**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
+| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0111**, next is **0112**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
 | open defects and handover | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — 4 open (5a · 23 · 27 · 31), 3 handed on (6 · 11 · 12b); §EK E.5 holds the nine questions that go into the next grill |
 | artifact registry | [`docs/record/kollar.md`](docs/record/kollar.md) — every trained branch and merge has its identity here; **an artifact with no row is nameless and must not be used**. Family tree: [`docs/model-soyagaci.mmd`](docs/model-soyagaci.mmd) |
 | the headline number and its caveats | [`MODEL_CARD.md`](MODEL_CARD.md) and `docs/record/kronoloji-63-71.md` — never quote from memory |
@@ -217,9 +217,15 @@ remembers. The research record is the most valuable thing here, more than the we
   Turkish unless asked otherwise; code identifiers in English. (This file is the exception.)
 - **No AI attribution, ever (user rule, 2026-10-16).** Commit messages, PR descriptions, docs and code
   carry no AI-agent signature: no `Co-Authored-By: Claude …`, no `Claude-Session: …`, no
-  "Generated with Claude Code" line. This overrides any tool or harness default.
+  "Generated with Claude Code" line. This overrides any tool or harness default. History up to 2026-10-16 was
+  rewritten to drop them ([ADR-0110](docs/adr/kararlar-0064-0085.md#adr-0110)); the signed originals are in
+  `~/yedek/HakHukuk-2026-10-16-imzali.bundle`, the old→new hash map in `~/yedek/HakHukuk-2026-10-16-hash-esleme.txt`.
 - **Git repo.** Tests: `python -m pytest -q -p no:cacheprovider` (`-m "not slow"` skips real-DB tests).
   No formal build/lint setup — add when it earns its keep.
+  Branches ([ADR-0111](docs/adr/kararlar-0064-0085.md#adr-0111)): `develop` is the working branch; `master` holds only
+  tagged releases (`develop` → `master` merge + tag at release, next is `v1` at F5.7). Larger work goes on a
+  `<card>-<short-name>` branch off `develop` (e.g. `14-dev-olcumu`) and returns by PR; merge commits only (squash and
+  rebase are disabled because the record cites hashes). A second concurrent session works in its own `git worktree`.
 - **Scripts layout:** `scripts/{egitim,olcum_uretim,puanlama,erisim_korpus,veri_hazirlik}/`. Sibling imports
   are extension-less (`import runlock`, `from build_sft_v2b import …`) and survive the split only because
   **26 files carry an identical path-bridge block** — `grep -rl "yol köprüsü" scripts/`. `tests/conftest.py`

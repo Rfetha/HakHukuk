@@ -208,7 +208,7 @@ Gemma τ_g/τ_a seed'leri ~$17-23 · hakem ~$10.
 | F5.4 | **Dış okuyucular:** 1-2 kişi → yorumlar işlendi |
 | F5.5 | **arXiv:** ARR'nin ön baskı kuralına uygun zamanda (F0.14) → yükleme kaydı |
 | F5.6 | **ARR gönderimi:** ilk uygun döngü; OpenReview profili ve karşılıklı hakemlik şartı (F0.14) → gönderim kaydı |
-| F5.7 | **Kapanış:** kronoloji girdisi, ADR'ler, tez 2-4. bölüm malzeme listesi · `talk-think` → `master` birleştirmesi · birleştirme commit'i **`v1`** olarak etiketlenir; model kartı, HF kartı ve GGUF dosya adı `v1`'e geçer → Checkpoint 1 tamam (§0) |
+| F5.7 | **Kapanış:** kronoloji girdisi, ADR'ler, tez 2-4. bölüm malzeme listesi · `develop` → `master` birleştirmesi ([ADR-0111](adr/kararlar-0064-0085.md#adr-0111)) · birleştirme commit'i **`v1`** olarak etiketlenir; model kartı, HF kartı ve GGUF dosya adı `v1`'e geçer → Checkpoint 1 tamam (§0) |
 
 **Tahmin:** kullanıcı ~30-45 saat (yöntem F1.11'de, giriş ve ilgili çalışmalar F2.6'da yazılır).
 

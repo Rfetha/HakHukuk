@@ -14,14 +14,14 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 | :--- | :--- |
 | [`kararlar-0027-0044.md`](kararlar-0027-0044.md) | tasarım kilitleri · base seçimi · precision · merge/norm · Kapı 6 · düşünce modu |
 | [`kararlar-0045-0063.md`](kararlar-0045-0063.md) | ara kapı · CP2 hasat · hakem · harness · eşit sınav · faz 0 ölçüm zinciri |
-| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · ölçüm kartı pilotu ve seçimi (0102-0103) · uygulama hattı (0104-0105) · vLLM geçişi (0106-0107, 0109) · iş panosu (0108) |
+| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · ölçüm kartı pilotu ve seçimi (0102-0103) · uygulama hattı (0104-0105) · vLLM geçişi (0106-0107, 0109) · iş panosu (0108) · imzasız geçmiş ve dal düzeni (0110-0111) |
 | [`gemma4-12b-dersler.md`](gemma4-12b-dersler.md) | emekli 12B hattı: **(A) dersler** (base-bağımsız — *yeni hatta başlayan burayı okur*) · **(B) 26 ADR'nin karar kaydı** · (C) ham kayda giriş |
 
 **Atıf uyumu.** Repo genelinde ~2.100 `ADR-00NN` göndermesi var ve hepsi **çapayla** çözülür:
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0110**'dan devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara, **0112**'den devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
@@ -113,8 +113,10 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0105](kararlar-0064-0085.md#adr-0105) | 🟢 | **Uygulama hattının denetimi** — araç kullanımının eğitimi Makale 2'ye girmez, Checkpoint 2'den sonra ayrı tur (ölçüm boşluk gösterirse) · omurga Ekim–Aralık 2027 · dilimler sıralı, tez yazımında durur · araç çağırma ölçümü (eski F1.12) omurganın ilk işi, kazananla · tez kararı Ocak 2028'de |
 | [0106](kararlar-0064-0085.md#adr-0106) | 🟢 | **vLLM geçişi: planı F0 planıyla birlikte canlı** — ADR-0056'nın "en fazla bir canlı plan" konvansiyonuna istisna (vLLM planı kapanınca biter) · araç seçimi iş başına: bir iş vLLM'e yalnız ilgili kapıyı geçerse taşınır |
 | [0107](kararlar-0064-0085.md#adr-0107) | 🟢 | **vLLM sunucu ölçümünde, Q4'ten açılmış ağırlıkla** — seçim ölçümleri vLLM'de (motor etkisi 0,18 p, 4-5 kat hız) · nihai sayı ve ürün llama.cpp Q4 · vLLM hattında makine kapısı puan düzeyi · hasat llama.cpp'de kalır (örtüşme %69,2 < %70) · *m.1 ve m.3 geri alındı → [0109](kararlar-0064-0085.md#adr-0109)* |
-| [0108](kararlar-0064-0085.md#adr-0108) | 🟢 | **İşlerin durumu GitHub panosunda** — `law-slm-board`; ROADMAP kontrol listesi kalktı, "iş → doğrulama" tabloları kaldı · kart elle kapanır (`closes #N` yalnız `master`'da çalışır, iş `talk-think`'te) · commit'lerde `refs #N` · etiketler alanı tekrarlamaz |
+| [0108](kararlar-0064-0085.md#adr-0108) | 🟢 | **İşlerin durumu GitHub panosunda** — `law-slm-board`; ROADMAP kontrol listesi kalktı, "iş → doğrulama" tabloları kaldı · kart elle kapanır (`closes #N` yalnız `master`'da çalışır, iş `talk-think`'te) · commit'lerde `refs #N` · etiketler alanı tekrarlamaz · *dal maddeleri değişti → [0111](kararlar-0064-0085.md#adr-0111)* |
 | [0109](kararlar-0064-0085.md#adr-0109) | 🟢 | **vLLM ölçüme alınmadı** — aynı Q4 ağırlığıyla −3,6 p ve ±2,25 p (5 koşu) · seçim ve nihai ölçüm llama.cpp + Q4 · vLLM yalnız GRPO üretimi (Haziran 2027) · 0107'nin m.1 ve m.3'ünü geri alır |
+| [0110](kararlar-0064-0085.md#adr-0110) | 🟢 | **Yapay zekâ imzası yok; geçmiş temizlendi** — 73 commit'in 70'inden 138 imza satırı silindi, ağaçlar aynı · `v0.5` taşındı · eski geçmiş `~/yedek/HakHukuk-2026-10-16-imzali.bundle` · 8 dosyada 25 hash atfı yenilendi (eski izi onarmama kuralına onaylı istisna) |
+| [0111](kararlar-0064-0085.md#adr-0111) | 🟢 | **Dal düzeni: `develop` çalışma, `master` yayın** — `talk-think` → `develop`, PR #70 birleştirilmedi · büyük iş `develop`'tan açılan `<kart-no>-<kısa-ad>` dalında, PR ile döner · yalnız merge commit · sürümde `develop` → `master` + etiket · 0108'in dal maddelerinin yerine geçer |
 
 ---
 
