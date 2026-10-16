@@ -11,8 +11,8 @@ import re
 KOK = pathlib.Path(__file__).resolve().parents[2]
 # Canlı belgeler — tarihsel kayıt (docs/record, docs/adr) ve planlar hariç.
 CANLI = ["CLAUDE.md", "README.md", "docs/README.tr.md", "MODEL_CARD.md",
-         "docs/README.md", "docs/PRODUCT.md", "docs/ROADMAP_v1.md", "docs/MIMARI.md",
-         "docs/YENIDEN_URETIM.md", "docs/YAYIN_YOL_HARITASI.md", "docs/EGITIM_ORTAMI.md"]
+         "docs/README.md", "docs/urun/PRODUCT.md", "docs/yol_haritasi/ROADMAP_v1.md", "docs/urun/MIMARI.md",
+         "docs/yontem/YENIDEN_URETIM.md", "docs/yol_haritasi/YAYIN_YOL_HARITASI.md", "docs/yontem/EGITIM_ORTAMI.md"]
 # Markdown bağlantısı; http(s), mailto ve saf çapa (#…) atlanır.
 _LINK = re.compile(r"\[[^\]]*\]\((?!https?://|mailto:|#)([^)\s]+)\)")
 
@@ -41,13 +41,13 @@ def test_canli_belgelerde_kirik_baglanti_yok():
 
 def test_uc_belge_de_var():
     """Faz 3'ün varlık sebebi: bu üçü 2026-09-06'da silinmişti ve yerine hiçbir şey yoktu."""
-    for ad in ("docs/PRODUCT.md", "docs/ROADMAP_v1.md", "docs/MIMARI.md"):
+    for ad in ("docs/urun/PRODUCT.md", "docs/yol_haritasi/ROADMAP_v1.md", "docs/urun/MIMARI.md"):
         assert (KOK / ad).exists(), f"{ad} yok"
 
 
 def test_mimari_her_urun_modulunu_var_olan_dosyaya_baglıyor():
     """MIMARI.md'nin ürün tablosu gerçek dosyaları göstermeli — kutu ≠ niyet."""
-    metin = (KOK / "docs" / "MIMARI.md").read_text(encoding="utf-8")
+    metin = (KOK / "docs" / "urun" / "MIMARI.md").read_text(encoding="utf-8")
     for alt, modul in (("cekirdek", "istem.py"), ("cekirdek", "tipler.py"), ("cekirdek", "terazi.py"),
                        ("cekirdek", "servis.py"), ("arayuz", "cli.py"), ("arayuz", "tui.py")):
         assert modul in metin, f"MIMARI.md {modul}'yi anmıyor"

@@ -210,8 +210,8 @@ python -c "from transformers import AutoConfig; print(type(AutoConfig.from_pretr
 # ({"input_ids": [ids]}) ve ortam_kilidi.maske_bloklari / maske_ihlalleri
 ```
 
-**Okuma:** [`YAYIN_YOL_HARITASI.md`](../YAYIN_YOL_HARITASI.md) §2.4'ün "paket kilidi" maddesi ve
-[`EGITIM_ORTAMI.md`](../EGITIM_ORTAMI.md) §6 m.6'nın öngördüğü durum gerçekleşti: Gemma, Qwen'in
+**Okuma:** [`YAYIN_YOL_HARITASI.md`](../yol_haritasi/YAYIN_YOL_HARITASI.md) §2.4'ün "paket kilidi" maddesi ve
+[`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAMI.md) §6 m.6'nın öngördüğü durum gerçekleşti: Gemma, Qwen'in
 kilidiyle eğitilemiyor. Kural gereği Qwen'in kilidine dokunulmaz, Gemma'nın kilidi ayrı yazılır; bu da iki
 modelin farklı paket sürümleriyle eğitilmesi demek ve makalede sınırlılık olarak yazılır. Hangi sürümün
 seçileceği kullanıcı kararı (F0.9).
@@ -505,7 +505,7 @@ Bir ay krediyi aşarsa m.4'ün kuralı o ay için Vast'ı seçer. Doğrulanmamı
 makineye paralel bölünebilir. Tek sunucuda paralel slot yine yasak.
 
 **Okuma:** dondurulmuş bağlam ve sabit sunucuyla kiralık kartta üretim deterministik. "Aynı girdi farklı cevap
-veriyor" notu ([`YENIDEN_URETIM.md`](../YENIDEN_URETIM.md)) dizüstü için kaydedilmişti; A10'da üç koşuda bir kez
+veriyor" notu ([`YENIDEN_URETIM.md`](../yontem/YENIDEN_URETIM.md)) dizüstü için kaydedilmişti; A10'da üç koşuda bir kez
 bile görülmedi. Dizüstüyle fark büyük: kayıttaki dizüstü cevapları ile kiralık kart cevapları arasında kalem
 düzeyinde kıyas yapılamaz. ADR-0097 m.1'in "tek kart tipi" kuralının neden zorunlu olduğu bu tabloda görülüyor.
 

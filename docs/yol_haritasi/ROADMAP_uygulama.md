@@ -1,8 +1,8 @@
 # ROADMAP uygulama: ajan uygulaması hattı
 
-> **Bu belge ne:** [ADR-0104](adr/kararlar-0064-0085.md#adr-0104) ve [ADR-0105](adr/kararlar-0064-0085.md#adr-0105)'in kararlarını iş adımlarına çevirir.
-> *Neden* ADR'de ve [`tasarım taslağında`](superpowers/specs/2026-10-15-uygulama-hatti-tasarim.md), *ne zaman ve
-> hangi sırayla* burada. Girdi: [`knowledge/mike-tarama/`](../knowledge/mike-tarama/README.md).
+> **Bu belge ne:** [ADR-0104](../adr/kararlar-0064-0085.md#adr-0104) ve [ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)'in kararlarını iş adımlarına çevirir.
+> *Neden* ADR'de ve [`tasarım taslağında`](../superpowers/specs/2026-10-15-uygulama-hatti-tasarim.md), *ne zaman ve
+> hangi sırayla* burada. Girdi: [`knowledge/mike-tarama/`](../../knowledge/mike-tarama/README.md).
 > Makale hattı ([`ROADMAP_v1.md`](ROADMAP_v1.md)) ayrıdır; bu hat onu bozmaz.
 >
 > **Biçim:** her iş `iş → doğrulama`; doğrulaması geçmeyen iş bitmiş sayılmaz. Tarihler hedeftir, ölçüm değildir.
@@ -13,16 +13,16 @@
    zaten bu sınıra dayanır, Haziran–Eylül 2027 Makale 1'in yazımıdır ([`YAYIN_YOL_HARITASI.md`](YAYIN_YOL_HARITASI.md) §5),
    Ocak–Haziran 2028 tez ve Makale 2'nin yazımıdır (§3.6). Bu hat aradaki boşlukta, Ekim–Aralık 2027'de yürür. Takvim
    geriye kayarsa ilk kesilen bu hattır.
-2. **Ürün yolu = ölçüm yolu** ([ADR-0080](adr/kararlar-0064-0085.md#adr-0080)); araçlı koşu kapı koşusuna girmez
-   ([ADR-0076](adr/kararlar-0064-0085.md#adr-0076) Karar 4) ve hiçbir yayımlanan sayıya karışmaz.
+2. **Ürün yolu = ölçüm yolu** ([ADR-0080](../adr/kararlar-0064-0085.md#adr-0080)); araçlı koşu kapı koşusuna girmez
+   ([ADR-0076](../adr/kararlar-0064-0085.md#adr-0076) Karar 4) ve hiçbir yayımlanan sayıya karışmaz.
 3. **Araç kullanımının eğitimi Checkpoint 2'den sonra ayrı bir ürün turudur** ve yalnız araç çağırma ölçümü (U1.0)
-   açık bir boşluk gösterirse açılır; Makale 2'nin ödülüne girmez ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)).
+   açık bir boşluk gösterirse açılır; Makale 2'nin ödülüne girmez ([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)).
 4. **Model bir parametredir:** uygulama Checkpoint 1'in kazananına bağlanır (F3.6, F3b); hedef şimdilik `tgta_v1`.
 5. Her dilim başlarken kendi uygulama planı yazılır (`docs/superpowers/plans/`, en çok bir canlı plan,
-   [ADR-0056](adr/kararlar-0045-0063.md#adr-0056)); makale hattının canlı planıyla aynı anda iki plan olmaz.
+   [ADR-0056](../adr/kararlar-0045-0063.md#adr-0056)); makale hattının canlı planıyla aynı anda iki plan olmaz.
 6. **Dilimler sıralıdır:** A → B → C. Hiçbir dilim başka bir dilimle ya da tez yazımıyla aynı anda yürümez. Ocak
    2028'de tez yazımı başlayınca hat nerede kaldıysa durur, savunmadan sonra (yaz 2028) kaldığı yerden devam eder
-   ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)).
+   ([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)).
 
 ## Kontrol listesi
 
@@ -82,4 +82,4 @@ Diğer işlerin doğrulaması dilimin kendi planında yazılır.
 ## Bu hattın dışında
 
 Canlı `bedesten` API (B6), tazelik boru hattı, barındırma (S9), kapsam genişlemesi (40.496 → ~288 bin madde) ve
-araç kullanımının eğitimi: Checkpoint 2'den sonra ([`ROADMAP_v1.md`](ROADMAP_v1.md) §9, [ADR-0105](adr/kararlar-0064-0085.md#adr-0105)).
+araç kullanımının eğitimi: Checkpoint 2'den sonra ([`ROADMAP_v1.md`](ROADMAP_v1.md) §9, [ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)).

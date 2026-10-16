@@ -2,11 +2,11 @@
 
 > HakHukuk'tan iki hakemli makaleye ve yüksek lisans tezine giden proje planı. Checkpoint 1'in iş
 > adımları ve doğrulamaları: [`ROADMAP_v1.md`](ROADMAP_v1.md); işlerin durumu: [`law-slm-board`](https://github.com/users/Rfetha/projects/3)
-> panosu ([ADR-0108](adr/kararlar-0064-0085.md#adr-0108)). Eğitim ortamının
+> panosu ([ADR-0108](../adr/kararlar-0064-0085.md#adr-0108)). Eğitim ortamının
 > kilitli değerleri:
-> [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Her aşama başlarken kendi uygulama planı yazılır
-> (en çok bir canlı plan, [ADR-0056](adr/kararlar-0045-0063.md#adr-0056)); bu belgedeki kararlar
-> karar defterine [ADR-0089](adr/kararlar-0064-0085.md#adr-0089)–[0097](adr/kararlar-0064-0085.md#adr-0097)
+> [`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAMI.md). Her aşama başlarken kendi uygulama planı yazılır
+> (en çok bir canlı plan, [ADR-0056](../adr/kararlar-0045-0063.md#adr-0056)); bu belgedeki kararlar
+> karar defterine [ADR-0089](../adr/kararlar-0064-0085.md#adr-0089)–[0097](../adr/kararlar-0064-0085.md#adr-0097)
 > olarak işlendi.
 >
 > "Tahmin" yazan sayılar kayıttaki koşu sürelerinden ve 2026-10-10 tarihli web fiyatlarından
@@ -15,9 +15,9 @@
 > 2026-10-10 fizibilite turu bu sürüme işlendi: iki Modal hesabı ve kredi kuralı · τ_g/τ_a
 > seed'lerinin dondurmayı beklememesi · tek kolların testte tek seed'le ölçülmesi ve kazananın üç
 > yoldan seçilmesi · dizüstü yükünün ve takvimin öne çekilmesi · GRPO'nun 2027 yazında başlaması
-> ([ADR-0096](adr/kararlar-0064-0085.md#adr-0096)).
+> ([ADR-0096](../adr/kararlar-0064-0085.md#adr-0096)).
 >
-> 2026-10-11: ölçüm dizüstünden tek tip kiralık karta taşındı ([ADR-0097](adr/kararlar-0064-0085.md#adr-0097)).
+> 2026-10-11: ölçüm dizüstünden tek tip kiralık karta taşındı ([ADR-0097](../adr/kararlar-0064-0085.md#adr-0097)).
 
 ---
 
@@ -64,7 +64,7 @@ yazma tatillerde · toplam bütçe $100-500 · eğitim iki Modal hesabında (ayl
 
 **Kapsam dışı.** "Türkçe hukuk asistanı" anlatısı (yalnız deney ortamıdır) · Checkpoint 1'de rakip
 (kapalı) modeller · HMGS ve kapalı-kitap sınavlar (ezberi ölçer; ezber anti-hedeftir,
-[ADR-0027](adr/kararlar-0027-0044.md#adr-0027)) · RS-FT ([ADR-0035](adr/kararlar-0027-0044.md#adr-0035))
+[ADR-0027](../adr/kararlar-0027-0044.md#adr-0027)) · RS-FT ([ADR-0035](../adr/kararlar-0027-0044.md#adr-0035))
 · korpus genişletme turu (Checkpoint 2'den sonra, §4.4) · ara yayın.
 
 ---
@@ -74,21 +74,21 @@ yazma tatillerde · toplam bütçe $100-500 · eğitim iki Modal hesabında (ayl
 ### 2.1 Araştırma soruları
 
 **RQ1 — post-training.** Temellendirme (RAFT biçimli SFT) ile çekinme (ORPO) küçük modelde çatışır:
-τ_g tek başına M2b'de 0,506, τ_a tek başına kütlede %41,2 ([`kollar.md`](record/kollar.md) satır
+τ_g tek başına M2b'de 0,506, τ_a tek başına kütlede %41,2 ([`kollar.md`](../record/kollar.md) satır
 303-304). Aynı veriyle dört yol karşılaştırılır — tek kollar · ayrı kollar + ham TIES · tek eğitimde
 birlikte öğretme · ardışık eğitim — ve bu karşılaştırma **iki temel modelde** (Qwen3.5-4B, Gemma 4 E4B)
 tekrarlanır. Alt soru: yöntemlerin sıralaması temel modele göre değişiyor mu?
 Karar kuralı ön-kayıtlıdır: Kapı 5, `min(temellendirme, çekinme)` bileşiği
-([ADR-0037](adr/kararlar-0027-0044.md#adr-0037)); formül korunur, eşikler yeni birimde yeniden
+([ADR-0037](../adr/kararlar-0027-0044.md#adr-0037)); formül korunur, eşikler yeni birimde yeniden
 türetilir; tek kollar yalnız 3407'de ölçüldüğü için Kapı 5 her yolda seed 3407'de, aynı seed'in tek
 kollarına göre uygulanır.
 
 **RQ2 — ölçüm.** RQ1'in hükümlerinden hangileri eski alet ile düzeltilmiş alet arasında yön
 değiştirir? Kayıttaki dört vaka Tablo 2'nin ilk satırlarıdır: önsözün etkisi +1,5 → −4,6 puan
-([ADR-0058](adr/kararlar-0045-0063.md#adr-0058)) · `k=10` kapı hükmü ret → kabul
-([#54](record/kronoloji-53-62.md#54)) · ara kapının ikinci gözlemi geçti → düştü
-([ADR-0045](adr/kararlar-0045-0063.md#adr-0045)) · birleştirmenin M2 katkısı +0,020 → +0,000
-([`kollar.md`](record/kollar.md) satır 319-332). Kapsam: puanlama tarafındaki düzeltmeler (çekinme
+([ADR-0058](../adr/kararlar-0045-0063.md#adr-0058)) · `k=10` kapı hükmü ret → kabul
+([#54](../record/kronoloji-53-62.md#54)) · ara kapının ikinci gözlemi geçti → düştü
+([ADR-0045](../adr/kararlar-0045-0063.md#adr-0045)) · birleştirmenin M2 katkısı +0,020 → +0,000
+([`kollar.md`](../record/kollar.md) satır 319-332). Kapsam: puanlama tarafındaki düzeltmeler (çekinme
 dedektörü · hakeme giden kaynak kırpması · kapı çıpası · hakem değişikliği) bütün kollarda tek tek açılıp
 kapatılır; üretim tarafındaki eski hâl (`RRF_K` 60 + yeterlilik önsözü) yalnız birincil karşılaştırmada,
 iki temel model × 1 seed için üretilir. Soru kümesi ve bileşim kusurları yeni testte baştan düzeltildiği
@@ -138,10 +138,10 @@ ham model ── SFT ──► τ_g ── tabana gömülür ── taze adaptö
 Birlikte eğitim, birleştirmenin kullandığı bilginin tamamını (ORPO'nun reddedilen tarafı dahil)
 kullanır; bu yüzden adil bir rakiptir. Bunun için yeni eğitim kodu yazılır.
 
-**Seed'ler.** 3407 · 3408 · 3409 ([`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md)). Qwen'de 3407 seed'inin τ_g
+**Seed'ler.** 3407 · 3408 · 3409 ([`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAMI.md)). Qwen'de 3407 seed'inin τ_g
 ve τ_a kolları eldeki `tg_v1` ve `ta_v1` adaptörleridir, yeniden eğitilmez; τ_g'nin veri klasörü
 künyede kayıtlı olmadığı, davranışsal kanıtın `raft_scrubbed`'ı gösterdiği
-([`kollar.md`](record/kollar.md) satır 109-120) makalede yazılır. F0'da τ_g v1'in hassasiyet rejimi
+([`kollar.md`](../record/kollar.md) satır 109-120) makalede yazılır. F0'da τ_g v1'in hassasiyet rejimi
 yeniden üretilemezse 3407 seed'i de yeniden eğitilir ve `v1` yalnız ürün olarak kalır. τ_g ve τ_a her
 seed'de eğitilir, çünkü birleştirme kolu onlardan yapılır; ama testte tek kol olarak yalnız 3407 ile
 ölçülür: zaafları seed gürültüsünün çok üstündedir (τ_g tek başına M2b'de 0,506, τ_a kütlede %41,2)
@@ -154,11 +154,11 @@ gücü 0,1 ve 0,3. Birlikte eğitim tam ORPO kaybını (τ_a ile aynı biçim) S
 kullanır; çiftler eşit maruziyetle 5 epoch görünür. Ardışık kolda τ_g tabana gömülür ve ORPO τ_a'nın
 tarifiyle taze adaptörle eğitilir; birleştirme koluyla tek fark başlangıç noktasıdır. Reddedilen cevap
 havuzu ham modelden toplandığı için ardışık kol için kendi çıktısı değildir
-([ADR-0042](adr/kararlar-0027-0044.md#adr-0042)); bu, ardışık kolun aleyhine bir sınırlılık olarak
+([ADR-0042](../adr/kararlar-0027-0044.md#adr-0042)); bu, ardışık kolun aleyhine bir sınırlılık olarak
 yazılır. **DEV seçimi:** iki ayardan DEV kütlesi yüksek olan seçilir, ama düşünce koruma kapısını
 (§2.5.4) DEV'de geçmesi şarttır; fark DEV'in gürültü tabanından küçükse 0,1 seçilir. Birleştirme ailesinin DEV
 iterasyonu Qwen'de yapılmıştır (ham, norm-min, norm-ortalama, modül-başına;
-[ADR-0052](adr/kararlar-0045-0063.md#adr-0052), [ADR-0053](adr/kararlar-0045-0063.md#adr-0053));
+[ADR-0052](../adr/kararlar-0045-0063.md#adr-0052), [ADR-0053](../adr/kararlar-0045-0063.md#adr-0053));
 Gemma'da birleştirme ham TIES ve norm-min ile denenir. Denenen bütün yapılandırmaların DEV sonuçları
 eke girer; Qwen'de birleştirmeye 4, diğer yöntemlere 2 ayar düşmesi sınırlılık olarak yazılır.
 
@@ -172,7 +172,7 @@ yalnız cevabı olan sorularda ölçülür ve gerektiği yerde reddetmemeyi gör
 kütlede öne geçebilir. Ayrıca şu dört kapıyı geçmesi şarttır:
 1. düşünce koruma eşiğini kendi ham modeline göre geçer (§2.5.4);
 2. yanlış maddeye dayanma, `tgta_v1`'in aynı testteki değerinden kötü değildir;
-3. Q4_K_M'de 4.096 bağlamda **≤8 GB VRAM** ([ADR-0018](adr/gemma4-12b-dersler.md#adr-0018));
+3. Q4_K_M'de 4.096 bağlamda **≤8 GB VRAM** ([ADR-0018](../adr/gemma4-12b-dersler.md#adr-0018));
 4. lisansı açık ve ürünün Apache-2.0 dağıtımıyla uyumludur.
 
 Ürün yalnız kazananın kütlesi (seed ortalaması) `tgta_v1`'i soru düzeyinde eşleştirilmiş bootstrap'ta
@@ -193,13 +193,13 @@ bilinen notlar:
 | madde | not |
 | :--- | :--- |
 | llama.cpp desteği | metin ve görüntü desteği duyuruda var (HF blog) |
-| şablon render'ı gözle | bu ailenin `enable_thinking` dalı 12B hattında sessizce bozulmuştu ([`gemma4-12b-dersler.md`](adr/gemma4-12b-dersler.md) A4.2) |
-| turn işaretleri | assert edilir ([ADR-0026](adr/gemma4-12b-dersler.md#adr-0026)) |
+| şablon render'ı gözle | bu ailenin `enable_thinking` dalı 12B hattında sessizce bozulmuştu ([`gemma4-12b-dersler.md`](../adr/gemma4-12b-dersler.md) A4.2) |
+| turn işaretleri | assert edilir ([ADR-0026](../adr/gemma4-12b-dersler.md#adr-0026)) |
 | eğitim yığını | Unsloth ve TRL desteği duyuruda var; A100'de pilotla doğrulanır |
 | kuantizasyon | Q4_K_M; dosya boyutu ve VRAM ölçülür (kazanan kapısı 3) |
-| lisans | HF duyurusu "Apache 2" diyor, kayıt "Apache-2.0'ın üstüne Prohibited Use Policy" diyor ([#39](record/kronoloji-39-52.md#39)); lisans dosyası okunarak çözülür (kazanan kapısı 4) |
+| lisans | HF duyurusu "Apache 2" diyor, kayıt "Apache-2.0'ın üstüne Prohibited Use Policy" diyor ([#39](../record/kronoloji-39-52.md#39)); lisans dosyası okunarak çözülür (kazanan kapısı 4) |
 | düşünce davranışı | ham modelin kendi kapatma ve döngü oranı eğitimden önce ölçülür; zorunlu kapatma Gemma'nın kapanış işaretine göre parametrelenir |
-| LoRA hedefleri | yalnız metin kulesi; görüntü ve ses kuleleri dışarıda ([ADR-0030](adr/kararlar-0027-0044.md#adr-0030)'daki `all-linear` tuzağının eşi) |
+| LoRA hedefleri | yalnız metin kulesi; görüntü ve ses kuleleri dışarıda ([ADR-0030](../adr/kararlar-0027-0044.md#adr-0030)'daki `all-linear` tuzağının eşi) |
 | Türkçe taban | ham modelle DEV'de tek M1 koşusu; kaydedilir. Kapı maddesi yalnız cevap dilidir (≥%90 Türkçe) |
 | paket kilidi | `transformers` 5.10.2 ve `unsloth` 2026.6.1 Gemma 4'ün çıkışından (2026-03-31) sonra; aynı kilidin iki modeli taşıdığı A100 pilotunda doğrulanır. Gemma başka sürüm isterse Qwen'in kilidine dokunulmaz, Gemma'nın kilidi ayrı yazılır |
 
@@ -210,7 +210,7 @@ bilinen notlar:
 #### 2.5.1 Test kümesi
 
 - **Bileşim:** eski donmuş TEST (40 temel + 35 tuzak; yalnız `tgta_v1` için bir kez açıldı,
-  [ADR-0077](adr/kararlar-0064-0085.md#adr-0077), üzerinde hiçbir seçim yapılmadı) + ~200-225 yeni
+  [ADR-0077](../adr/kararlar-0064-0085.md#adr-0077), üzerinde hiçbir seçim yapılmadı) + ~200-225 yeni
   soru; toplam ~200 temel + ~100 tuzak. Sonuçlar iki parça için ayrıca da raporlanır.
 - **Mühürlü parça:** ~100 soru, Checkpoint 2'nin sonuna kadar açılmaz.
 - **Saklama:** asıl test ve mühürlü parça ayrı, parolalı şifreli arşivlerdir; özel HF deposunda ve
@@ -219,10 +219,10 @@ bilinen notlar:
   okuyamaz. Asıl test Makale 1 gönderildikten sonra, mühürlü parça Checkpoint 2'nin sonunda yayımlanır.
   Eski CANON (40 + 35) zaten açık depodadır ve olduğu gibi kalır.
 - **Yeni soruların kuralları:** kanun ve madde uzunluğuna göre katmanlı (DEV↔TEST arama tavanı
-  farkının %81'i madde uzunluğu bileşiminden geliyordu, [ADR-0069](adr/kararlar-0064-0085.md#adr-0069);
-  kabul testinde kütle düşüşünün %76'sı bu tavanla açıklandı, [`MODEL_CARD.md`](../MODEL_CARD.md)
+  farkının %81'i madde uzunluğu bileşiminden geliyordu, [ADR-0069](../adr/kararlar-0064-0085.md#adr-0069);
+  kabul testinde kütle düşüşünün %76'sı bu tavanla açıklandı, [`MODEL_CARD.md`](../../MODEL_CARD.md)
   §5.4) · tek başına anlaşılır (eski soruların ~%22'si belirsizdi,
-  [#53](record/kronoloji-53-62.md#53)) · eğitim verisiyle örtüşme denetimi üç düzeyde: soru
+  [#53](../record/kronoloji-53-62.md#53)) · eğitim verisiyle örtüşme denetimi üç düzeyde: soru
   yakın-kopyası, altın maddenin eğitim verisinde altın olarak geçmesi, üretici şablonu.
 - **Etiketler ve dilimler:** görev tipi (madde ne diyor · koşul/istisna · vaka uygulaması ·
   sayı/süre) · ~50 sorunun hukuk terimi kullanmayan vatandaş dilinde yeniden ifadesi (ikincil eksen;
@@ -241,14 +241,14 @@ bilinen notlar:
   (`grounded_qa` test bölümü) geldiği için eski ↔ yeni parça ayrımı "eğitimde görülmüş üretici
   şablonu" kırılımını da verir.
 - **Çözünürlük:** %10'luk bir oran için güven aralığı genişliği n=80'de 13,4 puan
-  ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) EK-2), n=200'de ~8 puan (hesap).
+  ([ADR-0083](../adr/kararlar-0064-0085.md#adr-0083) EK-2), n=200'de ~8 puan (hesap).
 
 #### 2.5.2 Hakemler
 
 - **Bağlayıcı hakem DeepSeek V4.1 Flash'tır** (tarihli sürüm `deepseek-v4.1-flash-20260910`;
   OpenRouter'da sağlayıcı sabit, yedek sağlayıcıya düşme kapalı) ve bütün kolları puanlar.
   `gpt-4o-mini`'den geçişin üç gerekçesi: küçük hakemin cevaba çapalanması (22,3 puan; `gpt-4o`
-  8,4, [#45](record/kronoloji-39-52.md#45)) · eğitim verisini `gpt-4o-mini`'nin üretmiş olması
+  8,4, [#45](../record/kronoloji-39-52.md#45)) · eğitim verisini `gpt-4o-mini`'nin üretmiş olması
   (öğretmen ile hakemin aynı model olması) · emeklilik riski. `v0.5` (eski adıyla `v1.0`) sayıları `gpt-4o-mini`
   damgasıyla olduğu gibi kalır.
 - **Hakemin düşünme modu** F1.4 pilotunda seçilir. Kural pilottan önce yazılır: düşünme açık mod
@@ -294,7 +294,7 @@ Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-ger
 - **Rapor:** insan↔insan (κ, Krippendorff α) · insan↔hakem · insan↔çekinme dedektörü · insan↔ajan
   uyumu (yüzde uyum, κ, sınıf başına precision/recall). Kalan cevapları
   bu aletler puanlar. İsabetsiz atıfın otomatik vekili olmadığı ölçülmüştür
-  ([ADR-0066](adr/kararlar-0064-0085.md#adr-0066)); bu eksende ajan-okuyucu kullanılır ve insanla
+  ([ADR-0066](../adr/kararlar-0064-0085.md#adr-0066)); bu eksende ajan-okuyucu kullanılır ve insanla
   uyumu raporlanır.
 
 #### 2.5.4 Düşünce koruma
@@ -302,18 +302,18 @@ Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-ger
 | ölçü | alet |
 | :--- | :--- |
 | kendi kapatma oranı | zorunlu kapatma sayacı |
-| döngü oranı | kuyruk-tekrarı dedektörü ([ADR-0073](adr/kararlar-0064-0085.md#adr-0073)) |
+| döngü oranı | kuyruk-tekrarı dedektörü ([ADR-0073](../adr/kararlar-0064-0085.md#adr-0073)) |
 | düşünce izi ↔ cevap tutarlılığı | hakem; insan örnekleminde doğrulanır |
 | iz dili | deterministik |
 | genel akıl yürütme kaybı | Global-MMLU Türkçe 100 + GSM8K 100; hakemsiz (deterministik doğru/yanlış), düşünce açık, ölçüm kartında; üç yolda bütün seed'ler, tek kollarda 3407, iki ham model |
 
-Çıpa her temel modelin kendi ham hâlidir ([ADR-0039](adr/kararlar-0027-0044.md#adr-0039)). **Kapı:**
+Çıpa her temel modelin kendi ham hâlidir ([ADR-0039](../adr/kararlar-0027-0044.md#adr-0039)). **Kapı:**
 kol, iki genel kümenin ortalamasında ham modelinden en çok 5 puan düşüktür (seed ortalaması, nokta
 tahmini) ve döngü oranı ham modelden en çok 2 puan fazladır. Kendi kapatma oranı kapı olamaz, çünkü
 ham model M1'de düşüncesini hiç kendi kapatmıyor; kendi kapatma, iz dili ve iz ↔ cevap tutarlılığı
 raporlanır (Makale 2'nin hizalama hedefleri). Risk kayıtta görünür: τ_a düşüncesini hiç kendi kapatmıyor (230/230 zorla,
-[#48](record/kronoloji-39-52.md#48)); birleştirme bunu kısmen geri kazanıyor (M1'de 25/80 zorla, ham
-model 80/80, [`kollar.md`](record/kollar.md) satır 334-335).
+[#48](../record/kronoloji-39-52.md#48)); birleştirme bunu kısmen geri kazanıyor (M1'de 25/80 zorla, ham
+model 80/80, [`kollar.md`](../record/kollar.md) satır 334-335).
 
 #### 2.5.5 İstatistik
 
@@ -327,10 +327,10 @@ kurulur; ayrılmazsa "bağımlılığa kanıt yok" yazılır, "aynı" denmez.
 #### 2.5.6 Ölçüm ortamı
 
 Bütün üretimler tek tip kiralık kartta, aynı llama.cpp sürümüyle ve konteynerin kilitli bayraklarıyla
-koşar ([ADR-0078](adr/kararlar-0064-0085.md#adr-0078), [ADR-0097](adr/kararlar-0064-0085.md#adr-0097)); DEV ve test
+koşar ([ADR-0078](../adr/kararlar-0064-0085.md#adr-0078), [ADR-0097](../adr/kararlar-0064-0085.md#adr-0097)); DEV ve test
 kendi içinde tek kart tipindedir. Kart tipini ve platformu F0'daki pilot seçer; kullanıcının bilgisayarı
 GPU kapasitesi olarak sayılmaz. KV önbelleği ayarı bile cevapların %81'ini değiştirdiği için
-([#66](record/kronoloji-63-71.md#66)) bayraklar konteynerde kilitlidir; getirilen bağlamlar `sha256`'sıyla
+([#66](../record/kronoloji-63-71.md#66)) bayraklar konteynerde kilitlidir; getirilen bağlamlar `sha256`'sıyla
 dondurulur. Yük ~185-190 dizüstü saatine denktir (test cevapları ~147 · RQ2'nin üretim tarafı ~25-30 ·
 genel kümeler ~14; tahmin). Test cevapları, test dondurulunca kollar hazır oldukça paralel üretilir ve
 şifreli saklanır; kimse okumaz, puanlamaz. **"Test açıldı" anı puanlamanın başladığı andır** ve kayıtta
@@ -366,7 +366,7 @@ giderse bir önceki ARR döngüsüne gönderilir. Her aşamanın iş adımları 
 | test üretimi, kör payda, RQ2 yeniden puanlaması | ~$5 |
 | F0: hakem kayma çıpası ve mevcut kolların DEV ölçümü · F3: kayma çıpasının tekrarı | ~$8 |
 | F1: DEV iterasyonunun puanlanması · önyargı sondası · insan pilotunun hakem tarafı | ~$8 |
-| ölçüm kartı (F0 pilotu + DEV + test; [ADR-0097](adr/kararlar-0064-0085.md#adr-0097)): Modal kredisine sığarsa $0, sığmazsa Vast | ≤$75 (tahmin ~$40-60) |
+| ölçüm kartı (F0 pilotu + DEV + test; [ADR-0097](../adr/kararlar-0064-0085.md#adr-0097)): Modal kredisine sığarsa $0, sığmazsa Vast | ≤$75 (tahmin ~$40-60) |
 | **nakit toplamı** | **~$61-67** + ölçüm kartı (≤$75) + OpenRouter kredi ücreti |
 
 Pilotta hakemin düşünme açık modu seçilirse hakem kalemleri ~2-3 kat artar (+$25-45).
@@ -378,14 +378,14 @@ insan doğrulamasında ücretli okuyucular (gönüllü bulunamazsa) · tek kolla
 
 GPU giderleri iki Modal hesabının aylık $30'ar kredisiyle Kasım 2026–Mart 2027'ye bölünür. τ_g ve τ_a'nın yeni seed'leri
 dondurmayı beklemez ve Kasım–Ocak'ın boştaki kredisiyle eğitilir; dondurmadan sonra yalnız birlikte
-ve ardışık seed'ler kalır. Kredi yetmezse kural [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'tedir:
+ve ardışık seed'ler kalır. Kredi yetmezse kural [`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAMI.md) §4'tedir:
 iş takvimi geciktirmeden bekleyebiliyorsa yeni ayın kredisi beklenir, geciktirecekse ~~ödenir; Vast
 eğitimde yalnız Modal kesintisinde~~ RunPod'da koşulur, Modal kesintisinde de yedek RunPod'dur (2026-10-14,
-[ADR-0101](adr/kararlar-0064-0085.md#adr-0101)).
+[ADR-0101](../adr/kararlar-0064-0085.md#adr-0101)).
 Birim fiyatlar: Modal A100-40GB $2,10/saat; SFT A100'de ~2,1 saat
-([ADR-0033](adr/kararlar-0027-0044.md#adr-0033)), ORPO 36,5 dakika ([#48](record/kronoloji-39-52.md#48));
+([ADR-0033](../adr/kararlar-0027-0044.md#adr-0033)), ORPO 36,5 dakika ([#48](../record/kronoloji-39-52.md#48));
 Gemma koşuları Qwen'in 1,5-2 katı varsayıldı. Gerçek API faturasının hesaplanan tutarın 1,596 katı
-çıktığı ölçülmüştür ([#64](record/kronoloji-63-71.md#64)).
+çıktığı ölçülmüştür ([#64](../record/kronoloji-63-71.md#64)).
 
 ### 2.8 Gönderim
 
@@ -399,9 +399,9 @@ iç hakem eksiği, gönderimden önce 1-2 dış okuyucuyla kapatılır.
 Checkpoint 1 bittiğinde tezin dört bölümü yazılabilir durumdadır: 1 giriş ve ilgili çalışmalar ·
 2 sistem (HakHukuk; arama katmanı, düşünce bütçesi, konteyner — eldeki iş) · 3 ölçüm dersleri
 (eldeki kayıt) · 4 post-training karşılaştırması (Makale 1). Checkpoint 2, 5. bölümü ekler.
-Ajan uygulamasının ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104)) teze girip girmeyeceği tez yazımının
+Ajan uygulamasının ([ADR-0104](../adr/kararlar-0064-0085.md#adr-0104)) teze girip girmeyeceği tez yazımının
 başında (Ocak 2028), omurganın durumu ve DEÜ kuralları (§6) belliyken karara bağlanır
-([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)).
+([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)).
 
 ---
 
@@ -411,12 +411,12 @@ başında (Ocak 2028), omurganın durumu ve DEÜ kuralları (§6) belliyken kara
 
 Checkpoint 1'in kazananı (temel model ve yöntem). Kazanan Gemma ise ürün de Gemma'ya geçer.
 Birleştirme hattı ürün için `v1`'de dondurulmuştur; RL, kazananın üstüne ardışık bir eğitimdir
-([ADR-0075](adr/kararlar-0064-0085.md#adr-0075)).
+([ADR-0075](../adr/kararlar-0064-0085.md#adr-0075)).
 
 ### 3.2 Ödül
 
 Atıf doğrulayıcı tek başına isabetsiz atıfı göremez: atıf yapılan madde gerçektir, yalnız soruya ait
-değildir ([ADR-0066](adr/kararlar-0064-0085.md#adr-0066)). Eğitim sorularının altın maddesi bilindiği
+değildir ([ADR-0066](../adr/kararlar-0064-0085.md#adr-0066)). Eğitim sorularının altın maddesi bilindiği
 için ödül hakemsiz kurulur:
 
 | durum | ödül |
@@ -439,9 +439,9 @@ karara bağlanır.
 ### 3.4 Koşu planı ve maliyet
 
 İlk iş ~$2-5'lik bir pilottur: kazanan model için vLLM üretiminin çalıştığını ve adım süresini ölçer.
-*2026-10-16: sunucu ölçümü için vLLM pilotu yapıldı ([#86](record/kronoloji-75-86.md#86), [ADR-0107](adr/kararlar-0064-0085.md#adr-0107)); Qwen3.5 vLLM 0.30.0'da hem
+*2026-10-16: sunucu ölçümü için vLLM pilotu yapıldı ([#86](../record/kronoloji-75-86.md#86), [ADR-0107](../adr/kararlar-0064-0085.md#adr-0107)); Qwen3.5 vLLM 0.30.0'da hem
 orijinal bf16 hem Q4'ten açılmış ağırlıkla çalışıyor, ama aynı ağırlıkla llama.cpp'den 3,6 puan düşük ve koşudan koşuya
-±2,25 puan oynuyor ([#87](record/kronoloji-87-98.md#87), [ADR-0109](adr/kararlar-0064-0085.md#adr-0109)): ölçümde kullanılmaz. GRPO'da ödül vLLM cevaplarından, değerlendirme
+±2,25 puan oynuyor ([#87](../record/kronoloji-87-98.md#87), [ADR-0109](../adr/kararlar-0064-0085.md#adr-0109)): ölçümde kullanılmaz. GRPO'da ödül vLLM cevaplarından, değerlendirme
 llama.cpp'den gelir; GRPO pilotu bu farkı ayrıca ölçer.*
 Ardından **pilot + ana GRPO 3 seed + 2 ablasyon** (isabet terimsiz ödül · çekinme terimsiz ödül)
 koşulur; tahmini ~$120-130. Pilotta birim maliyet orta senaryonun 1,5 katını aşarsa önce takvim
@@ -454,14 +454,14 @@ olur yalnız tampon da yetmezse. GRPO paketi bugünden seçilmez; pilottan sonra
 | orta, RAFT biçimli istem | 500 | ~10-13 sa | ~$22-28 |
 | uzun, ürün biçimli istem | 500 | ~19-24 sa | ~$40-50 |
 
-Dayanak: eğitim verimi A100'de 2.619 token/sn ([ADR-0033](adr/kararlar-0027-0044.md#adr-0033)) · cevap
+Dayanak: eğitim verimi A100'de 2.619 token/sn ([ADR-0033](../adr/kararlar-0027-0044.md#adr-0033)) · cevap
 ~800 token · soru başına 8 cevap · LoRA'lı GRPO. Pilot ve ödül ADR'si Haziran 2027'de, kazanan belli
 olur olmaz yapılır; koşular iki Modal hesabının kredisiyle (ayda ~$60) Temmuz 2027'de başlar ve
 ~Ekim 2027'de biter. Böylece Checkpoint 1'in GPU işi Mart'ta bittikten sonra Mayıs–Ekim 2027'de boşta
 kalacak kredi kullanılır.
 
 **İzleme ve ödül tasarımı ilkeleri** (ön-kayıt ADR'sine girer;
-[`knowledge/summary_rl_posttraining_survey.md`](../knowledge/summary_rl_posttraining_survey.md) §C):
+[`knowledge/summary_rl_posttraining_survey.md`](../../knowledge/summary_rl_posttraining_survey.md) §C):
 ödül bileşenleri (isabet · uydurma cezası · çekinme) ayrı fonksiyonlar olarak hesaplanır ve GDPO
 biçiminde ayrı ayrı normalize edilir · bütün cevapları aynı ödülü alan grupların oranı adım başına
 günlüğe yazılır, dinamik örnekleme eşiği ön-kayıttadır · referans modele KL çıpası korunur; KL ve
@@ -473,10 +473,10 @@ kapatılır · düşünce uzunluğu ödüllendirilmez · SFT ile RL'yi karışt�
 ### 3.5 Rakip karşılaştırması ve son sınav
 
 Kapalı modellerle karşılaştırma burada yapılır: o günün aynı sınıfları (Gemini Flash-Lite, Flash,
-Claude Sonnet), tarihli sürümler ([ADR-0020](adr/gemma4-12b-dersler.md#adr-0020)), eşit sınav
-([ADR-0057](adr/kararlar-0045-0063.md#adr-0057)), her yeni ailede çekinme dedektörünün kalibrasyonu,
-aile dışlaması ([ADR-0072](adr/kararlar-0064-0085.md#adr-0072)). Tahmini maliyet ~1.100 cevaplık
-testte Flash-Lite ~$2, Flash ~$11, Sonnet ~$16 + hakem ([`MODEL_CARD.md`](../MODEL_CARD.md) §5.1).
+Claude Sonnet), tarihli sürümler ([ADR-0020](../adr/gemma4-12b-dersler.md#adr-0020)), eşit sınav
+([ADR-0057](../adr/kararlar-0045-0063.md#adr-0057)), her yeni ailede çekinme dedektörünün kalibrasyonu,
+aile dışlaması ([ADR-0072](../adr/kararlar-0064-0085.md#adr-0072)). Tahmini maliyet ~1.100 cevaplık
+testte Flash-Lite ~$2, Flash ~$11, Sonnet ~$16 + hakem ([`MODEL_CARD.md`](../../MODEL_CARD.md) §5.1).
 Son sınav mühürlü ~100 soruluk parçadır.
 
 Konumlanmanın dayanacağı iki önceki çalışma Mart–Nisan 2027'de, ödül ADR'sinden önce okunur (ACL 2026): *"Mitigating Lost in
@@ -495,7 +495,7 @@ konferans) · *"Pause or Fabricate? Training Language Models for Grounded Reason
 | yaz 2028 | tez savunması | — |
 
 Ekim–Aralık 2027'de ayrı hatta ajan uygulamasının omurgası yürür (kullanıcı ~8-12 saat, tahmin); Ocak
-2028'de tez yazımı başlayınca hat durur ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)).
+2028'de tez yazımı başlayınca hat durur ([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)).
 
 ---
 
@@ -504,35 +504,35 @@ Ekim–Aralık 2027'de ayrı hatta ajan uygulamasının omurgası yürür (kulla
 ### 4.1 Eğitim ortamı
 
 Bütün eğitimler A100'de, kilitli paket sürümleri ve tarifle yapılır:
-[`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Ana platform Modal'dır: iki hesap, aynı
+[`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAMI.md). Ana platform Modal'dır: iki hesap, aynı
 imajla, aynı platform sayılır. Kredi yetmezse iş takvimi geciktirmeden bekleyebiliyorsa yeni ay beklenir,
 geciktirecekse ~~Modal'da ödenir; Vast yalnız Modal kesintisinde~~ RunPod'da koşulur, Modal kesintisinde de
-RunPod kullanılır (2026-10-14, [ADR-0101](adr/kararlar-0064-0085.md#adr-0101)); aynı Docker imajıyla, eşdeğerlik kontrolünden sonra ve bütün
+RunPod kullanılır (2026-10-14, [ADR-0101](../adr/kararlar-0064-0085.md#adr-0101)); aynı Docker imajıyla, eşdeğerlik kontrolünden sonra ve bütün
 bir seed bloğuyla kullanılır (platform yöntemle değil seed'le değişir). Makalenin ekinde hangi kolun
 nerede eğitildiği yazılır.
 
 ### 4.2 Yedekler
 
 Eski git geçmişinin tek kopyası olan `~/yedek/HakHukuk-2026-10-10.bundle`
-([ADR-0088](adr/kararlar-0064-0085.md#adr-0088)) ile Makale 1'in 3407 seed'i olan `outputs/tg_v1` ve
+([ADR-0088](../adr/kararlar-0064-0085.md#adr-0088)) ile Makale 1'in 3407 seed'i olan `outputs/tg_v1` ve
 `outputs/ta_v1` adaptörleri F0'ın ilk işinde ikinci bir kopyaya alınır (harici disk ya da özel HF
-deposu). Bu, adaptörlerin yedeklenmeyeceğini söyleyen [ADR-0034](adr/kararlar-0027-0044.md#adr-0034)'ü
+deposu). Bu, adaptörlerin yedeklenmeyeceğini söyleyen [ADR-0034](../adr/kararlar-0027-0044.md#adr-0034)'ü
 değiştiren yeni bir ADR ile kayda geçer. Yeni seed'lerin adaptörleri de aynı biçimde yedeklenir.
 
 ### 4.3 Kayıt disiplini
 
 Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; her koşunun künyesi
-(`KUNYE.json`) [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §5'teki alanları taşır.
+(`KUNYE.json`) [`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAMI.md) §5'teki alanları taşır.
 
 ### 4.4 Ürün yol haritasıyla ilişki
 
 | ürün işi (eski `superpowers/00-IS-SIRASI.md`; dosya 2026-10-10'da silindi) | yeri |
 | :--- | :--- |
 | `v2-RL-GRPO` | Checkpoint 2 (Makale 2) |
-| korpus turu (40.496 → ~288 bin madde) | Checkpoint 2'den sonra; korpus değişince eşit sınav ve yayımlanan sayılar askıya alınır ([ADR-0083](adr/kararlar-0064-0085.md#adr-0083) §E.6) ve mühürlü test aynı korpusa bağlıdır |
+| korpus turu (40.496 → ~288 bin madde) | Checkpoint 2'den sonra; korpus değişince eşit sınav ve yayımlanan sayılar askıya alınır ([ADR-0083](../adr/kararlar-0064-0085.md#adr-0083) §E.6) ve mühürlü test aynı korpusa bağlıdır |
 | açık kusurlar 5a · 23 · 27 · 31 | ürün iş listesinde |
-| ajan uygulaması (omurga, belgeler, üretim) | ayrı hat; omurga Ekim–Aralık 2027 (Makale 1 gönderildikten sonra), dilimler sıralı, tez yazımında durur ve savunmadan sonra devam eder; [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0104](adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](adr/kararlar-0064-0085.md#adr-0105); çakışmada kağıt hattı kazanır. Araç çağırma ölçümü de bu hattadır (omurganın ilk işi) |
-| araç kullanımının eğitimi (RL) | Checkpoint 2'den sonra, ayrı ürün turu; yalnız araç çağırma ölçümü açık bir boşluk gösterirse açılır; Makale 2'nin ödülüne girmez ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)) |
+| ajan uygulaması (omurga, belgeler, üretim) | ayrı hat; omurga Ekim–Aralık 2027 (Makale 1 gönderildikten sonra), dilimler sıralı, tez yazımında durur ve savunmadan sonra devam eder; [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0104](../adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](../adr/kararlar-0064-0085.md#adr-0105); çakışmada kağıt hattı kazanır. Araç çağırma ölçümü de bu hattadır (omurganın ilk işi) |
+| araç kullanımının eğitimi (RL) | Checkpoint 2'den sonra, ayrı ürün turu; yalnız araç çağırma ölçümü açık bir boşluk gösterirse açılır; Makale 2'nin ödülüne girmez ([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)) |
 
 ---
 
@@ -547,7 +547,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | Gemma teknik kapıdan kalıyor | F0 | yedek model o gün aynı kapıyla seçilir (Phi ailesi, Ministral 3 3B Reasoning); o da kalırsa Makale 1 tek temel modelle yazılır ve hedef Findings ya da dergi olur |
 | bağlayıcı hakemin sürümü ya da sağlayıcısı değişiyor | F0.6 / F3.1 kayma çıpası | puanlama durur; değişiklik kayda geçer, çıpa yeni koşulla yeniden ölçülür |
 | birlikte-eğitim kodu çalışmıyor | F1 sonu | karışık SFT tabanı son çare olarak girer, zayıflığı makalede yazılır |
-| birim maliyet tahminin 1,5 katı | herhangi bir pilot | bütçe yeniden hesaplanır; kredi yetmezse [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) §4'teki kural (beklenir ya da Modal'da ödenir) |
+| birim maliyet tahminin 1,5 katı | herhangi bir pilot | bütçe yeniden hesaplanır; kredi yetmezse [`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAMI.md) §4'teki kural (beklenir ya da Modal'da ödenir) |
 | gönüllü öğrenci bulunamıyor | Mart 2027 (arayış F0'da başlar) | okuma kullanıcı ve hukukçuyla yapılır; insan↔insan uyumu sınırlılık olarak yazılır |
 | kazanan dört kapıdan birinden kalıyor | F3 | kapıları geçen en iyi çift kazanır; hiçbiri geçmezse ürün `tgta_v1`'de kalır |
 | takvim bir aydan fazla geride | F3 sonu | kesme sırası: RQ2'nin Gemma'daki üretim tarafı → Gemma'da üç yolun üçüncü seed'i → insan doğrulaması ~200 cevaba → ikinci hakem (en son: kullanıcı saatine maliyeti yok). Kesilmeyenler: birlikte eğitim · Qwen'de 3 seed · insan doğrulaması (en az ~200 cevap) · test kümesi |
@@ -555,7 +555,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | makale reddediliyor | hakem kararı | sonraki ARR döngüsü → dergi |
 | özgünlük örtüşmesi | F0 literatür taraması | çerçeve dondurmadan önce düzeltilir |
 | ölçüm kartının maliyeti tavanı aşıyor ya da kart tipi bulunamıyor | F0.16 pilotu · üretim sırasında | tavan ($75) aşılacak gibiyse durulur ve kullanıcıya dönülür; kart tipi bir sağlayıcıda yoksa aynı tip başka sağlayıcıdan alınır; tip yalnız DEV'den teste geçerken değişir |
-| Mayıs–Haziran 2027'de kullanıcı yükü haftada ~3,5-5 saat (F3 · F4 · F3b · GRPO pilotu · F5'in başı), dönem sonuyla çakışıyor | Haziran'da haftalık 5 saat aşılıyor | önce GRPO pilotu ve ödül ADR'si Temmuz'a kayar (Temmuz–Ekim kredisi koşulara yeter, Kasım–Mart tampon), sonra F3b ve F5'in başlangıcı; F3 ve F4'ün sırası değişmez. Ajan uygulaması hattı ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104)) bu dönemde zaten başlamaz; takvim sıkışırsa ilk o kesilir |
+| Mayıs–Haziran 2027'de kullanıcı yükü haftada ~3,5-5 saat (F3 · F4 · F3b · GRPO pilotu · F5'in başı), dönem sonuyla çakışıyor | Haziran'da haftalık 5 saat aşılıyor | önce GRPO pilotu ve ödül ADR'si Temmuz'a kayar (Temmuz–Ekim kredisi koşulara yeter, Kasım–Mart tampon), sonra F3b ve F5'in başlangıcı; F3 ve F4'ün sırası değişmez. Ajan uygulaması hattı ([ADR-0104](../adr/kararlar-0064-0085.md#adr-0104)) bu dönemde zaten başlamaz; takvim sıkışırsa ilk o kesilir |
 
 </details>
 
@@ -580,7 +580,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | OSF ön-kayıt: ambargo ve isimsiz görüntüleme bağlantısı | osf.io | F1 |
 | Global-MMLU ve GSM8K lisansları | küme depoları | F1 |
 | GLM 5.3 Flash'ın OpenRouter kimliği, fiyatı ve lisans dosyası | OpenRouter · HF | F1 |
-| ~~Vast'ta~~ RunPod'da A100 fiyatı, sürücü sürümü ve network volume ücreti ([ADR-0101](adr/kararlar-0064-0085.md#adr-0101)) | ~~Vast~~ RunPod konsolu | gerektiğinde |
+| ~~Vast'ta~~ RunPod'da A100 fiyatı, sürücü sürümü ve network volume ücreti ([ADR-0101](../adr/kararlar-0064-0085.md#adr-0101)) | ~~Vast~~ RunPod konsolu | gerektiğinde |
 | vLLM'in kazanan modeli desteklemesi | GRPO pilotu | Haziran 2027 |
 | COLM 2028 çağrısı | COLM sitesi | Ekim 2027 |
 
@@ -598,14 +598,14 @@ damgalandı (model kartındaki hassasiyet düzeltmesi F0.3'te).
 
 | kayıt | kayıttaki ifade | bu plan |
 | :--- | :--- | :--- |
-| [`MODEL_CARD.md`](../MODEL_CARD.md) §2 | iki kol "QLoRA (NF4)" | [ADR-0031](adr/kararlar-0027-0044.md#adr-0031) "bf16 taban + LoRA"; τ_a `--bf16-base` ile eğitildi ([#48](record/kronoloji-39-52.md#48)); τ_g için belge kanıtı da bf16 (eski geçmişte koşu komutu `9f4b43d`, rejim eşleşmesi `b995182`), künye yok; betiklerin varsayılanı NF4 → model kartı F0'da ADR ile düzeltilir |
-| [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) | bağlayıcı hakem `gpt-4o-mini` | Checkpoint 1'den itibaren DeepSeek V4.1 Flash (§2.5.2); `v1.0` sayıları eski damgasıyla kalır |
-| [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) · [ADR-0065](adr/kararlar-0064-0085.md#adr-0065) | ürün sürümü `v1.0`; dosya adı içerik değişmedikçe değişmez | 2026-10-10'da sürüm, belgeler, HF kartı ve GGUF dosya adı `v0.5` oldu (`master` `ab3641e`); ADR-0065'in dosya adı kuralı bilinçli olarak tersine çevrildi ([`OLCUM.md`](OLCUM.md) §3.1'de damgalı); `v1` Checkpoint 1'in sonundaki sürümdür |
-| [ADR-0028](adr/kararlar-0027-0044.md#adr-0028) | tek boyut noktası | ikinci bir temel model (aynı boy, başka aile) eklenir |
-| [ADR-0034](adr/kararlar-0027-0044.md#adr-0034) | adaptörler yedeklenmez | `v1` ve yeni seed adaptörleri yedeklenir |
-| [ADR-0037](adr/kararlar-0027-0044.md#adr-0037) | Kapı 5 "ayar: norm-dengeli" | ana sonuç ham TIES ([ADR-0052](adr/kararlar-0045-0063.md#adr-0052)); Kapı 5 ham TIES için türetilir |
-| [ADR-0075](adr/kararlar-0064-0085.md#adr-0075) m.3 | task-vector hattı `v1`'de donduruldu | ürün için geçerli; Makale 1 araştırma için aynı tarifle yeni seed üretir |
-| `superpowers/00-IS-SIRASI.md` | iki aday, sıra insan kararı · "yeni ADR 0087'den" | sıra §4.4'te verildi · sıradaki ADR 0089 · dosya 2026-10-10'da silindi: "şimdi ne" [`ROADMAP_v1.md`](ROADMAP_v1.md)'nin kontrol listesinde (2026-10-16'dan beri [panoda](https://github.com/users/Rfetha/projects/3), [ADR-0108](adr/kararlar-0064-0085.md#adr-0108)), sıra ve gerekçesi bu belgede, `v2`'ye devredilen borçlar [ADR-0083](adr/kararlar-0064-0085.md#adr-0083) sicilinde |
+| [`MODEL_CARD.md`](../../MODEL_CARD.md) §2 | iki kol "QLoRA (NF4)" | [ADR-0031](../adr/kararlar-0027-0044.md#adr-0031) "bf16 taban + LoRA"; τ_a `--bf16-base` ile eğitildi ([#48](../record/kronoloji-39-52.md#48)); τ_g için belge kanıtı da bf16 (eski geçmişte koşu komutu `9f4b43d`, rejim eşleşmesi `b995182`), künye yok; betiklerin varsayılanı NF4 → model kartı F0'da ADR ile düzeltilir |
+| [ADR-0084](../adr/kararlar-0064-0085.md#adr-0084) | bağlayıcı hakem `gpt-4o-mini` | Checkpoint 1'den itibaren DeepSeek V4.1 Flash (§2.5.2); `v1.0` sayıları eski damgasıyla kalır |
+| [ADR-0084](../adr/kararlar-0064-0085.md#adr-0084) · [ADR-0065](../adr/kararlar-0064-0085.md#adr-0065) | ürün sürümü `v1.0`; dosya adı içerik değişmedikçe değişmez | 2026-10-10'da sürüm, belgeler, HF kartı ve GGUF dosya adı `v0.5` oldu (`master` `ab3641e`); ADR-0065'in dosya adı kuralı bilinçli olarak tersine çevrildi ([`OLCUM.md`](../yontem/OLCUM.md) §3.1'de damgalı); `v1` Checkpoint 1'in sonundaki sürümdür |
+| [ADR-0028](../adr/kararlar-0027-0044.md#adr-0028) | tek boyut noktası | ikinci bir temel model (aynı boy, başka aile) eklenir |
+| [ADR-0034](../adr/kararlar-0027-0044.md#adr-0034) | adaptörler yedeklenmez | `v1` ve yeni seed adaptörleri yedeklenir |
+| [ADR-0037](../adr/kararlar-0027-0044.md#adr-0037) | Kapı 5 "ayar: norm-dengeli" | ana sonuç ham TIES ([ADR-0052](../adr/kararlar-0045-0063.md#adr-0052)); Kapı 5 ham TIES için türetilir |
+| [ADR-0075](../adr/kararlar-0064-0085.md#adr-0075) m.3 | task-vector hattı `v1`'de donduruldu | ürün için geçerli; Makale 1 araştırma için aynı tarifle yeni seed üretir |
+| `superpowers/00-IS-SIRASI.md` | iki aday, sıra insan kararı · "yeni ADR 0087'den" | sıra §4.4'te verildi · sıradaki ADR 0089 · dosya 2026-10-10'da silindi: "şimdi ne" [`ROADMAP_v1.md`](ROADMAP_v1.md)'nin kontrol listesinde (2026-10-16'dan beri [panoda](https://github.com/users/Rfetha/projects/3), [ADR-0108](../adr/kararlar-0064-0085.md#adr-0108)), sıra ve gerekçesi bu belgede, `v2`'ye devredilen borçlar [ADR-0083](../adr/kararlar-0064-0085.md#adr-0083) sicilinde |
 
 </details>
 
@@ -625,10 +625,10 @@ damgalandı (model kartındaki hassasiyet düzeltmesi F0.3'te).
   [Findings](https://2026.aclweb.org/program/findings/)
 - GRPO ve vLLM: [Qwen3.5 — LMCache](https://docs.lmcache.ai/recipes/qwen3_5.html) ·
   [RLVR low-rank dynamics](https://arxiv.org/pdf/2605.06523)
-- Literatür özetleri (`knowledge/`): [LLM-as-judge](../knowledge/summary_llm_as_judge_survey.md) ·
-  [benchmark](../knowledge/summary_llm_benchmark_survey.md) ·
-  [LLM değerlendirmesi](../knowledge/summary_llm_eval_survey_chang.md) ·
-  [halüsinasyon](../knowledge/summary_hallucination_survey.md) ·
-  [instruction tuning](../knowledge/summary_instruction_tuning_survey.md) ·
-  [bilgi damıtma](../knowledge/summary_kd_llm_survey.md) ·
-  [RL post-training](../knowledge/summary_rl_posttraining_survey.md)
+- Literatür özetleri (`knowledge/`): [LLM-as-judge](../../knowledge/summary_llm_as_judge_survey.md) ·
+  [benchmark](../../knowledge/summary_llm_benchmark_survey.md) ·
+  [LLM değerlendirmesi](../../knowledge/summary_llm_eval_survey_chang.md) ·
+  [halüsinasyon](../../knowledge/summary_hallucination_survey.md) ·
+  [instruction tuning](../../knowledge/summary_instruction_tuning_survey.md) ·
+  [bilgi damıtma](../../knowledge/summary_kd_llm_survey.md) ·
+  [RL post-training](../../knowledge/summary_rl_posttraining_survey.md)

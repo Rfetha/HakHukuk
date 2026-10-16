@@ -1,6 +1,6 @@
 # LLM halüsinasyonu taraması (arXiv 2311.05232) — proje notu
 
-> **Literatür özeti.** Kaynak: TeX kaynağı (`~/.cache/arxiv-papers/2311.05232/`), tüm içerik bölümleri okundu (§1-§8; `.cls` ve `.bib` atlandı). Aşağıdaki "HakHukuk için" önerileri **makalenin değil, bu notun yorumudur**. Her biri dayandığı makale bölümüne bağlanmıştır. Makalede olmayan şey makaleye atfedilmemiştir. Bölüm numaraları TeX bölüm sırasından çıkarılmıştır, derlenmiş PDF ile karşılaştırılmamıştır. Proje kararları `docs/adr/` ve `docs/YAYIN_YOL_HARITASI.md` ile birlikte okunmalıdır.
+> **Literatür özeti.** Kaynak: TeX kaynağı (`~/.cache/arxiv-papers/2311.05232/`), tüm içerik bölümleri okundu (§1-§8; `.cls` ve `.bib` atlandı). Aşağıdaki "HakHukuk için" önerileri **makalenin değil, bu notun yorumudur**. Her biri dayandığı makale bölümüne bağlanmıştır. Makalede olmayan şey makaleye atfedilmemiştir. Bölüm numaraları TeX bölüm sırasından çıkarılmıştır, derlenmiş PDF ile karşılaştırılmamıştır. Proje kararları `docs/adr/` ve `docs/yol_haritasi/YAYIN_YOL_HARITASI.md` ile birlikte okunmalıdır.
 >
 > *Yazım notu (ana oturum):* metni bir alt ajan üretti; alt ajanların dosya yazması araç tarafından engellendiği için ana oturum ajanın metnini olduğu gibi yazdı.
 

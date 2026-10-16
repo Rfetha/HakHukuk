@@ -1,7 +1,7 @@
 # A Survey on LLM-as-a-Judge (arXiv 2411.15594) — proje notu
 
 > **Ne:** Gu ve diğ., *A Survey on LLM-as-a-Judge*, arXiv:2411.15594 **v6 (19 Ekim 2025)**, cs.CL.
-> Makale 1'in ölçüm tasarımı (`docs/YAYIN_YOL_HARITASI.md` §2.5) için okundu, 2026-10-10.
+> Makale 1'in ölçüm tasarımı (`docs/yol_haritasi/YAYIN_YOL_HARITASI.md` §2.5) için okundu, 2026-10-10.
 >
 > **Okuma yöntemi ve sınırı (önemli):** TeX kaynağı (`https://arxiv.org/src/2411.15594`)
 > indirilemedi: kabuktaki ağ erişimi kum havuzunda kapalıydı, kum havuzu dışında çalıştırma izni de
@@ -12,7 +12,7 @@
 > bir sorguyla ayrıca doğrulandı (bölüm numarası ve kısa ifade ile). TeX'ten yeniden doğrulamak için:
 > `curl -L -o ~/.cache/arxiv-papers/2411.15594.tar.gz https://arxiv.org/src/2411.15594`.
 >
-> **Gösterim:** `S§x.y` = survey'in bölümü · `YYH §x.y` = `docs/YAYIN_YOL_HARITASI.md` bölümü.
+> **Gösterim:** `S§x.y` = survey'in bölümü · `YYH §x.y` = `docs/yol_haritasi/YAYIN_YOL_HARITASI.md` bölümü.
 > "Bizim çıkarımımız" yazan her şey survey'de **yoktur**; survey'e atfedilmez.
 >
 > *Yazım notu (ana oturum):* metni bir alt ajan üretti; alt ajanların dosya yazması araç tarafından

@@ -1,6 +1,6 @@
 # Instruction Tuning for Large Language Models: A Survey (arXiv 2308.10792)
 
-> **LİTERATÜR ÖZETİ.** Kaynak makalenin bulguları geçerlidir. Bunlardan çıkan **proje kararları** `docs/adr/` ve `docs/YAYIN_YOL_HARITASI.md` içinde yaşar ve değişebilir. Bu belge karar değil, girdidir.
+> **LİTERATÜR ÖZETİ.** Kaynak makalenin bulguları geçerlidir. Bunlardan çıkan **proje kararları** `docs/adr/` ve `docs/yol_haritasi/YAYIN_YOL_HARITASI.md` içinde yaşar ve değişebilir. Bu belge karar değil, girdidir.
 >
 > *Yazım notu (ana oturum):* metni bir alt ajan üretti; alt ajanların dosya yazması araç tarafından engellendiği için ana oturum ajanın metnini olduğu gibi yazdı.
 
@@ -94,7 +94,7 @@ Bağlam: iki LoRA kolu.
 - **tau_g:** RAFT biçimli SFT, 17.323 satır.
 - **tau_a:** ORPO çekinme, 726 çift + 145 temellendirme tekrar satırı.
 
-Makale 1 (`docs/YAYIN_YOL_HARITASI.md`) bunları ham TIES birleştirme, birlikte eğitim ve ardışık eğitim olarak karşılaştırır. Her öneri bir makale bölümüne bağlıdır. **(Dolaylı)** işareti, makalenin yalnız genel bir ilke verdiği ve HakHukuk'a uyarlamanın bizim çıkarımımız olduğu anlamına gelir.
+Makale 1 (`docs/yol_haritasi/YAYIN_YOL_HARITASI.md`) bunları ham TIES birleştirme, birlikte eğitim ve ardışık eğitim olarak karşılaştırır. Her öneri bir makale bölümüne bağlıdır. **(Dolaylı)** işareti, makalenin yalnız genel bir ilke verdiği ve HakHukuk'a uyarlamanın bizim çıkarımımız olduğu anlamına gelir.
 
 ### 1. Birlikte-eğitim kolunun tasarımı (F0 kod ve Modal pilotu, F1 DEV ayarı)
 

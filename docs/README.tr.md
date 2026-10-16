@@ -2,7 +2,7 @@
 
 Dizüstü GPU'sunda çalışan ve yalnız kendisine verilen mevzuattan cevap veren 4B'lik bir Türkçe hukuk asistanı.
 
-[Model kartı](../MODEL_CARD.md) · [English](../README.md) · [Yol haritası](ROADMAP_v1.md) · [Ağırlıklar](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [İndeks](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) · [Lisans](../LICENSE)
+[Model kartı](../MODEL_CARD.md) · [English](../README.md) · [Yol haritası](yol_haritasi/ROADMAP_v1.md) · [Ağırlıklar](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [İndeks](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) · [Lisans](../LICENSE)
 
 ## Ne yapar
 
@@ -86,12 +86,12 @@ adını taşıyordu; `v1` adı bir sonraki eğitim turunun sonundaki sürüme ay
 Olumsuz sonuçlar olumlu sonuçlarla aynı özenle tutulur: kendi ön-kayıtlı kapısınca geçersiz
 sayılan koşular, ölçümle tersine dönen kararlar, geçilemeyen bir kapı. Her sayının metriğini,
 `n`'ini, hakemini, seed'ini ve çıktı dosyasını sabitleyen bir koşu künyesi (`KUNYE.json`) vardır.
-Ayrıntılı ölçüm tabloları [`docs/OLCUM.md`](OLCUM.md)'dedir.
+Ayrıntılı ölçüm tabloları [`docs/yontem/OLCUM.md`](yontem/OLCUM.md)'dedir.
 
 ## Katkı
 
 Eleştiri, düzeltme ve özellikle yeniden üretim denemeleri memnuniyetle karşılanır
-([`docs/YENIDEN_URETIM.md`](YENIDEN_URETIM.md)). Yeniden üretilemeyen bir sayı hata raporudur.
+([`docs/yontem/YENIDEN_URETIM.md`](yontem/YENIDEN_URETIM.md)). Yeniden üretilemeyen bir sayı hata raporudur.
 
 ## Lisans
 

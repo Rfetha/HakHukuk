@@ -20,7 +20,7 @@ yığınından bağımsız: hangi modele geçilirse geçilsin bu dosyalar aynen 
 ```
 
 Join anahtarı her yerde `(kanun_no | madde_no)`. Kaynak: Mevzuat.gov.tr / bedesten API
-(`docs/BEDESTEN_API.md`, `scripts/erisim_korpus/korpus/bedesten_probe.py` — ⚠️ Türk IP'si gerekir).
+(`docs/referans/BEDESTEN_API.md`, `scripts/erisim_korpus/korpus/bedesten_probe.py` — ⚠️ Türk IP'si gerekir).
 
 ---
 

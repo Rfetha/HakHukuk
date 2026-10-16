@@ -259,7 +259,7 @@ Hedef: modelin kelimesi kelimesine alıntı yazma yükünü ve kayma sınıfın�
 4. Hafıza düzenleyicisi 4B ile hiç kullanılacak mı, yoksa hafıza yalnız elle mi düzenlenecek? Düzenleyici gerekçesi kullanıcı yararı (tercihlerin otomatik öğrenilmesi) ile güvenlik riski (yanlış öğrenme, enjeksiyon) arasındadır.
 5. Mike'da cevap işaretleriyle `<CITATIONS>` girdileri arasında örtüşme denetimi sunucuda var mı? Okuduğum kodda görmedim; arayüz kodu (AssistantMessage.tsx vb.) bu açıdan taranmadı.
 6. Mike CourtListener sonuçlarında çit eksikliğini bilinçli mi bırakıyor (kamu kaynaklı güvenilir metin varsayımı) yoksa bir gözden kaçma mı? Kodda gerekçe yorumu yok.
-7. İçtihat korpusu: Yargıtay/Danıştay için hangi açık veri kaynağı lisans bakımından kullanılabilir ve künye ayrıştırma için hangi kimlik alanları güvenilir biçimde bulunur? (Mevzuat için `docs/BEDESTEN_API.md` var; içtihat kapsamı o belgede doğrulanmadı.)
+7. İçtihat korpusu: Yargıtay/Danıştay için hangi açık veri kaynağı lisans bakımından kullanılabilir ve künye ayrıştırma için hangi kimlik alanları güvenilir biçimde bulunur? (Mevzuat için `docs/referans/BEDESTEN_API.md` var; içtihat kapsamı o belgede doğrulanmadı.)
 8. Düzenleyici işlerin yeniden-deneme sayısı (`maxAttempts`) ve çakışmada davranışın tam hâli kuyruk/SQL tarafındadır ve okunmadı; "dokümantasyon: yeniden üretir" ile "kod: iş düzeyinde yeniden dener" farkı bu yüzden kesin değil.
 
 ---

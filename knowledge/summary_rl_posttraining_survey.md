@@ -1,6 +1,6 @@
 # Reinforcement Learning for LLM Post-Training: A Survey (arXiv 2407.16216)
 
-> **Literatür özeti.** Bu belgeden çıkan proje kararları `docs/adr/` ve `docs/YAYIN_YOL_HARITASI.md` içindedir. Burada yalnız öneri vardır, karar yoktur.
+> **Literatür özeti.** Bu belgeden çıkan proje kararları `docs/adr/` ve `docs/yol_haritasi/YAYIN_YOL_HARITASI.md` içindedir. Burada yalnız öneri vardır, karar yoktur.
 >
 > *Yazım notu (ana oturum):* metni bir alt ajan üretti; alt ajanların dosya yazması araç tarafından engellendiği için ana oturum ajanın metnini olduğu gibi yazdı.
 

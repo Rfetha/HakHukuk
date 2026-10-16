@@ -14,7 +14,7 @@
 > **yöntem rehberi değildir**: örneklem büyüklüğü, güven aralığı, seed, etiketçi uyumu üzerine bölüm
 > yoktur. Hukuk bir alt bölümdür (~1 sayfa).
 >
-> **Okunan proje belgeleri:** `CLAUDE.md` · `docs/YAYIN_YOL_HARITASI.md` · `MODEL_CARD.md` §3-§5 ·
+> **Okunan proje belgeleri:** `CLAUDE.md` · `docs/yol_haritasi/YAYIN_YOL_HARITASI.md` · `MODEL_CARD.md` §3-§5 ·
 > `data/README.md`. `data/eval/canon/` açılmadı. Yol haritası bu not yazılırken (2026-10-10 04:08)
 > yeniden düzenlendi; aşağıdaki § atıfları **yeni sürüme** göredir (§2.5.x ölçüm, §2.6 takvim F0-F5).
 >

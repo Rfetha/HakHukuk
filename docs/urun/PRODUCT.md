@@ -35,11 +35,11 @@ Kaynaklar:
 
 | | nasıl | kaynak |
 | :--- | :--- | :--- |
-| Soruyu **mevzuata bağlar** | hibrit BM25 + `bge-m3`, RRF füzyon (`RRF_K=10`) | [ADR-0068](adr/) · `recall@10` **0,9500** ([`harness_tablo.json`](../outputs/eval/faz0/f02-biz-onsozsuz/harness_tablo.json)) |
-| **Uydurmaz** | atıflar getirilen kaynağa karşı deterministik doğrulanır | uydurulmuş madde **0/114** ↔ rakipler 1 · 4 · 4 ([`KUNYE.json`](../outputs/eval/faz0/f02-biz-onsozsuz/KUNYE.json)) |
-| **Bilmediğinde susar** | dört durum ayrı: cevap · çekinceli · suskunluk · kesik | `hakhukuk/cekirdek/terazi.py` · aşırı-red **4/80** ([`GOZLE_OKUMA_80.md`](../outputs/eval/faz0/f02-biz-onsozsuz/GOZLE_OKUMA_80.md)) |
-| **Yürürlükten kalkmışı göstermez** | mülga madde süzgeci varsayılan | sızıntı **2 → 0**, `recall@10` değişmedi ([#64](record/)) |
-| **Tüketici donanımında çalışır** | GGUF Q4_K_M, 2,59 GiB; harness GPU'ya **girmez** | [ADR-0071](adr/kararlar-0064-0085.md#adr-0071) |
+| Soruyu **mevzuata bağlar** | hibrit BM25 + `bge-m3`, RRF füzyon (`RRF_K=10`) | [ADR-0068](../adr/) · `recall@10` **0,9500** ([`harness_tablo.json`](../../outputs/eval/faz0/f02-biz-onsozsuz/harness_tablo.json)) |
+| **Uydurmaz** | atıflar getirilen kaynağa karşı deterministik doğrulanır | uydurulmuş madde **0/114** ↔ rakipler 1 · 4 · 4 ([`KUNYE.json`](../../outputs/eval/faz0/f02-biz-onsozsuz/KUNYE.json)) |
+| **Bilmediğinde susar** | dört durum ayrı: cevap · çekinceli · suskunluk · kesik | `hakhukuk/cekirdek/terazi.py` · aşırı-red **4/80** ([`GOZLE_OKUMA_80.md`](../../outputs/eval/faz0/f02-biz-onsozsuz/GOZLE_OKUMA_80.md)) |
+| **Yürürlükten kalkmışı göstermez** | mülga madde süzgeci varsayılan | sızıntı **2 → 0**, `recall@10` değişmedi ([#64](../record/)) |
+| **Tüketici donanımında çalışır** | GGUF Q4_K_M, 2,59 GiB; harness GPU'ya **girmez** | [ADR-0071](../adr/kararlar-0064-0085.md#adr-0071) |
 
 **Bugünkü manşet:** faithful-answer **kütle %69,4-80,1 aralığı** (`claude-sonnet-5` ↔
 `gpt-4o-mini`, ADR-0084) — GÖZ-katı, bağlayıcı okuma **%80,1**'dir
@@ -63,7 +63,7 @@ Bunlar eksiklik listesi değil, **ürünün sınırı**:
 5. **Sayılar tek hakem ailesinin hükmü.** İkinci bir aile aynı 80 cevabı puanladığında kütle
    %80,1 → **%69,4** düştü (κ = 0,534, eşiğin **altında**). Bu düşüş kapı hükmüne girmiyor
    çünkü rakip kolu aynı hakemle puanlanmadı — ama **sayının hakem seçimine duyarlı olduğu
-   ölçülmüştür**. [ADR-0074](adr/kararlar-0064-0085.md#adr-0074)
+   ölçülmüştür**. [ADR-0074](../adr/kararlar-0064-0085.md#adr-0074)
 6. **Tek boyut, tek kuantizasyon.** Bir ~4B modeli, bir `Q4_K_M` artefaktı. *"Daha büyüğü daha
    iyi olur mu"* ve *"kuantizasyonun bedeli nedir"* **ölçülmedi** (ADR-0018'in eğrisi yok).
 
@@ -73,12 +73,12 @@ Bunlar eksiklik listesi değil, **ürünün sınırı**:
 | :--- | :--- | :--- |
 | eğitim | ham base → SFT (`τ_g`) + ORPO (`τ_a`) → ham TIES merge | `tgta_v1` **yeni başlangıç** → GRPO + düşünce ayarı |
 | ne | ağırlıklar + kod + veri + araştırma kaydı, **uçtan uca çalışır** | daha güçlü model + API/servis |
-| arayüz | `hakhukuk "soru"` (CLI) · `hakhukuk-tui` — **yeterli** (insan kararı) | HTTP API, web: omurga ayrı hatta, Ekim–Aralık 2027 ([ADR-0104](adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](adr/kararlar-0064-0085.md#adr-0105)); barındırma (**S9 açık**) |
-| araçlar | 5 **deterministik** kaldıraç, istem katmanında ([ADR-0076](adr/kararlar-0064-0085.md#adr-0076)) | araç kullanımının **eğitimi**: GRPO ödülüne girmez; Checkpoint 2'den sonra ayrı tur, ölçüm boşluk gösterirse ([ADR-0105](adr/kararlar-0064-0085.md#adr-0105)) |
+| arayüz | `hakhukuk "soru"` (CLI) · `hakhukuk-tui` — **yeterli** (insan kararı) | HTTP API, web: omurga ayrı hatta, Ekim–Aralık 2027 ([ADR-0104](../adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)); barındırma (**S9 açık**) |
+| araçlar | 5 **deterministik** kaldıraç, istem katmanında ([ADR-0076](../adr/kararlar-0064-0085.md#adr-0076)) | araç kullanımının **eğitimi**: GRPO ödülüne girmez; Checkpoint 2'den sonra ayrı tur, ölçüm boşluk gösterirse ([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)) |
 | erişim | yerel indeks, anlık görüntü korpus | canlı `bedesten` (B6) · tam kapsam · tazelik |
 | durum | bu turda | sonra |
 
-**Çizgi [ADR-0075](adr/kararlar-0064-0085.md#adr-0075) ile çekildi (2026-09-08):**
+**Çizgi [ADR-0075](../adr/kararlar-0064-0085.md#adr-0075) ile çekildi (2026-09-08):**
 `v1` **SFT ile kapanır** — `B1`/`B4` eğitim turları koşulmaz. `v2` **sequential RL**'dir,
 task vector değil ⇒ ADR-0027'nin merge hattı `v1`'de **dondurulur**.
 `v2`'yi mümkün kılan şey: **doğrulanabilir ödül** zaten yazılmış (`hakhukuk/cekirdek/terazi.py` atıf
@@ -86,7 +86,7 @@ doğrulaması deterministik) ⇒ reward model gerekmiyor.
 
 ## Sürüm şeması — ürün ve iddia AYRI
 
-[ADR-0065](adr/kararlar-0064-0085.md#adr-0065): *ürün sürümü* kullanıcının eline geçen şeyi,
+[ADR-0065](../adr/kararlar-0064-0085.md#adr-0065): *ürün sürümü* kullanıcının eline geçen şeyi,
 *iddia sürümü* hangi ölçümün savunulduğunu sayar. İkisi birlikte hareket etmez.
 
 | | bugün | koşulu |
@@ -96,15 +96,15 @@ doğrulaması deterministik) ⇒ reward model gerekmiyor.
 
 *2026-10-16 notu: tablo 2026-09-06'nın hâlidir. Donmuş TEST 2026-09-09'da koştu; kapı 2026-09-13'te
 geçildi ve sürüm `v1.0` adıyla verildi, adı 2026-10-10'da `v0.5` oldu
-([ADR-0084](adr/kararlar-0064-0085.md#adr-0084)).*
+([ADR-0084](../adr/kararlar-0064-0085.md#adr-0084)).*
 
 ## `v0.5` kapısı (ön-kayıttaki adı `v1.0`) — üç madde
 
 *2026-10-10 notu: kapı 2026-09-13'te geçildi ve sürüm `v1.0` adıyla verildi
-([ADR-0084](adr/kararlar-0064-0085.md#adr-0084)); ad 2026-10-10'da `v0.5` olarak değiştirildi. Aşağıdaki
+([ADR-0084](../adr/kararlar-0064-0085.md#adr-0084)); ad 2026-10-10'da `v0.5` olarak değiştirildi. Aşağıdaki
 metin kapının verilmeden önceki hâlini anlatır.*
 
-Ön-kayıtlı, [ADR-0064](adr/). DEV'de üçü de **geçti**; `v1.0` yine de **verilmedi**, çünkü
+Ön-kayıtlı, [ADR-0064](../adr/). DEV'de üçü de **geçti**; `v1.0` yine de **verilmedi**, çünkü
 donmuş TEST kabul koşusu koşulmadı.
 
 | # | madde | DEV sonucu |
@@ -114,5 +114,5 @@ donmuş TEST kabul koşusu koşulmadı.
 | 3 | M5 (ezber) yükselmesin | BASE'e göre **−6,82 p** |
 
 Kabul testinin erişim tavanı DEV'in 0,95'i değil, **≈0,75**'tir
-([ADR-0069](adr/kararlar-0064-0085.md#adr-0069)) — ham kütle manşet olur,
+([ADR-0069](../adr/kararlar-0064-0085.md#adr-0069)) — ham kütle manşet olur,
 tavan kullanımı **yanında** raporlanır, rakip kıyası o orandan **kurulmaz**.

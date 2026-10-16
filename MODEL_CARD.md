@@ -206,7 +206,7 @@ yine geçmiştir ([ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)). Sonuçla
 okunmuştur. Dedektör hem Gemini hem Anthropic cevaplarında fazla çekinme saymış (doğru ve atıflı
 cevapları şerh cümlesi yüzünden çekinme saymış), bizim kolumuzda ise yanlış pozitif
 bulunmamıştır. Karttaki değerler bu düzeltmeden sonraki değerlerdir; ham araç okumaları
-[`docs/OLCUM.md`](docs/OLCUM.md) §3.5'tedir.
+[`docs/yontem/OLCUM.md`](docs/yontem/OLCUM.md) §3.5'tedir.
 
 **Donmuş test kabul testi.** TEST 2026-09-09'da insan onayıyla, bir kez açılmıştır. Rejim
 geliştirme koşusuyla aynıdır.
@@ -252,7 +252,7 @@ Aksi belirtilmedikçe: DEV, n=80, arama katmanı açık, k=10, önsözsüz istem
   HakHukuk cevaplama oranında, uydurulmuş madde numarasında, ezber kütlesinde ve maliyette
   öndedir.
 - Rakip sütunları tek hakemlidir; HakHukuk sütunundaki kütle iki hakem ailesinin aralığıdır.
-  Rakip değerleri üç okumanın rakip lehine olanıdır ([`docs/OLCUM.md`](docs/OLCUM.md) §3.5).
+  Rakip değerleri üç okumanın rakip lehine olanıdır ([`docs/yontem/OLCUM.md`](docs/yontem/OLCUM.md) §3.5).
 - Yanlış maddeye dayanma sayıları gözle tam taramadır ve alt sınırdır.
 - Maliyet OpenRouter fiyatlarıyla ölçülmüştür (2026-09-07); bizim kolumuz yerelde koştuğu için
   çıkarım bedeli sıfırdır. Hakem bedeli dahil değildir.
@@ -487,7 +487,7 @@ Paket her durumda şunları garanti eder:
 
 **Yeniden üretim.** `bash scripts/yeniden_uret.sh` bildirilen tek-hakem okumasını (kütle 0,8011)
 üretir: ön koşul denetimi, üretim, iki geçerlilik kapısı, puanlama ve çıpadan sapma kontrolü.
-Ayrıntı: [`docs/YENIDEN_URETIM.md`](docs/YENIDEN_URETIM.md). Değişmezler:
+Ayrıntı: [`docs/yontem/YENIDEN_URETIM.md`](docs/yontem/YENIDEN_URETIM.md). Değişmezler:
 
 ```
 seed 3407 · parça kırpma 900 karakter · düşünce açık · bütçe 1024 + 512 · n 80
@@ -514,7 +514,7 @@ setleri); ticari hukuk veritabanları kullanılmamıştır. Her veri seti kullan
 gözle denetlenir. Eğitim verisinde kişisel veriler maskelenmiştir. Örnek cevaplar ağırlık
 deposundaki `ORNEK_CEVAPLAR.md` dosyasındadır.
 
-**Daha fazlası.** Ayrıntılı ölçüm tabloları: [`docs/OLCUM.md`](docs/OLCUM.md) · kararlar ve
+**Daha fazlası.** Ayrıntılı ölçüm tabloları: [`docs/yontem/OLCUM.md`](docs/yontem/OLCUM.md) · kararlar ve
 elenen seçenekler: [`docs/adr/`](docs/adr/README.md) · kronolojik ölçüm kaydı:
 [`docs/record/`](docs/record/README.md).
 

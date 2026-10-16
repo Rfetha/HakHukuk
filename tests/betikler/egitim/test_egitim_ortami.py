@@ -17,7 +17,7 @@ import ortam_kilidi as ok  # noqa: E402
 
 KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 YAML = os.path.join(KOK, "configs/egitim_ortami.yaml")
-BELGE = os.path.join(KOK, "docs/EGITIM_ORTAMI.md")
+BELGE = os.path.join(KOK, "docs/yontem/EGITIM_ORTAMI.md")
 MODULLER11 = ["q_proj", "k_proj", "v_proj", "o_proj", "in_proj_qkv", "in_proj_z", "in_proj_a",
               "in_proj_b", "gate_proj", "up_proj", "down_proj"]
 

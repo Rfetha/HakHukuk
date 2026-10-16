@@ -2,7 +2,7 @@
 
 A 4B Turkish legal assistant that runs on a laptop GPU and answers only from the statutes it is given.
 
-[Model card](MODEL_CARD.md) · [Türkçe](docs/README.tr.md) · [Roadmap](docs/ROADMAP_v1.md) · [Weights](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [Index](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) · [License](LICENSE)
+[Model card](MODEL_CARD.md) · [Türkçe](docs/README.tr.md) · [Roadmap](docs/yol_haritasi/ROADMAP_v1.md) · [Weights](https://huggingface.co/Rfetha/HakHukuk-4B-GGUF) · [Index](https://huggingface.co/datasets/Rfetha/HakHukuk-mevzuat-bge-m3-s2) · [License](LICENSE)
 
 ## What it does
 
@@ -87,12 +87,12 @@ The version numbers (artifact, file, product) are explained in [MODEL_CARD §1](
 Negative results are kept with the same care as positive ones: runs voided by their own
 pre-registered gate, decisions reversed by measurement, a gate that failed. Every number has a run
 manifest (`KUNYE.json`) that fixes its metric, `n`, judge, seed and output file. Detailed
-measurement tables are in [`docs/OLCUM.md`](docs/OLCUM.md).
+measurement tables are in [`docs/yontem/OLCUM.md`](docs/yontem/OLCUM.md).
 
 ## Contributing
 
 Criticism, fixes and especially reproduction attempts are welcome
-([`docs/YENIDEN_URETIM.md`](docs/YENIDEN_URETIM.md)). A number that cannot be reproduced is a
+([`docs/yontem/YENIDEN_URETIM.md`](docs/yontem/YENIDEN_URETIM.md)). A number that cannot be reproduced is a
 bug report.
 
 ## License

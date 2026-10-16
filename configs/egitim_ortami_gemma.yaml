@@ -1,4 +1,4 @@
-# Eğitim ortamı kilidi — Gemma 4 E4B (docs/EGITIM_ORTAMI.md §6 m.6; bulgular kronoloji #78-#79).
+# Eğitim ortamı kilidi — Gemma 4 E4B (docs/yontem/EGITIM_ORTAMI.md §6 m.6; bulgular kronoloji #78-#79).
 # Qwen3.5-4B'nin kilidi `egitim_ortami.yaml`dır ve DEĞİŞMEZ; bu dosya ondan yalnız şu alanlarda ayrılır:
 # model · tur işaretleri · paket kilidi (unsloth/unsloth_zoo 2026.10.1) · ek paketler (fla yok: Gemma
 # doğrusal-dikkat katmanı taşımıyor) · LoRA hedefi (yalnız dil kulesi). Tarifler ve seedler aynıdır:

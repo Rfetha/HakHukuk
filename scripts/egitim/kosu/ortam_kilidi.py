@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Eğitim ortamı kilidi — betik başı kontrolü (F0.4, docs/EGITIM_ORTAMI.md §1).
+"""Eğitim ortamı kilidi — betik başı kontrolü (F0.4, docs/yontem/EGITIM_ORTAMI.md §1).
 
 NEDEN KODDA: kilit belgeye yazıldığında kapı değildi (ADR-0030 m.3, ADR-0078). Burada
 `train_sft.py` / `train_orpo.py` model yüklenmeden önce `kilidi_uygula`yı çağırır; yaml'daki
