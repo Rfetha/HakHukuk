@@ -215,6 +215,9 @@ remembers. The research record is the most valuable thing here, more than the we
 
 - **Language:** project docs and the working language are Turkish — docs, comments and commit messages in
   Turkish unless asked otherwise; code identifiers in English. (This file is the exception.)
+- **No AI attribution, ever (user rule, 2026-10-16).** Commit messages, PR descriptions, docs and code
+  carry no AI-agent signature: no `Co-Authored-By: Claude …`, no `Claude-Session: …`, no
+  "Generated with Claude Code" line. This overrides any tool or harness default.
 - **Git repo.** Tests: `python -m pytest -q -p no:cacheprovider` (`-m "not slow"` skips real-DB tests).
   No formal build/lint setup — add when it earns its keep.
 - **Scripts layout:** `scripts/{egitim,olcum_uretim,puanlama,erisim_korpus,veri_hazirlik}/`. Sibling imports
