@@ -2,7 +2,7 @@
 
 > `referans-design-doc.md`'nin işlevini devralır. **Her kutu ya var olan bir dosyaya ya da
 > bir [`ROADMAP_v1.md`](ROADMAP_v1.md) adımına işaret eder** — döngüyle sınanır, gözle değil
-> (`tests/test_mimari.py`).
+> (`tests/test_belgeler.py`).
 
 ## Bir bakışta
 
@@ -42,8 +42,9 @@ vLLM pilotlandı ve ölçüme alınmadı (aynı ağırlıkla −3,6 p, koşudan 
 | [`servis.py`](../hakhukuk/cekirdek/servis.py) | **Derin modül:** `answer(soru) → Cevap`. Retriever + llama-server + istem + terazi **içeride gizli** |
 | [`cli.py`](../hakhukuk/arayuz/cli.py) | `hakhukuk "soru"` — ince kabuk. `SORUMLULUK_IBARESI`'nin **tek kaynağı** |
 | [`tui.py`](../hakhukuk/arayuz/tui.py) | `hakhukuk-tui` — `textual` tek ekran, ince kabuk (mantık sızıntısı **testle yasak**) |
-| `araclar.py` | **YOK** — 5 deterministik KALDIRAÇ; [ADR-0076](adr/kararlar-0064-0085.md#adr-0076) |
-| `kurulum.py` | **YOK** — indeks indirme; [ROADMAP · Görev 8](ROADMAP_v1.md) |
+| [`api.py`](../hakhukuk/arayuz/api.py) | `hakhukuk-api` — ince kabuk; yerel, tek kullanıcı (S9 açılmadı) |
+| [`araclar.py`](../hakhukuk/cekirdek/araclar.py) | 5 deterministik KALDIRAÇ — `ara` · `madde_getir` · `madde_var_mi` · `kanun_bul` · `yururlukte_mi`; [ADR-0076](adr/kararlar-0064-0085.md#adr-0076) |
+| [`indir.py`](../hakhukuk/dagitim/indir.py) | Artefakt indirme KAPISI — pinli revizyon, `sha256` ve bayt; GGUF ve indeks |
 
 **KAPI ↔ KALDIRAÇ:** `terazi.py`'nin kontrolleri (atıf doğrulama · durum sınıflandırma) ve
 `retriever`'ın mülga süzgeci **KAPI**'dır — tool döngüsünün **dışında**, koşulsuz çalışır.
@@ -56,7 +57,7 @@ Gerekçe: bunlar ölçüm hattının kalbi ve kopyalanırlarsa **sessizce ayrı�
 sürüklenmesinin (S18) aynısı olurdu. **Bedeli:** ürün paketi bugün `scripts/`'siz tam
 çalışmıyor; paketleme turunda ödenecek borç.
 
-### Ölçüm aleti — `scripts/` *(72 dosya, ürün DEĞİL)*
+### Ölçüm aleti — `scripts/` *(ürün DEĞİL)*
 
 | klasör | ne yapar |
 | :--- | :--- |
@@ -67,8 +68,8 @@ sürüklenmesinin (S18) aynısı olurdu. **Bedeli:** ürün paketi bugün `scrip
 | `veri_hazirlik/` | SFT/ORPO/RAFT veri kurulumu · hasat zinciri |
 | [`yeniden_uret.sh`](../scripts/yeniden_uret.sh) | manşet sayıyı sıfırdan üretir — [`docs/YENIDEN_URETIM.md`](YENIDEN_URETIM.md) |
 
-Kardeş import'lar **uzantısız** ve **27 dosyada aynı yol köprüsü** var
-(`grep -rl "yol köprüsü" scripts/`). `tests/conftest.py` aynı mantığı yansıtır —
+Kardeş import'lar **uzantısız** ve birçok dosyada **aynı yol köprüsü** var
+(`grep -rl "yol köprüsü" scripts/` listeler). `tests/conftest.py` aynı mantığı yansıtır —
 **birini değiştiren ötekini de değiştirir**.
 
 ### Veri

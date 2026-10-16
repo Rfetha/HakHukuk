@@ -76,10 +76,10 @@ adını taşıyordu; `v1` adı bir sonraki eğitim turunun sonundaki sürüme ay
 | [`scripts/`](../scripts/) | ölçüm hattı, üründen ayrı tutulur |
 | [`docker/`](../docker/) | Dockerfile ve `compose.yaml` |
 | [`docs/`](README.md) | bütün belgeler; indeks `docs/README.md` |
-| [`docs/adr/`](adr/README.md) | karar defteri, ADR-0088'e kadar |
-| [`docs/record/`](record/README.md) | kronolojik araştırma kaydı, #71'e kadar |
+| [`docs/adr/`](adr/README.md) | karar defteri |
+| [`docs/record/`](record/README.md) | kronolojik araştırma kaydı |
 | [`outputs/eval/`](../outputs/eval/README.md) | ham değerlendirme çıktıları ve koşu künyeleri, `<grup>/<koşu>/` düzeninde |
-| [`tests/`](../tests/) | `pytest`: 335 geçti, 2 xfail |
+| [`tests/`](../tests/) | `pytest` (`-m "not slow"` gerçek veritabanı testlerini atlar) |
 
 ## Araştırma kaydı
 

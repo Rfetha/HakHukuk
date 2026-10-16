@@ -77,10 +77,10 @@ The version numbers (artifact, file, product) are explained in [MODEL_CARD §1](
 | [`scripts/`](scripts/) | the measurement line, kept separate from the product |
 | [`docker/`](docker/) | Dockerfile and `compose.yaml` |
 | [`docs/`](docs/README.md) | all documents; index in `docs/README.md` |
-| [`docs/adr/`](docs/adr/README.md) | decision ledger, through ADR-0088 |
-| [`docs/record/`](docs/record/README.md) | chronological research record, through entry #71 |
+| [`docs/adr/`](docs/adr/README.md) | decision ledger |
+| [`docs/record/`](docs/record/README.md) | chronological research record |
 | [`outputs/eval/`](outputs/eval/README.md) | raw evaluation outputs and run manifests, as `<group>/<run>/` |
-| [`tests/`](tests/) | `pytest`: 335 passed, 2 xfailed |
+| [`tests/`](tests/) | `pytest` (`-m "not slow"` skips real-DB tests) |
 
 ## Research record
 

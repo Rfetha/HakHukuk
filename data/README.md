@@ -20,7 +20,7 @@ yığınından bağımsız: hangi modele geçilirse geçilsin bu dosyalar aynen 
 ```
 
 Join anahtarı her yerde `(kanun_no | madde_no)`. Kaynak: Mevzuat.gov.tr / bedesten API
-(`docs/BEDESTEN_API.md`, `scripts/bedesten_probe.py` — ⚠️ Türk IP'si gerekir).
+(`docs/BEDESTEN_API.md`, `scripts/erisim_korpus/bedesten_probe.py` — ⚠️ Türk IP'si gerekir).
 
 ---
 
@@ -54,6 +54,14 @@ Join anahtarı her yerde `(kanun_no | madde_no)`. Kaynak: Mevzuat.gov.tr / bedes
 
 **M3 (boş bağlam, n=40)** ayrı dosya değil — `gen_eval_grounded.py --empty-context` ile
 `core_hard`'dan türetilir.
+
+### `eval/dev/` — DEV havuzu (seçim burada yapılır; TEST `canon/`'dur)
+
+| dosya | satır | ne |
+| :--- | ---: | :--- |
+| `core_hard.jsonl` | **80** | DEV v2; önceki sürüm `core_hard.jsonl.v1-2026-09-06`, onarım künyesi `eval/KUNYE_soru_onarimi_2026-09-06.json` |
+| `trap.jsonl` | 70 | M2 tuzakları |
+| `baglam/h1-k10.json` | 80 | dondurulmuş bağlam, sha256 `02666800…f213e6135` ([#82](../docs/record/kronoloji-75-86.md#82)) |
 
 ### CANON sabitleri (hepsi ortak)
 seed **3407** · hakem **gpt-4o-mini** (cross-judge gpt-4o) · eval-mirror **900 char** chunk clip ·
@@ -92,7 +100,17 @@ quote gold'da yok", 5'i atıf no eşleşmiyor) + 577 replay.
 
 Distractor seçimi **hard-negative**: aynı kanun, komşu madde no öncelikli (gerçek retriever'ı
 taklit eder). Rastgele distractor eval'i kolaylaştırdığı için reddedildi (ADR-0013).
-Paketleyici `scripts/raft_pack.py` — **eval ve eğitim aynı modülü kullanır**, dağılım sapmasın.
+Paketleyici `scripts/veri_hazirlik/raft_pack.py` — **eval ve eğitim aynı modülü kullanır**, dağılım sapmasın.
+
+### `train/raft_scrubbed/` — `raft/`'ın öğretmen jargonundan temizlenmiş hâli
+| bölüm | satır |
+| :--- | ---: |
+| train | **17.323** |
+| validation / test | 962 / 962 |
+
+`scripts/veri_hazirlik/scrub_teacher_jargon.py` ile üretildi; ham `raft/`'ta cevapların 1.301/17.323'ünde
+`GOLD`/`DISTRACTOR` etiketi vardı ([#39](../docs/record/kronoloji-39-52.md#39)). **`τ_g` v1 bu setle eğitildi**
+([`kollar.md`](../docs/record/kollar.md)).
 
 ### `train/orpo_abstain/` — tercih çiftleri (abstention)
 | bölüm | satır |
@@ -106,17 +124,35 @@ Paketleyici `scripts/raft_pack.py` — **eval ve eğitim aynı modülü kullanı
 interleave 6). Atlanan: 224 "kontrast yok", 9 dev.
 
 > **`is_pref` alanı kritik:** `1` = gerçek tercih çifti (tam ORPO), `0` = grounding-replay
-> (yalnız NLL akar = SFT-replay). `scripts/train_orpo.py:MaskedORPOTrainer` bu maskeyi
+> (yalnız NLL akar = SFT-replay). `scripts/egitim/train_orpo.py:MaskedORPOTrainer` bu maskeyi
 > NaN-safe uygular. Bu olmadan replay satırları OR-terimini zehirler.
 
 ⚠️ `rejected` tarafı **12B'nin ürettiği gerçek fabrikasyonlardır.** Yeni base ile çalışırken
 seti olduğu gibi kullanmak "başka bir modelin hatalarını" öğretir. Doğrusu: `--rejected`
-havuzunu **yeni base ile yeniden hasat et** (`scripts/gen_v3_rejected.py`), `chosen` ve
+havuzunu **yeni base ile yeniden hasat et** (`scripts/veri_hazirlik/gen_v3_rejected.py`), `chosen` ve
 tuzak kurgusu yeniden kullanılabilir.
+
+### `train/orpo_abstain_cp2c/` — Qwen'in kendi hasadından tercih çiftleri
+| bölüm | satır |
+| :--- | ---: |
+| train | **845** |
+| validation | 26 |
+
+`orpo_report.json`: abstain-çifti **726** (m2 538 · m2b 188) + grounding-replay **145** = 871; hasat
+kaynakları cp2c 3 · cp2c-64 357 · cp2c-ek1 366. **`τ_a` v1 bu setle eğitildi** ([`kollar.md`](../docs/record/kollar.md)).
 
 ### `train/replay_tr.jsonl`
 Genel Türkçe replay havuzu (`{"messages": [...]}`) — hukuk sızıntısı regex'le elenmiş.
 Katastrofik unutmayı bastırmak için eğitim setine %3-20 oranında karıştırılır.
+
+---
+
+## `index/` — retriever indeksleri
+
+`mevzuat_bge_m3_s2/` canlı indekstir (S2: yürürlük alanı + alt madde kimliği). `mevzuat_bge_m3/` S2 öncesidir;
+yalnız eski sayıları yeniden üretmek için ve `tests/test_retriever.py` kullandığı için duruyor. `gomme.npy`
+git'te yok (`.gitignore:150`); HF `Rfetha/HakHukuk-mevzuat-bge-m3-s2`'den `python -m hakhukuk.dagitim.indir`
+ile `sha256` kapısıyla iner.
 
 ---
 

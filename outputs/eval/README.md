@@ -58,7 +58,7 @@ asıl kaynağı artık **klasördür**.
 ## ⚠️ Sprint 1 klasöründe iki A1 sürümü var
 
 `a1_m5_*.txt` **eski** (mod-bağımsız) red kuralıyla, `a1_m5_*_adr0044.txt` **düzeltilmiş**
-(mod-duyarlı) kuralla hesaplandı — bkz. [ADR-0044](../../docs/adr/0044-mod-duyarli-feragat-kurali.md).
+(mod-duyarlı) kuralla hesaplandı — bkz. [ADR-0044](../../docs/adr/kararlar-0027-0044.md#adr-0044).
 **Okunacak olan `_adr0044` sürümüdür**; eskisi audit için duruyor ve sayı olarak kullanılmaz.
 M1/M4 dosyalarında iki sürüm birebir aynıdır (kural yalnız kör modu etkiliyor).
 
