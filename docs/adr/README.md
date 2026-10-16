@@ -21,7 +21,7 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0112**'den devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara, **0113**'ten devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
@@ -117,6 +117,7 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0109](kararlar-0064-0085.md#adr-0109) | 🟢 | **vLLM ölçüme alınmadı** — aynı Q4 ağırlığıyla −3,6 p ve ±2,25 p (5 koşu) · seçim ve nihai ölçüm llama.cpp + Q4 · vLLM yalnız GRPO üretimi (Haziran 2027) · 0107'nin m.1 ve m.3'ünü geri alır |
 | [0110](kararlar-0064-0085.md#adr-0110) | 🟢 | **Yapay zekâ imzası yok; geçmiş temizlendi** — 73 commit'in 70'inden 138 imza satırı silindi, ağaçlar aynı · `v0.5` taşındı · eski geçmiş `~/yedek/HakHukuk-2026-10-16-imzali.bundle` · 8 dosyada 25 hash atfı yenilendi (eski izi onarmama kuralına onaylı istisna) |
 | [0111](kararlar-0064-0085.md#adr-0111) | 🟢 | **Dal düzeni: `develop` çalışma, `master` yayın** — `talk-think` → `develop`, PR #70 birleştirilmedi · büyük iş `develop`'tan açılan `<kart-no>-<kısa-ad>` dalında, PR ile döner · yalnız merge commit · sürümde `develop` → `master` + etiket · 0108'in dal maddelerinin yerine geçer |
+| [0112](kararlar-0064-0085.md#adr-0112) | 🟢 | **`scripts/` · `tests/` · `docs/` · `knowledge/` hiyerarşik** — `scripts/<grup>/<alt>/`, testler kodun yerini yansıtır (`urun/` · `betikler/` · `depo/`), belgeler `urun/` · `yol_haritasi/` · `yontem/` · `referans/` altında · yol köprüsü her derinliği tarar · `adr/`·`record/`'da yalnız taşınan belgelere giden linkler çevrildi (ADR-0083 §D'den bilinçli sapma) · eski→yeni eşleme ADR'de |
 
 ---
 

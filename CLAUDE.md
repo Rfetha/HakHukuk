@@ -43,13 +43,18 @@ hakhukuk/            PRODUCT package (pip-installable)
   arayuz/              interfaces: cli · tui · api (thin shells over cekirdek)
   dagitim/             indir (artifact download + identity gate)
   veri/KUNYE.json      symlink -> data/corpus/KUNYE.json (single source, package-data)
-scripts/             MEASUREMENT line, grouped by function (see "Working notes")
-  egitim/ olcum_uretim/ puanlama/ erisim_korpus/ veri_hazirlik/  (+ hf_kart.py, yeniden_uret.sh)
-tests/               pytest; unit (fake/stub) + real-DB integration (`@pytest.mark.slow`)
+scripts/             MEASUREMENT line, <group>/<sub>/ (ADR-0112, old→new map there; see "Working notes")
+  egitim/{kosu,birlestirme,kurulum}/  erisim_korpus/{getirici,atif,korpus}/
+  olcum_uretim/{uretim,pilot,tani,cp}/  puanlama/{ortak,skorlayici,tablo,cp}/
+  veri_hazirlik/{egitim_verisi,eval_seti,hasat}/  (+ hf_kart.py, yeniden_uret.sh at the root)
+tests/               pytest, mirrors the code: urun/{cekirdek,arayuz}/ · betikler/<group>/ · depo/ (docs + container gates);
+                     unit (fake/stub) + real-DB integration (`@pytest.mark.slow`)
 docker/              Dockerfile · Dockerfile.dockerignore · compose.yaml  (build context = repo root)
-docs/                every document except the three root ones (index: docs/README.md)
-  PRODUCT.md ROADMAP_v1.md ROADMAP_uygulama.md YAYIN_YOL_HARITASI.md EGITIM_ORTAMI.md MIMARI.md OLCUM.md README.tr.md
-  BEDESTEN_API.md YENIDEN_URETIM.md HF_KARTI_INDEKS.md model-soyagaci.mmd
+docs/                every document except the three root ones (index: docs/README.md · README.tr.md beside it)
+  urun/                PRODUCT.md MIMARI.md
+  yol_haritasi/        YAYIN_YOL_HARITASI.md ROADMAP_v1.md ROADMAP_uygulama.md
+  yontem/              OLCUM.md EGITIM_ORTAMI.md YENIDEN_URETIM.md
+  referans/            BEDESTEN_API.md HF_KARTI_INDEKS.md model-soyagaci.mmd
   adr/                 decision ledger   (README.md · kararlar-*.md + gemma4-12b-dersler.md)
   record/              research record   (README.md · kronoloji-*.md · gemma4-12b-kronoloji.md · kollar.md · yurutme-tuzaklari.md)
   superpowers/plans/   at most one live plan (ADR-0056; the ADR-0106 exception closed 2026-10-16); exists only while a phase plan is open
@@ -59,7 +64,7 @@ outputs/             eval/<group>/<run>/ (+ _artefakt/) · egitim/<task>/ (train
                      · _indirilen/ (raw CP2-c harvest downloads, input of `veri_hazirlik/hasat/cp2c_birlestir.py`)
 models/              merged/tgta_v1 (bf16; private HF backup, bf16/tgta_v1/) · gguf/   (20 GB, gitignored)
 configs/             training-environment locks: egitim_ortami.yaml (Qwen) · egitim_ortami_gemma.yaml (Gemma 4 E4B)
-knowledge/           literature summaries (thesis era + Checkpoint 1 inputs, 2026-10-10) · `mike-tarama/`: reference-app scan for the agent app
+knowledge/           literature summaries by topic: degerlendirme/ halusinasyon_atif/ egitim/ hukuk_modelleri/ dagitim/ (thesis era + Checkpoint 1 inputs, 2026-10-10) · `mike-tarama/`: reference-app scan for the agent app
 ```
 
 `outputs/eval/` groups: `sprint1` · `cp` · `sprint2-olcum` · `faz0` · `gorev` · `hp` · `f0`
@@ -75,7 +80,7 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | direction and why | [`docs/yol_haritasi/YAYIN_YOL_HARITASI.md`](docs/yol_haritasi/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/yontem/EGITIM_ORTAMI.md`](docs/yontem/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/urun/PRODUCT.md`](docs/urun/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/urun/MIMARI.md`](docs/urun/MIMARI.md) |
 | every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#87 in five chronology files, per-entry anchors; **new findings continue at #88** (`kronoloji-87-98.md`) |
-| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0111**, next is **0112**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
+| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0112**, next is **0113**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
 | open defects and handover | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — 4 open (5a · 23 · 27 · 31), 3 handed on (6 · 11 · 12b); §EK E.5 holds the nine questions that go into the next grill |
 | artifact registry | [`docs/record/kollar.md`](docs/record/kollar.md) — every trained branch and merge has its identity here; **an artifact with no row is nameless and must not be used**. Family tree: [`docs/referans/model-soyagaci.mmd`](docs/referans/model-soyagaci.mmd) |
 | the headline number and its caveats | [`MODEL_CARD.md`](MODEL_CARD.md) and `docs/record/kronoloji-63-71.md` — never quote from memory |
@@ -230,11 +235,14 @@ remembers. The research record is the most valuable thing here, more than the we
   tagged releases (`develop` → `master` merge + tag at release, next is `v1` at F5.7). Larger work goes on a
   `<card>-<short-name>` branch off `develop` (e.g. `14-dev-olcumu`) and returns by PR; merge commits only (squash and
   rebase are disabled because the record cites hashes). A second concurrent session works in its own `git worktree`.
-- **Scripts layout:** `scripts/{egitim,olcum_uretim,puanlama,erisim_korpus,veri_hazirlik}/`. Sibling imports
-  are extension-less (`import runlock`, `from build_sft_v2b import …`) and survive the split only because
-  **26 files carry an identical path-bridge block** — `grep -rl "yol köprüsü" scripts/`. `tests/conftest.py`
-  mirrors it. **If you change one, change both.** `hakhukuk/cekirdek/{servis,terazi,araclar}.py` bridge into
-  `scripts/` the same way (three `dirname` levels up to the repo root; ticket 11 records the debt). Modal
+- **Scripts layout:** `scripts/<group>/<sub>/` (ADR-0112). Sibling imports are extension-less
+  (`import runlock`, `from build_sft_v2b import …`) and survive the split only because **39 files carry an
+  identical path-bridge block** that puts every folder under `scripts/`, at any depth, on `sys.path` —
+  `grep -rl "yol köprüsü" scripts/`. `tests/conftest.py` mirrors it. **If you change one, change both.**
+  `hakhukuk/cekirdek/{servis,terazi,araclar}.py` add **named** sub-folders instead (three `dirname` levels up to
+  the repo root; ticket 11 records the debt) — moving a module they import means editing those lists, and the
+  tests cannot catch a stale one because `conftest.py` adds every folder. The Modal launchers' `/root/scripts/…`
+  lists are the same kind of hand-written list. Modal
   entry points are `scripts/egitim/kosu/modal_train.py` / `modal_diag.py`; run `modal run
   scripts/egitim/kosu/modal_train.py::<fn>` **from the repo root** (they `add_local_dir("scripts")`).
 - **Base = a parameter.** Mecellem stays **cite-only** (ADR-0016/0020) — a CPT foundation base, not an
