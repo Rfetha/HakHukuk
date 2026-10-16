@@ -2,7 +2,7 @@
   "olcum": "F0.5 (b) — RQ2'nin hakeme giden anahtarlarının doğrulaması (eski alet ↔ düzeltilmiş alet)",
   "tarih": "2026-10-11",
   "git_dal": "talk-think",
-  "git_sha_taban": "ae9138d",
+  "git_sha_taban": "fd5ac89",
   "not_kod": "commit edilmemiş çalışma ağacı (F0 P2); anahtarlar scripts/puanlama/olcum_aleti.py",
   "kor_payda": {
     "komut": "score_abstention.py --pay-kaynagi onceki --payda {cevapli|kor} --kaynak-kirpma 3500 --source-field referans --gecerlilik-onbellek <valid_trap_kor_onbellek.json kopyası>; girdi abst = *.ONCEKI-M2PAYDA",

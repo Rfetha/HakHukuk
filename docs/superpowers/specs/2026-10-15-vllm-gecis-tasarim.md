@@ -3,7 +3,7 @@
 > **Durum:** tasarım onaylandı (2026-10-15, kullanıcı bölüm bölüm onayladı), uygulandı; plan 2026-10-16'da kapandı. Pilot sonrası vLLM ölçüme alınmadı
 > ([ADR-0109](../../adr/kararlar-0064-0085.md#adr-0109), [#87](../../record/kronoloji-87-98.md#87)); bu belge o günün tasarımını kaydeder. Bu belge karar çerçevesidir;
 > uygulama planı ayrı dosyadır (`docs/superpowers/plans/`). Ölçütler pilot sonucunu görmeden bu belgede kilitlenmiştir.
-> Kaynak oturum: `f0-1-7`. Pilot kodu: commit `d7d028d`.
+> Kaynak oturum: `f0-1-7`. Pilot kodu: commit `7e5e386`.
 
 ## 1. Amaç
 

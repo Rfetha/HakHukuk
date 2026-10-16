@@ -163,7 +163,7 @@ turu önerilmedi; karar kullanıcıda.
 **2026-10-14 · yerel, $0** · ağırlık inmedi; yalnız tokenizer ve ayar dosyası · kilitteki sürümler
 (`transformers` 5.10.2 · `unsloth` 2026.6.1 · `unsloth_zoo` 2026.6.1; yerel venv aynı sürümler, Python
 3.12 — Modal'da 3.11) · tokenizer revizyonları `Qwen/Qwen3.5-4B@851bf6e806ef` ·
-`google/gemma-4-E4B-it@ee0ef6023621` · kapının kodu `778fc33` · Kanıt: bu girdi (komutlar aşağıda)
+`google/gemma-4-E4B-it@ee0ef6023621` · kapının kodu `9c56cad` · Kanıt: bu girdi (komutlar aşağıda)
 
 **1 · Şablon, gözle.** Aynı üç mesaj (sistem · kullanıcı · asistan) iki modelde eğitim render'ı:
 
@@ -515,7 +515,7 @@ düzeyinde kıyas yapılamaz. ADR-0097 m.1'in "tek kart tipi" kuralının neden 
 **2026-10-15 · ölçüm yok, GPU yok, $0 · kullanıcı kararları
 ([ADR-0104](../adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](../adr/kararlar-0064-0085.md#adr-0105))** · kanıt:
 [`knowledge/mike-tarama/`](../../knowledge/mike-tarama/README.md) (sekiz dosya + sentez, 2.351 satır) · commit'ler
-`e314613` … `aa5fd19` (`talk-think`)
+`13b0411` … `40c1ce8` (`talk-think`)
 
 **1 · Mike taraması.** `Open-Legal-Products/mike` (TypeScript, AGPL-3.0), `main` dalının tarball'ı; yalnız tasarım
 okundu, kod kopyalanmadı. Sekiz alan alt ajanlara bölündü: ajan döngüsü · sağlayıcı ve yerel model · atıf ve bağlam ·
@@ -542,10 +542,10 @@ davranış gerçek bir modelle çalıştırılmadı; satır numaralarının bir 
 kusurla yazıldı ve aynı gün düzeltildi:
 
 - [ADR-0076](../adr/kararlar-0064-0085.md#adr-0076)'yı ve `hakhukuk/cekirdek/araclar.py`'deki beş aracı yok saydı:
-  İngilizce araç adları, tek `article_id`, araç kullanımının eğitimi "açık soru" (`cd158c1`).
-- `YAYIN_YOL_HARITASI.md`'yi güncellemedi; kullanıcı sordu (`6452276`).
+  İngilizce araç adları, tek `article_id`, araç kullanımının eğitimi "açık soru" (`2993aaf`).
+- `YAYIN_YOL_HARITASI.md`'yi güncellemedi; kullanıcı sordu (`272e106`).
 - Numara çakışması: karar ayrı çalışma kopyasında 0103 diye yazıldı; ana çalışma kopyasında başka bir oturum 0102 ve
-  0103'ü commit'lemeden almıştı. Birleştirmede 0104 oldu (`b6919fc`, `886fd6c`); diğer oturumun dosyaları ve karar
+  0103'ü commit'lemeden almıştı. Birleştirmede 0104 oldu (`a55ff9f`, `a92f677`); diğer oturumun dosyaları ve karar
   metni bayt bayt korundu.
 
 **3 · Denetim (ADR-0105).** Kullanıcı kararları aynı gün denetime açtı. Bulunanlar:
@@ -561,7 +561,7 @@ kusurla yazıldı ve aynı gün düzeltildi:
 Kararlar: araç kullanımının eğitimi Makale 2'ye girmez, Checkpoint 2'den sonra ayrı ürün turu (yalnız ölçüm boşluk
 gösterirse) · omurga Ekim–Aralık 2027 · dilimler sıralı, tez yazımında durur · F1.12 `ROADMAP_v1`'den çıktı,
 omurganın ilk işi oldu (U1.0, kazananla) · uygulamanın tezdeki yeri Ocak 2028'de. Yol haritalarına işlendi
-(`aa5fd19`); `YAYIN_YOL_HARITASI.md` §5–§7 tabloları aynı gün açılır kapanır yapıldı (`80ad755`).
+(`40c1ce8`); `YAYIN_YOL_HARITASI.md` §5–§7 tabloları aynı gün açılır kapanır yapıldı (`f5ec8b1`).
 
 **Okuma:** bu turda hiçbir sayı ölçülmedi; tasarımın 4B'de çalıştığına dair kanıt yok, Mike'tan çıkan her şey
 öneridir. Karar kaydının kendisi de "hata vermeden yanlış" üretebiliyor: üç belge aynı soruya üç cevap verdi ve

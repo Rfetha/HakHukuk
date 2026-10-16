@@ -2,7 +2,7 @@
   "olcum": "F0.6 — hakem geçişi: DeepSeek V4.1 Flash (düşünme açık · kapalı) ↔ gpt-4o-mini, aynı 80 cevap, mod başına 5 tekrar",
   "tarih": "2026-10-15",
   "git_dal": "talk-think",
-  "git_sha_taban": "4000b1c",
+  "git_sha_taban": "f733947",
   "not_kod": "commit edilmemiş çalışma ağacı (F0.14 + F0.16). llm_client.py'deki tek değişiklik 17:57'de (ALIAS + PRICE + yorum); dosyanın saati 19:06, öbür oturumun git işlemleriyle aynı dakikalar, içerik aynı; süreçler modülü başlarken yükler",
   "girdi": {
     "cevaplar": "outputs/eval/f0/f016-pilot/A10/m1/h1_tgta_v1_A10_m1_t1_detail.jsonl",

@@ -38,7 +38,7 @@ Checkpoint 2 hiç gerçekleşmese bile Checkpoint 1 mezuniyete yeterli tez malze
 Çalışan uygulama (CLI/TUI) hiçbir aşamada bozulmaz; `v0.5` her zaman yedek olarak durur.
 
 **Sürüm adları.** Bugünkü yayın `v0.5`'tir: 2026-09-13'te `v1.0` diye etiketlenmişti; 2026-10-10'da
-her yerde `v0.5` oldu: git etiketi (`master`'daki `db6259c`), belgeler, model kartı, HF kartı ve GGUF
+her yerde `v0.5` oldu: git etiketi (`master`'daki `ab3641e`), belgeler, model kartı, HF kartı ve GGUF
 dosya adı (`HakHukuk-4B-v0.5-Q4_K_M.gguf`, eski adı `…-v0.3-…`; bayt ve `sha256` aynı, HF revizyonu
 `c939946`). Ağırlıklar ve ölçümler değişmedi. `v1`, Checkpoint 1'in sonunda çıkan sürümün adıdır; `v2`,
 Checkpoint 2'ninki. Kayıttaki eski "`v1.0`" anışları (ADR'ler, kronoloji) o günün adıdır ve değişmez.
@@ -600,7 +600,7 @@ damgalandı (model kartındaki hassasiyet düzeltmesi F0.3'te).
 | :--- | :--- | :--- |
 | [`MODEL_CARD.md`](../MODEL_CARD.md) §2 | iki kol "QLoRA (NF4)" | [ADR-0031](adr/kararlar-0027-0044.md#adr-0031) "bf16 taban + LoRA"; τ_a `--bf16-base` ile eğitildi ([#48](record/kronoloji-39-52.md#48)); τ_g için belge kanıtı da bf16 (eski geçmişte koşu komutu `9f4b43d`, rejim eşleşmesi `b995182`), künye yok; betiklerin varsayılanı NF4 → model kartı F0'da ADR ile düzeltilir |
 | [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) | bağlayıcı hakem `gpt-4o-mini` | Checkpoint 1'den itibaren DeepSeek V4.1 Flash (§2.5.2); `v1.0` sayıları eski damgasıyla kalır |
-| [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) · [ADR-0065](adr/kararlar-0064-0085.md#adr-0065) | ürün sürümü `v1.0`; dosya adı içerik değişmedikçe değişmez | 2026-10-10'da sürüm, belgeler, HF kartı ve GGUF dosya adı `v0.5` oldu (`master` `db6259c`); ADR-0065'in dosya adı kuralı bilinçli olarak tersine çevrildi ([`OLCUM.md`](OLCUM.md) §3.1'de damgalı); `v1` Checkpoint 1'in sonundaki sürümdür |
+| [ADR-0084](adr/kararlar-0064-0085.md#adr-0084) · [ADR-0065](adr/kararlar-0064-0085.md#adr-0065) | ürün sürümü `v1.0`; dosya adı içerik değişmedikçe değişmez | 2026-10-10'da sürüm, belgeler, HF kartı ve GGUF dosya adı `v0.5` oldu (`master` `ab3641e`); ADR-0065'in dosya adı kuralı bilinçli olarak tersine çevrildi ([`OLCUM.md`](OLCUM.md) §3.1'de damgalı); `v1` Checkpoint 1'in sonundaki sürümdür |
 | [ADR-0028](adr/kararlar-0027-0044.md#adr-0028) | tek boyut noktası | ikinci bir temel model (aynı boy, başka aile) eklenir |
 | [ADR-0034](adr/kararlar-0027-0044.md#adr-0034) | adaptörler yedeklenmez | `v1` ve yeni seed adaptörleri yedeklenir |
 | [ADR-0037](adr/kararlar-0027-0044.md#adr-0037) | Kapı 5 "ayar: norm-dengeli" | ana sonuç ham TIES ([ADR-0052](adr/kararlar-0045-0063.md#adr-0052)); Kapı 5 ham TIES için türetilir |
