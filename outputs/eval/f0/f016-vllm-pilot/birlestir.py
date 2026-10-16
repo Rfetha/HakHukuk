@@ -56,10 +56,11 @@ if __name__ == "__main__":
     ap.add_argument("--parca-dizini", default=P)
     ap.add_argument("--ek", default="")
     ap.add_argument("--agirlik", nargs="+", default=list(AGIRLIKLAR))
+    ap.add_argument("--tekrar", type=int, default=TEKRAR)
     arg = ap.parse_args()
     toplam = 0.0
     for a in arg.agirlik:
-        for r in range(1, TEKRAR + 1):
+        for r in range(1, arg.tekrar + 1):
             o = birlestir(a, r, arg.kok, arg.parca_dizini, arg.ek)
             toplam += o["judge_cost_usd"]
             print(f"{o['label']}: n={o['n']} iddia={o['total_claims']} sağlayıcı={o['judge_providers']} "

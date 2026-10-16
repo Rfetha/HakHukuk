@@ -1,0 +1,76 @@
+{
+  "kaynak": "outputs/eval/f0/f016-vllm-pilot/A10/q4-acilmis_u345/h1_tgta_v1_vllm_q4-acilmis_t4_detail.jsonl",
+  "n": 80,
+  "harness_k": 10,
+  "kume": {
+    "yol": "data/eval/dev/core_hard.jsonl",
+    "sha256": "9c804217bb846bb63a3cf00b0548eae82abc1dd75e05fcc8c98c4135a1580538",
+    "boyut": 80
+  },
+  "olcum_aleti": {
+    "dedektor": "adr0061",
+    "sifir_iddia": "sifir-puan",
+    "a1_tanimi": "cevaplanan",
+    "kaynak_kirpma": 12000,
+    "payda": "kor",
+    "altin_kirpma": "3500"
+  },
+  "erisim": {
+    "recall@1": 0.525,
+    "recall@3": 0.7625,
+    "recall@5": 0.825,
+    "recall@10": 0.95
+  },
+  "kutle_ekseni": {
+    "coverage": 0.95,
+    "A1_cevaplanan": 0.7462,
+    "faith_macro_tum_cekinme_dahil": 0.7462,
+    "A1_tum": 0.7462,
+    "A1_altin_getirilen_alt_kume": 0.7664,
+    "kutle_tum": 0.7089,
+    "n_cevaplanan": 76,
+    "n_puanli_cevaplanan": 76,
+    "n_sifir_iddia": 0
+  },
+  "kapi": {
+    "kati": {
+      "gecen": 80,
+      "reddedilen": 0,
+      "atifsiz_gecen": 4,
+      "kapi_sonrasi_coverage": 0.95
+    },
+    "cogunluk": {
+      "gecen": 80,
+      "reddedilen": 0,
+      "atifsiz_gecen": 4,
+      "kapi_sonrasi_coverage": 0.95
+    },
+    "cerrahi": {
+      "gecen": 80,
+      "reddedilen": 0,
+      "atifsiz_gecen": 4,
+      "kapi_sonrasi_coverage": 0.95
+    }
+  },
+  "atif_dagilimi": {
+    "DOGRULANDI": 120,
+    "MADDE_YOK": 0,
+    "KANUN_YOK": 0,
+    "AYRISTIRILAMADI": 0,
+    "MULGA": 0
+  },
+  "erisim_davranis_caprazi": {
+    "altin_geldi_cevapladi": 74,
+    "altin_geldi_cekindi": 2,
+    "altin_gelmedi_cevapladi": 2,
+    "altin_gelmedi_cekindi": 2
+  },
+  "k2_bedeli": {
+    "ALTIN_GELMEDI": 4,
+    "TAM": 26,
+    "KIRPILDI": 47,
+    "KIRPILDI_CEVAP_DISI": 3
+  },
+  "ayirt_edicilik_alt_kumeleri": null,
+  "not": "A1 tek-altın yer-gerçeğine göre; harness AÇIK'ta model BAŞKA bir maddeden doğru cevaplasa da sadakatsiz sayılır → ON/OFF kıyası için A1_altin_getirilen_alt_kume kullanılır."
+}
