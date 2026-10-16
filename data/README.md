@@ -150,7 +150,7 @@ Katastrofik unutmayı bastırmak için eğitim setine %3-20 oranında karıştı
 ## `index/` — retriever indeksleri
 
 `mevzuat_bge_m3_s2/` canlı indekstir (S2: yürürlük alanı + alt madde kimliği). `mevzuat_bge_m3/` S2 öncesidir;
-yalnız eski sayıları yeniden üretmek için ve `tests/test_retriever.py` kullandığı için duruyor. `gomme.npy`
+yalnız eski sayıları yeniden üretmek için ve `tests/betikler/erisim_korpus/test_retriever.py` kullandığı için duruyor. `gomme.npy`
 git'te yok (`.gitignore:150`); HF `Rfetha/HakHukuk-mevzuat-bge-m3-s2`'den `python -m hakhukuk.dagitim.indir`
 ile `sha256` kapısıyla iner.
 

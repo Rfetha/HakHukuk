@@ -12,7 +12,7 @@ import pytest
 
 import toplu_uret as tu  # noqa: E402
 
-_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 REFERANS = os.path.join(_KOK, "outputs", "eval", "f0", "f016-pilot", "A10", "m1",
                         "h1_tgta_v1_A10_m1_t1_detail.jsonl")
 TOKENIZER = os.path.join(_KOK, "models", "merged", "tgta_v1")

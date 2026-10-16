@@ -2,7 +2,7 @@
 
 ⚠️ Sınıflandırma/atıf mantığı buraya sızarsa iki yerde bakım olur ve ikisi sessizce
 ayrışır (bkz. istem sürüklenmesi, S18: aynı metin beş dosyada, ikisi farklıydı).
-tests/test_tui.py bunu bir KAPI olarak sınar.
+tests/urun/arayuz/test_tui.py bunu bir KAPI olarak sınar.
 """
 from textual.app import App, ComposeResult
 from textual.containers import VerticalScroll
@@ -89,6 +89,6 @@ def main() -> None:
 # ⚠️ Bu blok olmadan `python -m hakhukuk.arayuz.tui` modülü içe aktarıp SESSİZCE çıkıyordu:
 # `main()` tanımlıydı ama çağrılmıyordu. `cli.py`'de vardı, burada yoktu ve hiçbir test
 # yakalamadı — kaynak denetimi mantığın sızmadığına bakar, programın çalıştığına değil.
-# Gözle doğrulama kapısında yakalandı (2026-09-09); `tests/test_tui.py` artık çiviliyor.
+# Gözle doğrulama kapısında yakalandı (2026-09-09); `tests/urun/arayuz/test_tui.py` artık çiviliyor.
 if __name__ == "__main__":
     main()

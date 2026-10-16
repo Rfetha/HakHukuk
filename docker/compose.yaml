@@ -5,7 +5,7 @@
 # Ölçüldü (ticket 2): aynı soru, aynı kod, `--seed 3407`, sıcaklık 0 — yalnız KV önbelleğinin
 # kuantizasyonu değişince (q8_0 ↔ varsayılan fp16) cevabın `sha256`'sı ve uzunluğu değişti
 # (201 ↔ 622 karakter), durum sınıfı SUSKUNLUK'tan ÇEKİNCELİ'ye döndü.
-# Bayrak kümesi `tests/test_konteyner.py`'de KAPI olarak sınanır — dosya ayrıştırılır.
+# Bayrak kümesi `tests/depo/test_konteyner.py`'de KAPI olarak sınanır — dosya ayrıştırılır.
 #
 # ⚠️ Bu kurulum yayımlanan `0,8011`'i ÜRETMEZ: o sayı ölçüm hattınındır (harness AÇIK, iki
 # geçişli zorunlu düşünce kapatma). Burada paketlenen ÜRÜN yoludur (ADR-0078 §"Ne KURULMAZ").
@@ -112,7 +112,7 @@ services:
       # Yerleşim repo ağacını AYNALAR: `data/index/<ad>/` ↔ `data/corpus/` ⇒
       # `/artefakt/index/<ad>/` ↔ `/artefakt/corpus/`. Korpusu tek başına `/artefakt/corpus`'a
       # koymak YETMEZDİ — indeksin de iki seviye derine inmesi gerekti.
-      # `tests/test_konteyner.py` bunu künyeden OKUYUP `normpath` ile çiviler.
+      # `tests/depo/test_konteyner.py` bunu künyeden OKUYUP `normpath` ile çiviler.
       HAKHUKUK_INDEKS: "/artefakt/index/mevzuat_bge_m3_s2"
     ports:
       - "127.0.0.1:8000:8000"

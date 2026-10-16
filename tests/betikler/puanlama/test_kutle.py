@@ -15,7 +15,7 @@ from dataclasses import replace  # noqa: E402
 
 from olcum_aleti import GUNCEL, A1Tanimi, Dedektor, SifirIddia  # noqa: E402
 
-_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 _DEV = os.path.join(_KOK, "data/eval/dev/core_hard.jsonl")
 _DEV_V1 = os.path.join(_KOK, "data/eval/dev/core_hard.jsonl.v1-2026-09-06")
 _F02 = os.path.join(_KOK, "outputs/eval/faz0/f02-biz-onsozsuz")

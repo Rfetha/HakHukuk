@@ -7,7 +7,7 @@ Uydurulmuş madde numarasının **0/114** (DEV) ve **0/52** (donmuş TEST) olmas
 geliyor; tool yapılırsa model çağırmayı unuttuğu an o garanti buharlaşır.
 
 ⛔ **Hiçbir araç LLM çağırmaz.** Deterministik kalırlar; model çağıran bir araç, ölçülmemiş
-ikinci bir hata kaynağı olurdu. `tests/test_araclar.py` bunu bir KAPI olarak sınar.
+ikinci bir hata kaynağı olurdu. `tests/urun/cekirdek/test_araclar.py` bunu bir KAPI olarak sınar.
 
 🚨 **Bu katmanın gerekçesi ÖLÇÜLDÜ ve ÇÜRÜDÜ — burada yazılı durur (ADR-0076):**
 isabetsizliğin **8/8**'inde ve aşırı-redin **4/4**'ünde altın madde **zaten bağlamdaydı**

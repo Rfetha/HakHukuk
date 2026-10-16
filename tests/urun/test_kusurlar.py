@@ -23,7 +23,7 @@ from hakhukuk.arayuz import cli, tui
 from hakhukuk.cekirdek import servis, tipler
 from hakhukuk.cekirdek.tipler import Cevap, Durum, Kaynak
 
-REPO_KOK = pathlib.Path(__file__).resolve().parent.parent
+REPO_KOK = pathlib.Path(__file__).resolve().parents[2]
 
 IS_K_31 = Kaynak(kanun_adi="İŞ KANUNU", kanun_no="4857", madde_no="Madde 31",
                  metin="Muvazzaf askerlik ödevi dışında …", sira=1)

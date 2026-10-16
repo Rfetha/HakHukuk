@@ -8,7 +8,7 @@
 import pathlib
 import re
 
-KOK = pathlib.Path(__file__).resolve().parent.parent
+KOK = pathlib.Path(__file__).resolve().parents[2]
 # Canlı belgeler — tarihsel kayıt (docs/record, docs/adr) ve planlar hariç.
 CANLI = ["CLAUDE.md", "README.md", "docs/README.tr.md", "MODEL_CARD.md",
          "docs/README.md", "docs/PRODUCT.md", "docs/ROADMAP_v1.md", "docs/MIMARI.md",
@@ -71,7 +71,7 @@ def test_build_system_license_bicimiyle_TUTARLI():
     """
     import re
     import tomllib
-    kok = __import__("pathlib").Path(__file__).resolve().parent.parent
+    kok = __import__("pathlib").Path(__file__).resolve().parents[2]
     veri = tomllib.loads((kok / "pyproject.toml").read_text(encoding="utf-8"))
     lisans = veri["project"]["license"]
     if not isinstance(lisans, str):

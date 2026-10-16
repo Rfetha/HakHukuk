@@ -17,7 +17,7 @@
 | :--- | :--- | :--- |
 | `docs/EGITIM_ORTAMI.md` | insan için: ne kilitli, neden, platform değişince ne yapılır | **bu belge** |
 | `configs/egitim_ortami.yaml` | aynı değerlerin makine okunur **tek kaynağı** | yazıldı (2026-10-11) |
-| betik başı kontrolü + test | `train_sft.py` ve `train_orpo.py` **model yüklenmeden önce** yaml'ı okur; GPU mimarisi, paket sürümleri, `fla-core`'un gerçekten içe aktarılabilmesi ve hassasiyetin **açıkça** verilmiş olması doğrulanır; uymazsa koşu para harcamadan durur; gerçek değerler künyeye yazılır. Bir test, kontrolün betiklerde durduğunu sınar (`tests/test_konteyner.py`'nin eğitim tarafındaki eşi) | yazıldı (2026-10-11): `scripts/egitim/kosu/ortam_kilidi.py` · `tests/test_egitim_ortami.py` |
+| betik başı kontrolü + test | `train_sft.py` ve `train_orpo.py` **model yüklenmeden önce** yaml'ı okur; GPU mimarisi, paket sürümleri, `fla-core`'un gerçekten içe aktarılabilmesi ve hassasiyetin **açıkça** verilmiş olması doğrulanır; uymazsa koşu para harcamadan durur; gerçek değerler künyeye yazılır. Bir test, kontrolün betiklerde durduğunu sınar (`tests/depo/test_konteyner.py`'nin eğitim tarafındaki eşi) | yazıldı (2026-10-11): `scripts/egitim/kosu/ortam_kilidi.py` · `tests/betikler/egitim/test_egitim_ortami.py` |
 
 Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 

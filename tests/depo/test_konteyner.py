@@ -1,4 +1,4 @@
-"""Görev 20 — konteyner dağıtımının kapı testleri ([ADR-0078](../docs/adr/kararlar-0064-0085.md#adr-0078)).
+"""Görev 20 — konteyner dağıtımının kapı testleri ([ADR-0078](../../docs/adr/kararlar-0064-0085.md#adr-0078)).
 
 ⛔ **Docker GEREKMEZ ve ÇAĞRILMAZ.** `docker/compose.yaml` bir metin dosyası olarak değil, YAML
 olarak **ayrıştırılır**; `indir.py` kapısı ağa çıkmadan, indirme monkeypatch'lenerek sınanır.
@@ -18,7 +18,7 @@ import re
 import pytest
 import yaml
 
-KOK = pathlib.Path(__file__).resolve().parent.parent
+KOK = pathlib.Path(__file__).resolve().parents[2]
 
 # ── Ölçüm rejiminin BAĞLAYICI bayrakları (ADR-0078 madde 1 · MODEL_CARD §7.10).
 # Ticket 2 ölçtü: yalnız KV önbelleğinin kuantizasyonu değişince (q8_0 ↔ fp16) aynı soruda

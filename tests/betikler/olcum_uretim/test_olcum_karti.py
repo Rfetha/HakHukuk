@@ -6,7 +6,7 @@ import yaml
 
 import olcum_karti as ok  # noqa: E402
 
-_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 COMPOSE = os.path.join(_KOK, "docker", "compose.yaml")
 
 

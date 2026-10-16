@@ -20,7 +20,7 @@ kalması projenin tercihi.
 | konu | karar |
 | :-- | :-- |
 | ilke (1') | Araç seçimi iş başınadır. Hangi araç o işte ölçümle kazanıyorsa o kullanılır: vLLM'in kazandığı yerde vLLM, llama.cpp'nin ya da düz Unsloth'un kazandığı yerde o. Bir iş vLLM'e yalnız ilgili kapıyı geçerse taşınır. |
-| ürün ve yayın | Q4_K_M GGUF + llama.cpp aynen kalır. Mevcut GGUF ve HF deposu atılmaz, yeniden yapılmaz. Docker ürün compose'u ve `tests/test_konteyner.py` kapısı değişmez. |
+| ürün ve yayın | Q4_K_M GGUF + llama.cpp aynen kalır. Mevcut GGUF ve HF deposu atılmaz, yeniden yapılmaz. Docker ürün compose'u ve `tests/depo/test_konteyner.py` kapısı değişmez. |
 | eğitim | SFT, ORPO ve benzerleri Unsloth'ta kalır. GRPO'nun kütüphanesi (Unsloth ya da TRL; ikisi de cevap üretiminde vLLM'i içeriden kullanır) Haziran 2027 pilotunda seçilir. |
 | asıl kayıt | Eğitim çıktısı bf16 safetensors. Yalnız özel yedek depoda (`Rfetha/HakHukuk-yedek`) ve Modal hacminde durur; açık yayın bu belgenin kapsamında değil. |
 | 4-bit safetensors | Yapılmaz (AWQ, GPTQ, FP4 biçimleri olgunlaşmadı; ayrı bir sıkıştırma ayrı kalite ölçümü ister). |

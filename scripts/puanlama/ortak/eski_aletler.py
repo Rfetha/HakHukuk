@@ -6,7 +6,7 @@ Buradaki kod satırları bundle'daki dosyadan kopyalandı; yalnız yorumlar atı
   ~/yedek/HakHukuk-2026-10-10.bundle · commit 28910d87868799976ceefbdb7f7b663d28312ab4 (`aa0b85a^`)
   · scripts/score_abstention.py · blob 792738dcdc8d14cf59bc7f41fc6dac58c9538f04
   · REJECT_RE … exact_reject (ADR-0061 onarımından ÖNCEKİ çekinme dedektörü)
-Doğrulama gerçek veriyle (`tests/test_kutle.py`): `olcum-bi` 0,6275 · `s2-harness-k10-etiketli`
+Doğrulama gerçek veriyle (`tests/betikler/puanlama/test_kutle.py`): `olcum-bi` 0,6275 · `s2-harness-k10-etiketli`
 0,6132 (#61) · `s3-harness-acik` / `s3-harness-k10` (#54) birebir.
 Bu modül ölçümün bugünkü yoluna girmez; yalnız `olcum_aleti.Dedektor.ADR0061_ONCESI` çağırır.
 """

@@ -15,7 +15,7 @@ dependencies = [
     "huggingface-hub>=1.0",         # indeks dağıtımı (S8 kararı (a))
     # TUI. Gerekçe: tek ekranlı arayüzü elle yazmak prompt_toolkit/curses seviyesinde KENDİ
     # MANTIĞINI doğurur; textual bunu hazır verip tui.py'nin answer() üstünde ince kabuk
-    # kalmasını sağlıyor (tests/test_tui.py bunu kapı olarak sınıyor).
+    # kalmasını sağlıyor (tests/urun/arayuz/test_tui.py bunu kapı olarak sınıyor).
     "textual==8.2.8",              # ölçülen sürüm, 2026-09-07
 ]
 
@@ -37,7 +37,7 @@ hakhukuk-api = "hakhukuk.arayuz.api:main"
 # onu reddeder ("must be valid exactly by one definition"). Ölçüldü 2026-09-11: kurulu
 # 70.2.0 ile `--no-build-isolation` kurulumu PATLIYOR ⇒ hakhukuk-api gibi giriş noktaları
 # hiç oluşmuyor (açık kusur 28). Yalıtımlı kurulum çalışıyordu çünkü pip en yeniyi çekiyor;
-# beyan edilen gereksinim KULLANILAN biçimi karşılamalı. tests/test_belgeler.py bunu çiviler.
+# beyan edilen gereksinim KULLANILAN biçimi karşılamalı. tests/depo/test_belgeler.py bunu çiviler.
 requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 

@@ -7,7 +7,7 @@ import pathlib
 import re
 import sys
 
-KOK = pathlib.Path(__file__).resolve().parent.parent
+KOK = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(KOK / "scripts"))
 
 import hf_kart  # noqa: E402

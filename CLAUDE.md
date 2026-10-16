@@ -81,7 +81,7 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | the headline number and its caveats | [`MODEL_CARD.md`](MODEL_CARD.md) and `docs/record/kronoloji-63-71.md` — never quote from memory |
 | all docs | [`docs/README.md`](docs/README.md) |
 
-`tests/test_belgeler.py` walks every link in the live docs (root files and `docs/*.md`), so a dead
+`tests/depo/test_belgeler.py` walks every link in the live docs (root files and `docs/*.md`), so a dead
 pointer **fails a test**. Older prose saying "`research_log` #42" means "chronology #42"; every ADR and
 entry carries an HTML anchor (`ADR-0057` → `kararlar-0045-0063.md#adr-0057`). Never "repair" an old path
 inside `docs/adr/**` or `docs/record/**` on your own — they record what that day said.
@@ -192,7 +192,7 @@ remembers. The research record is the most valuable thing here, more than the we
 - **Deploy:** per-branch QLoRA → materialize ΔW (bf16) → k-way merge → quantize via llama.cpp
   (**Q4_K_M**) → GGUF → consumer GPU. Containers: three boxes, two daemons, two images (ADR-0078);
   `docker/compose.yaml` is a **regime lock** (llama-server flags are the published ones, parsed as a gate in
-  `tests/test_konteyner.py`). Run: `docker compose -f docker/compose.yaml up`. vLLM is not a measurement engine
+  `tests/depo/test_konteyner.py`). Run: `docker compose -f docker/compose.yaml up`. vLLM is not a measurement engine
   (ADR-0109); it is reserved for GRPO rollout generation (June 2027 pilot). The vLLM pilot scripts
   (`scripts/olcum_uretim/pilot/gguf_hf_cevir.py`, `toplu_uret.py`, `modal_pilot_vllm.py`) stay as tools.
 - **OCR/multimodal is not a base-selection argument.** For Turkish, a separate OCR preprocessor, not VLM OCR.

@@ -11,7 +11,7 @@ import pytest
 
 import ortam_kilidi as ok  # noqa: E402
 
-KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 U, A = "<u>", "<a>"
 SOZLUK = {1: U, 2: "soru", 3: A, 4: "cevap", 5: "<son>"}
 

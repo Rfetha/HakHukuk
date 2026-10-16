@@ -14,7 +14,7 @@ from fastapi.testclient import TestClient
 from hakhukuk.arayuz import cli
 from hakhukuk.cekirdek.tipler import Atif, Cevap, Durum, Kaynak
 
-KOK = pathlib.Path(__file__).resolve().parent.parent
+KOK = pathlib.Path(__file__).resolve().parents[3]
 
 
 def _cevap(metin="Sözleşme 10 yılda zamanaşımına uğrar.", durum=Durum.CEVAP):

@@ -14,7 +14,7 @@ from kutle import DondurulmusKume, OlcumKapisiHatasi  # noqa: E402
 from olcum_aleti import GUNCEL  # noqa: E402
 from uc_okuma_kutle import uc_okuma  # noqa: E402
 
-_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 _DEV = os.path.join(_KOK, "data/eval/dev/core_hard.jsonl")
 _DEV_V1 = os.path.join(_KOK, "data/eval/dev/core_hard.jsonl.v1-2026-09-06")
 _BI = os.path.join(_KOK, "outputs/eval/sprint2-olcum/olcum-bi")

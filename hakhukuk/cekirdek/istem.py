@@ -7,7 +7,7 @@ sessizce ayrışır. Karar S18: ÖLÇÜLEN sürüm kanon, çünkü yayımlanan %
 sayılar onunla üretildi.
 
 ⛔ Metni değiştirirsen DAMGA_v1 de değişmeli ve ISTEM_SURUMU yükselmeli; aksi hâlde
-tests/test_istem.py kırılır. Bu bir kapıdır, engel değil: yayımlanmış bir sayı,
+tests/urun/cekirdek/test_istem.py kırılır. Bu bir kapıdır, engel değil: yayımlanmış bir sayı,
 üretildiği istem olmadan yeniden üretilemez.
 """
 import hashlib

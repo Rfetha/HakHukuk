@@ -187,7 +187,7 @@ def test_cok_anlamli_ad_hepsi_mulgaysa_MULGA_kalir():
 # Reçete: ad çözümü birebir ya da TEK bir gevşemeyle yapılır; çift gevşek eşleşme
 #         AYRISTIRILAMADI döner, sessizce bir kanun SEÇMEZ.
 
-_REPO_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_REPO_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 _KORPUS_YOLU = os.path.join(_REPO_KOK, "data/corpus/mevzuat_maddeler.jsonl")
 _CIPA_YOLU = os.path.join(_REPO_KOK,
                           "outputs/eval/faz0/f02-biz-onsozsuz/h1_tgta_v1_f02_nb_detail.jsonl")

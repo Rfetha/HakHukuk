@@ -56,7 +56,7 @@ def test_tamamlanmis_jsonl_tam_dosyayi_okur(tmp_path):
 
 
 # ── üreticiler ve okuyucular bağlı mı (kod ağacından, metin aramasıyla değil) ─────────────
-_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 _URETICILER = {
     "scripts/olcum_uretim/uretim/gen_eval_grounded.py": 1,   # *_detail.jsonl
     "scripts/puanlama/skorlayici/groundedness.py": 2,            # gnd_*.jsonl + özet

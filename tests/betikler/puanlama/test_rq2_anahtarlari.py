@@ -16,7 +16,7 @@ import groundedness  # noqa: E402
 import score_abstention as sa  # noqa: E402
 from olcum_aleti import GUNCEL, AltinKirpma, Dedektor, KaynakKirpma  # noqa: E402
 
-_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 # olcum-bi id 53 — ADR-0061'in vakası: şablonun eleme gerekçesi eski dedektörde çekinme sayılıyordu.
 _ID53 = ("KAYNAK 1, zincirleme suçlarda yetkili mahkeme hakkında bilgi vermektedir. Diğer kaynaklar, "

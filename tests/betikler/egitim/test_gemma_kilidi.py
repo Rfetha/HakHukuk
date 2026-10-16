@@ -15,7 +15,7 @@ import yaml
 import ortam_kilidi as ok  # noqa: E402
 from test_egitim_ortami import _gozlem, _orpo_args, _sft_args  # noqa: E402
 
-KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 MODAL = os.path.join(KOK, "scripts/egitim/kosu/modal_train.py")
 
 

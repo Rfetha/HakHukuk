@@ -6,7 +6,7 @@ Bu sürücü o betiğin `generate_http` fonksiyonunu AYNEN kullanır (istem, bü
 kaynak) ve yalnız üç şeyi değiştirir:
   1. istekler `--es-zamanli` iş parçacığıyla paralel gider; kayıtlar yine kalem sırasında yazılır
   2. zorunlu kapatmanın ham istemi `/apply-template` (llama-server'a özgü) yerine yerel tokenizer
-     klasöründeki şablondan gelir (şablon GGUF'takiyle bayt bayt aynıdır: tests/test_toplu_uret.py)
+     klasöründeki şablondan gelir (şablon GGUF'takiyle bayt bayt aynıdır: tests/betikler/olcum_uretim/test_toplu_uret.py)
   3. vLLM düşünceyi `reasoning` adıyla döndürürse `reasoning_content` olarak da okunur
 Kayıt biçimi sıralı üretimin `_detail.jsonl`'iyle aynıdır; puanlama ve `makine_kapisi.py` olduğu gibi çalışır.
 

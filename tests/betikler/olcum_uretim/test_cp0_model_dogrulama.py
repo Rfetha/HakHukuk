@@ -12,7 +12,7 @@ import os
 import re
 import subprocess
 
-BETIK = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+BETIK = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))),
                      "scripts", "olcum_uretim", "cp", "cp0_thinking_gen.sh")
 METIN = open(BETIK, encoding="utf-8").read()
 

@@ -12,7 +12,7 @@ import pytest
 from kutle import DondurulmusKume, OlcumKapisiHatasi  # noqa: E402
 from uc_okuma_kutle import uc_okuma  # noqa: E402
 
-_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 _DETAILS = os.path.join(_KOK, "outputs/eval/faz0/f04-rakip-onsozsuz/h1_3_5_flash_nb_detail.jsonl")
 _GND = os.path.join(_KOK, "outputs/eval/faz0/f04-rakip-onsozsuz/gnd_h1_3_5_flash_nb.jsonl")
 _KUME = DondurulmusKume.yukle(os.path.join(_KOK, "data/eval/dev/core_hard.jsonl"))

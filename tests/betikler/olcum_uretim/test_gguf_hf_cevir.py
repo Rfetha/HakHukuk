@@ -9,7 +9,7 @@ import pytest
 
 import gguf_hf_cevir as gc  # noqa: E402
 
-_KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 GGUF = os.path.join(_KOK, "models", "gguf", "tgta_v1-q4_k_m.gguf")
 ORIJINAL = os.path.join(_KOK, "models", "merged", "tgta_v1")
 VAR = os.path.exists(GGUF) and os.path.isdir(ORIJINAL)

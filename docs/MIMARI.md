@@ -2,7 +2,7 @@
 
 > `referans-design-doc.md`'nin işlevini devralır. **Her kutu ya var olan bir dosyaya ya da
 > bir [`ROADMAP_v1.md`](ROADMAP_v1.md) adımına işaret eder** — döngüyle sınanır, gözle değil
-> (`tests/test_belgeler.py`).
+> (`tests/depo/test_belgeler.py`).
 
 ## Bir bakışta
 
