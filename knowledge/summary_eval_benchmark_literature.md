@@ -1,6 +1,6 @@
 # Eval/Benchmark Metodolojisi — Literatür Özeti (RAG faithfulness + abstention + legal)
 
-> ⚠️ **LİTERATÜR ÖZETİ — tez döneminde alındı.** Kaynak makalelerin bulguları geçerli; bunlardan çıkarılan **proje kararları** [`../docs/adr/`](../docs/adr/) ve [`ROADMAP.md`](../docs/ROADMAP.md) *(2026-09-06'da silinmişti, 2026-09-07'de yeniden yazıldı)*'de olabilir ve **değişmiş olabilir** (ör. base artık Qwen3.5-4B, proje OSS).
+> ⚠️ **LİTERATÜR ÖZETİ — tez döneminde alındı.** Kaynak makalelerin bulguları geçerli; bunlardan çıkarılan **proje kararları** [`../docs/adr/`](../docs/adr/) ve [`ROADMAP_v1.md`](../docs/ROADMAP_v1.md) *(eski adı `ROADMAP.md`)*'de olabilir ve **değişmiş olabilir** (ör. base artık Qwen3.5-4B, proje OSS).
 
 > **Kaynak:** deep-research taraması (2026-06-13), 23 çapraz-doğrulanmış (3-0 oylu) bulgu.
 > Sentez adımı socket hatasıyla çöktü → sentez elle yapıldı (ana ajan). **Amaç:** HakHukuk

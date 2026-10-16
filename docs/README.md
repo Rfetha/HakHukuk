@@ -19,6 +19,8 @@ Tek giriş noktası. Kökte yalnız GitHub/HF'nin kökten okuduğu dosyalar kal�
 | HF indeks deposu kartı | [`HF_KARTI_INDEKS.md`](HF_KARTI_INDEKS.md) |
 | **Araştırma kaydı** — ne oldu, sayı neydi | [`record/README.md`](record/README.md) |
 | **Karar defteri** — neden böyle, hangi seçenek elendi | [`adr/README.md`](adr/README.md) |
+| Açık faz planı (en çok bir, kapanınca silinir) ve tasarım belgeleri | `superpowers/plans/` · `superpowers/specs/` |
+| Literatür özetleri, referans uygulama taraması | [`../knowledge/`](../knowledge/) |
 
 Koşudan önce: [`record/yurutme-tuzaklari.md`](record/yurutme-tuzaklari.md).
 Docker: [`../docker/compose.yaml`](../docker/compose.yaml). Veri: [`../data/README.md`](../data/README.md).

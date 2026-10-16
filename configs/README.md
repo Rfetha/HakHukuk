@@ -1,6 +1,8 @@
 # configs/ — base'e özgü ayar dosyaları
 
-Boş başlıyor. Yeni base seçildiğinde **buraya konacaklar:**
+İki eğitim ortamı kilidi burada: `egitim_ortami.yaml` (Qwen3.5-4B) ve `egitim_ortami_gemma.yaml`
+(Gemma 4 E4B, F0.9); değerler [`EGITIM_ORTAMI.md`](../docs/EGITIM_ORTAMI.md)'de. Yeni base seçildiğinde
+ayrıca **buraya konacaklar:**
 
 ## Chat şablonu yaması — `<base-adi>.jinja`
 

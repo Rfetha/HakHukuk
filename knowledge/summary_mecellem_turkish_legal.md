@@ -1,6 +1,6 @@
 # Mecellem Models — Turkish Legal LLMs (arXiv:2601.16018, NewmindAI, Ocak 2026)
 
-> ⚠️ **LİTERATÜR ÖZETİ — tez döneminde alındı.** Kaynak makalelerin bulguları geçerli; bunlardan çıkarılan **proje kararları** [`../docs/adr/`](../docs/adr/) ve [`ROADMAP.md`](../docs/ROADMAP.md) *(2026-09-06'da silinmişti, 2026-09-07'de yeniden yazıldı)*'de olabilir ve **değişmiş olabilir** (ör. base artık Qwen3.5-4B, proje OSS).
+> ⚠️ **LİTERATÜR ÖZETİ — tez döneminde alındı.** Kaynak makalelerin bulguları geçerli; bunlardan çıkarılan **proje kararları** [`../docs/adr/`](../docs/adr/) ve [`ROADMAP_v1.md`](../docs/ROADMAP_v1.md) *(eski adı `ROADMAP.md`)*'de olabilir ve **değişmiş olabilir** (ör. base artık Qwen3.5-4B, proje OSS).
 
 ## TL;DR
 NewmindAI'ın Türk hukuk alanı için geliştirdiği açık kaynak model ailesi. İki ana katkı: (1) sıfırdan eğitilmiş ModernBERT-tabanlı Türkçe **encoder/embedding** modelleri (Mursit, 155M & 403M) — Türkçe hukuk retrieval'da top-3; (2) Qwen3-1.7B ve Qwen3-4B üzerine **continual pre-training (CPT)** ile Türkçe hukuka uyarlanmış **decoder** modelleri (Mecellem-Qwen3-TR) — hukuk metninde %36-43 perplexity düşüşü. Hepsi HF'te açık. **Bizim projemizin en yakın komşusu ve potansiyel temel taşı.**
