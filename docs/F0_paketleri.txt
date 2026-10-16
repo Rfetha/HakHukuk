@@ -1,6 +1,6 @@
 F0.X paketleri — kalan F'ler üç iş grubunda (2026-10-16)
 
-Plan: docs/superpowers/plans/2026-10-11-F0-zemin.md · durum: law-slm-board, epic #1
+Plan: docs/superpowers/plans/2026-10-16-F0-zemin.md · durum: law-slm-board, epic #1
 
 ┌─────────────┬──────────────────────────────────────────────┬──────────────────┬────────────────────┬──────────────────────┐
 │ Grup        │ Neden birlikte                               │ Kim              │ Para               │ Nerede               │
