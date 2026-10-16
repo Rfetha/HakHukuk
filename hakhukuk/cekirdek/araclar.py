@@ -23,7 +23,7 @@ from hakhukuk.cekirdek.tipler import Kaynak, Yururluk
 
 # ── scripts/ yol köprüsü ─────────────────────────────────────────────────────
 _K = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "scripts")
-sys.path[:0] = [_K, os.path.join(_K, "erisim_korpus")]
+sys.path[:0] = [_K, os.path.join(_K, "erisim_korpus", "atif")]
 from madde_anahtar import madde_anahtari  # noqa: E402
 # ⚠️ Ad çözümü TEK KAYNAK: yayımlanan sayıyı üreten doğrulayıcının ta kendisi.
 # Kusur 18 onarımı (2026-09-11) burada kopyalanmış ikinci bir indekse çarpmıştı;

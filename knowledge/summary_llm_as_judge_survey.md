@@ -301,9 +301,9 @@ cevap, Sonnet $1,8604/80 cevap) ve 1,596 fatura payından türetildi.
   işi, dondurma ADR'si.
 
 **Ö4 — Hakem çağrısı hatası ve sıfır iddialı cevap paydadan sessizce düşebilir: geçerlilik kapısı.**
-- *Ne:* `scripts/puanlama/groundedness.py` (satır 257-272) hakem çağrısı ya da JSON ayrıştırması
+- *Ne:* `scripts/puanlama/skorlayici/groundedness.py` (satır 257-272) hakem çağrısı ya da JSON ayrıştırması
   bütün turlarda başarısız olursa kalemi yalnız ekrana yazıp **atlıyor**; özette başarısız kalem
-  sayısı yok. Sıfır iddia çıkan cevap `faithfulness=None` alıyor. `scripts/puanlama/harness_tablo.py`
+  sayısı yok. Sıfır iddia çıkan cevap `faithfulness=None` alıyor. `scripts/puanlama/tablo/harness_tablo.py`
   (satır 129-136) A1'i yalnız puanı olan cevaplanan kalemlerden hesaplıyor, `coverage` ise regexten.
   Kontrol edilmesi önerilen kapı: "puanlanan cevaplanan kalem = cevaplanan kalem", aksi hâlde dur;
   özete `n_hakem_hata` ve `n_sifir_iddia`.
@@ -327,7 +327,7 @@ cevap, Sonnet $1,8604/80 cevap) ve 1,596 fatura payından türetildi.
   (seyrek sınıflar: gereksiz red 4/80, isabetsiz atıf 8/80); sürekli sadakat için Spearman; çok okuyuculu
   ve eksik hücreli (öğrenciler ~üçte bir) insan↔insan için Krippendorff α. Okuma protokolüne
   "belirsiz" kategorisi; uyum belirsizli ve belirsizsiz ayrı raporlanır.
-- *Araç:* `scripts/puanlama/judge_agreement.py` bugün yalnız iki okuyuculu κ ve Pearson hesaplıyor;
+- *Araç:* `scripts/puanlama/skorlayici/judge_agreement.py` bugün yalnız iki okuyuculu κ ve Pearson hesaplıyor;
   `export` ilk N kaydı alıyor (rastgele/katmanlı değil) ve CSV'de hakem kararını insanın dolduracağı
   sütunun **yanında** gösteriyor — bu, YYH'nin "kör okuma" şartıyla bağdaşmaz.
 - *Survey:* S§4.1 (yüzde uyum, κ, Spearman, precision/recall), S§7.2 (κ ve Krippendorff α), Tablo 3

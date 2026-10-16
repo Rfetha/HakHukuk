@@ -74,7 +74,7 @@ def test_maske_kapisi_bozuk_maskede_durur_ama_dokumu_birakir(tmp_path):
 
 def test_train_sft_kapiyi_maskelemeden_sonra_egitimden_once_cagirir():
     import ast
-    agac = ast.parse(open(os.path.join(KOK, "scripts/egitim/train_sft.py"), encoding="utf-8").read())
+    agac = ast.parse(open(os.path.join(KOK, "scripts/egitim/kosu/train_sft.py"), encoding="utf-8").read())
     main = next(n for n in agac.body if isinstance(n, ast.FunctionDef) and n.name == "main")
 
     def satir(ad):

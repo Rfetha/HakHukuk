@@ -70,7 +70,7 @@ services:
       # ⛔ REJİM DEĞİŞMİYOR: `auto`'nun bugün ne yaptığı ÖLÇÜLDÜ (2026-09-11, koşan sunucuya
       # doğrudan istek) — `reasoning_content` DOLU, `content` BOŞ, `<think>` content'te YOK
       # ⇒ `auto` ≡ `deepseek`. Bayrak o davranışı SABİTLER, değiştirmez.
-      # ⚠️ Ölçüm hattının betiği (`scripts/olcum_uretim/cp0_thinking_gen.sh`) bu bayrağı
+      # ⚠️ Ölçüm hattının betiği (`scripts/olcum_uretim/cp/cp0_thinking_gen.sh`) bu bayrağı
       # TAŞIMIYOR ve bilerek dokunulmadı: oraya bayrak eklemek rejim değişikliğidir.
       - "--reasoning-format"
       - "deepseek"

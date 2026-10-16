@@ -17,7 +17,7 @@
 | :--- | :--- | :--- |
 | `docs/EGITIM_ORTAMI.md` | insan için: ne kilitli, neden, platform değişince ne yapılır | **bu belge** |
 | `configs/egitim_ortami.yaml` | aynı değerlerin makine okunur **tek kaynağı** | yazıldı (2026-10-11) |
-| betik başı kontrolü + test | `train_sft.py` ve `train_orpo.py` **model yüklenmeden önce** yaml'ı okur; GPU mimarisi, paket sürümleri, `fla-core`'un gerçekten içe aktarılabilmesi ve hassasiyetin **açıkça** verilmiş olması doğrulanır; uymazsa koşu para harcamadan durur; gerçek değerler künyeye yazılır. Bir test, kontrolün betiklerde durduğunu sınar (`tests/test_konteyner.py`'nin eğitim tarafındaki eşi) | yazıldı (2026-10-11): `scripts/egitim/ortam_kilidi.py` · `tests/test_egitim_ortami.py` |
+| betik başı kontrolü + test | `train_sft.py` ve `train_orpo.py` **model yüklenmeden önce** yaml'ı okur; GPU mimarisi, paket sürümleri, `fla-core`'un gerçekten içe aktarılabilmesi ve hassasiyetin **açıkça** verilmiş olması doğrulanır; uymazsa koşu para harcamadan durur; gerçek değerler künyeye yazılır. Bir test, kontrolün betiklerde durduğunu sınar (`tests/test_konteyner.py`'nin eğitim tarafındaki eşi) | yazıldı (2026-10-11): `scripts/egitim/kosu/ortam_kilidi.py` · `tests/test_egitim_ortami.py` |
 
 Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 
@@ -27,7 +27,7 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 | :--- | :--- | :--- |
 | GPU | **NVIDIA A100**, compute capability 8.0; 40 GB ya da 80 GB; gerçek model künyeye yazılır | Makale 1 kollarında RTX 5090 ve H100 **yasak** (farklı mimari kollar arasına değişken sokar) |
 | Modal kart dizesi | `A100-40GB`, **açıkça** | yalnız `"A100"` yazılırsa 40 ya da 80 GB gelebilir (tuzak 6.7, [#48](record/kronoloji-39-52.md#48)) |
-| Python | 3.11 | `scripts/egitim/modal_train.py:50` |
+| Python | 3.11 | `scripts/egitim/kosu/modal_train.py:50` |
 | paketler | `requirements.lock.txt`, `sha256 6b5209e6a293f3c72f5d6c1dfa64591128f48dd8e3c0e07cdc3141c733c6ebb0` — torch 2.10.0 · triton 3.6.0 · transformers 5.10.2 · peft 0.19.1 · trl 0.24.0 · unsloth 2026.6.1 · unsloth_zoo 2026.6.1 · accelerate 1.13.0 · bitsandbytes 0.49.2 · datasets 4.3.0; kurulum `--no-deps` | dosyadan okundu, 2026-10-10 |
 | `einops` · `fla-core` · `flash-linear-attention` | **einops 0.8.2 · fla-core 0.5.1 · flash-linear-attention 0.5.1**; kurulum `--no-deps`, sürümler yaml'dan | 2026-10-11: Modal'daki önbellekli imaj katmanından okundu (kurulum 2026-07-25 06:03 UTC; τ_g ve τ_a bu katmanla eğitildi, [#74](record/kronoloji-63-71.md#74)). Önceden **sürümsüz** kuruluyordu: imaj farklı günde kurulsaydı farklı sürüm gelirdi (fla 0.5.2 2026-07-27'de çıktı), hata vermezdi |
 | `fla-core` | **zorunlu**; ölçüt `import fla` değil `from fla.modules import FusedRMSNormGated` | eksikliği fla'nın hiç olmamasından kötü ([ADR-0033](adr/kararlar-0027-0044.md#adr-0033)) |
@@ -43,7 +43,7 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 | ardışık tarif | τ_g tabana bf16'da gömülür; ORPO tarifi taze adaptörle, β 0,1 / 0,3 | aynı |
 | seed | **3407 · 3408 · 3409**, iki temel modelde (Qwen3.5-4B, Gemma 4 E4B) aynı liste. Qwen'de 3407'nin τ_g ve τ_a kolları `v1` adaptörleridir | sonuç görülmeden seçildi; yaml'a yazılınca kesinleşir |
 | GPU üzerinde yalnız eğitim | ölçüm, hakem ve API anahtarları **eğitim makinesine gitmez** | ~~Vast için zorunlu~~ Modal dışı platformda (RunPod) zorunlu, [ADR-0101](adr/kararlar-0064-0085.md#adr-0101) |
-| vLLM (yalnız GRPO'nun cevap üretimi; ölçümde kullanılmaz) | **vLLM 0.30.0** · `huggingface_hub` 1.33.0 · taban imaj `nvidia/cuda:13.0.1-devel-ubuntu24.04` · `--max-num-seqs 32` · `--reasoning-parser qwen3`; ölçüm pilotunda doğrulandı, GRPO pilotunda yeniden doğrulanır | [ADR-0109](adr/kararlar-0064-0085.md#adr-0109), pilot `scripts/olcum_uretim/modal_pilot_vllm.py` |
+| vLLM (yalnız GRPO'nun cevap üretimi; ölçümde kullanılmaz) | **vLLM 0.30.0** · `huggingface_hub` 1.33.0 · taban imaj `nvidia/cuda:13.0.1-devel-ubuntu24.04` · `--max-num-seqs 32` · `--reasoning-parser qwen3`; ölçüm pilotunda doğrulandı, GRPO pilotunda yeniden doğrulanır | [ADR-0109](adr/kararlar-0064-0085.md#adr-0109), pilot `scripts/olcum_uretim/pilot/modal_pilot_vllm.py` |
 
 ## 3 · Bilinen sessiz tehlikeler
 

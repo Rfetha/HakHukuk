@@ -55,10 +55,10 @@ EĞİTİM (Modal, Unsloth)  ->  bf16 safetensors  -->  vLLM (A10): seçim ölç�
 
 | birim | iş | durum |
 | :-- | :-- | :-- |
-| `scripts/olcum_uretim/toplu_uret.py` | dondurulmuş bağlamdan soruları aynı anda gönderir; kayıt biçimi sıralı üretimle aynı | yazıldı |
-| `scripts/olcum_uretim/gguf_hf_cevir.py` | Q4_K_M'i bf16 HF biçimine açar (426 tensör orijinalle doğrulandı); yalnız "motor etkisi" koşusunda kullanılır | yazıldı |
-| `scripts/olcum_uretim/modal_pilot_vllm.py` | üçlü koşuya göre yeniden düzenlenir; orijinal bf16 Modal hacminden okunur | değişecek |
-| `scripts/olcum_uretim/bf16_yukle.py` | dizüstünden Modal hacmine orijinal bf16, sha256 kapılı | yazılacak; yükleme ayrı onayla |
+| `scripts/olcum_uretim/uretim/toplu_uret.py` | dondurulmuş bağlamdan soruları aynı anda gönderir; kayıt biçimi sıralı üretimle aynı | yazıldı |
+| `scripts/olcum_uretim/pilot/gguf_hf_cevir.py` | Q4_K_M'i bf16 HF biçimine açar (426 tensör orijinalle doğrulandı); yalnız "motor etkisi" koşusunda kullanılır | yazıldı |
+| `scripts/olcum_uretim/pilot/modal_pilot_vllm.py` | üçlü koşuya göre yeniden düzenlenir; orijinal bf16 Modal hacminden okunur | değişecek |
+| `scripts/olcum_uretim/pilot/bf16_yukle.py` | dizüstünden Modal hacmine orijinal bf16, sha256 kapılı | yazılacak; yükleme ayrı onayla |
 | `scripts/olcum_uretim/vllm_sunucu.py` | pilot, ölçüm ve hasatın ortak "sunucuyu aç, kapat" parçası | üç kullanım olunca çıkarılır |
 | ölçüm hattı | `gen_eval_grounded.py` değişmez; resmî toplu yol `toplu_uret.py` (aynı kayıt biçimi); `makine_kapisi_puan.py` eklenir | kapılar geçerse |
 | hasat | Modal `harvest_b10` vLLM'e uyarlanır | bölüm 6 kapısı geçerse |

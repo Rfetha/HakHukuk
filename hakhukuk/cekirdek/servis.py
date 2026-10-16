@@ -44,7 +44,7 @@ def _getir(soru: str, k: int) -> tuple[Kaynak, ...]:
     if _retriever is None:
         kok = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
         sys.path[:0] = [os.path.join(kok, "scripts"),
-                        os.path.join(kok, "scripts", "erisim_korpus")]
+                        os.path.join(kok, "scripts", "erisim_korpus", "getirici")]
         from retriever import Retriever  # noqa: PLC0415 — ağır bağımlılık, gecikmeli
         _retriever = Retriever.yukle(os.path.join(kok, _INDEKS)
                                      if not os.path.isabs(_INDEKS) else _INDEKS)

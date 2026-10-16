@@ -214,7 +214,7 @@ def test_kunye_tamamla_devam_eden_koshuda_yalniz_bu_oturumun_adimlarina_boler(tm
     assert o["oturum_adim"] == 50 and o["s_adim"] == 2.0
 
 
-@pytest.mark.parametrize("yol", ["scripts/egitim/train_sft.py", "scripts/egitim/train_orpo.py"])
+@pytest.mark.parametrize("yol", ["scripts/egitim/kosu/train_sft.py", "scripts/egitim/kosu/train_orpo.py"])
 def test_egitim_betikleri_kunyeye_sure_ve_ilk_adimi_gecirir(yol):
     cagri = next(n for n in ast.walk(_main_govdesi(yol)) if isinstance(n, ast.Call)
                  and getattr(n.func, "id", None) == "kunye_tamamla")
@@ -235,13 +235,13 @@ def _ilk_satir(govde, ad):
     return min(satirlar)
 
 
-@pytest.mark.parametrize("yol", ["scripts/egitim/train_sft.py", "scripts/egitim/train_orpo.py"])
+@pytest.mark.parametrize("yol", ["scripts/egitim/kosu/train_sft.py", "scripts/egitim/kosu/train_orpo.py"])
 def test_kilit_kontrolu_model_yuklenmeden_once(yol):
     govde = _main_govdesi(yol)
     assert _ilk_satir(govde, "kilidi_uygula") < _ilk_satir(govde, "from_pretrained")
 
 
-@pytest.mark.parametrize("yol", ["scripts/egitim/train_sft.py", "scripts/egitim/train_orpo.py"])
+@pytest.mark.parametrize("yol", ["scripts/egitim/kosu/train_sft.py", "scripts/egitim/kosu/train_orpo.py"])
 def test_hassasiyet_ve_kilit_zorunlu_bf16_bayragi_yok(yol):
     kaynak = open(os.path.join(KOK, yol), encoding="utf-8").read()
     agac = ast.parse(kaynak)
@@ -259,7 +259,7 @@ def test_hassasiyet_ve_kilit_zorunlu_bf16_bayragi_yok(yol):
 
 # ── (d) Modal zinciri ─────────────────────────────────────────────────────────
 
-MODAL = os.path.join(KOK, "scripts/egitim/modal_train.py")
+MODAL = os.path.join(KOK, "scripts/egitim/kosu/modal_train.py")
 
 
 def _egitim_imaji_blogu():

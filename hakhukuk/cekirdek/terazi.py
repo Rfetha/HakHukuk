@@ -17,11 +17,11 @@ import sys
 
 from hakhukuk.cekirdek.tipler import Atif, Durum, Kaynak
 
-# ⚠️ `score_abstention` scripts/puanlama/ ALT KLASÖRÜNDE (T5 bölünmesi, 2026-09-07);
+# ⚠️ `score_abstention` scripts/puanlama/skorlayici/ ALT KLASÖRÜNDE (T5 bölünmesi 2026-09-07, ADR-0112);
 # yalnız `scripts` eklemek yetmez — planın yazdığı yol eksikti.
 _KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-sys.path[:0] = [os.path.join(_KOK, "scripts", "puanlama"),
-                os.path.join(_KOK, "scripts", "erisim_korpus")]
+sys.path[:0] = [os.path.join(_KOK, "scripts", "puanlama", "skorlayici"),
+                os.path.join(_KOK, "scripts", "erisim_korpus", "atif")]
 from score_abstention import REJECT_RE  # noqa: E402  — TEK KAYNAK, kopyalanmaz
 from madde_anahtar import madde_anahtari  # noqa: E402  — kimlik normalizasyonu, TEK KAYNAK
 

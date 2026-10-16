@@ -20,7 +20,7 @@ yığınından bağımsız: hangi modele geçilirse geçilsin bu dosyalar aynen 
 ```
 
 Join anahtarı her yerde `(kanun_no | madde_no)`. Kaynak: Mevzuat.gov.tr / bedesten API
-(`docs/BEDESTEN_API.md`, `scripts/erisim_korpus/bedesten_probe.py` — ⚠️ Türk IP'si gerekir).
+(`docs/BEDESTEN_API.md`, `scripts/erisim_korpus/korpus/bedesten_probe.py` — ⚠️ Türk IP'si gerekir).
 
 ---
 
@@ -100,7 +100,7 @@ quote gold'da yok", 5'i atıf no eşleşmiyor) + 577 replay.
 
 Distractor seçimi **hard-negative**: aynı kanun, komşu madde no öncelikli (gerçek retriever'ı
 taklit eder). Rastgele distractor eval'i kolaylaştırdığı için reddedildi (ADR-0013).
-Paketleyici `scripts/veri_hazirlik/raft_pack.py` — **eval ve eğitim aynı modülü kullanır**, dağılım sapmasın.
+Paketleyici `scripts/veri_hazirlik/egitim_verisi/raft_pack.py` — **eval ve eğitim aynı modülü kullanır**, dağılım sapmasın.
 
 ### `train/raft_scrubbed/` — `raft/`'ın öğretmen jargonundan temizlenmiş hâli
 | bölüm | satır |
@@ -108,7 +108,7 @@ Paketleyici `scripts/veri_hazirlik/raft_pack.py` — **eval ve eğitim aynı mod
 | train | **17.323** |
 | validation / test | 962 / 962 |
 
-`scripts/veri_hazirlik/scrub_teacher_jargon.py` ile üretildi; ham `raft/`'ta cevapların 1.301/17.323'ünde
+`scripts/veri_hazirlik/egitim_verisi/scrub_teacher_jargon.py` ile üretildi; ham `raft/`'ta cevapların 1.301/17.323'ünde
 `GOLD`/`DISTRACTOR` etiketi vardı ([#39](../docs/record/kronoloji-39-52.md#39)). **`τ_g` v1 bu setle eğitildi**
 ([`kollar.md`](../docs/record/kollar.md)).
 
@@ -124,12 +124,12 @@ Paketleyici `scripts/veri_hazirlik/raft_pack.py` — **eval ve eğitim aynı mod
 interleave 6). Atlanan: 224 "kontrast yok", 9 dev.
 
 > **`is_pref` alanı kritik:** `1` = gerçek tercih çifti (tam ORPO), `0` = grounding-replay
-> (yalnız NLL akar = SFT-replay). `scripts/egitim/train_orpo.py:MaskedORPOTrainer` bu maskeyi
+> (yalnız NLL akar = SFT-replay). `scripts/egitim/kosu/train_orpo.py:MaskedORPOTrainer` bu maskeyi
 > NaN-safe uygular. Bu olmadan replay satırları OR-terimini zehirler.
 
 ⚠️ `rejected` tarafı **12B'nin ürettiği gerçek fabrikasyonlardır.** Yeni base ile çalışırken
 seti olduğu gibi kullanmak "başka bir modelin hatalarını" öğretir. Doğrusu: `--rejected`
-havuzunu **yeni base ile yeniden hasat et** (`scripts/veri_hazirlik/gen_v3_rejected.py`), `chosen` ve
+havuzunu **yeni base ile yeniden hasat et** (`scripts/veri_hazirlik/egitim_verisi/gen_v3_rejected.py`), `chosen` ve
 tuzak kurgusu yeniden kullanılabilir.
 
 ### `train/orpo_abstain_cp2c/` — Qwen'in kendi hasadından tercih çiftleri

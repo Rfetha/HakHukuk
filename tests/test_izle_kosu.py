@@ -1,4 +1,4 @@
-"""`scripts/olcum_uretim/izle_kosu.py` — koşu izleyicinin saf çekirdeği.
+"""`scripts/olcum_uretim/uretim/izle_kosu.py` — koşu izleyicinin saf çekirdeği.
 
 Why: bu betik koşu SÜRERKEN okunuyor ve gördüğü sayılara göre koşu durdurulabiliyor
 (kesiklik > %5 → ADR-0040 geçerlilik kapısı). Yanlış sayan bir izleyici, koşuyu boşuna

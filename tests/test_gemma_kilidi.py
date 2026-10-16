@@ -16,7 +16,7 @@ import ortam_kilidi as ok  # noqa: E402
 from test_egitim_ortami import _gozlem, _orpo_args, _sft_args  # noqa: E402
 
 KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MODAL = os.path.join(KOK, "scripts/egitim/modal_train.py")
+MODAL = os.path.join(KOK, "scripts/egitim/kosu/modal_train.py")
 
 
 @pytest.fixture(scope="module")
@@ -196,7 +196,7 @@ def test_yukleme_secenekleri_gemmada_tam_ad_qwende_bos():
 
 @pytest.mark.parametrize("betik", ["train_sft.py", "train_orpo.py"])
 def test_betikler_yukleme_secenekleri_hedef_deseni_ve_kapiyi_kullanir(betik):
-    kaynak = open(os.path.join(KOK, "scripts/egitim", betik), encoding="utf-8").read()
+    kaynak = open(os.path.join(KOK, "scripts/egitim/kosu", betik), encoding="utf-8").read()
     assert "**yukleme_secenekleri(args)" in kaynak
     assert "target_modules=lora_hedefi(args.target_modules)" in kaynak
     assert kaynak.index("get_peft_model") < kaynak.index("lora_yerlesim_kapisi(model, args, out)")

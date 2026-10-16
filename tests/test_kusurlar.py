@@ -105,7 +105,7 @@ def test_cevap_metin_ham_alan_isaretleri_koruyor():
 def test_score_register_begin_quote_deseni_yerinde_duruyor():
     """`##begin_quote##` `score_register.py`'de register göstergesi olarak SAYILIYOR
     (CLAUDE.md karar 2). Bu desen silinirse register ölçümü bozulur."""
-    dosya = REPO_KOK / "scripts" / "puanlama" / "score_register.py"
+    dosya = REPO_KOK / "scripts" / "puanlama" / "skorlayici" / "score_register.py"
     icerik = dosya.read_text(encoding="utf-8")
     assert "##begin_quote##" in icerik, (
         "score_register.py'deki begin_quote deseni kayboldu — register ölçümü bozulur")

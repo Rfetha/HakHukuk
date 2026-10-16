@@ -31,7 +31,7 @@ source ~/code/global_venv/bin/activate
 
 İndeksi bugün elle üretmek:
 ```bash
-python scripts/erisim_korpus/retriever.py kur \
+python scripts/erisim_korpus/getirici/retriever.py kur \
   --korpus data/corpus/mevzuat_maddeler.jsonl \
   --indeks data/index/mevzuat_bge_m3_s2
 ```

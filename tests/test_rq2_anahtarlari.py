@@ -72,7 +72,7 @@ def _kos_abst(tmp_path, *ek, onceki=None):
               open(d / "abst_m2_t.jsonl", "w", encoding="utf-8"))
     ortam = {k: v for k, v in os.environ.items() if k not in ("OPENAI_API_KEY", "OPENROUTER_API_KEY")}
     p = subprocess.run(
-        [sys.executable, "scripts/puanlama/score_abstention.py", "--details", str(d / "m2_t_detail.jsonl"),
+        [sys.executable, "scripts/puanlama/skorlayici/score_abstention.py", "--details", str(d / "m2_t_detail.jsonl"),
          "--label", "m2_t", "--out-dir", str(d), "--pay-kaynagi", "onceki",
          "--gecerlilik-onbellek", str(tmp_path / "onbellek.json"), *ek],
         capture_output=True, text=True, env=ortam, cwd=_KOK)
@@ -109,7 +109,7 @@ def test_getir_rrf_k_parametresini_fuzyona_iletir(tmp_path, monkeypatch):
 def test_gen_eval_rrf_k_harness_izine_yaziliyor():
     """Tuzak 6.12: bayrak çağrı zincirinin ucuna (koşu satırına) kadar izlenir."""
     import ast
-    agac = ast.parse(open(os.path.join(_KOK, "scripts/olcum_uretim/gen_eval_grounded.py"),
+    agac = ast.parse(open(os.path.join(_KOK, "scripts/olcum_uretim/uretim/gen_eval_grounded.py"),
                           encoding="utf-8").read())
     argumanlar = [n.args[0].value for n in ast.walk(agac) if isinstance(n, ast.Call)
                   and getattr(n.func, "attr", None) == "add_argument"]
@@ -144,7 +144,7 @@ def test_onsoz_anahtari_metni_aa04c78_ile_birebir():
     """Üretim tarafının eski hâli (`--sufficiency-preamble`): metin ADR-0058'in koştuğu hâlle aynı.
     Kaynak: bundle `aa04c78:scripts/gen_eval_grounded.py` (2026-10-11'de karşılaştırıldı)."""
     import ast
-    agac = ast.parse(open(os.path.join(_KOK, "scripts/olcum_uretim/gen_eval_grounded.py"),
+    agac = ast.parse(open(os.path.join(_KOK, "scripts/olcum_uretim/uretim/gen_eval_grounded.py"),
                           encoding="utf-8").read())
     atama = next(n for n in agac.body if isinstance(n, ast.Assign)
                  and getattr(n.targets[0], "id", None) == "SUFFICIENCY_PREAMBLE")

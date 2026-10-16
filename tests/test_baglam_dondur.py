@@ -105,7 +105,7 @@ def test_gen_eval_donmus_baglam_canli_getirme_bayraklariyla_birlikte_verilemez(t
     Kontrol model/sunucu açılmadan önce yapılır."""
     yol, _, veri, _, _, _ = _dondur_yaz(tmp_path)
     r = subprocess.run(
-        [sys.executable, os.path.join(_KOK, "scripts/olcum_uretim/gen_eval_grounded.py"),
+        [sys.executable, os.path.join(_KOK, "scripts/olcum_uretim/uretim/gen_eval_grounded.py"),
          "--donmus-baglam", yol, "--harness-indeks", str(tmp_path / "indeks"), "--data", veri,
          "--label", "x", "--out-dir", str(tmp_path / "out"), "--server-url", "http://127.0.0.1:9"],
         capture_output=True, text=True, cwd=_KOK)
@@ -116,7 +116,7 @@ def test_gen_eval_donmus_baglam_canli_getirme_bayraklariyla_birlikte_verilemez(t
 def test_gen_eval_iceri_aktarilinca_torch_ve_unsloth_yuklenmez():
     """Kiralık kartta üretim yalnız HTTP taşıyıcısıyla koşar (ADR-0102): küçük sunucu imajında torch ve
     unsloth yok. Model yükleme yolu (dizüstü) bu paketleri kendi fonksiyonunda içe aktarır."""
-    kod = ("import sys; sys.path.insert(0, 'scripts/olcum_uretim'); import gen_eval_grounded; "
+    kod = ("import sys; sys.path.insert(0, 'scripts/olcum_uretim/uretim'); import gen_eval_grounded; "
            "print('torch' in sys.modules, 'unsloth' in sys.modules)")
     r = subprocess.run([sys.executable, "-c", kod], capture_output=True, text=True, cwd=_KOK)
     assert r.returncode == 0, r.stderr[-800:]

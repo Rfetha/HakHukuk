@@ -58,9 +58,9 @@ def test_tamamlanmis_jsonl_tam_dosyayi_okur(tmp_path):
 # ── üreticiler ve okuyucular bağlı mı (kod ağacından, metin aramasıyla değil) ─────────────
 _KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _URETICILER = {
-    "scripts/olcum_uretim/gen_eval_grounded.py": 1,   # *_detail.jsonl
-    "scripts/puanlama/groundedness.py": 2,            # gnd_*.jsonl + özet
-    "scripts/puanlama/score_abstention.py": 2,        # abst_*.jsonl + özet
+    "scripts/olcum_uretim/uretim/gen_eval_grounded.py": 1,   # *_detail.jsonl
+    "scripts/puanlama/skorlayici/groundedness.py": 2,            # gnd_*.jsonl + özet
+    "scripts/puanlama/skorlayici/score_abstention.py": 2,        # abst_*.jsonl + özet
 }
 
 
@@ -83,9 +83,9 @@ def test_uretici_ciktisini_part_ile_yazar(yol, beklenen):
     assert _yazma_kipli_open(yol) == [], [ast.unparse(n) for n in _yazma_kipli_open(yol)]
 
 
-@pytest.mark.parametrize("yol", ["scripts/puanlama/groundedness.py",
-                                 "scripts/puanlama/score_abstention.py",
-                                 "scripts/puanlama/harness_tablo.py",
-                                 "scripts/puanlama/uc_okuma_kutle.py"])
+@pytest.mark.parametrize("yol", ["scripts/puanlama/skorlayici/groundedness.py",
+                                 "scripts/puanlama/skorlayici/score_abstention.py",
+                                 "scripts/puanlama/tablo/harness_tablo.py",
+                                 "scripts/puanlama/tablo/uc_okuma_kutle.py"])
 def test_puanlayici_girdisini_tamamlanmis_jsonl_ile_okur(yol):
     assert _cagrilar(yol, "tamamlanmis_jsonl")

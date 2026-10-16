@@ -26,7 +26,7 @@ COPY hakhukuk/ hakhukuk/
 RUN pip install ".[api]"
 
 # ⚠️ KARAR 5 (ADR-0078 madde 5): imaj repo AĞACINI kopyalar, F1 ONARILMAZ.
-# `servis.py` çalışma anında `scripts/` ve `scripts/erisim_korpus/`'u `sys.path`'e ekleyip
+# `servis.py` çalışma anında `scripts/` ve `scripts/erisim_korpus/getirici/`'yi `sys.path`'e ekleyip
 # `retriever.py`'yi oradan alır; korpusu da repo köküne göreli okur. Yani `pyproject.toml`'un
 # *"`scripts/` bilerek DIŞARIDA"* cümlesi çalışma anında GEÇERSİZDİR. Bedel ticket 11 olarak
 # açık yazılıdır: retriever'ı pakete taşımak yapısal bir değişikliktir (26 dosyanın yol

@@ -1,4 +1,4 @@
-"""ADIM 6.3 incelemesinin bulguları — `scripts/olcum_uretim/konteyner_urun_yolu_80.py`.
+"""ADIM 6.3 incelemesinin bulguları — `scripts/olcum_uretim/uretim/konteyner_urun_yolu_80.py`.
 
 ⛔ Ağsız: gerçek `urllib.request.urlopen` hiç çağrılmaz, sahte bir katmanla değiştirilir.
 ⛔ `outputs/eval/gorev/g23-konteyner-urun-yolu-80/` OKUNMAZ/YAZILMAZ — bu testler yalnız `tmp_path`

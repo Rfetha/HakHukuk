@@ -218,7 +218,7 @@ def test_bos_baglam_kosusu_paydayi_HAKEMSIZ_ve_TAM_verir(tmp_path, monkeypatch):
              if k not in ("OPENAI_API_KEY", "OPENROUTER_API_KEY")}
     ortam["OPENAI_BUDGET_USD"] = "0.01"
     p = subprocess.run(
-        [sys.executable, "scripts/puanlama/score_abstention.py",
+        [sys.executable, "scripts/puanlama/skorlayici/score_abstention.py",
          "--details", str(d / "m3_test_detail.jsonl"), "--label", "m3_test",
          "--out-dir", str(d), "--pay-kaynagi", "onceki",
          "--gecerlilik-onbellek", str(tmp_path / "onbellek.json")],
@@ -243,7 +243,7 @@ def test_pay_kaynagi_onceki_verdict_dosyasi_yoksa_ERKEN_PATLAR(tmp_path):
     with open(d / "x_detail.jsonl", "w", encoding="utf-8") as f:
         f.write(json.dumps({"id": 0, "soru": "S?", "cevap": "C", "mode": "empty"}) + "\n")
     p = subprocess.run(
-        [sys.executable, "scripts/puanlama/score_abstention.py", "--details", str(d / "x_detail.jsonl"),
+        [sys.executable, "scripts/puanlama/skorlayici/score_abstention.py", "--details", str(d / "x_detail.jsonl"),
          "--label", "x", "--out-dir", str(d), "--pay-kaynagi", "onceki"],
         capture_output=True, text=True)
     assert p.returncode != 0
@@ -282,7 +282,7 @@ def _kosur(d, onbellek, kapi):
              if k not in ("OPENAI_API_KEY", "OPENROUTER_API_KEY")}
     ortam["LLM_GATEWAY"] = kapi
     return subprocess.run(
-        [sys.executable, "scripts/puanlama/score_abstention.py", "--details", str(d / "m2_x_detail.jsonl"),
+        [sys.executable, "scripts/puanlama/skorlayici/score_abstention.py", "--details", str(d / "m2_x_detail.jsonl"),
          "--label", "m2_x", "--out-dir", str(d), "--pay-kaynagi", "onceki",
          "--gecerlilik-onbellek", str(onbellek)], capture_output=True, text=True, env=ortam)
 
@@ -345,7 +345,7 @@ def test_ozet_onbellek_isabetini_ONCEKI_KOSU_devralmasindan_AYIRIR(tmp_path):
     ortam = {k: v for k, v in os.environ.items()
              if k not in ("OPENAI_API_KEY", "OPENROUTER_API_KEY")}
     p = subprocess.run(
-        [sys.executable, "scripts/puanlama/score_abstention.py", "--details", str(d / "m2_x_detail.jsonl"),
+        [sys.executable, "scripts/puanlama/skorlayici/score_abstention.py", "--details", str(d / "m2_x_detail.jsonl"),
          "--label", "m2_x", "--out-dir", str(d), "--pay-kaynagi", "onceki",
          "--payda-kaynagi", "onceki", "--gecerlilik-onbellek", str(tmp_path / "yok.json")],
         capture_output=True, text=True, env=ortam)

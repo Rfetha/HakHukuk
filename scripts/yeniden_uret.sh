@@ -41,7 +41,7 @@ echo "  hakem  : $HAKEM  (ADR-0074 · bağlayıcı)"
 echo "  güç    : $(cat /sys/class/power_supply/AC*/online 2>/dev/null | head -1 | sed 's/1/ŞARJDA/;s/0/PİLDE ⚠️ (GPU 180 MHz'\''e kısılır — 12× yavaş)/')"
 
 echo "=== 1/5 · üretim (llama-server açılır, h1 koşulur, sunucu kapanır) ==="
-bash scripts/olcum_uretim/cp0_thinking_gen.sh "$GGUF" "$ETIKET"
+bash scripts/olcum_uretim/cp/cp0_thinking_gen.sh "$GGUF" "$ETIKET"
 
 DETAY="$OUT_DIR/h1_${ETIKET}_detail.jsonl"
 [ -f "$DETAY" ] || { echo "🚫 üretim çıktısı yok: $DETAY"; exit 1; }
@@ -50,7 +50,7 @@ echo "=== 2/5 · geçerlilik kapıları (koşu GEÇERSİZ olabilir — sayı ür
 source ~/code/global_venv/bin/activate
 python - "$DETAY" <<'PY'
 import json, sys
-sys.path[:0] = ["scripts", "scripts/olcum_uretim", "scripts/erisim_korpus"]
+sys.path[:0] = ["scripts", "scripts/olcum_uretim/uretim", "scripts/erisim_korpus"]
 from recall_kapisi import recall_at_10  # kusur 33 (ADR-0083 §A) düzeltmesi
 
 satirlar = [json.loads(l) for l in open(sys.argv[1], encoding="utf-8") if l.strip()]
@@ -77,12 +77,12 @@ echo "=== 3/5 · puanlama (hakem) ==="
 set -a && . ./.env && set +a
 export OPENAI_API_KEY="$OPENROUTER_API_KEY"
 LLM_GATEWAY=openrouter LLM_PROVIDER_ORDER=OpenAI \
-python scripts/puanlama/groundedness.py \
+python scripts/puanlama/skorlayici/groundedness.py \
   --details "$DETAY" --label "h1_${ETIKET}" --mode data \
   --judge-model "$HAKEM" --out-dir "$OUT_DIR"
 
 echo "=== 4/5 · manşet tablo ==="
-python scripts/puanlama/harness_tablo.py \
+python scripts/puanlama/tablo/harness_tablo.py \
   --details "$DETAY" --gnd "$OUT_DIR/gnd_h1_${ETIKET}.jsonl" \
   --kume data/eval/dev/core_hard.jsonl \
   --out "$OUT_DIR/harness_tablo.json"

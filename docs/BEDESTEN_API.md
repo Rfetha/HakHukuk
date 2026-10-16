@@ -17,7 +17,7 @@
 
 > `saidsurucu/mevzuat-mcp` (MIT) reposundan çıkarıldı + canlı test edildi (2026-05-29, çalışıyor).
 > **Amaç:** MCP'yi kurmadan, mevzuat (ve ileride içtihat) verisini doğrudan bu temiz JSON API'den çekmek.
-> Çalışan minimal istemci: `scripts/erisim_korpus/bedesten_probe.py`.
+> Çalışan minimal istemci: `scripts/erisim_korpus/korpus/bedesten_probe.py`.
 
 ## Genel
 - **BASE:** `https://bedesten.adalet.gov.tr/mevzuat`

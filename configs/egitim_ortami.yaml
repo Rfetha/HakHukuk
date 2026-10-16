@@ -1,6 +1,6 @@
 # Eğitim ortamı kilidi — makine okunur TEK kaynak (docs/EGITIM_ORTAMI.md §1).
 # Bu dosya ile belge çelişirse bu dosya bağlayıcıdır; belge düzeltilir.
-# train_sft.py / train_orpo.py model yüklemeden önce bunu okur (scripts/egitim/ortam_kilidi.py);
+# train_sft.py / train_orpo.py model yüklemeden önce bunu okur (scripts/egitim/kosu/ortam_kilidi.py);
 # uymayan alan varsa koşu para harcamadan durur. Qwen3.5-4B'nin kilidi; Gemma'nınki ayrı yazılır
 # (EGITIM_ORTAMI §6 m.6).
 

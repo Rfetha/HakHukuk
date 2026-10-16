@@ -499,7 +499,7 @@ Bu değerlerden biri değişirse koşu hata vermez, yalnız karşılaştırma ge
 Birleştirme:
 
 ```bash
-python scripts/egitim/merge_ties.py --base Qwen/Qwen3.5-4B \
+python scripts/egitim/birlestirme/merge_ties.py --base Qwen/Qwen3.5-4B \
        --adapter tg=outputs/tg_v1 --adapter ta=outputs/ta_v1 \
        --no-norm-balance --out models/merged/tgta_v1
 ```

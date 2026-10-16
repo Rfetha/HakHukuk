@@ -56,7 +56,7 @@ docs/                every document except the three root ones (index: docs/READ
   superpowers/specs/   design specs; an applied spec stays as that day's design
 data/                corpus/ (ground truth) · eval/ (frozen) · train/ · index/ · _ham_ve_ara/
 outputs/             eval/<group>/<run>/ (+ _artefakt/) · egitim/<task>/ (training-side evidence) · tg_v1/ · ta_v1/ (adapters; private HF backup per ADR-0091, F0.1)
-                     · _indirilen/ (raw CP2-c harvest downloads, input of `veri_hazirlik/cp2c_birlestir.py`)
+                     · _indirilen/ (raw CP2-c harvest downloads, input of `veri_hazirlik/hasat/cp2c_birlestir.py`)
 models/              merged/tgta_v1 (bf16; private HF backup, bf16/tgta_v1/) · gguf/   (20 GB, gitignored)
 configs/             training-environment locks: egitim_ortami.yaml (Qwen) · egitim_ortami_gemma.yaml (Gemma 4 E4B)
 knowledge/           literature summaries (thesis era + Checkpoint 1 inputs, 2026-10-10) · `mike-tarama/`: reference-app scan for the agent app
@@ -123,7 +123,7 @@ inside `docs/adr/**` or `docs/record/**` on your own — they record what that d
   lowered accuracy ([ADR-0010](docs/adr/gemma4-12b-dersler.md#adr-0010)). Train for correctness and
   abstention; simplify at the prompt layer.
 - **Next first-rank axis is B1 (misattribution).** The B10 over-refusal round closed with NO training
-  ([ADR-0062](docs/adr/kararlar-0045-0063.md#adr-0062)); its tooling (`scripts/veri_hazirlik/b10_hasat.py`,
+  ([ADR-0062](docs/adr/kararlar-0045-0063.md#adr-0062)); its tooling (`scripts/veri_hazirlik/hasat/b10_hasat.py`,
   Modal `harvest_b10`, the leakage filter) is intact and reusable — do not rebuild it.
 
 ## Documentation discipline (HARD RULE)
@@ -194,7 +194,7 @@ remembers. The research record is the most valuable thing here, more than the we
   `docker/compose.yaml` is a **regime lock** (llama-server flags are the published ones, parsed as a gate in
   `tests/test_konteyner.py`). Run: `docker compose -f docker/compose.yaml up`. vLLM is not a measurement engine
   (ADR-0109); it is reserved for GRPO rollout generation (June 2027 pilot). The vLLM pilot scripts
-  (`scripts/olcum_uretim/gguf_hf_cevir.py`, `toplu_uret.py`, `modal_pilot_vllm.py`) stay as tools.
+  (`scripts/olcum_uretim/pilot/gguf_hf_cevir.py`, `toplu_uret.py`, `modal_pilot_vllm.py`) stay as tools.
 - **OCR/multimodal is not a base-selection argument.** For Turkish, a separate OCR preprocessor, not VLM OCR.
 - **Data format:** chat-template JSON (`messages` with `user`/`assistant`).
 - **Eval: 6-mode CANON (ADR-0011) + DEV/TEST split (ADR-0027).** Modes: M1 distractor-faithfulness · M4
@@ -235,8 +235,8 @@ remembers. The research record is the most valuable thing here, more than the we
   **26 files carry an identical path-bridge block** — `grep -rl "yol köprüsü" scripts/`. `tests/conftest.py`
   mirrors it. **If you change one, change both.** `hakhukuk/cekirdek/{servis,terazi,araclar}.py` bridge into
   `scripts/` the same way (three `dirname` levels up to the repo root; ticket 11 records the debt). Modal
-  entry points are `scripts/egitim/modal_train.py` / `modal_diag.py`; run `modal run
-  scripts/egitim/modal_train.py::<fn>` **from the repo root** (they `add_local_dir("scripts")`).
+  entry points are `scripts/egitim/kosu/modal_train.py` / `modal_diag.py`; run `modal run
+  scripts/egitim/kosu/modal_train.py::<fn>` **from the repo root** (they `add_local_dir("scripts")`).
 - **Base = a parameter.** Mecellem stays **cite-only** (ADR-0016/0020) — a CPT foundation base, not an
   assistant; "we beat it" is a category error. TurboQuant is future work and not in llama.cpp; today's lever is
   `--cache-type-k/-v q8_0`.
@@ -244,7 +244,7 @@ remembers. The research record is the most valuable thing here, more than the we
   and was garbage). Scope is current Republic-of-Turkey **legislation only**; ground truth = Mevzuat.gov.tr.
   Missing data is produced by grounded synthetic generation (real statute text → LLM pairs → verify).
 - **Live legislation source:** `bedesten.adalet.gov.tr/mevzuat` JSON API (contract in
-  [`docs/BEDESTEN_API.md`](docs/BEDESTEN_API.md), probe `scripts/erisim_korpus/bedesten_probe.py`);
+  [`docs/BEDESTEN_API.md`](docs/BEDESTEN_API.md), probe `scripts/erisim_korpus/korpus/bedesten_probe.py`);
   **requires a Turkish IP**. The product does not use it yet (debt B6).
 - **Corpus and index:** `data/corpus/mevzuat_maddeler.jsonl` (snapshot manifest `data/corpus/KUNYE.json`);
   the live index is `data/index/mevzuat_bge_m3_s2/` (S2: validity field + sub-article identity), and the

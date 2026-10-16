@@ -4,7 +4,7 @@ import os
 import re
 
 _KOK = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_YOL = os.path.join(_KOK, "scripts", "olcum_uretim", "modal_pilot_vllm.py")
+_YOL = os.path.join(_KOK, "scripts", "olcum_uretim", "pilot", "modal_pilot_vllm.py")
 
 
 def _kaynak():
