@@ -222,8 +222,9 @@ def kontrol(tip: str, hesap: str, agirlik: str) -> dict:
 
 
 @app.function(image=image, gpu="A10", volumes={"/outputs": out_vol}, timeout=3 * 60 * 60, retries=0)
-def pilot(tip: str, hesap: str, baglam_sha: str, agirlik: str) -> dict:
-    """Aşama B: 80 soru, vLLM'de iki üretim koşusu (aynı sunucuda arka arkaya)."""
+def pilot(tip: str, hesap: str, baglam_sha: str, agirlik: str, tekrarlar=(1, 2), dizin_eki: str = "") -> dict:
+    """Aşama B: 80 soru, vLLM'de üretim koşuları (aynı sunucuda arka arkaya). `tekrarlar` ve `dizin_eki` ek koşuların
+    (2026-10-16 gürültü ölçümü) pilot kanıtının üstüne yazmaması içindir; varsayılan pilotun kendisi."""
     import subprocess
     import sys
     import time
@@ -232,7 +233,7 @@ def pilot(tip: str, hesap: str, baglam_sha: str, agirlik: str) -> dict:
     import olcum_karti as ok
     if _sha256(f"/root/{DONMUS}") != baglam_sha:
         raise SystemExit("[pilot-vllm] 🚫 dondurulmuş bağlam yerelde hesaplanan sha256'yla aynı değil")
-    dizin = f"{CIKTI_KOK}/{tip}/{agirlik}"
+    dizin = f"{CIKTI_KOK}/{tip}/{agirlik}{dizin_eki}"
     os.makedirs(dizin, exist_ok=True)
     kunye = {"is": "F0.16 vLLM pilotu · aşama B", "agirlik": agirlik, **_ortak_kunye(tip, hesap),
              "es_zamanli": ES_ZAMANLI, "rejim": ok.REJIM, "acildi": False, "kosular": []}
@@ -243,7 +244,7 @@ def pilot(tip: str, hesap: str, baglam_sha: str, agirlik: str) -> dict:
         kunye["model_klasoru"] = hf
         srv, kunye["kosan_komut"] = _sunucu_ac(hf, f"{dizin}/vllm.log")
         kunye["acildi"] = True
-        for t in (1, 2):
+        for t in tekrarlar:
             etiket = f"h1_tgta_v1_vllm_{agirlik}_t{t}"
             t0 = time.time()
             r = subprocess.run([sys.executable, "/root/scripts/olcum_uretim/toplu_uret.py",
@@ -270,7 +271,7 @@ def pilot(tip: str, hesap: str, baglam_sha: str, agirlik: str) -> dict:
 
 
 @app.local_entrypoint()
-def baslat(asama: str = "", agirlik: str = "", tip: str = "A10"):
+def baslat(asama: str = "", agirlik: str = "", tip: str = "A10", tekrarlar: str = "1,2", dizin_eki: str = ""):
     if asama not in ("kontrol", "pilot"):
         raise SystemExit("[pilot-vllm] 🚫 --asama kontrol|pilot zorunlu")
     if agirlik not in AGIRLIKLAR:
@@ -282,7 +283,8 @@ def baslat(asama: str = "", agirlik: str = "", tip: str = "A10"):
     if asama == "kontrol":
         c = kontrol.with_options(gpu=tip).spawn(tip, hesap, agirlik)
     else:
-        c = pilot.with_options(gpu=tip).spawn(tip, hesap, _sha256(DONMUS), agirlik)
+        c = pilot.with_options(gpu=tip).spawn(tip, hesap, _sha256(DONMUS), agirlik,
+                                               tuple(int(t) for t in tekrarlar.split(",")), dizin_eki)
     print(f"[pilot-vllm] SPAWNED ✓ aşama={asama} ağırlık={agirlik} tip={tip} hesap={hesap} · {c.object_id}\n  bitince: "
           f"modal volume get hukuk-outputs /f016-vllm-pilot/<alt klasör> outputs/eval/f0/f016-vllm-pilot/<alt klasör>",
           flush=True)

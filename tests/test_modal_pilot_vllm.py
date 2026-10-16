@@ -83,3 +83,17 @@ def test_pilot_hata_verse_de_kunye_yazar():
     assert any(isinstance(c, ast.Call) and getattr(c.func, "id", None) == "_yaz"
                for t in denemeler for s in t.finalbody for c in ast.walk(s))
     assert "hata_sonu" in ast.get_source_segment(kaynak, pilot)
+
+
+def test_pilot_ek_uretim_kosulari_pilot_kanitinin_ustune_yazmaz():
+    """Ek üretim koşuları (2026-10-16 gürültü ölçümü) ayrı tekrar numaraları ve ayrı klasör ekiyle koşar; varsayılan
+    (1, 2) ve ek yok, yani pilotun kendi koşusu değişmeden yeniden üretilebilir."""
+    agac = ast.parse(_kaynak())
+    pilot = next(n for n in agac.body if isinstance(n, ast.FunctionDef) and n.name == "pilot")
+    adlar = [a.arg for a in pilot.args.args]
+    assert adlar[-2:] == ["tekrarlar", "dizin_eki"]
+    assert [ast.literal_eval(d) for d in pilot.args.defaults[-2:]] == [(1, 2), ""]
+    kaynak = ast.get_source_segment(_kaynak(), pilot)
+    assert 'f"{CIKTI_KOK}/{tip}/{agirlik}{dizin_eki}"' in kaynak and "for t in tekrarlar:" in kaynak
+    baslat = next(n for n in agac.body if isinstance(n, ast.FunctionDef) and n.name == "baslat")
+    assert {"tekrarlar", "dizin_eki"} <= {a.arg for a in baslat.args.args}
