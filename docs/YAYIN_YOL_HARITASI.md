@@ -439,6 +439,8 @@ karara bağlanır.
 ### 3.4 Koşu planı ve maliyet
 
 İlk iş ~$2-5'lik bir pilottur: kazanan model için vLLM üretiminin çalıştığını ve adım süresini ölçer.
+*2026-10-16: sunucu ölçümü için vLLM pilotu yapıldı ([#86](record/kronoloji-75-86.md#86), [ADR-0107](adr/kararlar-0064-0085.md#adr-0107)); Qwen3.5 vLLM 0.30.0'da hem
+orijinal bf16 hem Q4'ten açılmış ağırlıkla çalışıyor. GRPO pilotu Haziran 2027'de kalır.*
 Ardından **pilot + ana GRPO 3 seed + 2 ablasyon** (isabet terimsiz ödül · çekinme terimsiz ödül)
 koşulur; tahmini ~$120-130. Pilotta birim maliyet orta senaryonun 1,5 katını aşarsa önce takvim
 uzar (Kasım 2027–Mart 2028 kredisi tampondur); plan **2 seed + 1 ablasyon** (isabet terimsiz, ~$75-80)

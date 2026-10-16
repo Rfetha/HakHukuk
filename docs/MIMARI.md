@@ -26,6 +26,10 @@
                                                    └──────────────────────────────────────┘
 ```
 
+**Ölçüm motoru ([ADR-0107](adr/kararlar-0064-0085.md#adr-0107)).** Kullanıcıya giden yol yukarıdaki gibi llama-server + Q4_K_M'dir; makaledeki sayı
+da bu yolda ölçülür. Sunucudaki seçim ölçümleri vLLM'de, aynı Q4_K_M ağırlığı bf16'ya açılarak yapılır
+(`gguf_hf_cevir.py` · `toplu_uret.py` · `modal_pilot_vllm.py`); hasat llama.cpp'de kalır.
+
 ## Dosya → sorumluluk
 
 ### Ürün — `hakhukuk/` *(pip ile kurulur, `scripts/`'e bağımlı değildir\*)*

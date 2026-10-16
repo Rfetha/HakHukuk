@@ -80,6 +80,26 @@ uyarı hiçbir şey bozuk değilken de çıkabilir. Eşik F1.4'te yenilenir.*
   aynı çıktı. Dizüstünün cevaplarıyla ise yalnız 14/78 aynı: bu belgenin dizüstü komutları manşet sayıyı
   yeniden üretmek içindir; yeni ölçümlerin cevaplarıyla kalem düzeyinde kıyaslanmaz.
 
+## vLLM hattı — seçim ölçümleri ([ADR-0107](adr/kararlar-0064-0085.md#adr-0107))
+
+Makaledeki ve model kartındaki sayı yukarıdaki llama.cpp yoluyla üretilir. Seçim ölçümleri (hangi kol kazandı) sunucuda
+vLLM'de, gönderilen Q4_K_M ağırlığı açılarak yapılır; pilotta iki motor arasındaki kütle farkı 0,18 puan ([#86](record/kronoloji-75-86.md#86)).
+Pilot betiği yalnız `tgta_v1` için yazıldı; yeni kollar için genelleştirilecek.
+
+```bash
+# 1. Q4_K_M → bf16 HF (her tensör orijinalle doğrulanır)
+python scripts/olcum_uretim/gguf_hf_cevir.py --gguf <Q4_K_M.gguf> --yapilandirma-dizini models/merged/tgta_v1 \
+    --cikti <hf_dizini> --orijinal-dizin models/merged/tgta_v1
+# 2. Modal A10'da 80 soru, 32'si aynı anda (para harcar, onayla)
+modal run --detach scripts/olcum_uretim/modal_pilot_vllm.py::baslat --asama pilot --agirlik q4-acilmis
+# 3. puanlama (8 parça) ve kapılar
+bash outputs/eval/f0/f016-vllm-pilot/kos-parcali.sh
+python scripts/olcum_uretim/vllm_ozetle.py
+```
+
+vLLM'de aynı soru toplu gönderilince farklı cevap alabilir; bu hatta "birebir aynı cevap" kapısı yoktur, yeni makine
+`scripts/olcum_uretim/makine_kapisi_puan.py` ile kütle farkı ≤ 0,6 puan olarak geçer. Hasat bu hatta yapılmaz.
+
 ## Bedel
 
 | adım | bedel |
