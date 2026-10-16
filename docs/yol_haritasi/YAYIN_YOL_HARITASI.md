@@ -461,7 +461,7 @@ olur olmaz yapılır; koşular iki Modal hesabının kredisiyle (ayda ~$60) Temm
 kalacak kredi kullanılır.
 
 **İzleme ve ödül tasarımı ilkeleri** (ön-kayıt ADR'sine girer;
-[`knowledge/summary_rl_posttraining_survey.md`](../../knowledge/summary_rl_posttraining_survey.md) §C):
+[`knowledge/egitim/summary_rl_posttraining_survey.md`](../../knowledge/egitim/summary_rl_posttraining_survey.md) §C):
 ödül bileşenleri (isabet · uydurma cezası · çekinme) ayrı fonksiyonlar olarak hesaplanır ve GDPO
 biçiminde ayrı ayrı normalize edilir · bütün cevapları aynı ödülü alan grupların oranı adım başına
 günlüğe yazılır, dinamik örnekleme eşiği ön-kayıttadır · referans modele KL çıpası korunur; KL ve
@@ -625,10 +625,10 @@ damgalandı (model kartındaki hassasiyet düzeltmesi F0.3'te).
   [Findings](https://2026.aclweb.org/program/findings/)
 - GRPO ve vLLM: [Qwen3.5 — LMCache](https://docs.lmcache.ai/recipes/qwen3_5.html) ·
   [RLVR low-rank dynamics](https://arxiv.org/pdf/2605.06523)
-- Literatür özetleri (`knowledge/`): [LLM-as-judge](../../knowledge/summary_llm_as_judge_survey.md) ·
-  [benchmark](../../knowledge/summary_llm_benchmark_survey.md) ·
-  [LLM değerlendirmesi](../../knowledge/summary_llm_eval_survey_chang.md) ·
-  [halüsinasyon](../../knowledge/summary_hallucination_survey.md) ·
-  [instruction tuning](../../knowledge/summary_instruction_tuning_survey.md) ·
-  [bilgi damıtma](../../knowledge/summary_kd_llm_survey.md) ·
-  [RL post-training](../../knowledge/summary_rl_posttraining_survey.md)
+- Literatür özetleri (`knowledge/`): [LLM-as-judge](../../knowledge/degerlendirme/summary_llm_as_judge_survey.md) ·
+  [benchmark](../../knowledge/degerlendirme/summary_llm_benchmark_survey.md) ·
+  [LLM değerlendirmesi](../../knowledge/degerlendirme/summary_llm_eval_survey_chang.md) ·
+  [halüsinasyon](../../knowledge/halusinasyon_atif/summary_hallucination_survey.md) ·
+  [instruction tuning](../../knowledge/egitim/summary_instruction_tuning_survey.md) ·
+  [bilgi damıtma](../../knowledge/egitim/summary_kd_llm_survey.md) ·
+  [RL post-training](../../knowledge/egitim/summary_rl_posttraining_survey.md)

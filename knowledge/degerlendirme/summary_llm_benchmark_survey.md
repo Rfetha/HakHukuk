@@ -163,7 +163,7 @@ Giriş ayrıca şunları sayar: statik değerlendirme gerçek dünyayı taklit e
 
 Bağlam olguları: CANON 6 mod · bağlayıcı metrik kütle = `coverage × A1` · DEV 80 + 70 · eski TEST
 40 + 35 bir kez açıldı · yeni test ~200-225 + ~100 mühürlü (§2.5.1) · sorular altın maddenin içinden
-LLM ile üretiliyor, ~%22'si tek başına belirsizdi ([#53](../docs/record/kronoloji-53-62.md#53)) ·
+LLM ile üretiliyor, ~%22'si tek başına belirsizdi ([#53](../../docs/record/kronoloji-53-62.md#53)) ·
 LegalBench/BigLaw koşulmadı (ADR-0016) · HMGS kapsam dışı (§1) · n=80'de %10'luk oranın güven aralığı
 genişliği 13,4 puan.
 

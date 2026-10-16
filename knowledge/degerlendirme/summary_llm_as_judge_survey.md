@@ -244,13 +244,13 @@ hakemler.
 
 Bugünkü tasarım (kayıttan): bağlayıcı `gpt-4o-mini`, ikinci aile `claude-sonnet-5`; κ 0,534 (tam
 sadakat) / 0,409 (atıf temizliği), Pearson r 0,705; ikinci hakem sistematik olarak daha katı (24/80
-düşük, 8/80 yüksek); aile dışlaması ([ADR-0032](../docs/adr/kararlar-0027-0044.md#adr-0032)); tek
+düşük, 8/80 yüksek); aile dışlaması ([ADR-0032](../../docs/adr/kararlar-0027-0044.md#adr-0032)); tek
 gözlemde öz-tercih ters çıktı; cevabı gören hakem "geçerli tuzak" paydasını 22,3 p (mini) / 8,4 p
-(4o) kaydırdı ([#45](../docs/record/kronoloji-39-52.md#45)); konum yanlılığı bir denetimde görüldü,
-konum-ters kontrolüyle sınandı ([#55](../docs/record/kronoloji-53-62.md#55)); regex dedektör üç kez
+(4o) kaydırdı ([#45](../../docs/record/kronoloji-39-52.md#45)); konum yanlılığı bir denetimde görüldü,
+konum-ters kontrolüyle sınandı ([#55](../../docs/record/kronoloji-53-62.md#55)); regex dedektör üç kez
 fazla red saydı; iddia düzeyinde FactScore-benzeri sadakat; gürültü tabanı ~0,3 A1; fatura × 1,596.
-Kaynaklar: [`MODEL_CARD.md`](../MODEL_CARD.md) §5.3,
-[`KAPPA.md`](../outputs/eval/hp/hp-hakem-paneli/KAPPA.md).
+Kaynaklar: [`MODEL_CARD.md`](../../MODEL_CARD.md) §5.3,
+[`KAPPA.md`](../../outputs/eval/hp/hp-hakem-paneli/KAPPA.md).
 
 Maliyet hesapları **ölçüm değil, hesaptır**: `KAPPA.md` §1'deki birim bedellerden (mini $0,0417/80
 cevap, Sonnet $1,8604/80 cevap) ve 1,596 fatura payından türetildi.
@@ -275,7 +275,7 @@ cevap, Sonnet $1,8604/80 cevap) ve 1,596 fatura payından türetildi.
   ekleme · (c) kesinlik/şerh cümlesi ekleme-çıkarma ("bir avukata danışın" dahil) · (d) "Düşünce
   süreci:" açılışı · (e) bağlamdaki kaynak sırasını ters çevirme · (f) kol adını isteme sızdırma.
 - *Neden:* (b) isabetsiz atıf eksenimizin tam kendisi ve otomatik vekili yok
-  ([ADR-0066](../docs/adr/kararlar-0064-0085.md#adr-0066)); (c) dedektörün üç kez fazla red saymasının
+  ([ADR-0066](../../docs/adr/kararlar-0064-0085.md#adr-0066)); (c) dedektörün üç kez fazla red saymasının
   hakem tarafındaki eşi; (a) öznelerin cevap uzunlukları 171-862 belirteç arasında değişiyor
   (MODEL_CARD §5.1, rakipler dahil); Makale 1 kolları için ölçülmedi. Sonuçlar RQ2'nin ("ölçüm
   düzeltmesi hükmü çeviriyor mu") doğal bir ek satırıdır.
@@ -360,7 +360,7 @@ cevap, Sonnet $1,8604/80 cevap) ve 1,596 fatura payından türetildi.
 - Hakem turlarını ortalamayla ya da en-iyisi seçimiyle birleştirmeyin (S§4.4.2, Tablo 4).
 - İki hakemi ortalamayın ya da oylamayın: çoklu LLM sonucu bileşime sıkı bağlı, zayıf bir üye konum
   tutarlılığını 68,78'den 32,28'e düşürdü (S§4.4.2, Tablo 4). Bugünkü kural — manşet, iki ailenin
-  aralığı ([ADR-0057](../docs/adr/kararlar-0045-0063.md#adr-0057)) — bununla uyumlu.
+  aralığı ([ADR-0057](../../docs/adr/kararlar-0045-0063.md#adr-0057)) — bununla uyumlu.
 - Bağlayıcı istemleri hattın ortasında değiştirmeyin. Survey açıklama alanının zarar verebildiğini
   söylüyor (S§4.4.2); `score_abstention.py`'nin hakemi kararla aynı JSON'da tek cümlelik `reason`
   istiyor. Ama bulgu GPT-3.5 ve İngilizce ikili karşılaştırmadan geliyor ve istemi değiştirmek tarihsel

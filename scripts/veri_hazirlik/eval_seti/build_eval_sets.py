@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""HakHukuk Eval Suite — test seti üreticisi (literatüre dayalı; bkz knowledge/summary_eval_benchmark_literature.md).
+"""HakHukuk Eval Suite — test seti üreticisi (literatüre dayalı; bkz knowledge/degerlendirme/summary_eval_benchmark_literature.md).
 
 İki set üretir (deterministik, sabit seed → modeller AYNI soruları görür):
 
