@@ -14,7 +14,7 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 | :--- | :--- |
 | [`kararlar-0027-0044.md`](kararlar-0027-0044.md) | tasarım kilitleri · base seçimi · precision · merge/norm · Kapı 6 · düşünce modu |
 | [`kararlar-0045-0063.md`](kararlar-0045-0063.md) | ara kapı · CP2 hasat · hakem · harness · eşit sınav · faz 0 ölçüm zinciri |
-| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · ölçüm kartı pilotu ve seçimi (0102-0103) · uygulama hattı (0104-0105) · vLLM geçişi (0106) · iş panosu (0108) |
+| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · ölçüm kartı pilotu ve seçimi (0102-0103) · uygulama hattı (0104-0105) · vLLM geçişi (0106-0107) · iş panosu (0108) |
 | [`gemma4-12b-dersler.md`](gemma4-12b-dersler.md) | emekli 12B hattı: **(A) dersler** (base-bağımsız — *yeni hatta başlayan burayı okur*) · **(B) 26 ADR'nin karar kaydı** · (C) ham kayda giriş |
 
 **Atıf uyumu.** Repo genelinde ~2.100 `ADR-00NN` göndermesi var ve hepsi **çapayla** çözülür:
@@ -112,6 +112,7 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0104](kararlar-0064-0085.md#adr-0104) | 🟡 | **Uygulama hattı: ürün hattında paralel, kağıt hattının dışında** — araç çağırma ölçümü şimdi, omurga Ağustos–Eylül 2027 · llama.cpp + tek uç nokta · `apps/api` + `apps/web`, Turborepo yok · içtihat Dilim D'ye ertelendi · Türkçe normalizasyon kuralı *(takvim, araç ölçümünün yeri ve araç RL'i → 0105)* |
 | [0105](kararlar-0064-0085.md#adr-0105) | 🟢 | **Uygulama hattının denetimi** — araç kullanımının eğitimi Makale 2'ye girmez, Checkpoint 2'den sonra ayrı tur (ölçüm boşluk gösterirse) · omurga Ekim–Aralık 2027 · dilimler sıralı, tez yazımında durur · araç çağırma ölçümü (eski F1.12) omurganın ilk işi, kazananla · tez kararı Ocak 2028'de |
 | [0106](kararlar-0064-0085.md#adr-0106) | 🟢 | **vLLM geçişi: planı F0 planıyla birlikte canlı** — ADR-0056'nın "en fazla bir canlı plan" konvansiyonuna istisna (vLLM planı kapanınca biter) · araç seçimi iş başına: bir iş vLLM'e yalnız ilgili kapıyı geçerse taşınır |
+| [0107](kararlar-0064-0085.md#adr-0107) | 🟢 | **vLLM sunucu ölçümünde, Q4'ten açılmış ağırlıkla** — seçim ölçümleri vLLM'de (motor etkisi 0,18 p, 4-5 kat hız) · nihai sayı ve ürün llama.cpp Q4 · vLLM hattında makine kapısı puan düzeyi · hasat llama.cpp'de kalır (örtüşme %69,2 < %70) |
 | [0108](kararlar-0064-0085.md#adr-0108) | 🟢 | **İşlerin durumu GitHub panosunda** — `law-slm-board`; ROADMAP kontrol listesi kalktı, "iş → doğrulama" tabloları kaldı · kart elle kapanır (`closes #N` yalnız `master`'da çalışır, iş `talk-think`'te) · commit'lerde `refs #N` · etiketler alanı tekrarlamaz |
 
 ---

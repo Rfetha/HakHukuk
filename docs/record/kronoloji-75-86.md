@@ -640,3 +640,83 @@ modun seçimi (F1.4) için veri hazır.
 **Ders.** *Gürültü tabanı tek çiftle ölçülmez.* Bütün yorum eşiği (0,3) iki koşudan geliyordu. Aynı hakemin
 on çiftinden biri 0,06 p, biri 2,77 p gösterdi. #76'da "bir ay arayla" diye okunan fark da bu oynamanın
 içinde kalıyor.
+
+<a id="86"></a>
+## #86 — vLLM pilotu: aynı Q4 ağırlığıyla vLLM, llama.cpp'yle aynı puanı veriyor (0,18 p) ve 4-5 kat hızlı; orijinal bf16 4,8 p düşük; hasat kapısı %69,2 ile geçmedi
+
+**2026-10-15/16 · Modal A10 (hesap `rfetha`), vLLM 0.30.0 · hakem `deepseek/deepseek-v4.1-flash-20260910`, `deepinfra/fp8`,
+hakemin düşünmesi açık · kullanıcı onayları: bf16 yükleme "Yükle", aşama A ve B "Başlat", puanlama "8 parça", hasat eşiği "%70"
+(ölçümden önce); karar "seçim ölçümleri Q4'ten açılmış ağırlıkla" (2026-10-16) · plan `2026-10-15-vllm-gecis.md`
+([ADR-0106](../adr/kararlar-0064-0085.md#adr-0106)), karar [ADR-0107](../adr/kararlar-0064-0085.md#adr-0107), kart #11** · kanıt:
+`outputs/eval/f0/f016-vllm-pilot/` (`KUNYE.json` · `OZET.json` · `HASAT_ORTUSME.json` · `kontrol-eklenti/` · `cevirme/` ·
+`kontrol-bf16-orijinal/` · `A10/` · `puanlama/`)
+
+**1 · Soru.** A10'da llama.cpp ile 80 DEV cevabı 640,6 s sürüyor, istekler tek tek ([#83](#83)). vLLM toplu üretimle bu süreyi
+kısaltır mı, puanı kaydırır mı? İlke (kullanıcı): araç seçimi iş başınadır; bir iş vLLM'e yalnız kapıyı geçerse taşınır.
+
+**2 · GGUF eklentisi açamadı.** vLLM'in GGUF desteği ayrı bir eklentiye taşınmış (`vllm-gguf-plugin` 0.0.5). Yayımlanmış Q4_K_M
+ile iki yapılandırma da düştü: `RuntimeError: Unknown gguf model_type: qwen3_5` (metin-yalnızda `qwen3_5_text`); eklenti
+mimariyi gguf'taki `qwen35` adıyla eşleyemiyor (`kontrol-eklenti/`, ~$0,1).
+
+**3 · Çeviri.** `scripts/olcum_uretim/gguf_hf_cevir.py` GGUF'u bf16 HF biçimine açar ve llama.cpp'nin dönüşümlerini geri alır:
+norm ağırlıklarına eklenen +1, doğrusal dikkat (GDN) katmanlarında 32 değer başının "döşemeli" dizilişi, `ssm_a = -exp(A_log)`.
+Her tensör orijinal (sıkıştırılmamış) ağırlıkla karşılaştırıldı: 426 tensör, göreli hata F32 0,0000 · Q4_K 0,0715-0,0790 ·
+Q6_K 0,0179-0,0193; MTP katmanı (15 tensör) açıkça atlandı (`cevirme/CEVIRI_KUNYE.json`). Diziliş geri çevrilmeden doğrusal
+dikkat tensörlerinde hata %90-136'ydı: yanlış diziliş hata vermez, modeli bozar.
+
+**4 · Aşama A (orijinal bf16, 8 soru).** Açıldı; düşünce `reasoning` alanında dönüyor (`toplu_uret.py` eşliyor). Tek tek
+148,9 s (49 token/s; llama.cpp Q4'te 105), 8'i aynı anda 34,8 s (206 token/s). Tek tek ↔ toplu cevaplardan **2/8 aynı**;
+toplu koşuda 2/8 cevap bütçeye çarptı.
+
+**5 · Aşama B (80 soru × 2 toplu koşu, 32 eş zamanlı).**
+
+| | Q4'ten açılmış (vLLM) | orijinal bf16 (vLLM) | llama.cpp Q4 (referans) |
+| :-- | --: | --: | --: |
+| 80 cevap süresi | 130,3 · 129,5 s | 158,0 · 155,9 s | 640,6 s |
+| cevap başına (Modal $1,10/sa) | $0,0005 | $0,0006 | $0,0024 |
+| kesik | 4/80 · 1/80 | 3/80 · 1/80 | 0/80 |
+| zorla kapatılan düşünce | 5 · 6 | 20 · 17 | 4 |
+| ortalama token (düşünce dahil) | 807 | 1027 | 747 |
+| iki toplu koşu arasında aynı cevap | 25/80 | 19/80 | 80/80 |
+| llama.cpp cevabıyla aynı | 11/80 (benzerlik medyanı 0,688) | 2/80 (0,450) | — |
+
+**6 · Puanlama.** Her ağırlığın 1. koşusu, 3 hakem tekrarı; her tekrar 8 parçaya bölündü (48 süreç, 18 dk; kullanıcı kararı,
+`kos-parcali.sh`, `birlestir.py`); 480 kalem, hakem hatası 0, tamlık kapısı geçti. Referans: F0.6'da aynı hakemin aynı
+cevaplara 5 tekrarı ([#85](#85)).
+
+| | kütle ort. | tekrarlar | ss | A1 | kapsama |
+| :-- | --: | :-- | --: | --: | --: |
+| llama.cpp Q4 (referans) | 0,7515 | 5 tekrar | 0,26 p | 0,8016 | 0,9375 |
+| vLLM, Q4'ten açılmış | 0,7496 | 0,7510 · 0,7511 · 0,7468 | 0,25 p | 0,7891 | 0,95 |
+| vLLM, orijinal bf16 | 0,7017 | 0,6974 · 0,7048 · 0,7029 | 0,38 p | 0,7386 | 0,95 |
+
+**7 · Kapılar** (spec bölüm 5; ölçütler pilottan önce kilitli; `OZET.json`):
+
+| kapı | ölçüt | değer | sonuç |
+| :-- | :-- | :-- | :-- |
+| G1 geçerlilik | n=80, kesik ≤ %5, düşünce kanalı kullanılmış | 4 koşu geçerli (Q4 t1 kesik tam %5,0) | geçti |
+| G2 hız | 80 cevap ≤ 640,6 s ÷ 3 = 213,5 s | 129,9 s · 157,0 s | geçti |
+| G3 motor etkisi | ≤ 0,6 puan | 0,18 puan | geçti |
+| G4 belirlenimcilik | bilgi | 2/8 | dal: puan düzeyi |
+| G5 Q4 etkisi | yalnız rapor | orijinal bf16, Q4'ten 4,79 puan düşük | — |
+
+**8 · Hasat kapısı.** Eşik ölçümden önce kullanıcıyla %70 kondu: llama.cpp Q4'ün yanlış yaptığı kalemlerin (tekrar ortalaması
+faithfulness < 0,5) vLLM'de, aynı Q4 ağırlığıyla, de yanlış olma oranı. Ölçülen: llama.cpp 13 yanlış, vLLM 16, ortak 9 →
+**9/13 = %69,2, geçmedi** (`HASAT_ORTUSME.json`). Ayrışan 11 kalemden yalnız 2'si 0,5'e 0,15'ten yakın; fark bir kalemlik şans
+değil. Yalnız-vLLM hatalarının çoğu net (llama.cpp 1,0 ↔ vLLM 0,0-0,3: id 30, 34, 37, 32).
+
+**9 · Kararlar (kullanıcı, [ADR-0107](../adr/kararlar-0064-0085.md#adr-0107)).** Seçim ölçümleri vLLM'de Q4'ten açılmış ağırlıkla (spec'teki
+"bf16'da seç" değişti); nihai sayı llama.cpp Q4'te; vLLM hattında makine kapısı puan düzeyinde (`makine_kapisi_puan.py`);
+hasat llama.cpp'de kalır.
+
+**10 · Maliyet.** Tahmin: eklenti denemesi ~$0,1 · aşama A ~$0,17 · aşama B ~$0,37 · puanlama $1,58 (liste fiyatı) → ~$2,2
+(sınır $5). Fatura: OpenRouter'ın kullanım sayacı 2026-10-16T10:24Z'de bugünü henüz göstermiyordu; Modal panelden okunmadı.
+
+**Okuma:** motor, aynı ağırlıkla ortalama puanı değiştirmiyor ama cevapları değiştiriyor: iki motor arasında 80'de 11 cevap
+aynı, hataların düştüğü kalemler %31 farklı. vLLM bu yüzden seçim ölçümüne uygun, kalem düzeyinde hata toplayan hasada değil.
+Sıkıştırma da yalnız sayıları değil davranışı değiştiriyor: orijinal bf16 %27 daha uzun düşünüyor, 4 kat daha sık bütçeye
+takılıyor ve 4,8 puan düşük alıyor. Doğrulanmamış: bu farkın ne kadarı ağırlıktan, ne kadarı yapılandırmadan geliyor (bf16 tam
+görsel yapılandırmayla, Q4 metin-yalnız yapılandırmayla açıldı).
+
+**Ders.** *Sıkıştırılmış model, sıkıştırılmamış atasının bir yaklaşığı değil, kendine ait bir model.* bf16'da seçilen kol Q4'te
+kazanmayabilir; ölçüm gönderilen ağırlıkta yapılmalı. "Aynı ortalama puan" da "aynı hatalar" demek değil.
