@@ -1,0 +1,98 @@
+{
+  "is": "F0.16 vLLM pilotu · aşama A (kontrol)",
+  "agirlik": "bf16-orijinal",
+  "platform": {
+    "ad": "Modal",
+    "hesap": "rfetha",
+    "tip": "A10",
+    "saatlik_usd": 1.1,
+    "ortam": {
+      "MODAL_IMAGE_ID": "im-yc81Z0HEkGbmdYF993aITD",
+      "MODAL_CLOUD_PROVIDER": "CLOUD_PROVIDER_OCI",
+      "MODAL_REGION": "eu-west",
+      "MODAL_IS_REMOTE": "1",
+      "MODAL_CONTAINER_ARGUMENTS_PATH": "/__modal/.container-arguments/data.bin",
+      "MODAL_SERVER_URL": "unix:/run/modal.sock",
+      "MODAL_ENVIRONMENT": "main",
+      "MODAL_TASK_ID": "ta-01M520P6HSVAJRWX4AJRCC81HR"
+    }
+  },
+  "nvidia_smi": "NVIDIA A10, 610.57.04, GPU-ed4e21fd-4375-31c1-770a-706b2edbee97, 23028 MiB",
+  "yazilim": {
+    "vllm": "0.30.0",
+    "taban_imaj": "nvidia/cuda:13.0.1-devel-ubuntu24.04",
+    "kurulan": {
+      "vllm": "0.30.0",
+      "torch": "2.13.0",
+      "transformers": "5.20.0",
+      "huggingface_hub": "1.33.0",
+      "openai": "2.41.0",
+      "gguf": "0.19.0",
+      "safetensors": "0.8.0"
+    }
+  },
+  "baglam": {
+    "dosya": "data/eval/dev/baglam/h1-k10.json",
+    "sha256": "026668000583d6e3d3988b97d1cb3c3a85d740594686901aa0e8da3f213e6135"
+  },
+  "model": {
+    "bf16_manifest_sha256": "92aa827f48e84f606481863c15e8e03d21c884cde5355c0b550edaf3490df142"
+  },
+  "model_klasoru": "/outputs/f016-vllm-pilot/bf16",
+  "acildi": true,
+  "kosan_komut": [
+    "/usr/local/bin/python",
+    "/usr/local/bin/vllm",
+    "serve",
+    "/outputs/f016-vllm-pilot/bf16",
+    "--served-model-name",
+    "local",
+    "--dtype",
+    "bfloat16",
+    "--max-model-len",
+    "8192",
+    "--max-num-seqs",
+    "32",
+    "--reasoning-parser",
+    "qwen3",
+    "--seed",
+    "3407",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000"
+  ],
+  "ham_cevap_mesaj_alanlari": [
+    "annotations",
+    "audio",
+    "content",
+    "function_call",
+    "reasoning",
+    "refusal",
+    "role"
+  ],
+  "ham_cevap_ornek": {
+    "role": "assistant",
+    "content": "\n\n4",
+    "refusal": null,
+    "annotations": null,
+    "audio": null,
+    "function_call": null,
+    "reasoning": "Thinking Process:\n\n1.  **Analyze the Request:**\n    *   Question: \"2+2 kaçtır?\" (What is 2+2?)\n    *   Constraint: \"Kısa düşün.\" (Think briefly/shortly.)\n    *   Language: Turkish.\n\n2.  **Determine the Answer:**\n    *   2 + 2 = 4.\n\n3.  **Formulate the Output:**\n    *   Keep it short and direct as per the instruction \"Kısa düşün\" (which implies the answer should be concise).\n    *   Answer: 4.\n\n4.  **Final Check:**\n    *   Does it answer the question? Yes.\n    *   Is it short? Yes.\n    *   Is the language correct? Yes.\n\n5.  **Construct Final Response:** 4.cw\n"
+  },
+  "sekiz_soru": {
+    "tek_tek": {
+      "cikis": 0,
+      "son_satirlar": [
+        "[toplu-uret] 8 kalem · 148.9 s · 49 token/s · 1 zorla kapatma · → /outputs/f016-vllm-pilot/kontrol-bf16-orijinal/kontrol_tek_tek_detail.jsonl"
+      ]
+    },
+    "ayni_anda": {
+      "cikis": 0,
+      "son_satirlar": [
+        "[toplu-uret] 8 kalem · 34.8 s · 206 token/s · 0 zorla kapatma · → /outputs/f016-vllm-pilot/kontrol-bf16-orijinal/kontrol_ayni_anda_detail.jsonl"
+      ]
+    },
+    "birebir_ayni_cevap": 2
+  }
+}

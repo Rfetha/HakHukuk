@@ -1,0 +1,95 @@
+{
+  "girdi": {
+    "q4_acilmis": {
+      "kosular": [
+        {
+          "sure_s": 130.3,
+          "gecerlilik": {
+            "n": 80,
+            "kesik": 4,
+            "kesik_orani": 0.05,
+            "dusunen": 80,
+            "zorla_kapatilan": 5,
+            "gecerli": true
+          }
+        },
+        {
+          "sure_s": 129.5,
+          "gecerlilik": {
+            "n": 80,
+            "kesik": 1,
+            "kesik_orani": 0.0125,
+            "dusunen": 80,
+            "zorla_kapatilan": 6,
+            "gecerli": true
+          }
+        }
+      ],
+      "kutle_ort": 0.7496333333333333,
+      "iki_toplu_kosu_ayni": 25
+    },
+    "bf16_orijinal": {
+      "kosular": [
+        {
+          "sure_s": 158.0,
+          "gecerlilik": {
+            "n": 80,
+            "kesik": 3,
+            "kesik_orani": 0.0375,
+            "dusunen": 80,
+            "zorla_kapatilan": 20,
+            "gecerli": true
+          }
+        },
+        {
+          "sure_s": 155.9,
+          "gecerlilik": {
+            "n": 80,
+            "kesik": 1,
+            "kesik_orani": 0.0125,
+            "dusunen": 80,
+            "zorla_kapatilan": 17,
+            "gecerli": true
+          }
+        }
+      ],
+      "kutle_ort": 0.7017000000000001,
+      "iki_toplu_kosu_ayni": 19
+    },
+    "referans_kutle_ort": 0.75146,
+    "sekiz_soru": {
+      "ayni": 2,
+      "n": 8
+    }
+  },
+  "kapilar": {
+    "g1": {
+      "esik": "n=80, kesik<=0.05, dusunen>0",
+      "gecti": true
+    },
+    "g2": {
+      "ortalama_sure_s": {
+        "q4_acilmis": 129.9,
+        "bf16_orijinal": 156.95
+      },
+      "esik_s": 213.53333333333333,
+      "gecti": true
+    },
+    "g3": {
+      "fark_puan": 0.182667,
+      "esik_puan": 0.6,
+      "gecti": true
+    },
+    "g4": {
+      "ayni": 2,
+      "n": 8,
+      "dal": "puan",
+      "gecti": true
+    },
+    "g5": {
+      "fark_puan": 4.793333,
+      "gecti": true
+    },
+    "ilerle": true
+  }
+}

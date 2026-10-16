@@ -1,0 +1,106 @@
+{
+  "is": "F0.16 vLLM pilotu · aşama B",
+  "agirlik": "bf16-orijinal",
+  "platform": {
+    "ad": "Modal",
+    "hesap": "rfetha",
+    "tip": "A10",
+    "saatlik_usd": 1.1,
+    "ortam": {
+      "MODAL_IMAGE_ID": "im-yc81Z0HEkGbmdYF993aITD",
+      "MODAL_CLOUD_PROVIDER": "CLOUD_PROVIDER_OCI",
+      "MODAL_REGION": "eu-west",
+      "MODAL_IS_REMOTE": "1",
+      "MODAL_CONTAINER_ARGUMENTS_PATH": "/__modal/.container-arguments/data.bin",
+      "MODAL_SERVER_URL": "unix:/run/modal.sock",
+      "MODAL_ENVIRONMENT": "main",
+      "MODAL_TASK_ID": "ta-01M521802D5JQPHXG8C0W99K0R"
+    }
+  },
+  "nvidia_smi": "NVIDIA A10, 610.57.04, GPU-86ade4d9-2509-5559-44ef-333743d54aa8, 23028 MiB",
+  "yazilim": {
+    "vllm": "0.30.0",
+    "taban_imaj": "nvidia/cuda:13.0.1-devel-ubuntu24.04",
+    "kurulan": {
+      "vllm": "0.30.0",
+      "torch": "2.13.0",
+      "transformers": "5.20.0",
+      "huggingface_hub": "1.33.0",
+      "openai": "2.41.0",
+      "gguf": "0.19.0",
+      "safetensors": "0.8.0"
+    }
+  },
+  "baglam": {
+    "dosya": "data/eval/dev/baglam/h1-k10.json",
+    "sha256": "026668000583d6e3d3988b97d1cb3c3a85d740594686901aa0e8da3f213e6135"
+  },
+  "es_zamanli": 32,
+  "rejim": {
+    "--thinking": "on",
+    "--think-budget": "1024",
+    "--max-new-tokens": "512",
+    "--max-chunk-chars": "900",
+    "--seed": "3407",
+    "--harness-k": "10",
+    "--rrf-k": "10",
+    "--n": "80"
+  },
+  "acildi": true,
+  "kosular": [
+    {
+      "etiket": "h1_tgta_v1_vllm_bf16-orijinal_t1",
+      "sure_s": 158.0,
+      "s_cevap": 1.98,
+      "usd_cevap": 0.0006,
+      "gecerlilik": {
+        "n": 80,
+        "kesik": 3,
+        "kesik_orani": 0.0375,
+        "dusunen": 80,
+        "zorla_kapatilan": 20,
+        "gecerli": true
+      }
+    },
+    {
+      "etiket": "h1_tgta_v1_vllm_bf16-orijinal_t2",
+      "sure_s": 155.9,
+      "s_cevap": 1.95,
+      "usd_cevap": 0.0006,
+      "gecerlilik": {
+        "n": 80,
+        "kesik": 1,
+        "kesik_orani": 0.0125,
+        "dusunen": 80,
+        "zorla_kapatilan": 17,
+        "gecerli": true
+      }
+    }
+  ],
+  "model": {
+    "bf16_manifest_sha256": "92aa827f48e84f606481863c15e8e03d21c884cde5355c0b550edaf3490df142"
+  },
+  "model_klasoru": "/outputs/f016-vllm-pilot/bf16",
+  "kosan_komut": [
+    "/usr/local/bin/python",
+    "/usr/local/bin/vllm",
+    "serve",
+    "/outputs/f016-vllm-pilot/bf16",
+    "--served-model-name",
+    "local",
+    "--dtype",
+    "bfloat16",
+    "--max-model-len",
+    "8192",
+    "--max-num-seqs",
+    "32",
+    "--reasoning-parser",
+    "qwen3",
+    "--seed",
+    "3407",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000"
+  ]
+}

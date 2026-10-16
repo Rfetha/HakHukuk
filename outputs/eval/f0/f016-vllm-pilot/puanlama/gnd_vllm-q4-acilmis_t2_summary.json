@@ -1,0 +1,18 @@
+{
+  "label": "vllm-q4-acilmis_t2",
+  "parca": 8,
+  "n": 80,
+  "hakem": {
+    "model": "deepseek/deepseek-v4.1-flash-20260910",
+    "saglayici": "deepinfra/fp8",
+    "dusunme": "acik"
+  },
+  "judge_model": "deepseek/deepseek-v4.1-flash-20260910",
+  "judge_providers": [
+    "DeepInfra"
+  ],
+  "judge_cost_usd": 0.2665,
+  "total_claims": 337,
+  "n_hakem_hata": 0,
+  "n_sifir_iddia": 4
+}

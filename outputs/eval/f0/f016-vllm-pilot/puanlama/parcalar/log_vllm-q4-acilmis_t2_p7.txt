@@ -1,0 +1,15 @@
+[gnd] vllm-q4-acilmis_t2_p7: 10 cevap | mod=data | hakem=deepseek/deepseek-v4.1-flash-20260910 | runs=1 | kaynak=referans
+  id=60 faith=1.0 hall=0.0 unsup=0.0 claims=27 citP=1.0 wrongRef=0.0 citR=1
+  id=61 faith=0.1429 hall=0.8571 unsup=0.8571 claims=7 citP=0.0 wrongRef=0.0 citR=0
+  id=62 faith=0.2105 hall=0.7895 unsup=0.7895 claims=19 citP=0.1 wrongRef=0.9 citR=1
+  id=63 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=64 faith=0.8333 hall=0.1667 unsup=0.1667 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id=65 faith=1.0 hall=0.0 unsup=0.0 claims=7 citP=1.0 wrongRef=0.0 citR=1
+  id=66 faith=0.0 hall=1.0 unsup=1.0 claims=4 citP=0.0 wrongRef=0.5 citR=0
+  id=67 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=68 faith=1.0 hall=0.0 unsup=0.0 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id=69 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+
+[gnd] ÖZET vllm-q4-acilmis_t2_p7: {"label": "vllm-q4-acilmis_t2_p7", "n": 10, "mode": "data", "judge_model": "deepseek/deepseek-v4.1-flash-20260910", "n_girdi": 10, "n_puanli": 10, "n_sifir_iddia": 0, "n_hakem_hata": 0, "n_bos_girdi": 0, "olcum_aleti": {"dedektor": "adr0061", "sifir_iddia": "sifir-puan", "a1_tanimi": "cevaplanan", "kaynak_kirpma": 12000, "payda": "kor", "altin_kirpma": "3500"}, "hakem": {"model": "deepseek/deepseek-v4.1-flash-20260910", "saglayici": "deepinfra/fp8", "dusunme": "acik"}, "judge_gateway": "openrouter", "judge_providers": ["DeepInfra"], "runs": 1, "total_claims": 84, "faithfulness_micro": 0.6905, "hallucination_micro": 0.3095, "unsupported_micro": 0.3095, "cit_precision_micro": 0.4286, "wrong_ref_rate_micro": 0.4762, "cit_recall_macro": 0.8, "faithfulness_macro": 0.7187, "judge_cost_usd": 0.045, "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."}
+[gnd] detay → outputs/eval/f0/f016-vllm-pilot/puanlama/parcalar/gnd_vllm-q4-acilmis_t2_p7.jsonl
+[gnd] özet → outputs/eval/f0/f016-vllm-pilot/puanlama/parcalar/gnd_vllm-q4-acilmis_t2_p7_summary.json
