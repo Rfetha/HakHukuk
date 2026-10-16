@@ -357,9 +357,9 @@ verilmiş doğru bir cevap, araç çekinme saymış. Aynı kusur Anthropic şabl
 **şerh cümlesiyle** kapatıyor. ⇒ **Üstünlüğümüzün bir kısmı aracın eseriydi**; skor kartı bunu
 düzeltir.
 
-**Ölçüm motoru (2026-10-16, [ADR-0107](adr/kararlar-0064-0085.md#adr-0107)).** Bu karttaki sayılar llama.cpp + Q4_K_M ile ölçüldü ve makaledeki
-ile bu karttaki sayı her zaman bu yoldan gelir. Bundan sonraki seçim ölçümleri (hangi kol kazandı) sunucuda vLLM'de, aynı
-Q4_K_M ağırlığı açılarak yapılır; pilotta iki motor arasındaki kütle farkı 0,18 puan ([#86](record/kronoloji-75-86.md#86)).
+**Ölçüm motoru (2026-10-16, [ADR-0109](adr/kararlar-0064-0085.md#adr-0109)).** Bu karttaki ve bundan sonraki bütün sayılar llama.cpp + Q4_K_M ile
+ölçülür. vLLM pilotlandı ve ölçüme alınmadı: aynı ağırlık vLLM'de 3,6 puan düşük ve koşudan koşuya ±2,25 puan oynuyor
+([#87](record/kronoloji-87-98.md#87)).
 
 ### 3.3 Skor kartı
 

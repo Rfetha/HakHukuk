@@ -34,7 +34,7 @@
 | `faz0/` | Faz 0 ölçüm zinciri — `f01…f11`, `a1-*` |
 | `gorev/` | Görev turları — `g1…g24` |
 | `hp/` | `hp` hattı — hakem paneli, rakip havuzu |
-| `f0/` | Checkpoint 1 · F0 (2026-10) — `rq2-dogrulama` (RQ2 anahtarlarının yeniden puanlaması, #76) · `f014-f016-dis-bilgiler` (DeepSeek ve kart fiyatlarının ham anlık görüntüsü, #81-#82) · `f016-pilot` (ölçüm kartı pilotu, Modal A10; m1'in 1. tekrarı A10 referansı, #83) · `f06-hakem-gecisi` (DeepSeek V4.1 Flash ↔ `gpt-4o-mini`, aynı gün aynı cevaplar, F0.6) · `f016-vllm-pilot` (vLLM pilotu: GGUF çevirisi, üçlü karşılaştırma, kapılar G1-G5, hasat kapısı; #86). `faz0/` ile karışmasın: o Eylül 2026'nın Faz 0'ı |
+| `f0/` | Checkpoint 1 · F0 (2026-10) — `rq2-dogrulama` (RQ2 anahtarlarının yeniden puanlaması, #76) · `f014-f016-dis-bilgiler` (DeepSeek ve kart fiyatlarının ham anlık görüntüsü, #81-#82) · `f016-pilot` (ölçüm kartı pilotu, Modal A10; m1'in 1. tekrarı A10 referansı, #83) · `f06-hakem-gecisi` (DeepSeek V4.1 Flash ↔ `gpt-4o-mini`, aynı gün aynı cevaplar, F0.6) · `f016-vllm-pilot` (vLLM pilotu: GGUF çevirisi, üçlü karşılaştırma, kapılar G1-G5, hasat kapısı, #86; `A10/q4-acilmis_u345`, `puanlama/u2`, `puanlama/u345`: üretim gürültüsü, #87). `faz0/` ile karışmasın: o Eylül 2026'nın Faz 0'ı |
 | `_artefakt/` | ölçüm dışı artefaktlar (düz kaldı) |
 
 Bir koşunun grubu adının önekinden bellidir (`g22-…` → `gorev/`, `cp3d-…` → `cp/`, `hp-…` → `hp/`).

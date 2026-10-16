@@ -43,7 +43,7 @@ Bu belge ile yaml çelişirse **yaml bağlayıcıdır** ve belge düzeltilir.
 | ardışık tarif | τ_g tabana bf16'da gömülür; ORPO tarifi taze adaptörle, β 0,1 / 0,3 | aynı |
 | seed | **3407 · 3408 · 3409**, iki temel modelde (Qwen3.5-4B, Gemma 4 E4B) aynı liste. Qwen'de 3407'nin τ_g ve τ_a kolları `v1` adaptörleridir | sonuç görülmeden seçildi; yaml'a yazılınca kesinleşir |
 | GPU üzerinde yalnız eğitim | ölçüm, hakem ve API anahtarları **eğitim makinesine gitmez** | ~~Vast için zorunlu~~ Modal dışı platformda (RunPod) zorunlu, [ADR-0101](adr/kararlar-0064-0085.md#adr-0101) |
-| vLLM (sunucu üretimi: seçim ölçümleri; ileride GRPO) | **vLLM 0.30.0** · `huggingface_hub` 1.33.0 · taban imaj `nvidia/cuda:13.0.1-devel-ubuntu24.04` · ağırlık Q4_K_M'den açılmış bf16 · `--max-num-seqs 32` · `--reasoning-parser qwen3` | [ADR-0107](adr/kararlar-0064-0085.md#adr-0107), `scripts/olcum_uretim/modal_pilot_vllm.py` |
+| vLLM (yalnız GRPO'nun cevap üretimi; ölçümde kullanılmaz) | **vLLM 0.30.0** · `huggingface_hub` 1.33.0 · taban imaj `nvidia/cuda:13.0.1-devel-ubuntu24.04` · `--max-num-seqs 32` · `--reasoning-parser qwen3`; ölçüm pilotunda doğrulandı, GRPO pilotunda yeniden doğrulanır | [ADR-0109](adr/kararlar-0064-0085.md#adr-0109), pilot `scripts/olcum_uretim/modal_pilot_vllm.py` |
 
 ## 3 · Bilinen sessiz tehlikeler
 

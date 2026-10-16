@@ -440,7 +440,9 @@ karara bağlanır.
 
 İlk iş ~$2-5'lik bir pilottur: kazanan model için vLLM üretiminin çalıştığını ve adım süresini ölçer.
 *2026-10-16: sunucu ölçümü için vLLM pilotu yapıldı ([#86](record/kronoloji-75-86.md#86), [ADR-0107](adr/kararlar-0064-0085.md#adr-0107)); Qwen3.5 vLLM 0.30.0'da hem
-orijinal bf16 hem Q4'ten açılmış ağırlıkla çalışıyor. GRPO pilotu Haziran 2027'de kalır.*
+orijinal bf16 hem Q4'ten açılmış ağırlıkla çalışıyor, ama aynı ağırlıkla llama.cpp'den 3,6 puan düşük ve koşudan koşuya
+±2,25 puan oynuyor ([#87](record/kronoloji-87-98.md#87), [ADR-0109](adr/kararlar-0064-0085.md#adr-0109)): ölçümde kullanılmaz. GRPO'da ödül vLLM cevaplarından, değerlendirme
+llama.cpp'den gelir; GRPO pilotu bu farkı ayrıca ölçer.*
 Ardından **pilot + ana GRPO 3 seed + 2 ablasyon** (isabet terimsiz ödül · çekinme terimsiz ödül)
 koşulur; tahmini ~$120-130. Pilotta birim maliyet orta senaryonun 1,5 katını aşarsa önce takvim
 uzar (Kasım 2027–Mart 2028 kredisi tampondur); plan **2 seed + 1 ablasyon** (isabet terimsiz, ~$75-80)

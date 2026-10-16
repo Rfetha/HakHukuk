@@ -51,7 +51,7 @@ docs/                every document except the three root ones (index: docs/READ
   BEDESTEN_API.md YENIDEN_URETIM.md HF_KARTI_INDEKS.md model-soyagaci.mmd
   adr/                 decision ledger   (kararlar-*.md + gemma4-12b-dersler.md)
   record/              research record   (kronoloji-*.md · kollar.md · yurutme-tuzaklari.md)
-  superpowers/plans/   at most one live plan (ADR-0056; ADR-0106 lets the vLLM plan run beside F0 until it closes); exists only while a phase plan is open
+  superpowers/plans/   at most one live plan (ADR-0056; the ADR-0106 exception closed 2026-10-16); exists only while a phase plan is open
 data/                corpus/ (ground truth) · eval/ (frozen) · train/ · index/ · _ham_ve_ara/
 outputs/             eval/<group>/<run>/ (+ _artefakt/) · egitim/<task>/ (training-side evidence) · tg_v1/ · ta_v1/ (adapters; private HF backup per ADR-0091, F0.1)
 models/              merged/ · gguf/   (28 GB, gitignored)
@@ -70,8 +70,8 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 | what to do next | **Status lives only on the board** [`law-slm-board`](https://github.com/users/Rfetha/projects/3) — one issue per task, an `epic` issue per phase; a card is closed by hand once its check passes, commits carry `refs #N` ([ADR-0108](docs/adr/kararlar-0064-0085.md#adr-0108)) · tasks and their checks: [`docs/ROADMAP_v1.md`](docs/ROADMAP_v1.md), phases F0–F5. Order decided 2026-10-10: Checkpoint 1 (Makale 1) → Checkpoint 2 (GRPO on the Checkpoint 1 winner, Makale 2, thesis) → legislation-scope/freshness round. `00-IS-SIRASI.md` was deleted that day · live plan: [`docs/superpowers/plans/2026-10-11-F0-zemin.md`](docs/superpowers/plans/2026-10-11-F0-zemin.md) (F0, opened 2026-10-11) · the agent app is a separate line outside the paper line: [`docs/ROADMAP_uygulama.md`](docs/ROADMAP_uygulama.md) ([ADR-0104](docs/adr/kararlar-0064-0085.md#adr-0104); calendar, tool-call measurement and tool-use RL placement: [ADR-0105](docs/adr/kararlar-0064-0085.md#adr-0105)) |
 | direction and why | [`docs/YAYIN_YOL_HARITASI.md`](docs/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/EGITIM_ORTAMI.md`](docs/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/PRODUCT.md`](docs/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/MIMARI.md`](docs/MIMARI.md) |
-| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#86 in four chronology files, per-entry anchors; **new findings continue at #87** (a new file, `kronoloji-87-….md`) |
-| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0108**, next is **0109**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
+| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#87 in five chronology files, per-entry anchors; **new findings continue at #88** (`kronoloji-87-98.md`) |
+| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0109**, next is **0110**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is reserved** for F0.12's data-license ADR (ADR-0099) |
 | open defects and handover | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — 4 open (5a · 23 · 27 · 31), 3 handed on (6 · 11 · 12b); §EK E.5 holds the nine questions that go into the next grill |
 | artifact registry | [`docs/record/kollar.md`](docs/record/kollar.md) — every trained branch and merge has its identity here; **an artifact with no row is nameless and must not be used**. Family tree: [`docs/model-soyagaci.mmd`](docs/model-soyagaci.mmd) |
 | the headline number and its caveats | [`MODEL_CARD.md`](MODEL_CARD.md) and `docs/record/kronoloji-63-71.md` — never quote from memory |
@@ -138,7 +138,7 @@ remembers. The research record is the most valuable thing here, more than the we
   overwriting.
 - Doc types: **record** (what happened) · **decision** (why, which alternative was eliminated) · **spec**
   (`docs/superpowers/specs/`) · **plan** (`docs/superpowers/plans/`, `- [ ]` boxes, closing block when
-  executed; **at most one live plan**, ADR-0056; exception ADR-0106) · **execution** (`sprint*.md` at root, only the open one).
+  executed; **at most one live plan**, ADR-0056) · **execution** (`sprint*.md` at root, only the open one).
   Empty specs/plans folders do not exist (git tracks no empty folder). A closed plan is deleted the day it
   closes and becomes record (ADR-0083 precedent). A doc that says "what's next" is a plan and cannot sit
   under `record/`.
@@ -188,9 +188,9 @@ remembers. The research record is the most valuable thing here, more than the we
 - **Deploy:** per-branch QLoRA → materialize ΔW (bf16) → k-way merge → quantize via llama.cpp
   (**Q4_K_M**) → GGUF → consumer GPU. Containers: three boxes, two daemons, two images (ADR-0078);
   `docker/compose.yaml` is a **regime lock** (llama-server flags are the published ones, parsed as a gate in
-  `tests/test_konteyner.py`). Run: `docker compose -f docker/compose.yaml up`. Server-side generation for selection
-  measurements runs on vLLM 0.30.0 with Q4_K_M-dequantized weights (ADR-0107; `scripts/olcum_uretim/gguf_hf_cevir.py`,
-  `toplu_uret.py`, `modal_pilot_vllm.py`); the product and the harvest stay on llama-server + GGUF.
+  `tests/test_konteyner.py`). Run: `docker compose -f docker/compose.yaml up`. vLLM is not a measurement engine
+  (ADR-0109); it is reserved for GRPO rollout generation (June 2027 pilot). The vLLM pilot scripts
+  (`scripts/olcum_uretim/gguf_hf_cevir.py`, `toplu_uret.py`, `modal_pilot_vllm.py`) stay as tools.
 - **OCR/multimodal is not a base-selection argument.** For Turkish, a separate OCR preprocessor, not VLM OCR.
 - **Data format:** chat-template JSON (`messages` with `user`/`assistant`).
 - **Eval: 6-mode CANON (ADR-0011) + DEV/TEST split (ADR-0027).** Modes: M1 distractor-faithfulness · M4
@@ -206,8 +206,8 @@ remembers. The research record is the most valuable thing here, more than the we
   verification) · panel only on judgment axes, κ via `judge_agreement.py` · **family exclusion** (no subject
   graded by its own family) · self-preference measured. Re-run noise floor ~0.3 A1 points — nothing smaller
   is interpreted. **Measured 2026-10-15 with 5 repeats on the same answers: a single judge run moves ~1 point
-  (chronology #85); the rule is re-set in F1.4.** **Measurement engine (ADR-0107): selection runs on vLLM with
-  Q4_K_M-dequantized weights (engine effect 0.18 points, #86); headline numbers on Q4_K_M + llama.cpp.** **Calibrate the refusal regex on every competitor family first** or scores shift in our favor.
+  (chronology #85); the rule is re-set in F1.4.** **Measurement engine: llama.cpp + Q4_K_M only (ADR-0109) — vLLM was piloted and
+  rejected: the same weights scored 3.6 points lower and moved ±2.25 points per run (#87).** **Calibrate the refusal regex on every competitor family first** or scores shift in our favor.
 - **Comparison fairness — "eşit sınav" (ADR-0057).** ON↔OFF verdicts only on matched axes: same questions ·
   same source count · same gold condition · same regime. Unmatched axes carry a CEILING/undefined stamp.
 

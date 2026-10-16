@@ -26,9 +26,9 @@
                                                    └──────────────────────────────────────┘
 ```
 
-**Ölçüm motoru ([ADR-0107](adr/kararlar-0064-0085.md#adr-0107)).** Kullanıcıya giden yol yukarıdaki gibi llama-server + Q4_K_M'dir; makaledeki sayı
-da bu yolda ölçülür. Sunucudaki seçim ölçümleri vLLM'de, aynı Q4_K_M ağırlığı bf16'ya açılarak yapılır
-(`gguf_hf_cevir.py` · `toplu_uret.py` · `modal_pilot_vllm.py`); hasat llama.cpp'de kalır.
+**Ölçüm motoru ([ADR-0109](adr/kararlar-0064-0085.md#adr-0109)).** Kullanıcıya giden yol da ölçülen yol da yukarıdaki llama-server + Q4_K_M'dir.
+vLLM pilotlandı ve ölçüme alınmadı (aynı ağırlıkla −3,6 p, koşudan koşuya ±2,25 p; [#87](record/kronoloji-87-98.md#87)); yalnız GRPO'nun cevap
+üretimi için düşünülür.
 
 ## Dosya → sorumluluk
 
