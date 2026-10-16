@@ -27,7 +27,7 @@ set -euo pipefail
 
 LC="$HOME/code/llama.cpp"
 VENV="$HOME/code/llamacpp_venv"          # global_venv'den AYRI — onu asla kirletme
-OUT="$(cd "$(dirname "$0")/../.." && pwd)/models/gguf"
+OUT="$(cd "$(dirname "$0")/../../.." && pwd)/models/gguf"   # scripts/egitim/kurulum/ → repo kökü
 HUB="$HOME/.cache/huggingface/hub"
 
 REPO="${1:-}"                             # ör. <org>/<model> ya da yerel dizin
