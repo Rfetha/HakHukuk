@@ -77,7 +77,7 @@ Kardeş import'lar **uzantısız** ve **27 dosyada aynı yol köprüsü** var
 | :--- | :--- | :--- |
 | `data/corpus/mevzuat_maddeler.jsonl` | 892 kanun · 40.496 madde · 2.547 mülga | (37 MB) |
 | `data/corpus/KUNYE.json` | **anlık görüntü künyesi** — tarih · kapsam · kapsam **dışı** · `sha256` | Evet |
-| `data/index/mevzuat_bge_m3_s2/` | `bge-m3` gömme + `KUNYE.json` | **hayır** — `.gitignore:166` |
+| `data/index/mevzuat_bge_m3_s2/` | `bge-m3` gömme + `KUNYE.json` | **hayır** — `.gitignore:150` |
 | `data/eval/dev/core_hard.jsonl` | DEV, 80 kalem (v2) | Evet |
 | `data/eval/canon/` | **donmuş TEST** — tek kez açılır | Evet |
 

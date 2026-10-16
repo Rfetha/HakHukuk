@@ -15,7 +15,7 @@
 | :--- | :--- |
 | İstem `gen_eval_grounded.py`'nin içindeydi, beş kopyası vardı ve biri **sürüklenmişti** | ✅ çözüldü — `hakhukuk/cekirdek/istem.py`, tek kaynak + `sha256` damgası |
 | Komut zinciri hiçbir yerde **tek parça** yazılı değildi | ✅ çözüldü — `scripts/yeniden_uret.sh` |
-| İndeks **git'te yok** (`.gitignore:166`, 80 MB ikili) | ✅ HF'te public (`Rfetha/HakHukuk-mevzuat-bge-m3-s2`); `python -m hakhukuk.dagitim.indir <dizin>` `sha256` kapısıyla indirir. Git'te hâlâ yok |
+| İndeks **git'te yok** (`.gitignore:150`, 80 MB ikili) | ✅ HF'te public (`Rfetha/HakHukuk-mevzuat-bge-m3-s2`); `python -m hakhukuk.dagitim.indir <dizin>` `sha256` kapısıyla indirir. Git'te hâlâ yok |
 
 ## Ön koşullar
 

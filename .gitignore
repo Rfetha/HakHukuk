@@ -48,21 +48,8 @@ saved_model/
 lora_model/
 merged_model/
 
-# ══════════════════════════════════════════════════════════════════════════════
-# EMEKLİ HAT — 23 GB, git'e GİRMEZ.
-# İçinde 100 MB'ı aşan 9 dosya var → push reddedilirdi. Yerelde duruyor ve ayrıca
-# ~/code/hukuk-devir/ devir paketinde yedekli. Belgeler (record/, scripts/, README)
-# takip edilir; ağır artefaktlar edilmez.
-# ══════════════════════════════════════════════════════════════════════════════
 # ⚠️ gitignore SATIR-SONU YORUM DESTEKLEMEZ — yorumlar kendi satırında olmalı,
 #    yoksa "#" ve öncesindeki boşluklar desenin parçası olur ve kural sessizce çalışmaz.
-# LoRA adaptörleri (250 MB) + her turda tekrarlanan tokenizer.json (30.7 MB × 5):
-old-version-gemma4-12b/outputs/v*/
-# GGUF — 6-15 GB:
-old-version-gemma4-12b/models/
-# Kirli/reddedilen setler; içinde 100 MB'ı aşan dosya var:
-old-version-gemma4-12b/data/
-# İSTİSNA: outputs/eval/ (8.3 MB) SCORECARD'ın her hücresinin KANITI → aşağıda geri alınır.
 
 # ══════════════════════════════════════════════════════════════════════════════
 # data/ ve outputs/ VERSİYONLANIR (kullanıcı kararı, 2026-07-24)
@@ -85,9 +72,6 @@ data/external/
 *.tsv
 !data/**
 !outputs/**
-# Emekli hattın ölçüm çıktıları: 8.3 MB, SCORECARD'ın her hücresinin kanıtı.
-# (Bu negasyon *.jsonl'den SONRA gelmeli — sıra önemli.)
-!old-version-gemma4-12b/outputs/eval/**
 
 # ⚠️ MODEL AĞIRLIKLARI — `!outputs/**` / `!data/**` negasyonlarından SONRA gelmeli, yoksa
 # negasyon onları geri açar (2026-07-28'de tam bu oldu: 114 MB adapter push'u kırdı).

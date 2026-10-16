@@ -36,7 +36,8 @@ validity gate that voided a degenerate model, a normalization prescription that 
 ## File tree
 
 ```
-CLAUDE.md  README.md  MODEL_CARD.md  LICENSE  pyproject.toml  requirements.lock.txt
+CLAUDE.md  README.md  MODEL_CARD.md  LICENSE  pyproject.toml
+requirements.lock.txt  requirements.gemma4.lock.txt   training locks: Qwen · Gemma 4 E4B (F0.9 gate), not the retired 12B line
 hakhukuk/            PRODUCT package (pip-installable)
   cekirdek/            core: tipler · istem · terazi · servis · araclar
   arayuz/              interfaces: cli · tui · api (thin shells over cekirdek)
@@ -49,16 +50,19 @@ docker/              Dockerfile · Dockerfile.dockerignore · compose.yaml  (bui
 docs/                every document except the three root ones (index: docs/README.md)
   PRODUCT.md ROADMAP_v1.md ROADMAP_uygulama.md YAYIN_YOL_HARITASI.md EGITIM_ORTAMI.md MIMARI.md OLCUM.md README.tr.md
   BEDESTEN_API.md YENIDEN_URETIM.md HF_KARTI_INDEKS.md model-soyagaci.mmd
-  adr/                 decision ledger   (kararlar-*.md + gemma4-12b-dersler.md)
-  record/              research record   (kronoloji-*.md · kollar.md · yurutme-tuzaklari.md)
+  adr/                 decision ledger   (README.md · kararlar-*.md + gemma4-12b-dersler.md)
+  record/              research record   (README.md · kronoloji-*.md · gemma4-12b-kronoloji.md · kollar.md · yurutme-tuzaklari.md)
   superpowers/plans/   at most one live plan (ADR-0056; the ADR-0106 exception closed 2026-10-16); exists only while a phase plan is open
+  superpowers/specs/   design specs; an applied spec stays as that day's design
 data/                corpus/ (ground truth) · eval/ (frozen) · train/ · index/ · _ham_ve_ara/
 outputs/             eval/<group>/<run>/ (+ _artefakt/) · egitim/<task>/ (training-side evidence) · tg_v1/ · ta_v1/ (adapters; private HF backup per ADR-0091, F0.1)
-models/              merged/ · gguf/   (28 GB, gitignored)
-configs/  knowledge/ (literature summaries, thesis era · `mike-tarama/`: reference-app scan for the agent app)
+                     · _indirilen/ (raw CP2-c harvest downloads, input of `veri_hazirlik/cp2c_birlestir.py`)
+models/              merged/tgta_v1 (bf16; private HF backup, bf16/tgta_v1/) · gguf/   (20 GB, gitignored)
+configs/             training-environment locks: egitim_ortami.yaml (Qwen) · egitim_ortami_gemma.yaml (Gemma 4 E4B)
+knowledge/           literature summaries (thesis era + Checkpoint 1 inputs, 2026-10-10) · `mike-tarama/`: reference-app scan for the agent app
 ```
 
-`outputs/eval/` groups: `sprint1` · `cp` · `sprint2-olcum` · `faz0` · `gorev` · `hp`
+`outputs/eval/` groups: `sprint1` · `cp` · `sprint2-olcum` · `faz0` · `gorev` · `hp` · `f0`
 ([ADR-0087](docs/adr/kararlar-0064-0085.md#adr-0087); index in `outputs/eval/README.md`). A new run goes to
 `outputs/eval/<group>/<run>/` with its own `KUNYE.json`. Files **inside** `outputs/eval/**` still carry the
 old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
