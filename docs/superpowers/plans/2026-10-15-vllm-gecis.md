@@ -1401,12 +1401,12 @@ Her birinin sonuna, `ADR-0103` sonundaki **Not (2026-10-15, #85)** biçimiyle, "
 
 - [ ] **Step 5: CLAUDE.md ve işaretçiler**
 
-Sun ve onayla. `CLAUDE.md`: (a) "Eval" paragrafında rejim değişmezlerine "two-stage measurement: selection work on vLLM bf16, headline numbers on Q4_K_M + llama.cpp (ADR-0107)" cümlesi; (b) "Deploy" paragrafına "server-side generation: vLLM 0.30.0 pinned (ADR-0107); product stays llama-server + GGUF"; (c) hasat dersi (B10) kapı sonucuna göre; (d) işaretçiler: "entries #39-#86 … continue at **#87**", "ledger runs to **0107**, next is **0108**". `docs/record/README.md`: "**Yeni girdi #87'den devam eder**". Kapı düştüyse (a)-(c) yerine tek cümle: "vLLM was piloted and not adopted for measurement (ADR-0107)".
+Sun ve onayla. `CLAUDE.md`: (a) "Eval" paragrafında rejim değişmezlerine "two-stage measurement: selection work on vLLM bf16, headline numbers on Q4_K_M + llama.cpp (ADR-0107)" cümlesi; (b) "Deploy" paragrafına "server-side generation: vLLM 0.30.0 pinned (ADR-0107); product stays llama-server + GGUF"; (c) hasat dersi (B10) kapı sonucuna göre; (d) işaretçiler: "entries #39-#86 … continue at **#87**", "ledger runs to **0108**, next is **0109**" ve "0107 is reserved" notu kalkar (0108 iş panosuna gitti, ADR-0108). `docs/record/README.md`: "**Yeni girdi #87'den devam eder**". Kapı düştüyse (a)-(c) yerine tek cümle: "vLLM was piloted and not adopted for measurement (ADR-0107)".
 
 - [ ] **Step 6: docs/ dosyaları**
 
 Her biri için ayrı sun-onayla-işle:
-- `docs/ROADMAP_v1.md`: kontrol listesine "F0.17 vLLM geçişi" satırı ve fazlar tablosuna F0.17 satırı (kapılar G1-G3, ölçüt, Görev 9 kapanışı).
+- `docs/ROADMAP_v1.md`: F0 tablosuna F0.17 satırı (kapılar G1-G3, ölçüt, Görev 9 kapanışı). *2026-10-16: kontrol listesi kalktı; F0.17'nin durumu panoda, kart #11 (ADR-0108).*
 - `docs/YAYIN_YOL_HARITASI.md` §3.4 ("İlk iş ~$2-5'lik bir pilottur: … vLLM üretimi"): "Sunucu ölçümü için vLLM pilotu yapıldı (#86); GRPO vLLM pilotu Haziran 2027'de kalır" notu. §5-§7 tablolarına satır eklenirse `<details>` bloğunun içine.
 - `docs/EGITIM_ORTAMI.md`: vLLM sürüm kilidi (`0.30.0`, `huggingface_hub 1.33.0`, taban imaj) satırı.
 - `docs/OLCUM.md`: "iki aşamalı ölçüm" kısa bölümü (hangi iş hangi motorda).
@@ -1440,7 +1440,7 @@ Expected: `4 passed`; hızlı takım `0 failed`.
 **Files:**
 - Modify: `docs/superpowers/plans/2026-10-11-F0-zemin.md` (F0.10 bölümü)
 - Delete: `docs/superpowers/plans/2026-10-15-vllm-gecis.md` (kapanış bloğu yazıldıktan sonra, ADR-0083 emsali)
-- Modify: `docs/ROADMAP_v1.md` (F0.17 işareti)
+- Pano: kart #11 kapanır (ADR-0108; ROADMAP'te işaretlenecek kutu yok)
 
 - [ ] **Step 1: Bitti kanıtını topla**
 
@@ -1459,7 +1459,7 @@ Sun ve onayla. `docs/superpowers/plans/2026-10-11-F0-zemin.md` F0.10 bölümünd
 
 - [ ] **Step 3: Kapanış**
 
-Bu plan dosyasının sonuna "Kapanış" bloğu yaz (kapılar, harcama, öğrenilenler, #86 ve ADR-0107 bağlantıları), kullanıcı onayıyla dosyayı sil ve `CLAUDE.md` dosya ağacı satırındaki ADR-0106 istisna ifadesini, istisna bittiği için, "(ADR-0056; ADR-0106 exception closed)" olarak güncelle. `docs/ROADMAP_v1.md`'de F0.17 satırını `[x]` yap. Plana verilen bağlantıların (`ADR-0106` bloğundaki plan yolu, spec içindeki plan yolu) ölü kalmaması için bağlantıları kayda (`kronoloji #86`) yönlendir.
+Bu plan dosyasının sonuna "Kapanış" bloğu yaz (kapılar, harcama, öğrenilenler, #86 ve ADR-0107 bağlantıları), kullanıcı onayıyla dosyayı sil ve `CLAUDE.md` dosya ağacı satırındaki ADR-0106 istisna ifadesini, istisna bittiği için, "(ADR-0056; ADR-0106 exception closed)" olarak güncelle. Panoda #11 kartını kapat: `gh issue close 11 -c <commit>` (ADR-0108; ROADMAP kontrol listesi kalktı). Plana verilen bağlantıların (`ADR-0106` bloğundaki plan yolu, spec içindeki plan yolu) ölü kalmaması için bağlantıları kayda (`kronoloji #86`) yönlendir.
 
 - [ ] **Step 4: Bağlantı testi**
 

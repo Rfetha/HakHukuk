@@ -1,7 +1,8 @@
 # Yayın yol haritası
 
 > HakHukuk'tan iki hakemli makaleye ve yüksek lisans tezine giden proje planı. Checkpoint 1'in iş
-> adımları, doğrulamaları ve kontrol listesi: [`ROADMAP_v1.md`](ROADMAP_v1.md). Eğitim ortamının
+> adımları ve doğrulamaları: [`ROADMAP_v1.md`](ROADMAP_v1.md); işlerin durumu: [`law-slm-board`](https://github.com/users/Rfetha/projects/3)
+> panosu ([ADR-0108](adr/kararlar-0064-0085.md#adr-0108)). Eğitim ortamının
 > kilitli değerleri:
 > [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md). Her aşama başlarken kendi uygulama planı yazılır
 > (en çok bir canlı plan, [ADR-0056](adr/kararlar-0045-0063.md#adr-0056)); bu belgedeki kararlar
@@ -600,7 +601,7 @@ damgalandı (model kartındaki hassasiyet düzeltmesi F0.3'te).
 | [ADR-0034](adr/kararlar-0027-0044.md#adr-0034) | adaptörler yedeklenmez | `v1` ve yeni seed adaptörleri yedeklenir |
 | [ADR-0037](adr/kararlar-0027-0044.md#adr-0037) | Kapı 5 "ayar: norm-dengeli" | ana sonuç ham TIES ([ADR-0052](adr/kararlar-0045-0063.md#adr-0052)); Kapı 5 ham TIES için türetilir |
 | [ADR-0075](adr/kararlar-0064-0085.md#adr-0075) m.3 | task-vector hattı `v1`'de donduruldu | ürün için geçerli; Makale 1 araştırma için aynı tarifle yeni seed üretir |
-| `superpowers/00-IS-SIRASI.md` | iki aday, sıra insan kararı · "yeni ADR 0087'den" | sıra §4.4'te verildi · sıradaki ADR 0089 · dosya 2026-10-10'da silindi: "şimdi ne" [`ROADMAP_v1.md`](ROADMAP_v1.md)'nin kontrol listesinde, sıra ve gerekçesi bu belgede, `v2`'ye devredilen borçlar [ADR-0083](adr/kararlar-0064-0085.md#adr-0083) sicilinde |
+| `superpowers/00-IS-SIRASI.md` | iki aday, sıra insan kararı · "yeni ADR 0087'den" | sıra §4.4'te verildi · sıradaki ADR 0089 · dosya 2026-10-10'da silindi: "şimdi ne" [`ROADMAP_v1.md`](ROADMAP_v1.md)'nin kontrol listesinde (2026-10-16'dan beri [panoda](https://github.com/users/Rfetha/projects/3), [ADR-0108](adr/kararlar-0064-0085.md#adr-0108)), sıra ve gerekçesi bu belgede, `v2`'ye devredilen borçlar [ADR-0083](adr/kararlar-0064-0085.md#adr-0083) sicilinde |
 
 </details>
 

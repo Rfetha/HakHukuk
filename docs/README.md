@@ -7,7 +7,7 @@ Tek giriş noktası. Kökte yalnız GitHub/HF'nin kökten okuduğu dosyalar kal�
 | :--- | :--- |
 | Ürün ne, neyi **vaat etmez** | [`PRODUCT.md`](PRODUCT.md) |
 | Yön — iki makale ve tez planı, sıra ve gerekçesi | [`YAYIN_YOL_HARITASI.md`](YAYIN_YOL_HARITASI.md) |
-| Sıradaki iş — Checkpoint 1 kontrol listesi ve iş adımları | [`ROADMAP_v1.md`](ROADMAP_v1.md) |
+| Sıradaki iş — işlerin durumu panoda ([ADR-0108](adr/kararlar-0064-0085.md#adr-0108)); Checkpoint 1'in iş adımları ve doğrulamaları ROADMAP'te | [`law-slm-board`](https://github.com/users/Rfetha/projects/3) · [`ROADMAP_v1.md`](ROADMAP_v1.md) |
 | Ajan uygulaması hattı — kağıt hattının dışında, Ekim 2027'den sıralı | [`ROADMAP_uygulama.md`](ROADMAP_uygulama.md) |
 | Eğitim ortamının kilitli değerleri | [`EGITIM_ORTAMI.md`](EGITIM_ORTAMI.md) |
 | `v1` zinciri, ürün modülleri | [`MIMARI.md`](MIMARI.md) |

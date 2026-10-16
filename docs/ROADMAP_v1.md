@@ -1,78 +1,12 @@
 # ROADMAP v1 — Checkpoint 1'e giden yol
 
-## Kontrol listesi — Makale 1'in ilk sürümünden gönderimine
+## Durum
 
-Bir kutu, aşağıdaki tablolarda aynı numaralı işin doğrulaması geçince işaretlenir.
-
-**F0 · Zemin** *(Ekim sonu–Kasım 2026)*
-
-- [x] F0.1 Bundle ve `tg_v1` / `ta_v1` adaptörleri özel HF deposunda, `sha256` eşleşiyor
-- [x] F0.2 Yol haritası kararları ADR-0089–0096 olarak defterde (2026-10-10 fizibilite kararları dahil)
-- [x] F0.3 τ_g v1'in hassasiyeti kayda geçti (bf16, belge kanıtı)
-- [x] F0.4 Eğitim ortamı kilidi: yaml + betik kontrolü + test + eski ortamla eşdeğerlik
-- [x] F0.5 Payda ve tamlık kapıları · eski aletlere erişim (RQ2)
-- [x] F0.6 Hakem geçişi (DeepSeek V4.1 Flash) · kayma çıpası · gürültü tabanı
-- [x] F0.7 τ_g / τ_a seyreklik tablosu
-- [ ] F0.8 Birlikte-eğitim kodu (tam ORPO, λ parametre), eşit maruziyet, Modal pilotu
-- [ ] F0.9 Gemma teknik kapısı geçti (kalırsa yedek o gün seçilir)
-- [ ] F0.10 `tgta_v1`'in kimliği karşılaştırıldı · mevcut kollar güncel DEV'de ölçüldü · kol başına mod kümesi belirlendi
-- [ ] F0.11 Literatür taraması ve özgünlük notu
-- [ ] F0.12 Veri lisansı ADR'si (Apache-2.0 + açık not)
-- [ ] F0.13 Ön-kayıt taslağı v0 (mühür F1.11'de, OSF)
-- [ ] F0.14 Dış bilgiler doğrulandı (ARR, Modal kredisi, hakem kimliği ve önbellek fiyatı, OpenAI şartları) · etik kurul soruldu · gönüllü arayışı başladı
-- [ ] F0.15 Qwen'de τ_g/τ_a seed'leri (3408 · 3409) ve ham TIES birleştirmeleri
-- [x] F0.16 Ölçüm kartı pilotu: kart tipi, platform ve maliyet seçildi · makine geçiş kapısı (F0.6 ve F0.10'dan önce) · *açık not: Modal pilotunun gerçek faturası okunmadı ([#83](record/kronoloji-75-86.md#83)); kullanıcı panelden verecek*
-
-**F1 · DEV iterasyonu** *(Aralık 2026–Ocak 2027)*
-
-- [ ] F1.1 Birlikte eğitim: tam ORPO, λ 0,1 / 0,3 × iki temel model
-- [ ] F1.2 Ardışık eğitim: τ_g gömülü + taze adaptör, β 0,1 / 0,3 × iki temel model
-- [ ] F1.3 Gemma'nın τ_g, τ_a ve birleştirmeleri · Gemma'da τ_g/τ_a seed'leri (3408 · 3409)
-- [ ] F1.4 İnsan↔hakem pilotu (~80 cevap) · hakemin düşünme modu seçildi
-- [ ] F1.5 Hakem önyargı sondası ve kontrol kalemleri
-- [ ] F1.6 Kör, katmanlı okuma aracı
-- [ ] F1.7 İz↔cevap hakemi
-- [ ] F1.8 Test soruları üretildi (GLM 5.3 Flash; yeni + mühürlü)
-- [ ] F1.9 İnsan okuma protokolü
-- [ ] F1.10 Genel yetenek kümeleri (Global-MMLU TR + GSM8K)
-- [ ] F1.11 **Dondurma ADR'si** · OSF'de mühürlendi · makalenin yöntem bölümü taslağı
-
-**F2 · Test ve seed'ler** *(Şubat–Nisan 2027)*
-
-- [ ] F2.1 Sorular okundu, yalnız ret (mühürlü parça ve vatandaş dili dilimi dahil; dondurmadan hemen sonra)
-- [ ] F2.2 Test ve mühürlü parça şifrelendi ve mühürlendi
-- [ ] F2.3 Birlikte ve ardışık seed'ler eğitildi (Qwen 3408 · 3409; Gemma 3408 · 3409) · bütün test cevapları şifreli (Şubat–Nisan)
-- [ ] F2.4 Birleştirmeler ve GGUF'lar; her biri `kollar.md`'de
-- [ ] F2.5 Yeni adaptörler yedeklendi
-- [ ] F2.6 Makalenin giriş ve ilgili çalışmalar bölümleri
-
-**F3 · Son ölçüm** *(Mayıs 2027)*
-
-- [ ] F3.1 Kayma çıpasının tekrarı
-- [ ] F3.2 Bütün test cevapları hazır; puanlama başladı (= test açıldı)
-- [ ] F3.3 Puanlama: iki hakem · iz hakemi · düşünce koruma · genel yetenek · uzunluk
-- [ ] F3.4 Tablo 2 (RQ2)
-- [ ] F3.5 Tablo 1 (istatistik)
-- [ ] F3.6 Kazanan ADR'si
-- [ ] F3b Uygulama kazananla güncel (ya da `tgta_v1` kaldı)
-
-**F4 · İnsan doğrulaması** *(Mayıs–Haziran 2027)*
-
-- [ ] F4.1 ~300 cevaplık örneklem
-- [ ] F4.2 Okumalar (onamlı): kullanıcı · öğrenciler · hukukçu
-- [ ] F4.3 Uyum tabloları
-
-**F5 · Yazım ve gönderim** *(Haziran–Eylül 2027)*
-
-- [ ] F5.0 DEÜ FBE kuralları okundu (tez dili, yayın şartı, danışman adı)
-- [ ] F5.1 Makale taslağı
-- [ ] F5.2 Ekler ve beyanlar: tekrar üretim · sorumlu araştırma kontrol listesi · sınırlılıklar · etik ·
-  YZ yardımı
-- [ ] F5.3 Anonim sürüm
-- [ ] F5.4 Dış okuyucuların yorumları işlendi
-- [ ] F5.5 arXiv
-- [ ] F5.6 **ARR gönderimi**
-- [ ] F5.7 Kapanış: kronoloji, ADR'ler, tez malzeme listesi · `master`'a birleştirme · **`v1` etiketi**
+İşlerin durumu yalnız [`law-slm-board`](https://github.com/users/Rfetha/projects/3) panosunda tutulur
+([ADR-0108](adr/kararlar-0064-0085.md#adr-0108)): aşağıdaki tablolardaki her iş bir kart, her aşama bir
+epic. Kart, aynı numaralı işin doğrulaması geçince elle kapatılır (`gh issue close N -c <commit>`). Bu
+belge işin *ne* ve *nasıl* olduğunu söyler; *nerede kaldık* sorusunun cevabı panodadır. 2026-10-16'ya
+kadar burada duran kontrol listesi git geçmişindedir.
 
 ---
 
