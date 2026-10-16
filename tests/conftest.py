@@ -15,9 +15,8 @@ _KOK = os.path.dirname(os.path.abspath(__file__))          # tests/
 _REPO = os.path.dirname(_KOK)
 _SCRIPTS = os.path.join(_REPO, "scripts")
 
-sys.path[:0] = [
-    _SCRIPTS,
-    *(os.path.join(_SCRIPTS, d) for d in sorted(os.listdir(_SCRIPTS))
-      if os.path.isdir(os.path.join(_SCRIPTS, d)) and d[0] not in "_."),
-    _REPO,
-]
+_YOLLAR = []
+for _y, _alt, _ in os.walk(_SCRIPTS):   # her derinlik (ADR-0112: scripts/<grup>/<alt>/)
+    _alt[:] = sorted(a for a in _alt if a[0] not in "_.")
+    _YOLLAR.append(_y)
+sys.path[:0] = [*_YOLLAR, _REPO]

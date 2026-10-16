@@ -48,17 +48,19 @@ import openai
 
 # Fiyat + kapı + JSON-modu tek yerde: llm_client (ADR-0029). Script başına kopya fiyat YOK —
 # maliyet-normalize parite iddiası (ADR-0017) tek ve denetlenebilir bir tabloya dayanmalı.
-# ── scripts/ yol köprüsü (T5, 2026-09-07) ────────────────────────────────────
-# Kardeş modüller alt klasörlere bölündükten SONRA da bulunsun diye scripts/ kökü, tüm
-# alt klasörleri ve repo kökü sys.path'e girer. Uzantısız `import X` bu köprü olmadan
+# ── scripts/ yol köprüsü (T5 2026-09-07 · ADR-0112 2026-10-16) ───────────────
+# Kardeş modüller iç içe alt klasörlerde de bulunsun diye scripts/ kökü, altındaki HER
+# derinlikteki klasör ve repo kökü sys.path'e girer. Uzantısız `import X` bu köprü olmadan
 # taşımada SESSİZCE kırılır: ImportError çalışma zamanında, bazen GPU koşusunun ortasında.
-# ⚠️ 26 dosyada BİREBİR aynı; değiştirirsen hepsinde değiştir (grep: "yol köprüsü").
+# ⚠️ 39 dosyada BİREBİR aynı; değiştirirsen hepsinde değiştir (grep: "yol köprüsü").
 import os, sys
-_K = os.path.dirname(os.path.abspath(__file__))
-_K = _K if os.path.basename(_K) == "scripts" else os.path.dirname(_K)
-sys.path[:0] = [_K, *(os.path.join(_K, _d) for _d in sorted(os.listdir(_K))
-                      if os.path.isdir(os.path.join(_K, _d)) and _d[0] not in "_."),
-                os.path.dirname(_K)]
+_K = os.path.abspath(__file__)
+_K = _K[:_K.rindex(os.sep + "scripts" + os.sep)] + os.sep + "scripts"  # dışarıda: ValueError
+_Y = []
+for _y, _alt, _f in os.walk(_K):
+    _alt[:] = sorted(_a for _a in _alt if _a[0] not in "_.")
+    _Y.append(_y)
+sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
 
 from llm_client import (make_client, resolve, price, Dusunme, HakemKimligi,  # noqa: E402
