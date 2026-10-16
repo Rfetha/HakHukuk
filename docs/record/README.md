@@ -5,7 +5,7 @@ Bu klasör **ne olduğunu** tutar; kararların *neden*i [`../adr/`](../adr/)'de,
 
 | ne | nerede |
 | :--- | :--- |
-| **Koşudan önce okunacak tek liste** — 87 sessiz-bozulma kalıbı | [`yurutme-tuzaklari.md`](yurutme-tuzaklari.md) |
+| **Koşudan önce okunacak tek liste** — 90 sessiz-bozulma kalıbı | [`yurutme-tuzaklari.md`](yurutme-tuzaklari.md) |
 | **Artefakt künyesi** — her kol ve merge'in kimliği ⛔ *dokunulmaz* | [`kollar.md`](kollar.md) |
 | Yeni hat, girdi **#39 … #52** | [`kronoloji-39-52.md`](kronoloji-39-52.md) |
 | Yeni hat, girdi **#53 … #62** | [`kronoloji-53-62.md`](kronoloji-53-62.md) |
@@ -15,14 +15,14 @@ Bu klasör **ne olduğunu** tutar; kararların *neden*i [`../adr/`](../adr/)'de,
 | Emekli hattın **damıtılmış dersleri** + ADR-0001…0026 | [`../adr/gemma4-12b-dersler.md`](../adr/gemma4-12b-dersler.md) |
 | Karar defteri, ADR-0027…0086 | [`../adr/README.md`](../adr/README.md) |
 
-**Yeni girdi #86'dan devam eder** → `kronoloji-75-86.md`'nin sonuna yazılır; dosya 12 girdiyi
-aşarsa `kronoloji-72-….md` açılır. Her girdi bir `<a id="NN"></a>` çapası taşır, atıf biçimi
+**Yeni girdi #87'den devam eder** → `kronoloji-75-86.md` 12 girdiyle doldu; #87 yeni bir `kronoloji-87-….md` açar ve
+sonraki dosyalar da 12 girdide kapanır. Her girdi bir `<a id="NN"></a>` çapası taşır, atıf biçimi
 `kronoloji-63-71.md#70`.
 
 ## Hangi belge ne işe yarar
 
 **`yurutme-tuzaklari.md` — koşudan ÖNCE.** *"Hata vermeden yanlış sonuç üreten"* kalıpların listesi;
-87 satırın hepsi bu hatta **fiilen ısırdı**. Bu hattın hata sınıfı çökme değil **sessiz yanlışlıktır**.
+90 satırın hepsi bu hatta **fiilen ısırdı**. Bu hattın hata sınıfı çökme değil **sessiz yanlışlıktır**.
 
 **`kollar.md` — artefakt kimliği.** Satırı olmayan artefakt **isimsizdir ve kullanılmaz**.
 
