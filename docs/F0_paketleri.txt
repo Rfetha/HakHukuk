@@ -1,0 +1,34 @@
+F0.X paketleri — kalan F'ler üç iş grubunda (2026-10-16)
+
+Plan: docs/superpowers/plans/2026-10-11-F0-zemin.md · durum: law-slm-board, epic #1
+
+┌─────────────┬──────────────────────────────────────────────┬──────────────────┬────────────────────┬──────────────────────┐
+│ Grup        │ Neden birlikte                               │ Kim              │ Para               │ Nerede               │
+├─────────────┼──────────────────────────────────────────────┼──────────────────┼────────────────────┼──────────────────────┤
+│ F0.14 →     │ Hepsi internetten okuma ve yazı. F0.12,      │ Ben              │ Yok                │ develop              │
+│ F0.12 →     │ F0.14'ün OpenAI satırını bekliyor. F0.13'ün  │                  │                    │                      │
+│ F0.13       │ sayıları F0.10'dan gelecek; o yerler boş     │                  │                    │                      │
+│             │ kalır.                                       │                  │                    │                      │
+├─────────────┼──────────────────────────────────────────────┼──────────────────┼────────────────────┼──────────────────────┤
+│ F0.10 +     │ İkisi de aynı ölçüm makinesinde (A10) aynı   │ Ben; F0.9'un     │ Var, başlamadan    │ 14-dev-olcumu dalı   │
+│ F0.9        │ sorulara cevap üretiyor; makine kontrolü ve  │ sonucuna sen     │ sorarım (80 cevap  │                      │
+│             │ hakem puanlaması ortak.                      │ karar verirsin   │ ~$0,20)            │                      │
+├─────────────┼──────────────────────────────────────────────┼──────────────────┼────────────────────┼──────────────────────┤
+│ F0.8 +      │ İkisi de aynı eğitim ortamında, aynı Modal   │ Ben              │ Kod bedava;        │ 12-birlikte-egitim   │
+│ F0.15       │ imajıyla koşuyor; tek oturumda biter.        │                  │ deneme ~$1-2,      │ dalı                 │
+│             │                                              │                  │ seed'ler ~$11      │                      │
+└─────────────┴──────────────────────────────────────────────┴──────────────────┴────────────────────┴──────────────────────┘
+
+Durum (2026-10-16):
+- F0.14 → F0.12 → F0.13: plan yapıldı (sorgulama 2026-10-16); kutular F0 planının F0.12–F0.14
+  bölümlerinde, işe "başla" ile geçilir. Kararlar: tek kronoloji girdisi #88 · OpenAI şartlarının güncel
+  ve üretim günkü metni · OSF kuralları şimdi okunur · etik kurul F0'dan çıktı (F5.2) · ADR-0100 OpenAI'ın
+  ürettiği her şeyi kapsar · yeniden üretimde üç gerekçeli yasak · notlar data/README.md ve MODEL_CARD
+  §8'e şimdi · çıpalar gerçek kaynağıyla · kazanan kuralının dört boşluğu taslaktan önce sorulur · #17 v0
+  ile kapanır
+- F0.10 + F0.9: başlamadı.
+- F0.8 + F0.15: başlamadı.
+
+Kullanıcının işleri: F0.16 (Modal faturası) · F0.14'ün kalan satırları (gönüllü okuyucular, Modal
+kredisi; sonucu tek cümleyle söylersin, #88'e girer) · F0.11 (literatür okuması). Etik kurul F0'dan
+çıktı, makale yazımında (F5.2) ele alınır.
