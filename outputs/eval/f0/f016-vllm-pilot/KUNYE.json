@@ -1,0 +1,203 @@
+{
+  "olcum": "F0.16 vLLM pilotu (plan 2026-10-15-vllm-gecis, Görev 5; spec bölüm 5) — kart #11",
+  "tarih": "2026-10-15/16",
+  "git_dal": "talk-think",
+  "kod_commitleri": {
+    "cevirici_ve_toplu_uret": "d7d028d",
+    "bf16_yukle": "cfbf213",
+    "modal_pilot_vllm": "7f885e5",
+    "kapilar_ozet_puanlama": "217fc11",
+    "makine_kapisi_puan": "4428604",
+    "hasat_ortusme": "d354cf0"
+  },
+  "girdiler": {
+    "bf16_manifest": {
+      "yol": "outputs/eval/f0/f016-vllm-pilot/bf16_manifest.json",
+      "sha256": "92aa827f48e84f606481863c15e8e03d21c884cde5355c0b550edaf3490df142"
+    },
+    "ceviri_kunye": {
+      "yol": "outputs/eval/f0/f016-vllm-pilot/cevirme/CEVIRI_KUNYE.json",
+      "sha256": "8995ade5f955e91834009d13f7100ba51ffcb2b827a84d8030c36ac03943eeb0"
+    },
+    "gguf": {
+      "gguf": "HakHukuk-4B-v0.5-Q4_K_M.gguf",
+      "gguf_sha256": "755e15e92e9f7021934f2d5eada6c1f02fcc92be23f0536b0c2a0a9586e7bffc"
+    },
+    "baglam": {
+      "dosya": "data/eval/dev/baglam/h1-k10.json",
+      "sha256": "026668000583d6e3d3988b97d1cb3c3a85d740594686901aa0e8da3f213e6135"
+    },
+    "referans_llama_cpp": {
+      "yol": "outputs/eval/f0/f016-pilot/A10/m1/h1_tgta_v1_A10_m1_t1_detail.jsonl",
+      "puan_ozeti": "outputs/eval/f0/f06-hakem-gecisi/OZET.json (ds-acik, 5 tekrar)"
+    }
+  },
+  "yazilim": {
+    "vllm": "0.30.0",
+    "taban_imaj": "nvidia/cuda:13.0.1-devel-ubuntu24.04",
+    "kurulan": {
+      "vllm": "0.30.0",
+      "torch": "2.13.0",
+      "transformers": "5.20.0",
+      "huggingface_hub": "1.33.0",
+      "openai": "2.41.0",
+      "gguf": "0.19.0",
+      "safetensors": "0.8.0"
+    }
+  },
+  "kart": {
+    "q4": "NVIDIA A10, 610.57.04, GPU-db9b357d-33eb-1829-9bbb-320f779df675, 23028 MiB",
+    "bf16": "NVIDIA A10, 610.57.04, GPU-86ade4d9-2509-5559-44ef-333743d54aa8, 23028 MiB",
+    "kontrol": "NVIDIA A10, 610.57.04, GPU-ed4e21fd-4375-31c1-770a-706b2edbee97, 23028 MiB"
+  },
+  "vllm_komutu": [
+    "/usr/local/bin/python",
+    "/usr/local/bin/vllm",
+    "serve",
+    "/outputs/f016-vllm-pilot/hf_q4km",
+    "--served-model-name",
+    "local",
+    "--dtype",
+    "bfloat16",
+    "--max-model-len",
+    "8192",
+    "--max-num-seqs",
+    "32",
+    "--reasoning-parser",
+    "qwen3",
+    "--seed",
+    "3407",
+    "--host",
+    "127.0.0.1",
+    "--port",
+    "8000"
+  ],
+  "rejim": {
+    "--thinking": "on",
+    "--think-budget": "1024",
+    "--max-new-tokens": "512",
+    "--max-chunk-chars": "900",
+    "--seed": "3407",
+    "--harness-k": "10",
+    "--rrf-k": "10",
+    "--n": "80"
+  },
+  "es_zamanli": 32,
+  "hakem": {
+    "model": "deepseek/deepseek-v4.1-flash-20260910",
+    "saglayici": "deepinfra/fp8",
+    "dusunme": "acik",
+    "tekrar": 3,
+    "parca": 8,
+    "koşu_betigi": "outputs/eval/f0/f016-vllm-pilot/kos-parcali.sh",
+    "birlestirme": "outputs/eval/f0/f016-vllm-pilot/birlestir.py"
+  },
+  "hakem_ozetleri": {
+    "vllm-bf16-orijinal_t1": {
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2606,
+      "total_claims": 323,
+      "n_hakem_hata": 0
+    },
+    "vllm-bf16-orijinal_t2": {
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2612,
+      "total_claims": 344,
+      "n_hakem_hata": 0
+    },
+    "vllm-bf16-orijinal_t3": {
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2563,
+      "total_claims": 331,
+      "n_hakem_hata": 0
+    },
+    "vllm-q4-acilmis_t1": {
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2616,
+      "total_claims": 337,
+      "n_hakem_hata": 0
+    },
+    "vllm-q4-acilmis_t2": {
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.2665,
+      "total_claims": 337,
+      "n_hakem_hata": 0
+    },
+    "vllm-q4-acilmis_t3": {
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.27,
+      "total_claims": 349,
+      "n_hakem_hata": 0
+    }
+  },
+  "onaylar": {
+    "bf16_yukleme": "2026-10-15 'Yükle' (21:18Z başladı, 2026-10-16T09:27Z bitti)",
+    "asama_A": "2026-10-16 'Başlat' (09:28Z)",
+    "asama_B": "2026-10-16 'Başlat' (09:38Z)",
+    "puanlama": "2026-10-16 '8 parça' (09:56Z)",
+    "hasat_esigi": "2026-10-16 '%70', ölçümden önce"
+  },
+  "maliyet_tahmini_usd": {
+    "asama_A": 0.17,
+    "asama_B": 0.37,
+    "puanlama": 1.5762,
+    "toplam": 2.12
+  },
+  "fatura": {
+    "openrouter": "okunamadı: 2026-10-16T10:24Z'de usage_daily 0, sayaç gecikmeli; Görev 8'de yeniden okunur",
+    "modal": "panelden kullanıcı verecek"
+  },
+  "sonuc": {
+    "kapilar": {
+      "g1": {
+        "esik": "n=80, kesik<=0.05, dusunen>0",
+        "gecti": true
+      },
+      "g2": {
+        "ortalama_sure_s": {
+          "q4_acilmis": 129.9,
+          "bf16_orijinal": 156.95
+        },
+        "esik_s": 213.53333333333333,
+        "gecti": true
+      },
+      "g3": {
+        "fark_puan": 0.182667,
+        "esik_puan": 0.6,
+        "gecti": true
+      },
+      "g4": {
+        "ayni": 2,
+        "n": 8,
+        "dal": "puan",
+        "gecti": true
+      },
+      "g5": {
+        "fark_puan": 4.793333,
+        "gecti": true
+      },
+      "ilerle": true
+    },
+    "hasat": {
+      "q4_yanlis": 13,
+      "vllm_yanlis": 16,
+      "ortak": 9,
+      "oran": 0.6923076923076923,
+      "esik": 0.7,
+      "gecti": false
+    }
+  },
+  "kullanici_karari": "seçim ölçümleri vLLM + Q4'ten açılmış ağırlıkla (spec'teki 'bf16'da seç' değişti; ADR-0107)"
+}
