@@ -725,3 +725,33 @@ def test_kapsam_satiri_kunye_hic_yoksa_durust_dusus_koruyor(tmp_path):
         _hakhukuk_modullerini_geri_yukle(yedek)
 
     assert "künye okunamadı" in satir, f"künye gerçekten yokken düşüş dalı kaybolmuş: {satir!r}"
+
+
+# ── kusur 27 — kaynak listesinde madde yazımı tek biçim; ham alan ve modele giden blok HAM ──
+
+@pytest.mark.parametrize("ham, beklenen", [
+    ("MADDE 349", "Madde 349"),
+    ("Madde 8", "Madde 8"),
+    ("GEÇİCİ MADDE 1", "Geçici Madde 1"),
+    ("Geçici Madde12", "Geçici Madde 12"),
+    ("Madde5/A", "Madde 5/A"),
+    ("Ek-1", "Ek-1"),
+])
+def test_madde_yazimi_korpusun_alti_bicimini_tek_bicime_indirir(ham, beklenen):
+    assert cli.madde_yazimi(ham) == beklenen
+
+
+def test_bicimle_kaynak_listesinde_madde_yazimi_tek_bicim_ham_alan_degismez():
+    k = Kaynak(kanun_adi="TÜRK BORÇLAR KANUNU", kanun_no="6098", madde_no="MADDE 349",
+               metin="Kiraya veren …", sira=1)
+    c = Cevap(metin="…", durum=Durum.CEVAP, atiflar=(), kaynaklar=(k,))
+    sunum = cli.bicimle(c)
+    assert "[1] TÜRK BORÇLAR KANUNU Madde 349" in sunum, "kaynak listesinde madde yazımı düzelmedi"
+    assert k.madde_no == "MADDE 349", "Kaynak.madde_no sunum için değiştirildi — ham alan bozuldu"
+
+
+def test_modele_giden_kaynak_blogu_ham_madde_yazimini_tasir():
+    """Ölçülen yol: `[KAYNAK n]` başlığı ölçüm hattıyla aynı, ham `madde_no` ile kurulur."""
+    k = Kaynak(kanun_adi="TÜRK BORÇLAR KANUNU", kanun_no="6098", madde_no="MADDE 349",
+               metin="Kiraya veren …", sira=1)
+    assert "[KAYNAK 1] TÜRK BORÇLAR KANUNU MADDE 349" in servis._blok((k,))

@@ -159,6 +159,25 @@ def yer_tutucu_atiflarini_isaretle(metin: str) -> str:
     return _YER_TUTUCU_DESENI.sub("(kanun adı belirtilmemiş", metin)
 
 
+# Korpusun ham madde yazımı tutarsız (kusur 27): `Madde 8` ↔ `MADDE 349`, `GEÇİCİ MADDE 1`,
+# boşluksuz `Madde5` ve `Geçici Madde12`.
+_MADDE_DESENI = re.compile(r"^\s*(?:(GEÇİCİ|Geçici)\s*)?(?:MADDE|Madde)\s*(\S.*)$")
+
+
+def madde_yazimi(madde_no: str) -> str:
+    """Kaynak listesinde madde numarasını tek biçimde yazar: `Madde 349` · `Geçici Madde 1`.
+
+    ⛔ Yalnız sunum katmanında: `Kaynak.madde_no` ham kalır ve `servis._blok()` modele giden
+    `[KAYNAK n]` başlığını ham değerle kurar (ölçüm hattıyla aynı). Desene uymayan değer
+    olduğu gibi döner.
+    """
+    eslesme = _MADDE_DESENI.match(madde_no)
+    if not eslesme:
+        return madde_no
+    on_ek = "Geçici Madde" if eslesme.group(1) else "Madde"
+    return f"{on_ek} {eslesme.group(2)}"
+
+
 def bicimle(cevap: Cevap, rozet: dict[Durum, str] = ROZET) -> str:
     """Cevabı insan okur biçime çevir. Yan etkisi yok — test edilebilsin diye ayrı.
 
@@ -181,7 +200,7 @@ def bicimle(cevap: Cevap, rozet: dict[Durum, str] = ROZET) -> str:
         parcalar.append("")
     if cevap.kaynaklar:
         parcalar.append("Kaynaklar:")
-        parcalar += [f"  [{k.sira}] {k.kanun_adi} {k.madde_no}" for k in cevap.kaynaklar]
+        parcalar += [f"  [{k.sira}] {k.kanun_adi} {madde_yazimi(k.madde_no)}" for k in cevap.kaynaklar]
         parcalar.append("")
     # ⚠️ Kapsam satırı KAYNAKLARIN hemen ardında, ibarenin ÜSTÜNDE (kusur 15, insan
     # kararı 2026-09-11). Gerekçe: kapsam bir OLGU şerhidir — "aranan korpus buydu" —
