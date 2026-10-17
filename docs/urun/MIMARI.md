@@ -11,8 +11,8 @@
   ┌──────────────────────────────────────┐        ┌──────────────────────────────────────┐
   │ Qwen3.5-4B  (ham base, PARAMETRE)    │        │  soru                                │
   │        │                             │        │    │                                 │
-  │        ├──► QLoRA τ_g  (1.083 adım)  │        │    ▼                                 │
-  │        └──► QLoRA τ_a  (70 adım)     │        │  retriever.py  (CPU · GPU'ya GİRMEZ) │
+  │        ├──► LoRA τ_g  (1.083 adım)   │        │    ▼                                 │
+  │        └──► LoRA τ_a  (70 adım)      │        │  retriever.py  (CPU · GPU'ya GİRMEZ) │
   │                İKİSİ DE ham base'den │        │    · BM25 + bge-m3, RRF (K=10)       │
   │                BAĞIMSIZ              │        │    · yürürlük süzgeci (mülga elenir) │
   │        ▼                             │        │    ▼                                 │

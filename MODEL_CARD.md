@@ -103,9 +103,10 @@ Qwen3.5-4B (ham) ──┬── LoRA SFT   (temellendirme) ──► τ_g
 | `τ_g` temellendirme | SFT | RAFT biçimi: soru + altın madde + aynı kanundan komşu maddeler (zor çeldiriciler). 17.323 eğitim satırı; cevaplar uydurma-alıntı süzgecinden geçmiş, öğretmen etiketleri temizlenmiş (`data/train/raft_scrubbed/`) | 1.083 adım · lr 1e-4 |
 | `τ_a` çekinme | ORPO | 726 tercih çifti (kaynak soruyu kapsamıyorken *seçilen* = çekinme, *reddedilen* = temel modelin aynı tuzakta ürettiği gerçek hatalı cevap) + 145 temellendirme tekrar satırı (`data/train/orpo_abstain_cp2c/`) | 70 adım (5 epoch) · lr 1e-5 · β 0,1 · etkin batch 64 |
 
-İki kolda ortak: QLoRA (NF4), `r=16`, `α=32`, tüm doğrusal katmanlar, dropout 0,05, seed 3407.
-`τ_g`'nin eğitim koşusu künye disiplininden önce yapıldığı için veri dizini doğrudan kayıtlı
-değildir; `raft_scrubbed` davranışsal kanıtla desteklenen okumadır. Ayrıntılı künye:
+İki kolda ortak: bf16 taban + LoRA (QLoRA değil; [ADR-0031](docs/adr/kararlar-0027-0044.md#adr-0031)), `r=16`,
+`α=32`, tüm doğrusal katmanlar, dropout 0,05, seed 3407.
+`τ_g`'nin eğitim koşusu künye disiplininden önce yapıldığı için veri dizini ve hassasiyeti doğrudan
+kayıtlı değildir (hassasiyetin kanıtı koşu komutudur); `raft_scrubbed` davranışsal kanıtla desteklenen okumadır. Ayrıntılı künye:
 [`docs/record/kollar.md`](docs/record/kollar.md).
 
 **Neden iki kol ayrı eğitildi.** Görev vektörü `τ = θ_ft − θ_base` olarak tanımlanır; bu tanım

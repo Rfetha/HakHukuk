@@ -195,8 +195,9 @@ for ceremony.
 
 - **Environment:** `uv` + Python 3.11 (venv `~/code/global_venv`, activate in the same command:
   `source ~/code/global_venv/bin/activate && ...`). WSL2 Ubuntu 22.04 + Blackwell-compatible CUDA 13.x.
-- **Training:** PyTorch, Unsloth (fall back to TRL+PEFT), bitsandbytes NF4, FlashAttention-2.
-- **Method: QLoRA per branch, then task-vector merge (ADR-0027).** `r=16`, `lora_alpha=32`,
+- **Training:** PyTorch, Unsloth (fall back to TRL+PEFT), FlashAttention-2.
+- **Method: LoRA on a bf16 base per branch (not QLoRA, [ADR-0031](docs/adr/kararlar-0027-0044.md#adr-0031)), then
+  task-vector merge (ADR-0027).** `r=16`, `lora_alpha=32`,
   `target_modules="all-linear"`, `lora_dropout=0.05`, `batch=1`, gradient checkpointing. **Every branch
   trains from the RAW BASE, independently** — a task vector is `τ = θ_ft − θ_base`, so all branches must share
   one `θ_base`; training one on top of another is sequential SFT and destroys what we measure. Merging is
@@ -206,7 +207,7 @@ for ceremony.
   ([ADR-0052](docs/adr/kararlar-0045-0063.md#adr-0052) reversed ADR-0036). `‖τ‖` is measured and reported
   unconditionally per branch. Sweep merges on **DEV**, never on the frozen TEST. The task-vector line is
   **frozen at `v1`** (`v2` starts from `tgta_v1`, ADR-0075).
-- **Deploy:** per-branch QLoRA → materialize ΔW (bf16) → k-way merge → quantize via llama.cpp
+- **Deploy:** per-branch LoRA (bf16 base) → materialize ΔW (bf16) → k-way merge → quantize via llama.cpp
   (**Q4_K_M**) → GGUF → consumer GPU. Containers: three boxes, two daemons, two images (ADR-0078);
   `docker/compose.yaml` is a **regime lock** (llama-server flags are the published ones, parsed as a gate in
   `tests/depo/test_konteyner.py`). Run: `docker compose -f docker/compose.yaml up`. vLLM is not a measurement engine

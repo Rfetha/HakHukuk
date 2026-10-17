@@ -732,7 +732,7 @@ Ham TIES `τ_a`'yı **silmemiştir**: `τ_g`'nin M2b çöküşünün **%57,1**'i
 **Bu satırdaki sayılar `v1` birimindedir** (erişim katmanı **kapalı**, v1 soru seti, 1024
 bütçe) ve §3'ün sayılarıyla **kıyaslanamaz**.
 
-**Dağıtım zinciri:** kol başına QLoRA (NF4) → ΔW'yi bf16'da materyalize et → k-yollu merge (tam
+**Dağıtım zinciri:** kol başına LoRA (bf16 taban) → ΔW'yi bf16'da materyalize et → k-yollu merge (tam
 ağırlık uzayında, host belleğinde, tensör tensör) → llama.cpp ile **Q4_K_M**'e kuantize et →
 GGUF. **Kuantizasyon en sondadır.**
 
