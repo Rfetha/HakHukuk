@@ -18,41 +18,39 @@
 3. **Araç kullanımının eğitimi Checkpoint 2'den sonra ayrı bir ürün turudur** ve yalnız araç çağırma ölçümü (U1.0)
    açık bir boşluk gösterirse açılır; Makale 2'nin ödülüne girmez ([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)).
 4. **Model bir parametredir:** uygulama Checkpoint 1'in kazananına bağlanır (F3.6, F3b); hedef şimdilik `tgta_v1`.
-5. Her dilim başlarken kendi uygulama planı yazılır (`docs/superpowers/plans/`, en çok bir canlı plan,
-   [ADR-0056](../adr/kararlar-0045-0063.md#adr-0056)); makale hattının canlı planıyla aynı anda iki plan olmaz.
-6. **Dilimler sıralıdır:** A → B → C. Hiçbir dilim başka bir dilimle ya da tez yazımıyla aynı anda yürümez. Ocak
+5. **Dilimler sıralıdır:** A → B → C. Hiçbir dilim başka bir dilimle ya da tez yazımıyla aynı anda yürümez. Ocak
    2028'de tez yazımı başlayınca hat nerede kaldıysa durur, savunmadan sonra (yaz 2028) kaldığı yerden devam eder
    ([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)).
 
-## Kontrol listesi
+## Dilimler
 
 **U0 · Zemin** *(Ekim 2026; yalnız tasarım)*
 
-- [x] U0.1 Mike taraması `knowledge/mike-tarama/` altında (sekiz alan + sentez)
-- [x] U0.2 ADR-0104 ve tasarım taslağı
-- [x] U0.3 Kararların denetimi: ADR-0105 (takvim, araç çağırma ölçümünün yeri, araç RL'i)
+- U0.1 Mike taraması `knowledge/mike-tarama/` altında (sekiz alan + sentez)
+- U0.2 ADR-0104 ve tasarım taslağı
+- U0.3 Kararların denetimi: ADR-0105 (takvim, araç çağırma ölçümünün yeri, araç RL'i)
 
 **U1 · Dilim A: omurga** *(Ekim–Aralık 2027, Makale 1 gönderildikten sonra; kullanıcı ~8-12 saat, tahmin)*
 
-- [ ] U1.0 Araç çağırma ölçüm modu (eski F1.12): Checkpoint 1'in kazananı, omurganın araç tanımları; sonuç kayda geçti; taslağın açık soruları (araç sayısı, araç turlarında düşünme) ve ayrı araç RL turunun açılıp açılmayacağı yazıldı
-- [ ] U1.1 `apps/api` iskeleti: FastAPI, `cekirdek` import, SQLite + Alembic, dosya deposu
-- [ ] U1.2 Model profili ve OpenAI-uyumlu uç nokta arayüzü (Qwen tam, Gemma iskelet), `count_tokens` ve `slots`
-- [ ] U1.3 Ajan döngüsü ve araç seti (`cekirdek.araclar`'ın beş aracı + `kullaniciya_sor` + `sure_hesapla`); sınırlı döngü, `ARAMA_TUKENDI`
-- [ ] U1.4 Atıf KAPI'sı: üç durum, fail-closed; Türkçe normalizasyon modülü ve ortak test vektörleri
-- [ ] U1.5 İş kuyruğu ve slot muhasebesi; iptal, yeniden deneme, açılışta yetim kurtarma
-- [ ] U1.6 `apps/web` + `packages/contracts`: sohbet, proje, atıf gösterimi, SSE ve yeniden bağlanma
+- U1.0 Araç çağırma ölçüm modu (eski F1.12): Checkpoint 1'in kazananı, omurganın araç tanımları; sonuç kayda geçti; taslağın açık soruları (araç sayısı, araç turlarında düşünme) ve ayrı araç RL turunun açılıp açılmayacağı yazıldı
+- U1.1 `apps/api` iskeleti: FastAPI, `cekirdek` import, SQLite + Alembic, dosya deposu
+- U1.2 Model profili ve OpenAI-uyumlu uç nokta arayüzü (Qwen tam, Gemma iskelet), `count_tokens` ve `slots`
+- U1.3 Ajan döngüsü ve araç seti (`cekirdek.araclar`'ın beş aracı + `kullaniciya_sor` + `sure_hesapla`); sınırlı döngü, `ARAMA_TUKENDI`
+- U1.4 Atıf KAPI'sı: üç durum, fail-closed; Türkçe normalizasyon modülü ve ortak test vektörleri
+- U1.5 İş kuyruğu ve slot muhasebesi; iptal, yeniden deneme, açılışta yetim kurtarma
+- U1.6 `apps/web` + `packages/contracts`: sohbet, proje, atıf gösterimi, SSE ve yeniden bağlanma
 
 **U2 · Dilim B: belgeler** *(U1 bitince, sıralı; tez yazımına denk gelirse savunmadan sonra)*
 
-- [ ] U2.1 Belge yükleme ve sohbet; metin çıkarımı hattı (DOCX, PDF, metinsiz PDF uyarısı)
-- [ ] U2.2 Sözleşme inceleme
-- [ ] U2.3 Tablo biçimli toplu inceleme (hücre başına küçük çağrı, ayrı hücre durumları)
+- U2.1 Belge yükleme ve sohbet; metin çıkarımı hattı (DOCX, PDF, metinsiz PDF uyarısı)
+- U2.2 Sözleşme inceleme
+- U2.3 Tablo biçimli toplu inceleme (hücre başına küçük çağrı, ayrı hücre durumları)
 
 **U3 · Dilim C: üretim** *(U2 bitince, sıralı; tez yazımına denk gelirse savunmadan sonra)*
 
-- [ ] U3.1 Redline (kimlikli paragraflar, tekil ve birebir eşleştirme, kabul/ret)
-- [ ] U3.2 Dilekçe ve sözleşme taslağı (kalite ölçülmeden yayımlanmaz)
-- [ ] U3.3 Vatandaş dili özeti (sunum katmanı)
+- U3.1 Redline (kimlikli paragraflar, tekil ve birebir eşleştirme, kabul/ret)
+- U3.2 Dilekçe ve sözleşme taslağı (kalite ölçülmeden yayımlanmaz)
+- U3.3 Vatandaş dili özeti (sunum katmanı)
 
 **Dilim D (içtihat arama, MCP)** bu listede yok: kapsam ADR'si gerekir (CLAUDE.md "yalnız güncel mevzuat"), sonra eklenir.
 
@@ -68,7 +66,7 @@
 | U2.3 | **Tablo inceleme:** `stale`, `not_found`, `unparseable` ayrı sayılır; sütun değişince eski hücreler `stale` → testli |
 | U3.1 | **Redline:** eşleşmeyen `find` reddedilir; DOCX kabul/ret turu belgeyi bozmaz → testli |
 
-Diğer işlerin doğrulaması dilimin kendi planında yazılır.
+Diğer işlerin doğrulaması dilim başlarken yazılır.
 
 ## Bağımlılıklar
 

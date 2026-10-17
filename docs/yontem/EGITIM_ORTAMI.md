@@ -5,11 +5,8 @@
 > aynı ortamda eğitilmiş olması — aksi hâlde kollar arası fark "yöntem mi, ortam mı" diye
 > ayrıştırılamaz. Yol haritası: [`YAYIN_YOL_HARITASI.md`](../yol_haritasi/YAYIN_YOL_HARITASI.md) §4.1.
 >
-> **DURUM (2026-10-11): kilit kodda ve eski ortamla eşdeğer ([#75](../record/kronoloji-75-86.md#75)).** Depo bunu iki kez öğrendi: kapıyı
-> belgeye değil koda koy ([ADR-0030](../adr/kararlar-0027-0044.md#adr-0030) m.3); `llama-server`
-> bayrakları üç belgede düz metin olarak yazılıydı ve "hiçbiri kapı değildi"
-> ([ADR-0078](../adr/kararlar-0064-0085.md#adr-0078)). Kilit üç parçadır ve üçü de yazıldı
-> ([#74](../record/kronoloji-63-71.md#74)); eski ortamla eşdeğerliği F0.4'ün Modal koşuları ölçtü (§6 m.1).
+> Kapı belgede değil kodda durur ([ADR-0030](../adr/kararlar-0027-0044.md#adr-0030) m.3; `llama-server` bayrakları üç
+> belgede düz metindi ve "hiçbiri kapı değildi", [ADR-0078](../adr/kararlar-0064-0085.md#adr-0078)); kilit üç parçadır (§1).
 
 ## 1 · Üç parça
 

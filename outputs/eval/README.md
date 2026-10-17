@@ -4,6 +4,8 @@
 > **`KUNYE.json`** bulunur. Düz `outputs/eval/` köküne dosya yazılmaz.
 > **Düzen (ADR-0087):** koşu klasörleri, kökte düz durmak yerine **ölçüm dönemine göre gruplanır**
 > (`<grup>/<koşu>/`); klasör adları değişmedi, yalnız bir üst klasör eklendi.
+> **Bu dosya:** yeni koşu için bu dizine satır yazılmaz; künye koşunun klasöründedir. Grup satırı yalnız yeni bir
+> grup açılınca eklenir.
 >
 > Gerekçe `docs/record/yurutme-tuzaklari.md`'nin tek kuralı: *"bir sayı üretildiğinde 'bu sayı
 > neyin sayısı' sorusunun cevabı **künyeden** okunabilmeli. Okunamıyorsa sayı yoktur."* Düz
