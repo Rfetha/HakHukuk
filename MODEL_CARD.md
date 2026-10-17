@@ -510,7 +510,9 @@ sabit olduğu için yeniden üretilebilirler.
 **Veri ve lisans.** Lisans Apache-2.0'dır ve ağırlıkları, kodu, veriyi ve araştırma kaydını
 kapsar; temel model `Qwen/Qwen3.5-4B` de Apache-2.0'dır. Yalnız kamuya açık ve lisansı uygun
 kaynaklar kullanılmıştır (Mevzuat.gov.tr, Resmî Gazete, Yargıtay açık portalı, açık lisanslı veri
-setleri); ticari hukuk veritabanları kullanılmamıştır. Her veri seti kullanılmadan önce örneklenip
+setleri); ticari hukuk veritabanları kullanılmamıştır. Eğitim ve ölçüm kümelerindeki soruların ve
+dayanaklı cevapların çoğu, bu kaynaklardaki madde metninden `gpt-4o-mini` (OpenAI) ile üretilmiştir;
+çekinme cevapları şablondur, reddedilen cevaplar modellerin kendi çıktısıdır. Her veri seti kullanılmadan önce örneklenip
 gözle denetlenir. Eğitim verisinde kişisel veriler maskelenmiştir. Örnek cevaplar ağırlık
 deposundaki `ORNEK_CEVAPLAR.md` dosyasındadır.
 

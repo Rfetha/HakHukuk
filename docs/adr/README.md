@@ -21,7 +21,7 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0115**'ten devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara, **0115**'ten devam; **0100** kullanılmadı (F0.12'de ADR yazılmadı, 2026-10-17). ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
@@ -105,7 +105,7 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0097](kararlar-0064-0085.md#adr-0097) | 🟡 | **Ölçüm dizüstünden tek tip kiralık karta** — DEV ve test kendi içinde tek kart tipi; pilot platformu seçer; nakit tavanı $75 *(makine geçişi → 0098 · pilot sırası → 0102 · seçim: Modal A10 → 0103)* |
 | [0098](kararlar-0064-0085.md#adr-0098) | 🟢 | **Üç sessiz-hata kapısı** — tamlık (payda = dondurulmuş küme) · `tgta_v1`'in kimliği (`sha256`) · makine geçişi (80 referans cevap); kayma çıpası kiralık karttan |
 | [0099](kararlar-0064-0085.md#adr-0099) | 🟢 | **F0 ölçüm ve eğitim aleti** — RQ2'nin yedi puanlama anahtarı · sıfır iddialı cevaplanmış kalem 0 puan · eğitim imajı Modal'ın kendi imajı (EGITIM_ORTAMI §4 m.3 ertelendi) · fla 0.5.1 sabit |
-| 0100 | ⏳ | *ayrıldı: F0.12'nin veri lisansı ADR'si (ADR-0099)* |
+| 0100 | — | *kullanılmadı: F0.12'de ADR yazılmadı; `gpt-4o-mini` notu `MODEL_CARD.md` §8 ve `data/README.md`'de (kullanıcı kararı 2026-10-17)* |
 | [0101](kararlar-0064-0085.md#adr-0101) | 🟢 | **Kredi aşımında ve Modal kesintisinde RunPod** — Vast eğitimden çıktı · bir koşu başladığı Modal hesabında biter · hesap künyeye kendiliğinden yazılır |
 | [0102](kararlar-0064-0085.md#adr-0102) | 🟢 | **Ölçüm kartı pilotunun kuruluşu ve hakemin sağlayıcısı** — kiralık kartta `b10902` + compose bayrakları, istekler tek tek · pilot önce yalnız Modal A10'da, Vast koşula bağlı · DeepSeek V4.1 Flash `deepinfra/fp8`'de sabit |
 | [0103](kararlar-0064-0085.md#adr-0103) | 🟢 | **Ölçüm kartı Modal A10; hakem anahtarı aynı gün sınanır** — pilotta iki makine 80/80 aynı → tip içinde makine serbest, geçiş kapısıyla · RQ2'nin hakem çıpası 0,8499 yerine aynı gün iki `gpt-4o-mini` + DeepSeek |

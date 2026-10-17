@@ -85,6 +85,8 @@ ile doğrudan verilir.
 
 Sonraki her şeyin **tohumu**: soru↔gold madde eşleşmesi buradan gelir (RAFT paketleme ve ORPO
 tuzak üretimi bu setin sorularını kullanır).
+Sorular ve cevaplar madde metninden `gpt-4o-mini` ile üretildi (2026-06-08); RAFT ve ORPO'nun dayanaklı
+cevapları ile `eval/` soruları da bu üretimden gelir.
 ⚠️ Bu setin *cevapları* düz SFT'de kullanıldığında **abstention'ı yok etti** (bkz aşağıdaki uyarı) —
 değerli olan **soru↔madde eşleşmesi**, cevaplar değil.
 
@@ -166,7 +168,7 @@ Hattın ara çıktıları. Silinebilir (script'le yeniden üretilir) ama pahalı
 | `raft_packed.jsonl` | 19.305 | cevap üretilmeden önceki paketlenmiş bağlam |
 | `raft_answers.jsonl` | 19.305 | + `answer` alanı (kalite filtresinden önce) |
 | `orpo_packed.jsonl` | 19.284 | tuzak kurgusu (`trap_text`, `ov_gold`, `n_far` …) |
-| `orpo_chosen.jsonl` | 19.284 | red cevapları (gpt-4o-mini üretimi) |
+| `orpo_chosen.jsonl` | 19.284 | red cevapları (şablon, `gen_v3_chosen.py`; API yok) |
 | `orpo_rejected.jsonl` | **1.728** | 12B'nin gerçek fabrikasyonları (`model_answer`, `abstained`, `judge_flag`) |
 | `SUPERSEDED_*.jsonl` | — | CANON öncesi eval setleri; **kıyasa girmez**, tarihsel |
 
