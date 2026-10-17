@@ -1,0 +1,48 @@
+{
+  "olcum": "#74 — hakem faturası (R1 + R2b), çağrı sırası testi (R3), ikinci hakem GLM-5.3-Flash ön ölçümü (R7c'nin gürültü kısmı, kayma çıpası F3.1)",
+  "tarih": "2026-10-17",
+  "git_dal": "develop",
+  "kod_commit": {"ds-kapali_r1, ds-kapali_r3, glm-kapali_duman": "89ef2f9", "glm-dusuk_duman, glm-dusuk_t1..t5": "7529bf1"},
+  "girdi": {
+    "cevaplar": "outputs/eval/f0/f016-pilot/A10/m1/h1_tgta_v1_A10_m1_t1_detail.jsonl",
+    "sha256": "c5035eb390ed1835b28ed004164a5cdc16a1252838124567692c1081bb7cd093",
+    "kume": "data/eval/dev/core_hard.jsonl",
+    "kume_sha256": "9c804217bb846bb63a3cf00b0548eae82abc1dd75e05fcc8c98c4135a1580538",
+    "r3_ikinci_kol": "outputs/eval/f0/f016-vllm-pilot/A10/q4-acilmis/h1_tgta_v1_vllm_q4-acilmis_t1_detail.jsonl",
+    "r3_ikinci_kol_sha256": "b4c43edfab8375c2c8231a32aead4337fadda0f76ffe75eee23981abb40e2890",
+    "r3_sirali": "outputs/eval/f0/k74-fatura-glm/r3_sirali_detail.jsonl (r3_sirala.py; 160 kalem, iki kolun cevabı 11/80 soruda birebir aynı)",
+    "r3_sirali_sha256": "65f740564a02dd874d92fbbbdcae21c925f693040b3320256baa2bcce290433e",
+    "n": 80
+  },
+  "kod_sha256": {
+    "scripts/puanlama/skorlayici/groundedness.py": "6a609553e629bc43e2db9faa85aa2ee3f24d7f69b1dc0f0ea8e404a1b4919108",
+    "scripts/puanlama/ortak/llm_client.py (89ef2f9)": "fe781df0502a479cfc7f0f09500b9009ee083e75378535ff650522eb7762cf75",
+    "scripts/puanlama/ortak/llm_client.py (7529bf1)": "e51b5bab308ffadb4e733008d724ccaab413118c909387fb1b71ec0e84e23506",
+    "scripts/puanlama/ortak/sonuc_deposu.py": "9eb288d7df9d48dcc56f54ef43ee79a0ca96c645b18f41dd8b2aa331644515a7",
+    "scripts/puanlama/tablo/harness_tablo.py": "94d89cc2d695ef3e9323cad91902c6c09946f3fa3d4fefedfec7e80ffba7c790"
+  },
+  "hakemler": {
+    "ds-kapali": {"model": "deepseek/deepseek-v4.1-flash-20260910", "saglayici": "deepinfra/fp8", "dusunme": "kapali"},
+    "glm-dusuk": {"model": "z-ai/glm-5.3-flash-20260826", "saglayici": "novita/fp8", "dusunme": "dusuk (reasoning effort low)"},
+    "glm-kapali": {"model": "z-ai/glm-5.3-flash-20260826", "saglayici": "novita/fp8", "dusunme": "kapali — 3/3 400 'Reasoning is mandatory for this endpoint and cannot be disabled'; faturalanmadı"}
+  },
+  "olcum_aleti": {"dedektor": "adr0061", "sifir_iddia": "sifir-puan", "a1_tanimi": "cevaplanan", "kaynak_kirpma": 12000, "payda": "kor", "altin_kirpma": "3500"},
+  "sonuc_deposu": "kapali (bütün koşular)",
+  "kapi": "openrouter; sağlayıcı sabit, yedeğe düşme kapalı",
+  "komutlar": {"kosu": "outputs/eval/f0/k74-fatura-glm/kos.sh {ds|r3|glm-duman|glm}", "ozet": "python outputs/eval/f0/k74-fatura-glm/ozetle.py → OZET.json"},
+  "baslangic_utc": {"ds": "2026-10-17T13:56:20Z", "glm-kapali_duman": "2026-10-17T13:58:45Z", "glm-dusuk_duman": "2026-10-17T14:06:17Z", "r3": "2026-10-17T14:04:08Z", "glm-dusuk_t1..t5 (eş zamanlı)": "2026-10-17T14:07:15Z"},
+  "siralama_notu": "ds yalnız başına koştu; r3 ve GLM koşuları eş zamanlı ama ayrı sağlayıcıda (DeepInfra ↔ Novita). r3'ün birinci kolu ~20 dk önceki ds koşusunun önbelleğine denk geldi",
+  "onaylar": {
+    "kod ve koşu planı": "kullanıcı, Durak 1: 'İşle (R1 + R7b)' · 'Novita fp8' · R4 'Uygula, varsayılan kapalı' · koşular 'Geniş sınır' (DeepSeek bandı F0.6 ort ± 2 ss)",
+    "GLM düzeyi": "kullanıcı: 'low düzeyle ölç'",
+    "para_tavani_usd": 0.8
+  },
+  "fatura": {
+    "kaynak": "R1 (yanıttaki usage.cost) ve OpenRouter GET /api/v1/key (usage_daily, UTC günü 2026-10-17)",
+    "r1_toplami_usd": 0.1956,
+    "hesap_gunluk_once_usd": 0,
+    "hesap_gunluk_sonra_usd": 0.195617239,
+    "not": "iki kaynak birebir; kayda geçmeyen harcama yok. 400 dönen çağrılar faturalanmadı"
+  },
+  "sonuc": "OZET.json · kronoloji #89"
+}

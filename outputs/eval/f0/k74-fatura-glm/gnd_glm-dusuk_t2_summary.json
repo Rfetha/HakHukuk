@@ -1,0 +1,94 @@
+{
+  "label": "glm-dusuk_t2",
+  "n": 80,
+  "mode": "data",
+  "judge_model": "z-ai/glm-5.3-flash-20260826",
+  "n_girdi": 80,
+  "n_puanli": 77,
+  "n_sifir_iddia": 3,
+  "n_hakem_hata": 0,
+  "n_bos_girdi": 0,
+  "olcum_aleti": {
+    "dedektor": "adr0061",
+    "sifir_iddia": "sifir-puan",
+    "a1_tanimi": "cevaplanan",
+    "kaynak_kirpma": 12000,
+    "payda": "kor",
+    "altin_kirpma": "3500"
+  },
+  "hakem": {
+    "model": "z-ai/glm-5.3-flash-20260826",
+    "saglayici": "novita/fp8",
+    "dusunme": "dusuk"
+  },
+  "judge_gateway": "openrouter",
+  "judge_providers": [
+    "Novita"
+  ],
+  "runs": 1,
+  "total_claims": 248,
+  "faithfulness_micro": 0.8065,
+  "hallucination_micro": 0.1935,
+  "unsupported_micro": 0.1935,
+  "cit_precision_micro": 0.7595,
+  "wrong_ref_rate_micro": 0.1899,
+  "cit_recall_macro": 0.725,
+  "faithfulness_macro": 0.746,
+  "judge_cost_usd": 0.0243,
+  "fatura": {
+    "toplam": {
+      "n_cagri": 157,
+      "girdi_token": 196514,
+      "cikti_token": 27723,
+      "onbellekli_girdi_token": 66496,
+      "onbellek_isabeti": 0.3384,
+      "dusunce_token": 893,
+      "liste_maliyet_usd": 0.02427,
+      "gercek_maliyet_usd": 0.019801,
+      "fatura_orani": 0.8159,
+      "eksik": {
+        "maliyet": 0,
+        "onbellek": 0,
+        "dusunce": 0
+      }
+    },
+    "cikarim": {
+      "n_cagri": 80,
+      "girdi_token": 69604,
+      "cikti_token": 10357,
+      "onbellekli_girdi_token": 3072,
+      "onbellek_isabeti": 0.0441,
+      "dusunce_token": 0,
+      "liste_maliyet_usd": 0.008747,
+      "gercek_maliyet_usd": 0.00854,
+      "fatura_orani": 0.9764,
+      "eksik": {
+        "maliyet": 0,
+        "onbellek": 0,
+        "dusunce": 0
+      }
+    },
+    "dogrulama": {
+      "n_cagri": 77,
+      "girdi_token": 126910,
+      "cikti_token": 17366,
+      "onbellekli_girdi_token": 63424,
+      "onbellek_isabeti": 0.4998,
+      "dusunce_token": 893,
+      "liste_maliyet_usd": 0.015523,
+      "gercek_maliyet_usd": 0.011261,
+      "fatura_orani": 0.7254,
+      "eksik": {
+        "maliyet": 0,
+        "onbellek": 0,
+        "dusunce": 0
+      }
+    }
+  },
+  "sonuc_deposu": {
+    "mod": "kapali",
+    "yol": null,
+    "n_depodan": 0
+  },
+  "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."
+}

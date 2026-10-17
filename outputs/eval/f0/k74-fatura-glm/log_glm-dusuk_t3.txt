@@ -1,0 +1,85 @@
+[gnd] glm-dusuk_t3: 80 cevap | mod=data | hakem=z-ai/glm-5.3-flash-20260826 | runs=1 | kaynak=referans
+  id= 0 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id= 1 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id= 2 faith=1.0 hall=0.0 unsup=0.0 claims=8 citP=1.0 wrongRef=0.0 citR=1
+  id= 3 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id= 4 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id= 5 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id= 6 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id= 7 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id= 8 faith=1.0 hall=0.0 unsup=0.0 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id= 9 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=10 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=0.0 citR=0
+  id=11 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=12 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=13 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=14 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=15 faith=0.0 hall=1.0 unsup=1.0 claims=1 citP=None wrongRef=None citR=0
+  id=16 faith=1.0 hall=0.0 unsup=0.0 claims=1 citP=1.0 wrongRef=0.0 citR=1
+  id=17 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=18 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=19 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=20 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=21 faith=0.0 hall=1.0 unsup=1.0 claims=5 citP=0.0 wrongRef=0.0 citR=0
+  id=22 faith=1.0 hall=0.0 unsup=0.0 claims=6 citP=1.0 wrongRef=0.0 citR=1
+  id=23 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=24 faith=0.6667 hall=0.3333 unsup=0.3333 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=25 faith=0.6 hall=0.4 unsup=0.4 claims=5 citP=0.3333 wrongRef=0.0 citR=1
+  id=26 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=0.0 wrongRef=1.0 citR=0
+  id=27 faith=0.0 hall=1.0 unsup=1.0 claims=1 citP=0.0 wrongRef=1.0 citR=0
+  id=28 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=29 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=30 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id=31 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=32 faith=0.3333 hall=0.6667 unsup=0.6667 claims=3 citP=0.0 wrongRef=1.0 citR=0
+  id=33 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=34 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=35 faith=1.0 hall=0.0 unsup=0.0 claims=1 citP=1.0 wrongRef=0.0 citR=1
+  id=36 faith=0.0 hall=1.0 unsup=1.0 claims=5 citP=0.0 wrongRef=1.0 citR=0
+  id=37 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=38 faith=0.6667 hall=0.3333 unsup=0.3333 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=39 faith=0.0 hall=1.0 unsup=1.0 claims=1 citP=0.0 wrongRef=1.0 citR=0
+  id=40 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=41 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=42 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=43 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=44 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=45 faith=None hall=None unsup=None claims=0 citP=None wrongRef=None citR=0
+  id=46 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=47 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=48 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=49 faith=0.8 hall=0.2 unsup=0.2 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=50 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=51 faith=None hall=None unsup=None claims=0 citP=None wrongRef=None citR=0
+  id=52 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id=53 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id=54 faith=1.0 hall=0.0 unsup=0.0 claims=1 citP=1.0 wrongRef=0.0 citR=1
+  id=55 faith=0.25 hall=0.75 unsup=0.75 claims=4 citP=0.0 wrongRef=1.0 citR=0
+  id=56 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=57 faith=1.0 hall=0.0 unsup=0.0 claims=4 citP=1.0 wrongRef=0.0 citR=1
+  id=58 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=59 faith=0.5 hall=0.5 unsup=0.5 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=60 faith=1.0 hall=0.0 unsup=0.0 claims=9 citP=1.0 wrongRef=0.0 citR=1
+  id=61 faith=0.3333 hall=0.6667 unsup=0.6667 claims=3 citP=0.0 wrongRef=1.0 citR=0
+  id=62 faith=0.0 hall=1.0 unsup=1.0 claims=3 citP=0.0 wrongRef=1.0 citR=0
+  id=63 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=64 faith=0.8571 hall=0.1429 unsup=0.1429 claims=7 citP=1.0 wrongRef=0.0 citR=1
+  id=65 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=66 faith=None hall=None unsup=None claims=0 citP=None wrongRef=None citR=0
+  id=67 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=68 faith=0.3333 hall=0.6667 unsup=0.6667 claims=3 citP=0.0 wrongRef=1.0 citR=0
+  id=69 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=0.0 wrongRef=1.0 citR=0
+  id=70 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=71 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=72 faith=1.0 hall=0.0 unsup=0.0 claims=5 citP=1.0 wrongRef=0.0 citR=1
+  id=73 faith=1.0 hall=0.0 unsup=0.0 claims=3 citP=1.0 wrongRef=0.0 citR=1
+  id=74 faith=0.8889 hall=0.1111 unsup=0.1111 claims=9 citP=1.0 wrongRef=0.0 citR=1
+  id=75 faith=1.0 hall=0.0 unsup=0.0 claims=7 citP=1.0 wrongRef=0.0 citR=1
+  id=76 faith=1.0 hall=0.0 unsup=0.0 claims=1 citP=1.0 wrongRef=0.0 citR=1
+  id=77 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=78 faith=1.0 hall=0.0 unsup=0.0 claims=2 citP=1.0 wrongRef=0.0 citR=1
+  id=79 faith=0.0 hall=1.0 unsup=1.0 claims=2 citP=None wrongRef=None citR=0
+
+[gnd] ÖZET glm-dusuk_t3: {"label": "glm-dusuk_t3", "n": 80, "mode": "data", "judge_model": "z-ai/glm-5.3-flash-20260826", "n_girdi": 80, "n_puanli": 77, "n_sifir_iddia": 3, "n_hakem_hata": 0, "n_bos_girdi": 0, "olcum_aleti": {"dedektor": "adr0061", "sifir_iddia": "sifir-puan", "a1_tanimi": "cevaplanan", "kaynak_kirpma": 12000, "payda": "kor", "altin_kirpma": "3500"}, "hakem": {"model": "z-ai/glm-5.3-flash-20260826", "saglayici": "novita/fp8", "dusunme": "dusuk"}, "judge_gateway": "openrouter", "judge_providers": ["Novita"], "runs": 1, "total_claims": 248, "faithfulness_micro": 0.8024, "hallucination_micro": 0.1976, "unsupported_micro": 0.1976, "cit_precision_micro": 0.7595, "wrong_ref_rate_micro": 0.1899, "cit_recall_macro": 0.725, "faithfulness_macro": 0.7562, "judge_cost_usd": 0.0243, "fatura": {"toplam": {"n_cagri": 157, "girdi_token": 196539, "cikti_token": 27703, "onbellekli_girdi_token": 80320, "onbellek_isabeti": 0.4087, "dusunce_token": 756, "liste_maliyet_usd": 0.024266, "gercek_maliyet_usd": 0.018869, "fatura_orani": 0.7776, "eksik": {"maliyet": 0, "onbellek": 0, "dusunce": 0}}, "cikarim": {"n_cagri": 80, "girdi_token": 69604, "cikti_token": 10380, "onbellekli_girdi_token": 3072, "onbellek_isabeti": 0.0441, "dusunce_token": 0, "liste_maliyet_usd": 0.008753, "gercek_maliyet_usd": 0.008547, "fatura_orani": 0.9764, "eksik": {"maliyet": 0, "onbellek": 0, "dusunce": 0}}, "dogrulama": {"n_cagri": 77, "girdi_token": 126935, "cikti_token": 17323, "onbellekli_girdi_token": 77248, "onbellek_isabeti": 0.6086, "dusunce_token": 756, "liste_maliyet_usd": 0.015513, "gercek_maliyet_usd": 0.010322, "fatura_orani": 0.6654, "eksik": {"maliyet": 0, "onbellek": 0, "dusunce": 0}}}, "sonuc_deposu": {"mod": "kapali", "yol": null, "n_depodan": 0}, "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama."}
+[gnd] detay → outputs/eval/f0/k74-fatura-glm/gnd_glm-dusuk_t3.jsonl
+[gnd] özet → outputs/eval/f0/k74-fatura-glm/gnd_glm-dusuk_t3_summary.json

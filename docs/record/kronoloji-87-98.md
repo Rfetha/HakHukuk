@@ -1,11 +1,12 @@
 # Araştırma kaydı — #87 …
 
 > **Ne bu:** Checkpoint 1'in F0 aşamasının devamı. Önceki dosya [`kronoloji-75-86.md`](kronoloji-75-86.md) 12 girdiye
-> ulaştı (#75-#86); kural [`README.md`](README.md)'de. Çapa: `kronoloji-87-98.md#87`. **Yeni girdi #88'den devam eder.**
+> ulaştı (#75-#86); kural [`README.md`](README.md)'de. Çapa: `kronoloji-87-98.md#87`. **#88 F0.14'e ayrıldı (2026-10-17'de yazılmadı); yeni girdi #90'dan devam eder.**
 
 | # | tarih | başlık | kanca |
 | :-- | :--- | :--- | :--- |
 | [87](#87) | 2026-10-16 | vLLM üretim gürültüsü: aynı Q4 ağırlığı vLLM'de 3,6 p düşük, koşudan koşuya ±2,25 p | G3 en şanslı çekilişte geçmişti · ölçüm llama.cpp'de kalır (ADR-0109) |
+| [89](#89) | 2026-10-17 | Hakem faturası: kapalı modda fatura listenin 0,713'ü (önbellek); GLM-5.3-Flash ön ölçümü 0,65 p | ×1,6 kalktı · R3 uygulanır · bağlayıcı hakem kapalı (ADR-0113, ADR-0114) |
 
 <a id="87"></a>
 ## #87 — vLLM üretim gürültüsü: aynı Q4 ağırlığı vLLM'de llama.cpp'den 3,6 puan düşük ve koşudan koşuya ±2,25 puan oynuyor; ölçüm llama.cpp'de kalır
@@ -58,3 +59,67 @@ araştırmak elendi: bulunsa bile koşudan koşuya oynama kalır.
 **Ders.** *Kapıyı gürültülü bir motorda tek koşuya bağlamak, tek çekilişle gürültü ölçmektir* ([#85](kronoloji-75-86.md#85)'in dersinin üretim
 tarafı). Ön-kayıtlı kapı doğru çalıştı ama yanlış soruya cevap verdi; belirlenimci olmayan bir motorun kapısı en az beş üretim
 koşusu ister.
+
+<a id="89"></a>
+## #89 — Hakem faturası ölçüldü: kapalı modda fatura listenin 0,713'ü (önbellek); GLM-5.3-Flash ikinci hakem ön ölçümünü 0,65 p ile geçti; düşünmesi kapatılamıyor
+
+**2026-10-17 · kart #74 · hakem DeepSeek V4.1 Flash (`deepinfra/fp8`, kapalı) ve GLM-5.3-Flash (`novita/fp8`, `dusuk`) ·
+kullanıcı onayları: Durak 1 ("İşle" · Novita fp8 · R4 "Uygula, varsayılan kapalı" · "Geniş sınır"), GLM düzeyi "low düzeyle
+ölç", Durak 2 ("İşle" × 3 · R3 "Koşu kuralı, kod yok") · "Kapalı mod şimdi seçilsin" · kararlar [ADR-0113](../adr/kararlar-0064-0085.md#adr-0113) ·
+[ADR-0114](../adr/kararlar-0064-0085.md#adr-0114) · kod `3b46f54` · `89ef2f9` · `7529bf1`** · kanıt:
+`outputs/eval/f0/k74-fatura-glm/` (`KUNYE.json` · `OZET.json` · `kos.sh` · `ozetle.py` · `r3_sirala.py` · `hesap_kullanimi.txt`)
+
+**1 · Neden.** #74: yol haritasındaki hakem bütçesi (~$61-67) ölçümlerden önce yazılmıştı ve iki varsayımı tutmuyordu
+(×1,6 fatura payı; "açık mod 2-3 kat"). Fatura hiçbir koşuda okunmamıştı (#86, #87 "fatura okunmadı").
+
+**2 · Kod.** `groundedness.py` artık OpenRouter'ın her yanıtta döndürdüğü gerçek maliyeti, önbellekten okunan girdiyi ve
+düşünce token'ını kaleme ve özete yazıyor (`fatura` bloğu; alan yoksa boş, eksik sayılır). Sonuç deposu (`--sonuc-deposu`,
+varsayılan kapalı). GLM'in kimliği; GLM'de düşünme kapatılamadığı için `dusuk` modu.
+
+**3 · Ölçümler** (girdi: F0.6'nın 80 DEV cevabı, sha256 `c5035eb3…bb7cd093`):
+
+| koşu | kütle | fatura / liste | önbellek (girdi) | not |
+| :-- | --: | --: | --: | :-- |
+| DeepSeek kapalı, tek koşu | 0,7146 | $0,0363 / $0,0509 = **0,713** | %45 | F0.6 bandı 0,6993-0,7342 (ort ± 2 ss) içinde |
+| R3 testi: A10 ↔ vLLM q4 t1 soru soru (160) | — | $0,0578 / $0,1043 | %72 | ikinci kolun doğrulama çağrısı %65 ↔ bugünkü sırada %37 |
+| GLM `low`, 5 tekrar | 0,7268 (ort) | ~$0,020 / $0,024 | %20-41 | ss **0,65 p** (eşik 0,9) · aralık 1,80 p · DeepSeek kapalıdan +1,01 p |
+| GLM `kapali`, 3 kalem | — | $0 | — | 3/3 400: "Reasoning is mandatory for this endpoint" |
+
+Hakem hatası her koşuda 0; sağlayıcı her koşuda tek (DeepInfra · Novita). R1'in topladığı günlük tutar ($0,1956) OpenRouter'ın
+günlük sayacıyla birebir ($0,195617; `GET /api/v1/key`).
+
+**4 · Fatura ve geçmiş günler.**
+- Gerçek maliyet = liste fiyatı, önbellekten okunan girdi önbellek fiyatından ($0,0042/M). OpenRouter'ın gösterdiği fiyattan
+  indirim zaten düşülmüş: GLM'in altı uç noktasında taban × (1 − `discount`) = liste (ADR-0102'nin doğrulanmamış maddesi).
+  Kapalı modda önbellek yalnız sistem istemini tutuyor (çıkarımda %61, doğrulamada %37).
+- 15 Ekim: $1,234 fatura / $1,748 liste = 0,706; 16 Ekim: $3,199 / $3,143 = 1,018 (haftalık sayaç − 15 Ekim'in günlüğü). İki
+  gün birlikte, kapalı mod 0,713 ve `gpt-4o-mini` ~0,9 düşülünce açık modun oranı **~0,92** (t). Günlük ayrım sayaç gecikmesiyle
+  bozulmuş olabilir (v; #87 "sayaç gecikmeli"); 16 Ekim'de ayrıca kayda geçmemiş ~$0,13'lük yarım koşu var (#87 §4).
+- Önbellek en az ~20 dakika yaşıyor: R3 testinin birinci kolu, ~20 dakika önce aynı cevapları puanlayan koşunun önbelleğinden
+  %78 aldı.
+
+**5 · Kararlar (karttaki önceden yazılı kurallarla).**
+- **R3 uygulanır** (kural: bugünkü sırada doğrulamanın soru + kaynak kısmı önbellekten gelmiyor — %37 yalnız sistem istemi).
+  Ölçülen kazanç: ikinci ve sonraki kollarda kapalı modda koşu başına ~%16 (t). Uygulama koşu kuralıdır, kod değişmez (kullanıcı kararı): aynı soru kümesinin kolları eş zamanlı ve aynı sırayla başlatılır, paralellik ≤ 10 (DeepInfra'nın hız sınırı, #87).
+- **R4 uygulandı** (kural: aynı (soru, kaynak, cevap) üçlüsü mevcut 112 cevap dosyasında %25,7, eşik %10; F0 dosyalarında
+  %40,9). Tekrarların çoğu aynı modelin yeniden üretimi (belirlenimcilik ve motor denemeleri), farklı kollar arasında aynı
+  çekinme cümlesi %7,9 — kazanç F1-F3'te bu oranın altında kalabilir.
+- **GLM kabul şartı (a) geçti** → ADR-0113. (b) insan uyumu #24'e, (c) kontrol kalemleri #25'e.
+- **Bağlayıcı hakem kapalı modda** (kullanıcı kararı, [ADR-0114](../adr/kararlar-0064-0085.md#adr-0114)): bütçe ölçülen fiyatla yeniden hesaplanınca Checkpoint 1 hakem nakdi kapalı modda ~$28-31, açık modda ~$157-180 (t) çıktı; F1.4 insan uyumunu iki modda ölçer ve raporlar, modu belirlemez.
+
+**6 · Dış bilgiler** (okundu 2026-10-17): GLM-5.3-Flash `z-ai/glm-5.3-flash-20260826`, ağırlık fp8, MIT (HF
+`zai-org/GLM-5.3-Flash`); OpenRouter'da düşünme zorunlu, düzeyler low · high · max; Novita fp8 $0,084 / $0,28 (%44 indirimli,
+taban $0,15 / $0,50). Kredi yükleme ücreti kartla %5,5, en az $0,80 (openrouter.ai/pricing; $5'lık yüklemede %16). Üretici
+adayları: Kimi K3 `moonshotai/kimi-k3-20260715` $0,304 / $11,936, lisans MIT benzeri ($20M üstü hizmet geliri ve 100M
+kullanıcı şartlı); MiniMax M3 `minimax/minimax-m3-20260531` $0,30 / $1,20, "MiniMax Community License": temel izin ticari olmayan
+kullanım, ticari kullanımda "Built with MiniMax M3" ve bildirim. Bakiye: yüklenen $40, harcanan $28,35.
+
+**7 · Duman testinde göze çarpan.** DEV id 1'de GLM, kaynakta olmayan bir çıkarımı (ilk derece mahkemesi kararı ↔ kaynağın
+düzenlediği bölge adliye kararı) desteklenmiş saydı; DeepSeek bunu F0.6'nın 5 koşusunda ve bugün yakaladı. Tek kalem;
+kontrol kalemlerinde (F1.5) ölçülecek.
+
+**8 · Maliyet.** Bu girdinin koşuları $0,196 (fatura).
+
+**Ders.** *Faturayı okumadan yazılan bütçe, ölçüm değil varsayımdır.* ×1,6 payı başka bir kapının marjından gelmişti
+(#64); OpenRouter'da marj yok, asıl belirleyen önbellek. Ayrıca *bir modelin "kapalı modu" olduğunu varsaymak* — 3 kalemlik
+duman testi bunu paradan önce yakaladı.

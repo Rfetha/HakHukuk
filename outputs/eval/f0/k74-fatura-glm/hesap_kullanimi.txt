@@ -1,0 +1,2 @@
+2026-10-17T13:56:15.338623Z daily 0 weekly 4.432780964 monthly 4.508055164
+2026-10-17 (koşular bittikten sonra) daily 0.195617239 weekly 4.628398203 — R1'in topladığı gerçek maliyet 0.1956; credits: total 40, usage 28.345469337

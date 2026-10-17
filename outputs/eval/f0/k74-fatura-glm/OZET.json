@@ -1,0 +1,639 @@
+{
+  "kosular": {
+    "ds-kapali_r1": {
+      "n": 80,
+      "n_hakem_hata": 0,
+      "n_sifir_iddia": 3,
+      "total_claims": 316,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.0509,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 157,
+          "girdi_token": 236627,
+          "cikti_token": 42328,
+          "onbellekli_girdi_token": 107520,
+          "onbellek_isabeti": 0.4544,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.050906,
+          "gercek_maliyet_usd": 0.036304,
+          "fatura_orani": 0.7132,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 80,
+          "girdi_token": 82401,
+          "cikti_token": 16215,
+          "onbellekli_girdi_token": 49920,
+          "onbellek_isabeti": 0.6058,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.018346,
+          "gercek_maliyet_usd": 0.011567,
+          "fatura_orani": 0.6305,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 77,
+          "girdi_token": 154226,
+          "cikti_token": 26113,
+          "onbellekli_girdi_token": 57600,
+          "onbellek_isabeti": 0.3735,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.032559,
+          "gercek_maliyet_usd": 0.024737,
+          "fatura_orani": 0.7598,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "kapali"
+      },
+      "kutle": 0.7146,
+      "A1": 0.7622,
+      "coverage": 0.9375
+    },
+    "ds-kapali_r3": {
+      "n": 160,
+      "n_hakem_hata": 0,
+      "n_sifir_iddia": 7,
+      "total_claims": 667,
+      "judge_providers": [
+        "DeepInfra"
+      ],
+      "judge_cost_usd": 0.1043,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 313,
+          "girdi_token": 477027,
+          "cikti_token": 89278,
+          "onbellekli_girdi_token": 342528,
+          "onbellek_isabeti": 0.718,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.104281,
+          "gercek_maliyet_usd": 0.057765,
+          "fatura_orani": 0.5539,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 160,
+          "girdi_token": 166587,
+          "cikti_token": 34198,
+          "onbellekli_girdi_token": 119808,
+          "onbellek_isabeti": 0.7192,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.037685,
+          "gercek_maliyet_usd": 0.021415,
+          "fatura_orani": 0.5683,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 153,
+          "girdi_token": 310440,
+          "cikti_token": 55080,
+          "onbellekli_girdi_token": 222720,
+          "onbellek_isabeti": 0.7174,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.066595,
+          "gercek_maliyet_usd": 0.03635,
+          "fatura_orani": 0.5458,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "deepseek/deepseek-v4.1-flash-20260910",
+        "saglayici": "deepinfra/fp8",
+        "dusunme": "kapali"
+      }
+    },
+    "glm-dusuk_duman": {
+      "n": 3,
+      "n_hakem_hata": 0,
+      "n_sifir_iddia": 0,
+      "total_claims": 13,
+      "judge_providers": [
+        "Novita"
+      ],
+      "judge_cost_usd": 0.0012,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 6,
+          "girdi_token": 10063,
+          "cikti_token": 1293,
+          "onbellekli_girdi_token": 0,
+          "onbellek_isabeti": 0.0,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.001207,
+          "gercek_maliyet_usd": 0.001207,
+          "fatura_orani": 1.0,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 3,
+          "girdi_token": 2870,
+          "cikti_token": 513,
+          "onbellekli_girdi_token": 0,
+          "onbellek_isabeti": 0.0,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.000385,
+          "gercek_maliyet_usd": 0.000385,
+          "fatura_orani": 1.0,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 3,
+          "girdi_token": 7193,
+          "cikti_token": 780,
+          "onbellekli_girdi_token": 0,
+          "onbellek_isabeti": 0.0,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.000823,
+          "gercek_maliyet_usd": 0.000823,
+          "fatura_orani": 1.0,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "z-ai/glm-5.3-flash-20260826",
+        "saglayici": "novita/fp8",
+        "dusunme": "dusuk"
+      }
+    },
+    "glm-dusuk_t1": {
+      "n": 80,
+      "n_hakem_hata": 0,
+      "n_sifir_iddia": 3,
+      "total_claims": 241,
+      "judge_providers": [
+        "Novita"
+      ],
+      "judge_cost_usd": 0.0242,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 157,
+          "girdi_token": 196304,
+          "cikti_token": 27557,
+          "onbellekli_girdi_token": 38528,
+          "onbellek_isabeti": 0.1963,
+          "dusunce_token": 999,
+          "liste_maliyet_usd": 0.024205,
+          "gercek_maliyet_usd": 0.021616,
+          "fatura_orani": 0.893,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 80,
+          "girdi_token": 69604,
+          "cikti_token": 10143,
+          "onbellekli_girdi_token": 2112,
+          "onbellek_isabeti": 0.0303,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.008687,
+          "gercek_maliyet_usd": 0.008545,
+          "fatura_orani": 0.9837,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 77,
+          "girdi_token": 126700,
+          "cikti_token": 17414,
+          "onbellekli_girdi_token": 36416,
+          "onbellek_isabeti": 0.2874,
+          "dusunce_token": 999,
+          "liste_maliyet_usd": 0.015519,
+          "gercek_maliyet_usd": 0.013072,
+          "fatura_orani": 0.8423,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "z-ai/glm-5.3-flash-20260826",
+        "saglayici": "novita/fp8",
+        "dusunme": "dusuk"
+      },
+      "kutle": 0.7274,
+      "A1": 0.7759,
+      "coverage": 0.9375
+    },
+    "glm-dusuk_t2": {
+      "n": 80,
+      "n_hakem_hata": 0,
+      "n_sifir_iddia": 3,
+      "total_claims": 248,
+      "judge_providers": [
+        "Novita"
+      ],
+      "judge_cost_usd": 0.0243,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 157,
+          "girdi_token": 196514,
+          "cikti_token": 27723,
+          "onbellekli_girdi_token": 66496,
+          "onbellek_isabeti": 0.3384,
+          "dusunce_token": 893,
+          "liste_maliyet_usd": 0.02427,
+          "gercek_maliyet_usd": 0.019801,
+          "fatura_orani": 0.8159,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 80,
+          "girdi_token": 69604,
+          "cikti_token": 10357,
+          "onbellekli_girdi_token": 3072,
+          "onbellek_isabeti": 0.0441,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.008747,
+          "gercek_maliyet_usd": 0.00854,
+          "fatura_orani": 0.9764,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 77,
+          "girdi_token": 126910,
+          "cikti_token": 17366,
+          "onbellekli_girdi_token": 63424,
+          "onbellek_isabeti": 0.4998,
+          "dusunce_token": 893,
+          "liste_maliyet_usd": 0.015523,
+          "gercek_maliyet_usd": 0.011261,
+          "fatura_orani": 0.7254,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "z-ai/glm-5.3-flash-20260826",
+        "saglayici": "novita/fp8",
+        "dusunme": "dusuk"
+      },
+      "kutle": 0.718,
+      "A1": 0.7659,
+      "coverage": 0.9375
+    },
+    "glm-dusuk_t3": {
+      "n": 80,
+      "n_hakem_hata": 0,
+      "n_sifir_iddia": 3,
+      "total_claims": 248,
+      "judge_providers": [
+        "Novita"
+      ],
+      "judge_cost_usd": 0.0243,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 157,
+          "girdi_token": 196539,
+          "cikti_token": 27703,
+          "onbellekli_girdi_token": 80320,
+          "onbellek_isabeti": 0.4087,
+          "dusunce_token": 756,
+          "liste_maliyet_usd": 0.024266,
+          "gercek_maliyet_usd": 0.018869,
+          "fatura_orani": 0.7776,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 80,
+          "girdi_token": 69604,
+          "cikti_token": 10380,
+          "onbellekli_girdi_token": 3072,
+          "onbellek_isabeti": 0.0441,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.008753,
+          "gercek_maliyet_usd": 0.008547,
+          "fatura_orani": 0.9764,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 77,
+          "girdi_token": 126935,
+          "cikti_token": 17323,
+          "onbellekli_girdi_token": 77248,
+          "onbellek_isabeti": 0.6086,
+          "dusunce_token": 756,
+          "liste_maliyet_usd": 0.015513,
+          "gercek_maliyet_usd": 0.010322,
+          "fatura_orani": 0.6654,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "z-ai/glm-5.3-flash-20260826",
+        "saglayici": "novita/fp8",
+        "dusunme": "dusuk"
+      },
+      "kutle": 0.7279,
+      "A1": 0.7764,
+      "coverage": 0.9375
+    },
+    "glm-dusuk_t4": {
+      "n": 80,
+      "n_hakem_hata": 0,
+      "n_sifir_iddia": 3,
+      "total_claims": 245,
+      "judge_providers": [
+        "Novita"
+      ],
+      "judge_cost_usd": 0.0241,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 157,
+          "girdi_token": 196362,
+          "cikti_token": 27318,
+          "onbellekli_girdi_token": 47232,
+          "onbellek_isabeti": 0.2405,
+          "dusunce_token": 845,
+          "liste_maliyet_usd": 0.024143,
+          "gercek_maliyet_usd": 0.020969,
+          "fatura_orani": 0.8685,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 80,
+          "girdi_token": 69604,
+          "cikti_token": 10200,
+          "onbellekli_girdi_token": 3136,
+          "onbellek_isabeti": 0.0451,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.008703,
+          "gercek_maliyet_usd": 0.008492,
+          "fatura_orani": 0.9758,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 77,
+          "girdi_token": 126758,
+          "cikti_token": 17118,
+          "onbellekli_girdi_token": 44096,
+          "onbellek_isabeti": 0.3479,
+          "dusunce_token": 845,
+          "liste_maliyet_usd": 0.015441,
+          "gercek_maliyet_usd": 0.012477,
+          "fatura_orani": 0.8081,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "z-ai/glm-5.3-flash-20260826",
+        "saglayici": "novita/fp8",
+        "dusunme": "dusuk"
+      },
+      "kutle": 0.736,
+      "A1": 0.7851,
+      "coverage": 0.9375
+    },
+    "glm-dusuk_t5": {
+      "n": 80,
+      "n_hakem_hata": 0,
+      "n_sifir_iddia": 3,
+      "total_claims": 248,
+      "judge_providers": [
+        "Novita"
+      ],
+      "judge_cost_usd": 0.0243,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 157,
+          "girdi_token": 196456,
+          "cikti_token": 27702,
+          "onbellekli_girdi_token": 76992,
+          "onbellek_isabeti": 0.3919,
+          "dusunce_token": 999,
+          "liste_maliyet_usd": 0.024259,
+          "gercek_maliyet_usd": 0.019085,
+          "fatura_orani": 0.7867,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 80,
+          "girdi_token": 69604,
+          "cikti_token": 10297,
+          "onbellekli_girdi_token": 2048,
+          "onbellek_isabeti": 0.0294,
+          "dusunce_token": 0,
+          "liste_maliyet_usd": 0.00873,
+          "gercek_maliyet_usd": 0.008592,
+          "fatura_orani": 0.9842,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 77,
+          "girdi_token": 126852,
+          "cikti_token": 17405,
+          "onbellekli_girdi_token": 74944,
+          "onbellek_isabeti": 0.5908,
+          "dusunce_token": 999,
+          "liste_maliyet_usd": 0.015529,
+          "gercek_maliyet_usd": 0.010493,
+          "fatura_orani": 0.6757,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "z-ai/glm-5.3-flash-20260826",
+        "saglayici": "novita/fp8",
+        "dusunme": "dusuk"
+      },
+      "kutle": 0.7248,
+      "A1": 0.7731,
+      "coverage": 0.9375
+    },
+    "glm-kapali_duman": {
+      "n": 0,
+      "n_hakem_hata": 3,
+      "n_sifir_iddia": 0,
+      "total_claims": 0,
+      "judge_providers": [],
+      "judge_cost_usd": 0.0,
+      "fatura": {
+        "toplam": {
+          "n_cagri": 0,
+          "girdi_token": 0,
+          "cikti_token": 0,
+          "onbellekli_girdi_token": null,
+          "onbellek_isabeti": null,
+          "dusunce_token": null,
+          "liste_maliyet_usd": 0,
+          "gercek_maliyet_usd": null,
+          "fatura_orani": null,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "cikarim": {
+          "n_cagri": 0,
+          "girdi_token": 0,
+          "cikti_token": 0,
+          "onbellekli_girdi_token": null,
+          "onbellek_isabeti": null,
+          "dusunce_token": null,
+          "liste_maliyet_usd": 0,
+          "gercek_maliyet_usd": null,
+          "fatura_orani": null,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        },
+        "dogrulama": {
+          "n_cagri": 0,
+          "girdi_token": 0,
+          "cikti_token": 0,
+          "onbellekli_girdi_token": null,
+          "onbellek_isabeti": null,
+          "dusunce_token": null,
+          "liste_maliyet_usd": 0,
+          "gercek_maliyet_usd": null,
+          "fatura_orani": null,
+          "eksik": {
+            "maliyet": 0,
+            "onbellek": 0,
+            "dusunce": 0
+          }
+        }
+      },
+      "hakem": {
+        "model": "z-ai/glm-5.3-flash-20260826",
+        "saglayici": "novita/fp8",
+        "dusunme": "kapali"
+      }
+    }
+  },
+  "f06_ds_kapali_bant": [
+    0.699347590631966,
+    0.7341724093680341
+  ],
+  "ds_bant_icinde": true,
+  "glm": {
+    "n_tekrar": 5,
+    "kutle_ort": 0.72682,
+    "kutle_ss": 0.006473947790954147,
+    "kutle_aralik": 0.018000000000000016,
+    "esik_ss": 0.009,
+    "esik_gecti": true,
+    "ds_kapali_farki_p": 1.0059999999999958
+  },
+  "r3": {
+    "birinci_kol": {
+      "n_cagri": 77,
+      "girdi": 154241,
+      "onbellekli": 120832,
+      "pay": 0.7834
+    },
+    "ikinci_kol": {
+      "n_cagri": 76,
+      "girdi": 156199,
+      "onbellekli": 101888,
+      "pay": 0.6523
+    },
+    "bugunku_sira_r1": {
+      "n_cagri": 77,
+      "girdi": 154226,
+      "onbellekli": 57600,
+      "pay": 0.3735
+    }
+  }
+}
