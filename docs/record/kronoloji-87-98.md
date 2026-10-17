@@ -1,7 +1,7 @@
 # Araştırma kaydı — #87 …
 
 > **Ne bu:** Checkpoint 1'in F0 aşamasının devamı. Önceki dosya [`kronoloji-75-86.md`](kronoloji-75-86.md) 12 girdiye
-> ulaştı (#75-#86); kural [`README.md`](README.md)'de. Çapa: `kronoloji-87-98.md#87`. **#88 F0.14'e ayrıldı (2026-10-17'de yazılmadı); yeni girdi #90'dan devam eder.**
+> ulaştı (#75-#86); kural [`README.md`](README.md)'de. Çapa: `kronoloji-87-98.md#87`. **#88 kullanılmadı (F0.14 kayda geçmedi, kullanıcı kararı 2026-10-17); yeni girdi #90'dan devam eder.**
 
 | # | tarih | başlık | kanca |
 | :-- | :--- | :--- | :--- |

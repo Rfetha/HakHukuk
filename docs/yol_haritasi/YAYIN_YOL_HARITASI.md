@@ -287,9 +287,10 @@ Depodaki eski "göz" okumalarını bir AI ajanı yapmıştır; makalenin yer-ger
   uyumu test açılmadan bilinir.
 - **Kör okuma:** okuyucu kolu görmez, sıra karışıktır.
 - **Okuyucular:** gönüllü ve ücretsiz; yazılı bilgilendirme ve onam, makalede teşekkür, kişisel veri
-  toplanmaz. Etik kurul onayının gerekip gerekmediği F0'da sorulur; başvuru gerekiyorsa iki
+  toplanmaz. ~~Etik kurul onayının gerekip gerekmediği F0'da sorulur; başvuru gerekiyorsa iki
   checkpoint'in okumalarını kapsar (onay okumadan önce alınmalıdır, sonradan alınamaz). Gönüllü
-  arayışı da F0'da başlar.
+  arayışı da F0'da başlar.~~ Etik kurul F0'da sorulmadı; makale yazımına geçerken (F5.2) ele alınır
+  (kullanıcı kararı 2026-10-16). Gönüllü arayışı F4.2'den önce, kullanıcıda.
 - **Örneklem:** kollara ve iki temel modele yayılmış ~300 cevap; zorunlu tabakalar bütün isabetsiz
   atıf kalemleri, hakemlerin ayrıştığı kalemler ve ajanın eski okuduğu kalemlerdir. Kullanıcı hepsini okur; gönüllü hukuk öğrencileri yaklaşık üçte birini bağımsız ikinci kez
   okur; bir hukukçu yalnız isabetsiz atıf anlaşmazlıklarını karara bağlar.
@@ -342,7 +343,7 @@ böyle tanımlanır.
 
 | aşama | zaman | iş | kullanıcı saati (tahmin) |
 | :--- | :--- | :--- | :--- |
-| **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin kayda geçmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü, testi ve eski ortamla eşdeğerlik kontrolü · ölçüm kartı pilotu · hakem geçişi ve kayma çıpası · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · etik kurul sorusu ve gönüllü arayışının başlaması · Qwen'de τ_g/τ_a seed'leri (3408 · 3409) · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
+| **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin kayda geçmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü, testi ve eski ortamla eşdeğerlik kontrolü · ölçüm kartı pilotu · hakem geçişi ve kayma çıpası · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · ~~etik kurul sorusu ve gönüllü arayışının başlaması~~ (etik kurul F5.2'de, gönüllü arayışı F4.2'den önce) · Qwen'de τ_g/τ_a seed'leri (3408 · 3409) · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
 | **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · Gemma'da τ_g/τ_a seed'leri · insan↔hakem pilotu (~80 cevap) · hakem önyargı sondası · soru üreticisinin kör seçimi · test sorularının üretimi ve okuma protokolü · **dondurma ADR'si** ve aynı gün makalenin yöntem bölümü | ~10-13 |
 | **F2 — test ve seed'ler** | Şubat–Nisan 2027 | test sorularının okunması (yalnız ret; mühürlü parça ve vatandaş dili dilimi dahil; dondurmadan hemen sonra, Ocak sonu–Şubat) ve şifreli dondurulması · birlikte ve ardışık seed'ler (Şubat–Mart): Qwen 3408 → 3409 → Gemma 3408 → 3409 · test cevaplarının kiralık kartta şifreli üretimi, RQ2'nin üretim tarafı dahil (Şubat–Nisan) · makalenin giriş ve ilgili çalışmalar bölümleri | ~15-22 |
 | **F3 — son ölçüm** | Mayıs 2027 | test bir kez açılır (puanlama başlar) · Tablo 1 ve 2 · ikinci hakem · kazanan seçimi | ~3-4 |
@@ -424,6 +425,12 @@ ARR üzerinden ACL / EMNLP / NAACL / EACL ana konferansı hedeflenir; Findings k
 sonuçtur. Ret hâlinde hakem yorumlarıyla sonraki ARR döngüsüne, o da olmazsa sırasıyla TMLR, Natural
 Language Engineering ve Language Resources and Evaluation dergilerine gönderilir. Tek yazarlığın
 iç hakem eksiği, gönderimden önce 1-2 dış okuyucuyla kapatılır.
+
+**ARR hizmet katkıcısı** (Ekim 2026'dan; [cfp](https://aclrollingreview.org/cfp) ve
+[qualifications](https://aclrollingreview.org/qualifications), okundu 2026-10-17): her gönderim, hakemlik yapacak
+nitelikli bir kişi gösterir; yüksek lisans öğrencisi kendi başına bu kişi olamaz. Gösterilmeyen gönderim kuraya
+girer, kurada çıkmayan incelenmeden reddedilir. Yollar: yazar olmayan nitelikli biri (çalışmaya kefil olur) ·
+nitelikli bir hakemin gözetiminde iki döngü ikincil hakemlik. Hangisi olacağı gönderimden önce kararlaştırılır.
 
 ### 2.9 Checkpoint 1'in tez karşılığı
 
@@ -594,6 +601,8 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 
 ## 6 · Doğrulanacak dış bilgiler
 
+F0 satırları 2026-10-17'de okundu, kayda geçirilmedi (kullanıcı kararı); yayını etkileyen tek bulgu §2.8'de.
+
 <details>
 <summary>15 dış bilgi: ne, nerede, ne zaman (tabloyu aç)</summary>
 
@@ -602,7 +611,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | ARR 2027 döngü tarihleri ve ön baskı (arXiv) kuralı | aclrollingreview.org | F0 |
 | ACL/ARR yapay zekâ yardımı politikası · gönderim kontrol listesi · karşılıklı hakemlik şartı | ACL / ARR | F0 |
 | DEÜ FBE: tez dili · mezuniyet için yayın şartı · yayımlanmış makalenin tezde kullanımı · tezden üretilen yayında danışman adı (zorunluysa "tek yazar" planı değişir) · programa başlamadan önceki işin teze sayılması · üretken YZ kuralı | enstitü yönetmeliği ve tez yazım kılavuzu | F5 başında, yazıma geçerken |
-| gönüllü okuyucular için etik kurul onayı gerekiyor mu (gerekiyorsa başvuru iki checkpoint'i kapsar) | DEÜ | F0 |
+| ~~gönüllü okuyucular için etik kurul onayı gerekiyor mu (gerekiyorsa başvuru iki checkpoint'i kapsar)~~ F0'dan çıktı, makale yazımında ele alınır (kullanıcı kararı 2026-10-16) | DEÜ | ~~F0~~ F5.2 |
 | Modal $30 kredisinin iki hesapta aylık yenilenmesi · akademik kredi başvurusu | Modal faturalama sayfası | F0 |
 | ölçüm kartı: Modal ve Vast'ta saatlik fiyat · veri merkezi sunucusu filtresi | sağlayıcı konsolları | F0 (pilot) |
 | Gemma 4 E4B lisans dosyası | HF model deposu | F0 |
