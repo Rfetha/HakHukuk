@@ -231,8 +231,8 @@ bilinen notlar:
   özelliklerle kurulur; sorular hiçbir modelin çıktısına göre süzülmez.
 - **Üretim:** LLM üretir. Yasak aileler: OpenAI (eğitim verisinin öğretmeni) · Qwen ve Gemma
   (özneler) · Gemini ve Claude (Makale 2 rakipleri) · DeepSeek (bağlayıcı hakem; kendi yazdığı
-  soruların cevaplarını puanlamaz). **Üretici GLM 5.3 Flash'tır** (Zhipu; MIT lisanslı, ağırlıkları
-  açık); ilk 20 soru Türkçe kalitesi için okunur, kötüyse üretici o gün yeniden seçilir. Modeli, sürümü
+  soruların cevaplarını puanlamaz) · Zhipu (ikinci hakem) · Mistral (yedek özne). ~~**Üretici GLM 5.3 Flash'tır** (Zhipu; MIT
+  lisanslı, ağırlıkları açık)~~ **Üretici Kimi K3 ya da MiniMax M3'tür**, seçim F1.8'in başında (2026-10-17, [ADR-0113](../adr/kararlar-0064-0085.md#adr-0113)); ilk 20 soru Türkçe kalitesi için okunur, kötüyse üretici o gün yeniden seçilir. Modeli, sürümü
   ve istemi künyeye yazılır. **Okuma yalnız rettir:** kullanıcı her soruyu okur ama düzeltmez; dört ret
   ölçütü önceden yazılır (soru altın maddeyi tek başına belirlemiyor · cevap altın maddenin dışında bilgi
   istiyor · Türkçesi bozuk ya da anlaşılmaz · tuzak maddesi soruyu aslında cevaplıyor) ve her ret
@@ -251,9 +251,11 @@ bilinen notlar:
   8,4, [#45](../record/kronoloji-39-52.md#45)) · eğitim verisini `gpt-4o-mini`'nin üretmiş olması
   (öğretmen ile hakemin aynı model olması) · emeklilik riski. `v0.5` (eski adıyla `v1.0`) sayıları `gpt-4o-mini`
   damgasıyla olduğu gibi kalır.
-- **Hakemin düşünme modu** F1.4 pilotunda seçilir. Kural pilottan önce yazılır: düşünme açık mod
-  insanla uyumda güven aralığının dışında üstünse açık, değilse kapalı mod bağlayıcı olur.
-- `claude-sonnet-5` iki temel modelde birincil karşılaştırmayı (birleştirme ↔ birlikte eğitim)
+- ~~**Hakemin düşünme modu** F1.4 pilotunda seçilir. Kural pilottan önce yazılır: düşünme açık mod
+  insanla uyumda güven aralığının dışında üstünse açık, değilse kapalı mod bağlayıcı olur.~~ **Bağlayıcı hakemin düşünme
+  modu kapalıdır** (2026-10-17, [ADR-0114](../adr/kararlar-0064-0085.md#adr-0114)); F1.4 insan uyumunu iki modda ölçer ve raporlar, modu belirlemez.
+- ~~`claude-sonnet-5`~~ GLM-5.3-Flash (`novita/fp8`, düşünme `low`; kabul şartları tutmazsa `claude-sonnet-5`; 2026-10-17,
+  [ADR-0113](../adr/kararlar-0064-0085.md#adr-0113)) iki temel modelde birincil karşılaştırmayı (birleştirme ↔ birlikte eğitim)
   1 seed'de puanlar; iki aile arasındaki uyum (κ) raporlanır.
 - Hiçbir özne kendi ailesinin hakemiyle puanlanmaz.
 - Ajan-okuyucu (Claude ailesi) yalnız Qwen ve Gemma cevaplarını okur.
@@ -360,19 +362,47 @@ giderse bir önceki ARR döngüsüne gönderilir. Her aşamanın iş adımları 
 | DEV iterasyonu: Qwen / Gemma | ~$14 / ~$21-28 |
 | seed'ler: Qwen 3408 · 3409 / Gemma 3408 · 3409 (3407 kolları F1'den) | ~$32 / ~$38-51 |
 | **GPU toplamı** | **~$111-131** |
-| bağlayıcı hakem DeepSeek V4.1 Flash, bütün kollar (tek kollar yalnız 3407; sabit sağlayıcıda birim fiyat `gpt-4o-mini` ile aynı; kayıttaki ×1,6 fatura payı dahil) | ~$15-21 |
-| ikinci hakem, iki temel modelde birincil karşılaştırma | ~$19 |
-| düşünce izi ↔ cevap tutarlılığı hakemi | ~$6 |
-| test üretimi, kör payda, RQ2 yeniden puanlaması | ~$5 |
-| F0: hakem kayma çıpası ve mevcut kolların DEV ölçümü · F3: kayma çıpasının tekrarı | ~$8 |
-| F1: DEV iterasyonunun puanlanması · önyargı sondası · insan pilotunun hakem tarafı | ~$8 |
+| bağlayıcı hakem DeepSeek V4.1 Flash, bütün kollar (tek kollar yalnız 3407; ~~sabit sağlayıcıda birim fiyat `gpt-4o-mini` ile aynı; kayıttaki ×1,6 fatura payı dahil~~ kapalı mod) | ~~\~$15-21~~ ~$8-12 |
+| ikinci hakem, iki temel modelde birincil karşılaştırma (~~`claude-sonnet-5`~~ GLM-5.3-Flash, ADR-0113; yedek Sonnet ~$12) | ~~\~$19~~ < $1 |
+| düşünce izi ↔ cevap tutarlılığı hakemi | ~~\~$6~~ ~$3,4 |
+| test üretimi, kör payda, RQ2 yeniden puanlaması | ~~\~$5~~ üretici (MiniMax M3 < $1 · Kimi K3 ~$2-7, t) + ~$2,2 |
+| F0: hakem kayma çıpası ve mevcut kolların DEV ölçümü · F3: kayma çıpasının tekrarı | ~~\~$8~~ ~$4,5 |
+| F1: DEV iterasyonunun puanlanması · önyargı sondası · insan pilotunun hakem tarafı (GLM'in kabulü dahil) | ~~\~$8~~ ~$4,7 |
 | ölçüm kartı (F0 pilotu + DEV + test; [ADR-0097](../adr/kararlar-0064-0085.md#adr-0097)): Modal kredisine sığarsa $0, sığmazsa Vast | ≤$75 (tahmin ~$40-60) |
-| **nakit toplamı** | **~$61-67** + ölçüm kartı (≤$75) + OpenRouter kredi ücreti |
+| **nakit toplamı** | ~~**~$61-67**~~ **~$24-27** + test sorusu üreticisi + ölçüm kartı (≤$75) + OpenRouter kredi ücreti |
 
-Pilotta hakemin düşünme açık modu seçilirse hakem kalemleri ~2-3 kat artar (+$25-45).
+~~Pilotta hakemin düşünme açık modu seçilirse hakem kalemleri \~2-3 kat artar (+$25-45).~~ Hakem kalemleri 2026-10-17'de
+ölçülen koşu fiyatlarıyla yeniden yazıldı ([#89](../record/kronoloji-87-98.md#89)): koşu sayısı × koşu başına fatura. Bir koşu 80 kalemlik puanlamadır. Koşu
+sayısı eski tutardan geri hesaplandı (eski birim `gpt-4o-mini` koşusu $0,0405 × 1,6; Sonnet satırında $0,73 × 1,6) ve
+F0.10'un kol × mod listesiyle kesinleşir. Bağlayıcı hakem kapalı modda ([ADR-0114](../adr/kararlar-0064-0085.md#adr-0114)); açık mod sütunu karşılaştırma içindir.
+
+| hakem | koşu başına liste | fatura / liste | koşu başına fatura |
+| :--- | ---: | ---: | ---: |
+| DeepSeek, kapalı | $0,0509 | 0,713 (önbellek) | $0,0363 |
+| DeepSeek, açık (seçilmedi) | $0,258 | ~0,92 (t) | ~$0,24 |
+| GLM-5.3-Flash, `low` (Novita) | $0,024 | ~0,83 | ~$0,020 |
+| `claude-sonnet-5` (yedek) | ~$0,73 (t) | 1,0 (v) | ~$0,73 |
+
+| hakem kalemi | koşu (t) | kapalı | açık (seçilmedi) |
+| :--- | ---: | ---: | ---: |
+| DeepSeek, bütün kollar | ~230-325 | ~$8,4-11,8 | ~$55-78 |
+| ikinci hakem, birincil karşılaştırma | ~16 | GLM ~$0,3 | GLM ~$0,3 |
+| iz ↔ cevap hakemi | ~93 | ~$3,4 | ~$22 |
+| test üretimi dışı: kör payda, RQ2 | ~62 | ~$2,2 | ~$14 |
+| F0 kayma çıpası + DEV ölçümü · F3 kayma tekrarı | ~123 | ~$4,5 | ~$30 |
+| F1 DEV puanlaması · önyargı sondası · insan pilotu | ~123 | ~$4,7 | ~$30 |
+| **toplam** (+ test sorusu üreticisi) | | **~$24-27** | **~$152-175** |
+
+- **Çağrı sırası (R3, [#89](../record/kronoloji-87-98.md#89)):** aynı soru kümesinin kolları eş zamanlı ve aynı sırayla puanlanır, paralellik ≤ 10
+  (DeepInfra'nın hız sınırı). Doğrulama çağrısı soru ve kaynağı önbellekten alır: ikinci ve sonraki kollarda kapalı modda
+  ~%16 daha az. Tabloda sayılmadı.
+- **Yükleme (R5):** OpenRouter'a yükleme aşama başına bir kez ve en az ~$15 (kartla %5,5, en az $0,80; $5'lık yüklemede
+  ücret %16).
+- **Son çare (R9):** nakit hakem harcaması kapalı sütunu aşarsa F1'in DEV puanlaması tabakalı alt örnekleme iner (en az 40
+  soru; seçilen aday tam 80 soruda puanlanır).
 
 **Açılabilir seçenekler** (varsayılan kapalı; yalnız kullanıcı kararıyla açılır): ikinci hakemin
-bütün kolları ve seed'leri puanlaması (~$85-135; Tablo 1'in her hücresi iki aileli aralıkla) ·
+bütün kolları ve seed'leri puanlaması (~~\~$85-135~~ GLM'le ~$5-7, t; karar F1.11; Tablo 1'in her hücresi iki aileli aralıkla) ·
 insan doğrulamasında ücretli okuyucular (gönüllü bulunamazsa) · tek kolların testte 3 seed'le ölçülmesi
 (~$10-15).
 
@@ -384,8 +414,9 @@ eğitimde yalnız Modal kesintisinde~~ RunPod'da koşulur, Modal kesintisinde de
 [ADR-0101](../adr/kararlar-0064-0085.md#adr-0101)).
 Birim fiyatlar: Modal A100-40GB $2,10/saat; SFT A100'de ~2,1 saat
 ([ADR-0033](../adr/kararlar-0027-0044.md#adr-0033)), ORPO 36,5 dakika ([#48](../record/kronoloji-39-52.md#48));
-Gemma koşuları Qwen'in 1,5-2 katı varsayıldı. Gerçek API faturasının hesaplanan tutarın 1,596 katı
-çıktığı ölçülmüştür ([#64](../record/kronoloji-63-71.md#64)).
+Gemma koşuları Qwen'in 1,5-2 katı varsayıldı. ~~Gerçek API faturasının hesaplanan tutarın 1,596 katı
+çıktığı ölçülmüştür ([#64](../record/kronoloji-63-71.md#64)).~~ OpenRouter'da liste fiyatına marj yok; kapalı modda fatura
+listenin 0,713'ü (önbellek, [#89](../record/kronoloji-87-98.md#89)).
 
 ### 2.8 Gönderim
 
@@ -579,7 +610,7 @@ Her aşama kronolojiye #72'den itibaren bir girdi, her karar bir ADR üretir; he
 | OpenAI kullanım şartlarının güncel metni (çıktıyla rakip model geliştirme maddesi) | openai.com/policies | F0 |
 | OSF ön-kayıt: ambargo ve isimsiz görüntüleme bağlantısı | osf.io | F1 |
 | Global-MMLU ve GSM8K lisansları | küme depoları | F1 |
-| GLM 5.3 Flash'ın OpenRouter kimliği, fiyatı ve lisans dosyası | OpenRouter · HF | F1 |
+| ~~GLM 5.3 Flash'ın OpenRouter kimliği, fiyatı ve lisans dosyası~~ okundu 2026-10-17 ([#89](../record/kronoloji-87-98.md#89)); test sorusu üreticisinin (Kimi K3 / MiniMax M3) kimliği, fiyatı ve lisansı ([ADR-0113](../adr/kararlar-0064-0085.md#adr-0113)) | OpenRouter · HF | F1 |
 | ~~Vast'ta~~ RunPod'da A100 fiyatı, sürücü sürümü ve network volume ücreti ([ADR-0101](../adr/kararlar-0064-0085.md#adr-0101)) | ~~Vast~~ RunPod konsolu | gerektiğinde |
 | vLLM'in kazanan modeli desteklemesi | GRPO pilotu | Haziran 2027 |
 | COLM 2028 çağrısı | COLM sitesi | Ekim 2027 |

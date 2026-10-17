@@ -21,7 +21,7 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0113**'ten devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara, **0115**'ten devam; **0100** F0.12'nin veri lisansı ADR'sine ayrıldı (ADR-0099). ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
@@ -118,6 +118,8 @@ Hangi dosya olduğu numaradan aritmetikle bulunur.
 | [0110](kararlar-0064-0085.md#adr-0110) | 🟢 | **Yapay zekâ imzası yok; geçmiş temizlendi** — 73 commit'in 70'inden 138 imza satırı silindi, ağaçlar aynı · `v0.5` taşındı · eski geçmiş `~/yedek/HakHukuk-2026-10-16-imzali.bundle` · 8 dosyada 25 hash atfı yenilendi (eski izi onarmama kuralına onaylı istisna) |
 | [0111](kararlar-0064-0085.md#adr-0111) | 🟢 | **Dal düzeni: `develop` çalışma, `master` yayın** — `talk-think` → `develop`, PR #70 birleştirilmedi · büyük iş `develop`'tan açılan `<kart-no>-<kısa-ad>` dalında, PR ile döner · yalnız merge commit · sürümde `develop` → `master` + etiket · 0108'in dal maddelerinin yerine geçer |
 | [0112](kararlar-0064-0085.md#adr-0112) | 🟢 | **`scripts/` · `tests/` · `docs/` · `knowledge/` hiyerarşik** — `scripts/<grup>/<alt>/`, testler kodun yerini yansıtır (`urun/` · `betikler/` · `depo/`), belgeler `urun/` · `yol_haritasi/` · `yontem/` · `referans/` altında · yol köprüsü her derinliği tarar · `adr/`·`record/`'da yalnız taşınan belgelere giden linkler çevrildi (ADR-0083 §D'den bilinçli sapma) · eski→yeni eşleme ADR'de |
+| [0113](kararlar-0064-0085.md#adr-0113) | 🟢 | **İkinci hakem GLM-5.3-Flash** — `claude-sonnet-5` yerine `z-ai/glm-5.3-flash-20260826`, Novita fp8, düşünme `low` (kapatılamaz) · kabul şartları: gürültü ≤ 0,9 p (geçti, 0,65 p) · insan uyumu F1.4 · kontrol kalemleri F1.5; tutmazsa Sonnet · test soruları GLM'den değil (Kimi K3 / MiniMax M3, seçim F1.8) · iddia "bağımsız ikinci açık hakem aynı sıralamayı veriyor" |
+| [0114](kararlar-0064-0085.md#adr-0114) | 🟢 | **Bağlayıcı hakem kapalı modda** — DeepSeek V4.1 Flash düşünme kapalı, F1.4'ü beklemez; F1.4'ün mod kuralı kalktı, insan uyumu iki modda ölçülür ve raporlanır · gerekçe maliyet (kapalı ~$28-31 ↔ açık ~$157-180, #89) · bedel: açık mod insanla daha uyumlu çıksa da kapalı kalır |
 
 ---
 
