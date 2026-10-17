@@ -182,9 +182,11 @@ def request_kwargs(model, seed=3407, saglayici=None):
 
 
 class Dusunme(Enum):
-    """Hakemin KENDİ düşünme modu (öznenin değil). Bağlayıcı mod F1.4'te seçilir (F0.6)."""
+    """Hakemin KENDİ düşünme modu (öznenin değil). Bağlayıcı mod F1.4'te seçilir (F0.6).
+    DUSUK: düşünme açık, düzeyi `low` — düşünmesi kapatılamayan ailenin en kısa modu (#74)."""
     ACIK = "acik"
     KAPALI = "kapali"
+    DUSUK = "dusuk"
 
 
 # Hakemin kendi düşünme modu olan aileler: modun AÇIKÇA verilmesi zorunlu, varsayılan yok.
@@ -194,6 +196,9 @@ class Dusunme(Enum):
 # #74 (2026-10-17): ikinci hakem GLM (`z-ai`), sabit sağlayıcı `novita/fp8`; aynı iki kural.
 DUSUNME_AILELERI = {"deepseek", "z-ai"}
 SAGLAYICI_ZORUNLU_AILELER = {"deepseek", "z-ai"}
+# #74 (2026-10-17): GLM-5.3-Flash'ta düşünme kapatılamaz (OpenRouter `reasoning.mandatory: true`, düzeyler
+# low · high · max); `enabled: false` 400 döndürür ("Reasoning is mandatory for this endpoint").
+DUSUNME_ZORUNLU_AILELER = {"z-ai"}
 
 
 @dataclass(frozen=True)
@@ -212,6 +217,8 @@ class HakemKimligi:
                              f"(--hakem-dusunme acik|kapali; varsayılan yok, F0.6)")
         if aile not in DUSUNME_AILELERI and self.dusunme is not None:
             raise ValueError(f"{self.model}: bu ailenin düşünme modu yok; --hakem-dusunme verilmez")
+        if aile in DUSUNME_ZORUNLU_AILELER and self.dusunme is Dusunme.KAPALI:
+            raise ValueError(f"{self.model}: bu ailede düşünme kapatılamaz (--hakem-dusunme acik|dusuk)")
         if aile in SAGLAYICI_ZORUNLU_AILELER and not self.saglayici:
             raise ValueError(f"{self.model}: sağlayıcı açıkça sabitlenmeli (--hakem-saglayici); "
                              f"yedek sağlayıcıya düşme kapalı (tuzak 2.7)")
@@ -219,7 +226,9 @@ class HakemKimligi:
     def istek_ekleri(self, seed=3407) -> dict:
         kw = request_kwargs(self.model, seed=seed, saglayici=self.saglayici)
         if self.dusunme is not None:
-            kw.setdefault("extra_body", {})["reasoning"] = {"enabled": self.dusunme is Dusunme.ACIK}
+            kw.setdefault("extra_body", {})["reasoning"] = (
+                {"effort": "low"} if self.dusunme is Dusunme.DUSUK
+                else {"enabled": self.dusunme is Dusunme.ACIK})
         return kw
 
     def kunye(self) -> dict:

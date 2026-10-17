@@ -100,13 +100,19 @@ def test_glm_kisa_ad_tarihli_kimlige_cozulur_ve_saglayici_fiyati_kayitli():
 
 
 @pytest.mark.parametrize("saglayici,dusunme,hata", [("novita/fp8", None, "düşünme"),
-                                                     (None, Dusunme.KAPALI, "sağlayıcı")])
+                                                     (None, Dusunme.DUSUK, "sağlayıcı")])
 def test_glm_dusunme_modu_ve_sabit_saglayici_zorunlu(saglayici, dusunme, hata):
     with pytest.raises(ValueError, match=hata):
         HakemKimligi(GLM, saglayici=saglayici, dusunme=dusunme)
 
 
-def test_glm_kapali_modda_istek_ekleri_saglayiciyi_sabitler_ve_dusunmeyi_kapatir():
-    ek = HakemKimligi(GLM, saglayici="novita/fp8", dusunme=Dusunme.KAPALI).istek_ekleri()
+def test_glm_dusunme_kapatilamaz_kimlik_kurulmaz():
+    """#74: GLM-5.3-Flash'ta düşünme zorunlu; `kapali` 400 döndürürdü — paradan önce reddedilir."""
+    with pytest.raises(ValueError, match="kapatılamaz"):
+        HakemKimligi(GLM, saglayici="novita/fp8", dusunme=Dusunme.KAPALI)
+
+
+def test_glm_dusuk_modda_istek_ekleri_saglayiciyi_sabitler_ve_dusunme_duzeyini_low_verir():
+    ek = HakemKimligi(GLM, saglayici="novita/fp8", dusunme=Dusunme.DUSUK).istek_ekleri()
     assert ek["extra_body"] == {"provider": {"order": ["novita/fp8"], "allow_fallbacks": False},
-                                "reasoning": {"enabled": False}}
+                                "reasoning": {"effort": "low"}}
