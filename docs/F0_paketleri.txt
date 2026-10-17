@@ -19,16 +19,15 @@ Plan: docs/superpowers/plans/2026-10-16-F0-zemin.md · durum: law-slm-board, epi
 │             │                                              │                  │ seed'ler ~$11      │                      │
 └─────────────┴──────────────────────────────────────────────┴──────────────────┴────────────────────┴──────────────────────┘
 
-Durum (2026-10-16):
-- F0.14 → F0.12 → F0.13: plan yapıldı (sorgulama 2026-10-16); kutular F0 planının F0.12–F0.14
-  bölümlerinde, işe "başla" ile geçilir. Kararlar: tek kronoloji girdisi #88 · OpenAI şartlarının güncel
-  ve üretim günkü metni · OSF kuralları şimdi okunur · etik kurul F0'dan çıktı (F5.2) · ADR-0100 OpenAI'ın
-  ürettiği her şeyi kapsar · yeniden üretimde üç gerekçeli yasak · notlar data/README.md ve MODEL_CARD
-  §8'e şimdi · çıpalar gerçek kaynağıyla · kazanan kuralının dört boşluğu taslaktan önce sorulur · #17 v0
-  ile kapanır
+Durum (2026-10-17):
+- F0.14 → F0.12 → F0.13: bitti (2026-10-17); kartlar #16 #17 #18 kapandı, panoda Done. Commit'ler
+  76c6233 · d856ac4 · eeb9add (push sende).
+  · F0.14: okundu, kayda geçmedi (#88 kullanılmadı). Yayını etkileyen tek bulgu: ARR'de her gönderim
+    hakemlik yapacak nitelikli bir kişi gösterir, YL öğrencisi olamaz → YAYIN §2.8.
+  · F0.12: ADR yazılmadı (0100 kullanılmadı); gpt-4o-mini notu MODEL_CARD §8 ve data/README'de.
+  · F0.13: ayrı taslak ve OSF yok; kazanan kuralının dört boşluğu YAYIN §2.3'te.
 - F0.10 + F0.9: başlamadı.
 - F0.8 + F0.15: başlamadı.
 
-Kullanıcının işleri: F0.16 (Modal faturası) · F0.14'ün kalan satırları (gönüllü okuyucular, Modal
-kredisi; sonucu tek cümleyle söylersin, #88'e girer) · F0.11 (literatür okuması). Etik kurul F0'dan
-çıktı, makale yazımında (F5.2) ele alınır.
+Kullanıcının işleri: F0.16 (Modal faturası) · F0.11 (literatür okuması) · ARR'de hakemlik yapacak
+kişi (danışmanla, gönderimden önce). Gönüllü arayışı F4.2'den önce; etik kurul makale yazımında (F5.2).
