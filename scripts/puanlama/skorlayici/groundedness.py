@@ -43,6 +43,7 @@ import argparse
 import json
 import os
 import statistics
+from dataclasses import asdict
 
 import openai
 
@@ -64,7 +65,7 @@ sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
 
 from llm_client import (make_client, resolve, price, Dusunme, HakemKimligi,  # noqa: E402
-                        note_provider, seen_providers, loads_tolerant)
+                        note_provider, seen_providers, loads_tolerant, kullanim_oku, fatura_ozeti)
 import runlock  # noqa: E402  — aynı label'a paralel yazım = sessiz bozulma (bkz. runlock.py)
 from part_dosya import part_ile_yaz, tamamlanmis_jsonl  # noqa: E402
 import olcum_aleti  # noqa: E402  — RQ2 anahtarları (F0.5 b): altın madde kırpması
@@ -155,10 +156,6 @@ def parse_args():
     return p.parse_args()
 
 
-def _price(model):
-    return price(model)
-
-
 def extract_claims(client, hakem, cevap):
     r = client.chat.completions.create(
         model=hakem.model, temperature=0, **hakem.istek_ekleri(),
@@ -166,8 +163,7 @@ def extract_claims(client, hakem, cevap):
                   {"role": "user", "content": f"CEVAP:\n{cevap}"}])
     note_provider(r)
     d = loads_tolerant(r.choices[0].message.content)
-    u = r.usage
-    return [c for c in (d.get("claims") or []) if c and c.strip()], u.prompt_tokens, u.completion_tokens
+    return [c for c in (d.get("claims") or []) if c and c.strip()], kullanim_oku(r)
 
 
 def dogrulama_istemi(soru, source, gold, cevap, claims, altin_kirpma):
@@ -187,21 +183,20 @@ def verify_claims(client, hakem, soru, source, gold, cevap, claims, altin_kirpma
                   {"role": "user", "content": user}])
     note_provider(r)
     d = loads_tolerant(r.choices[0].message.content)
-    u = r.usage
-    return d, u.prompt_tokens, u.completion_tokens
+    return d, kullanim_oku(r)
 
 
 def score_record(client, hakem, soru, source, gold, cevap, mode, altin_kirpma):
-    """Tek (kayıt × tek koşu): iki aşama → ham sayaçlar (havuzlama için)."""
-    model = hakem.model
-    claims, i1, o1 = extract_claims(client, hakem, cevap)
-    cost = i1 * _price(model)[0] + o1 * _price(model)[1]
+    """Tek (kayıt × tek koşu): iki aşama → ham sayaçlar (havuzlama için) + çağrı başına
+    (aşama, Kullanim) listesi."""
+    claims, k1 = extract_claims(client, hakem, cevap)
+    kullanimlar = [("cikarim", k1)]
     if not claims:
         return {"n_claims": 0, "sup": 0, "con": 0, "nis": 0, "nis_unsup": 0,
                 "n_cit": 0, "cit_ok": 0, "cit_wrong": 0, "source_cited": False,
-                "labels": [], "citations": []}, cost
-    d, i2, o2 = verify_claims(client, hakem, soru, source, gold, cevap, claims, altin_kirpma)
-    cost += i2 * _price(model)[0] + o2 * _price(model)[1]
+                "labels": [], "citations": []}, kullanimlar
+    d, k2 = verify_claims(client, hakem, soru, source, gold, cevap, claims, altin_kirpma)
+    kullanimlar.append(("dogrulama", k2))
     labels = d.get("labels") or []
     if not labels:
         # Why: iddia çıkarıldı ama doğrulama boş döndü — sıfır iddia değil, hakem arızası.
@@ -219,7 +214,7 @@ def score_record(client, hakem, soru, source, gold, cevap, mode, altin_kirpma):
         "cit_wrong": sum(1 for c in cits if c.get("verdict") == "WRONG_REF"),
         "source_cited": bool(d.get("source_cited")),
         "labels": labels, "citations": cits,
-    }, cost
+    }, kullanimlar
 
 
 def ratios(acc):
@@ -270,6 +265,7 @@ def main():
     # 🚨 YARIŞ KAPISI: aynı label'a yazan ikinci bir süreç varsa BURADA dur — para harcamadan.
     runlock.acquire(op, tag=f"gnd {a.label}")
     spent, out = 0.0, []
+    fatura = []   # (aşama, Kullanim): koşunun bütün başarılı hakem çağrıları
     print(f"[gnd] {a.label}: {len(rows)} cevap | mod={a.mode} | hakem={a.judge_model} "
           f"| runs={a.runs} | kaynak={a.source_field}")
     with part_ile_yaz(op) as f:
@@ -292,26 +288,28 @@ def main():
             acc = {k: 0 for k in ("n_claims", "sup", "con", "nis", "nis_unsup", "n_cit",
                                   "cit_ok", "cit_wrong")}
             acc["source_cited"] = False
-            last, hata = None, ""
+            last, hata, kalem_kullanim = None, "", []
             for _ in range(max(1, a.runs)):
                 if spent >= budget:
                     # Why: kalan kalemler puanlanmadan dosya tamamlanmış sayılamaz → `.part` kalır.
                     raise SystemExit(f"[gnd] 🚫 BÜTÇE doldu (${spent:.4f} ≥ ${budget}) — "
                                      f"{op}.part tamamlanmadı, puanlanmaz; bütçeyi artırıp yeniden koş.")
                 try:
-                    s, c = score_record(client, hakem, soru, source, gold, cevap, a.mode,
-                                        alet.altin_kirpma)
+                    s, kl = score_record(client, hakem, soru, source, gold, cevap, a.mode,
+                                         alet.altin_kirpma)
                 except _HAKEM_HATALARI as e:
                     # Why: koşulardan biri bile düşerse kalem eksik sayıyla havuzlanmaz.
                     hata = f"{type(e).__name__}: {e}"
                     print(f"  id={rid} hakem hata: {hata}")
                     break
-                spent += c
+                spent += sum(ku.liste_maliyeti(hakem.model) for _, ku in kl)
+                kalem_kullanim += kl
                 for k in ("n_claims", "sup", "con", "nis", "nis_unsup", "n_cit",
                           "cit_ok", "cit_wrong"):
                     acc[k] += s[k]
                 acc["source_cited"] = acc["source_cited"] or s["source_cited"]
                 last = s
+            fatura += kalem_kullanim
             if hata:
                 rec = _bos_satir(rid, soru, gold, a.runs, "hakem_hata", hata)
                 out.append(rec)
@@ -321,7 +319,8 @@ def main():
             rec = {"id": rid, "soru": soru, "gold": gold, "runs": a.runs,
                    "durum": "puanli" if m["n_claims"] else "sifir_iddia", **m,
                    "labels": last["labels"], "citations": last["citations"],
-                   "source_cited": acc["source_cited"]}
+                   "source_cited": acc["source_cited"],
+                   "kullanim": [{"asama": asama, **asdict(ku)} for asama, ku in kalem_kullanim]}
             out.append(rec)
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
             print(f"  id={rid:>2} faith={m['faithfulness']} hall={m['hallucination_rate']} "
@@ -358,6 +357,10 @@ def main():
         "faithfulness_macro": round(statistics.mean(
             [r["faithfulness"] for r in out if r["faithfulness"] is not None]), 4) if out else None,
         "judge_cost_usd": round(spent, 4),
+        # #74 R1: yanıttan okunan gerçek maliyet ve önbellek; judge_cost_usd liste fiyatıyla tahmin kalır
+        "fatura": {"toplam": fatura_ozeti(hakem.model, [ku for _, ku in fatura]),
+                   **{asama: fatura_ozeti(hakem.model, [ku for b, ku in fatura if b == asama])
+                      for asama in ("cikarim", "dogrulama")}},
         "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama.",
     }
     sp = os.path.join(a.out_dir, f"gnd_{a.label}_summary.json")

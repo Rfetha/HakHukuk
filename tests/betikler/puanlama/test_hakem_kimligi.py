@@ -71,7 +71,7 @@ def test_groundedness_ozeti_hakem_kunyesini_tasir(monkeypatch, tmp_path):
     monkeypatch.setattr(groundedness, "make_client", lambda: (object(), "openrouter"))
     monkeypatch.setattr(groundedness, "score_record", lambda *a: ({
         "n_claims": 1, "sup": 1, "con": 0, "nis": 0, "nis_unsup": 0, "n_cit": 0, "cit_ok": 0,
-        "cit_wrong": 0, "source_cited": False, "labels": [], "citations": []}, 0.0))
+        "cit_wrong": 0, "source_cited": False, "labels": [], "citations": []}, []))
     monkeypatch.setattr(sys, "argv", ["groundedness.py", "--details", str(_detay(tmp_path)),
                                       "--label", "x", "--out-dir", str(tmp_path),
                                       "--judge-model", "openai/gpt-4o-mini",
@@ -86,3 +86,27 @@ def test_deepseek_kisa_ad_tarihli_kimlige_cozulur_ve_saglayici_fiyati_kayitli():
     assert resolve("deepseek-v4.1-flash", "openrouter") == DS
     assert family("deepseek-v4.1-flash") == "deepseek"
     assert price(DS) == (0.14 / 1e6, 0.42 / 1e6)
+
+
+GLM = "z-ai/glm-5.3-flash-20260826"
+
+
+def test_glm_kisa_ad_tarihli_kimlige_cozulur_ve_saglayici_fiyati_kayitli():
+    """#74 R7b (2026-10-17): ikinci hakem GLM, sabit sağlayıcı Novita (fp8), fiyat indirim düşülmüş."""
+    from llm_client import family, price, resolve
+    assert resolve("glm-5.3-flash", "openrouter") == GLM
+    assert family("glm-5.3-flash") == "z-ai"
+    assert price(GLM) == (0.084 / 1e6, 0.28 / 1e6)
+
+
+@pytest.mark.parametrize("saglayici,dusunme,hata", [("novita/fp8", None, "düşünme"),
+                                                     (None, Dusunme.KAPALI, "sağlayıcı")])
+def test_glm_dusunme_modu_ve_sabit_saglayici_zorunlu(saglayici, dusunme, hata):
+    with pytest.raises(ValueError, match=hata):
+        HakemKimligi(GLM, saglayici=saglayici, dusunme=dusunme)
+
+
+def test_glm_kapali_modda_istek_ekleri_saglayiciyi_sabitler_ve_dusunmeyi_kapatir():
+    ek = HakemKimligi(GLM, saglayici="novita/fp8", dusunme=Dusunme.KAPALI).istek_ekleri()
+    assert ek["extra_body"] == {"provider": {"order": ["novita/fp8"], "allow_fallbacks": False},
+                                "reasoning": {"enabled": False}}

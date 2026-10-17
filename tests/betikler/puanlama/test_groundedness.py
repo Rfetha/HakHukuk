@@ -10,15 +10,18 @@ import sys
 import pytest
 
 import groundedness  # noqa: E402
-from llm_client import HakemKimligi  # noqa: E402
+from llm_client import HakemKimligi, Kullanim  # noqa: E402
 from olcum_aleti import GUNCEL  # noqa: E402
 from part_dosya import TamamlanmamisDosya  # noqa: E402
+
+# gpt-4o-mini liste fiyatıyla kalem başına $0,0009 (bütçe testi buna dayanır)
+_KULLANIM = Kullanim(girdi=2000, cikti=1000, onbellekli_girdi=500, dusunce=0, maliyet_usd=0.0006)
 
 
 def _puan(n_claims=2, sup=2):
     return {"n_claims": n_claims, "sup": sup, "con": 0, "nis": n_claims - sup,
             "nis_unsup": n_claims - sup, "n_cit": 1, "cit_ok": 1, "cit_wrong": 0,
-            "source_cited": True, "labels": [], "citations": []}, 0.001
+            "source_cited": True, "labels": [], "citations": []}, [("cikarim", _KULLANIM)]
 
 
 def _detay(tmp_path, n=3):
@@ -104,8 +107,23 @@ def test_groundedness_part_girdiyi_reddeder(monkeypatch, tmp_path):
 
 def test_score_record_iddia_var_etiket_yoksa_hakem_hatasidir(monkeypatch):
     """İddia çıkarıldı ama doğrulama boş etiket döndü → bu sıfır iddia DEĞİL, hakem arızası."""
-    monkeypatch.setattr(groundedness, "extract_claims", lambda *a: (["iddia"], 10, 10))
-    monkeypatch.setattr(groundedness, "verify_claims", lambda *a: ({"labels": []}, 10, 10))
+    monkeypatch.setattr(groundedness, "extract_claims", lambda *a: (["iddia"], _KULLANIM))
+    monkeypatch.setattr(groundedness, "verify_claims", lambda *a: ({"labels": []}, _KULLANIM))
     with pytest.raises(ValueError):
         groundedness.score_record(None, HakemKimligi("openai/gpt-4o-mini", None, None),
                                   "s", "k", "g", "c", "data", GUNCEL.altin_kirpma)
+
+
+def test_groundedness_ozeti_fatura_blogunu_ve_kalem_kullanimini_tasir(monkeypatch, tmp_path):
+    """#74 R1: yanıttaki gerçek maliyet kaleme ve özete yazılır; liste fiyatı ayrı kalır."""
+    ozet = _kos(monkeypatch, tmp_path, lambda soru: _puan())
+    t = ozet["fatura"]["toplam"]
+    assert t["n_cagri"] == 3 and t["gercek_maliyet_usd"] == pytest.approx(0.0018)
+    assert t["fatura_orani"] == pytest.approx(0.0018 / 0.0027, abs=1e-4)
+    assert t["onbellek_isabeti"] == 0.25
+    assert ozet["fatura"]["cikarim"]["n_cagri"] == 3 and ozet["fatura"]["dogrulama"]["n_cagri"] == 0
+    assert ozet["judge_cost_usd"] == pytest.approx(0.0027, abs=1e-4)
+    assert _gnd(tmp_path)[0]["kullanim"] == [{"asama": "cikarim", "girdi": 2000, "cikti": 1000,
+                                              "onbellekli_girdi": 500, "dusunce": 0,
+                                              "maliyet_usd": 0.0006}]
+

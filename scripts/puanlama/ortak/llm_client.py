@@ -47,6 +47,8 @@ ALIAS = {
     # F0.14 (2026-10-15, kronoloji #81): OpenRouter'ın `canonical_slug`'ı — sürümü tarihle sabitler.
     # F0.6'da doğrulandı: 10 koşu, sağlayıcı DeepInfra, hakem hatası 0 (kronoloji #85).
     "deepseek-v4.1-flash": "deepseek/deepseek-v4.1-flash-20260910",
+    # #74 (2026-10-17): ikinci hakem GLM; OpenRouter'ın `canonical_slug`'ı, sürümü tarihle sabitler.
+    "glm-5.3-flash": "z-ai/glm-5.3-flash-20260826",
 }
 
 # ⚠️ BİRİNCİL-KAYNAK liste fiyatı (USD / token), (girdi, çıktı). Kapı marjı DAHİL DEĞİL.
@@ -75,6 +77,12 @@ PRICE = {  # 2026-07-24 itibarıyla
     # Önbellekli girdi $0,0042/M bu tabloda yok (tahmin önbelleksiz ⇒ üstten).
     # ⚠️ Uç noktada `discount: 0.3` işareti vardı — fiyat ileride değişebilir; koşu günü yeniden okunur.
     "deepseek/deepseek-v4.1-flash-20260910": (0.14 / 1e6, 0.42 / 1e6),
+    # ── İkinci hakem · GLM-5.3-Flash, sabit sağlayıcı Novita (fp8) ───────────────────────────
+    # Birincil kaynak: OpenRouter `GET /api/v1/models/z-ai/glm-5.3-flash/endpoints`, okundu
+    # 2026-10-17 13:32 UTC (#74). fp8 modelin kendi hassasiyeti (HF `zai-org/GLM-5.3-Flash`, MIT).
+    # ⚠️ Gösterilen fiyat İNDİRİM DÜŞÜLMÜŞ fiyattır (`discount: 0.44`, taban $0,15 / $0,50; altı uç
+    # noktada taban × (1 − indirim) = liste) — indirim kalkarsa ~1,8 katı; koşu günü yeniden okunur.
+    "z-ai/glm-5.3-flash-20260826": (0.084 / 1e6, 0.28 / 1e6),
     # ⛔ `anthropic/claude-sonnet-5:batch` (liste fiyatı tam yarısı) buradan KULLANILAMAZ —
     # ölçüldü 2026-09-07: senkron chat-completions çağrısı 404 döndürüyor,
     # "This model is only available through the Batch API. Use /api/beta/batches".
@@ -183,8 +191,9 @@ class Dusunme(Enum):
 # Sabit sağlayıcısı zorunlu aileler: yedek sağlayıcıya düşme kapalı, ortam değişkenine düşülmez.
 # F0.14 (2026-10-15, #81): sabit sağlayıcı `deepinfra/fp8`. DeepSeek'in kendi belgesine göre düşünme
 # modunda `temperature` YOK SAYILIR (hata vermez) — hakemin düşünmesi açıkken sıcaklık hiçbir şeyi sabitlemez.
-DUSUNME_AILELERI = {"deepseek"}
-SAGLAYICI_ZORUNLU_AILELER = {"deepseek"}
+# #74 (2026-10-17): ikinci hakem GLM (`z-ai`), sabit sağlayıcı `novita/fp8`; aynı iki kural.
+DUSUNME_AILELERI = {"deepseek", "z-ai"}
+SAGLAYICI_ZORUNLU_AILELER = {"deepseek", "z-ai"}
 
 
 @dataclass(frozen=True)
@@ -216,6 +225,56 @@ class HakemKimligi:
     def kunye(self) -> dict:
         return {"model": self.model, "saglayici": self.saglayici,
                 "dusunme": self.dusunme.value if self.dusunme else None}
+
+
+@dataclass(frozen=True)
+class Kullanim:
+    """Tek çağrının yanıttan okunan kullanımı. Alan yanıtta yoksa None — eksik, sıfır değildir;
+    liste fiyatına sessizce düşülmez (#74 R1)."""
+    girdi: int
+    cikti: int
+    onbellekli_girdi: int | None
+    dusunce: int | None
+    maliyet_usd: float | None
+
+    def liste_maliyeti(self, model) -> float:
+        p_in, p_out = price(model)
+        return self.girdi * p_in + self.cikti * p_out
+
+
+def kullanim_oku(resp) -> Kullanim:
+    """OpenRouter her yanıtta gerçek maliyeti, önbellekten okunan girdiyi ve düşünce token'ını
+    döndürür; istek parametresi gerekmez (OpenRouter "Usage Accounting" belgesi, okundu 2026-10-17)."""
+    u = resp.usage.model_dump()   # Why: `cost` OpenRouter'ın ek alanı, SDK'nın tipinde yok
+    pd, cd = u.get("prompt_tokens_details") or {}, u.get("completion_tokens_details") or {}
+    return Kullanim(girdi=u["prompt_tokens"], cikti=u["completion_tokens"],
+                    onbellekli_girdi=pd.get("cached_tokens"), dusunce=cd.get("reasoning_tokens"),
+                    maliyet_usd=u.get("cost"))
+
+
+def fatura_ozeti(model, kullanimlar) -> dict:
+    """Gerçek maliyet ↔ liste fiyatı ve önbellek isabeti. Oran ve isabet yalnız alanı okunan
+    çağrılardan hesaplanır; okunamayan çağrılar `eksik` sayaçlarında görünür."""
+    ks = list(kullanimlar)
+    mal = [k for k in ks if k.maliyet_usd is not None]
+    onb = [k for k in ks if k.onbellekli_girdi is not None]
+    dus = [k for k in ks if k.dusunce is not None]
+    liste_okunan = sum(k.liste_maliyeti(model) for k in mal)
+    gercek = sum(k.maliyet_usd for k in mal)
+    girdi_onb = sum(k.girdi for k in onb)
+    return {
+        "n_cagri": len(ks), "girdi_token": sum(k.girdi for k in ks),
+        "cikti_token": sum(k.cikti for k in ks),
+        "onbellekli_girdi_token": sum(k.onbellekli_girdi for k in onb) if onb else None,
+        "onbellek_isabeti": round(sum(k.onbellekli_girdi for k in onb) / girdi_onb, 4)
+        if girdi_onb else None,
+        "dusunce_token": sum(k.dusunce for k in dus) if dus else None,
+        "liste_maliyet_usd": round(sum(k.liste_maliyeti(model) for k in ks), 6),
+        "gercek_maliyet_usd": round(gercek, 6) if mal else None,
+        "fatura_orani": round(gercek / liste_okunan, 4) if liste_okunan else None,
+        "eksik": {"maliyet": len(ks) - len(mal), "onbellek": len(ks) - len(onb),
+                  "dusunce": len(ks) - len(dus)},
+    }
 
 
 def note_provider(resp):
