@@ -1,8 +1,9 @@
 # CLAUDE.md
 
 Guidance for Claude Code in this repository. **This file is a MAP, not a report**: it says *where
-things are* and *what rules bind you*. Measurement tables, sprint narratives and dated status live in
-`docs/record/` and `docs/adr/`. When a round closes, update the **pointers** here, not numbers.
+things are* and *what rules bind you*. Measurement tables live in `docs/record/` and `docs/adr/`, status on
+the board. This file carries no value that changes from round to round (next entry or ADR number, live plan,
+counts): read those from the folders.
 **Git history was reset on 2026-10-10** ([ADR-0088](docs/adr/kararlar-0064-0085.md#adr-0088)): the
 repository restarts from a single commit. The old history (590 commits, all branches, tags `v0.2` ·
 `v0.3` · `v1.0`) lives **outside** the repo in a local bundle, `~/yedek/HakHukuk-2026-10-10.bundle`.
@@ -28,10 +29,11 @@ are public. Began as a master's thesis; since 2026-08-03 it is a **product**: th
   the weights did not ([ADR-0084](docs/adr/kararlar-0064-0085.md#adr-0084)). κ stayed below the tool's
   0.6 threshold; the judge panel is two families, not three.
 
-**What the reframing kept — all of it.** Fixed seeds · logged runs · run manifests (`KUNYE.json`) ·
-pre-registered gates · same-day record · an ADR per decision · the trap list. This is not ceremony: the
-discipline repeatedly caught numbers about to be published wrong (a metric that rewarded refusing, a
-validity gate that voided a degenerate model, a normalization prescription that measurement reversed).
+**What the reframing kept.** Fixed seeds · logged runs · run manifests (`KUNYE.json`) · gates and thresholds
+committed before the run · sourced numbers · the trap list. This is not ceremony: the discipline repeatedly
+caught numbers about to be published wrong (a metric that rewarded refusing, a validity gate that voided a
+degenerate model, a normalization prescription that measurement reversed). Process ceremony around it (same-day
+records of everything, an ADR per decision, pointer upkeep, status in several places) was cut on 2026-10-17.
 
 ## File tree
 
@@ -57,7 +59,7 @@ docs/                every document except the three root ones (index: docs/READ
   referans/            BEDESTEN_API.md HF_KARTI_INDEKS.md model-soyagaci.mmd
   adr/                 decision ledger   (README.md · kararlar-*.md + gemma4-12b-dersler.md)
   record/              research record   (README.md · kronoloji-*.md · gemma4-12b-kronoloji.md · kollar.md · yurutme-tuzaklari.md)
-  superpowers/plans/   at most one live plan (ADR-0056; the ADR-0106 exception closed 2026-10-16); exists only while a phase plan is open
+  superpowers/plans/   optional plans; written only when a task needs one, deleted when done
   superpowers/specs/   design specs; an applied spec stays as that day's design
 data/                corpus/ (ground truth) · eval/ (frozen) · train/ · index/ · _ham_ve_ara/
 outputs/             eval/<group>/<run>/ (+ _artefakt/) · egitim/<task>/ (training-side evidence) · tg_v1/ · ta_v1/ (adapters; private HF backup per ADR-0091, F0.1)
@@ -76,28 +78,31 @@ old flat `outputs/eval/<run>` strings — the old→new map is in the ADR.
 
 | you want | read |
 | :--- | :--- |
-| what to do next | **Status lives only on the board** [`law-slm-board`](https://github.com/users/Rfetha/projects/3) — one issue per task, an `epic` issue per phase; a card is closed by hand once its check passes, commits carry `refs #N` ([ADR-0108](docs/adr/kararlar-0064-0085.md#adr-0108)) · tasks and their checks: [`docs/yol_haritasi/ROADMAP_v1.md`](docs/yol_haritasi/ROADMAP_v1.md), phases F0–F5. Order decided 2026-10-10: Checkpoint 1 (Makale 1) → Checkpoint 2 (GRPO on the Checkpoint 1 winner, Makale 2, thesis) → legislation-scope/freshness round. `00-IS-SIRASI.md` was deleted that day · live plan: [`docs/superpowers/plans/2026-10-16-F0-zemin.md`](docs/superpowers/plans/2026-10-16-F0-zemin.md) (F0, opened 2026-10-11; renamed 2026-10-16) · the agent app is a separate line outside the paper line: [`docs/yol_haritasi/ROADMAP_uygulama.md`](docs/yol_haritasi/ROADMAP_uygulama.md) ([ADR-0104](docs/adr/kararlar-0064-0085.md#adr-0104); calendar, tool-call measurement and tool-use RL placement: [ADR-0105](docs/adr/kararlar-0064-0085.md#adr-0105)) |
+| what to do next | **Status lives only on the board** [`law-slm-board`](https://github.com/users/Rfetha/projects/3) — one issue per task, an `epic` issue per phase; the agent closes a card once its check passes and reports it, commits carry `refs #N` ([ADR-0108](docs/adr/kararlar-0064-0085.md#adr-0108)); a card body is one line pointing at its ROADMAP row, which holds the task and its check · tasks and their checks: [`docs/yol_haritasi/ROADMAP_v1.md`](docs/yol_haritasi/ROADMAP_v1.md), phases F0–F5. Order decided 2026-10-10: Checkpoint 1 (Makale 1) → Checkpoint 2 (GRPO on the Checkpoint 1 winner, Makale 2, thesis) → legislation-scope/freshness round. `00-IS-SIRASI.md` was deleted that day · plans, if any: `docs/superpowers/plans/` · the agent app is a separate line outside the paper line: [`docs/yol_haritasi/ROADMAP_uygulama.md`](docs/yol_haritasi/ROADMAP_uygulama.md) ([ADR-0104](docs/adr/kararlar-0064-0085.md#adr-0104); calendar, tool-call measurement and tool-use RL placement: [ADR-0105](docs/adr/kararlar-0064-0085.md#adr-0105)) |
 | direction and why | [`docs/yol_haritasi/YAYIN_YOL_HARITASI.md`](docs/yol_haritasi/YAYIN_YOL_HARITASI.md) — the two-paper plan, decisions, budget, risks · locked training environment: [`docs/yontem/EGITIM_ORTAMI.md`](docs/yontem/EGITIM_ORTAMI.md) · what the product promises and does **NOT** promise: [`docs/urun/PRODUCT.md`](docs/urun/PRODUCT.md) |
 | the `v1` chain, product modules | [`docs/urun/MIMARI.md`](docs/urun/MIMARI.md) |
-| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — entries #39-#89 in five chronology files, per-entry anchors; #88 is unused; **new findings continue at #90** (`kronoloji-87-98.md`) |
-| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; ledger runs to **0114**, next is **0115**; new ADRs are appended to `kararlar-0064-0085.md` with `<a id="adr-NNNN"></a>`. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`); **0100 is unused** (F0.12 wrote no ADR, 2026-10-17) |
-| open defects and handover | [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083) — 4 open (5a · 23 · 27 · 31), 3 handed on (6 · 11 · 12b); §EK E.5 holds the nine questions that go into the next grill |
+| every measurement, dated, with its source file | [`docs/record/README.md`](docs/record/README.md) — chronology files, per-entry anchors `<a id="NN"></a>`; a new entry goes at the end of the newest `kronoloji-*.md`; **next number = last anchor + 1** |
+| why a decision went the way it did | [`docs/adr/README.md`](docs/adr/README.md) — one line per ADR with anchor; new ADRs are appended to the newest `kararlar-*.md` with `<a id="adr-NNNN"></a>`; **next number = last anchor + 1**. **0059 is RESERVED** (six places cite `ADR-0059 §sapma-1`) |
+| open defects | the board, label `bug`. [`ADR-0083`](docs/adr/kararlar-0064-0085.md#adr-0083)'s register is history since 2026-10-17; its §EK E.5 holds the nine questions that go into the next grill |
 | artifact registry | [`docs/record/kollar.md`](docs/record/kollar.md) — every trained branch and merge has its identity here; **an artifact with no row is nameless and must not be used**. Family tree: [`docs/referans/model-soyagaci.mmd`](docs/referans/model-soyagaci.mmd) |
 | the headline number and its caveats | [`MODEL_CARD.md`](MODEL_CARD.md) and `docs/record/kronoloji-63-71.md` — never quote from memory |
 | all docs | [`docs/README.md`](docs/README.md) |
 
-`tests/depo/test_belgeler.py` walks every link in the live docs (root files and `docs/*.md`), so a dead
-pointer **fails a test**. Older prose saying "`research_log` #42" means "chronology #42"; every ADR and
-entry carries an HTML anchor (`ADR-0057` → `kararlar-0045-0063.md#adr-0057`). Never "repair" an old path
-inside `docs/adr/**` or `docs/record/**` on your own — they record what that day said.
+`tests/depo/test_belgeler.py` checks that every relative link in eleven live docs (root files, README, ROADMAP,
+YAYIN, PRODUCT, MIMARI, YENIDEN_URETIM, EGITIM_ORTAMI) points to an existing file; it does **not** check
+`#anchors`, and `docs/adr/**`, `docs/record/**` and the plans are outside it. Older prose saying "`research_log`
+#42" means "chronology #42"; every ADR and entry carries an HTML anchor (`ADR-0057` →
+`kararlar-0045-0063.md#adr-0057`). Inside `docs/adr/**` and `docs/record/**` **numbers and quotes never change**;
+fixing a link or a moved path there is allowed and needs no ADR.
 
 ### Read before doing anything
 
-- **[`docs/record/yurutme-tuzaklari.md`](docs/record/yurutme-tuzaklari.md) — before ANY run.** The list of
-  *"produces a wrong number without erroring"* patterns, every one of which has actually bitten: dropped
-  `--data`/`--thinking off`, uncalibrated refusal regex, missing `--target-modules`, `set -e` swallowing the
-  error, half-finished quantization that still leaves a file on disk. **This line's failure class is silent
-  wrongness, not crashes.**
+- **[`docs/record/yurutme-tuzaklari.md`](docs/record/yurutme-tuzaklari.md) — before ANY run, at least its short
+  "Kullanım" list.** The list of *"produces a wrong number without erroring"* patterns, every one of which has
+  actually bitten: dropped `--data`/`--thinking off`, uncalibrated refusal regex, missing `--target-modules`,
+  `set -e` swallowing the error, half-finished quantization that still leaves a file on disk. **This line's
+  failure class is silent wrongness, not crashes.** A newly found trap gets its row the day it is found; it gets
+  a chronology entry only if it changed a number.
 - **[`docs/adr/gemma4-12b-dersler.md`](docs/adr/gemma4-12b-dersler.md)** — the retired 12B line's ADRs
   0001-0026. Part (A) lessons is base-agnostic: *"plain SFT destroys abstention"*, *"the eval mirror is
   mandatory"*, *"`spawn()` not `remote()`"*. **Read part A before designing any experiment.**
@@ -136,21 +141,28 @@ inside `docs/adr/**` or `docs/record/**` on your own — they record what that d
 Intermittent solo OSS project: weeks can pass between sessions and the repo is the only thing that
 remembers. The research record is the most valuable thing here, more than the weights.
 
-- **Every significant experiment, result or decision is written down immediately.** Two homes:
-  chronology under `docs/record/` (narrative + numbers + lesson, appended to the newest `kronoloji-*.md`
-  with an `<a id="NN"></a>` anchor) and `docs/adr/` (a discrete ADR per big decision). A finding that
-  lives only in chat is lost.
+Scope cut on 2026-10-17 (user decision): write down what a paper, the model card or a re-run needs, nothing
+for ceremony.
+
+- **A number that will be cited is written down with its source.** Anything that goes into a paper or the
+  model card gets a chronology entry (`docs/record/kronoloji-*.md`, `<a id="NN"></a>`): what was measured,
+  the numbers, the file path / `KUNYE.json`, one paragraph of lesson. No session narrative, no quoted
+  approvals. A finding that lives only in chat is lost.
+- **An ADR only for a decision that changes measurement, training, data or a published claim**, with the
+  eliminated alternatives (the paper's method section needs them). Repo layout and process decisions go in
+  the commit message.
 - **Numbers are sourced, not remembered:** exact metric, n, judge, seed and the file it lives in
   (`outputs/eval/...`).
 - **Negative and surprising results are first-class** — same rigor as wins.
-- When a decision contradicts an older doc, **flag the contradiction in both places** rather than silently
-  overwriting.
+- **Strike-through only where it protects a rule.** Frozen measurement rules (gates, thresholds, the winner
+  rule) and reversed ADRs keep the old text struck with the date of the change. Planning docs (ROADMAP,
+  YAYIN, plans) are simply edited; git keeps the old version.
+- **Status lives only on the board.** Plans, ROADMAP and YAYIN carry no status notes.
 - Doc types: **record** (what happened) · **decision** (why, which alternative was eliminated) · **spec**
-  (`docs/superpowers/specs/`) · **plan** (`docs/superpowers/plans/`, `- [ ]` boxes, closing block when
-  executed; **at most one live plan**, ADR-0056) · **execution** (`sprint*.md` at root, only the open one).
-  Empty specs/plans folders do not exist (git tracks no empty folder). A closed plan is deleted the day it
-  closes and becomes record (ADR-0083 precedent). A doc that says "what's next" is a plan and cannot sit
-  under `record/`.
+  (`docs/superpowers/specs/`) · **plan** (`docs/superpowers/plans/`, optional, `- [ ]` boxes, a box is ticked
+  only when its check passes and carries at most `#NN` or a commit). A threshold or tolerance fixed before a
+  run is committed **before the run**. A finished plan is deleted after any number found only there has been
+  moved. A doc that says "what's next" is a plan and cannot sit under `record/`.
 
 ## Core constraints that shape every decision
 
@@ -232,9 +244,14 @@ remembers. The research record is the most valuable thing here, more than the we
 - **Git repo.** Tests: `python -m pytest -q -p no:cacheprovider` (`-m "not slow"` skips real-DB tests).
   No formal build/lint setup — add when it earns its keep.
   Branches ([ADR-0111](docs/adr/kararlar-0064-0085.md#adr-0111)): `develop` is the working branch; `master` holds only
-  tagged releases (`develop` → `master` merge + tag at release, next is `v1` at F5.7). Larger work goes on a
-  `<card>-<short-name>` branch off `develop` (e.g. `14-dev-olcumu`) and returns by PR; merge commits only (squash and
-  rebase are disabled because the record cites hashes). A second concurrent session works in its own `git worktree`.
+  tagged releases (`develop` → `master` merge + tag at release, next is `v1` at F5.7). Work happens on `develop`;
+  a `<card>-<short-name>` branch is opened only when two sessions work at the same time, in its own `git worktree`,
+  and returns with a local `git merge --no-ff` (no PR required). Merge commits only (squash and rebase are disabled
+  because the record cites hashes).
+- **Approvals (user rule, 2026-10-17).** The agent asks first only for: a change of method, criterion or decision ·
+  a published number or the model card · money · irreversible or public steps (uploads, pushes). Everything else is
+  done and reported through the commit. Paid work: one approval per work package with a spending cap; public
+  uploads and irreversible steps still get their own approval. Commits are allowed without asking; the user pushes.
 - **Scripts layout:** `scripts/<group>/<sub>/` (ADR-0112). Sibling imports are extension-less
   (`import runlock`, `from build_sft_v2b import …`) and survive the split only because **39 files carry an
   identical path-bridge block** that puts every folder under `scripts/`, at any depth, on `sys.path` —
