@@ -69,6 +69,7 @@ from llm_client import (make_client, resolve, price, Dusunme, HakemKimligi,  # n
 import runlock  # noqa: E402  — aynı label'a paralel yazım = sessiz bozulma (bkz. runlock.py)
 from part_dosya import part_ile_yaz, tamamlanmis_jsonl  # noqa: E402
 import olcum_aleti  # noqa: E402  — RQ2 anahtarları (F0.5 b): altın madde kırpması
+import sonuc_deposu  # noqa: E402  — #74 R4: aynı hakem aynı girdiyi bir kez puanlar (vars. kapalı)
 
 # Why bu liste: SDK yeniden denemeleri tükendikten sonraki API hatası (openai.APIError) ve
 # hakemin bozuk/eksik JSON'u (loads_tolerant → ValueError; beklenmeyen biçim → TypeError,
@@ -151,6 +152,11 @@ def parse_args():
     p.add_argument("--hakem-dusunme", choices=[d.value for d in Dusunme], default=None,
                    help="hakemin KENDİ düşünme modu; düşünme modu olan ailede ZORUNLU, varsayılansız")
     p.add_argument("--runs", type=int, default=1, help="N kez koş-havuzla (count gürültüsü ↓)")
+    p.add_argument("--sonuc-deposu", choices=[m.value for m in sonuc_deposu.DepoModu],
+                   default=sonuc_deposu.DepoModu.KAPALI.value,
+                   help="kullan: aynı hakemin aynı girdiye önceki sonucu yeniden kullanılır (yalnız "
+                        "--runs 1). Gürültü tabanı, kayma çıpası ve tekrarlarda KAPALI kalır")
+    p.add_argument("--sonuc-deposu-kok", default="outputs/eval/_hakem_deposu")
     p.add_argument("--n", type=int, default=-1)
     olcum_aleti.argparse_ekle(p)
     return p.parse_args()
@@ -258,6 +264,12 @@ def main():
     except ValueError as e:
         raise SystemExit(f"[gnd] 🚫 {e}")
     price(a.judge_model)   # Why: fiyatı kayıtsız hakem ilk çağrıdan (paradan) ÖNCE reddedilir
+    depo = None
+    if sonuc_deposu.DepoModu(a.sonuc_deposu) is sonuc_deposu.DepoModu.KULLAN:
+        if a.runs != 1:
+            raise SystemExit("[gnd] 🚫 --sonuc-deposu kullan yalnız --runs 1 ile; tekrarlar "
+                             "aynı girdiyi yeniden puanlatmak içindir")
+        depo = sonuc_deposu.SonucDeposu(a.sonuc_deposu_kok, hakem.kunye())
     budget = float(os.environ.get("OPENAI_BUDGET_USD", "5") or "5")
 
     os.makedirs(a.out_dir, exist_ok=True)
@@ -289,21 +301,30 @@ def main():
                                   "cit_ok", "cit_wrong")}
             acc["source_cited"] = False
             last, hata, kalem_kullanim = None, "", []
+            k_depo = (sonuc_deposu.anahtar(hakem.kunye(), (EXTRACT_SYSTEM, VERIFY_SYSTEM), a.mode,
+                                           soru, alet.altin_kirpma.kirp(source), gold, cevap)
+                      if depo else None)
+            depodan = False
             for _ in range(max(1, a.runs)):
                 if spent >= budget:
                     # Why: kalan kalemler puanlanmadan dosya tamamlanmış sayılamaz → `.part` kalır.
                     raise SystemExit(f"[gnd] 🚫 BÜTÇE doldu (${spent:.4f} ≥ ${budget}) — "
                                      f"{op}.part tamamlanmadı, puanlanmaz; bütçeyi artırıp yeniden koş.")
-                try:
-                    s, kl = score_record(client, hakem, soru, source, gold, cevap, a.mode,
-                                         alet.altin_kirpma)
-                except _HAKEM_HATALARI as e:
-                    # Why: koşulardan biri bile düşerse kalem eksik sayıyla havuzlanmaz.
-                    hata = f"{type(e).__name__}: {e}"
-                    print(f"  id={rid} hakem hata: {hata}")
-                    break
-                spent += sum(ku.liste_maliyeti(hakem.model) for _, ku in kl)
-                kalem_kullanim += kl
+                s = depo.bul(k_depo) if depo else None
+                depodan = s is not None
+                if not depodan:
+                    try:
+                        s, kl = score_record(client, hakem, soru, source, gold, cevap, a.mode,
+                                             alet.altin_kirpma)
+                    except _HAKEM_HATALARI as e:
+                        # Why: koşulardan biri bile düşerse kalem eksik sayıyla havuzlanmaz.
+                        hata = f"{type(e).__name__}: {e}"
+                        print(f"  id={rid} hakem hata: {hata}")
+                        break
+                    spent += sum(ku.liste_maliyeti(hakem.model) for _, ku in kl)
+                    kalem_kullanim += kl
+                    if depo:
+                        depo.ekle(k_depo, s, a.label)
                 for k in ("n_claims", "sup", "con", "nis", "nis_unsup", "n_cit",
                           "cit_ok", "cit_wrong"):
                     acc[k] += s[k]
@@ -320,7 +341,8 @@ def main():
                    "durum": "puanli" if m["n_claims"] else "sifir_iddia", **m,
                    "labels": last["labels"], "citations": last["citations"],
                    "source_cited": acc["source_cited"],
-                   "kullanim": [{"asama": asama, **asdict(ku)} for asama, ku in kalem_kullanim]}
+                   "kullanim": [{"asama": asama, **asdict(ku)} for asama, ku in kalem_kullanim],
+                   **({"depodan": depodan} if depo else {})}
             out.append(rec)
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
             print(f"  id={rid:>2} faith={m['faithfulness']} hall={m['hallucination_rate']} "
@@ -361,6 +383,8 @@ def main():
         "fatura": {"toplam": fatura_ozeti(hakem.model, [ku for _, ku in fatura]),
                    **{asama: fatura_ozeti(hakem.model, [ku for b, ku in fatura if b == asama])
                       for asama in ("cikarim", "dogrulama")}},
+        "sonuc_deposu": {"mod": a.sonuc_deposu, "yol": depo.yol if depo else None,
+                         "n_depodan": sum(1 for r in out if r.get("depodan"))},
         "note_validity": "LLM-judge (insan-κ kalibresiz, Aşama C) → mutlak değil, model-vs-model sıralama.",
     }
     sp = os.path.join(a.out_dir, f"gnd_{a.label}_summary.json")

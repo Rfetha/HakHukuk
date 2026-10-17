@@ -127,3 +127,34 @@ def test_groundedness_ozeti_fatura_blogunu_ve_kalem_kullanimini_tasir(monkeypatc
                                               "onbellekli_girdi": 500, "dusunce": 0,
                                               "maliyet_usd": 0.0006}]
 
+
+def test_groundedness_sonuc_deposu_varsayilan_kapali_depoya_dokunmaz(monkeypatch, tmp_path):
+    ozet = _kos(monkeypatch, tmp_path, lambda soru: _puan(),
+                "--sonuc-deposu-kok", str(tmp_path / "depo"))
+    assert ozet["sonuc_deposu"] == {"mod": "kapali", "yol": None, "n_depodan": 0}
+    assert not (tmp_path / "depo").exists()
+    assert "depodan" not in _gnd(tmp_path)[0]
+
+
+def test_groundedness_sonuc_deposu_kullan_ikinci_koşuda_hakemi_cagirmaz(monkeypatch, tmp_path):
+    cagri = []
+
+    def davranis(soru):
+        cagri.append(soru)
+        return _puan()
+    ek = ("--sonuc-deposu", "kullan", "--sonuc-deposu-kok", str(tmp_path / "depo"))
+    _kos(monkeypatch, tmp_path, davranis, *ek)
+    assert len(cagri) == 3
+    ozet = _kos(monkeypatch, tmp_path, davranis, *ek)
+    assert len(cagri) == 3                      # ikinci koşu hakemi hiç çağırmadı
+    assert ozet["sonuc_deposu"]["n_depodan"] == 3 and _gnd(tmp_path)[0]["depodan"] is True
+    assert ozet["fatura"]["toplam"]["n_cagri"] == 0
+    assert ozet["faithfulness_macro"] == 1.0
+
+
+def test_groundedness_sonuc_deposu_kullan_birden_fazla_tekrarla_reddedilir(monkeypatch, tmp_path):
+    cagri = []
+    with pytest.raises(SystemExit):
+        _kos(monkeypatch, tmp_path, lambda soru: cagri.append(soru), "--sonuc-deposu", "kullan",
+             "--runs", "2", "--sonuc-deposu-kok", str(tmp_path / "depo"))
+    assert cagri == []
