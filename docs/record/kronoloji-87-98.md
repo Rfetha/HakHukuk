@@ -1,12 +1,7 @@
 # Araştırma kaydı — #87 …
 
-> **Ne bu:** Checkpoint 1'in F0 aşamasının devamı. Önceki dosya [`kronoloji-75-86.md`](kronoloji-75-86.md) 12 girdiye
-> ulaştı (#75-#86); kural [`README.md`](README.md)'de. Çapa: `kronoloji-87-98.md#87`. **#88 kullanılmadı (F0.14 kayda geçmedi, kullanıcı kararı 2026-10-17); yeni girdi #90'dan devam eder.**
-
-| # | tarih | başlık | kanca |
-| :-- | :--- | :--- | :--- |
-| [87](#87) | 2026-10-16 | vLLM üretim gürültüsü: aynı Q4 ağırlığı vLLM'de 3,6 p düşük, koşudan koşuya ±2,25 p | G3 en şanslı çekilişte geçmişti · ölçüm llama.cpp'de kalır (ADR-0109) |
-| [89](#89) | 2026-10-17 | Hakem faturası: kapalı modda fatura listenin 0,713'ü (önbellek); GLM-5.3-Flash ön ölçümü 0,65 p | ×1,6 kalktı · R3 uygulanır · bağlayıcı hakem kapalı (ADR-0113, ADR-0114) |
+> **Ne bu:** Checkpoint 1'in F0 aşamasının devamı (#87'den); önceki dosya [`kronoloji-75-86.md`](kronoloji-75-86.md).
+> Kural [`README.md`](README.md)'de: yeni girdi bu dosyanın sonuna, numara = son çapa + 1 (#88 kullanılmadı).
 
 <a id="87"></a>
 ## #87 — vLLM üretim gürültüsü: aynı Q4 ağırlığı vLLM'de llama.cpp'den 3,6 puan düşük ve koşudan koşuya ±2,25 puan oynuyor; ölçüm llama.cpp'de kalır

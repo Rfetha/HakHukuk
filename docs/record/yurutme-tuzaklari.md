@@ -1,14 +1,15 @@
 # Yürütme tuzakları — yeni hat (Qwen3.5-4B)
 
-> **Bu belge ne:** *"hata vermeden yanlış sonuç üreten"* kalıpların tek listesi. **91 satırın hepsi bu
-> hatta fiilen ısırdı**; hiçbiri teorik değil. Bir koşuya başlamadan önce ilgili bölümü oku.
+> **Bu belge ne:** *"hata vermeden yanlış sonuç üreten"* kalıpların tek listesi. **Satırların hepsi bu
+> hatta fiilen ısırdı**; hiçbiri teorik değil. Bir koşuya başlamadan önce en az sondaki "Kullanım" listesini,
+> gerekirse ilgili bölümü oku.
 >
 > **12B karşılığı:** [`../adr/gemma4-12b-dersler.md`](../adr/gemma4-12b-dersler.md) Bölüm A —
 > orada **base-agnostik dersler**, burada **bu hattın yürütme tuzakları**.
 > **Kaynak:** `sprint1.md` *(silindi)* uyarı blokları + kronoloji [#39](kronoloji-39-52.md#39) ·
 > [#40](kronoloji-39-52.md#40) · [#41](kronoloji-39-52.md#41).
-> **Ekleme kuralı:** yeni bir sessiz-bozulma çıkarsa **aynı gün** buraya bir satır + kronoloji girdisi.
-> Kalıcı karar doğuruyorsa ayrıca ADR.
+> **Ekleme kuralı:** yeni bir sessiz-bozulma çıkarsa **aynı gün** buraya bir satır. Kronoloji girdisi yalnız
+> bir sayıyı etkilediyse; ADR yalnız ölçümü değiştiren bir karar doğurduysa.
 >
 > ⚠️ **Numara çakışmaları — bilinçli olarak DÜZELTİLMEDİ** (numaralar depo genelinde atıf alıyor):
 > **2.17 iki ayrı tuzaktır** (önbellek anahtarı ‖ çıpasız kapı maddesi) · **5.8 iki ayrı tuzaktır**

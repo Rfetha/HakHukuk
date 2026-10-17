@@ -4,9 +4,9 @@ Bu klasör **neden** belirli bir yol seçtiğimizi kaydeder — sadece *ne* yapt
 Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç ne oldu"* sorusu
 **kanıtla** cevaplanabilsin.
 
-> **Gerekçe 2026-08-03'te değişti, kural aynı kaldı.** Eskiden *"paper yazılırken lazım olacak"*
-> diyordu. Tez yok. Yerine geçen sebep **daha güçlü**: bu **aralıklı, tek kişilik açık kaynak** bir
-> proje — oturumlar arasında haftalar geçiyor ve **hatırlayan tek şey repo**.
+**Ne zaman ADR yazılır** (2026-10-17): yalnız ölçümü, eğitimi, veriyi ya da yayımlanan bir iddiayı değiştiren
+karar için; "Elenen" alternatifleriyle (makalenin yöntem bölümü buradan yazılır). Depo düzeni ve süreç kararları
+commit mesajında kalır.
 
 ## Dosyalar
 
@@ -14,21 +14,22 @@ Amaç tek: *"şunu neden böyle yaptık, hangi alternatifi neden eledik, sonuç 
 | :--- | :--- |
 | [`kararlar-0027-0044.md`](kararlar-0027-0044.md) | tasarım kilitleri · base seçimi · precision · merge/norm · Kapı 6 · düşünce modu |
 | [`kararlar-0045-0063.md`](kararlar-0045-0063.md) | ara kapı · CP2 hasat · hakem · harness · eşit sınav · faz 0 ölçüm zinciri |
-| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | `v1.0` kapısı · hakem paneli · ürün yolu · konteyner · kusur sicili · κ · tek kart · yayın yolu ve fizibilite (0089-0098) · F0 aleti (0099) · RunPod yedeği (0101) · ölçüm kartı pilotu ve seçimi (0102-0103) · uygulama hattı (0104-0105) · vLLM geçişi (0106-0107, 0109) · iş panosu (0108) · imzasız geçmiş ve dal düzeni (0110-0111) |
+| [`kararlar-0064-0085.md`](kararlar-0064-0085.md) | 0064 ve sonrası: `v1.0` kapısından bugüne (dosya adı tarihseldir; yeni ADR'ler de buraya eklenir) |
 | [`gemma4-12b-dersler.md`](gemma4-12b-dersler.md) | emekli 12B hattı: **(A) dersler** (base-bağımsız — *yeni hatta başlayan burayı okur*) · **(B) 26 ADR'nin karar kaydı** · (C) ham kayda giriş |
 
 **Atıf uyumu.** Repo genelinde ~2.100 `ADR-00NN` göndermesi var ve hepsi **çapayla** çözülür:
 `kararlar-0045-0063.md#adr-0052` · `gemma4-12b-dersler.md#adr-0011`.
 Hangi dosya olduğu numaradan aritmetikle bulunur.
 
-**Numaralandırma.** Yeni karar = yeni numara, **0115**'ten devam; **0100** kullanılmadı (F0.12'de ADR yazılmadı, 2026-10-17). ⛔ **0059 REZERVE** — turun
+**Numaralandırma.** Yeni karar = yeni numara = **son çapa + 1**; **0100** kullanılmadı. ⛔ **0059 REZERVE** — turun
 `τ_a` v2 veri-simetrisi ADR'si; altı yer `ADR-0059 §sapma-1` diye atıf veriyor.
 
 ---
 
 ## Dizin — yeni hat (Qwen3.5-4B)
 
-🟢 yürürlükte · 🟡 kısmen süperseded · 🔴 hükmü tersine döndü / aşıldı
+🟢 yürürlükte · 🟡 kısmen süperseded · 🔴 hükmü tersine döndü / aşıldı. Yeni satır: numara · durum (geri alındıysa
+"→ 0NNN") · tek cümle; yıldız yok.
 
 | # | | konu |
 | :-- | :-: | :--- |

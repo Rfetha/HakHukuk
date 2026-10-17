@@ -1,11 +1,10 @@
 # `docs/record/` — araştırma kaydı
 
-Bu klasör **ne olduğunu** tutar; kararların *neden*i [`../adr/`](../adr/)'de, yapılacaklar ve yön [`../ROADMAP_v1.md`](../yol_haritasi/ROADMAP_v1.md)'de.
-*(`TASARIM.md` 2026-09-06'da silindi — ölçüm protokolü `adr/` + bu klasörde yaşıyor.)*
+Bu klasör **ne olduğunu** tutar; kararların *neden*i [`../adr/`](../adr/)'de, yapılacaklar ve yön [`ROADMAP_v1.md`](../yol_haritasi/ROADMAP_v1.md)'de.
 
 | ne | nerede |
 | :--- | :--- |
-| **Koşudan önce okunacak tek liste** — 91 sessiz-bozulma kalıbı | [`yurutme-tuzaklari.md`](yurutme-tuzaklari.md) |
+| **Koşudan önce okunacak tek liste** — sessiz-bozulma kalıpları | [`yurutme-tuzaklari.md`](yurutme-tuzaklari.md) |
 | **Artefakt künyesi** — her kol ve merge'in kimliği ⛔ *dokunulmaz* | [`kollar.md`](kollar.md) |
 | Yeni hat, girdi **#39 … #52** | [`kronoloji-39-52.md`](kronoloji-39-52.md) |
 | Yeni hat, girdi **#53 … #62** | [`kronoloji-53-62.md`](kronoloji-53-62.md) |
@@ -14,35 +13,24 @@ Bu klasör **ne olduğunu** tutar; kararların *neden*i [`../adr/`](../adr/)'de,
 | Checkpoint 1 · F0 (devam), girdi **#87 …** | [`kronoloji-87-98.md`](kronoloji-87-98.md) |
 | Emekli **Gemma 4 12B** hattı, girdi **#01 … #38** | [`gemma4-12b-kronoloji.md`](gemma4-12b-kronoloji.md) |
 | Emekli hattın **damıtılmış dersleri** + ADR-0001…0026 | [`../adr/gemma4-12b-dersler.md`](../adr/gemma4-12b-dersler.md) |
-| Karar defteri, ADR-0027…0086 | [`../adr/README.md`](../adr/README.md) |
+| Karar defteri, ADR-0027 ve sonrası | [`../adr/README.md`](../adr/README.md) |
 
-**Yeni girdi #90'dan devam eder** (#88 kullanılmadı) → `kronoloji-87-98.md`'nin sonuna yazılır; dosya 12 girdide (#98) kapanır ve
-yenisi açılır. Her girdi bir `<a id="NN"></a>` çapası taşır, atıf biçimi
+Yeni girdi en yeni `kronoloji-*.md`'nin sonuna yazılır; **numara = son çapa + 1** (#88 kullanılmadı). Dosya
+büyüyünce aşama adıyla yenisi açılır. Her girdi bir `<a id="NN"></a>` çapası taşır, atıf biçimi
 `kronoloji-63-71.md#70`.
 
 ## Hangi belge ne işe yarar
 
 **`yurutme-tuzaklari.md` — koşudan ÖNCE.** *"Hata vermeden yanlış sonuç üreten"* kalıpların listesi;
-91 satırın hepsi bu hatta **fiilen ısırdı**. Bu hattın hata sınıfı çökme değil **sessiz yanlışlıktır**.
+satırların hepsi bu hatta **fiilen ısırdı**. Bu hattın hata sınıfı çökme değil **sessiz yanlışlıktır**.
 
 **`kollar.md` — artefakt kimliği.** Satırı olmayan artefakt **isimsizdir ve kullanılmaz**.
 
-**`kronoloji-*.md` — ne oldu ve kaç çıktı.** Her girdi: künye · tam skor kartı · ölçüm dosyalarının
-yolları · ders. **Sayılar birebir korunur**; olumsuz ve çürütülmüş bulgular da kalır — bu hattın en
+**`kronoloji-*.md` — ne oldu ve kaç çıktı.** Girdi yalnız makaleye ya da model kartına girecek sayı için
+yazılır: ne ölçüldü · sayılar · dosya yolu / `KUNYE.json` · tek paragraf ders; oturum anlatısı ve onay
+alıntısı yazılmaz. **Sayılar birebir korunur**; olumsuz ve çürütülmüş bulgular da kalır — bu hattın en
 değerli bulgularının bir kısmı **kendi planlarının çürütülmesidir**.
 
 **`../adr/gemma4-12b-dersler.md` — bundan ne öğrendik.** Base-bağımsız dersler + 26 ADR'nin karar
 kaydı. **Yeni hatta başlayan önce Bölüm A'yı okur.**
 
----
-
-> ⚠️ **Birleştirme notu — iki kez yapıldı, ikisi de insan kararı.**
-> **2026-07-24:** 38 tekil `research_log` girdisi + 26 tekil ADR ikişer belgede toplandı
-> (`4d70a77` ve öncesi).
-> **2026-09-13:** kayıt katmanı **103 dosyadan 12'ye** indirildi — `research_log/` (33 girdi) üç
-> kronoloji dosyasında, `adr/` (58 ADR) üç karar dosyasında birleşti; dört fazlalık belge silindi
-> ([ADR-0086](../adr/kararlar-0064-0085.md#adr-0086)). Geri alma noktası **`301a82f`**.
->
-> İkisi de ADR-0024'ün *"`research_log/` ve `adr/` yerinde kalır"* kuralından **bilinçli sapmadır**.
-> Gerekçe aynı: yüzlerce belgelik okuma yüzeyi, yeni hatta başlayan için filtresiz bir yığındır.
-> Kuralın özü — **içerik silinmez, sayılar kaybolmaz, çapalar korunur** — ikisinde de tutuldu.
