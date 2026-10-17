@@ -208,7 +208,7 @@ bilinen notlar:
 | Türkçe taban | ham modelle DEV'de tek M1 koşusu; kaydedilir. Kapı maddesi yalnız cevap dilidir (≥%90 Türkçe) |
 | paket kilidi | `transformers` 5.10.2 ve `unsloth` 2026.6.1 Gemma 4'ün çıkışından (2026-03-31) sonra; aynı kilidin iki modeli taşıdığı A100 pilotunda doğrulanır. Gemma başka sürüm isterse Qwen'in kilidine dokunulmaz, Gemma'nın kilidi ayrı yazılır |
 
-Özneler Qwen ve Gemma, hakemler DeepSeek ve Anthropic: aile dışlaması sağlanır.
+Özneler Qwen ve Gemma, hakemler DeepSeek ve Zhipu (GLM; yedek Anthropic, [ADR-0113](../adr/kararlar-0064-0085.md#adr-0113)): aile dışlaması sağlanır.
 
 ### 2.5 Ölçüm
 
@@ -587,7 +587,7 @@ Her koşunun künyesi (`KUNYE.json`) [`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAM
 | bağlayıcı hakemin sürümü ya da sağlayıcısı değişiyor | F0.6 / F3.1 kayma çıpası | puanlama durur; değişiklik kayda geçer, çıpa yeni koşulla yeniden ölçülür |
 | birlikte-eğitim kodu çalışmıyor | F1 sonu | karışık SFT tabanı son çare olarak girer, zayıflığı makalede yazılır |
 | birim maliyet tahminin 1,5 katı | herhangi bir pilot | bütçe yeniden hesaplanır; kredi yetmezse [`EGITIM_ORTAMI.md`](../yontem/EGITIM_ORTAMI.md) §4'teki kural (beklenir ya da Modal'da ödenir) |
-| gönüllü öğrenci bulunamıyor | Mart 2027 (arayış F0'da başlar) | okuma kullanıcı ve hukukçuyla yapılır; insan↔insan uyumu sınırlılık olarak yazılır |
+| gönüllü öğrenci bulunamıyor | Mart 2027 (arayış F4.2'den önce) | okuma kullanıcı ve hukukçuyla yapılır; insan↔insan uyumu sınırlılık olarak yazılır |
 | kazanan dört kapıdan birinden kalıyor | F3 | kapıları geçen en iyi çift kazanır; hiçbiri geçmezse ürün `tgta_v1`'de kalır |
 | takvim bir aydan fazla geride | F3 sonu | kesme sırası: RQ2'nin Gemma'daki üretim tarafı → Gemma'da üç yolun üçüncü seed'i → insan doğrulaması ~200 cevaba → ikinci hakem (en son: kullanıcı saatine maliyeti yok). Kesilmeyenler: birlikte eğitim · Qwen'de 3 seed · insan doğrulaması (en az ~200 cevap) · test kümesi |
 | yazım yetişmiyor | F5 | gönderim bir ARR döngüsü kayar; tez etkilenmez |

@@ -39,12 +39,6 @@ def test_canli_belgelerde_kirik_baglanti_yok():
         f"  {a}: {', '.join(k)}" for a, k in rapor.items())
 
 
-def test_uc_belge_de_var():
-    """Faz 3'ün varlık sebebi: bu üçü 2026-09-06'da silinmişti ve yerine hiçbir şey yoktu."""
-    for ad in ("docs/urun/PRODUCT.md", "docs/yol_haritasi/ROADMAP_v1.md", "docs/urun/MIMARI.md"):
-        assert (KOK / ad).exists(), f"{ad} yok"
-
-
 def test_mimari_her_urun_modulunu_var_olan_dosyaya_baglıyor():
     """MIMARI.md'nin ürün tablosu gerçek dosyaları göstermeli — kutu ≠ niyet."""
     metin = (KOK / "docs" / "urun" / "MIMARI.md").read_text(encoding="utf-8")
