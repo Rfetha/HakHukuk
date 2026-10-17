@@ -55,7 +55,7 @@ Aşağıdaki altı madde doğrulanınca (hedef Eylül 2027):
   ailesinin DEV iterasyonu ([ADR-0052](../adr/kararlar-0045-0063.md#adr-0052),
   [ADR-0053](../adr/kararlar-0045-0063.md#adr-0053)) · eski donmuş TEST (son testin bir parçası) · DEV
   (80 + 70) · dört "hüküm döndü" vakası · ajanın eski okumaları (insan doğrulamasının karşılaştırma
-  tarafı) · kusur sicili ([ADR-0083](../adr/kararlar-0064-0085.md#adr-0083)).
+  tarafı) · kusur sicili ([ADR-0083](../adr/kararlar-0064-0085.md#adr-0083), tarih; açık kusurlar panoda).
 
 ---
 
@@ -241,7 +241,7 @@ Modal giderleri iki hesabın aylık $30'ar kredisiyle Kasım 2026–Mart 2027'ye
 | canlı `bedesten` API (B6) · tazelik boru hattı · barındırma (S9) · tablo satırları (B9) | Checkpoint 2'den sonra |
 | ajan uygulaması (omurga, belgeler, üretim) ve web arayüzü | ayrı hat; omurga Ekim–Aralık 2027, dilimler sıralı, tez yazımında durur ([`ROADMAP_uygulama.md`](ROADMAP_uygulama.md), [ADR-0104](../adr/kararlar-0064-0085.md#adr-0104), [ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)); barındırma (S9) ve canlı `bedesten` yine Checkpoint 2'den sonra |
 | araç kullanımının eğitimi (RL) | Checkpoint 2'den sonra, ayrı ürün turu; yalnız araç çağırma ölçümü açık bir boşluk gösterirse açılır; Makale 2'nin ödülüne girmez ([ADR-0105](../adr/kararlar-0064-0085.md#adr-0105)) |
-| açık kusurlar 5a · 23 · 27 · 31 | ürün iş listesi ([ADR-0083](../adr/kararlar-0064-0085.md#adr-0083)) |
+| açık ürün kusurları | panoda `bug` etiketli kartlar (6 → #76, 12b → #77; [ADR-0083](../adr/kararlar-0064-0085.md#adr-0083)'ün sicili tarihtir) |
 | `recall_taban.json` · korpus bütünlüğü (`4857/Madde 111` yinelenmesi) · `terazi` yinelenen atıf · `models/` temizliği · TUI gözle doğrulama | ucuz işler; boş zamanda |
 | S10: sorumluluk ibaresinin nihai hukuki metni | hukukçu görüşü bekliyor |
 | S12: paralel slot (`-np`) | ertelendi; paralel slot cevap metnini değiştiriyor ([ADR-0062](../adr/kararlar-0045-0063.md#adr-0062)) ve ölçüm ortamı Checkpoint 1 ve 2 boyunca kilitli |
