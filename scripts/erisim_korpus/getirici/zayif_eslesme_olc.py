@@ -37,8 +37,8 @@ for _y, _alt, _f in os.walk(_K):
     _Y.append(_y)
 sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
-from madde_anahtar import madde_anahtari  # noqa: E402
-from retriever import Retriever  # noqa: E402
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari  # noqa: E402
+from hakhukuk.cekirdek.getirici import Retriever  # noqa: E402
 
 INDEKS = "data/index/mevzuat_bge_m3_s2"
 DEV = "data/eval/dev/core_hard.jsonl"
@@ -123,7 +123,7 @@ def main():
     # GÖRÜNÜR kılınır — alana nedeni yazılır ve ekrana uyarı basılır.
     try:
         retriever_commit = subprocess.check_output(
-            ["git", "log", "-1", "--format=%H", "--", "scripts/erisim_korpus/getirici/retriever.py"],
+            ["git", "log", "-1", "--format=%H", "--", "hakhukuk/cekirdek/getirici.py"],
             cwd=repo_koku, stderr=subprocess.PIPE,
         ).decode().strip() or "BOŞ: git bu dosya için kayıt döndürmedi"
     except (OSError, subprocess.CalledProcessError) as hata:

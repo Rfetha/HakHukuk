@@ -92,7 +92,7 @@ def test_kor_payda_anahtari_cevapli_kipte_payda_pay_hakeminin_kaydindan(tmp_path
 # ── üretim tarafı: RRF_K anahtarı (eski hâl 60, ADR-0068 öncesi) ─────────────────────────
 
 def test_getir_rrf_k_parametresini_fuzyona_iletir(tmp_path, monkeypatch):
-    import retriever
+    from hakhukuk.cekirdek import getirici as retriever
     from test_retriever import _korpus_yaz, _sahte_gomucu
     idx = str(tmp_path / "indeks")
     retriever.Retriever.kur(_korpus_yaz(tmp_path), idx, gomucu=_sahte_gomucu)
@@ -129,8 +129,8 @@ def test_gen_eval_rrf_k_harness_izine_yaziliyor():
 ])
 def test_rrf_k_anahtari_62_cipasi_gercek_indeksle(kume, rrf_k, beklenen):
     """Gerçek indeks + bge-m3, CPU. Çıpa: faz0/f01b-soru-onarimi/SONUC_recall_v1_v2.md."""
-    from madde_anahtar import madde_anahtari
-    from retriever import Retriever
+    from hakhukuk.cekirdek.madde_anahtar import madde_anahtari
+    from hakhukuk.cekirdek.getirici import Retriever
     r = Retriever.yukle(os.path.join(_KOK, "data/index/mevzuat_bge_m3_s2"))
     dev = [json.loads(l) for l in open(os.path.join(_KOK, kume), encoding="utf-8") if l.strip()]
     isabet = sum(

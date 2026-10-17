@@ -16,19 +16,12 @@ recall kaybıdır ve orada bile `ara` yalnız **deneyebilir**. Katman yine de ko
 gerekçesi **ürün yeteneğidir ve ÖLÇÜLMEMİŞTİR** ⇒ ⛔ kazancı yayımlanan **hiçbir sayıya
 eklenmez**.
 """
-import os
-import sys
-
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari
 from hakhukuk.cekirdek.tipler import Kaynak, Yururluk
-
-# ── scripts/ yol köprüsü ─────────────────────────────────────────────────────
-_K = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "scripts")
-sys.path[:0] = [_K, os.path.join(_K, "erisim_korpus", "atif")]
-from madde_anahtar import madde_anahtari  # noqa: E402
 # ⚠️ Ad çözümü TEK KAYNAK: yayımlanan sayıyı üreten doğrulayıcının ta kendisi.
 # Kusur 18 onarımı (2026-09-11) burada kopyalanmış ikinci bir indekse çarpmıştı;
 # tuzak 2.18 tam olarak budur — aynı ölçümün iki aleti sessizce ayrışır.
-from atif_dogrula import _ad_adaylari, _dizin_kur  # noqa: E402
+from hakhukuk.cekirdek.atif_dogrula import _ad_adaylari, _dizin_kur
 
 
 def _kaynak(kayit: dict, sira: int) -> Kaynak:

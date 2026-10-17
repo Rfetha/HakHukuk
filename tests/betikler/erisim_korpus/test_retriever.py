@@ -5,7 +5,7 @@ import shutil
 
 import numpy as np
 import pytest
-from retriever import ONEK, Retriever, rrf_birlestir  # noqa: E402
+from hakhukuk.cekirdek.getirici import ONEK, Retriever, rrf_birlestir  # noqa: E402
 
 
 KORPUS = [

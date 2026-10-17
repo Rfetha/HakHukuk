@@ -117,7 +117,7 @@ def test_hicbir_arac_LLM_cagirmaz():
 
 def _olcum_adaylari(ad: str) -> set:
     """Ölçüm hattının (onarılmış `atif_dogrula`) aynı girdideki cevabı."""
-    from atif_dogrula import _ad_adaylari, _dizin_kur
+    from hakhukuk.cekirdek.atif_dogrula import _ad_adaylari, _dizin_kur
     return set(_ad_adaylari(ad, _dizin_kur(KORPUS)))
 
 

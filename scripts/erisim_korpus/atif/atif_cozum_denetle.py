@@ -42,7 +42,7 @@ for _y, _alt, _f in os.walk(_K):
     _Y.append(_y)
 sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
-from atif_dogrula import (KORPUS, DOGRULANDI, Dogrulayici, atiflari_ayikla,  # noqa: E402
+from hakhukuk.cekirdek.atif_dogrula import (KORPUS, DOGRULANDI, Dogrulayici, atiflari_ayikla,  # noqa: E402
                           _ad_adaylari)
 
 TAM = "TAM"            # ad birebir aynı

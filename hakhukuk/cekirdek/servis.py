@@ -10,7 +10,6 @@ OLUŞMAMALIDIR.
 """
 import json
 import os
-import sys
 import urllib.request
 
 from hakhukuk.cekirdek.istem import SISTEM_COK_KAYNAK
@@ -43,9 +42,7 @@ def _getir(soru: str, k: int) -> tuple[Kaynak, ...]:
     global _retriever
     if _retriever is None:
         kok = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        sys.path[:0] = [os.path.join(kok, "scripts"),
-                        os.path.join(kok, "scripts", "erisim_korpus", "getirici")]
-        from retriever import Retriever  # noqa: PLC0415 — ağır bağımlılık, gecikmeli
+        from hakhukuk.cekirdek.getirici import Retriever  # noqa: PLC0415 — ağır bağımlılık, gecikmeli
         _retriever = Retriever.yukle(os.path.join(kok, _INDEKS)
                                      if not os.path.isabs(_INDEKS) else _INDEKS)
     ham = _retriever.getir(soru, k=k, yururluk=Yururluk.YALNIZ_YURURLUKTE)

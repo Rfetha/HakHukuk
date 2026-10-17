@@ -10,7 +10,7 @@ import pytest
 
 import baglam_dondur as bd  # noqa: E402
 import gen_eval_grounded as geg  # noqa: E402
-from retriever import Retriever  # noqa: E402
+from hakhukuk.cekirdek.getirici import Retriever  # noqa: E402
 from test_retriever import _korpus_yaz, _sahte_gomucu  # noqa: E402
 
 _KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))

@@ -42,10 +42,10 @@ for _y, _alt, _f in os.walk(_K):
     _Y.append(_y)
 sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
-from atif_dogrula import (Dogrulayici, DOGRULANDI, MADDE_YOK, KANUN_YOK,  # noqa: E402
+from hakhukuk.cekirdek.atif_dogrula import (Dogrulayici, DOGRULANDI, MADDE_YOK, KANUN_YOK,  # noqa: E402
                           AYRISTIRILAMADI, MULGA)
 from red_kapisi import kapi, POLITIKALAR  # noqa: E402
-from madde_anahtar import madde_anahtari, korpus_indeksi  # noqa: E402
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari, korpus_indeksi  # noqa: E402
 from kutle import DondurulmusKume, kutle_hesapla  # noqa: E402
 import olcum_aleti  # noqa: E402
 from part_dosya import tamamlanmis_jsonl  # noqa: E402

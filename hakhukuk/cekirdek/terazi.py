@@ -11,19 +11,11 @@ Kök sebep: "…bulunmamaktadır" ailesi hukuk metninde İKİ iş görür —
 Metne tek başına bakan bir sınıflandırıcı bunları ayıramaz. Bu modül `kaynaklar`ı da
 görür: kaynak YOKSA (a) mümkündür, kaynak VARSA (b) çok daha olasıdır.
 """
-import os
 import re
-import sys
 
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari  # kimlik normalizasyonu, TEK KAYNAK
+from hakhukuk.cekirdek.ret_deseni import REJECT_RE  # ölçüm hattıyla TEK KAYNAK, kopyalanmaz
 from hakhukuk.cekirdek.tipler import Atif, Durum, Kaynak
-
-# ⚠️ `score_abstention` scripts/puanlama/skorlayici/ ALT KLASÖRÜNDE (T5 bölünmesi 2026-09-07, ADR-0112);
-# yalnız `scripts` eklemek yetmez — planın yazdığı yol eksikti.
-_KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-sys.path[:0] = [os.path.join(_KOK, "scripts", "puanlama", "skorlayici"),
-                os.path.join(_KOK, "scripts", "erisim_korpus", "atif")]
-from score_abstention import REJECT_RE  # noqa: E402  — TEK KAYNAK, kopyalanmaz
-from madde_anahtar import madde_anahtari  # noqa: E402  — kimlik normalizasyonu, TEK KAYNAK
 
 # "Kanunda hüküm yok" kalıbı: olumsuzlama + hemen ardından bir madde/kanun atfı.
 # Bu birleşim bir CEVAPTIR; tek başına olumsuzlama değildir.

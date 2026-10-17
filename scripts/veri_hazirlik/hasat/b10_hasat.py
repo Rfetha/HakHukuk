@@ -61,7 +61,7 @@ sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
 
 from gen_eval_grounded import generate_http          # noqa: E402  — TEK üretim gövdesi
-from madde_anahtar import madde_anahtari             # noqa: E402  — TEK madde normalleştirici
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari             # noqa: E402  — TEK madde normalleştirici
 from score_abstention import exact_reject            # noqa: E402  — TEK regex kaynağı
 
 HAVUZ = "data/train/raft_scrubbed/train.jsonl"

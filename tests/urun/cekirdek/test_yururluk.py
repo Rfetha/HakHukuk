@@ -13,7 +13,7 @@ import pytest
 
 from hakhukuk.cekirdek.tipler import Yururluk
 
-RETRIEVER = pytest.importorskip("retriever")
+RETRIEVER = pytest.importorskip("hakhukuk.cekirdek.getirici")
 
 KORPUS_KUNYE = "data/corpus/KUNYE.json"
 

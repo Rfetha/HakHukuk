@@ -42,7 +42,7 @@ for _y, _alt, _f in os.walk(_K):
 sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
 
-from atif_dogrula import DOGRULANDI
+from hakhukuk.cekirdek.atif_dogrula import DOGRULANDI
 
 KATI = "kati"
 COGUNLUK = "cogunluk"

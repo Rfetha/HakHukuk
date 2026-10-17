@@ -12,7 +12,7 @@
   │ Qwen3.5-4B  (ham base, PARAMETRE)    │        │  soru                                │
   │        │                             │        │    │                                 │
   │        ├──► LoRA τ_g  (1.083 adım)   │        │    ▼                                 │
-  │        └──► LoRA τ_a  (70 adım)      │        │  retriever.py  (CPU · GPU'ya GİRMEZ) │
+  │        └──► LoRA τ_a  (70 adım)      │        │  getirici.py  (CPU · GPU'ya GİRMEZ)  │
   │                İKİSİ DE ham base'den │        │    · BM25 + bge-m3, RRF (K=10)       │
   │                BAĞIMSIZ              │        │    · yürürlük süzgeci (mülga elenir) │
   │        ▼                             │        │    ▼                                 │
@@ -32,7 +32,7 @@ vLLM pilotlandı ve ölçüme alınmadı (aynı ağırlıkla −3,6 p, koşudan 
 
 ## Dosya → sorumluluk
 
-### Ürün — `hakhukuk/` *(pip ile kurulur, `scripts/`'e bağımlı değildir\*)*
+### Ürün — `hakhukuk/` *(pip ile kurulur, `scripts/`'e bağımlı değildir)*
 
 | dosya | tek sorumluluğu |
 | :--- | :--- |
@@ -43,6 +43,8 @@ vLLM pilotlandı ve ölçüme alınmadı (aynı ağırlıkla −3,6 p, koşudan 
 | [`cli.py`](../../hakhukuk/arayuz/cli.py) | `hakhukuk "soru"` — ince kabuk. `SORUMLULUK_IBARESI`'nin **tek kaynağı** |
 | [`tui.py`](../../hakhukuk/arayuz/tui.py) | `hakhukuk-tui` — `textual` tek ekran, ince kabuk (mantık sızıntısı **testle yasak**) |
 | [`api.py`](../../hakhukuk/arayuz/api.py) | `hakhukuk-api` — ince kabuk; yerel, tek kullanıcı (S9 açılmadı) |
+| [`getirici.py`](../../hakhukuk/cekirdek/getirici.py) | Hibrit arama (BM25 + `bge-m3`, RRF) ve mülga süzgeci; ölçüm hattı da aynı modülü kullanır |
+| [`atif_dogrula.py`](../../hakhukuk/cekirdek/atif_dogrula.py) · [`madde_anahtar.py`](../../hakhukuk/cekirdek/madde_anahtar.py) · [`ret_deseni.py`](../../hakhukuk/cekirdek/ret_deseni.py) | atıf doğrulama · madde kimliği · deterministik red deseni; ölçüm hattıyla TEK kaynak |
 | [`araclar.py`](../../hakhukuk/cekirdek/araclar.py) | 5 deterministik KALDIRAÇ — `ara` · `madde_getir` · `madde_var_mi` · `kanun_bul` · `yururlukte_mi`; [ADR-0076](../adr/kararlar-0064-0085.md#adr-0076) |
 | [`indir.py`](../../hakhukuk/dagitim/indir.py) | Artefakt indirme KAPISI — pinli revizyon, `sha256` ve bayt; GGUF ve indeks |
 
@@ -51,11 +53,8 @@ vLLM pilotlandı ve ölçüme alınmadı (aynı ağırlıkla −3,6 p, koşudan 
 `araclar.py`'dekiler **KALDIRAÇ**'tır — model çağırır ya da çağırmaz. Karıştırılmaları
 uydurulmuş madde **0/114** garantisini kaybettirir ([ADR-0076](../adr/kararlar-0064-0085.md#adr-0076)).
 
-\* **Bugünkü tek istisna, bilinçli:** `terazi.py` iki normalizasyonu `scripts/`'ten
-**import ediyor** (`score_abstention.REJECT_RE` · `madde_anahtar.madde_anahtari`).
-Gerekçe: bunlar ölçüm hattının kalbi ve kopyalanırlarsa **sessizce ayrışırlar** — istem
-sürüklenmesinin (S18) aynısı olurdu. **Bedeli:** ürün paketi bugün `scripts/`'siz tam
-çalışmıyor; paketleme turunda ödenecek borç.
+Ürünle ölçüm hattının paylaştığı dört parça (getirici · atıf doğrulama · madde kimliği · red deseni)
+pakettedir; `scripts/` onları paketten içe aktarır. Kopyalanmazlar: kopya **sessizce ayrışır** (S18).
 
 ### Ölçüm aleti — `scripts/` *(ürün DEĞİL)*
 
@@ -64,7 +63,7 @@ sürüklenmesinin (S18) aynısı olurdu. **Bedeli:** ürün paketi bugün `scrip
 | `egitim/` | eğitim · merge · GGUF · araç zinciri |
 | `olcum_uretim/` | harness koşucuları · tek üretim gövdesi · tanılama |
 | `puanlama/` | hakem · skorlama · tablolar · `llm_client` · `runlock` |
-| `erisim_korpus/` | **`retriever.py`** · recall · korpus bütünlüğü · atıf doğrulama |
+| `erisim_korpus/` | getirici ve atıf doğrulamanın komut satırları · recall · korpus bütünlüğü |
 | `veri_hazirlik/` | SFT/ORPO/RAFT veri kurulumu · hasat zinciri |
 | [`yeniden_uret.sh`](../../scripts/yeniden_uret.sh) | manşet sayıyı sıfırdan üretir — [`docs/yontem/YENIDEN_URETIM.md`](../yontem/YENIDEN_URETIM.md) |
 

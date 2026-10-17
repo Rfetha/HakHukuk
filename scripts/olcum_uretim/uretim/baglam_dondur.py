@@ -118,7 +118,7 @@ def main():
     p.add_argument("--out", required=True)
     a = p.parse_args()
 
-    from retriever import Retriever
+    from hakhukuk.cekirdek.getirici import Retriever
     retriever = Retriever.yukle(a.harness_indeks)
     ayar = Ayar(seed=a.seed, n=a.n, harness_k=a.harness_k, rrf_k=a.rrf_k,
                 max_chunk_chars=a.max_chunk_chars, harness_no_gold=a.harness_no_gold)

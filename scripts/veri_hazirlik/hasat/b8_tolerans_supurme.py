@@ -31,7 +31,7 @@ for _y, _alt, _f in os.walk(_K):
     _Y.append(_y)
 sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
-from atif_dogrula import (Dogrulayici, DOGRULANDI, MULGA, KANUN_YOK,  # noqa: E402
+from hakhukuk.cekirdek.atif_dogrula import (Dogrulayici, DOGRULANDI, MULGA, KANUN_YOK,  # noqa: E402
                           ASGARI_SONEK_SOZCUK, _ad_normal)
 
 

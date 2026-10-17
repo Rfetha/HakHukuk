@@ -34,7 +34,7 @@ for _y, _alt, _f in os.walk(_K):
     _Y.append(_y)
 sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
-from madde_anahtar import madde_anahtari, korpus_indeksi  # noqa: E402,F401
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari, korpus_indeksi  # noqa: E402,F401
 
 KORPUS = "data/corpus/mevzuat_maddeler.jsonl"
 DEV = "data/eval/dev/core_hard.jsonl"

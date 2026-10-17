@@ -3,7 +3,7 @@ import os
 
 import pytest
 
-from atif_dogrula import DOGRULANDI, AYRISTIRILAMADI, MADDE_YOK, KANUN_YOK, MULGA, \
+from hakhukuk.cekirdek.atif_dogrula import DOGRULANDI, AYRISTIRILAMADI, MADDE_YOK, KANUN_YOK, MULGA, \
     atiflari_ayikla, dogrula, Dogrulayici  # noqa: E402
 
 KORPUS = [

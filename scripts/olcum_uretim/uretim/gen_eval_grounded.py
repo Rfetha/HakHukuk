@@ -67,7 +67,7 @@ SYSTEM_PROMPT_RAG_MULTI = raft_pack.SYSTEM_PROMPT_RAG_MULTI
 # birebir aynı fonksiyon → dağılım garantili eşleşir. (build_sft_v2b saf stdlib, torch/unsloth yok.)
 from build_sft_v2b import clip_sources_block
 
-from madde_anahtar import madde_anahtari  # harness izi: altın getirildi mi, kaçıncı sırada
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari  # harness izi: altın getirildi mi, kaçıncı sırada
 
 import runlock  # aynı label'a paralel yazım = sessiz bozulma (bkz. runlock.py)
 from part_dosya import part_ile_yaz  # yarım üretim `.part` kalır, puanlanmaz (F0.5 c)
@@ -546,7 +546,7 @@ def main():
                 "gelir, ikisi birden gelirse hangisinin kullanıldığı belirsizleşir")
         from baglam_dondur import Ayar, oku, sha256_dosya
         if a.rrf_k is None:
-            from retriever import RRF_K
+            from hakhukuk.cekirdek.getirici import RRF_K
             a.rrf_k = RRF_K
         donmus = oku(a.donmus_baglam,
                      Ayar(seed=a.seed, n=a.n, harness_k=a.harness_k, rrf_k=a.rrf_k,
@@ -558,7 +558,7 @@ def main():
     _retriever = None
     if a.harness_indeks:
         # Veri kapısı model yüklenmeden ÖNCE (tuzak 6.2) — bayat/eksik indeks burada patlar.
-        from retriever import RRF_K, Retriever
+        from hakhukuk.cekirdek.getirici import RRF_K, Retriever
         _retriever = Retriever.yukle(a.harness_indeks)
         if a.rrf_k is None:
             a.rrf_k = RRF_K

@@ -755,3 +755,28 @@ def test_modele_giden_kaynak_blogu_ham_madde_yazimini_tasir():
     k = Kaynak(kanun_adi="TÜRK BORÇLAR KANUNU", kanun_no="6098", madde_no="MADDE 349",
                metin="Kiraya veren …", sira=1)
     assert "[KAYNAK 1] TÜRK BORÇLAR KANUNU MADDE 349" in servis._blok((k,))
+
+
+# ── kusur 11 — paket `scripts/` olmadan içe aktarılır (ürün ölçüm hattından ayrı kurulabilir) ──
+
+def test_paket_scripts_olmadan_ice_aktarilir(tmp_path):
+    """Paketin kopyası, repo ve `scripts/` görünmeden, yalıtılmış (-I) bir Python'da yüklenir.
+
+    Ürünün kullandığı dört parça (madde anahtarı, atıf dizini, ret deseni, getirici) paketin
+    içinde olmalı; biri yine `scripts/`'e yol köprüsü kurarsa bu test kırmızıya döner.
+    """
+    import subprocess
+    shutil.copytree(REPO_KOK / "hakhukuk", tmp_path / "hakhukuk",
+                    ignore=shutil.ignore_patterns("__pycache__"))
+    kod = (
+        "import sys; sys.path.insert(0, sys.argv[1])\n"
+        "import hakhukuk\n"
+        "assert hakhukuk.__file__.startswith(sys.argv[1]), hakhukuk.__file__\n"
+        "from hakhukuk.cekirdek import terazi, araclar, servis, getirici, atif_dogrula, ret_deseni\n"
+        "import pathlib\n"
+        "koprulu = [p for p in sys.path if 'scripts' in pathlib.PurePath(p).parts]\n"
+        "assert not koprulu, koprulu\n"
+    )
+    r = subprocess.run([sys.executable, "-I", "-c", kod, str(tmp_path)],
+                       capture_output=True, text=True, cwd=tmp_path)
+    assert r.returncode == 0, r.stderr[-2000:]

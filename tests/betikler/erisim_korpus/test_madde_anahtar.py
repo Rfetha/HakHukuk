@@ -1,4 +1,4 @@
-from madde_anahtar import madde_anahtari
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari
 
 
 def test_madde_anahtari_buyuk_kucuk_harf_ayirt_etmez():
@@ -17,7 +17,7 @@ def test_madde_anahtari_harfli_numarayi_korur():
 
 def test_korpus_indeksi_dev_altinlarinin_tamamini_bagliyor():
     import json
-    from madde_anahtar import korpus_indeksi
+    from hakhukuk.cekirdek.madde_anahtar import korpus_indeksi
     idx = korpus_indeksi("data/corpus/mevzuat_maddeler.jsonl")
     dev = [json.loads(l) for l in open("data/eval/dev/core_hard.jsonl", encoding="utf-8") if l.strip()]
     baglanan = sum(1 for d in dev if madde_anahtari(d["kanun_no"], d["madde_no"]) in idx)

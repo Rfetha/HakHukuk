@@ -41,7 +41,7 @@ records of everything, an ADR per decision, pointer upkeep, status in several pl
 CLAUDE.md  README.md  MODEL_CARD.md  LICENSE  pyproject.toml
 requirements.lock.txt  requirements.gemma4.lock.txt   training locks: Qwen · Gemma 4 E4B (F0.9 gate), not the retired 12B line
 hakhukuk/            PRODUCT package (pip-installable)
-  cekirdek/            core: tipler · istem · terazi · servis · araclar
+  cekirdek/            core: tipler · istem · terazi · servis · araclar · getirici · atif_dogrula · madde_anahtar · ret_deseni
   arayuz/              interfaces: cli · tui · api (thin shells over cekirdek)
   dagitim/             indir (artifact download + identity gate)
   veri/KUNYE.json      symlink -> data/corpus/KUNYE.json (single source, package-data)
@@ -257,10 +257,12 @@ for ceremony.
   (`import runlock`, `from build_sft_v2b import …`) and survive the split only because **39 files carry an
   identical path-bridge block** that puts every folder under `scripts/`, at any depth, on `sys.path` —
   `grep -rl "yol köprüsü" scripts/`. `tests/conftest.py` mirrors it. **If you change one, change both.**
-  `hakhukuk/cekirdek/{servis,terazi,araclar}.py` add **named** sub-folders instead (three `dirname` levels up to
-  the repo root; ticket 11 records the debt) — moving a module they import means editing those lists, and the
-  tests cannot catch a stale one because `conftest.py` adds every folder. The Modal launchers' `/root/scripts/…`
-  lists are the same kind of hand-written list. Modal
+  The product package never reaches into `scripts/` (defect 11, closed 2026-10-17): `madde_anahtar`,
+  `atif_dogrula`, `ret_deseni` (`REJECT_RE`) and `getirici` (the retriever) live in `hakhukuk/cekirdek/`, and the
+  measuring line imports them from there — one source; `tests/urun/test_kusurlar.py` imports a copy of the
+  package with no `scripts/` in sight. `scripts/erisim_korpus/{atif/atif_dogrula.py,getirici/retriever.py}` are
+  only command-line wrappers. Every Modal image that runs these scripts must also `add_local_dir("hakhukuk")`;
+  the Modal launchers' `/root/scripts/…` lists are hand-written. Modal
   entry points are `scripts/egitim/kosu/modal_train.py` / `modal_diag.py`; run `modal run
   scripts/egitim/kosu/modal_train.py::<fn>` **from the repo root** (they `add_local_dir("scripts")`).
 - **Base = a parameter.** Mecellem stays **cite-only** (ADR-0016/0020) — a CPT foundation base, not an

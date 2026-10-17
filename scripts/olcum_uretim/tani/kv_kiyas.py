@@ -36,7 +36,7 @@ for _y, _alt, _f in os.walk(_K):
 sys.path[:0] = [*_Y, os.path.dirname(_K)]
 # ─────────────────────────────────────────────────────────────────────────────
 from score_abstention import exact_reject  # noqa: E402
-from atif_dogrula import Dogrulayici, MADDE_YOK, AYRISTIRILAMADI  # noqa: E402
+from hakhukuk.cekirdek.atif_dogrula import Dogrulayici, MADDE_YOK, AYRISTIRILAMADI  # noqa: E402
 from hakhukuk.cekirdek.terazi import siniflandir  # noqa: E402
 from hakhukuk.cekirdek.tipler import Kaynak  # noqa: E402
 

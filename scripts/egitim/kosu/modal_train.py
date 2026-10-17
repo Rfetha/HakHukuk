@@ -324,6 +324,7 @@ harvest_image = (
     .pip_install("openai==2.41.0")
     .env({"PYTHONUNBUFFERED": "1", "UNSLOTH_DISABLE_STATISTICS": "1"})
     .add_local_dir("scripts", remote_path="/root/scripts")
+    .add_local_dir("hakhukuk", remote_path="/root/hakhukuk")    # score_abstention · madde_anahtar: hakhukuk.cekirdek (kusur 11)
 )
 
 

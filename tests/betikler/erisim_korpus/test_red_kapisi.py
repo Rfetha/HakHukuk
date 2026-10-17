@@ -1,4 +1,4 @@
-from atif_dogrula import Dogrulayici, atiflari_ayikla, dogrula  # noqa: E402
+from hakhukuk.cekirdek.atif_dogrula import Dogrulayici, atiflari_ayikla, dogrula  # noqa: E402
 from red_kapisi import KATI, COGUNLUK, CERRAHI, kapi  # noqa: E402
 
 KORPUS = [

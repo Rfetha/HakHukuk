@@ -17,8 +17,8 @@ import json, os, sys
 KOK = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 sys.path[:0] = [os.path.join(KOK, "scripts", "erisim_korpus", "getirici"),
                 os.path.join(KOK, "scripts", "erisim_korpus", "atif"), KOK]
-from retriever import Retriever            # noqa: E402
-from madde_anahtar import madde_anahtari   # noqa: E402
+from hakhukuk.cekirdek.getirici import Retriever            # noqa: E402
+from hakhukuk.cekirdek.madde_anahtar import madde_anahtari   # noqa: E402
 
 r = Retriever.yukle(os.path.join(KOK, "data/index/mevzuat_bge_m3_s2"))
 dev = [json.loads(l) for l in open(os.path.join(KOK, "data/eval/dev/core_hard.jsonl"),

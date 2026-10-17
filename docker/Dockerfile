@@ -25,12 +25,9 @@ COPY pyproject.toml README.md ./
 COPY hakhukuk/ hakhukuk/
 RUN pip install ".[api]"
 
-# ⚠️ KARAR 5 (ADR-0078 madde 5): imaj repo AĞACINI kopyalar, F1 ONARILMAZ.
-# `servis.py` çalışma anında `scripts/` ve `scripts/erisim_korpus/getirici/`'yi `sys.path`'e ekleyip
-# `retriever.py`'yi oradan alır; korpusu da repo köküne göreli okur. Yani `pyproject.toml`'un
-# *"`scripts/` bilerek DIŞARIDA"* cümlesi çalışma anında GEÇERSİZDİR. Bedel ticket 11 olarak
-# açık yazılıdır: retriever'ı pakete taşımak yapısal bir değişikliktir (26 dosyanın yol
-# köprüsü + tüm ölçüm hattı aynı dosyayı kullanır) ve kendi turunu hak eder.
+# KARAR 5 (ADR-0078 madde 5) ve kusur 11: 2026-10-17'den beri ürün `scripts/`'e ihtiyaç duymaz
+# (getirici, atıf doğrulama, madde kimliği ve red deseni `hakhukuk/cekirdek/`'te). `scripts/` kopyası
+# imaj bir sonraki kez yeniden kurulup doğrulanınca kaldırılabilir; korpus repo köküne göreli okunur.
 COPY scripts/ scripts/
 COPY data/corpus/ data/corpus/
 
