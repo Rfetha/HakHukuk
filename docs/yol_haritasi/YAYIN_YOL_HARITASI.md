@@ -178,8 +178,21 @@ kütlede öne geçebilir. Ayrıca şu dört kapıyı geçmesi şarttır:
 Ürün yalnız kazananın kütlesi (seed ortalaması) `tgta_v1`'i soru düzeyinde eşleştirilmiş bootstrap'ta
 %95 güvenle geçerse (aralık 0'ı içermezse) kazanana geçer; aksi hâlde `tgta_v1` kalır, makale sıralamayı
 yine raporlar. Ürüne kazananın **seed 3407** ağırlıkları gider (önceden seçilmiş; 3407 bir kapıda kalırsa
-3408) ve model kartına o dosyanın kendi test sayısı yazılır, ortalama değil. Kazanan, testte seçildiği
-için Makale 2'nin son sınavı ayrı ve mühürlü parçadır (§2.5.1).
+3408, o da kalırsa 3409; üçü de kalırsa `tgta_v1` kalır) ve model kartına o dosyanın kendi test sayısı yazılır,
+ortalama değil. Kazanan, testte seçildiği için Makale 2'nin son sınavı ayrı ve mühürlü parçadır (§2.5.1).
+
+**Kuralın dört boşluğu** (kullanıcı kararı 2026-10-17, DEV sonucu görülmeden):
+- **Kapı 2'nin ölçüsü:** isabetsiz atıflı cevap / cevaplanan cevap. Otomatik vekili olmadığı için
+  ([ADR-0066](../adr/kararlar-0064-0085.md#adr-0066)) ajan-okuyucu okur, insan F4'te örneklemde doğrular. Çiftte 3 seed
+  ortalaması, ürüne giden dosyada kendi seed'i. Oran `tgta_v1`'inkinden soru düzeyinde eşleştirilmiş bootstrap'ta %95
+  güvenle yüksekse kapıda kalır. Çıpa: `tgta_v1`'in aynı testteki oranı (F3, tanım gereği).
+- **Kazanan yoksa:** hiçbir çift dört kapıyı geçemezse ürün `tgta_v1` kalır; makale sıralamayı ve her çiftin
+  kaldığı kapıyı raporlar. Kapılar testten sonra gevşetilmez.
+- **Beraberlik:** en yüksek kütleli çiftten 0,87 puandan az geride kalan çiftler berabere sayılır. Çıpa: bağlayıcı
+  hakemin aynı cevaplarda tek koşudaki oynaması, kapalı mod ([#85](../record/kronoloji-75-86.md#85);
+  `outputs/eval/f0/f06-hakem-gecisi/OZET.json`, `kutle_ss` 0,0087). Berabere çiftlerden isabetsiz atıf oranı düşük
+  olan kazanır, o da eşitse Q4_K_M VRAM'i küçük olan.
+- **Ürün dosyası:** sıra 3407 → 3408 → 3409; üçü de bir kapıda kalırsa ürün `tgta_v1` kalır.
 
 ### 2.4 İkinci temel model kapısı
 
@@ -343,7 +356,7 @@ böyle tanımlanır.
 
 | aşama | zaman | iş | kullanıcı saati (tahmin) |
 | :--- | :--- | :--- | :--- |
-| **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin kayda geçmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü, testi ve eski ortamla eşdeğerlik kontrolü · ölçüm kartı pilotu · hakem geçişi ve kayma çıpası · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · ~~etik kurul sorusu ve gönüllü arayışının başlaması~~ (etik kurul F5.2'de, gönüllü arayışı F4.2'den önce) · Qwen'de τ_g/τ_a seed'leri (3408 · 3409) · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ön-kayıt taslağı · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
+| **F0 — zemin** | Ekim sonu–Kasım 2026 | bundle ve `v1` adaptörlerinin yedeği · kararların ADR'ye işlenmesi · τ_g v1 hassasiyetinin kayda geçmesi · eski aletlere bundle'dan erişim · eğitim ortamı kilidinin yaml'ı, betik kontrolü, testi ve eski ortamla eşdeğerlik kontrolü · ölçüm kartı pilotu · hakem geçişi ve kayma çıpası · birlikte-eğitim kodu ve Modal pilotu · Gemma kapısı · ~~etik kurul sorusu ve gönüllü arayışının başlaması~~ (etik kurul F5.2'de, gönüllü arayışı F4.2'den önce) · Qwen'de τ_g/τ_a seed'leri (3408 · 3409) · literatür taraması (birleştirme ↔ birlikte eğitim; RLVR ve çekinme) · ~~ön-kayıt taslağı~~ kazanan kuralının dört boşluğu (§2.3) · mevcut kolların güncel DEV'de yeniden ölçümü | ~10-14 |
 | **F1 — DEV iterasyonu** | Aralık 2026–Ocak 2027 | iki temel modelde birlikte ve ardışık eğitim, ikişer yapılandırma · Gemma'da birleştirme · Gemma'da τ_g/τ_a seed'leri · insan↔hakem pilotu (~80 cevap) · hakem önyargı sondası · soru üreticisinin kör seçimi · test sorularının üretimi ve okuma protokolü · **dondurma ADR'si** ve aynı gün makalenin yöntem bölümü | ~10-13 |
 | **F2 — test ve seed'ler** | Şubat–Nisan 2027 | test sorularının okunması (yalnız ret; mühürlü parça ve vatandaş dili dilimi dahil; dondurmadan hemen sonra, Ocak sonu–Şubat) ve şifreli dondurulması · birlikte ve ardışık seed'ler (Şubat–Mart): Qwen 3408 → 3409 → Gemma 3408 → 3409 · test cevaplarının kiralık kartta şifreli üretimi, RQ2'nin üretim tarafı dahil (Şubat–Nisan) · makalenin giriş ve ilgili çalışmalar bölümleri | ~15-22 |
 | **F3 — son ölçüm** | Mayıs 2027 | test bir kez açılır (puanlama başlar) · Tablo 1 ve 2 · ikinci hakem · kazanan seçimi | ~3-4 |
@@ -617,7 +630,7 @@ F0 satırları 2026-10-17'de okundu, kayda geçirilmedi (kullanıcı kararı); y
 | Gemma 4 E4B lisans dosyası | HF model deposu | F0 |
 | DeepSeek V4.1 Flash: tarihli sürüm kimliği · sabit sağlayıcının fiyatı ve önbellekli girdi fiyatı · düşünme modunda sıcaklık desteği | OpenRouter model sayfası | F0 |
 | OpenAI kullanım şartlarının güncel metni (çıktıyla rakip model geliştirme maddesi) | openai.com/policies | F0 |
-| OSF ön-kayıt: ambargo ve isimsiz görüntüleme bağlantısı | osf.io | F1 |
+| ~~OSF ön-kayıt: ambargo ve isimsiz görüntüleme bağlantısı~~ OSF kullanılmaz (kullanıcı kararı 2026-10-17) | osf.io | ~~F1~~ |
 | Global-MMLU ve GSM8K lisansları | küme depoları | F1 |
 | ~~GLM 5.3 Flash'ın OpenRouter kimliği, fiyatı ve lisans dosyası~~ okundu 2026-10-17 ([#89](../record/kronoloji-87-98.md#89)); test sorusu üreticisinin (Kimi K3 / MiniMax M3) kimliği, fiyatı ve lisansı ([ADR-0113](../adr/kararlar-0064-0085.md#adr-0113)) | OpenRouter · HF | F1 |
 | ~~Vast'ta~~ RunPod'da A100 fiyatı, sürücü sürümü ve network volume ücreti ([ADR-0101](../adr/kararlar-0064-0085.md#adr-0101)) | ~~Vast~~ RunPod konsolu | gerektiğinde |
