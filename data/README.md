@@ -86,7 +86,8 @@ ile doğrudan verilir.
 Sonraki her şeyin **tohumu**: soru↔gold madde eşleşmesi buradan gelir (RAFT paketleme ve ORPO
 tuzak üretimi bu setin sorularını kullanır).
 Sorular ve cevaplar madde metninden `gpt-4o-mini` ile üretildi (2026-06-08); RAFT ve ORPO'nun dayanaklı
-cevapları ile `eval/` soruları da bu üretimden gelir.
+cevapları da `gpt-4o-mini` üretimidir. `eval/` soruları da `gpt-4o-mini` üretimidir (çoğu bu setin test
+bölümünden; `genelleme/ood_qa` ve `trap_ood` ayrı bir üretim, 2026-07-05).
 ⚠️ Bu setin *cevapları* düz SFT'de kullanıldığında **abstention'ı yok etti** (bkz aşağıdaki uyarı) —
 değerli olan **soru↔madde eşleşmesi**, cevaplar değil.
 
