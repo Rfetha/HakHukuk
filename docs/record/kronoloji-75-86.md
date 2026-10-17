@@ -509,6 +509,14 @@ veriyor" notu ([`YENIDEN_URETIM.md`](../yontem/YENIDEN_URETIM.md)) dizüstü iç
 bile görülmedi. Dizüstüyle fark büyük: kayıttaki dizüstü cevapları ile kiralık kart cevapları arasında kalem
 düzeyinde kıyas yapılamaz. ADR-0097 m.1'in "tek kart tipi" kuralının neden zorunlu olduğu bu tabloda görülüyor.
 
+**Not (2026-10-17, kart #20): Modal faturası okundu.** Kaynak: Modal paneli (hesap `rfetha`, Ekim döngüsü; okuma
+2026-10-17) ve uygulama/gün ayrımı için `modal billing report`. Bu pilotun faturası **$0,73** (A10, iki konteyner,
+2026-10-15); tahmin ~$0,6'ydı, fark model indirme ve sunucu açılışı. Ekim'in tamamı **$5,15**, hepsi `rfetha`'da
+(kalan kredi $24,85): F0.4 dört koşu $2,37 ([#75](#75), tahmin ~$2; oradaki "ilk hesap" `rfetha`) · F0.9 duman $1,11
+([#80](#80); kilit kapısının durdurduğu ilk deneme $0,08 dahil) · vLLM pilotu $0,97 ([#86](#86) $0,72, tahmin ~$0,64 ·
+[#87](kronoloji-87-98.md#87) $0,24, tahmin ~$0,2). Ekim'de ikinci hesapta kayıtlı koşu yok. Raporun toplamı $5,17;
+panelle $0,02'lik fark açıklanmadı, sayı panelden alındı (tuzak 6.3).
+
 <a id="84"></a>
 ## #84 — Ajan uygulaması hattı: Mike taraması, ADR-0104 ve aynı gün denetimi (ADR-0105); ölçüm yok
 
